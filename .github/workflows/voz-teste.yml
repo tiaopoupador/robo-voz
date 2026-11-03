@@ -1,0 +1,44 @@
+name: voz-teste
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  voz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        parte: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/pip
+          key: chatterbox-0.1.7-v1
+      - name: instalar
+        run: |
+          pip install torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install chatterbox-tts==0.1.7
+      - name: abrir a voz (cifrada)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in voz/ref.enc -out ref.wav -pass env:VOZ_SENHA
+      - name: gerar
+        run: python gerar.py ref.wav ${{ matrix.parte }} parte.wav
+      - name: fechar a saida (cifrada)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: |
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in parte.wav -out parte-${{ matrix.parte }}.enc -pass env:VOZ_SENHA
+          rm -f ref.wav parte.wav
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parte-${{ matrix.parte }}
+          path: parte-${{ matrix.parte }}.enc
+          retention-days: 1
