@@ -5,6 +5,8 @@ from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 ref, parte, saida = sys.argv[1], int(sys.argv[2]), sys.argv[3]
 arq = sys.argv[4] if len(sys.argv) > 4 else "textos.txt"
 texto = open(arq, encoding="utf-8").read().splitlines()[parte]
+# o roteiro escreve "Tião" normal; para a voz sair certa escreve-se "Tchião" (escolha do Ed, 03/11/2026)
+texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Tião", "Tchião")
 t0 = time.time()
 m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 print("MEDIDA modelo carregado em", round(time.time() - t0), "s", flush=True)
