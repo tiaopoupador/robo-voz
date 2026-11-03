@@ -3,7 +3,8 @@ import sys, time, torch, torchaudio as ta
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
 ref, parte, saida = sys.argv[1], int(sys.argv[2]), sys.argv[3]
-texto = open("textos.txt", encoding="utf-8").read().splitlines()[parte]
+arq = sys.argv[4] if len(sys.argv) > 4 else "textos.txt"
+texto = open(arq, encoding="utf-8").read().splitlines()[parte]
 t0 = time.time()
 m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 print("MEDIDA modelo carregado em", round(time.time() - t0), "s", flush=True)

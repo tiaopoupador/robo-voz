@@ -1,5 +1,11 @@
 name: voz-teste
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      arquivo:
+        default: textos.txt
+      partes:
+        default: "[0, 1, 2, 3, 4, 5]"
 permissions:
   contents: read
 jobs:
@@ -9,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        parte: [0, 1, 2, 3, 4, 5]
+        parte: ${{ fromJSON(inputs.partes) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,7 +36,7 @@ jobs:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
         run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in voz/ref.enc -out ref.wav -pass env:VOZ_SENHA
       - name: gerar
-        run: python gerar.py ref.wav ${{ matrix.parte }} parte.wav
+        run: python gerar.py ref.wav ${{ matrix.parte }} parte.wav "${{ inputs.arquivo }}"
       - name: fechar a saida (cifrada)
         env:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
