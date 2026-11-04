@@ -7,6 +7,13 @@ arq = sys.argv[4] if len(sys.argv) > 4 else "textos.txt"
 texto = open(arq, encoding="utf-8").read().splitlines()[parte]
 # o roteiro escreve "Tião" normal; para a voz sair certa escreve-se "Tchião" (escolha do Ed, 03/11/2026)
 texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Tião", "Tchião")
+# pronuncia escolhida pelo Ed de ouvido (04/11/2026): o roteiro escreve normal, a voz le assim
+import re
+FALA = [(r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
+        (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
+        (r"IPVA", "i pê vê á")]
+for a, b in FALA:
+    texto = re.sub(a, b, texto)
 t0 = time.time()
 m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 print("MEDIDA modelo carregado em", round(time.time() - t0), "s", flush=True)
