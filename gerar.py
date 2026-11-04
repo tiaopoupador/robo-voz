@@ -11,7 +11,9 @@ texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Ti�
 import re
 FALA = [(r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
         (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
-        (r"IPVA", "i pê vê á")]
+        (r"IPVA", "i pê vê á"),
+        (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
+        (r"opções", "ôpissões"), (r"Opções", "Ôpissões"), (r"opção", "ôpissão"), (r"Opção", "Ôpissão")]
 for a, b in FALA:
     texto = re.sub(a, b, texto)
 t0 = time.time()
