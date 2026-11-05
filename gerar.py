@@ -9,7 +9,7 @@ texto = open(arq, encoding="utf-8").read().splitlines()[parte]
 texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Tião", "Tchião")
 # pronuncia escolhida pelo Ed de ouvido (04/11/2026): o roteiro escreve normal, a voz le assim
 import re
-FALA = [(r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
+FALA = [(r"FinMoovi", "Fin Múvi"), (r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
         (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
         (r"IPVA", "i pê vê á"),
         (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
