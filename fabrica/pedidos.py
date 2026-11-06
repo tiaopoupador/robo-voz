@@ -17,6 +17,10 @@ QUEM = {
 }
 NEG = " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark."
 def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
+QUATRO = ("GENERATE 4 SEPARATE IMAGES AT ONCE: the SAME scene shown from 4 DIFFERENT CAMERA ANGLES, one per image: "
+          "1) wide shot showing the whole place, 2) medium shot, 3) close-up on the faces and hands, 4) low angle or over-the-shoulder. "
+          "Same characters, same clothes, same place and same moment in all 4 images. ")
+QUATRO_FIM = "Remember: 4 separate images, 4 different camera angles, each one 16:9."
 R169 = "ASPECT RATIO 16:9, horizontal widescreen (1920x1080), never square, never vertical. "
 SOM = " SILENT VIDEO: no sound, no audio, no music, no sound effects, no voices, no dialogue, no speech, no subtitles."
 meta = [n for n, v in C.IMG.items() if v[0] == "meta"]; flow = [n for n, v in C.IMG.items() if v[0] == "flow"]
@@ -45,11 +49,11 @@ o += ["## 1. A capa (meta.ai) · a mais importante", "", "No meta.ai, escolha o 
 NOMES = getattr(C, "NOMES", {})
 def arq(cod, n, ext): return f"{cod}_{NOMES[n]}{ext}" if n in NOMES else f"{cod}{ext}"  # o robo acha pelo codigo do comeco
 o += bloco("CAPA", "a capa do vídeo", C.CAPA[0], [arq("CAPA", "capa", ".jpg")],
-           R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.\n" + FIM4)
+           QUATRO + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.\n" + QUATRO_FIM + "\n" + FIM4)
 o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações, cada uma com o seu nome.", ""]
 for i, n in enumerate(meta, 1):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
-    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + FIM4)
+    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"], QUATRO + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + QUATRO_FIM + "\n" + FIM4)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in enumerate(flow, 1):
     refs = C.IMG[n][1]; c = f"F{i:02d}"
