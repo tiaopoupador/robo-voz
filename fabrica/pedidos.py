@@ -11,7 +11,7 @@ CONS = ("CHARACTER AND SCENERY CONSISTENCY ARE THE TOP PRIORITY. The characters 
         "Correct anatomy: exactly five fingers on each hand, two normal symmetrical eyes, no extra limbs, no faces inside objects. Pose and expression follow the scene, NOT the reference pose. ")
 STYLE = "Flat 2D cartoon illustration, clean thin black outlines, soft cel shading, warm slightly desaturated colors, modern explainer animation style, 16:9 widescreen, Brazilian setting. "
 QUEM = {
- "tiao": "Tiao: about 30 years old, SHORT and slightly CHUBBY, ROUND face, short messy black hair, a small THIN black pencil mustache (always present, never thick), light brown skin, mustard-yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch, a short yellow carpenter pencil in the shirt pocket. ",
+ "tiao": "The last attached image is Tiao's character sheet (many angles and poses): use it only to know him from every side, draw him ONCE, in a natural pose that fits the action, never stiff facing the camera. Tiao: about 30 years old, SHORT and slightly CHUBBY, ROUND face, short messy black hair, a small THIN black pencil mustache (always present, never thick), light brown skin, mustard-yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch, a short yellow carpenter pencil in the shirt pocket. ",
  "sandra": "Sandra: woman in her late 30s, long wavy brown hair, sunglasses pushed up on her head, gold hoop earrings, red blouse, blue jeans, brown handbag. ",
  "marcos": "Marcos: TALL slim man in his late 30s, gelled dark hair, light skin, white shirt with rolled sleeves, dark jeans, brown belt, big silver watch, clean-shaven (NO mustache). ",
 }
@@ -34,10 +34,14 @@ try:
     REFS = {f["name"]: f"https://drive.google.com/file/d/{f['id']}/view" for f in drive.listar(ref)}
 except Exception as e:
     print("sem Drive agora (links simples):", e)
+def com_ficha(refs):  # com o Tiao vai tambem a ficha oficial (ele em varias poses), pedido do Ed a 06/11
+    return refs + " + tiao-ficha-oficial.jpg" if "tiao-frente-sozinho" in refs and "ficha" not in refs else refs
 def anexar(refs):
+    refs = com_ficha(refs)
     return ["📎 **Anexar** (clique para abrir e baixar):"] + [f"- {r}: {REFS.get(r, PASTA_REF)}" for r in [x.strip() for x in refs.split("+")]]
 PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi Team
 def bloco(cod, titulo, refs, nomes, prompt):
+    refs = com_ficha(refs)
     lr = [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
     for k, nm in enumerate(nomes):
         extra = f" (imagem {k + 1} de {len(nomes)}, todas da mesma geração)" if len(nomes) > 1 else ""
