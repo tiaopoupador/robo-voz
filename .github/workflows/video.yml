@@ -1,0 +1,124 @@
+name: video (montar, gerar, agendar)
+# O dia da montagem: junta o que o robo gerou e o que o Ed salvou no Drive, monta, gera o video em 16 pedacos
+# ao mesmo tempo, junta, prepara a capa e AGENDA no YouTube. Manda um e-mail para o Ed com o resultado.
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "numero do video (ex.: 02)"
+        required: true
+      subir:
+        description: "subir e agendar no YouTube (sim/nao)"
+        default: "sim"
+permissions:
+  contents: read
+env:
+  NN: ${{ inputs.video }}
+jobs:
+  montar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: ln -s . robo-voz   # os programas procuram robo-voz/roteiro-NN.txt (no PC o repositorio e uma subpasta)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q pillow
+      - name: abrir o cofre
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: cat cofre/banco.enc.* | openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:VOZ_SENHA | tar -xf -
+      - name: buscar no Drive (imagens do robo, o que o Ed salvou, a narracao)
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: python fabrica/drive.py baixar-tudo $NN
+      - name: montar
+        env:
+          FINMOOVI_BROLL: ${{ github.workspace }}/finmoovi/
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: |
+          python fabrica/pedidos.py $NN >/dev/null
+          python fabrica/montar.py $NN
+          python fabrica/descricao.py $NN
+          cp -r capas/video-$NN render/public/v$NN/_capa
+          cp fabrica/saida/$NN-montagem.json render/public/v$NN/_montagem.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: montado
+          path: render/public/v${{ inputs.video }}
+          retention-days: 3
+  pedaco:
+    needs: montar
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        p: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: render/package-lock.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: montado
+          path: render/public/v${{ inputs.video }}
+      - name: instalar o motor de video
+        working-directory: render
+        run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - name: gerar o pedaco ${{ matrix.p }} de 16
+        working-directory: render
+        run: |
+          TOTAL=$(python3 -c "import json;d=json.load(open('public/v$NN/props.json'));print(round((d['fim']+d['tela'])*30))")
+          A=$(( TOTAL * ${{ matrix.p }} / 16 )); B=$(( TOTAL * (${{ matrix.p }} + 1) / 16 - 1 ))
+          echo "quadros $A a $B de $TOTAL"
+          npx remotion render src/nuvem.ts Video out/p${{ matrix.p }}.mp4 --props=public/v$NN/props.json --frames=$A-$B --crf=20 --concurrency=4 --log=error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pedaco-${{ matrix.p }}
+          path: render/out/p${{ matrix.p }}.mp4
+          retention-days: 2
+  juntar:
+    needs: pedaco
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - run: ln -s . robo-voz   # os programas procuram robo-voz/roteiro-NN.txt (no PC o repositorio e uma subpasta)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q pillow
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pedaco-*
+          path: pedacos
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: montado
+          path: montado
+      - name: juntar os 16 pedacos e acertar o som (padrao do YouTube)
+        run: |
+          mkdir -p videos-prontos
+          for i in $(seq 0 15); do echo "file 'pedacos/p$i.mp4'"; done > lista.txt
+          ffmpeg -v error -f concat -safe 0 -i lista.txt -c copy -y junto.mp4
+          ffmpeg -v error -i junto.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
+          ffprobe -v error -show_entries format=duration -of csv=p=0 videos-prontos/VIDEO-$NN.mp4
+      - name: guardar no Drive, capa e agendar no YouTube
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          SUBIR: ${{ inputs.subir }}
+        run: |
+          mkdir -p capas/video-$NN && cp montado/_capa/* capas/video-$NN/
+          python fabrica/publicar.py $NN

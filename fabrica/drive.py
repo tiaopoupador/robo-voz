@@ -36,5 +36,40 @@ def baixar(NN):
         if os.path.exists(dst) and os.path.getsize(dst) == int(f.get("size", -1)): continue
         open(dst, "wb").write(api(f"{D}/{f['id']}?alt=media", bruto=True)); n += 1
     print(f"baixados {n} arquivos para {sai}"); return sai
+def baixar_pasta(pid, sai):
+    os.makedirs(sai, exist_ok=True); n = 0
+    for f in listar(pid):
+        if f["mimeType"].endswith("folder"): continue
+        dst = f"{sai}/{f['name']}"
+        if os.path.exists(dst) and os.path.getsize(dst) == int(f.get("size", -1)): continue
+        open(dst, "wb").write(api(f"{D}/{f['id']}?alt=media", bruto=True)); n += 1
+    return n
+def baixar_tudo(NN):
+    """na nuvem, no dia da montagem: imagens do robo, o que o Ed salvou, a narracao e os tempos das palavras"""
+    raiz = achar("Tiao Poupador"); robo = achar("robo", raiz); v = achar(f"video-{NN}", robo)
+    print("imagens do robo:", baixar_pasta(achar("img", v), f"{P}/fabrica/videos/v{NN}/img"))
+    tmp = f"{P}/fabrica/saida/_drive"; baixar_pasta(v, tmp); os.makedirs(P + "/teste-vozes", exist_ok=True)
+    for a, b in ((f"NARRACAO-video-{NN}.mp3", f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3"), (f"{NN}-palavras.json", f"{P}/fabrica/saida/{NN}-palavras.json")):
+        if os.path.exists(f"{tmp}/{a}"): os.replace(f"{tmp}/{a}", b); print("ok", a)
+        else: print("FALTA", a)
+    e = achar(f"video-{NN}", achar("entrada", raiz))
+    print("do Ed:", baixar_pasta(e, f"{P}/fabrica/videos/v{NN}/entrada") if e else 0)
+def guardar(NN, arq):
+    raiz = pasta("Tiao Poupador"); v = pasta(f"video-{NN}", pasta("robo", raiz))
+    for f in listar(v):
+        if f["name"] == os.path.basename(arq): api(f"{D}/{f['id']}", metodo="DELETE", bruto=True)
+    r = subir_grande(arq, v); return f"https://drive.google.com/file/d/{r['id']}/view"
+def subir_grande(arq, pai):
+    """envio retomavel (para o video de 1 GB)"""
+    import urllib.request
+    from fabrica.google import token
+    tipo = mimetypes.guess_type(arq)[0] or "application/octet-stream"; tam = os.path.getsize(arq)
+    ini = urllib.request.Request("https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", method="POST",
+        data=json.dumps({"name": os.path.basename(arq), "parents": [pai]}).encode(),
+        headers={"Authorization": "Bearer " + token(), "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Type": tipo, "X-Upload-Content-Length": str(tam)})
+    url = urllib.request.urlopen(ini).headers["Location"]
+    with open(arq, "rb") as f:
+        r = urllib.request.urlopen(urllib.request.Request(url, data=f.read(), method="PUT", headers={"Content-Length": str(tam)}), timeout=1800)
+    return json.loads(r.read())
 if __name__ == "__main__":
-    {"preparar": preparar, "baixar": baixar}[sys.argv[1]](sys.argv[2])
+    {"preparar": preparar, "baixar": baixar, "baixar-tudo": baixar_tudo}[sys.argv[1]](sys.argv[2])

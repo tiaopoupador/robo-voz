@@ -245,3 +245,10 @@ AMB = [("passaros", 0, "^", 18, 0.22), ("grilos", 9, "^", 40, 0.28), ("relogio",
        ("coracao", 12, "^", 6, 0.4), ("bip", 68, "^", 8, 0.3), ("passaros", 69, "^", 24, 0.3), ("coracao", 76, "^", 10, 0.45),
        ("passaros", 87, "^", 14, 0.22)]
 FORTES = {"armadilha", "armadilhas", "cestinha", "lista", "biscoito", "rotativo", "carrinho", "reduflação", "fome", "nove", "nona"}
+# para o YouTube
+DESC = ("A Sandra entrou no mercado para comprar pão e leite. Saiu com 23 coisas e uma conta de R$ 187,40. O Tião, com uma lista no verso de um envelope, gastou R$ 58,30. E a Sandra nem percebeu quando aconteceu.\n\n"
+        "Neste vídeo você vê as nove armadilhas que o supermercado arma da porta até o caixa, com as pesquisas que mostram cada uma. E a nona, a mais cara, só aparece trinta dias depois, em casa.")
+TAGS = ["supermercado", "como economizar no mercado", "educação financeira", "finanças pessoais", "compras por impulso", "reduflação",
+        "cartão de crédito", "rotativo", "controle de gastos", "lista de compras", "Tião Poupador", "história de dinheiro"]
+PERGUNTA = "Qual dessas nove armadilhas te pega sempre? É o pão da porta ou o chocolate da fila?"
+CAP_NOMES = {"Gancho": "Sábado, 9h10: só pão e leite", "O que o Tião faz, em uma frase cada": "O que o Tião faz", "Chamada para o app": "A soma do mês", "Fecho": "Qual armadilha te pega?"}

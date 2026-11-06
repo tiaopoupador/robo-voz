@@ -22,6 +22,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pillow
+      - name: abrir o cofre (banco do canal, cifrado)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: cat cofre/banco.enc.* | openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:VOZ_SENHA | tar -xf - banco/referencia
       - name: gerar
         env:
           CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}
