@@ -65,7 +65,7 @@ IMG = {
  "tiao-foto":      ("cf", T, "Outside a supermarket door he takes a photo of a paper receipt with his smartphone, satisfied; the phone screen faces away from the camera."),
  # ---- Sandra sozinha ----
  "sandra-entra":   ("cf", S, "She walks into a bright supermarket through automatic glass doors in a hurry, holding her brown handbag, sunglasses on her head, " + MERC),
- "sandra-pao":     ("cf", S, "Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, " + MERC),
+ "sandra-pao":     ("cf", S, "Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, " + MERC + "Sandra is a WOMAN with a smooth feminine face: absolutely NO mustache, no beard. She carries ONE handbag only."),
  "sandra-carrinho":("cf", S, "She pulls a BIG empty shopping cart from a line of carts and drops her handbag into it, " + MERC),
  "sandra-queijo":  ("cf", S, "She walks slowly pushing a big cart, looking with desire at cheese in a refrigerated display, " + MERC),
  "sandra-biscoito":("cf", S, "She reaches for a YELLOW package of chocolate cookies on a shelf with a soft nostalgic smile, " + MERC),
@@ -75,7 +75,7 @@ IMG = {
  "sandra-cartao":  ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a card machine (NOT a kitchen, no fridge): she hands a credit card to the cashier while distracted looking at her phone. Only ONE Sandra in the image. Background: supermarket shelves and other checkouts only. NO fridge, NO kitchen cabinets, NO home furniture."),
  "sandra-fatura":  ("banco:video01/sandra-fatura.jpg", "", ""),
  "sandra-lista":   ("cf", S, "At a supermarket entrance she opens her handbag and takes out a folded paper list, a little embarrassed smile, " + MERC),
- "sandra-cestinha":("cf", S, "She walks past a line of big carts and picks up a small red basket instead, shy proud smile, " + MERC),
+ "sandra-cestinha":("cf", S, "She walks past a line of big carts and picks up a small red basket instead, shy proud smile, " + MERC + "All sign boards are plain red or yellow with nothing written. Her sunglasses stay pushed up on her HEAD, not on her eyes."),
  "sandra-gramas":  ("cf", S, "She turns a yellow cookie package around and reads the weight on the back, serious and curious, " + MERC),
  "sandra-devolve": ("cf", S, "She calmly puts a yellow cookie package back on the shelf, serene, not angry, " + MERC),
  "sandra-sacola":  ("cf", S, "She walks out of a supermarket carrying ONE shopping bag, light and happy, sunny parking lot."),
