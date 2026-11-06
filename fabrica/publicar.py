@@ -23,11 +23,23 @@ publicado = None
 if not capas:
     txt += ["", "## ⚠️ Falta a capa", "Sem capa o vídeo **não sobe** (regra do canal). Salve a capa com o nome `CAPA.jpg` na pasta do vídeo no Drive e me avise: eu agendo na hora."]
 elif SUBIR:
+    # a principal e "CAPA..." sem letra; "CAPA-B...", "CAPA-C..." sao as versoes do teste do YouTube (Test & compare)
+    import re as _re, shutil as _sh
+    extra = [c for c in capas if _re.match(r"(?i)capa-[b-z]", c)]; capas = [c for c in capas if c not in extra] + extra
+    teste = []
+    for c in extra:
+        subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{c}"], check=True)
+        d = f"{P}/capas/video-{NN}/teste-{c[5].upper()}.jpg"; _sh.copy(f"{P}/capas/video-{NN}/capa.jpg", d); teste.append(drive.guardar(NN, d))
     subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{capas[0]}"], check=True)
     subprocess.run([sys.executable, f"{P}/youtube/subir.py", f"video-{NN}"], check=True)
     publicado = json.load(open(f"{P}/capas/video-{NN}/publicado.json", encoding="utf-8"))
     drive.guardar(NN, f"{P}/capas/video-{NN}/publicado.json"); drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")
     txt += ["", "## ✅ Agendado no YouTube", f"{publicado['url']}  ", f"Vai ao ar: {C.PUBLICA_TXT}. Até lá fica privado: dá para assistir e mudar o que quiser no Studio."]
+    if teste:
+        principal = drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")
+        txt += ["", "## 🧪 Teste das capas (2 minutos seus)", "O YouTube não deixa um robô ligar o teste: ele só existe no Studio. As capas já estão no tamanho certo:",
+                f"- principal: {principal}", *[f"- versão {chr(66 + i)}: {u}" for i, u in enumerate(teste)],
+                "Baixe as 3, abra o vídeo no YouTube Studio, clique em **Miniatura**, depois **Testar e comparar**, e suba as 3. Ele testa sozinho quando o vídeo for ao ar."]
 else:
     txt += ["", "Montado e guardado no Drive. Não subi no YouTube (pedido para só montar)."]
 try:  # o banco: tudo o que o video usou, com nome que diz o que e, para reaproveitar

@@ -288,3 +288,17 @@ IMG["flow-esteira"] = ("flow", '(nenhuma)', "cf:esteira"); PEDIDO["flow-esteira"
 IMG["flow-tiao-sacolas-antes"] = ("flow", 'tiao-frente-sozinho.jpg', "cf:tiao-sacolas-antes"); PEDIDO["flow-tiao-sacolas-antes"] = 'FLASHBACK in warm evening colors: Tiao walks out of a supermarket through the glass doors, tired and hungry, carrying three heavy full shopping bags, sighs and shakes his head with regret. Camera slowly follows him.'; NOMES["flow-tiao-sacolas-antes"] = 'tiao_supermercado-saida-flashback_tiao-cansado-com-3-sacolas'
 IMG["flow-marcos-buzina"] = ("flow", 'marcos-neutro.jpg', "cf:marcos-buzina"); PEDIDO["flow-marcos-buzina"] = 'Supermarket parking lot: Marcos inside his shiny black pickup truck honks the horn impatiently and gestures with one hand, annoyed, then laughs. Static camera from outside the driver window.'; NOMES["flow-marcos-buzina"] = 'marcos_estacionamento-picape-preta_marcos-buzina-impaciente'
 IMG["flow-tiao-volta"] = ("flow", 'tiao-frente-sozinho.jpg', "cf:tiao-volta"); PEDIDO["flow-tiao-volta"] = 'Sunny Brazilian neighborhood street with colorful simple houses and palm trees: Tiao walks home calmly and happy carrying ONE small paper bag, smiling, a few birds fly by. Camera tracks in front of him.'; NOMES["flow-tiao-volta"] = 'tiao_rua-do-bairro_tiao-volta-para-casa-com-uma-sacola'
+
+# versoes da capa para o teste do YouTube (Test & compare, ate 3). (referencias, cena, nome do arquivo)
+CAPAS_TESTE = [
+ ("sandra-neutra.jpg",
+  "EXTREME CLOSE-UP of Sandra's face filling half of the image on the LEFT, total shock, mouth wide open, eyes huge, one hand on her cheek, sunglasses on her head. "
+  "She holds a gigantic paper receipt that unrolls all the way down to the floor. Background: a blurred bright supermarket aisle. A big thick RED ARROW points at the end of the receipt. "
+  "Big bold text at the top right, white letters with thick black outline, the last word in yellow: CAÍ NESSA. Keep the text away from the edges.",
+  "sandra_supermercado-corredor_sandra-em-choque-com-a-nota-gigante-capa-cai-nessa"),
+ ("tiao-frente-sozinho.jpg",
+  "Tiao close to the camera on the RIGHT, leaning in and whispering to the viewer with one hand next to his mouth, the other hand pointing DOWN at the bottom shelf. "
+  "Behind him a supermarket shelf: the products at eye level are bright and glowing, the cheap ones on the bottom shelf are in shadow. A big thick RED ARROW points at the bottom shelf. "
+  "Big bold text at the top left, white letters with thick black outline, the last word in yellow: OLHE PRA BAIXO. Keep the text away from the edges.",
+  "tiao_supermercado-prateleira_tiao-cochicha-e-aponta-a-prateleira-de-baixo-capa-olhe-pra-baixo"),
+]

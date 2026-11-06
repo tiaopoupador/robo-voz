@@ -56,17 +56,25 @@ o = [f"# Tião Poupador · vídeo {NN}: o que gerar à mão", "",
      f"📁 **Pasta onde salvar tudo:** {PASTA}", "",
      "**Como fazer cada pedido:** abra o link de cada imagem em «Anexar», baixe e anexe no meta.ai (ou no Flow); copie o texto da caixa cinza; gere; salve com o nome indicado, na pasta indicada.",
      "Se algum pedido não ficar bom ou faltar tempo, não tem problema: o robô usa a imagem dele no lugar e o vídeo sai do mesmo jeito.", ""]
-o += ["## 1. A capa (meta.ai) · a mais importante", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve a melhor das 4.", ""]
+CAPAS = [C.CAPA] + list(getattr(C, "CAPAS_TESTE", []))  # o YouTube testa ate 3 capas (Test & compare)
+o += [f"## 1. As capas (meta.ai) · {len(CAPAS)} versões, as mais importantes", "", "No meta.ai, escolha o formato **16:9** (horizontal). De cada versão, salve só a melhor das 4. O YouTube testa as versões e fica com a que mais prende.", ""]
 NOMES = getattr(C, "NOMES", {})
 def arq(cod, n, ext): return f"{cod}_{NOMES[n]}{ext}" if n in NOMES else f"{cod}{ext}"  # o robo acha pelo codigo do comeco
-o += bloco("CAPA", "a capa do vídeo", C.CAPA[0], [arq("CAPA", "capa", ".jpg")],
-           QUATRO + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.\n" + QUATRO_FIM + "\n" + FIM4)
+for j, cp in enumerate(CAPAS):
+    cc = "CAPA" if j == 0 else f"CAPA-{'ABCDE'[j]}"
+    o += bloco(cc, "a capa principal" if j == 0 else f"capa para o teste, versão {'ABCDE'[j]}", cp[0],
+               [f"{cc}_{cp[2]}.jpg" if len(cp) > 2 else arq(cc, "capa", ".jpg")],
+               QUATRO + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(cp[0]) + cp[1] + " No logos, no brand names.\n" + QUATRO_FIM + "\n" + FIM4)
 o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações e o GIF animado, cada um com o seu nome.", ""]
-for i, n in enumerate(meta, 1):
+def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos
+    r = C.IMG[i_n[1]][1]; t, sa, ma = "tiao" in r, "sandra" in r, "marcos" in r
+    return (0 if t and not (sa or ma) else 1 if sa and not (t or ma) else 2 if ma and not (t or sa) else 3 if t else 4 if sa or ma else 5, r, i_n[0])
+o += ["Os pedidos vêm agrupados por personagem (primeiro só o Tião, depois só a Sandra, depois só o Marcos, depois os juntos): gere na ordem, que a IA mantém o rosto mais igual.", ""]
+for i, n in sorted(enumerate(meta, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
     o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"] + [arq(f"{c}-gif", n, ".gif")], QUATRO + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + QUATRO_FIM + "\n" + GIF + "\n" + FIM4)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
-for i, n in enumerate(flow, 1):
+for i, n in sorted(enumerate(flow, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"F{i:02d}"
     o += bloco(c, bonito(n), refs, [arq(c, n, ".mp4")], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + SOM + NEG)
 codigos = {**{n: f"M{i:02d}" for i, n in enumerate(meta, 1)}, **{n: f"F{i:02d}" for i, n in enumerate(flow, 1)}}
