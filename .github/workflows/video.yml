@@ -38,6 +38,7 @@ jobs:
       - name: montar
         env:
           FINMOOVI_BROLL: ${{ github.workspace }}/finmoovi/
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
           YT_ID: ${{ secrets.YT_ID }}
           YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
           YT_TOKEN: ${{ secrets.YT_TOKEN }}
@@ -119,6 +120,7 @@ jobs:
           YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
           YT_TOKEN: ${{ secrets.YT_TOKEN }}
           SUBIR: ${{ inputs.subir }}
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
         run: |
           mkdir -p capas/video-$NN && cp montado/_capa/* capas/video-$NN/
           python fabrica/publicar.py $NN

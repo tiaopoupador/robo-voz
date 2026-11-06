@@ -36,7 +36,12 @@ except Exception as e:
     print("sem Drive agora (links simples):", e)
 def anexar(refs):
     return ["📎 **Anexar** (clique para abrir e baixar):"] + [f"- {r}: {REFS.get(r, PASTA_REF)}" for r in [x.strip() for x in refs.split("+")]]
+PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi Team
 def bloco(cod, titulo, refs, nomes, prompt):
+    lr = [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
+    for k, nm in enumerate(nomes):
+        extra = f" (imagem {k + 1} de {len(nomes)}, todas da mesma geração)" if len(nomes) > 1 else ""
+        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": prompt, "links": lr, "ficheiro": nm})
     return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
             "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]
 def bonito(n): return n.split("-", 1)[1].replace("-", " ").capitalize()
@@ -62,3 +67,27 @@ codigos = {**{n: f"M{i:02d}" for i, n in enumerate(meta, 1)}, **{n: f"F{i:02d}" 
 open(f"{P}/fabrica/saida/{NN}-pedidos.md", "w", encoding="utf-8").write("\n".join(o))
 import json; json.dump(codigos, open(f"{P}/fabrica/saida/{NN}-codigos.json", "w"), indent=1)
 print(f"{len(meta)} meta, {len(flow)} flow -> fabrica/saida/{NN}-pedidos.md")
+
+# --enviar: manda a tarefa para o Apexi Team (uma vez: se ja existe, nao mexe, para nao apagar o que o Ed marcou)
+# e o e-mail de reserva junto (ate RESERVA_ATE). Se o Team recusar, o e-mail sai de qualquer jeito.
+RESERVA_ATE = "2026-11-20"
+if "--enviar" in sys.argv:
+    import datetime
+    from fabrica import team, correio
+    ok, ja = False, False
+    try:
+        ja = team.ver(NN) is not None
+        if ja: print("Team: a tarefa ja existe, nao mando de novo")
+        else:
+            r = team.mandar({"chave_unica": team.chave_unica(NN), "tipo": "imagens-do-video", "projeto": "Tião Poupador",
+                             "titulo": f"Vídeo {NN}: o que gerar à mão ({len(PASSOS)} arquivos)",
+                             "descricao": f"{C.TITULO}. Vai ao ar: {C.PUBLICA_TXT}. Anexe cada arquivo no seu passo (ou salve na pasta do Drive). "
+                                          "Se faltar algum, o robô usa a imagem dele no lugar.",
+                             **({"prazo": C.PRAZO_ISO} if getattr(C, "PRAZO_ISO", None) else {}),
+                             "links": [{"rotulo": "Pasta do Drive do vídeo", "url": PASTA}] + ([{"rotulo": "Fotos de referência", "url": PASTA_REF}] if PASTA_REF else []),
+                             "passos": PASSOS})
+            ok = True; print("Team: tarefa", "criada" if r.get("criada") else "atualizada", r.get("url", ""))
+    except Exception as e:
+        print("Team recusou (vai so o e-mail):", getattr(e, "code", ""), str(e)[:200])
+    if not ja and (not ok or datetime.date.today().isoformat() <= RESERVA_ATE):
+        correio.enviar(f"Tião Poupador · vídeo {NN}: o que gerar à mão", "\n".join(o))

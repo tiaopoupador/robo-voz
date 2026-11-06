@@ -36,5 +36,11 @@ try:  # o banco: tudo o que o video usou, com nome que diz o que e, para reaprov
 except Exception as e:
     txt += ["", f"⚠️ Não consegui guardar no banco agora: {e}"]
 open(f"{P}/fabrica/saida/{NN}-resultado.md", "w", encoding="utf-8").write("\n".join(txt))
+try:  # o resultado vira recado na tarefa do Apexi Team; com o video agendado, a tarefa fecha
+    from fabrica import team
+    rec = f"Vídeo {NN} " + ("agendado ✅ " + publicado["url"] if publicado else ("montado, falta a capa ⚠️" if not capas else "montado (não subi)")) + f". Assistir: {link_video}. "
+    rec += f"Suas imagens que entraram: {len(mont.get('do_ed', []))}. Faltaram (entrou a do robô): {len(mont.get('plano_b', []))}."
+    print("Team:", team.recado(NN, rec, fechar=bool(publicado)))
+except Exception as e: print("Team: recado falhou:", e)
 correio.enviar(f"Tião Poupador · vídeo {NN}: " + ("agendado ✅" if publicado else ("falta a capa ⚠️" if not capas else "montado")), "\n".join(txt))
 print("\n".join(txt))

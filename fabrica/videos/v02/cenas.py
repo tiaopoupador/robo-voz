@@ -239,6 +239,7 @@ CAPA = ("sandra-neutra.jpg + tiao-frente-sozinho.jpg",
 TITULO = "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"
 PUBLICA = "2026-11-08 17:00"
 PUBLICA_TXT = "domingo, 08/11, às 17h (Brasília)"
+PRAZO_ISO = "2026-11-07T10:00:00-03:00"
 PRAZO = "sábado, 07/11, até as 10h (este primeiro vídeo está apertado; nos próximos você terá 3 dias)"
 # sons de cena: (som, linha, gatilho, segundos, volume). Sons em render/public/amb (o montar.py cria o "bip").
 AMB = [("passaros", 0, "^", 18, 0.22), ("grilos", 9, "^", 40, 0.28), ("relogio", 9, "^", 14, 0.3), ("coracao", 11, "Deu novecentos", 8, 0.5),

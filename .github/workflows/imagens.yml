@@ -26,6 +26,15 @@ jobs:
         env:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
         run: cat cofre/banco.enc.* | openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:VOZ_SENHA | tar -xf - banco/referencia
+      - name: mandar os pedidos ao Ed (Apexi Team, uma vez por video; e-mail de reserva)
+        env:
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: |
+          mkdir -p fabrica/saida
+          for NN in $(python -c "import json;print(' '.join(json.load(open('fabrica/agenda.json'))['em_producao']))"); do python fabrica/pedidos.py $NN --enviar || echo "pedidos $NN falhou"; done
       - name: gerar
         env:
           CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}

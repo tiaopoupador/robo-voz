@@ -9,6 +9,10 @@ NN = sys.argv[1]
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 from fabrica.sincronia import alinhar, achar
 V = f"{P}/fabrica/videos/v{NN}"; IMG_CF, ENT = V + "/img", V + "/entrada"
+if "--sem-team" not in sys.argv:  # o que o Ed anexou no Apexi Team entra em entrada/ junto com o que veio do Drive
+    try:
+        from fabrica import team; team.baixar(NN, ENT)
+    except Exception as e: print("Team: nao consegui baixar agora:", e)
 PUB = f"{P}/render/public/v{NN}"; os.makedirs(PUB + "/img", exist_ok=True); os.makedirs(PUB + "/vid", exist_ok=True)
 PASTA = f"v{NN}"
 FM = os.environ.get("FINMOOVI_BROLL", "C:/Users/Ed Flávio/Desktop/CLAUDE-CODE/FINMOOVI/VIDEOS-BROLL/")
