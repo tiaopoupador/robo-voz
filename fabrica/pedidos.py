@@ -39,11 +39,12 @@ def com_ficha(refs):  # com o Tiao vai tambem a ficha oficial (ele em varias pos
     return refs + " + tiao-ficha-oficial.jpg" if "tiao-frente-sozinho" in refs and "ficha" not in refs else refs
 def anexar(refs):
     refs = com_ficha(refs)
+    if "nenhuma" in refs: return ["📎 **Anexar:** nada (cena sem personagem)"]
     return ["📎 **Anexar** (clique para abrir e baixar):"] + [f"- {r}: {REFS.get(r, PASTA_REF)}" for r in [x.strip() for x in refs.split("+")]]
 PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi Team
 def bloco(cod, titulo, refs, nomes, prompt):
     refs = com_ficha(refs)
-    lr = [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
+    lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
     for k, nm in enumerate(nomes):
         extra = " (o GIF animado de 5 s, da mesma geração)" if nm.split("_")[0].endswith("-gif") else (f" (imagem {k + 1} de {len([x for x in nomes if not x.split('_')[0].endswith('-gif')])}, todas da mesma geração)" if len(nomes) > 1 else "")
         PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": prompt, "links": lr, "ficheiro": nm})

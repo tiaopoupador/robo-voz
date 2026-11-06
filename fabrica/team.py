@@ -31,17 +31,22 @@ def mandar(tarefa):
 def baixar(NN, sai=None):
     """baixa os anexos que o Ed pos no Team para fabrica/videos/vNN/entrada (antes de olhar o Drive)"""
     sai = sai or f"{P}/fabrica/videos/v{NN}/entrada"; os.makedirs(sai, exist_ok=True)
-    try: t = ver(NN)
-    except Exception as e: print("Team fora do ar agora:", e); return 0
-    if not t: print("Team: sem tarefa deste video"); return 0
+    anexos = []
+    for ch in (chave_unica(NN), chave_unica(NN) + "-extras"):  # a tarefa do video e a dos pedidos extras
+        try: t = _pedir(f"/tarefas/{ch}")
+        except urllib.error.HTTPError as e:
+            if e.code != 404: print("Team:", ch, e.code)
+            continue
+        except Exception as e: print("Team fora do ar agora:", e); return 0
+        anexos += t.get("anexos", [])
     n = 0
-    for a in t.get("anexos", []):
+    for a in anexos:
         nome = os.path.basename(a.get("nome") or f"{a.get('codigo', 'anexo')}-{a['id']}")
         if a.get("codigo") and not nome.upper().startswith(a["codigo"].split("-")[0].upper()): nome = f"{a['codigo']}_{nome}"  # o montador acha pelo codigo
         dst = f"{sai}/{nome}"
         if os.path.exists(dst): continue
         open(dst, "wb").write(_pedir(f"/anexos/{a['id']}", bruto=True)); n += 1
-    print(f"Team: {n} anexos baixados ({len(t.get('anexos', []))} na tarefa)"); return n
+    print(f"Team: {n} anexos baixados ({len(anexos)} nas tarefas)"); return n
 
 def recado(NN, texto, fechar=False):
     try: return _pedir(f"/tarefas/{chave_unica(NN)}/recado", {"texto": texto, "fechar": fechar})
