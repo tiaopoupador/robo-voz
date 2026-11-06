@@ -12,7 +12,8 @@ from fabrica.google import chaves
 env = chaves()  # acessos.env no PC, segredos do GitHub na nuvem
 NUVEM = "--drive" in sys.argv  # na nuvem: as imagens ficam no Drive (Tiao Poupador/robo/video-NN/img)
 URL = f"https://api.cloudflare.com/client/v4/accounts/{env['CLOUDFLARE_TIAO_CONTA']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b"
-REF = {"T": "tiao-frente-sozinho.jpg", "N": "marcos-neutro.jpg", "R": "sandra-neutra.jpg"}
+REF = {"T": "tiao-frente-sozinho.jpg", "N": "marcos-neutro.jpg", "R": "sandra-neutra.jpg", "F": "tiao-ficha-oficial.jpg"}
+# com o Tiao vai tambem a ficha oficial (ele em varias poses e angulos), pedido do Ed a 06/11, para ele nao sair sempre de frente e parado
 LIMITE = 9300  # de 10.000: folga para nao estourar
 CONTA = f"{P}/fabrica/saida/cloudflare-cota.json"  # pontos gastos no "dia" da Cloudflare (que vira as 00:00 UTC)
 
@@ -22,12 +23,18 @@ IGUAL = "The character must be IDENTICAL to the reference image, not similar: sa
 QUEM = {
  "T": IGUAL + "Tiao, the man from the reference image, drawn ONCE, as a single character: about 30 years old, short and slightly chubby, round face, short messy black hair, a small thin black pencil mustache (always present, a thin line, never thick), light brown skin, mustard yellow polo shirt, black wristwatch; when legs are visible: faded denim shorts and black flip-flops. ",
  "N": IGUAL + "Marcos, the man from the reference image, drawn ONCE: tall slim man in his late 30s, gelled dark hair, light skin, white shirt with rolled sleeves, dark jeans, brown belt, big silver watch, clean-shaven (NO mustache). ",
+ "F": "The LAST attached image is Tiao's official CHARACTER SHEET: the same man seen from many angles, poses and expressions. "
+      "Use it ONLY to know how he looks from the side, from behind, bending, walking and with each expression. Do NOT copy the sheet layout: draw Tiao ONLY ONCE, inside the scene. "
+      "Tiao is in a natural, dynamic pose that fits the action (walking, bending, turning, reaching, gesturing, seen in three-quarter or profile view), "
+      "NEVER standing straight and stiff facing the camera like a reference photo. His mustache is ALWAYS a THIN pencil line, never thick or bushy. ",
  "R": IGUAL + "Sandra, the woman from the reference image, drawn ONCE: late 30s, long wavy brown hair, sunglasses on her head, gold hoop earrings, red blouse, blue jeans, brown handbag. ",
 }
 ANATOMIA = (" Correct anatomy for EVERY person, including people in the background: exactly two well-formed, symmetrical eyes of the same size,"
             " a normal nose and mouth, two arms and two hands with five fingers each, no extra or missing limbs, no fused fingers,"
             " no deformed or melted faces, faces never inside or merged with objects (blinds, curtains, windows).")
-FIM = ANATOMIA + " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark, no license plates."
+FIM = ANATOMIA + (" ABSOLUTELY NO WRITING ANYWHERE: every sign, banner, store front, shelf label, price tag, package, paper, receipt, phone and screen"
+       " shows only plain colors, simple shapes or wavy scribble lines, never letters or words (they always come out misspelled)."
+       " No eyes or faces drawn on walls, doors, objects, speakers or devices. Exactly the number of people the scene asks for, each person appears only once.") + " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark, no license plates."
 
 def tiles(w, h): return -(-w // 512) * -(-h // 512)
 def custo(refs):
@@ -94,7 +101,7 @@ if __name__ == "__main__":
     print(f"{len(alvo)} imagens para gerar · ja gastos hoje {g:.0f} de {LIMITE}", flush=True)
     feitas = 0
     for n in alvo:
-        q = C.IMG[n]; refs = list(q[1]); c = custo(refs)
+        q = C.IMG[n]; refs = list(q[1]) + (["F"] if "T" in q[1] else []); c = custo(refs)
         if gasto()[1] + c > LIMITE: print(f"PAREI perto do limite gratis do dia ({gasto()[1]:.0f}). Continua depois das 21h.", flush=True); break
         r = gerar(n, refs, q[2])
         soma(c)  # a Cloudflare cobra mesmo quando a imagem sai ruim

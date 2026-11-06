@@ -6,8 +6,8 @@
 #   "flow" o Ed no Flow (clipe) · "banco:<arquivo>" ja existe. Pedido de meta/flow tem plano B na Cloudflare ("cf:<nome>").
 from fabrica.kit import *  # fr, nu, ci, ba, li, ic, pl, et, cb, bl, ft, ls, tr, re_, xi, ck, br, VERDE, VERM, AMAR, AZUL
 
-MERC = ("inside Supermercado Boa Compra, a bright mid-size Brazilian neighborhood supermarket, white tiled floor, red and yellow details, "
-        "colorful shelves, small yellow price tags, white ceiling lights, ")
+MERC = ("inside a bright mid-size Brazilian neighborhood supermarket, white tiled floor, red and yellow details, "
+        "colorful shelves, small blank yellow price tags, white ceiling lights, plain red and yellow sign boards with NO words, ")  # sem o nome da loja: o gerador escrevia na parede (e errado)
 T, S, M = "T", "R", "N"  # Tiao, Sandra (neutra), Marcos (neutro)
 IMG = {
  # ---- lugar e objetos (Cloudflare, sem pessoa) ----
@@ -19,7 +19,7 @@ IMG = {
  "carrinhos":      ("cf", "", "A long line of BIG shopping carts against a supermarket wall and, in the corner, a short stack of small red plastic baskets. No people."),
  "carrinho-vazio": ("cf", "", "Top view of a BIG shopping cart with only a bread bag and a milk carton at the bottom, looking very empty. No people."),
  "cestinha":       ("cf", "", "Close-up of a small red plastic shopping basket on a supermarket floor, one handle repaired with grey tape, slightly worn. No people."),
- "som-teto":       ("cf", "", "Low angle view of a round white speaker in a supermarket ceiling between the lights, soft cartoon music notes floating out. No people."),
+ "som-teto":       ("cf", "", "Low angle view of a plain round white ceiling speaker grille (just a round grille with small holes, no eyes, no face) between supermarket ceiling lights, soft cartoon music notes floating out. No people."),
  "vinhos":         ("cf", "", "A supermarket wine shelf full of bottles, half with red labels and half with green labels, no readable text, a small speaker above. No people."),
  "corredor-fundo": ("cf", "", "Long supermarket aisle in one-point perspective, the milk refrigerator very far at the end, full colorful shelves on both sides. No people."),
  "leite":          ("cf", "", "Supermarket refrigerator full of milk cartons and eggs at the back wall of the store, cold light. No people."),
@@ -30,19 +30,19 @@ IMG = {
  "dois-cafes":     ("cf", "", "Two vacuum-packed coffee packages without brand on a shelf, one small and one twice as big; a blank yellow promotion sign hangs only on the small one. No people."),
  "placa-amarela":  ("cf", "", "A blank bright yellow promotion sign with a red border hanging from a supermarket shelf, nothing written. No people."),
  "latas":          ("cf", "", "A neat pyramid of identical soup cans with plain red labels in a supermarket aisle, a blank sign on top. No people."),
- "biscoito":       ("cf", "", "A YELLOW package of chocolate cookies without brand standing on a supermarket shelf, cheerful design with a cookie drawing. No people."),
- "biscoito-encolheu": ("cf", "", "Two yellow cookie packages without brand side by side, identical design, the right one slightly thinner and smaller. No people."),
+ "biscoito":       ("cf", "", "Close-up of ONE yellow package of chocolate cookies without brand on a supermarket shelf, cheerful design with a cookie drawing, other colorful packages around. No people."),
+ "biscoito-encolheu": ("cf", "", "Close-up of two yellow cookie packages without brand side by side on a plain white table, plain white wall behind (no door, no eyes, no faces anywhere), identical design, the right one slightly thinner and smaller. No people."),
  "rack-caixa":     ("cf", "", "Checkout impulse rack full of chocolate bars, chewing gum, candies and batteries next to a conveyor belt. No people."),
  "esteira":        ("cf", "", "Supermarket conveyor belt full of items rolling towards the cashier: cheese, soda bottle, cookies, chocolate, scented candle, yogurt, batteries. No people."),
  "visor":          ("cf", "", "Close-up of a supermarket cash register customer display glowing green, numbers blurred and unreadable. No people."),
  "notinhas":       ("cf", "", "An old shoe box overflowing with crumpled paper receipts on a kitchen table with a red and white checkered tablecloth at night, warm lamp light. No people."),
- "lapis":          ("cf", "", "Close-up of a short yellow carpenter pencil lying on the back of a folded envelope with an illegible handwritten list, wooden table. No people."),
+ "lapis":          ("cf", "", "Close-up of a short yellow carpenter pencil lying on the back of a folded envelope with wavy scribble lines (not letters), on a plain wooden kitchen table, plain wall behind. No people, no hands."),
  "lista-riscada":  ("cf", "", "Close-up of the back of a folded envelope with six illegible handwritten lines, each one crossed out with pencil, a short yellow carpenter pencil on top. No people."),
  "maquininha":     ("cf", "", "Close-up of a hand inserting a credit card into a card machine at a supermarket checkout, no brand, no readable text."),
  "fatura":         ("cf", "", "A credit card bill envelope opened on a kitchen table at night next to a cold cup of coffee and a calculator, nothing readable. No people."),
  "sacola":         ("cf", "", "A single shopping bag on a sunny sidewalk of a colorful Brazilian suburban street with small houses and palm trees, morning. No people."),
  "pesquisador":    ("cf", "", "An anonymous cartoon researcher with glasses and a 1990s video camera on a tripod, filming shoppers inside a store, notebook in hand."),
- "chocolate-fila": ("cf", "", "Close-up of a hand taking a chocolate bar from a checkout impulse rack, no brand."),
+ "chocolate-fila": ("cf", "", "Inside a supermarket checkout line, close-up of a hand taking a chocolate bar from a small metal impulse rack next to the conveyor belt, people waiting in line blurred behind. No brand, no office."),
  "geladeira-casa": ("cf", "", "A simple Brazilian kitchen in the morning, a plate with bread and coffee on the table, sunlight through the window. No people."),
  # ---- Tiao sozinho (Cloudflare com a referencia) ----
  "tiao-entra":     ("cf", T, "He walks into a bright supermarket through automatic glass doors holding a small piece of paper folded in four, calm, " + MERC),
@@ -58,7 +58,7 @@ IMG = {
  "tiao-debito":    ("cf", T, "At the supermarket checkout he pays with a debit card on a card machine, relaxed, thanking the cashier."),
  "tiao-volta":     ("cf", T, "He walks home relaxed carrying ONE shopping bag on a sunny colorful Brazilian suburban street with small houses and palm trees, birds in the sky."),
  "tiao-notinhas":  ("cf", T, "FLASHBACK, Tuesday night, he SITS at a kitchen table with a red and white checkered tablecloth covered with crumpled supermarket receipts and an open shoe box, adding them one by one with a short yellow pencil, tired, one warm ceiling lamp, medium shot from the waist up."),
- "tiao-susto":     ("cf", T, "Night kitchen, close-up of his face: eyes wide open in shock looking at a sum he wrote on an envelope, one hand on his forehead."),
+ "tiao-susto":     ("cf", T, "Night kitchen, close-up of his face: eyes wide open in shock looking at an envelope with wavy scribble lines (no letters, no numbers), one hand on his forehead."),
  "tiao-sacolas-antes": ("cf", T, "FLASHBACK, evening, he walks out of a supermarket tired and hungry carrying THREE full shopping bags, regretful face."),
  "tiao-come-antes":("cf", T, "Morning at home, he SITS at a small kitchen table eating bread and drinking coffee before going out, calm, medium shot."),
  "tiao-brinda":    ("cf", T, "At a supermarket entrance, holding a small red basket, he raises a short yellow pencil like a toast with a warm smile, looking to the side."),
@@ -71,8 +71,8 @@ IMG = {
  "sandra-biscoito":("cf", S, "She reaches for a YELLOW package of chocolate cookies on a shelf with a soft nostalgic smile, " + MERC),
  "sandra-ri":      ("cf", S, "She laughs out loud mockingly, one hand on her belly, pointing at someone off-screen, " + MERC),
  "sandra-chocolate": ("cf", S, "In a checkout line she grabs a chocolate bar from the impulse rack, bored; her big cart is FULL, " + MERC),
- "sandra-visor":   ("cf", S, "At the checkout she stares in shock at the cash register display, mouth open, one hand on her cheek, full cart next to her."),
- "sandra-cartao":  ("cf", S, "At the supermarket checkout she hands over a credit card, distracted, looking at her phone."),
+ "sandra-visor":   ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a cash register (NOT a kitchen, no fridge): she stares in shock at the register display, mouth open, one hand on her cheek, her full shopping cart next to her. Only ONE Sandra."),
+ "sandra-cartao":  ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a card machine (NOT a kitchen, no fridge): she hands a credit card to the cashier while distracted looking at her phone. Only ONE Sandra in the image."),
  "sandra-fatura":  ("banco:video01/sandra-fatura.jpg", "", ""),
  "sandra-lista":   ("cf", S, "At a supermarket entrance she opens her handbag and takes out a folded paper list, a little embarrassed smile, " + MERC),
  "sandra-cestinha":("cf", S, "She walks past a line of big carts and picks up a small red basket instead, shy proud smile, " + MERC),
