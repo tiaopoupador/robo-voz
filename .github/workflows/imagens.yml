@@ -1,0 +1,36 @@
+name: imagens (Cloudflare gratis)
+# Todo dia, logo depois que a cota gratis da Cloudflare zera (00:00 UTC = 21h de Brasilia), gera as imagens
+# que faltam dos videos em producao e guarda no Drive do canal (Tiao Poupador/robo/video-NN/img).
+on:
+  schedule:
+    - cron: '20 */2 * * *'   # de 2 em 2 horas: quando a cota libera, gera; com tudo feito, nao faz nada
+    # (a conta e do plano gratis: passar do limite so da erro, nunca cobra)
+  workflow_dispatch:
+    inputs:
+      videos:
+        default: ""
+permissions:
+  contents: read
+jobs:
+  imagens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency: imagens
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - name: gerar
+        env:
+          CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}
+          CLOUDFLARE_TIAO_CONTA: ${{ secrets.CLOUDFLARE_TIAO_CONTA }}
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: |
+          mkdir -p fabrica/saida
+          VIDS="${{ inputs.videos }}"
+          [ -z "$VIDS" ] && VIDS=$(python -c "import json;print(' '.join(json.load(open('fabrica/agenda.json'))['em_producao']))")
+          for NN in $VIDS; do echo "== video $NN"; python fabrica/imagens.py $NN --drive; done

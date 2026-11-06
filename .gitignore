@@ -1,3 +1,7 @@
 *.wav
 *.mp3
 *.env
+banco/
+render/public/v*/
+render/node_modules/
+render/out/
