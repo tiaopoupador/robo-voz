@@ -38,6 +38,13 @@ def fonte(nome):
     q = C.IMG[nome]
     if q[0].startswith("banco:"): return "img", f"{P}/banco/imagens/{q[0][6:]}"
     if q[0] == "meta":
+        g = do_ed(nome, (".gif",))  # o GIF animado do meta.ai (5 s) vira uma cena que se mexe
+        if g:
+            mp4 = os.path.splitext(g)[0] + "-gif.mp4"
+            if not os.path.exists(mp4):
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", g, "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,format=yuv420p",
+                                "-c:v", "libx264", "-crf", "18", "-an", mp4], check=True)
+            usados_ed.append(nome); return "vid", mp4
         f = do_ed(nome, (".jpg", ".jpeg", ".png", ".webp"))
         if f: usados_ed.append(nome); return "img", f
         planoB.append(nome); return fonte(q[2][3:])

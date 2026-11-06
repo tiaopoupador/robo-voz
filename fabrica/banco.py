@@ -26,7 +26,7 @@ def guardar_no_banco(NN):
     # 1) o que o Ed gerou (meta.ai, Flow): o nome ja diz quem_onde_o-que
     e = drive.achar(f"video-{NN}", drive.achar("entrada", raiz))
     for f in (drive.listar(e) if e else []):
-        n, ext = os.path.splitext(f["name"]); tipo = "clipe" if ext.lower() in (".mp4", ".mov", ".webm") else "imagem"
+        n, ext = os.path.splitext(f["name"]); tipo = "clipe" if ext.lower() in (".mp4", ".mov", ".webm", ".gif") else "imagem"
         cod = n.split("_")[0]; chave = COD.get(cod.split("-")[0].upper())
         desc = NOMES.get(chave) or "_".join(n.split("_")[1:])  # a descricao sai do roteiro, mesmo se o Ed salvou so o codigo
         partes = [cod] + (desc.split("_") + ["", "", ""])[:3]
