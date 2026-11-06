@@ -1,0 +1,26 @@
+name: temas (o robo escolhe pelo que da views)
+# Segunda e quinta 09:07 UTC (6h07 de Brasilia, antes dos posts): olha os canais vigiados e, se faltar tema nos proximos
+# 4 videos, escolhe pelo que mais deu views (30 dias e 20 mil+, senao os maiores de sempre), revezando os canais.
+# Regra do Ed (06/11/2026): o tema e do robo. Claude: uns US$ 0,015 por escolha (creditos do Ed).
+on:
+  schedule:
+    - cron: '7 9 * * 1,4'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  temas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q anthropic
+      - env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
+        run: mkdir -p fabrica/saida && python fabrica/temas.py

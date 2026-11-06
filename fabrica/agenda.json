@@ -1,6 +1,41 @@
-{"em_producao": ["02"],
+{
+ "em_producao": [
+  "02"
+ ],
  "calendario": [
-  {"nn": "02", "quando": "2026-11-08 17:00", "titulo": "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"},
-  {"nn": "03", "quando": "2026-11-11 18:00", "titulo": "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte"},
-  {"nn": "04", "quando": "2026-11-15 17:00", "titulo": "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?"}
- ]}
+  {
+   "nn": "02",
+   "quando": "2026-11-08 17:00",
+   "titulo": "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"
+  },
+  {
+   "nn": "03",
+   "quando": "2026-11-11 18:00",
+   "titulo": "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte"
+  },
+  {
+   "nn": "04",
+   "quando": "2026-11-15 17:00",
+   "titulo": "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?"
+  },
+  {
+   "nn": "05",
+   "quando": "2026-11-18 18:00",
+   "titulo": "Você Pagou R$ 3.000 no Cruzeiro e Gastou o Dobro a Bordo",
+   "angulo": "Sandra e Marcos compram o pacote de cruzeiro em promoção por R$ 6.000 o casal e voltam com mais R$ 4.200 no cartão em bebida, excursão, internet, gorjeta e foto. Tião faz a conta no caderno, passa a semana numa praia por R$ 1.500 e guarda os R$ 4.500 que sobraram.",
+   "modelo": {
+    "id": "WRmiOO7V3U8",
+    "titulo": "Como os Cruzeiros Te Enganam em Cada Nível",
+    "canal": "@dinheirodescomplicadooficial",
+    "views": 480655,
+    "dias": 5
+   }
+  }
+ ],
+ "modelos_usados": [
+  {
+   "id": "WRmiOO7V3U8",
+   "canal": "@dinheirodescomplicadooficial"
+  }
+ ]
+}

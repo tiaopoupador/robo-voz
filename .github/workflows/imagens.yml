@@ -34,7 +34,7 @@ jobs:
           YT_TOKEN: ${{ secrets.YT_TOKEN }}
         run: |
           mkdir -p fabrica/saida
-          for NN in $(python -c "import json;print(' '.join(json.load(open('fabrica/agenda.json'))['em_producao']))"); do python fabrica/pedidos.py $NN --enviar || echo "pedidos $NN falhou"; done
+          for NN in $(python fabrica/agenda.py em_producao); do python fabrica/pedidos.py $NN --enviar || echo "pedidos $NN falhou"; done
       - name: gerar
         env:
           CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}
@@ -45,5 +45,5 @@ jobs:
         run: |
           mkdir -p fabrica/saida
           VIDS="${{ inputs.videos }}"
-          [ -z "$VIDS" ] && VIDS=$(python -c "import json;print(' '.join(json.load(open('fabrica/agenda.json'))['em_producao']))")
+          [ -z "$VIDS" ] && VIDS=$(python fabrica/agenda.py em_producao)
           for NN in $VIDS; do echo "== video $NN"; python fabrica/imagens.py $NN --drive; done

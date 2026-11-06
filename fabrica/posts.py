@@ -27,7 +27,7 @@ def segunda():
     if a: return datetime.date.fromisoformat(a)
     hoje = datetime.datetime.now(BR).date(); return hoje - datetime.timedelta(days=hoje.weekday())
 def calendario():
-    return json.load(open(f"{P}/fabrica/agenda.json", encoding="utf-8")).get("calendario", [])
+    from fabrica.agenda import ler; return ler().get("calendario", [])
 def video(nn):
     """o que o robo sabe de um video: titulo, roteiro (para os numeros), id do YouTube e capa (se ja publicado)"""
     cal = next((c for c in calendario() if c["nn"] == nn), {"nn": nn, "titulo": "", "quando": ""})
