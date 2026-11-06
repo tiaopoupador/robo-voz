@@ -17,21 +17,41 @@ QUEM = {
 }
 NEG = " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark."
 def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
+R169 = "ASPECT RATIO 16:9, horizontal widescreen (1920x1080), never square, never vertical. "
+SOM = " SILENT VIDEO: no sound, no audio, no music, no sound effects, no voices, no dialogue, no speech, no subtitles."
 meta = [n for n, v in C.IMG.items() if v[0] == "meta"]; flow = [n for n, v in C.IMG.items() if v[0] == "flow"]
+# os links do Drive: a pasta onde o Ed salva e cada foto de referencia (para abrir com um clique)
+PASTA, REFS, PASTA_REF = ONDE, {}, ""
+try:
+    from fabrica import drive
+    raiz = drive.achar("Tiao Poupador"); ref = drive.achar("referencia", raiz); ent = drive.achar("entrada", raiz)
+    v = drive.achar(f"video-{NN}", ent) or drive.pasta(f"video-{NN}", ent)
+    PASTA = f"https://drive.google.com/drive/folders/{v}"; PASTA_REF = f"https://drive.google.com/drive/folders/{ref}"
+    REFS = {f["name"]: f"https://drive.google.com/file/d/{f['id']}/view" for f in drive.listar(ref)}
+except Exception as e:
+    print("sem Drive agora (links simples):", e)
+def anexar(refs):
+    return ["📎 **Anexar** (clique para abrir e baixar):"] + [f"- {r}: {REFS.get(r, PASTA_REF)}" for r in [x.strip() for x in refs.split("+")]]
+def bloco(cod, titulo, refs, nomes, prompt):
+    return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
+            "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]
+def bonito(n): return n.split("-", 1)[1].replace("-", " ").capitalize()
 o = [f"# Tião Poupador · vídeo {NN}: o que gerar à mão", "",
-     f"**Vídeo:** {C.TITULO}  ", f"**Vai ao ar:** {C.PUBLICA_TXT}  ",
-     f"**Onde salvar tudo:** {ONDE}  ", f"**Prazo:** {C.PRAZO}  ", "**Nome de cada arquivo:** o código do pedido (ex.: `M01-a.jpg`, `M01-b.jpg`, `F01.mp4`).", "",
-     "As imagens de referência para anexar estão no Drive, na pasta **Tiao Poupador > referencia**" + (f": {sys.argv[3]}" if len(sys.argv) > 3 else "") + ".",
+     f"**Vídeo:** {C.TITULO}  ", f"**Vai ao ar:** {C.PUBLICA_TXT}  ", f"**Prazo:** {C.PRAZO}  ", "",
+     f"📁 **Pasta onde salvar tudo:** {PASTA}", "",
+     "**Como fazer cada pedido:** abra o link de cada imagem em «Anexar», baixe e anexe no meta.ai (ou no Flow); copie o texto da caixa cinza; gere; salve com o nome indicado, na pasta indicada.",
      "Se algum pedido não ficar bom ou faltar tempo, não tem problema: o robô usa a imagem dele no lugar e o vídeo sai do mesmo jeito.", ""]
-o += ["## 1. A capa (meta.ai) · a mais importante", "", f"**CAPA · anexar:** {C.CAPA[0]}", "", "```", CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.", FIM4, "```", ""]
-o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "Formato **16:9**. Salve as 4 variações: `M01-a.jpg` a `M01-d.jpg`.", ""]
+o += ["## 1. A capa (meta.ai) · a mais importante", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve a melhor das 4.", ""]
+o += bloco("CAPA", "a capa do vídeo", C.CAPA[0], ["CAPA.jpg"],
+           R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.\n" + FIM4)
+o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações, cada uma com o seu nome.", ""]
 for i, n in enumerate(meta, 1):
-    refs = C.IMG[n][1]
-    o += [f"### M{i:02d} · {n[5:]} (anexar: {refs})", "", "```", CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG, FIM4, "```", ""]
-o += [f"## 3. Clipes animados (Flow, vídeo) · {len(flow)} pedidos", "", "Google Flow, modo **Ingredients to Video**, **16:9**. Salve como `F01.mp4`.", ""]
+    refs = C.IMG[n][1]; c = f"M{i:02d}"
+    o += bloco(c, bonito(n), refs, [f"{c}-{x}.jpg" for x in "abcd"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + FIM4)
+o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in enumerate(flow, 1):
-    refs = C.IMG[n][1]
-    o += [f"### F{i:02d} · {n[5:]} (anexar: {refs})", "", "```", CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + " No dialogue, no speech, no subtitles." + NEG, "```", ""]
+    refs = C.IMG[n][1]; c = f"F{i:02d}"
+    o += bloco(c, bonito(n), refs, [f"{c}.mp4"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + SOM + NEG)
 codigos = {**{n: f"M{i:02d}" for i, n in enumerate(meta, 1)}, **{n: f"F{i:02d}" for i, n in enumerate(flow, 1)}}
 open(f"{P}/fabrica/saida/{NN}-pedidos.md", "w", encoding="utf-8").write("\n".join(o))
 import json; json.dump(codigos, open(f"{P}/fabrica/saida/{NN}-codigos.json", "w"), indent=1)
