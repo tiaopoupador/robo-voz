@@ -252,3 +252,24 @@ TAGS = ["supermercado", "como economizar no mercado", "educação financeira", "
         "cartão de crédito", "rotativo", "controle de gastos", "lista de compras", "Tião Poupador", "história de dinheiro"]
 PERGUNTA = "Qual dessas nove armadilhas te pega sempre? É o pão da porta ou o chocolate da fila?"
 CAP_NOMES = {"Gancho": "Sábado, 9h10: só pão e leite", "O que o Tião faz, em uma frase cada": "O que o Tião faz", "Chamada para o app": "A soma do mês", "Fecho": "Qual armadilha te pega?"}
+
+# O nome de cada arquivo que o Ed gera (vai para o banco): personagens_lugar_o-que-acontece. O codigo (M01, F01) vem na frente.
+NOMES = {
+ "capa":                 "sandra-tiao_supermercado-corredor_carrinho-lotado-x-cestinha-capa-eles-sabem",
+ "meta-sandra-ri-lista": "sandra-tiao_supermercado-entrada_sandra-ri-da-lista-de-papel-do-tiao",
+ "meta-marcos-debocha":  "marcos-tiao_supermercado-corredor-bebidas_marcos-ri-e-aponta-tiao-le-rotulo",
+ "meta-fila-dois":       "tiao-sandra_supermercado-fila-caixa_cestinha-x-carrinho-lotado",
+ "meta-marcos-cestinha": "marcos-tiao-caixa_supermercado-caixa_marcos-ri-da-cestinha-vermelha",
+ "meta-avo-portao":      "avo-sandra-crianca_portao-de-casa-flashback_avo-da-bolacha-amarela",
+ "meta-sandra-visor":    "sandra_supermercado-caixa_sandra-em-choque-com-o-total",
+ "meta-riem-juntos":     "tiao-sandra_supermercado-fila-caixa_os-dois-com-cestinha-rindo-juntos",
+ "meta-tiao-susto":      "tiao_cozinha-noite-flashback_tiao-assustado-com-a-conta",
+ "meta-sandra-devolve":  "sandra_supermercado-corredor-bolachas_sandra-le-o-peso-e-devolve",
+ "meta-marcos-so-isso":  "marcos-sandra_estacionamento-picape-preta_marcos-surpreso-com-uma-sacola",
+ "flow-sandra-entra":    "sandra_supermercado-porta-automatica_sandra-entra-com-pressa",
+ "flow-tiao-cestinha":   "tiao_supermercado-entrada_tiao-pega-cestinha-vermelha-com-lista",
+ "flow-marcos-grita":    "marcos-tiao_supermercado-corredor-bebidas_marcos-grita-rindo",
+ "flow-caixa-bip":       "caixa-sandra_supermercado-caixa_passando-as-compras-sandra-olha-o-visor",
+ "flow-sandra-devolve":  "sandra_supermercado-corredor-bolachas_sandra-le-o-peso-e-devolve",
+ "flow-tiao-brinda":     "tiao_supermercado-entrada_tiao-sorri-e-levanta-o-lapis",
+}

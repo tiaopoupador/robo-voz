@@ -30,6 +30,11 @@ elif SUBIR:
     txt += ["", "## ✅ Agendado no YouTube", f"{publicado['url']}  ", f"Vai ao ar: {C.PUBLICA_TXT}. Até lá fica privado: dá para assistir e mudar o que quiser no Studio."]
 else:
     txt += ["", "Montado e guardado no Drive. Não subi no YouTube (pedido para só montar)."]
+try:  # o banco: tudo o que o video usou, com nome que diz o que e, para reaproveitar
+    from fabrica.banco import guardar_no_banco
+    novos, total = guardar_no_banco(NN); txt += ["", f"📦 Banco do Drive: {novos} arquivos novos guardados (Tiao Poupador > banco), {total} na ficha do vídeo."]
+except Exception as e:
+    txt += ["", f"⚠️ Não consegui guardar no banco agora: {e}"]
 open(f"{P}/fabrica/saida/{NN}-resultado.md", "w", encoding="utf-8").write("\n".join(txt))
 correio.enviar(f"Tião Poupador · vídeo {NN}: " + ("agendado ✅" if publicado else ("falta a capa ⚠️" if not capas else "montado")), "\n".join(txt))
 print("\n".join(txt))

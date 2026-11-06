@@ -42,16 +42,18 @@ o = [f"# Tião Poupador · vídeo {NN}: o que gerar à mão", "",
      "**Como fazer cada pedido:** abra o link de cada imagem em «Anexar», baixe e anexe no meta.ai (ou no Flow); copie o texto da caixa cinza; gere; salve com o nome indicado, na pasta indicada.",
      "Se algum pedido não ficar bom ou faltar tempo, não tem problema: o robô usa a imagem dele no lugar e o vídeo sai do mesmo jeito.", ""]
 o += ["## 1. A capa (meta.ai) · a mais importante", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve a melhor das 4.", ""]
-o += bloco("CAPA", "a capa do vídeo", C.CAPA[0], ["CAPA.jpg"],
+NOMES = getattr(C, "NOMES", {})
+def arq(cod, n, ext): return f"{cod}_{NOMES[n]}{ext}" if n in NOMES else f"{cod}{ext}"  # o robo acha pelo codigo do comeco
+o += bloco("CAPA", "a capa do vídeo", C.CAPA[0], [arq("CAPA", "capa", ".jpg")],
            R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(C.CAPA[0]) + C.CAPA[1] + " No logos, no brand names.\n" + FIM4)
 o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações, cada uma com o seu nome.", ""]
 for i, n in enumerate(meta, 1):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
-    o += bloco(c, bonito(n), refs, [f"{c}-{x}.jpg" for x in "abcd"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + FIM4)
+    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + FIM4)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in enumerate(flow, 1):
     refs = C.IMG[n][1]; c = f"F{i:02d}"
-    o += bloco(c, bonito(n), refs, [f"{c}.mp4"], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + SOM + NEG)
+    o += bloco(c, bonito(n), refs, [arq(c, n, ".mp4")], R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + SOM + NEG)
 codigos = {**{n: f"M{i:02d}" for i, n in enumerate(meta, 1)}, **{n: f"F{i:02d}" for i, n in enumerate(flow, 1)}}
 open(f"{P}/fabrica/saida/{NN}-pedidos.md", "w", encoding="utf-8").write("\n".join(o))
 import json; json.dump(codigos, open(f"{P}/fabrica/saida/{NN}-codigos.json", "w"), indent=1)
