@@ -1,0 +1,38 @@
+name: comentarios do YouTube (voz do Tiao)
+# De hora em hora: primeiro comentario do canal em cada video publico (fixar e a mao no Studio), respostas com a voz
+# do Tiao (Claude, creditos do Ed: uns US$ 0,003 por resposta), spam vai para revisao, o delicado fica para o Ed.
+# Videos com mais de 48 h sao olhados de 6 em 6 horas. Resumo do dia no Apexi Team.
+on:
+  schedule:
+    - cron: '35 * * * *'   # minuto 35: longe das outras rotinas
+  workflow_dispatch:
+    inputs:
+      ensaio:
+        description: "ensaio (nao escreve nada no YouTube)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: comentarios
+  cancel-in-progress: false
+jobs:
+  responder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q anthropic
+      - name: ler e responder
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
+        run: |
+          mkdir -p fabrica/saida
+          if [ "${{ inputs.ensaio }}" = "true" ]; then python fabrica/comentarios.py --ensaio --todos; else python fabrica/comentarios.py; fi
