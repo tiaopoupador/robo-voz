@@ -17,7 +17,7 @@ def md_html(md):
         if cod is not None: cod.append(l); continue
         t = html.escape(l)
         t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t); t = re.sub(r"`(.+?)`", r"<code>\1</code>", t)
-        t = re.sub(r"(https?://[^\s<]+)", r'<a href="\1">\1</a>', t)
+        t = re.sub(r"(https?://[^\s<]*[^\s<.,;:!?)\]])", r'<a href="\1">\1</a>', t)  # o ponto final da frase nao entra no link
         if l.startswith("### "): out.append(f'<h3 style="margin:22px 0 6px;color:#1F1B16">{t[4:]}</h3>')
         elif l.startswith("## "): out.append(f'<h2 style="margin:28px 0 8px;color:#B8860B;border-bottom:2px solid #F2B632">{t[3:]}</h2>')
         elif l.startswith("# "): out.append(f'<h1 style="color:#1F1B16">{t[2:]}</h1>')
