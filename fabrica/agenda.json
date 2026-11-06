@@ -29,7 +29,8 @@
     "canal": "@dinheirodescomplicadooficial",
     "views": 480655,
     "dias": 5
-   }
+   },
+   "fonte": "recente"
   }
  ],
  "modelos_usados": [
@@ -37,5 +38,6 @@
    "id": "WRmiOO7V3U8",
    "canal": "@dinheirodescomplicadooficial"
   }
- ]
+ ],
+ "ultima_fonte": "recente"
 }
