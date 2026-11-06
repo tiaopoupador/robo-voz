@@ -102,7 +102,11 @@ if __name__ == "__main__":
         if r == "ok":
             feitas += 1; JA.add(n); print(f"OK {n} ({gasto()[1]:.0f})", flush=True)
             if NUVEM:
-                from fabrica import drive; drive.subir(f"{SAI}/{n}.jpg", PASTA_DRIVE)
+                from fabrica import drive
+                for t in range(5):  # o Drive as vezes da erro passageiro (502): espera e tenta de novo
+                    try: drive.subir(f"{SAI}/{n}.jpg", PASTA_DRIVE); break
+                    except Exception as e: print("Drive falhou, tento de novo:", e, flush=True); time.sleep(10 * (t + 1))
+                else: print("NAO SUBIU", n, flush=True); JA.discard(n)
         time.sleep(1)
     falta = [n for n in na_ordem() if n not in JA]
     print(f"feitas agora: {feitas} · faltam: {len(falta)}", flush=True)
