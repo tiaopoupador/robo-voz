@@ -1,0 +1,45 @@
+name: posts do YouTube da semana (Apexi Team)
+# Toda segunda 10:07 UTC = 7h07 de Brasilia: escreve os 7 posts da semana (Claude, creditos do Ed, uns US$ 0,08),
+# faz as imagens do Tiao na Cloudflare (gratis) e manda para o Apexi Team (e o e-mail de reserva ate 20/11).
+# A API do YouTube nao cria posts: o Ed cola e agenda no Studio.
+on:
+  schedule:
+    - cron: '7 10 * * 1'
+  workflow_dispatch:
+    inputs:
+      ensaio:
+        description: "ensaio (mostra, nao manda)"
+        type: boolean
+        default: false
+      semana:
+        description: "a segunda da semana (AAAA-MM-DD); vazio = esta semana"
+        default: ""
+permissions:
+  contents: read
+jobs:
+  posts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q anthropic
+      - name: abrir o cofre (fotos de referencia do Tiao)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: cat cofre/banco.enc.* | openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:VOZ_SENHA | tar -xf - banco/referencia
+      - name: escrever, fazer as imagens e mandar
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
+          CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}
+          CLOUDFLARE_TIAO_CONTA: ${{ secrets.CLOUDFLARE_TIAO_CONTA }}
+        run: |
+          mkdir -p fabrica/saida
+          A=""; [ "${{ inputs.ensaio }}" = "true" ] && A="--ensaio"; [ -n "${{ inputs.semana }}" ] && A="$A --semana=${{ inputs.semana }}"
+          python fabrica/posts.py $A

@@ -156,7 +156,9 @@ def main():
             c = textos.get(i["id"])
             if not c: continue
             if i["tema"]: cad["para_resumo"].append({"tipo": "tema", "texto": i["tema"], "video": v["titulo"]})
-            if i["destaque"]: cad["para_resumo"].append({"tipo": "destaque", "texto": c["texto"][:300], "autor": c["autor"], "video": v["titulo"]})
+            if i["destaque"]:
+                d = {"tipo": "destaque", "texto": c["texto"][:300], "autor": c["autor"], "video": v["titulo"]}
+                cad["para_resumo"].append(d); cad.setdefault("semana", []).append(d)  # o robo dos posts usa o melhor da semana
             if i["acao"] in ("responder", "link"):
                 if feitas >= MAX: continue   # fica para a proxima rodada (nao marca como visto)
                 resp = i["resposta"] if i["acao"] == "responder" else random.choice(LINK_RESP)

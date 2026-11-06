@@ -1,1 +1,6 @@
-{"em_producao": ["02"]}
+{"em_producao": ["02"],
+ "calendario": [
+  {"nn": "02", "quando": "2026-11-08 17:00", "titulo": "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"},
+  {"nn": "03", "quando": "2026-11-11 18:00", "titulo": "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte"},
+  {"nn": "04", "quando": "2026-11-15 17:00", "titulo": "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?"}
+ ]}
