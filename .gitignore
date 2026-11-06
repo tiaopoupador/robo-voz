@@ -5,3 +5,5 @@ banco/
 render/public/v*/
 render/node_modules/
 render/out/
+!render/public/musica/*.mp3
+!render/public/amb/*.wav
