@@ -1,0 +1,186 @@
+[
+{
+"src": "amb/passaros.wav",
+"ini": 0.0,
+"dur": 48.9,
+"vol": 0.35,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/vento.wav",
+"ini": 0.0,
+"dur": 48.9,
+"vol": 0.5,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/sirene.wav",
+"ini": 50.22,
+"dur": 5.5,
+"vol": 0.16,
+"fi": 1.2,
+"fo": 1.5
+},
+{
+"src": "amb/re.wav",
+"ini": 53.32,
+"dur": 6.0,
+"vol": 0.12,
+"fi": 0.3,
+"fo": 1.0
+},
+{
+"src": "amb/coracao.wav",
+"ini": 58.66,
+"dur": 9.0,
+"vol": 0.55,
+"fi": 0.8,
+"fo": 1.5
+},
+{
+"src": "amb/coracao.wav",
+"ini": 248.86,
+"dur": 12.0,
+"vol": 0.6,
+"fi": 0.6,
+"fo": 2.0
+},
+{
+"src": "amb/grilos.wav",
+"ini": 348.21,
+"dur": 56.39,
+"vol": 0.3,
+"fi": 1.5,
+"fo": 2.5
+},
+{
+"src": "amb/relogio.wav",
+"ini": 352.24,
+"dur": 9.0,
+"vol": 0.35,
+"fi": 0.5,
+"fo": 1.5
+},
+{
+"src": "amb/coracao.wav",
+"ini": 366.68,
+"dur": 8.0,
+"vol": 0.45,
+"fi": 0.6,
+"fo": 1.5
+},
+{
+"src": "amb/coracao.wav",
+"ini": 849.38,
+"dur": 10.0,
+"vol": 0.6,
+"fi": 0.5,
+"fo": 2.0
+},
+{
+"src": "amb/coracao.wav",
+"ini": 875.24,
+"dur": 8.0,
+"vol": 0.5,
+"fi": 0.5,
+"fo": 1.5
+},
+{
+"src": "amb/grilos.wav",
+"ini": 955.31,
+"dur": 88.51,
+"vol": 0.28,
+"fi": 1.5,
+"fo": 2.0
+},
+{
+"src": "amb/porta.wav",
+"ini": 957.9,
+"dur": 1.2,
+"vol": 0.9,
+"fi": 0.0,
+"fo": 0.1
+},
+{
+"src": "amb/coracao.wav",
+"ini": 959.68,
+"dur": 20.0,
+"vol": 0.45,
+"fi": 1.0,
+"fo": 2.5
+},
+{
+"src": "amb/coracao.wav",
+"ini": 986.3,
+"dur": 9.0,
+"vol": 0.5,
+"fi": 0.6,
+"fo": 1.5
+},
+{
+"src": "amb/passaros.wav",
+"ini": 1139.97,
+"dur": 36.49,
+"vol": 0.3,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/sirene.wav",
+"ini": 1157.96,
+"dur": 6.0,
+"vol": 0.14,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/re.wav",
+"ini": 1159.06,
+"dur": 14.0,
+"vol": 0.13,
+"fi": 0.5,
+"fo": 1.5
+},
+{
+"src": "amb/coracao.wav",
+"ini": 1158.56,
+"dur": 26.0,
+"vol": 0.55,
+"fi": 1.0,
+"fo": 2.5
+},
+{
+"src": "amb/re.wav",
+"ini": 1168.35,
+"dur": 7.0,
+"vol": 0.12,
+"fi": 0.3,
+"fo": 1.5
+},
+{
+"src": "amb/passaros.wav",
+"ini": 1236.08,
+"dur": 48.09,
+"vol": 0.28,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/passaros.wav",
+"ini": 1363.85,
+"dur": 14.42,
+"vol": 0.35,
+"fi": 1.0,
+"fo": 2.0
+},
+{
+"src": "amb/vento.wav",
+"ini": 1363.85,
+"dur": 14.42,
+"vol": 0.5,
+"fi": 1.0,
+"fo": 2.0
+}
+]

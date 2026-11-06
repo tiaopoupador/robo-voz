@@ -1,0 +1,8428 @@
+{
+"fim": 1444.12,
+"tela": 10.0,
+"cenas": [
+{
+"ini": 0.0,
+"k": "img",
+"src": "cenas/01-rua-manha.png",
+"mov": "entra",
+"de": 0,
+"chave": "P0"
+},
+{
+"ini": 2.74,
+"k": "vid",
+"src": "animadas/02-tiao-lavando.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "P1",
+"clip": 6.04
+},
+{
+"ini": 5.04,
+"k": "img",
+"src": "cenas/02b-caneca.png",
+"mov": "entra",
+"de": 0,
+"chave": "P2"
+},
+{
+"ini": 7.36,
+"k": "vid",
+"src": "animadas/02-tiao-lavando.mp4",
+"mov": "sai",
+"de": 2.4,
+"chave": "P3",
+"clip": 6.04
+},
+{
+"ini": 10.12,
+"k": "img",
+"src": "cenas/03-parachoque.png",
+"mov": "dir",
+"de": 0,
+"chave": "P4"
+},
+{
+"ini": 13.56,
+"k": "img",
+"src": "cenas/04-banco-rasgado.png",
+"mov": "entra",
+"de": 0,
+"chave": "P5"
+},
+{
+"ini": 17.86,
+"k": "vid",
+"src": "animadas/05-marcos-sai.mp4",
+"mov": "sai",
+"de": 0,
+"chave": "P6",
+"clip": 6.04
+},
+{
+"ini": 23.78,
+"k": "img",
+"src": "cenas/06-picape.png",
+"mov": "esq",
+"de": 0,
+"chave": "P7",
+"ov": [
+{
+"t": "brilho",
+"x": 66,
+"y": 62,
+"ini": 3.96,
+"g": "brilhando",
+"lin": 1
+}
+]
+},
+{
+"ini": 29.56,
+"k": "vid",
+"src": "animadas/07-marcos-botao.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "P8",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 4.64,
+"e": "😏",
+"g": "ri",
+"lin": 2
+}
+],
+"clip": 6.04
+},
+{
+"ini": 34.78,
+"k": "vid",
+"src": "animadas/08-marcos-ri.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "P9",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 24,
+"ini": 1.58,
+"e": "😏",
+"g": "pega no tranco",
+"lin": 2
+}
+],
+"clip": 6.04
+},
+{
+"ini": 37.7,
+"k": "vid",
+"src": "animadas/09-sandra-janela.mp4",
+"mov": "sai",
+"de": 0,
+"chave": "P10",
+"ov": [
+{
+"t": "reacao",
+"x": 46,
+"y": 22,
+"ini": 1.82,
+"e": "😂",
+"g": "ri junto",
+"lin": 2
+}
+],
+"clip": 6.04
+},
+{
+"ini": 40.88,
+"k": "vid",
+"src": "animadas/10-tiao-caneca.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "P11",
+"ov": [
+{
+"t": "reacao",
+"x": 22,
+"y": 22,
+"ini": 1.86,
+"e": "😌",
+"g": "e não responde",
+"lin": 2
+}
+],
+"clip": 6.04
+},
+{
+"ini": 44.78,
+"k": "vid",
+"src": "animadas/11-tiao-rosto.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "P12",
+"ov": [
+{
+"t": "reacao",
+"x": 85,
+"y": 20,
+"ini": 1.4,
+"e": "🤫",
+"g": "sabia",
+"lin": 3
+}
+],
+"clip": 6.04
+},
+{
+"ini": 48.88,
+"k": "vid",
+"src": "v01/vid/N01-guincho-chega-flow.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "4-0",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 1.64,
+"e": "🚨",
+"g": "um caminhão"
+}
+],
+"clip": 7.93
+},
+{
+"k": "frase",
+"texto": "Um caminhão vai levar embora a coisa que a rua *invejava*.",
+"sobre": "daqui a cinco anos",
+"escuro": false,
+"emoji": "🚨",
+"ini": 53.2,
+"chave": "4-1"
+},
+{
+"k": "pessoas",
+"titulo": "Acontece com milhões de brasileiros",
+"total": 40,
+"verm": 18,
+"ini": 58.54,
+"chave": "4-2"
+},
+{
+"ini": 60.78,
+"k": "img",
+"src": "v01/img/rua-duas-casas.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 16,
+"ini": 0.3,
+"e": "🤫",
+"g": "quase ninguém conta"
+}
+],
+"chave": "4-3"
+},
+{
+"ini": 64.02,
+"k": "img",
+"src": "v01/img/tiao-ponto-onibus.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 22,
+"y": 24,
+"ini": 0.6,
+"e": "😴"
+}
+],
+"chave": "5-0"
+},
+{
+"ini": 68.56,
+"k": "hib",
+"src": "v01/img/tiao-cracha.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "carteira assinada",
+"x": 78,
+"y": 28,
+"cor": "#F2B632"
+},
+{
+"t": "placa",
+"texto": "R$ 3.800 por mês",
+"x": 78,
+"y": 62,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 72,
+"ini": 2.26,
+"g": "ganha"
+}
+],
+"chave": "5-1"
+},
+{
+"ini": 75.04,
+"k": "img",
+"src": "v01/img/tiao-onibus.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 24,
+"ini": 0.6,
+"e": "😩"
+}
+],
+"chave": "5-2"
+},
+{
+"ini": 77.64,
+"k": "img",
+"src": "v01/img/tiao-chega-noite.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 24,
+"ini": 0.3,
+"e": "😮‍💨",
+"g": "e volta tarde"
+}
+],
+"chave": "5-3"
+},
+{
+"ini": 79.65,
+"k": "hib",
+"src": "v01/img/carro-2001.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "carimbo",
+"texto": "QUITADO",
+"x": 50,
+"y": 28,
+"cor": "#2E9E5B",
+"ini": 0.6
+},
+{
+"t": "check",
+"x": 82,
+"y": 22,
+"ini": 1.67,
+"g": "está quitado"
+}
+],
+"chave": "6-0"
+},
+{
+"k": "num",
+"valor": 0,
+"rotulo": "Dívida com banco",
+"embaixo": "nem um real",
+"de": 0,
+"cor": "#2E9E5B",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😌",
+"ini": 82.5,
+"chave": "6-1"
+},
+{
+"ini": 84.2,
+"k": "img",
+"src": "v01/img/tiao-carteira.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😰"
+}
+],
+"chave": "6-2"
+},
+{
+"k": "cal",
+"mes": "Antes do caderno",
+"ate": 20,
+"marcados": {
+"5": {
+"cor": "#2E9E5B",
+"rotulo": "salário"
+},
+"20": {
+"cor": "#D9443A",
+"rotulo": "R$ 0"
+}
+},
+"ini": 89.88,
+"chave": "6-3"
+},
+{
+"k": "frase",
+"texto": "Entrava no dia 5. No dia 20, *sumia*.",
+"sobre": "o salário do Tião",
+"escuro": true,
+"emoji": "💸",
+"ini": 95.0,
+"chave": "7-0"
+},
+{
+"ini": 99.34,
+"k": "hib",
+"src": "v01/img/tiao-carteira.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Simplesmente *sumia*.",
+"pos": "dir"
+}
+],
+"chave": "7-1"
+},
+{
+"ini": 104.04,
+"k": "img",
+"src": "v01/img/caderno-fechado.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "brilho",
+"x": 45,
+"y": 55,
+"ini": 0.3,
+"g": "toda a virada"
+}
+],
+"chave": "7-2"
+},
+{
+"ini": 107.82,
+"k": "img",
+"src": "v01/img/q-N05-marcos-sandra-conta-flow-1.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 14,
+"ini": 0.6,
+"e": "🤑"
+}
+],
+"chave": "8-0"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Tião",
+"valor": 3800,
+"cor": "#F2B632"
+},
+{
+"rotulo": "Marcos e Sandra",
+"valor": 12000,
+"cor": "#D9443A"
+}
+],
+"titulo": "Quanto entra por mês",
+"fmt": "reais",
+"ini": 110.8,
+"chave": "8-1"
+},
+{
+"ini": 117.02,
+"k": "img",
+"src": "v01/img/marcos-loja-carros.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 78,
+"y": 24,
+"ini": 0.6,
+"e": "👀"
+}
+],
+"chave": "8-2"
+},
+{
+"ini": 119.48,
+"k": "hib",
+"src": "v01/img/marcos-olha-picape.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "balao",
+"texto": "Só para *olhar*.",
+"x": 74,
+"y": 18,
+"lado": "esq"
+},
+{
+"t": "brilho",
+"x": 72,
+"y": 48,
+"ini": 0.3,
+"g": "só para olhar"
+}
+],
+"chave": "8-3"
+},
+{
+"ini": 121.73,
+"k": "hib",
+"src": "v01/img/picape-salao.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "R$ 220.000",
+"x": 68,
+"y": 28,
+"cor": "#F2B632"
+},
+{
+"t": "brilho",
+"x": 56,
+"y": 52,
+"ini": 0.6
+}
+],
+"chave": "9-0"
+},
+{
+"k": "conta",
+"titulo": "Como ele comprou",
+"linhas": [
+{
+"rotulo": "Entrada",
+"valor": 20000
+},
+{
+"rotulo": "Financiado em 60 vezes",
+"valor": 200000
+}
+],
+"total": "Preço da picape",
+"neutro": true,
+"ini": 125.76,
+"chave": "9-1"
+},
+{
+"ini": 130.82,
+"k": "img",
+"src": "v01/img/marcos-assina.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "🤑"
+}
+],
+"chave": "9-2"
+},
+{
+"k": "frase",
+"texto": "É aqui que mora o *truque*.",
+"sobre": "presta atenção",
+"escuro": false,
+"emoji": "🤔",
+"ini": 132.78,
+"chave": "9-3"
+},
+{
+"k": "cita",
+"nome": "Banco Central",
+"ano": "26%",
+"onde": "taxa média para financiar veículo",
+"achado": "Uns *26%* de juros ao ano.",
+"fonte": "Banco Central do Brasil, taxas médias de juros (veículos)",
+"emoji": "🚗",
+"ini": 135.16,
+"chave": "10-0"
+},
+{
+"ini": 142.58,
+"k": "hib",
+"src": "v01/img/picape-rua.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 5.714 por mês",
+"x": 50,
+"y": 22,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 2.26,
+"g": "ficou em"
+}
+],
+"chave": "10-1"
+},
+{
+"k": "grade",
+"total": 60,
+"cols": 12,
+"titulo": "60 parcelas de R$ 5.714",
+"rotuloFim": "Cinco anos pagando",
+"ini": 147.58,
+"chave": "10-2"
+},
+{
+"k": "conta",
+"titulo": "Faz a conta comigo",
+"linhas": [
+{
+"rotulo": "60 parcelas de R$ 5.714",
+"valor": 342840
+}
+],
+"total": "Só as parcelas",
+"neutro": true,
+"ini": 150.83,
+"chave": "11-0"
+},
+{
+"k": "num",
+"valor": 342840,
+"rotulo": "60 parcelas de R$ 5.714 dão",
+"embaixo": "só de parcelas",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😱",
+"ini": 155.94,
+"chave": "11-100"
+},
+{
+"ini": 160.22,
+"k": "hib",
+"src": "v01/img/picape-salao.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "+ R$ 20.000 de entrada",
+"x": 68,
+"y": 28,
+"cor": "#F2B632"
+}
+],
+"chave": "11-1"
+},
+{
+"k": "num",
+"valor": 362840,
+"rotulo": "A picape de R$ 220 mil vai custar",
+"embaixo": "no fim dos 5 anos",
+"de": 220000,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😱",
+"ini": 163.22,
+"chave": "11-2"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Preço da picape",
+"valor": 220000,
+"cor": "#F2B632"
+},
+{
+"rotulo": "Só de juros",
+"valor": 142000,
+"cor": "#D9443A"
+}
+],
+"titulo": "Para onde vai o dinheiro",
+"fmt": "reais",
+"ini": 168.06,
+"chave": "12-0"
+},
+{
+"k": "icones",
+"titulo": "R$ 142 mil só de juros",
+"itens": [
+{
+"e": "🛻",
+"r": "não vira picape",
+"risca": true
+},
+{
+"e": "🏠",
+"r": "não vira casa",
+"risca": true
+},
+{
+"e": "🏦",
+"r": "vai para o banco",
+"risca": false
+}
+],
+"ini": 171.22,
+"chave": "12-2"
+},
+{
+"ini": 175.38,
+"k": "img",
+"src": "v01/img/marcos-dirigindo.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 20,
+"ini": 0.6,
+"e": "😎"
+}
+],
+"chave": "12-1"
+},
+{
+"ini": 177.45,
+"k": "img",
+"src": "v01/img/piloto-09-sandra-janela.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 46,
+"y": 22,
+"ini": 0.6,
+"e": "😍"
+}
+],
+"chave": "13-0"
+},
+{
+"ini": 180.48,
+"k": "hib",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "A rua só vê a picape *brilhando*.",
+"pos": "topo"
+},
+{
+"t": "brilho",
+"x": 70,
+"y": 62,
+"ini": 1.58,
+"g": "brilhando"
+}
+],
+"chave": "13-1"
+},
+{
+"ini": 184.23,
+"k": "img",
+"src": "v01/img/q-N05-marcos-sandra-conta-flow-3.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 14,
+"ini": 0.6,
+"e": "😬"
+}
+],
+"chave": "14-0"
+},
+{
+"k": "celular",
+"titulo": "Extrato do casal",
+"linhas": [
+{
+"r": "Salários",
+"v": "+12.000",
+"pos": true
+},
+{
+"r": "Parcela picape",
+"v": "-5.714"
+},
+{
+"r": "Aluguel",
+"v": "-2.200"
+},
+{
+"r": "Mercado",
+"v": "-1.500"
+},
+{
+"r": "Contas da casa",
+"v": "-600"
+},
+{
+"r": "Gasolina",
+"v": "-600"
+},
+{
+"r": "Seguro",
+"v": "-700"
+},
+{
+"r": "IPVA",
+"v": "-730"
+}
+],
+"destaque": [
+1
+],
+"lado": "A conta que a rua *não vê*.",
+"ini": 188.24,
+"chave": "14-1"
+},
+{
+"ini": 192.18,
+"k": "hib",
+"src": "v01/img/picape-vitrine.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "trinca",
+"x": 48,
+"y": 42
+}
+],
+"chave": "14-2"
+},
+{
+"k": "conta",
+"titulo": "O mês da casa do Marcos",
+"linhas": [
+{
+"rotulo": "Entram",
+"valor": 12000
+}
+],
+"ja": 0,
+"total": "Sobra",
+"ini": 194.58,
+"chave": "15-0"
+},
+{
+"ini": 200.02,
+"k": "hib",
+"src": "v01/img/picape-rua.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "placa",
+"texto": "- R$ 5.714",
+"x": 32,
+"y": 18,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+},
+{
+"t": "etiqueta",
+"texto": "quase metade",
+"x": 78,
+"y": 30,
+"cor": "#F2B632"
+},
+{
+"t": "voa",
+"x": 60,
+"y": 60,
+"ini": 0.6
+}
+],
+"chave": "15-1"
+},
+{
+"k": "num",
+"valor": 6286,
+"rotulo": "Sobram",
+"embaixo": "ainda parece bastante",
+"de": 12000,
+"cor": "#2E9E5B",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "🤔",
+"ini": 204.1,
+"chave": "15-2"
+},
+{
+"ini": 207.08,
+"k": "hib",
+"src": "v01/img/marcos-tranquilo.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "balao",
+"texto": "Ainda *dá*!",
+"x": 82,
+"y": 18,
+"lado": "esq"
+}
+],
+"chave": "15-3"
+},
+{
+"ini": 211.69,
+"k": "hib",
+"src": "v01/img/casa-marcos.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "placa",
+"texto": "Aluguel  - R$ 2.200",
+"x": 50,
+"y": 20,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+},
+{
+"t": "voa",
+"x": 28,
+"y": 62,
+"ini": 0.6
+}
+],
+"chave": "16-0"
+},
+{
+"k": "conta",
+"titulo": "O mês da casa do Marcos",
+"linhas": [
+{
+"rotulo": "Entram",
+"valor": 12000
+},
+{
+"rotulo": "Parcela da picape",
+"valor": -5714
+},
+{
+"rotulo": "Aluguel",
+"valor": -2200
+},
+{
+"rotulo": "Mercado",
+"valor": -1500
+}
+],
+"ja": 3,
+"total": "Sobra",
+"ini": 214.36,
+"chave": "16-1"
+},
+{
+"k": "conta",
+"titulo": "O mês da casa do Marcos",
+"linhas": [
+{
+"rotulo": "Entram",
+"valor": 12000
+},
+{
+"rotulo": "Parcela da picape",
+"valor": -5714
+},
+{
+"rotulo": "Aluguel",
+"valor": -2200
+},
+{
+"rotulo": "Mercado",
+"valor": -1500
+},
+{
+"rotulo": "Luz, água, internet, celulares",
+"valor": -600
+}
+],
+"ja": 4,
+"total": "Sobra",
+"ini": 217.16,
+"chave": "16-2"
+},
+{
+"ini": 221.3,
+"k": "hib",
+"src": "v01/img/picape-posto.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "Gasolina  - R$ 600",
+"x": 50,
+"y": 20,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+},
+{
+"t": "voa",
+"x": 28,
+"y": 64,
+"ini": 0.6
+}
+],
+"chave": "16-3"
+},
+{
+"k": "conta",
+"titulo": "O mês da casa do Marcos",
+"linhas": [
+{
+"rotulo": "Entram",
+"valor": 12000
+},
+{
+"rotulo": "Parcela da picape",
+"valor": -5714
+},
+{
+"rotulo": "Aluguel",
+"valor": -2200
+},
+{
+"rotulo": "Mercado",
+"valor": -1500
+},
+{
+"rotulo": "Luz, água, internet, celulares",
+"valor": -600
+},
+{
+"rotulo": "Gasolina",
+"valor": -600
+},
+{
+"rotulo": "Seguro da picape",
+"valor": -700
+}
+],
+"ja": 5,
+"total": "Sobra",
+"ini": 227.6,
+"chave": "17-0"
+},
+{
+"ini": 232.6,
+"k": "img",
+"src": "v01/img/boleto-carro.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "voa",
+"x": 30,
+"y": 62,
+"ini": 0.6
+}
+],
+"chave": "17-3"
+},
+{
+"ini": 236.08,
+"k": "hib",
+"src": "v01/img/boleto-carro.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "IPVA: 4% do valor (SP)",
+"x": 60,
+"y": 26,
+"cor": "#F2B632"
+},
+{
+"t": "reacao",
+"x": 18,
+"y": 24,
+"ini": 2.08,
+"e": "😬",
+"g": "do valor"
+}
+],
+"chave": "17-1"
+},
+{
+"k": "num",
+"valor": 730,
+"rotulo": "IPVA: R$ 8.800 por ano vira",
+"embaixo": "todo mês",
+"de": 8800,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😬",
+"ini": 241.44,
+"chave": "17-2"
+},
+{
+"k": "conta",
+"titulo": "O mês da casa do Marcos",
+"linhas": [
+{
+"rotulo": "Entram",
+"valor": 12000
+},
+{
+"rotulo": "Parcela da picape",
+"valor": -5714
+},
+{
+"rotulo": "Aluguel",
+"valor": -2200
+},
+{
+"rotulo": "Mercado",
+"valor": -1500
+},
+{
+"rotulo": "Luz, água, internet, celulares",
+"valor": -600
+},
+{
+"rotulo": "Gasolina",
+"valor": -600
+},
+{
+"rotulo": "Seguro da picape",
+"valor": -700
+},
+{
+"rotulo": "IPVA (por mês)",
+"valor": -730
+}
+],
+"ja": 7,
+"total": "Sobra",
+"ini": 244.95,
+"chave": "18-0"
+},
+{
+"ini": 248.74,
+"k": "hib",
+"src": "v01/img/q-N05-marcos-sandra-conta-flow-6.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "placa",
+"texto": "- R$ 44",
+"x": 50,
+"y": 72,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 110,
+"ini": 1.7,
+"g": "devendo"
+},
+{
+"t": "reacao",
+"x": 50,
+"y": 14,
+"ini": 1.7,
+"e": "😱",
+"g": "devendo"
+}
+],
+"chave": "18-1"
+},
+{
+"k": "icones",
+"titulo": "E nessa conta ainda não tem...",
+"itens": [
+{
+"e": "💊",
+"r": "farmácia",
+"risca": true
+},
+{
+"e": "🎁",
+"r": "presente",
+"risca": true
+},
+{
+"e": "🍦",
+"r": "sorvete",
+"risca": true
+}
+],
+"ini": 252.46,
+"chave": "18-2"
+},
+{
+"ini": 258.2,
+"k": "img",
+"src": "v01/img/sandra-sorvete.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 62,
+"y": 20,
+"ini": 0.6,
+"e": "💔"
+}
+],
+"chave": "18-3"
+},
+{
+"k": "frase",
+"texto": "Não tem *nada*. E mesmo assim não fecha.",
+"sobre": null,
+"escuro": true,
+"emoji": "😬",
+"ini": 260.58,
+"chave": "19-0"
+},
+{
+"ini": 263.68,
+"k": "img",
+"src": "v01/img/marcos-cabeca.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 3.9,
+"e": "🤔",
+"g": "de cabeça"
+}
+],
+"chave": "19-1"
+},
+{
+"ini": 268.76,
+"k": "hib",
+"src": "v01/img/marcos-cabeca.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "balao",
+"texto": "De cabeça, *fecha*.",
+"x": 20,
+"y": 16,
+"lado": "dir"
+}
+],
+"chave": "19-2"
+},
+{
+"ini": 272.88,
+"k": "img",
+"src": "v01/img/marcos-churrasco.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😅"
+}
+],
+"chave": "20-0"
+},
+{
+"k": "frase",
+"texto": "Isso não é *burrice*.",
+"sobre": "antes de achar o Marcos bobo",
+"escuro": false,
+"emoji": "🧠",
+"ini": 275.9,
+"chave": "20-1"
+},
+{
+"k": "cita",
+"nome": "Thorstein Veblen",
+"ano": "1899",
+"onde": "economista americano",
+"achado": "A gente compra pelo que a coisa *mostra*, não pelo que ela faz.",
+"fonte": "A Teoria da Classe Ociosa (1899)",
+"emoji": "👀",
+"ini": 282.59,
+"chave": "21-0"
+},
+{
+"k": "frase",
+"texto": "Consumo *conspícuo*",
+"sobre": "ele deu nome a isso",
+"escuro": false,
+"emoji": "👀",
+"ini": 288.56,
+"chave": "21-2"
+},
+{
+"ini": 292.02,
+"k": "img",
+"src": "v01/img/vitrine-luxo.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "brilho",
+"x": 28,
+"y": 42,
+"ini": 0.6
+},
+{
+"t": "brilho",
+"x": 70,
+"y": 40,
+"ini": 0.6
+}
+],
+"chave": "21-1"
+},
+{
+"ini": 295.6,
+"k": "hib",
+"src": "v01/img/pessoa-sacolas.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "pelo que MOSTRA",
+"x": 80,
+"y": 24,
+"cor": "#F2B632"
+}
+],
+"chave": "21-3"
+},
+{
+"ini": 298.14,
+"k": "img",
+"src": "v01/img/vizinhos-muro.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 30,
+"y": 16,
+"ini": 0.6,
+"e": "🤩"
+}
+],
+"chave": "22-1"
+},
+{
+"ini": 301.16,
+"k": "hib",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "balao",
+"texto": "Eu cheguei *lá*.",
+"x": 30,
+"y": 24,
+"lado": "dir"
+},
+{
+"t": "brilho",
+"x": 66,
+"y": 62,
+"ini": 0.6
+}
+],
+"chave": "22-0"
+},
+{
+"k": "linha",
+"marcos": [
+"1899",
+"1949"
+],
+"ativo": 1,
+"titulo": "Cinquenta anos depois",
+"ini": 304.81,
+"chave": "23-0"
+},
+{
+"k": "cita",
+"nome": "James Duesenberry",
+"ano": "1949",
+"onde": "economista americano",
+"achado": "A gente gasta de acordo com o que o *vizinho* gasta.",
+"fonte": "Income, Saving and the Theory of Consumer Behavior (1949)",
+"emoji": "🏠",
+"ini": 309.26,
+"chave": "23-1"
+},
+{
+"ini": 315.16,
+"k": "hib",
+"src": "v01/img/casa-carro-novo.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Gasto pelo vizinho, não pelo *salário*.",
+"pos": "topo"
+}
+],
+"chave": "23-2"
+},
+{
+"k": "frase",
+"texto": "Efeito *demonstração*",
+"sobre": "ele chamou de",
+"escuro": false,
+"emoji": "👀",
+"ini": 321.32,
+"chave": "24-0"
+},
+{
+"ini": 323.9,
+"k": "img",
+"src": "v01/img/homem-janela.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 3.14,
+"e": "😞",
+"g": "ficou para trás"
+}
+],
+"chave": "24-1"
+},
+{
+"ini": 330.74,
+"k": "hib",
+"src": "v01/img/marcos-cabeca.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "carimbo",
+"texto": "NÃO É PREGUIÇA",
+"x": 50,
+"y": 70,
+"cor": "#D9443A",
+"ini": 0.6
+}
+],
+"chave": "24-3"
+},
+{
+"k": "frase",
+"texto": "Não é preguiça. É o jeito como a *cabeça* humana funciona.",
+"sobre": null,
+"escuro": false,
+"emoji": "🧠",
+"ini": 334.54,
+"chave": "24-2"
+},
+{
+"k": "pessoas",
+"titulo": "Quase ninguém escapa",
+"total": 40,
+"verm": 39,
+"ini": 337.63,
+"chave": "25-0"
+},
+{
+"ini": 340.64,
+"k": "img",
+"src": "v01/img/tiao-calmo-rua.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 22,
+"ini": 0.3,
+"e": "😎",
+"g": "o Tião escapou"
+}
+],
+"chave": "25-1"
+},
+{
+"ini": 344.3,
+"k": "img",
+"src": "v01/img/cozinha-janela.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 70,
+"y": 24,
+"ini": 0.6,
+"e": "💡"
+}
+],
+"chave": "25-2"
+},
+{
+"k": "frase",
+"texto": "Dia *20*, onze da noite.",
+"sobre": "volta comigo uns anos",
+"escuro": true,
+"emoji": "⏳",
+"ini": 348.21,
+"chave": "26-0"
+},
+{
+"ini": 354.1,
+"k": "vid",
+"src": "v01/vid/T01-cozinha-noite-flow.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "26-1",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 2.28,
+"e": "😰",
+"g": "com a mão na cabeça"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 358.56,
+"k": "img",
+"src": "v01/img/boletos-mesa.jpg",
+"mov": "dir",
+"ov": [],
+"chave": "27-0"
+},
+{
+"ini": 361.46,
+"k": "hib",
+"src": "v01/img/boletos-mesa.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "luz",
+"x": 22,
+"y": 26,
+"cor": "#F2B632"
+},
+{
+"t": "etiqueta",
+"texto": "cartão",
+"x": 44,
+"y": 18,
+"cor": "#F2B632"
+},
+{
+"t": "etiqueta",
+"texto": "carnê",
+"x": 66,
+"y": 26,
+"cor": "#F2B632"
+},
+{
+"t": "etiqueta",
+"texto": "celular",
+"x": 82,
+"y": 18,
+"cor": "#F2B632"
+}
+],
+"chave": "27-1"
+},
+{
+"k": "cal",
+"mes": "15 dias depois do salário",
+"ate": 20,
+"marcados": {
+"5": {
+"cor": "#2E9E5B",
+"rotulo": "salário"
+},
+"20": {
+"cor": "#D9443A",
+"rotulo": "conta no zero"
+}
+},
+"ini": 366.56,
+"chave": "27-2"
+},
+{
+"ini": 371.98,
+"k": "vid",
+"src": "v01/vid/T01-cozinha-noite-flow.mp4",
+"mov": "entra",
+"de": 4.0,
+"chave": "27-3",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😩"
+}
+],
+"clip": 7.93
+},
+{
+"k": "icones",
+"titulo": "Ele não comprou nada grande",
+"itens": [
+{
+"e": "✈️",
+"r": "viagem",
+"risca": true
+},
+{
+"e": "📺",
+"r": "TV nova",
+"risca": true
+}
+],
+"ini": 374.99,
+"chave": "28-0"
+},
+{
+"k": "frase",
+"texto": "Então, para onde *foi*?",
+"sobre": null,
+"escuro": false,
+"emoji": "🤔",
+"ini": 378.02,
+"chave": "28-1"
+},
+{
+"ini": 380.76,
+"k": "vid",
+"src": "v01/vid/T02-caderno-azul-flow.mp4",
+"mov": "esq",
+"de": 0,
+"chave": "28-2",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 5.48,
+"e": "💡",
+"g": "anotou tudo"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 387.28,
+"k": "img",
+"src": "v01/img/mao-escreve.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "brilho",
+"x": 55,
+"y": 55,
+"ini": 0.6
+}
+],
+"chave": "28-3"
+},
+{
+"ini": 389.5,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"lanche  R$ 12",
+"prestação  R$ 49,90"
+],
+"x": 74,
+"y": 50,
+"riscar": false
+}
+],
+"chave": "29-0"
+},
+{
+"ini": 397.74,
+"k": "img",
+"src": "v01/img/tiao-surpreso.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😮"
+}
+],
+"chave": "29-1"
+},
+{
+"k": "frase",
+"texto": "O problema nunca foi quanto ele *ganhava*.",
+"sobre": null,
+"escuro": false,
+"emoji": "💡",
+"ini": 401.12,
+"chave": "29-2"
+},
+{
+"ini": 404.65,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"R$ 21,90",
+"R$ 14,90",
+"R$ 29,90",
+"R$ 44"
+],
+"x": 80,
+"y": 50,
+"riscar": false
+}
+],
+"chave": "30-1"
+},
+{
+"k": "frase",
+"texto": "Eram os *vazamentos*.",
+"sobre": "pequenos, silenciosos, todo santo dia",
+"escuro": false,
+"emoji": "💸",
+"ini": 406.88,
+"chave": "30-0"
+},
+{
+"ini": 412.3,
+"k": "vid",
+"src": "v01/vid/T02-caderno-azul-flow.mp4",
+"mov": "sai",
+"de": 4.0,
+"chave": "30-2",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "👀"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 417.2,
+"k": "img",
+"src": "v01/img/celular-poeira.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 24,
+"ini": 0.6,
+"e": "😒"
+}
+],
+"chave": "31-2"
+},
+{
+"ini": 422.46,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"App de música  R$ 21,90",
+"Seguro do cartão  R$ 14,90"
+],
+"x": 66,
+"y": 34,
+"riscar": true
+}
+],
+"chave": "31-1"
+},
+{
+"k": "icones",
+"titulo": "3 streamings: R$ 114,70",
+"itens": [
+{
+"e": "📺",
+"r": "série 1",
+"risca": false
+},
+{
+"e": "📺",
+"r": "série 2",
+"risca": false
+},
+{
+"e": "📺",
+"r": "série 3",
+"risca": false
+}
+],
+"ini": 428.71,
+"chave": "32-0"
+},
+{
+"k": "num",
+"valor": 114.7,
+"rotulo": "Três streamings, por mês",
+"embaixo": "somando os três",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 2,
+"suf": "",
+"emoji": "📺",
+"ini": 435.6,
+"chave": "32-100"
+},
+{
+"ini": 437.8,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"Tarifa do banco  R$ 29,90"
+],
+"x": 66,
+"y": 30,
+"riscar": true
+}
+],
+"chave": "32-1"
+},
+{
+"k": "num",
+"valor": 0,
+"rotulo": "Pacote do banco sem custo",
+"embaixo": "a tarifa de R$ 29,90 vira zero",
+"de": 29.9,
+"cor": "#2E9E5B",
+"fmt": "reais",
+"casas": 2,
+"suf": "",
+"emoji": "✅",
+"ini": 441.14,
+"chave": "32-2"
+},
+{
+"k": "num",
+"valor": 44,
+"rotulo": "Só a taxa de entrega",
+"embaixo": "por mês, sem contar a comida",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😮",
+"ini": 445.26,
+"chave": "33-0"
+},
+{
+"ini": 451.96,
+"k": "img",
+"src": "v01/img/tiao-lanche.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 0.6,
+"e": "😋"
+}
+],
+"chave": "33-1"
+},
+{
+"ini": 455.18,
+"k": "hib",
+"src": "v01/img/lanche-balcao.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 12 por dia",
+"x": 28,
+"y": 20,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "33-2"
+},
+{
+"ini": 458.29,
+"k": "img",
+"src": "v01/img/marmita.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "check",
+"x": 80,
+"y": 22,
+"ini": 0.6
+}
+],
+"chave": "34-0"
+},
+{
+"k": "num",
+"valor": 154,
+"rotulo": "Marmita 3 dias por semana",
+"embaixo": "a mais por mês",
+"de": 0,
+"cor": "#2E9E5B",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "💪",
+"ini": 462.1,
+"chave": "34-1"
+},
+{
+"ini": 465.3,
+"k": "img",
+"src": "v01/img/tiao-desconfiado.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 2.98,
+"e": "🤨",
+"g": "não acreditou"
+}
+],
+"chave": "34-2"
+},
+{
+"k": "num",
+"valor": 380,
+"rotulo": "Saindo sem ele ver",
+"embaixo": "todo mês",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😱",
+"ini": 470.36,
+"chave": "34-3"
+},
+{
+"ini": 475.96,
+"k": "img",
+"src": "v01/img/tiao-padaria.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😅"
+}
+],
+"chave": "35-1"
+},
+{
+"k": "icones",
+"titulo": "Nenhum, sozinho, parece problema",
+"itens": [
+{
+"e": "🪙",
+"r": "R$ 20 aqui",
+"risca": false
+},
+{
+"e": "🪙",
+"r": "R$ 15 ali",
+"risca": false
+},
+{
+"e": "🪙",
+"r": "R$ 9,90",
+"risca": false
+}
+],
+"ini": 482.22,
+"chave": "35-0"
+},
+{
+"k": "icones",
+"titulo": null,
+"itens": [
+{
+"e": "🚨",
+"r": "gasto grande: a gente sente",
+"risca": false
+},
+{
+"e": "🤫",
+"r": "gasto pequeno: a gente esquece",
+"risca": false
+}
+],
+"ini": 487.2,
+"chave": "35-2"
+},
+{
+"ini": 491.55,
+"k": "hib",
+"src": "v01/img/tiao-caderno.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "O que a gente esquece, a gente não *corta*.",
+"pos": "esq"
+}
+],
+"chave": "36-0"
+},
+{
+"k": "num",
+"valor": 380,
+"rotulo": "Segura esse número",
+"embaixo": "no fim do vídeo ele vira outra coisa",
+"de": 0,
+"cor": "#1F1B16",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "🤫",
+"ini": 496.3,
+"chave": "36-1"
+},
+{
+"ini": 504.06,
+"k": "img",
+"src": "v01/img/pessoa-sofa.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 0.6,
+"e": "🤔"
+}
+],
+"chave": "37-0"
+},
+{
+"k": "celular",
+"titulo": "Últimos 3 meses",
+"linhas": [
+{
+"r": "Agosto",
+"v": "-3.790"
+},
+{
+"r": "Setembro",
+"v": "-3.812"
+},
+{
+"r": "Outubro",
+"v": "-3.805"
+}
+],
+"lado": "De três meses. Não de *um* só.",
+"ini": 510.1,
+"chave": "37-1"
+},
+{
+"ini": 512.88,
+"k": "hib",
+"src": "v01/img/mao-celular.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "3 meses, não 1",
+"x": 70,
+"y": 24,
+"cor": "#F2B632"
+}
+],
+"chave": "37-2"
+},
+{
+"k": "celular",
+"titulo": "Extrato",
+"linhas": [
+{
+"r": "Música",
+"v": "-21,90"
+},
+{
+"r": "Padaria",
+"v": "-8,50"
+},
+{
+"r": "Seguro cartão",
+"v": "-14,90"
+},
+{
+"r": "Mercado",
+"v": "-230,00"
+},
+{
+"r": "Streaming",
+"v": "-39,90"
+},
+{
+"r": "Tarifa banco",
+"v": "-29,90"
+}
+],
+"destaque": [
+0,
+2,
+4,
+5
+],
+"lado": "Marca tudo o que se *repete*.",
+"ini": 515.69,
+"chave": "38-0"
+},
+{
+"ini": 522.78,
+"k": "img",
+"src": "v01/img/envelopes.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 0.6,
+"e": "😳"
+}
+],
+"chave": "38-1"
+},
+{
+"k": "celular",
+"titulo": "Extrato",
+"linhas": [
+{
+"r": "Música",
+"v": "-21,90"
+},
+{
+"r": "Padaria",
+"v": "-8,50"
+},
+{
+"r": "Seguro cartão",
+"v": "-14,90"
+},
+{
+"r": "Mercado",
+"v": "-230,00"
+},
+{
+"r": "Streaming",
+"v": "-39,90"
+},
+{
+"r": "Tarifa banco",
+"v": "-29,90"
+}
+],
+"destaque": [
+0,
+2,
+4,
+5
+],
+"apaga": true,
+"lado": "O que se repete, a gente para de *enxergar*.",
+"ini": 526.94,
+"chave": "38-2"
+},
+{
+"k": "frase",
+"texto": "Se isso não existisse hoje, eu contrataria de *novo*?",
+"sobre": "a pergunta",
+"escuro": false,
+"emoji": "🤔",
+"ini": 534.48,
+"chave": "39-0"
+},
+{
+"ini": 538.26,
+"k": "hib",
+"src": "v01/img/pessoa-sofa.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "carimbo",
+"texto": "NÃO",
+"x": 70,
+"y": 30,
+"cor": "#D9443A",
+"ini": 0.6,
+"g": "for não"
+},
+{
+"t": "placa",
+"texto": "dinheiro achado",
+"x": 70,
+"y": 60,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 1.66,
+"g": "acabou de achar"
+}
+],
+"chave": "39-1"
+},
+{
+"ini": 542.74,
+"k": "img",
+"src": "v01/img/tiao-fecha-caderno.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "💪"
+}
+],
+"chave": "40-0"
+},
+{
+"k": "icones",
+"titulo": "Três decisões silenciosas",
+"itens": [
+{
+"e": "1️⃣",
+"r": "cortar os vazamentos",
+"risca": false
+},
+{
+"e": "2️⃣",
+"r": "pagar a si mesmo primeiro",
+"risca": false
+},
+{
+"e": "3️⃣",
+"r": "ficar com o carro velho",
+"risca": false
+}
+],
+"ini": 544.7,
+"chave": "40-1"
+},
+{
+"k": "frase",
+"texto": "Cortar os *vazamentos*.",
+"sobre": "a primeira decisão",
+"escuro": false,
+"emoji": "🎯",
+"ini": 550.44,
+"chave": "40-2"
+},
+{
+"ini": 554.01,
+"k": "hib",
+"src": "v01/img/mao-celular.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "placa",
+"texto": "Cancelar assinatura  ✓",
+"x": 50,
+"y": 20,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+},
+{
+"t": "check",
+"x": 80,
+"y": 22,
+"ini": 0.6
+}
+],
+"chave": "41-0"
+},
+{
+"ini": 556.3,
+"k": "img",
+"src": "v01/img/tiao-telefone.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "check",
+"x": 82,
+"y": 22,
+"ini": 1.42,
+"g": "tirou o seguro"
+}
+],
+"chave": "41-1"
+},
+{
+"ini": 559.44,
+"k": "img",
+"src": "v01/img/marmita-mochila.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "check",
+"x": 80,
+"y": 20,
+"ini": 0.6
+}
+],
+"chave": "41-2"
+},
+{
+"k": "frase",
+"texto": "Pagar a si mesmo *primeiro*.",
+"sobre": "a segunda decisão",
+"escuro": false,
+"emoji": "💪",
+"ini": 565.52,
+"chave": "41-3"
+},
+{
+"k": "cal",
+"mes": "No dia do salário",
+"ate": 8,
+"marcados": {
+"5": {
+"cor": "#2E9E5B",
+"rotulo": "1º a reserva"
+},
+"6": {
+"cor": "#F2B632",
+"rotulo": "depois as contas"
+}
+},
+"ini": 569.56,
+"chave": "42-0"
+},
+{
+"ini": 573.68,
+"k": "hib",
+"src": "v01/img/tiao-celular.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "→ renda fixa",
+"x": 82,
+"y": 40,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 72,
+"ini": 0.5
+},
+{
+"t": "reacao",
+"x": 18,
+"y": 24,
+"ini": 3.02,
+"e": "😌",
+"g": "renda fixa"
+}
+],
+"chave": "42-1"
+},
+{
+"k": "frase",
+"texto": "Se esperasse sobrar, nunca *sobrava*.",
+"sobre": null,
+"escuro": false,
+"emoji": "💡",
+"ini": 579.36,
+"chave": "42-2"
+},
+{
+"ini": 583.75,
+"k": "hib",
+"src": "v01/img/tiao-celular.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "placa",
+"texto": "Todo dia 5: automático",
+"x": 82,
+"y": 22,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 56,
+"ini": 0.5
+}
+],
+"chave": "43-1"
+},
+{
+"k": "cal",
+"mes": "Todo mês, sozinho",
+"ate": 12,
+"marcados": {
+"5": {
+"cor": "#2E9E5B",
+"rotulo": "automático"
+}
+},
+"ini": 590.72,
+"chave": "43-0"
+},
+{
+"ini": 594.42,
+"k": "img",
+"src": "v01/img/tiao-dormindo.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 20,
+"ini": 0.6,
+"e": "😴"
+}
+],
+"chave": "43-2"
+},
+{
+"k": "cita",
+"nome": "Thaler e Benartzi",
+"ano": "2004",
+"onde": "economistas, Estados Unidos",
+"achado": "Com a poupança no *automático*, a parte guardada saiu de 3,5% para mais de 13%.",
+"fonte": "Save More Tomorrow, Journal of Political Economy (2004)",
+"emoji": "📈",
+"ini": 597.54,
+"chave": "44-0"
+},
+{
+"ini": 602.18,
+"k": "img",
+"src": "v01/img/fabrica.jpg",
+"mov": "esq",
+"ov": [],
+"chave": "44-2"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Antes",
+"valor": 3.5,
+"cor": "#F2B632"
+},
+{
+"rotulo": "No automático",
+"valor": 13.6,
+"cor": "#2E9E5B"
+}
+],
+"titulo": "Parte do salário guardada",
+"fmt": "pct",
+"ini": 608.8,
+"chave": "44-1"
+},
+{
+"k": "frase",
+"texto": "Só pararam de *precisar* ser.",
+"sobre": "as pessoas não ficaram mais disciplinadas",
+"escuro": false,
+"emoji": "😌",
+"ini": 615.13,
+"chave": "45-0"
+},
+{
+"ini": 620.88,
+"k": "img",
+"src": "v01/img/tiao-bocejo.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😴"
+}
+],
+"chave": "46-1"
+},
+{
+"k": "cal",
+"mes": "As primeiras semanas",
+"ate": 14,
+"marcados": {
+"3": {
+"cor": "#D9443A",
+"rotulo": "esqueceu"
+},
+"9": {
+"cor": "#D9443A",
+"rotulo": "quis largar"
+}
+},
+"ini": 624.7,
+"chave": "46-0"
+},
+{
+"k": "cita",
+"nome": "Phillippa Lally",
+"ano": "2009",
+"onde": "University College London",
+"achado": "Um hábito novo leva em média *66 dias* para ficar automático.",
+"fonte": "European Journal of Social Psychology (2009)",
+"emoji": "🧠",
+"ini": 630.18,
+"chave": "46-2"
+},
+{
+"k": "num",
+"valor": 66,
+"rotulo": "Para o hábito pegar",
+"embaixo": "mais de dois meses",
+"de": 0,
+"cor": "#1F1B16",
+"fmt": "int",
+"casas": 0,
+"suf": " dias",
+"emoji": "⏳",
+"ini": 638.59,
+"chave": "47-0"
+},
+{
+"k": "linha",
+"marcos": [
+"Dia 1",
+"Semana 2",
+"Dia 30",
+"Dia 66"
+],
+"ativo": 3,
+"titulo": "Muita gente desiste na semana 2",
+"ini": 644.16,
+"chave": "47-2"
+},
+{
+"ini": 646.54,
+"k": "img",
+"src": "v01/img/gaveta.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "xis",
+"x": 75,
+"y": 24,
+"ini": 0.6
+}
+],
+"chave": "47-1"
+},
+{
+"ini": 648.42,
+"k": "hib",
+"src": "v01/img/tiao-caderno.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Não é *defeito* seu.",
+"pos": "dir"
+}
+],
+"chave": "47-3"
+},
+{
+"ini": 653.22,
+"k": "hib",
+"src": "v01/img/tiao-caderno.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "carimbo",
+"texto": "DIA 66",
+"x": 82,
+"y": 30,
+"cor": "#2E9E5B",
+"ini": 0.6
+}
+],
+"chave": "48-0"
+},
+{
+"ini": 657.36,
+"k": "img",
+"src": "v01/img/tiao-dentes.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 76,
+"y": 22,
+"ini": 0.6,
+"e": "😌"
+}
+],
+"chave": "48-1"
+},
+{
+"k": "frase",
+"texto": "Ficar com o carro *velho*.",
+"sobre": "a terceira decisão",
+"escuro": false,
+"emoji": "🚗",
+"ini": 660.93,
+"chave": "49-0"
+},
+{
+"ini": 664.26,
+"k": "hib",
+"src": "v01/img/carro-2001.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"quitado",
+"funciona",
+"leva ao trabalho"
+],
+"x": 78,
+"y": 40,
+"riscar": false
+}
+],
+"chave": "49-1"
+},
+{
+"k": "balanca",
+"esq": "a paz dele",
+"dir": "uma parcela",
+"pesa": "esq",
+"titulo": "Trocar de carro só porque o vizinho trocou?",
+"ini": 668.34,
+"chave": "49-2"
+},
+{
+"ini": 673.9,
+"k": "img",
+"src": "v01/img/tiao-olha-carro.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 22,
+"ini": 0.6,
+"e": "🤔"
+}
+],
+"chave": "49-3"
+},
+{
+"ini": 680.54,
+"k": "img",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "brilho",
+"x": 66,
+"y": 62,
+"ini": 0.6
+}
+],
+"chave": "50-0"
+},
+{
+"ini": 684.92,
+"k": "vid",
+"src": "animadas/08-marcos-ri.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "50-1",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😂"
+}
+],
+"clip": 6.04
+},
+{
+"ini": 686.7,
+"k": "img",
+"src": "v01/img/tiao-sozinho.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 24,
+"y": 24,
+"ini": 1.5,
+"e": "😔",
+"g": "ficando para trás"
+}
+],
+"chave": "50-2"
+},
+{
+"ini": 690.39,
+"k": "img",
+"src": "v01/img/pagina-frase.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "brilho",
+"x": 50,
+"y": 50,
+"ini": 0.6
+}
+],
+"chave": "51-0"
+},
+{
+"k": "frase",
+"texto": "Ninguém vê a minha *reserva*.",
+"sobre": "na primeira página do caderno",
+"escuro": false,
+"emoji": "🤫",
+"ini": 695.88,
+"chave": "51-1"
+},
+{
+"ini": 698.08,
+"k": "hib",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Mas também ninguém vê a *parcela* dele.",
+"pos": "topo"
+},
+{
+"t": "brilho",
+"x": 66,
+"y": 64,
+"ini": 0.6
+}
+],
+"chave": "51-2"
+},
+{
+"k": "frase",
+"texto": "Agora mesmo, alguém está do jeito que o Tião *estava*.",
+"sobre": null,
+"escuro": false,
+"emoji": "🙏",
+"ini": 705.44,
+"chave": "52-1"
+},
+{
+"k": "botao",
+"tipo": "like",
+"texto": "Se essa história está fazendo *sentido*, deixa o seu like",
+"ini": 709.52,
+"chave": "52-0"
+},
+{
+"ini": 711.21,
+"k": "vid",
+"src": "v01/vid/T01-cozinha-noite-flow.mp4",
+"mov": "esq",
+"de": 0,
+"chave": "53-0",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "😰"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 719.26,
+"k": "img",
+"src": "v01/img/boletos-mesa.jpg",
+"mov": "entra",
+"ov": [],
+"chave": "53-1"
+},
+{
+"ini": 721.8,
+"k": "hib",
+"src": "v01/img/q-T01-cozinha-noite-flow-2.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "dia 20, 23h",
+"x": 76,
+"y": 20,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "53-2"
+},
+{
+"k": "botao",
+"tipo": "like",
+"texto": "O seu like leva esse vídeo até essa *pessoa*",
+"ini": 727.08,
+"chave": "54-0"
+},
+{
+"ini": 733.1,
+"k": "img",
+"src": "v01/img/casa-marcos.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "brilho",
+"x": 60,
+"y": 62,
+"ini": 0.6
+}
+],
+"chave": "55-0"
+},
+{
+"ini": 739.9,
+"k": "img",
+"src": "v01/img/vizinhos-portao.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 20,
+"ini": 0.6,
+"e": "👀"
+}
+],
+"chave": "55-3"
+},
+{
+"ini": 743.88,
+"k": "img",
+"src": "v01/img/churrasco-picape.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 20,
+"ini": 0.6,
+"e": "🥳"
+}
+],
+"chave": "55-1"
+},
+{
+"ini": 745.64,
+"k": "hib",
+"src": "v01/img/celular-foto.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "placa",
+"texto": "❤ 248 curtidas",
+"x": 84,
+"y": 20,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 64,
+"ini": 0.5
+}
+],
+"chave": "55-2"
+},
+{
+"k": "linha",
+"marcos": [
+"Ano 1",
+"Ano 2",
+"Ano 3",
+"Ano 4",
+"Ano 5"
+],
+"ativo": 0,
+"titulo": "O primeiro ano",
+"ini": 750.53,
+"chave": "56-0"
+},
+{
+"ini": 755.56,
+"k": "hib",
+"src": "v01/img/picape-rua.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "o valor cai ↓",
+"x": 70,
+"y": 26,
+"cor": "#D9443A"
+},
+{
+"t": "reacao",
+"x": 24,
+"y": 24,
+"ini": 0.64,
+"e": "📉",
+"g": "perdia valor"
+}
+],
+"chave": "56-1"
+},
+{
+"ini": 757.58,
+"k": "hib",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "perde 10% a 20% no 1º ano",
+"x": 50,
+"y": 20,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 76,
+"ini": 0.5
+}
+],
+"chave": "56-2"
+},
+{
+"k": "graf",
+"titulo": "A dívida desce devagar. O preço cai rápido.",
+"series": [
+{
+"r": "Dívida",
+"cor": "#D9443A",
+"pts": [
+200,
+184,
+166,
+145,
+120,
+90
+]
+},
+{
+"r": "Valor da picape",
+"cor": "#3B6EA8",
+"pts": [
+220,
+180,
+150,
+128,
+110,
+96
+]
+}
+],
+"eixo": [
+"compra",
+"ano 1",
+"ano 2",
+"ano 3",
+"ano 4",
+"ano 5"
+],
+"ini": 765.6,
+"chave": "57-0"
+},
+{
+"k": "linha",
+"marcos": [
+"Ano 1",
+"Ano 2",
+"Ano 3",
+"Ano 4",
+"Ano 5"
+],
+"ativo": 1,
+"titulo": "O segundo ano",
+"ini": 770.44,
+"chave": "57-1"
+},
+{
+"ini": 776.76,
+"k": "img",
+"src": "v01/img/sandra-mercado.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 76,
+"y": 20,
+"ini": 2.0,
+"e": "😬",
+"g": "no cartão"
+}
+],
+"chave": "57-2"
+},
+{
+"k": "frase",
+"texto": "A fatura não fechava. Pagavam só uma *parte*.",
+"sobre": null,
+"escuro": false,
+"emoji": "😬",
+"ini": 779.8,
+"chave": "57-3"
+},
+{
+"k": "divide",
+"a": {
+"src": "v01/img/tiao-olha-carro.jpg",
+"r": "Casa do Tião"
+},
+"b": {
+"src": "v01/img/casa-marcos.jpg",
+"r": "Casa do Marcos"
+},
+"titulo": "O mesmo teste, no mesmo mês",
+"ini": 783.99,
+"chave": "58-0"
+},
+{
+"ini": 790.12,
+"k": "img",
+"src": "v01/img/carro-quebrado.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 75,
+"y": 30,
+"ini": 0.6,
+"e": "💥"
+}
+],
+"chave": "58-1"
+},
+{
+"ini": 792.5,
+"k": "hib",
+"src": "v01/img/oficina.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "placa",
+"texto": "Embreagem  R$ 1.800",
+"x": 50,
+"y": 18,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "58-2"
+},
+{
+"ini": 796.46,
+"k": "hib",
+"src": "v01/img/tiao-caixa-banco.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "Reserva: R$ 1.800 à vista",
+"x": 76,
+"y": 12,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 58,
+"ini": 0.5
+},
+{
+"t": "check",
+"x": 20,
+"y": 26,
+"ini": 2.34,
+"g": "da reserva"
+}
+],
+"chave": "59-0"
+},
+{
+"ini": 799.76,
+"k": "img",
+"src": "v01/img/tiao-paga-oficina.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 44,
+"y": 12,
+"ini": 1.38,
+"e": "😎",
+"g": "pediu desconto"
+}
+],
+"chave": "59-1"
+},
+{
+"ini": 805.34,
+"k": "img",
+"src": "v01/img/tiao-dormindo.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 20,
+"ini": 0.6,
+"e": "😌"
+}
+],
+"chave": "59-2"
+},
+{
+"ini": 809.36,
+"k": "hib",
+"src": "v01/img/pneus-carecas.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "etiqueta",
+"texto": "4 pneus novos",
+"x": 66,
+"y": 24,
+"cor": "#F2B632"
+},
+{
+"t": "reacao",
+"x": 20,
+"y": 20,
+"ini": 0.6,
+"e": "😬"
+}
+],
+"chave": "59-3"
+},
+{
+"ini": 815.05,
+"k": "hib",
+"src": "v01/img/pneus-carecas.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 3.200",
+"x": 50,
+"y": 22,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 130,
+"ini": 0.5
+},
+{
+"t": "reacao",
+"x": 85,
+"y": 26,
+"ini": 0.6,
+"e": "😱"
+}
+],
+"chave": "60-0"
+},
+{
+"ini": 820.24,
+"k": "img",
+"src": "v01/img/marcos-sala-escura-2.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😰"
+}
+],
+"chave": "60-1"
+},
+{
+"k": "num",
+"valor": 320,
+"rotulo": "No cartão, em 10 vezes de",
+"embaixo": "mais uma parcela",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😬",
+"ini": 825.44,
+"chave": "60-2"
+},
+{
+"k": "torre",
+"itens": [
+"picape  R$ 5.714",
+"pneus  R$ 320",
+"mercado no cartão"
+],
+"titulo": "Parcela em cima de parcela",
+"ini": 828.24,
+"chave": "60-3"
+},
+{
+"k": "divide",
+"a": {
+"src": "v01/img/tiao-calmo-rua.jpg",
+"r": "Tião: uma reserva"
+},
+"b": {
+"src": "v01/img/marcos-sala-escura-2.jpg",
+"r": "Marcos: uma vitrine"
+},
+"titulo": "O mesmo imprevisto. Duas respostas.",
+"ini": 832.52,
+"chave": "61-0"
+},
+{
+"ini": 837.54,
+"k": "hib",
+"src": "v01/img/marcos-escritorio.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "placa",
+"texto": "ganhava 3x mais",
+"x": 72,
+"y": 24,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "61-1"
+},
+{
+"k": "frase",
+"texto": "Uma *reserva* ou uma vitrine.",
+"sobre": "a diferença estava em quem tinha",
+"escuro": false,
+"emoji": "💡",
+"ini": 843.02,
+"chave": "61-2"
+},
+{
+"k": "linha",
+"marcos": [
+"Ano 1",
+"Ano 2",
+"Ano 3",
+"Ano 4",
+"Ano 5"
+],
+"ativo": 2,
+"titulo": "O terceiro ano",
+"ini": 847.79,
+"chave": "62-0"
+},
+{
+"ini": 850.84,
+"k": "vid",
+"src": "v01/vid/N02-marcos-demitido-flow.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "62-1",
+"ov": [
+{
+"t": "reacao",
+"x": 84,
+"y": 22,
+"ini": 3.36,
+"e": "💔",
+"g": "um dos demitidos"
+}
+],
+"clip": 7.93
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Antes",
+"valor": 12000,
+"cor": "#F2B632"
+},
+{
+"rotulo": "Depois da demissão",
+"valor": 6000,
+"cor": "#D9443A"
+}
+],
+"titulo": "A renda do casal",
+"fmt": "reais",
+"ini": 856.72,
+"chave": "62-2"
+},
+{
+"k": "num",
+"valor": 5714,
+"rotulo": "Mas a parcela continuou",
+"embaixo": "exatamente a mesma",
+"de": 5714,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "😬",
+"ini": 860.66,
+"chave": "63-0"
+},
+{
+"ini": 867.2,
+"k": "img",
+"src": "v01/img/marcos-sala-escura.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "😞"
+}
+],
+"chave": "63-1"
+},
+{
+"k": "cita",
+"nome": "Serasa",
+"ano": "2026",
+"onde": "Mapa da Inadimplência",
+"achado": "*81,7 milhões* de brasileiros com o nome negativado.",
+"fonte": "Serasa, Mapa da Inadimplência (2026)",
+"emoji": "📉",
+"ini": 870.77,
+"chave": "64-0"
+},
+{
+"k": "num",
+"valor": 81.7,
+"rotulo": "Com o nome negativado",
+"embaixo": "quase metade dos adultos do país",
+"de": 0,
+"cor": "#D9443A",
+"fmt": "num",
+"casas": 1,
+"suf": " milhões",
+"emoji": "😱",
+"ini": 875.12,
+"chave": "64-1"
+},
+{
+"ini": 880.7,
+"k": "hib",
+"src": "v01/img/fila-banco.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Quase *metade* dos adultos do país.",
+"pos": "topo"
+}
+],
+"chave": "64-2"
+},
+{
+"k": "pizza",
+"pct": 45,
+"r": "bancos, cartões e financeiras",
+"titulo": "De quem são essas dívidas",
+"ini": 884.16,
+"chave": "65-0"
+},
+{
+"ini": 890.5,
+"k": "hib",
+"src": "v01/img/fila-banco.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "O Marcos virou *estatística*.",
+"pos": "topo"
+}
+],
+"chave": "65-1"
+},
+{
+"ini": 892.42,
+"k": "img",
+"src": "v01/img/rua-normal.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 85,
+"y": 22,
+"ini": 0.6,
+"e": "🤫"
+}
+],
+"chave": "65-2"
+},
+{
+"k": "linha",
+"marcos": [
+"Ano 1",
+"Ano 2",
+"Ano 3",
+"Ano 4",
+"Ano 5"
+],
+"ativo": 3,
+"titulo": "O quarto ano",
+"ini": 894.79,
+"chave": "66-0"
+},
+{
+"ini": 897.44,
+"k": "img",
+"src": "v01/img/marcos-emprego-novo.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😩"
+}
+],
+"chave": "66-1"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "A fatura",
+"valor": 100,
+"cor": "#D9443A"
+},
+{
+"rotulo": "O mínimo que ela pagava",
+"valor": 15,
+"cor": "#F2B632"
+}
+],
+"titulo": "O cartão",
+"fmt": "nada",
+"ini": 901.18,
+"chave": "66-2"
+},
+{
+"k": "frase",
+"texto": "O rotativo: um dos juros mais *caros* do país.",
+"sobre": "quem paga só o mínimo cai no",
+"escuro": false,
+"emoji": "🔥",
+"ini": 907.38,
+"chave": "67-0"
+},
+{
+"k": "cita",
+"nome": "Lei 14.690",
+"ano": "2023",
+"onde": "vale desde 2024",
+"achado": "Os juros do rotativo ficam limitados ao valor da dívida. Ela pode *dobrar*.",
+"fonte": "Lei nº 14.690/2023",
+"emoji": "⚠️",
+"ini": 914.76,
+"chave": "67-2"
+},
+{
+"ini": 918.58,
+"k": "img",
+"src": "v01/img/sandra-fatura.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 18,
+"ini": 0.6,
+"e": "😰"
+}
+],
+"chave": "67-1"
+},
+{
+"k": "num",
+"valor": 2000,
+"rotulo": "Uma compra de R$ 1.000 pode virar",
+"embaixo": "o limite é a dívida dobrar",
+"de": 1000,
+"cor": "#D9443A",
+"fmt": "reais",
+"casas": 0,
+"suf": "",
+"emoji": "🔥",
+"ini": 920.12,
+"chave": "67-3"
+},
+{
+"ini": 923.09,
+"k": "hib",
+"src": "v01/img/sandra-fatura.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 1.000 → R$ 2.000",
+"x": 80,
+"y": 14,
+"cor": "#D9443A",
+"fundo": "#FFFDF8",
+"tam": 64,
+"ini": 0.5
+},
+{
+"t": "reacao",
+"x": 15,
+"y": 22,
+"ini": 0.6,
+"e": "😱"
+}
+],
+"chave": "68-0"
+},
+{
+"ini": 927.2,
+"k": "hib",
+"src": "v01/img/compras-mesa.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"pneus  x2",
+"mercado  x2",
+"farmácia  x2"
+],
+"x": 80,
+"y": 62,
+"riscar": false
+}
+],
+"chave": "68-1"
+},
+{
+"k": "frase",
+"texto": "Tudo dobrando, devagar, sem *barulho*.",
+"sobre": null,
+"escuro": true,
+"emoji": "💥",
+"ini": 932.0,
+"chave": "68-2"
+},
+{
+"ini": 935.64,
+"k": "img",
+"src": "v01/img/marcos-anuncio.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "😔"
+}
+],
+"chave": "69-0"
+},
+{
+"ini": 940.02,
+"k": "img",
+"src": "v01/img/marcos-janela.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😳"
+}
+],
+"chave": "69-1"
+},
+{
+"k": "cal",
+"mes": "Mais um mês. Mais outro.",
+"ate": 30,
+"marcados": {
+"30": {
+"cor": "#D9443A",
+"rotulo": "empurrou"
+}
+},
+"ini": 944.02,
+"chave": "69-2"
+},
+{
+"ini": 946.36,
+"k": "img",
+"src": "v01/img/marcos-pedra.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 85,
+"y": 12,
+"ini": 0.6,
+"e": "😓"
+}
+],
+"chave": "69-3"
+},
+{
+"ini": 955.31,
+"k": "img",
+"src": "v01/img/rua-noite.jpg",
+"mov": "dir",
+"ov": [],
+"chave": "70-0"
+},
+{
+"ini": 957.78,
+"k": "vid",
+"src": "v01/vid/T03-marcos-na-porta-flow.mp4",
+"mov": "sai",
+"de": 0,
+"chave": "70-1",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 20,
+"ini": 4.86,
+"e": "😔",
+"g": "sem sorriso"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 965.86,
+"k": "hib",
+"src": "v01/img/marcos-porta.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "balao",
+"texto": "Tião, eu preciso de *R$ 2.000* emprestados.",
+"x": 66,
+"y": 26,
+"lado": "esq"
+}
+],
+"chave": "71-0"
+},
+{
+"ini": 972.0,
+"k": "img",
+"src": "v01/img/marcos-porta.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 76,
+"y": 24,
+"ini": 1.18,
+"e": "🙏",
+"g": "eu te devolvo"
+}
+],
+"chave": "71-1"
+},
+{
+"ini": 974.65,
+"k": "hib",
+"src": "v01/img/tiao-pensando.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 22.000 guardados",
+"x": 80,
+"y": 40,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 60,
+"ini": 3.29,
+"g": "tinha uns"
+},
+{
+"t": "reacao",
+"x": 20,
+"y": 20,
+"ini": 0.6,
+"e": "😌"
+}
+],
+"chave": "72-0"
+},
+{
+"k": "num",
+"valor": 6,
+"rotulo": "De vida sem salário",
+"embaixo": "mais de seis meses",
+"de": 0,
+"cor": "#2E9E5B",
+"fmt": "int",
+"casas": 0,
+"suf": " meses",
+"emoji": "😌",
+"ini": 980.52,
+"chave": "72-1"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Guardado pelo Tião",
+"valor": 22000,
+"cor": "#2E9E5B"
+},
+{
+"rotulo": "O pedido do Marcos",
+"valor": 2000,
+"cor": "#D9443A"
+}
+],
+"titulo": "Dois mil não iam fazer falta",
+"fmt": "reais",
+"ini": 984.1,
+"chave": "72-2"
+},
+{
+"ini": 986.48,
+"k": "img",
+"src": "v01/img/tiao-pensando.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 0.6,
+"e": "🤔"
+},
+{
+"t": "xis",
+"x": 80,
+"y": 58,
+"ini": 1.12,
+"g": "e disse não"
+}
+],
+"chave": "73-0"
+},
+{
+"k": "cal",
+"mes": "Só empurra 30 dias",
+"ate": 30,
+"marcados": {
+"1": {
+"cor": "#D9443A",
+"rotulo": "R$ 2.000"
+},
+"30": {
+"cor": "#D9443A",
+"rotulo": "devendo de novo"
+}
+},
+"ini": 994.42,
+"chave": "73-1"
+},
+{
+"k": "torre",
+"itens": [
+"picape",
+"pneus",
+"cartão",
+"R$ 2.000 do Tião"
+],
+"titulo": "Mais um para quem ele deve",
+"ini": 997.32,
+"chave": "73-2"
+},
+{
+"ini": 1001.11,
+"k": "hib",
+"src": "v01/img/tiao-pensando.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "balao",
+"texto": "Dinheiro eu não te *empresto*.",
+"x": 21,
+"y": 22,
+"lado": "dir"
+}
+],
+"chave": "74-0"
+},
+{
+"ini": 1005.72,
+"k": "img",
+"src": "v01/img/caderno-mao.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "brilho",
+"x": 55,
+"y": 45,
+"ini": 0.6
+}
+],
+"chave": "74-2"
+},
+{
+"ini": 1007.56,
+"k": "vid",
+"src": "v01/vid/T02-caderno-azul-flow.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "74-1",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "💡"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 1014.78,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"cada café",
+"cada taxa",
+"cada assinatura"
+],
+"x": 76,
+"y": 48,
+"riscar": false
+}
+],
+"chave": "75-0"
+},
+{
+"k": "icones",
+"titulo": "Foi no caderno que ele achou o dinheiro",
+"itens": [
+{
+"e": "☕",
+"r": "cada café",
+"risca": false
+},
+{
+"e": "🧾",
+"r": "cada taxa",
+"risca": false
+},
+{
+"e": "📱",
+"r": "cada assinatura",
+"risca": false
+}
+],
+"ini": 1020.06,
+"chave": "75-1"
+},
+{
+"k": "frase",
+"texto": "Não dois mil reais. O *caminho*.",
+"sobre": "o que o Tião ofereceu",
+"escuro": false,
+"emoji": "🤝",
+"ini": 1023.4,
+"chave": "75-2"
+},
+{
+"ini": 1030.85,
+"k": "vid",
+"src": "v01/vid/N03-marcos-riso-sem-graca-flow.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "76-0",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😒"
+}
+],
+"clip": 7.93
+},
+{
+"ini": 1033.34,
+"k": "img",
+"src": "v01/img/marcos-costas.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "💔"
+}
+],
+"chave": "76-1"
+},
+{
+"ini": 1035.32,
+"k": "img",
+"src": "v01/img/porta-fechada.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 72,
+"y": 30,
+"ini": 0.3,
+"e": "💥",
+"g": "a porta bateu"
+}
+],
+"chave": "76-2"
+},
+{
+"k": "frase",
+"texto": "Essa oferta ainda vai *voltar*.",
+"sobre": null,
+"escuro": true,
+"emoji": "⏳",
+"ini": 1037.8,
+"chave": "77-0"
+},
+{
+"ini": 1043.82,
+"k": "img",
+"src": "v01/img/homem-janela.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 78,
+"y": 22,
+"ini": 0.6,
+"e": "👀"
+}
+],
+"chave": "78-0"
+},
+{
+"k": "linha",
+"marcos": [
+"anos 80",
+"anos 90",
+"1996"
+],
+"ativo": 1,
+"titulo": "Nos anos 90",
+"ini": 1049.16,
+"chave": "78-1"
+},
+{
+"k": "cita",
+"nome": "Stanley e Danko",
+"ano": "1996",
+"onde": "pesquisadores, Estados Unidos",
+"achado": "Passaram anos entrevistando *milionários* de verdade.",
+"fonte": "O Milionário Mora ao Lado (1996)",
+"emoji": "💯",
+"ini": 1050.76,
+"chave": "78-2"
+},
+{
+"ini": 1055.12,
+"k": "img",
+"src": "v01/img/pesquisador.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "🧐"
+}
+],
+"chave": "78-3"
+},
+{
+"k": "cita",
+"nome": "O Milionário Mora ao Lado",
+"ano": "1996",
+"onde": "o livro de Stanley e Danko",
+"achado": "O que eles descobriram surpreendeu *todo mundo*.",
+"fonte": null,
+"emoji": "🏠",
+"ini": 1059.85,
+"chave": "79-0"
+},
+{
+"k": "frase",
+"texto": "A maioria dos milionários não dirigia carro do *ano*.",
+"sobre": null,
+"escuro": false,
+"emoji": "🚗",
+"ini": 1066.94,
+"chave": "79-1"
+},
+{
+"ini": 1071.28,
+"k": "img",
+"src": "v01/img/homem-carro-comum.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "check",
+"x": 80,
+"y": 20,
+"ini": 0.6
+}
+],
+"chave": "80-0"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "O carro mais caro da rua",
+"valor": 100,
+"cor": "#D9443A"
+},
+{
+"rotulo": "O patrimônio de quem dirigia",
+"valor": 30,
+"cor": "#2E9E5B"
+}
+],
+"titulo": "Muitas vezes",
+"fmt": "nada",
+"ini": 1077.16,
+"chave": "80-1"
+},
+{
+"ini": 1081.4,
+"k": "img",
+"src": "v01/img/luxo-casa-vazia.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "xis",
+"x": 70,
+"y": 26,
+"ini": 0.3,
+"g": "menos patrimônio"
+}
+],
+"chave": "80-2"
+},
+{
+"ini": 1084.59,
+"k": "img",
+"src": "v01/img/chapeu-vaqueiro.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "🤭"
+}
+],
+"chave": "81-1"
+},
+{
+"k": "frase",
+"texto": "Muito chapéu e nenhum *gado*.",
+"sobre": "o nome que eles davam",
+"escuro": false,
+"emoji": "😮",
+"ini": 1087.38,
+"chave": "81-0"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Aparência",
+"valor": 100,
+"cor": "#D9443A"
+},
+{
+"rotulo": "Patrimônio",
+"valor": 25,
+"cor": "#2E9E5B"
+}
+],
+"titulo": "Parecer rico e ser rico",
+"fmt": "nada",
+"ini": 1089.68,
+"chave": "81-2"
+},
+{
+"ini": 1093.92,
+"k": "hib",
+"src": "v01/img/piloto-06-picape.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Parecer rico não é *ser* rico.",
+"pos": "topo"
+},
+{
+"t": "brilho",
+"x": 66,
+"y": 64,
+"ini": 0.6
+}
+],
+"chave": "81-3"
+},
+{
+"k": "frase",
+"texto": "O dinheiro de parecer rico é o que deixa de virar *riqueza*.",
+"sobre": null,
+"escuro": false,
+"emoji": "💸",
+"ini": 1099.02,
+"chave": "82-0"
+},
+{
+"ini": 1106.33,
+"k": "img",
+"src": "v01/img/holerite.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "🤔"
+}
+],
+"chave": "83-0"
+},
+{
+"k": "frase",
+"texto": "E se o salário parasse *amanhã*?",
+"sobre": "um teste, agora, sem ninguém ver",
+"escuro": false,
+"emoji": "😮",
+"ini": 1111.56,
+"chave": "83-1"
+},
+{
+"k": "num",
+"valor": 12,
+"rotulo": "Quantos meses você aguentaria?",
+"embaixo": "só guarda o número",
+"de": 0,
+"cor": "#1F1B16",
+"fmt": "int",
+"casas": 0,
+"suf": " meses",
+"emoji": "🤔",
+"ini": 1114.74,
+"chave": "83-2"
+},
+{
+"ini": 1121.82,
+"k": "hib",
+"src": "v01/img/pessoa-celular-noite.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Menos de um mês? Você não está *sozinho*.",
+"pos": "topo"
+}
+],
+"chave": "84-0"
+},
+{
+"ini": 1125.04,
+"k": "img",
+"src": "v01/img/pessoa-celular-noite.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "💪"
+}
+],
+"chave": "84-2"
+},
+{
+"k": "graf",
+"titulo": "A boa notícia: esse número sobe",
+"series": [
+{
+"r": "meses guardados",
+"cor": "#2E9E5B",
+"pts": [
+0,
+0.5,
+1,
+1.6,
+2.2,
+3,
+3.8,
+4.6
+]
+}
+],
+"eixo": [
+"hoje",
+"",
+"",
+"",
+"",
+"",
+"",
+"um pouco por mês"
+],
+"ini": 1127.08,
+"chave": "84-1"
+},
+{
+"ini": 1131.39,
+"k": "img",
+"src": "v01/img/tiao-cafe-cozinha.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 20,
+"ini": 0.6,
+"e": "😌"
+}
+],
+"chave": "85-0"
+},
+{
+"k": "frase",
+"texto": "Ele não ficou rico. Ficou com *tempo*.",
+"sobre": null,
+"escuro": false,
+"emoji": "⏳",
+"ini": 1133.28,
+"chave": "85-1"
+},
+{
+"k": "balanca",
+"esq": "tempo",
+"dir": "picape",
+"pesa": "esq",
+"titulo": "Quando a vida aperta",
+"ini": 1134.88,
+"chave": "85-2"
+},
+{
+"ini": 1139.97,
+"k": "img",
+"src": "cenas/01-rua-manha.png",
+"mov": "entra",
+"chave": "86-0"
+},
+{
+"ini": 1144.16,
+"k": "vid",
+"src": "animadas/02-tiao-lavando.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "86-1",
+"clip": 6.04
+},
+{
+"k": "linha",
+"marcos": [
+"Ano 1",
+"Ano 2",
+"Ano 3",
+"Ano 4",
+"Ano 5"
+],
+"ativo": 4,
+"titulo": "Cinco anos depois",
+"ini": 1148.82,
+"chave": "86-2"
+},
+{
+"ini": 1152.76,
+"k": "vid",
+"src": "animadas/10-tiao-caneca.mp4",
+"mov": "esq",
+"de": 0,
+"chave": "87-0",
+"clip": 6.04
+},
+{
+"ini": 1157.44,
+"k": "vid",
+"src": "v01/vid/T04-guincho-picape-flow.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "87-1",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 16,
+"ini": 0.6,
+"e": "🚨"
+}
+],
+"clip": 10.03
+},
+{
+"k": "cita",
+"nome": "Busca e apreensão",
+"ano": "3 meses",
+"onde": "sem pagar a parcela",
+"achado": "O banco entrou na *Justiça*.",
+"fonte": null,
+"emoji": "⚠️",
+"ini": 1162.76,
+"chave": "87-2"
+},
+{
+"ini": 1168.35,
+"k": "vid",
+"src": "v01/vid/T04-guincho-picape-flow.mp4",
+"mov": "sai",
+"de": 5.0,
+"chave": "88-0",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 20,
+"ini": 0.6,
+"e": "💔"
+}
+],
+"clip": 10.03
+},
+{
+"ini": 1173.22,
+"k": "img",
+"src": "v01/img/janela-fechada.jpg",
+"mov": "esq",
+"ov": [],
+"chave": "88-1"
+},
+{
+"k": "cita",
+"nome": "O documento da picape",
+"ano": "60x",
+"onde": "financiamento de veículo",
+"achado": "Fica em nome do *banco* até a última parcela.",
+"fonte": null,
+"emoji": "🚗",
+"ini": 1176.46,
+"chave": "89-0"
+},
+{
+"k": "cita",
+"nome": "Decreto-Lei 911",
+"ano": "1969",
+"onde": "alienação fiduciária",
+"achado": "A lei permite que o banco peça a *busca e apreensão*.",
+"fonte": "Decreto-Lei nº 911/1969",
+"emoji": "⚠️",
+"ini": 1182.12,
+"chave": "89-1"
+},
+{
+"ini": 1187.06,
+"k": "img",
+"src": "v01/img/martelo.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "reacao",
+"x": 76,
+"y": 28,
+"ini": 0.6,
+"e": "💥"
+}
+],
+"chave": "89-2"
+},
+{
+"ini": 1189.77,
+"k": "img",
+"src": "v01/img/patio-leilao.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 22,
+"ini": 0.6,
+"e": "😬"
+}
+],
+"chave": "90-0"
+},
+{
+"k": "barras",
+"itens": [
+{
+"rotulo": "Valor de tabela",
+"valor": 100,
+"cor": "#3B6EA8"
+},
+{
+"rotulo": "Vendido no leilão",
+"valor": 60,
+"cor": "#D9443A"
+}
+],
+"titulo": "No leilão, bem menos",
+"fmt": "nada",
+"ini": 1194.86,
+"chave": "90-1"
+},
+{
+"k": "frase",
+"texto": "Se o leilão não cobrir tudo, a dívida *continua*.",
+"sobre": null,
+"escuro": false,
+"emoji": "😬",
+"ini": 1198.6,
+"chave": "90-2"
+},
+{
+"ini": 1204.48,
+"k": "hib",
+"src": "v01/img/carta-cobranca.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "carimbo",
+"texto": "AINDA DEVE",
+"x": 50,
+"y": 40,
+"cor": "#D9443A",
+"ini": 0.6
+},
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "😱"
+}
+],
+"chave": "91-0"
+},
+{
+"ini": 1208.64,
+"k": "hib",
+"src": "v01/img/marcos-portao.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"perdeu a picape",
+"perdeu o que pagou",
+"ainda pode dever"
+],
+"x": 74,
+"y": 46,
+"riscar": false
+}
+],
+"chave": "91-1"
+},
+{
+"ini": 1217.43,
+"k": "img",
+"src": "v01/img/piloto-10-tiao-caneca.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 20,
+"ini": 0.6,
+"e": "😌"
+}
+],
+"chave": "92-0"
+},
+{
+"k": "grade",
+"total": 60,
+"cols": 12,
+"titulo": "Cinco anos guardando R$ 380 por mês",
+"cor": "#2E9E5B",
+"rotuloFim": "uns R$ 29 mil",
+"corFim": "#2E9E5B",
+"ini": 1219.8,
+"chave": "92-1"
+},
+{
+"ini": 1222.62,
+"k": "hib",
+"src": "v01/img/piloto-10-tiao-caneca.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "placa",
+"texto": "uns R$ 29.000",
+"x": 26,
+"y": 18,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 80,
+"ini": 0.5
+}
+],
+"chave": "92-2"
+},
+{
+"k": "frase",
+"texto": "Não é *fortuna*.",
+"sobre": null,
+"escuro": false,
+"emoji": "😌",
+"ini": 1225.74,
+"chave": "93-0"
+},
+{
+"k": "num",
+"valor": 8,
+"rotulo": "De vida garantida",
+"embaixo": "sem depender de chefe nenhum",
+"de": 0,
+"cor": "#2E9E5B",
+"fmt": "int",
+"casas": 0,
+"suf": " meses",
+"emoji": "💪",
+"ini": 1228.66,
+"chave": "93-1"
+},
+{
+"ini": 1232.26,
+"k": "hib",
+"src": "v01/img/oficina.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "carimbo",
+"texto": "SEM DÍVIDA",
+"x": 50,
+"y": 30,
+"cor": "#2E9E5B",
+"ini": 0.6
+},
+{
+"t": "check",
+"x": 82,
+"y": 22,
+"ini": 0.6
+}
+],
+"chave": "93-2"
+},
+{
+"ini": 1236.08,
+"k": "img",
+"src": "v01/img/tiao-olha-rua.jpg",
+"mov": "sai",
+"ov": [],
+"chave": "94-0"
+},
+{
+"ini": 1241.64,
+"k": "hib",
+"src": "v01/img/tiao-olha-rua.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "balao",
+"texto": "A picape pega no *tranco*?",
+"x": 27,
+"y": 20,
+"lado": "dir"
+},
+{
+"t": "carimbo",
+"texto": "NÃO",
+"x": 27,
+"y": 24,
+"cor": "#D9443A",
+"ini": 3.52,
+"g": "ele não fez"
+}
+],
+"chave": "94-1"
+},
+{
+"ini": 1246.46,
+"k": "img",
+"src": "v01/img/tiao-duas-canecas.jpg",
+"mov": "entra",
+"ov": [],
+"chave": "94-2"
+},
+{
+"ini": 1252.11,
+"k": "vid",
+"src": "v01/vid/T05-cafe-na-rua-flow.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "95-0",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 16,
+"ini": 0.6,
+"e": "🤝"
+}
+],
+"clip": 10.03
+},
+{
+"ini": 1256.08,
+"k": "img",
+"src": "v01/img/guincho-indo.jpg",
+"mov": "sai",
+"ov": [],
+"chave": "95-1"
+},
+{
+"ini": 1257.78,
+"k": "hib",
+"src": "v01/img/tiao-falando.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "balao",
+"texto": "Aquela oferta do caderno continua de *pé*.",
+"x": 79,
+"y": 22,
+"lado": "esq"
+}
+],
+"chave": "95-2"
+},
+{
+"ini": 1262.14,
+"k": "vid",
+"src": "v01/vid/T01-cozinha-noite-flow.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "95-3",
+"clip": 7.93
+},
+{
+"ini": 1267.1,
+"k": "img",
+"src": "v01/img/q-N06-tiao-marcos-lavam-carro-flow-6.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 28,
+"y": 12,
+"ini": 0.6,
+"e": "🤝"
+}
+],
+"chave": "96-0"
+},
+{
+"k": "frase",
+"texto": "Enxergar para onde ia o dinheiro, antes que fosse *tarde*.",
+"sobre": null,
+"escuro": false,
+"emoji": "👀",
+"ini": 1272.98,
+"chave": "96-1"
+},
+{
+"ini": 1277.4,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "esq",
+"ov": [
+{
+"t": "placa",
+"texto": "R$ 380 por mês",
+"x": 50,
+"y": 20,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "96-2"
+},
+{
+"k": "graf",
+"titulo": "R$ 380 por mês, 10 anos, uns 10% ao ano",
+"series": [
+{
+"r": "guardado",
+"cor": "#2E9E5B",
+"pts": [
+0.0,
+4.8,
+10.0,
+15.8,
+22.1,
+29.1,
+36.8,
+45.2,
+54.5,
+64.7,
+75.9
+]
+}
+],
+"eixo": [
+"ano 0",
+"",
+"ano 2",
+"",
+"ano 4",
+"",
+"ano 6",
+"",
+"ano 8",
+"",
+"ano 10"
+],
+"fim": "mais de R$ 76 mil",
+"ini": 1284.17,
+"chave": "97-0"
+},
+{
+"ini": 1291.08,
+"k": "hib",
+"src": "v01/img/tiao-caderno.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "mais de R$ 76 mil",
+"x": 20,
+"y": 14,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 68,
+"ini": 0.5
+},
+{
+"t": "reacao",
+"x": 86,
+"y": 26,
+"ini": 0.6,
+"e": "🎉"
+}
+],
+"chave": "97-1"
+},
+{
+"k": "icones",
+"titulo": null,
+"itens": [
+{
+"e": "🚗",
+"r": "um carro",
+"risca": false
+},
+{
+"e": "🔨",
+"r": "uma reforma",
+"risca": false
+},
+{
+"e": "🛟",
+"r": "uma reserva de verdade",
+"risca": false
+}
+],
+"ini": 1295.28,
+"chave": "97-2"
+},
+{
+"k": "frase",
+"texto": "O dinheiro que *sumia* antes do dia 20.",
+"sobre": "saídos de",
+"escuro": true,
+"emoji": "💸",
+"ini": 1299.76,
+"chave": "98-0"
+},
+{
+"ini": 1307.9,
+"k": "vid",
+"src": "v01/vid/N04-marcos-na-cozinha-do-tiao-flow.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "99-0",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 10,
+"ini": 0.6,
+"e": "💡"
+}
+],
+"clip": 10.03
+},
+{
+"ini": 1312.8,
+"k": "img",
+"src": "v01/img/q-N04-marcos-na-cozinha-do-tiao-flow-8.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 10,
+"ini": 0.6,
+"e": "👀"
+}
+],
+"chave": "99-1"
+},
+{
+"ini": 1316.7,
+"k": "hib",
+"src": "v01/img/caderno-aberto.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "lista",
+"itens": [
+"cada café",
+"cada taxa",
+"cada assinatura"
+],
+"x": 76,
+"y": 48,
+"riscar": false
+}
+],
+"chave": "99-2"
+},
+{
+"k": "linha",
+"marcos": [
+"aquela noite",
+"3 meses",
+"6 meses"
+],
+"ativo": 2,
+"titulo": "Seis meses depois, numa terça",
+"ini": 1319.13,
+"chave": "100-0"
+},
+{
+"ini": 1321.7,
+"k": "img",
+"src": "v01/img/casa-marcos-noite.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 70,
+"y": 24,
+"ini": 0.6,
+"e": "💡"
+}
+],
+"chave": "100-1"
+},
+{
+"ini": 1326.44,
+"k": "vid",
+"src": "v01/vid/N05-marcos-sandra-conta-flow.mp4",
+"mov": "dir",
+"de": 0,
+"chave": "101-0",
+"ov": [
+{
+"t": "reacao",
+"x": 50,
+"y": 10,
+"ini": 0.6,
+"e": "💪"
+}
+],
+"clip": 10.03
+},
+{
+"k": "frase",
+"texto": "Eles acharam os *vazamentos* deles.",
+"sobre": null,
+"escuro": false,
+"emoji": "💡",
+"ini": 1332.6,
+"chave": "101-2"
+},
+{
+"k": "icones",
+"titulo": "Os vazamentos deles",
+"itens": [
+{
+"e": "📺",
+"r": "4 streamings",
+"risca": true
+},
+{
+"e": "🛡️",
+"r": "seguro esquecido",
+"risca": true
+},
+{
+"e": "🏋️",
+"r": "academia vazia",
+"risca": true
+}
+],
+"ini": 1334.9,
+"chave": "101-1"
+},
+{
+"ini": 1340.27,
+"k": "img",
+"src": "v01/img/feirao.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 86,
+"y": 16,
+"ini": 0.6,
+"e": "🤝"
+}
+],
+"chave": "102-0"
+},
+{
+"ini": 1345.36,
+"k": "img",
+"src": "v01/img/tv-saindo.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "check",
+"x": 82,
+"y": 22,
+"ini": 0.6
+}
+],
+"chave": "102-1"
+},
+{
+"k": "frase",
+"texto": "Pela primeira vez em cinco anos: a conta no *papel*.",
+"sobre": null,
+"escuro": false,
+"emoji": "💪",
+"ini": 1347.64,
+"chave": "102-2"
+},
+{
+"k": "linha",
+"marcos": [
+"mês 1: não fechou",
+"mês 2: não fechou",
+"mês 3: sobrou"
+],
+"ativo": 2,
+"titulo": "E eles guardaram",
+"ini": 1355.26,
+"chave": "103-0"
+},
+{
+"ini": 1358.08,
+"k": "hib",
+"src": "v01/img/q-N05-marcos-sandra-conta-flow-9.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "placa",
+"texto": "sobrou um pouco. Guardaram.",
+"x": 50,
+"y": 72,
+"cor": "#2E9E5B",
+"fundo": "#FFFDF8",
+"tam": 62,
+"ini": 0.5
+},
+{
+"t": "reacao",
+"x": 50,
+"y": 12,
+"ini": 0.6,
+"e": "🥳"
+}
+],
+"chave": "103-1"
+},
+{
+"ini": 1363.85,
+"k": "hib",
+"src": "v01/img/piloto-01-rua-manha.jpg",
+"mov": "dir",
+"ov": [
+{
+"t": "placa",
+"texto": "Sábado seguinte, 7h40",
+"x": 50,
+"y": 18,
+"cor": "#1F1B16",
+"fundo": "#FFFDF8",
+"tam": 92,
+"ini": 0.5
+}
+],
+"chave": "104-0"
+},
+{
+"ini": 1367.06,
+"k": "vid",
+"src": "v01/vid/N06-tiao-marcos-lavam-carro-flow.mp4",
+"mov": "sai",
+"de": 0,
+"chave": "104-1",
+"ov": [
+{
+"t": "reacao",
+"x": 20,
+"y": 14,
+"ini": 0.6,
+"e": "🤝"
+}
+],
+"clip": 10.03
+},
+{
+"ini": 1372.36,
+"k": "vid",
+"src": "v01/vid/N07-sandra-ri-junto-flow.mp4",
+"mov": "esq",
+"de": 0,
+"chave": "104-2",
+"ov": [
+{
+"t": "reacao",
+"x": 76,
+"y": 22,
+"ini": 0.6,
+"e": "❤️"
+}
+],
+"clip": 10.03
+},
+{
+"ini": 1378.27,
+"k": "img",
+"src": "v01/img/pessoa-cozinha.jpg",
+"mov": "entra",
+"ov": [
+{
+"t": "reacao",
+"x": 80,
+"y": 20,
+"ini": 0.6,
+"e": "🤔"
+}
+],
+"chave": "105-0"
+},
+{
+"k": "frase",
+"texto": "Nunca foi ganhar pouco. Foi não *enxergar*.",
+"sobre": null,
+"escuro": false,
+"emoji": "👀",
+"ini": 1381.72,
+"chave": "105-1"
+},
+{
+"k": "frase",
+"texto": "O dinheiro some porque ninguém vê ele *sair*.",
+"sobre": null,
+"escuro": true,
+"emoji": "💸",
+"ini": 1386.18,
+"chave": "105-2"
+},
+{
+"ini": 1389.94,
+"k": "vid",
+"src": "v01/vid/T02-caderno-azul-flow.mp4",
+"mov": "esq",
+"de": 0,
+"chave": "106-0",
+"ov": [
+{
+"t": "reacao",
+"x": 82,
+"y": 22,
+"ini": 0.6,
+"e": "💡"
+}
+],
+"clip": 7.93
+},
+{
+"k": "grade",
+"total": 66,
+"cols": 11,
+"titulo": "66 dias: no papel, quase todo mundo desiste antes",
+"ate": 14,
+"rotuloFim": "desistiu na semana 2",
+"corFim": "#D9443A",
+"ini": 1394.8,
+"chave": "106-1"
+},
+{
+"ini": 1400.78,
+"k": "vid",
+"src": "v01/vid/finmoovi-106-2.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "106-2",
+"clip": 13.91
+},
+{
+"ini": 1404.13,
+"k": "vid",
+"src": "v01/vid/finmoovi-107-0.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "107-0",
+"clip": 8.04
+},
+{
+"ini": 1407.18,
+"k": "vid",
+"src": "v01/vid/finmoovi-107-1.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "107-1",
+"clip": 8.04
+},
+{
+"ini": 1409.48,
+"k": "vid",
+"src": "v01/vid/finmoovi-107-2.mp4",
+"mov": "entra",
+"de": 0,
+"chave": "107-2",
+"clip": 7.06
+},
+{
+"k": "num",
+"valor": 7,
+"rotulo": "Dá para testar o FinMoovi",
+"embaixo": "sem pagar nada · link na descrição",
+"de": 0,
+"cor": "#2E9E5B",
+"fmt": "int",
+"casas": 0,
+"suf": " dias",
+"emoji": "🎉",
+"ini": 1414.4,
+"chave": "107-3"
+},
+{
+"ini": 1422.4,
+"k": "hib",
+"src": "v01/img/tiao-celular.jpg",
+"mov": "sai",
+"ov": [
+{
+"t": "frasetopo",
+"texto": "Começa hoje com o gasto de *hoje*.",
+"pos": "esq"
+}
+],
+"chave": "108-0"
+},
+{
+"k": "botao",
+"tipo": "inscrever",
+"texto": "Toda semana, uma história nova do *Tião*",
+"ini": 1427.98,
+"chave": "109-0"
+},
+{
+"ini": 1435.3,
+"k": "img",
+"src": "v01/img/rua-duas-casas.jpg",
+"mov": "entra",
+"ov": [],
+"chave": "109-1"
+},
+{
+"k": "frase",
+"texto": "Na sua rua, você é o Tião ou já foi o *Marcos*?",
+"sobre": "me conta nos comentários",
+"escuro": false,
+"emoji": "🤔",
+"ini": 1437.34,
+"chave": "109-2"
+},
+{
+"ini": 1444.12,
+"k": "final",
+"chave": "final"
+}
+],
+"legendas": [
+[
+0.0,
+0.81,
+"Sábado,"
+],
+[
+0.98,
+2.41,
+"*7h40* da manhã."
+],
+[
+2.74,
+3.65,
+"O *Tião* está na"
+],
+[
+3.5,
+4.23,
+"calçada,"
+],
+[
+4.08,
+5.19,
+"de chinelo,"
+],
+[
+5.04,
+6.15,
+"com a caneca de"
+],
+[
+6.0,
+7.31,
+"café lascada na mão,"
+],
+[
+7.36,
+8.69,
+"lavando um carro branco"
+],
+[
+8.54,
+9.33,
+"de *2001.*"
+],
+[
+10.12,
+11.41,
+"O para-choque tem um"
+],
+[
+11.26,
+12.91,
+"arranhão que ninguém consertou."
+],
+[
+13.52,
+15.33,
+"O banco do motorista"
+],
+[
+15.18,
+16.67,
+"tem um rasgo coberto"
+],
+[
+16.52,
+17.49,
+"com uma capa."
+],
+[
+17.86,
+18.87,
+"Do outro lado da"
+],
+[
+18.72,
+19.13,
+"rua,"
+],
+[
+19.46,
+20.41,
+"o *Marcos* sai de"
+],
+[
+20.26,
+21.41,
+"casa com a chave"
+],
+[
+21.26,
+21.81,
+"na mão."
+],
+[
+23.76,
+25.27,
+"Na garagem dele,"
+],
+[
+25.6,
+26.95,
+"uma *picape* preta,"
+],
+[
+27.04,
+27.89,
+"*0* km,"
+],
+[
+27.74,
+28.47,
+"brilhando."
+],
+[
+29.52,
+31.13,
+"Ele aperta o botão,"
+],
+[
+31.38,
+32.21,
+"o farol pisca,"
+],
+[
+32.06,
+33.39,
+"e ele olha para"
+],
+[
+33.24,
+34.19,
+"o carro do *Tião*"
+],
+[
+34.04,
+34.49,
+"e ri."
+],
+[
+34.78,
+35.61,
+"Ô *Tião,*"
+],
+[
+35.64,
+36.79,
+"esse aí ainda pega"
+],
+[
+36.64,
+37.35,
+"no tranco?"
+],
+[
+37.66,
+38.31,
+"A *Sandra,*"
+],
+[
+38.46,
+39.47,
+"mulher do *Marcos,*"
+],
+[
+39.52,
+39.97,
+"ri junto,"
+],
+[
+39.82,
+40.61,
+"da janela."
+],
+[
+40.88,
+41.79,
+"O *Tião* sorri,"
+],
+[
+41.9,
+42.89,
+"levanta a caneca,"
+],
+[
+42.74,
+43.65,
+"e não responde."
+],
+[
+44.82,
+46.89,
+"Ninguém naquela rua sabia"
+],
+[
+46.74,
+47.67,
+"o que o *Tião*"
+],
+[
+47.52,
+48.09,
+"sabia."
+],
+[
+48.84,
+50.17,
+"Daqui a *5* anos,"
+],
+[
+50.52,
+51.65,
+"um caminhão vai parar"
+],
+[
+51.5,
+52.55,
+"na frente de uma"
+],
+[
+52.4,
+53.71,
+"dessas casas e levar"
+],
+[
+63.62,
+64.91,
+"Mas antes,"
+],
+[
+65.14,
+66.51,
+"conhece o *Tião* direito."
+],
+[
+67.06,
+68.33,
+"*30* e poucos anos."
+],
+[
+68.68,
+70.49,
+"Trabalha de carteira assinada,"
+],
+[
+70.82,
+73.59,
+"ganha *R$ 3.800* por mês."
+],
+[
+73.78,
+74.83,
+"Acorda às *5,*"
+],
+[
+75.16,
+76.61,
+"pega *2* ônibus quando"
+],
+[
+76.46,
+77.31,
+"o carro está na"
+],
+[
+77.16,
+77.91,
+"oficina,"
+],
+[
+77.76,
+79.05,
+"e volta tarde."
+],
+[
+78.9,
+80.71,
+"O carro dele é"
+],
+[
+80.56,
+81.13,
+"velho,"
+],
+[
+81.16,
+82.37,
+"mas está quitado."
+],
+[
+84.32,
+85.69,
+"E o *Tião* nem"
+],
+[
+85.54,
+86.63,
+"sempre foi assim."
+],
+[
+86.48,
+87.73,
+"Há alguns anos,"
+],
+[
+87.84,
+88.97,
+"ele era igualzinho a"
+],
+[
+88.82,
+89.93,
+"você e a mim:"
+],
+[
+99.46,
+100.65,
+"Guarda essa frase,"
+],
+[
+101.08,
+102.57,
+"simplesmente *sumia,*"
+],
+[
+102.76,
+103.91,
+"porque é dela que"
+],
+[
+103.76,
+105.15,
+"nasce toda a virada"
+],
+[
+105.0,
+105.87,
+"dessa história."
+],
+[
+107.56,
+108.31,
+"Agora,"
+],
+[
+108.58,
+109.35,
+"o *Marcos.*"
+],
+[
+109.46,
+110.41,
+"O *Marcos* e a"
+],
+[
+110.26,
+110.79,
+"*Sandra,*"
+],
+[
+117.14,
+118.17,
+"E um dia o"
+],
+[
+118.02,
+119.75,
+"*Marcos* entrou na concessionária"
+],
+[
+119.6,
+120.63,
+"só para olhar."
+],
+[
+121.76,
+123.21,
+"Saiu de lá com"
+],
+[
+123.06,
+125.35,
+"a *picape* de *R$ 220.000.*"
+],
+[
+130.94,
+132.35,
+"Agora presta atenção,"
+],
+[
+132.64,
+133.49,
+"porque é aqui que"
+],
+[
+142.7,
+143.85,
+"Com essa taxa,"
+],
+[
+143.86,
+144.99,
+"a *parcela* do *Marcos*"
+],
+[
+144.84,
+147.21,
+"ficou em *R$ 5.714.*"
+],
+[
+160.46,
+161.03,
+"entrada,"
+],
+[
+161.38,
+163.49,
+"a *picape* de *R$ 220.000*"
+],
+[
+175.5,
+176.33,
+"Vai para o banco."
+],
+[
+177.36,
+178.01,
+"Mas,"
+],
+[
+178.18,
+178.99,
+"da janela,"
+],
+[
+179.16,
+180.17,
+"ninguém vê isso."
+],
+[
+180.6,
+181.63,
+"A rua só vê"
+],
+[
+181.48,
+182.75,
+"a *picape* brilhando."
+],
+[
+184.02,
+184.77,
+"Agora,"
+],
+[
+185.1,
+186.47,
+"abre comigo a conta"
+],
+[
+186.32,
+187.39,
+"do mês da casa"
+],
+[
+187.24,
+188.11,
+"do *Marcos.*"
+],
+[
+192.3,
+193.57,
+"a *vitrine* começa a"
+],
+[
+193.42,
+193.93,
+"rachar."
+],
+[
+200.14,
+201.27,
+"só na *picape:*"
+],
+[
+201.44,
+203.43,
+"*R$ 5.714.*"
+],
+[
+207.2,
+208.53,
+"Ainda parece bastante."
+],
+[
+208.82,
+209.99,
+"Agora vem o resto."
+],
+[
+211.52,
+212.87,
+"Aluguel da casa:"
+],
+[
+213.1,
+213.97,
+"*R$ 2.200.*"
+],
+[
+221.42,
+222.91,
+"Gasolina da *picape,*"
+],
+[
+222.98,
+223.93,
+"que não é nada"
+],
+[
+223.78,
+224.59,
+"econômica:"
+],
+[
+224.58,
+225.37,
+"mais *R$ 600.*"
+],
+[
+232.72,
+234.15,
+"E o imposto do"
+],
+[
+234.0,
+234.57,
+"carro,"
+],
+[
+234.42,
+235.85,
+"o *IPVA.*"
+],
+[
+236.2,
+237.15,
+"Em São Paulo,"
+],
+[
+237.26,
+238.99,
+"*4%* do valor do"
+],
+[
+238.84,
+239.33,
+"carro:"
+],
+[
+239.38,
+241.39,
+"*R$ 8.800* por ano."
+],
+[
+248.86,
+250.37,
+"O casal fecha o"
+],
+[
+250.22,
+251.99,
+"mês devendo *R$ 44.*"
+],
+[
+258.86,
+259.71,
+"no domingo."
+],
+[
+260.18,
+261.63,
+"Não tem nada."
+],
+[
+263.8,
+264.73,
+"Só que o *Marcos*"
+],
+[
+264.58,
+266.01,
+"nunca fez essa conta"
+],
+[
+265.86,
+266.53,
+"no papel."
+],
+[
+266.98,
+268.21,
+"Ele fazia de cabeça."
+],
+[
+268.76,
+269.03,
+"E,"
+],
+[
+268.88,
+269.63,
+"de cabeça,"
+],
+[
+269.9,
+271.19,
+"a conta sempre fecha."
+],
+[
+272.5,
+274.01,
+"E antes de você"
+],
+[
+273.86,
+275.09,
+"achar que o *Marcos*"
+],
+[
+274.94,
+275.67,
+"é bobo:"
+],
+[
+292.14,
+293.15,
+"É quando a gente"
+],
+[
+293.0,
+294.33,
+"compra uma coisa não"
+],
+[
+294.18,
+295.27,
+"pelo que ela faz,"
+],
+[
+295.66,
+296.39,
+"mas pelo que ela"
+],
+[
+296.24,
+296.79,
+"mostra."
+],
+[
+298.06,
+299.69,
+"A *picape* do *Marcos*"
+],
+[
+299.54,
+300.59,
+"não é só um"
+],
+[
+300.44,
+300.93,
+"carro."
+],
+[
+301.28,
+302.33,
+"É um recado para"
+],
+[
+302.18,
+302.69,
+"a rua:"
+],
+[
+303.0,
+303.79,
+"eu cheguei lá."
+],
+[
+304.58,
+306.43,
+"*50* anos depois,"
+],
+[
+315.28,
+316.41,
+"a gente não gasta"
+],
+[
+316.26,
+317.29,
+"de acordo com o"
+],
+[
+317.14,
+317.71,
+"que ganha,"
+],
+[
+317.84,
+318.91,
+"mas de acordo com"
+],
+[
+318.76,
+319.49,
+"o que o vizinho"
+],
+[
+319.34,
+319.97,
+"gasta."
+],
+[
+321.16,
+322.71,
+"Ele chamou de efeito"
+],
+[
+324.02,
+325.29,
+"Se o vizinho troca"
+],
+[
+325.14,
+325.85,
+"de carro,"
+],
+[
+326.06,
+327.19,
+"a gente sente que"
+],
+[
+327.04,
+328.17,
+"ficou para trás,"
+],
+[
+328.36,
+329.59,
+"mesmo que nada na"
+],
+[
+329.44,
+331.01,
+"nossa vida tenha mudado."
+],
+[
+330.86,
+332.89,
+"Então não é preguiça,"
+],
+[
+332.74,
+334.29,
+"nem falta de caráter."
+],
+[
+340.76,
+341.91,
+"O *Tião* escapou."
+],
+[
+341.76,
+342.87,
+"E não foi por"
+],
+[
+342.72,
+344.15,
+"ser mais inteligente."
+],
+[
+344.42,
+345.39,
+"Foi por causa de"
+],
+[
+345.24,
+346.53,
+"uma noite na cozinha."
+],
+[
+348.12,
+349.77,
+"Volta comigo uns anos"
+],
+[
+354.22,
+355.41,
+"O *Tião* está sentado"
+],
+[
+355.26,
+356.37,
+"na mesa da cozinha,"
+],
+[
+356.38,
+356.99,
+"com a mão na"
+],
+[
+356.84,
+357.41,
+"cabeça."
+],
+[
+358.08,
+359.79,
+"Na toalha xadrez,"
+],
+[
+360.1,
+361.25,
+"um monte de papel:"
+],
+[
+361.58,
+362.55,
+"boleto da luz,"
+],
+[
+362.78,
+363.95,
+"fatura do cartão,"
+],
+[
+364.12,
+365.13,
+"carnê da loja,"
+],
+[
+365.28,
+366.19,
+"conta do celular."
+],
+[
+372.1,
+373.25,
+"Ele não tinha comprado"
+],
+[
+373.1,
+373.99,
+"nada grande."
+],
+[
+380.88,
+382.07,
+"ele pegou um *caderno*"
+],
+[
+381.92,
+383.03,
+"velho de capa azul,"
+],
+[
+383.12,
+383.91,
+"uma caneta,"
+],
+[
+383.76,
+384.79,
+"e fez uma coisa"
+],
+[
+384.64,
+385.63,
+"que nunca tinha feito"
+],
+[
+385.48,
+386.17,
+"na vida:"
+],
+[
+386.24,
+387.09,
+"anotou tudo."
+],
+[
+387.4,
+388.57,
+"Cada café na padaria."
+],
+[
+389.46,
+390.99,
+"Cada lanche no trabalho."
+],
+[
+391.52,
+393.09,
+"Cada prestação pequena,"
+],
+[
+393.28,
+395.27,
+"daquelas de *49* e"
+],
+[
+395.12,
+395.27,
+"*90,*"
+],
+[
+395.5,
+396.39,
+"que a gente nem"
+],
+[
+396.24,
+397.49,
+"lembra que existe."
+],
+[
+397.86,
+399.13,
+"E descobriu uma coisa"
+],
+[
+398.98,
+400.49,
+"que ninguém tinha contado"
+],
+[
+400.34,
+401.03,
+"pra ele:"
+],
+[
+405.8,
+407.15,
+"dinheiro escapava."
+],
+[
+412.42,
+413.67,
+"Olha a lista daquela"
+],
+[
+413.52,
+414.17,
+"noite,"
+],
+[
+414.34,
+415.41,
+"do jeito que ele"
+],
+[
+415.26,
+416.05,
+"escreveu."
+],
+[
+417.3,
+419.03,
+"Aplicativo de música que"
+],
+[
+418.88,
+420.15,
+"ele nem abria mais:"
+],
+[
+420.64,
+421.89,
+"*20* e *1* e"
+],
+[
+421.74,
+422.41,
+"*90.*"
+],
+[
+422.58,
+423.79,
+"Seguro do cartão,"
+],
+[
+423.98,
+425.21,
+"que ele nunca pediu"
+],
+[
+425.06,
+426.07,
+"e nem sabia que"
+],
+[
+425.92,
+426.59,
+"pagava:"
+],
+[
+426.6,
+427.77,
+"*14* e *90.*"
+],
+[
+428.36,
+430.39,
+"Três serviços de streaming,"
+],
+[
+437.92,
+439.27,
+"Tarifa do pacote do"
+],
+[
+439.12,
+439.69,
+"banco,"
+],
+[
+439.9,
+441.07,
+"que ele podia trocar"
+],
+[
+440.92,
+442.03,
+"por um pacote sem"
+],
+[
+452.08,
+453.67,
+"E o lanche de"
+],
+[
+453.52,
+454.97,
+"*12* reais no trabalho."
+],
+[
+455.3,
+456.53,
+"Esse ele não queria"
+],
+[
+456.38,
+457.39,
+"cortar de todo."
+],
+[
+457.94,
+458.75,
+"Mas,"
+],
+[
+459.18,
+461.09,
+"levando marmita três dias"
+],
+[
+460.94,
+461.87,
+"por semana,"
+],
+[
+465.42,
+467.17,
+"O *Tião* somou tudo"
+],
+[
+467.02,
+467.93,
+"duas vezes,"
+],
+[
+468.08,
+469.33,
+"porque não acreditou na"
+],
+[
+469.18,
+469.63,
+"primeira."
+],
+[
+478.02,
+479.59,
+"nenhum desses gastos,"
+],
+[
+479.58,
+480.39,
+"sozinho,"
+],
+[
+480.58,
+481.67,
+"parece um problema."
+],
+[
+482.08,
+483.21,
+"*20* reais aqui,"
+],
+[
+491.68,
+492.23,
+"E o que a"
+],
+[
+492.08,
+493.19,
+"gente esquece,"
+],
+[
+493.26,
+494.53,
+"a gente não corta."
+],
+[
+494.92,
+496.13,
+"*380* reais."
+],
+[
+504.88,
+506.09,
+"fazer o mesmo teste"
+],
+[
+505.94,
+506.99,
+"do *Tião* hoje,"
+],
+[
+507.12,
+507.87,
+"é simples."
+],
+[
+508.4,
+509.53,
+"Abre o aplicativo do"
+],
+[
+509.38,
+510.71,
+"seu banco e puxa"
+],
+[
+513.0,
+513.69,
+"Não de um mês"
+],
+[
+513.54,
+513.95,
+"só."
+],
+[
+514.16,
+514.75,
+"De *3.*"
+],
+[
+515.5,
+517.45,
+"Agora marca tudo o"
+],
+[
+522.9,
+523.65,
+"Assinatura,"
+],
+[
+523.76,
+524.29,
+"tarifa,"
+],
+[
+524.38,
+524.85,
+"seguro."
+],
+[
+525.26,
+526.03,
+"É ali que o"
+],
+[
+525.88,
+526.97,
+"dinheiro escapa,"
+],
+[
+538.38,
+539.43,
+"Se a resposta for"
+],
+[
+539.28,
+539.63,
+"não,"
+],
+[
+539.78,
+540.83,
+"você acabou de achar"
+],
+[
+540.68,
+541.17,
+"dinheiro."
+],
+[
+542.44,
+544.21,
+"A partir daquela noite,"
+],
+[
+544.48,
+545.67,
+"o *Tião* tomou *3*"
+],
+[
+554.1,
+555.65,
+"Cancelou o que não"
+],
+[
+555.5,
+556.21,
+"usava,"
+],
+[
+556.42,
+557.57,
+"ligou para o banco"
+],
+[
+557.42,
+558.71,
+"e tirou o seguro"
+],
+[
+558.56,
+559.71,
+"que nunca pediu,"
+],
+[
+559.56,
+561.53,
+"passou a levar marmita"
+],
+[
+561.38,
+562.95,
+"*3* vezes por semana."
+],
+[
+563.44,
+564.87,
+"E aquele dinheiro parou"
+],
+[
+564.72,
+565.47,
+"de escapar."
+],
+[
+573.8,
+575.35,
+"ele separava esse dinheiro"
+],
+[
+575.2,
+576.85,
+"numa aplicação simples de"
+],
+[
+576.7,
+577.77,
+"renda fixa."
+],
+[
+577.98,
+579.23,
+"Não esperava sobrar."
+],
+[
+584.74,
+585.95,
+"que o *Tião* aprendeu"
+],
+[
+585.8,
+586.33,
+"depois:"
+],
+[
+586.18,
+588.61,
+"ele colocou essa transferência"
+],
+[
+588.46,
+589.35,
+"no automático."
+],
+[
+594.54,
+595.93,
+"sem ele precisar decidir"
+],
+[
+595.78,
+596.25,
+"nada."
+],
+[
+604.28,
+605.71,
+"Quando a poupança passou"
+],
+[
+605.56,
+606.69,
+"a subir sozinha,"
+],
+[
+606.98,
+608.09,
+"sem depender de força"
+],
+[
+607.94,
+608.61,
+"de vontade,"
+],
+[
+621.92,
+623.93,
+"Nas primeiras semanas foi"
+],
+[
+623.78,
+624.43,
+"chato."
+],
+[
+647.34,
+648.43,
+"na segunda semana,"
+],
+[
+648.54,
+649.59,
+"não é defeito seu."
+],
+[
+650.0,
+651.11,
+"Você só ainda não"
+],
+[
+650.96,
+652.01,
+"tinha chegado lá."
+],
+[
+653.12,
+654.61,
+"O *Tião* passou dos"
+],
+[
+654.46,
+655.95,
+"*66* dias."
+],
+[
+656.16,
+656.41,
+"E,"
+],
+[
+656.26,
+657.11,
+"depois disso,"
+],
+[
+657.48,
+659.55,
+"anotar virou igual escovar"
+],
+[
+659.4,
+660.23,
+"os dentes."
+],
+[
+660.8,
+662.37,
+"A terceira decisão:"
+],
+[
+664.38,
+665.85,
+"O carro estava quitado,"
+],
+[
+666.04,
+666.89,
+"funcionava,"
+],
+[
+666.74,
+668.17,
+"e levava ele ao"
+],
+[
+668.02,
+668.61,
+"trabalho."
+],
+[
+674.02,
+675.35,
+"E essa terceira foi"
+],
+[
+675.2,
+676.05,
+"a mais difícil."
+],
+[
+677.0,
+678.39,
+"Não pelo dinheiro,"
+],
+[
+678.84,
+679.83,
+"mas pela vergonha."
+],
+[
+680.44,
+681.81,
+"Porque todo sábado de"
+],
+[
+681.66,
+683.35,
+"manhã tinha a *picape*"
+],
+[
+683.2,
+684.27,
+"do outro lado da"
+],
+[
+684.12,
+684.55,
+"rua."
+],
+[
+685.04,
+686.09,
+"Tinha a risada."
+],
+[
+686.82,
+688.11,
+"Tinha a sensação de"
+],
+[
+687.96,
+689.51,
+"estar ficando para trás."
+],
+[
+690.44,
+691.61,
+"O *Tião* escreveu uma"
+],
+[
+691.46,
+692.97,
+"frase na primeira página"
+],
+[
+692.82,
+693.75,
+"do *caderno,*"
+],
+[
+693.6,
+695.09,
+"para ler sempre que"
+],
+[
+694.94,
+696.15,
+"sentisse essa vontade:"
+],
+[
+698.2,
+699.57,
+"Mas também ninguém vê"
+],
+[
+699.42,
+700.47,
+"a *parcela* dele."
+],
+[
+701.6,
+703.53,
+"E aqui eu quero"
+],
+[
+703.38,
+704.73,
+"te pedir uma coisa"
+],
+[
+704.58,
+705.31,
+"rápida."
+],
+[
+711.76,
+712.61,
+"agora mesmo,"
+],
+[
+713.0,
+714.17,
+"tem alguém do jeito"
+],
+[
+714.02,
+715.21,
+"que o *Tião* estava"
+],
+[
+715.06,
+716.45,
+"naquela noite do dia"
+],
+[
+716.3,
+716.83,
+"*20:*"
+],
+[
+717.22,
+718.61,
+"sentado na mesa da"
+],
+[
+718.46,
+719.17,
+"cozinha,"
+],
+[
+719.38,
+721.01,
+"com os boletos espalhados"
+],
+[
+720.86,
+722.07,
+"na toalha xadrez,"
+],
+[
+721.92,
+723.35,
+"a mão na cabeça,"
+],
+[
+723.64,
+725.01,
+"sem saber para onde"
+],
+[
+724.86,
+725.87,
+"foi o salário."
+],
+[
+726.8,
+728.55,
+"O seu *like* ajuda"
+],
+[
+734.4,
+735.43,
+"do outro lado da"
+],
+[
+735.28,
+735.75,
+"rua,"
+],
+[
+736.2,
+737.49,
+"as coisas iam bem."
+],
+[
+737.76,
+739.15,
+"Pelo menos por fora."
+],
+[
+740.02,
+741.13,
+"No primeiro ano,"
+],
+[
+741.28,
+742.49,
+"a *picape* era motivo"
+],
+[
+742.34,
+743.21,
+"de orgulho."
+],
+[
+744.0,
+745.53,
+"Churrasco no sábado,"
+],
+[
+745.76,
+747.25,
+"foto na rede social,"
+],
+[
+747.98,
+749.57,
+"a rua inteira comentando."
+],
+[
+750.2,
+751.29,
+"Só que,"
+],
+[
+755.68,
+757.13,
+"a *picape* perdia valor."
+],
+[
+757.7,
+759.29,
+"Um carro *zero* quilômetro,"
+],
+[
+759.34,
+759.91,
+"no Brasil,"
+],
+[
+760.26,
+761.91,
+"costuma perder entre *10*"
+],
+[
+761.76,
+763.47,
+"e *20%* do preço"
+],
+[
+763.32,
+764.57,
+"só no primeiro ano."
+],
+[
+776.88,
+778.25,
+"a *Sandra* passou a"
+],
+[
+778.1,
+779.11,
+"pagar o mercado no"
+],
+[
+778.96,
+779.57,
+"cartão."
+],
+[
+790.24,
+791.29,
+"O carro velho do"
+],
+[
+791.14,
+792.13,
+"*Tião* quebrou."
+],
+[
+792.62,
+793.37,
+"Embreagem."
+],
+[
+793.56,
+795.39,
+"*R$ 1.800* na oficina."
+],
+[
+796.04,
+797.53,
+"O *Tião* foi até"
+],
+[
+797.38,
+797.97,
+"o banco,"
+],
+[
+798.24,
+799.17,
+"tirou o dinheiro da"
+],
+[
+799.02,
+799.85,
+"*reserva,*"
+],
+[
+799.88,
+801.11,
+"pagou à vista e"
+],
+[
+800.96,
+802.53,
+"ainda pediu desconto por"
+],
+[
+802.38,
+802.81,
+"isso."
+],
+[
+802.94,
+803.61,
+"Chateado?"
+],
+[
+803.46,
+804.77,
+"Claro."
+],
+[
+805.46,
+807.05,
+"Mas dormiu tranquilo naquela"
+],
+[
+806.9,
+807.41,
+"noite."
+],
+[
+809.48,
+811.13,
+"Na mesma semana,"
+],
+[
+811.38,
+812.61,
+"a *picape* do *Marcos*"
+],
+[
+812.46,
+814.01,
+"precisou de *4* pneus"
+],
+[
+813.86,
+814.43,
+"novos."
+],
+[
+815.02,
+816.61,
+"Pneu de *picape* não"
+],
+[
+816.46,
+817.65,
+"é pneu de carro"
+],
+[
+817.5,
+818.15,
+"popular."
+],
+[
+818.66,
+819.99,
+"*R$ 3.200.*"
+],
+[
+820.36,
+822.05,
+"O *Marcos* não tinha"
+],
+[
+821.9,
+822.69,
+"*reserva.*"
+],
+[
+823.06,
+824.15,
+"Tudo o que sobrava"
+],
+[
+824.0,
+825.19,
+"ia para a *picape.*"
+],
+[
+837.66,
+838.77,
+"E a diferença não"
+],
+[
+838.62,
+839.91,
+"estava no salário."
+],
+[
+840.2,
+841.73,
+"O *Marcos* ganhava *3*"
+],
+[
+841.58,
+842.47,
+"vezes mais."
+],
+[
+850.96,
+852.23,
+"A empresa do *Marcos*"
+],
+[
+852.08,
+853.15,
+"cortou pessoal,"
+],
+[
+853.54,
+854.61,
+"e ele foi um"
+],
+[
+854.46,
+855.43,
+"dos demitidos."
+],
+[
+867.32,
+868.65,
+"E o *Marcos* não"
+],
+[
+868.5,
+869.57,
+"estava sozinho."
+],
+[
+870.7,
+872.13,
+"Segundo a Serasa,"
+],
+[
+880.82,
+882.55,
+"Quase metade dos adultos"
+],
+[
+882.4,
+882.91,
+"do país."
+],
+[
+883.66,
+884.99,
+"E bancos,"
+],
+[
+890.62,
+892.49,
+"O *Marcos* virou estatística."
+],
+[
+892.54,
+893.47,
+"Sem ninguém na rua"
+],
+[
+893.32,
+893.89,
+"perceber."
+],
+[
+894.62,
+895.91,
+"E o quarto ano"
+],
+[
+897.56,
+899.07,
+"O *Marcos* arrumou outro"
+],
+[
+898.92,
+899.63,
+"emprego,"
+],
+[
+899.94,
+901.01,
+"mas ganhando menos."
+],
+[
+918.7,
+919.87,
+"Parece proteção."
+],
+[
+923.12,
+924.35,
+"Uma compra de *R$ 1.000*"
+],
+[
+924.2,
+926.09,
+"pode virar uma *dívida*"
+],
+[
+925.94,
+926.97,
+"de até *R$ 2.000.*"
+],
+[
+927.32,
+928.43,
+"E foi isso que"
+],
+[
+928.28,
+929.83,
+"aconteceu com os pneus,"
+],
+[
+929.98,
+930.77,
+"com o mercado,"
+],
+[
+931.02,
+931.87,
+"com a farmácia."
+],
+[
+935.66,
+937.15,
+"O *Marcos* pensou em"
+],
+[
+937.0,
+938.15,
+"vender a *picape.*"
+],
+[
+938.0,
+939.55,
+"Pensou de verdade."
+],
+[
+940.14,
+941.77,
+"Mas vender era admitir"
+],
+[
+941.62,
+942.71,
+"para a rua inteira"
+],
+[
+942.56,
+943.51,
+"que não tinha dado"
+],
+[
+943.36,
+943.89,
+"certo."
+],
+[
+946.48,
+947.17,
+"Mais outro."
+],
+[
+955.12,
+956.11,
+"Até que,"
+],
+[
+956.24,
+957.51,
+"numa quinta-feira à noite,"
+],
+[
+957.9,
+958.97,
+"alguém bateu na porta"
+],
+[
+958.82,
+959.55,
+"do *Tião.*"
+],
+[
+959.68,
+960.57,
+"Era o *Marcos.*"
+],
+[
+960.78,
+961.73,
+"Sem a chave da"
+],
+[
+961.58,
+962.57,
+"*picape* na mão,"
+],
+[
+962.64,
+963.53,
+"sem sorriso,"
+],
+[
+963.64,
+964.55,
+"olhando para o chão."
+],
+[
+965.76,
+966.51,
+"*Tião,*"
+],
+[
+966.72,
+968.09,
+"eu preciso de *R$ 2.000*"
+],
+[
+967.94,
+968.85,
+"emprestados."
+],
+[
+969.26,
+970.11,
+"É só para esse"
+],
+[
+969.96,
+970.41,
+"mês,"
+],
+[
+970.42,
+971.83,
+"para completar a *parcela.*"
+],
+[
+972.12,
+973.35,
+"Mês que vem eu"
+],
+[
+973.2,
+974.03,
+"te devolvo."
+],
+[
+974.56,
+975.83,
+"E o *Tião* tinha."
+],
+[
+976.2,
+977.37,
+"Nesse quarto ano,"
+],
+[
+977.52,
+978.77,
+"ele já tinha uns"
+],
+[
+978.62,
+980.19,
+"*R$ 22.000* guardados."
+],
+[
+987.6,
+989.23,
+"E disse não."
+],
+[
+989.58,
+990.75,
+"Não por falta de"
+],
+[
+990.6,
+991.81,
+"vontade de ajudar."
+],
+[
+991.66,
+993.23,
+"É que *R$ 2.000* não"
+],
+[
+993.08,
+994.45,
+"salvavam a *picape.*"
+],
+[
+1001.14,
+1002.23,
+"O *Tião* disse:"
+],
+[
+1002.48,
+1003.79,
+"Dinheiro eu não te"
+],
+[
+1003.64,
+1004.39,
+"empresto."
+],
+[
+1004.54,
+1004.91,
+"Mas,"
+],
+[
+1005.0,
+1005.63,
+"se quiser,"
+],
+[
+1005.84,
+1006.83,
+"eu te mostro o"
+],
+[
+1006.68,
+1007.37,
+"*caderno.*"
+],
+[
+1007.68,
+1008.73,
+"Era o *caderno* de"
+],
+[
+1008.58,
+1009.35,
+"capa azul."
+],
+[
+1009.56,
+1010.87,
+"O mesmo daquela noite"
+],
+[
+1010.72,
+1011.57,
+"na cozinha,"
+],
+[
+1011.76,
+1012.93,
+"quando o salário tinha"
+],
+[
+1012.78,
+1014.21,
+"acabado no dia *20.*"
+],
+[
+1014.8,
+1016.55,
+"Ali estava cada café,"
+],
+[
+1016.82,
+1017.79,
+"cada taxa,"
+],
+[
+1017.94,
+1019.53,
+"cada assinatura esquecida."
+],
+[
+1031.96,
+1033.23,
+"riso sem graça,"
+],
+[
+1033.46,
+1034.81,
+"virou as costas e"
+],
+[
+1034.66,
+1035.27,
+"foi embora."
+],
+[
+1035.44,
+1036.53,
+"A porta bateu."
+],
+[
+1037.62,
+1039.75,
+"Essa oferta ainda vai"
+],
+[
+1044.72,
+1045.73,
+"um estudo que vai"
+],
+[
+1045.58,
+1046.73,
+"mudar o jeito como"
+],
+[
+1046.58,
+1047.89,
+"você olha para o"
+],
+[
+1047.74,
+1048.79,
+"carro do vizinho."
+],
+[
+1055.24,
+1057.05,
+"passaram anos entrevistando"
+],
+[
+1056.9,
+1058.27,
+"*milionários* de verdade."
+],
+[
+1059.64,
+1061.25,
+"O resultado virou o"
+],
+[
+1073.0,
+1074.17,
+"comprado com cuidado,"
+],
+[
+1074.02,
+1075.83,
+"e ficava com ele"
+],
+[
+1075.68,
+1076.77,
+"por muitos anos."
+],
+[
+1081.82,
+1083.09,
+"patrimônio de verdade."
+],
+[
+1084.62,
+1086.27,
+"Os pesquisadores tinham"
+],
+[
+1086.12,
+1087.37,
+"um nome para isso:"
+],
+[
+1094.04,
+1095.39,
+"Parecer rico e ser"
+],
+[
+1095.24,
+1096.65,
+"rico são coisas que"
+],
+[
+1096.5,
+1098.41,
+"quase nunca andam juntas."
+],
+[
+1098.86,
+1100.41,
+"Porque o dinheiro que"
+],
+[
+1107.12,
+1108.05,
+"eu quero que você"
+],
+[
+1107.9,
+1109.19,
+"faça um teste comigo,"
+],
+[
+1109.64,
+1110.27,
+"agora,"
+],
+[
+1110.36,
+1111.27,
+"sem ninguém ver."
+],
+[
+1121.94,
+1122.99,
+"Se for menos de"
+],
+[
+1122.84,
+1123.31,
+"um mês,"
+],
+[
+1123.48,
+1124.83,
+"você não está sozinho,"
+],
+[
+1124.68,
+1126.19,
+"e não tem vergonha"
+],
+[
+1126.04,
+1126.97,
+"nenhuma nisso."
+],
+[
+1132.56,
+1133.09,
+"rico."
+],
+[
+1141.4,
+1142.53,
+"começo do vídeo?"
+],
+[
+1142.88,
+1143.99,
+"Sábado de manhã,"
+],
+[
+1144.28,
+1145.19,
+"o *Tião* com a"
+],
+[
+1145.04,
+1146.21,
+"caneca lascada,"
+],
+[
+1146.42,
+1147.39,
+"o carro branco de"
+],
+[
+1147.24,
+1147.97,
+"*2001?*"
+],
+[
+1148.38,
+1149.83,
+"Cinco anos se passaram."
+],
+[
+1153.82,
+1155.01,
+"mesma calçada,"
+],
+[
+1154.86,
+1156.33,
+"com a mesma caneca,"
+],
+[
+1156.46,
+1157.71,
+"lavando o mesmo carro."
+],
+[
+1157.56,
+1158.99,
+"Do outro lado da"
+],
+[
+1158.84,
+1159.31,
+"rua,"
+],
+[
+1159.36,
+1160.65,
+"um caminhão-guincho está"
+],
+[
+1160.5,
+1161.79,
+"parado na frente da"
+],
+[
+1161.64,
+1162.71,
+"casa do *Marcos.*"
+],
+[
+1168.36,
+1169.71,
+"O *Marcos* está de"
+],
+[
+1169.56,
+1170.57,
+"pé no portão,"
+],
+[
+1170.9,
+1172.23,
+"olhando a *picape* subir"
+],
+[
+1172.08,
+1172.95,
+"no *guincho.*"
+],
+[
+1173.34,
+1174.65,
+"A *Sandra* não aparece"
+],
+[
+1174.5,
+1175.43,
+"na janela."
+],
+[
+1187.18,
+1188.31,
+"A *picape* ia a"
+],
+[
+1188.16,
+1188.61,
+"*leilão.*"
+],
+[
+1189.38,
+1190.99,
+"E tem uma parte"
+],
+[
+1190.84,
+1192.39,
+"que quase ninguém sabe."
+],
+[
+1192.7,
+1193.51,
+"No *leilão,*"
+],
+[
+1193.76,
+1195.69,
+"carro tomado costuma ser"
+],
+[
+1205.64,
+1206.77,
+"o que faltar ainda"
+],
+[
+1206.62,
+1208.31,
+"é cobrado do *Marcos.*"
+],
+[
+1208.76,
+1210.33,
+"Ele perdeu a *picape,*"
+],
+[
+1210.56,
+1211.67,
+"perdeu tudo o que"
+],
+[
+1211.52,
+1212.97,
+"já tinha pago nela,"
+],
+[
+1212.82,
+1214.69,
+"e ainda podia sair"
+],
+[
+1214.54,
+1216.43,
+"dessa história devendo para"
+],
+[
+1216.28,
+1216.93,
+"o banco."
+],
+[
+1217.48,
+1218.27,
+"E o *Tião?*"
+],
+[
+1218.6,
+1219.81,
+"Nesses cinco anos,"
+],
+[
+1222.74,
+1223.97,
+"ele tinha juntado uns"
+],
+[
+1223.82,
+1225.17,
+"*29* mil reais."
+],
+[
+1232.38,
+1233.67,
+"É consertar o carro"
+],
+[
+1233.52,
+1234.69,
+"sem fazer *dívida.*"
+],
+[
+1235.92,
+1236.67,
+"Agora,"
+],
+[
+1237.0,
+1237.85,
+"eu sei o que"
+],
+[
+1237.7,
+1238.73,
+"você está pensando."
+],
+[
+1239.28,
+1240.21,
+"Que o *Tião* ia"
+],
+[
+1240.06,
+1241.31,
+"atravessar a rua e"
+],
+[
+1241.16,
+1241.91,
+"dar o troco."
+],
+[
+1241.76,
+1242.67,
+"E aí,"
+],
+[
+1242.72,
+1243.31,
+"*Marcos,*"
+],
+[
+1243.38,
+1244.43,
+"a *picape* pega no"
+],
+[
+1244.28,
+1244.79,
+"tranco?"
+],
+[
+1245.16,
+1246.23,
+"Ele não fez isso."
+],
+[
+1246.58,
+1247.71,
+"O *Tião* atravessou a"
+],
+[
+1247.56,
+1247.89,
+"rua,"
+],
+[
+1247.9,
+1248.17,
+"sim."
+],
+[
+1248.74,
+1249.93,
+"Mas com duas canecas"
+],
+[
+1249.78,
+1250.75,
+"de café na mão."
+],
+[
+1252.28,
+1253.63,
+"Entregou uma para o"
+],
+[
+1253.48,
+1254.05,
+"*Marcos,*"
+],
+[
+1254.52,
+1255.69,
+"ficou do lado dele,"
+],
+[
+1256.04,
+1256.35,
+"e,"
+],
+[
+1256.2,
+1257.27,
+"quando o *guincho* foi"
+],
+[
+1257.12,
+1257.69,
+"embora,"
+],
+[
+1257.9,
+1259.11,
+"disse só uma coisa:"
+],
+[
+1259.34,
+1260.81,
+"Aquela oferta do *caderno*"
+],
+[
+1260.66,
+1261.67,
+"continua de pé."
+],
+[
+1262.26,
+1263.41,
+"Eu também já estive"
+],
+[
+1263.26,
+1264.45,
+"na mesa da cozinha"
+],
+[
+1264.3,
+1264.99,
+"com a mão na"
+],
+[
+1264.84,
+1265.37,
+"cabeça."
+],
+[
+1266.76,
+1268.57,
+"Porque a história nunca"
+],
+[
+1268.42,
+1269.89,
+"foi sobre o *Tião*"
+],
+[
+1269.74,
+1271.15,
+"ser melhor que o"
+],
+[
+1271.0,
+1271.61,
+"*Marcos.*"
+],
+[
+1271.9,
+1273.25,
+"Foi sobre o *Tião*"
+],
+[
+1277.52,
+1279.63,
+"E aqueles *380* reais"
+],
+[
+1279.48,
+1280.29,
+"por mês,"
+],
+[
+1280.14,
+1281.63,
+"que o *Tião* achou"
+],
+[
+1281.48,
+1282.63,
+"na primeira noite do"
+],
+[
+1282.48,
+1283.19,
+"*caderno?*"
+],
+[
+1291.2,
+1292.55,
+"eles viram mais de"
+],
+[
+1292.4,
+1293.75,
+"*76* mil reais."
+],
+[
+1293.6,
+1295.33,
+"*76* mil."
+],
+[
+1309.34,
+1310.21,
+"Dessa vez,"
+],
+[
+1310.32,
+1311.13,
+"ele aceitou."
+],
+[
+1311.46,
+1312.61,
+"Atravessou a rua,"
+],
+[
+1312.92,
+1314.07,
+"sentou na cozinha do"
+],
+[
+1313.92,
+1315.39,
+"*Tião* e abriu o"
+],
+[
+1315.24,
+1316.61,
+"*caderno* de capa azul,"
+],
+[
+1316.82,
+1317.91,
+"página por página."
+],
+[
+1318.84,
+1320.33,
+"Seis meses depois,"
+],
+[
+1321.82,
+1323.31,
+"a luz da cozinha"
+],
+[
+1323.16,
+1324.39,
+"da casa dele ficou"
+],
+[
+1324.24,
+1325.61,
+"acesa até tarde."
+],
+[
+1326.18,
+1327.59,
+"O *Marcos* e a"
+],
+[
+1327.44,
+1328.47,
+"*Sandra* na mesa,"
+],
+[
+1328.68,
+1329.41,
+"com papel,"
+],
+[
+1329.8,
+1331.55,
+"caneta e o extrato"
+],
+[
+1331.4,
+1332.53,
+"do banco aberto."
+],
+[
+1340.52,
+1342.29,
+"Renegociaram a *dívida* do"
+],
+[
+1342.14,
+1344.03,
+"cartão num feirão de"
+],
+[
+1343.88,
+1345.09,
+"renegociação."
+],
+[
+1345.48,
+1347.27,
+"Venderam a televisão grande"
+],
+[
+1347.12,
+1347.91,
+"da sala."
+],
+[
+1358.2,
+1358.57,
+"Mas,"
+],
+[
+1358.42,
+1359.45,
+"no terceiro,"
+],
+[
+1359.48,
+1360.41,
+"sobrou um pouco."
+],
+[
+1360.8,
+1361.61,
+"Pouco mesmo."
+],
+[
+1361.8,
+1362.79,
+"E eles guardaram."
+],
+[
+1363.5,
+1364.99,
+"No sábado seguinte,"
+],
+[
+1365.54,
+1366.99,
+"*7h40* da manhã,"
+],
+[
+1367.18,
+1369.23,
+"tinha duas pessoas lavando"
+],
+[
+1369.08,
+1370.61,
+"o mesmo carro branco"
+],
+[
+1370.46,
+1372.63,
+"de *2001* na calçada."
+],
+[
+1372.48,
+1373.07,
+"E,"
+],
+[
+1372.92,
+1373.75,
+"da janela,"
+],
+[
+1373.84,
+1374.81,
+"a *Sandra* ria de"
+],
+[
+1374.66,
+1375.13,
+"novo."
+],
+[
+1375.24,
+1375.75,
+"Mas,"
+],
+[
+1375.78,
+1376.41,
+"dessa vez,"
+],
+[
+1376.56,
+1377.17,
+"ria junto."
+],
+[
+1378.28,
+1379.65,
+"Se essa história parece"
+],
+[
+1379.5,
+1380.35,
+"com a sua,"
+],
+[
+1380.58,
+1381.65,
+"repara numa coisa:"
+],
+[
+1389.96,
+1391.57,
+"O *caderno* funcionou para"
+],
+[
+1391.42,
+1392.03,
+"o *Tião.*"
+],
+[
+1392.56,
+1393.91,
+"Mas lembra do estudo"
+],
+[
+1393.76,
+1394.41,
+"da Lally?"
+],
+[
+1400.9,
+1402.41,
+"Por isso eu uso"
+],
+[
+1402.26,
+1402.99,
+"o *FinMoovi.*"
+],
+[
+1404.0,
+1405.67,
+"Você anota um gasto"
+],
+[
+1405.52,
+1406.51,
+"em dois toques no"
+],
+[
+1406.36,
+1406.97,
+"celular,"
+],
+[
+1407.3,
+1408.51,
+"ou só tira foto"
+],
+[
+1408.36,
+1409.29,
+"do recibo,"
+],
+[
+1409.6,
+1410.47,
+"e ele mostra num"
+],
+[
+1410.32,
+1411.63,
+"gráfico para onde foi"
+],
+[
+1411.48,
+1412.57,
+"cada real do mês."
+],
+[
+1422.42,
+1424.01,
+"Começa hoje com o"
+],
+[
+1423.86,
+1424.93,
+"gasto de hoje."
+],
+[
+1425.1,
+1425.59,
+"Só um."
+],
+[
+1425.88,
+1426.75,
+"O resto vem."
+],
+[
+1427.88,
+1429.39,
+"Se esse vídeo te"
+],
+[
+1435.42,
+1436.51,
+"E me conta aqui"
+],
+[
+1436.36,
+1437.27,
+"nos comentários:"
+]
+]
+}

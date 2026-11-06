@@ -221,7 +221,7 @@ L = {
  93: [("^", "V", "flow-sandra-devolve"), ("Só sabendo", "H", ("meta-sandra-devolve", [ft("Não com raiva. Só *sabendo*.")]))],
  94: [("^", "I", "meta-fila-dois"), ("quanto deu o seu", "H", ("tiao-esteira", [bl("Tião, quanto deu o *seu*?", 26, 16, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
  95: [("^", "I", "marcos-buzina"), ("uma sacola só", "I", "sandra-sacola"), ("Só isso", "H", ("meta-marcos-so-isso", [bl("Só *isso*?", 30, 18, "dir")])), ("estava na lista", "M", fr("Só o que estava na *lista*.", "ela respondeu"))],
- 96: [("^", "M", ic([("📝", "lista no papel", False), ("🍞", "de barriga cheia", False), ("🧺", "cestinha", False), ("🏷️", "preço por quilo e gramas", False)], "Leva isto"))],
+ 96: [("^", "M", fr("Se for levar só uma coisa, leva *isto*.")), ("a lista no papel", "M", ic([("📝", "a lista no papel", False)], "Antes de entrar")), ("barriga cheia", "I", "tiao-come-antes"), ("a cestinha", "I", "cestinha"), ("preço por quilo", "M", ic([("🏷️", "preço por quilo", False), ("⚖️", "os gramas", False)], "Na prateleira"))],
  97: [("^", "M", ic([("💳", "débito ou dinheiro", False), ("🚫", "nunca o rotativo", False)], "No caixa"))],
  98: [("^", "M", fr("Cinco coisas. Nenhuma custa um *real*.", None, True))],
  99: [("^", "M", fr("Uma coisa que nenhuma regra resolve *sozinha*.")), ("susto do Tião", "M", nu(912, "Achava R$ 600. Eram", "no mercado, por mês", de=600, cor=VERM)), ("soma do mês", "I", "tiao-foto")],
@@ -240,3 +240,8 @@ TITULO = "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"
 PUBLICA = "2026-11-08 17:00"
 PUBLICA_TXT = "domingo, 08/11, às 17h (Brasília)"
 PRAZO = "sábado, 07/11, até as 10h (este primeiro vídeo está apertado; nos próximos você terá 3 dias)"
+# sons de cena: (som, linha, gatilho, segundos, volume). Sons em render/public/amb (o montar.py cria o "bip").
+AMB = [("passaros", 0, "^", 18, 0.22), ("grilos", 9, "^", 40, 0.28), ("relogio", 9, "^", 14, 0.3), ("coracao", 11, "Deu novecentos", 8, 0.5),
+       ("coracao", 12, "^", 6, 0.4), ("bip", 68, "^", 8, 0.3), ("passaros", 69, "^", 24, 0.3), ("coracao", 76, "^", 10, 0.45),
+       ("passaros", 87, "^", 14, 0.22)]
+FORTES = {"armadilha", "armadilhas", "cestinha", "lista", "biscoito", "rotativo", "carrinho", "reduflação", "fome", "nove", "nona"}

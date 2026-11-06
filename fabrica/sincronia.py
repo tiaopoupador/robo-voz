@@ -55,3 +55,40 @@ def achar(ALIN, linha, frase):
     for i in range(len(toks) - len(alvo) + 1):
         if all(toks[i + j][1] == alvo[j] for j in range(len(alvo))): return toks[i][0]
     return None
+
+# ---- numeros por extenso -> algarismos (a transcricao escreve "58,30"; o gatilho vem escrito "cinquenta e oito") ----
+_U = {"zero": 0, "um": 1, "uma": 1, "dois": 2, "duas": 2, "tres": 3, "quatro": 4, "cinco": 5, "seis": 6, "sete": 7, "oito": 8, "nove": 9, "dez": 10,
+      "onze": 11, "doze": 12, "treze": 13, "catorze": 14, "quatorze": 14, "quinze": 15, "dezesseis": 16, "dezessete": 17, "dezoito": 18, "dezenove": 19,
+      "vinte": 20, "trinta": 30, "quarenta": 40, "cinquenta": 50, "sessenta": 60, "setenta": 70, "oitenta": 80, "noventa": 90,
+      "cem": 100, "cento": 100, "duzentos": 200, "trezentos": 300, "quatrocentos": 400, "quinhentos": 500, "seiscentos": 600,
+      "setecentos": 700, "oitocentos": 800, "novecentos": 900}
+def numero_falado(frase):
+    """le o numero do comeco da frase ("cinquenta e oito reais" -> 58); None se nao comeca com numero"""
+    tot, parte, achou = 0, 0, False
+    for w in frase.split():
+        n = norm(w)
+        if n in _U: parte += _U[n]; achou = True
+        elif n == "e" and achou: continue
+        elif n == "mil" and achou: tot += (parte or 1) * 1000; parte = 0
+        elif n in ("milhao", "milhoes") and achou: tot += (parte or 1) * 1000000; parte = 0
+        else: break
+    return (tot + parte) if achou else None
+
+_achar = achar
+def achar(ALIN, linha, frase):
+    t = _achar(ALIN, linha, frase)
+    if t is not None: return t
+    alvo = [norm(w) for w in frase.split()]
+    # o numero pode estar no comeco ou depois de palavras ("Deu novecentos")
+    for c in range(len(alvo)):
+        n = numero_falado(" ".join(frase.split()[c:]))
+        if n is None: continue
+        dig = str(n).rstrip("0") or "0"; antes = alvo[:c]  # "treze mil" -> 13 (bate com 13.175)
+        toks = [(o[0], norm(o[2])) for o in ALIN if o[3] == linha]
+        for i, (t0, w) in enumerate(toks):
+            if re.sub(r"\D", "", w).startswith(dig) and all(i - len(antes) + j >= 0 and toks[i - len(antes) + j][1] == antes[j] for j in range(len(antes))):
+                return toks[i - len(antes)][0] if antes else t0
+        for t0, w in toks:  # sem conferir as palavras de antes
+            if re.sub(r"\D", "", w).startswith(dig): return t0
+        break
+    return None
