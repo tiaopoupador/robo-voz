@@ -67,7 +67,9 @@ for k in linhas:
         s = round(max(t0, t - 0.12), 2); chave = f"{k}-{j}"; mv = movs[nmov % 4]; nmov += 1
         if tipo == "M":
             spec = dict(cont); spec.update(ini=s, chave=chave)
-            if spec["k"] == "montagem": spec["imgs"] = [x for x in (publica(n)[1] for n in spec["imgs"]) if x]
+            if spec["k"] == "montagem":
+                spec["imgs"] = [x for x in (publica(n)[1] for n in spec["imgs"]) if x]
+                if len(spec["imgs"]) < 3: spec = {"k": "frase", "texto": "", "ini": s, "chave": chave}; avisos.append(f"{chave}: montagem rapida sem imagens")
             cenas.append(spec); continue
         nome, ov = (cont if isinstance(cont, tuple) else (cont, []))
         tp, src = publica(nome)
@@ -75,6 +77,16 @@ for k in linhas:
         if tp == "vid": cenas.append({"ini": s, "k": "vid", "src": src, "mov": mv, "de": 0, "chave": chave, "clip": round(dur_de(f"{P}/render/public/{src}"), 2), "ov": ov})
         else: cenas.append({"ini": s, "k": "hib" if ov else "img", "src": src, "mov": mv, "ov": ov, "chave": chave, "sil": tipo == "SIL"})
 cenas.sort(key=lambda c: c["ini"])
+# prova de mesa: cada motion com o que ele precisa (um campo vazio derruba a geracao do video inteiro)
+PRECISA = {"graf": ["series"], "barras": ["itens"], "icones": ["itens"], "linha": ["marcos"], "conta": ["linhas"], "torre": ["itens"],
+           "cal": ["marcados"], "montagem": ["imgs"], "cita": ["nome", "achado"], "frase": [], "num": ["valor"], "grade": ["total"]}
+erros = []
+for c in cenas:
+    for campo in PRECISA.get(c["k"], []):
+        if not c.get(campo): erros.append(f"{c['chave']} ({c['k']}): falta '{campo}'")
+    if c["k"] == "graf" and any(not s_.get("pts") for s_ in c["series"]): erros.append(f"{c['chave']} (graf): serie sem pontos")
+    if c["k"] == "graf" and c.get("eixo") is not None and any(len(s_["pts"]) != len(c["eixo"]) for s_ in c["series"]) and c["eixo"]: erros.append(f"{c['chave']} (graf): eixo e pontos de tamanhos diferentes")
+if erros: raise SystemExit("PROVA DE MESA FALHOU: " + " | ".join(erros))
 # o que vai por cima entra na palavra (gatilho "g"), se tiver
 for c in cenas:
     for o in c.get("ov", []) or []:
