@@ -9,6 +9,7 @@ import datetime, json, os, re, sys, urllib.parse
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 from fabrica.google import api, chaves
 from fabrica import agenda
+from fabrica.regras_titulo import REGRAS, revisar
 ENSAIO = "--ensaio" in sys.argv
 CANAIS = ["@tucoinveste", "@obastidordodinheiro", "@dinheirodescomplicadooficial", "@eduinvesteoficial", "@povinvestimento", "@darkledger13"]
 MIN_VIEWS, DIAS_RECENTE, VAGAS_A_FRENTE = 20000, 30, 4
@@ -45,8 +46,8 @@ def proximas_vagas(cal, n):
     return out
 
 ESQ = {"type": "object", "properties": {"escolhas": {"type": "array", "items": {"type": "object", "properties": {
-    "modelo_id": {"type": "string"}, "titulo": {"type": "string"}, "angulo": {"type": "string"}, "elenco": {"type": "array", "items": {"type": "string"}}, "por_que": {"type": "string"}},
-    "required": ["modelo_id", "titulo", "angulo", "elenco", "por_que"], "additionalProperties": False}}},
+    "modelo_id": {"type": "string"}, "familia": {"type": "string"}, "o_que_esconde": {"type": "string"}, "titulo": {"type": "string"}, "capa_texto": {"type": "string"}, "capa_cena": {"type": "string"}, "angulo": {"type": "string"}, "elenco": {"type": "array", "items": {"type": "string"}}, "por_que": {"type": "string"}},
+    "required": ["modelo_id", "familia", "o_que_esconde", "titulo", "capa_texto", "capa_cena", "angulo", "elenco", "por_que"], "additionalProperties": False}}},
     "required": ["escolhas"], "additionalProperties": False}
 
 def escolher(pools, seq, ja, n, ultimo_canal, historico=""):
@@ -58,7 +59,7 @@ A turma do bairro (escolha quem combina com cada tema):
 """ + chr(10).join(f"- {p['nome']} ({p['idade']}): {p['papel']} Temas: {', '.join(p['temas'])}." for p in ELENCO["personagens"]) + """
 Regras do elenco:
 """ + chr(10).join("- " + r for r in ELENCO["regras"]) + f"""
-Elenco dos últimos vídeos (para revezar): {historico or '(nenhum)'}. O app FinMoovi entra só no fim. Formato que funciona no nicho: "Como X te faz gastar", "O que acontece se...", "Por que o vizinho com picape está mais pobre", "Você ganhou na loteria e...".
+Elenco dos últimos vídeos (para revezar): {historico or '(nenhum)'}. O app FinMoovi entra só no fim.
 
 Já temos (não repetir o assunto):
 {chr(10).join('- ' + t for t in ja)}
@@ -70,14 +71,25 @@ Escolha {n} temas, UM POR VAGA, nesta ordem de tipos (é obrigatório: a escolha
 MODELE E MELHORE cada um para o Tião:
 - dentro de cada lista, prefira os que mais views fazem; reveze os canais (o primeiro NÃO pode ser do canal {ultimo_canal or '(nenhum)'}, e não use dois do mesmo canal seguidos);
 - só temas de dinheiro do dia a dia (gasto, dívida, cartão, compra, golpe, salário, aposentadoria, hábito). NÃO: cripto, ação específica, política, notícia que envelhece;
-- título NOSSO, nunca copiado: segunda pessoa ("Você...") ou personagem, curiosidade forte, até 70 caracteres, sem travessão;
+- "familia": qual das famílias de título abaixo você usou (de preferência a mesma do modelo);
+- "o_que_esconde": em 1 frase, a resposta que o vídeo revela e que o título NÃO pode contar;
+- "titulo": NOSSO, nunca a frase do modelo, até 60 caracteres, sem travessão. Escreva 5 na cabeça e fique com o que deixa a pergunta mais forte;
+- "capa_texto": 2 a 4 palavras da capa que completam o título sem repetir (veredito, provocação ou pergunta com número);
+- "capa_cena": 1 frase com a cena da capa (quem aparece, com que emoção, a seta, as etiquetas com números), sem mostrar o final;
+
+""" + REGRAS + """
+
 - "angulo": 1 ou 2 frases com a história que o vídeo vai contar (o Tião e os protagonistas escolhidos), com um número concreto em reais;
 - "elenco": os nomes de quem entra (sempre "Tião"; 1 ou 2 protagonistas do problema; e "Valéria" quando ela fizer a participação de novela). Reveze: nada de repetir os mesmos protagonistas dos últimos 2 vídeos;
 - "por_que": 1 frase com o motivo (ex.: "92 mil views em 12 dias no Tuco")."""
     r = cli.messages.create(model="claude-sonnet-5-5", max_tokens=3000, messages=[{"role": "user", "content": txt}],
                             output_config={"format": {"type": "json_schema", "schema": ESQ}})
     custo = r.usage.input_tokens * 2e-6 + r.usage.output_tokens * 10e-6
-    return json.loads(next(b.text for b in r.content if b.type == "text"))["escolhas"], custo
+    esc = json.loads(next(b.text for b in r.content if b.type == "text"))["escolhas"]
+    for e in esc: e["modelo"] = next((c["titulo"] for k in pools for c in pools[k] if c["id"] == e["modelo_id"]), "")
+    esc, c2, notas = revisar(cli, esc)  # o diretor chato: nota de 1 a 10, reescreve o que nao passar de 8
+    for i, e in enumerate(esc): e["notas"] = notas.get(i, {})
+    return esc, custo + c2
 
 def main():
     a = agenda.ler(); cal = a.setdefault("calendario", []); usados = a.setdefault("modelos_usados", [])
@@ -111,11 +123,12 @@ def main():
         if not m: continue
         a["ultima_fonte"] = fonte
         nn += 1; tit = re.sub(r"\s*[—–]\s*", ", ", e["titulo"])
-        cal.append({"nn": f"{nn:02d}", "quando": quando.strftime("%Y-%m-%d %H:%M"), "titulo": tit, "angulo": e["angulo"], "elenco": e["elenco"],
+        cal.append({"nn": f"{nn:02d}", "quando": quando.strftime("%Y-%m-%d %H:%M"), "titulo": tit, "angulo": e["angulo"], "elenco": e["elenco"], "esconde": e["o_que_esconde"],
+                    "capa": {"texto": e["capa_texto"], "cena": e["capa_cena"]}, "familia": e["familia"],
                     "fonte": fonte, "modelo": {"id": m["id"], "titulo": m["titulo"], "canal": m["canal"], "views": m["views"], "dias": m["dias"]}})
         usados.append({"id": m["id"], "canal": m["canal"]})
         vw = f"{m['views']:,}".replace(",", ".")
-        msg.append(f"- **Vídeo {nn:02d} · {quando:%d/%m %Hh}** · {tit}\n  Modelo ({'subindo agora' if fonte == 'recente' else 'dos mais vistos de sempre'}): «{m['titulo']}» ({m['canal']}, {vw} views em {m['dias']} dias) https://youtu.be/{m['id']}\n  Quem entra: {', '.join(e['elenco'])}\n  História: {e['angulo']}\n  Por quê: {e['por_que']}")
+        msg.append(f"- **Vídeo {nn:02d} · {quando:%d/%m %Hh}** · {tit}\n  Modelo ({'subindo agora' if fonte == 'recente' else 'dos mais vistos de sempre'}): «{m['titulo']}» ({m['canal']}, {vw} views em {m['dias']} dias) https://youtu.be/{m['id']}\n  Capa: «{e['capa_texto']}» ({e['capa_cena']})\n  Família do título: {e['familia']} · diretor: {(('reescreveu (a versão anterior tinha ' + str(min(v for k, v in e['notas'].items() if k in ('misterio', 'emocao', 'vida_da_pessoa', 'clareza', 'longe_do_modelo'))) + '/10: ' + e['notas']['problema'] + ')') if e['notas'].get('reescrito') else ('aprovou, nota mínima ' + str(min(v for k, v in e['notas'].items() if k in ('misterio', 'emocao', 'vida_da_pessoa', 'clareza', 'longe_do_modelo'))) + '/10')) if e['notas'] else '?'}\n  Quem entra: {', '.join(e['elenco'])}\n  História: {e['angulo']}\n  Por quê: {e['por_que']}")
     log("\n".join(msg) + f"\n💲 custo do Claude: US$ {custo:.3f}")
     if ENSAIO or not msg: return
     agenda.gravar(a)

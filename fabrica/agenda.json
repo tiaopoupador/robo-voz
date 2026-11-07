@@ -38,7 +38,7 @@
   {
    "nn": "05",
    "quando": "2026-11-18 18:00",
-   "titulo": "Você Pagou R$ 3.000 no Cruzeiro e Gastou o Dobro a Bordo",
+   "titulo": "Por Que o Cruzeiro em Promoção Sai Mais Caro?",
    "angulo": "Sandra e Marcos compram o pacote de cruzeiro em promoção por R$ 6.000 o casal e voltam com mais R$ 4.200 no cartão em bebida, excursão, internet, gorjeta e foto. Tião faz a conta no caderno, passa a semana numa praia por R$ 1.500 e guarda os R$ 4.500 que sobraram. A Valéria posta as fotos do navio e a Sandra quer ir também.",
    "modelo": {
     "id": "WRmiOO7V3U8",
@@ -53,7 +53,13 @@
     "Sandra",
     "Marcos",
     "Valéria"
-   ]
+   ],
+   "capa": {
+    "texto": "NÃO É O PACOTE",
+    "cena": "Sandra de boca aberta segurando a pulseira do navio, Marcos sorrindo com um drinque, ao fundo o navio com etiquetas de preço subindo pelos andares (R$ 39 > R$ 120 > R$ 890), seta vermelha na pulseira; a Valéria tirando selfie no deck."
+   },
+   "esconde": "o pacote é a isca: o lucro vem do que se paga a bordo (bebida, internet, excursão, gorjeta, foto), e o casal volta com R$ 4.200 a mais no cartão",
+   "familia": "1. BASTIDOR + 2. PARADOXO"
   }
  ],
  "modelos_usados": [
