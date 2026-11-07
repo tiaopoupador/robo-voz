@@ -29,6 +29,12 @@ QUEM = {
       "NEVER standing straight and stiff facing the camera like a reference photo. His mustache is ALWAYS a THIN pencil line, never thick or bushy. ",
  "R": IGUAL + "Sandra, the woman from the reference image, drawn ONCE: late 30s, long wavy brown hair, sunglasses on her head, gold hoop earrings, red blouse, blue jeans, brown handbag. ",
 }
+# o resto do elenco do bairro (fabrica/elenco.json, Ed 07/11): a referencia de cada um e a ficha dele (varias poses)
+for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["personagens"]:
+    if _p["letra"] in REF or not os.path.exists(P + "/banco/referencia/" + _p["ref"]): continue
+    REF[_p["letra"]] = _p["ref"]
+    QUEM[_p["letra"]] = (f"One attached image is {_p['id'].capitalize()}'s CHARACTER SHEET (many angles, poses and expressions): use it only to know the character, "
+                         "do NOT copy the sheet layout, draw this person ONCE, in a natural dynamic pose that fits the scene. " + IGUAL + _p["visual"] + " ")
 ANATOMIA = (" Correct anatomy for EVERY person, including people in the background: exactly two well-formed, symmetrical eyes of the same size,"
             " a normal nose and mouth, two arms and two hands with five fingers each, no extra or missing limbs, no fused fingers,"
             " no deformed or melted faces, faces never inside or merged with objects (blinds, curtains, windows).")

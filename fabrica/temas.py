@@ -14,6 +14,7 @@ CANAIS = ["@tucoinveste", "@obastidordodinheiro", "@dinheirodescomplicadooficial
 MIN_VIEWS, DIAS_RECENTE, VAGAS_A_FRENTE = 20000, 30, 4
 Y = "https://www.googleapis.com/youtube/v3/"
 log = lambda *m: print(*m, flush=True)
+ELENCO = json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))  # a turma do bairro (Ed, 07/11)
 
 def videos_do_canal(h):
     c = api(Y + "channels?part=snippet,contentDetails&forHandle=" + urllib.parse.quote(h))["items"][0]
@@ -44,14 +45,20 @@ def proximas_vagas(cal, n):
     return out
 
 ESQ = {"type": "object", "properties": {"escolhas": {"type": "array", "items": {"type": "object", "properties": {
-    "modelo_id": {"type": "string"}, "titulo": {"type": "string"}, "angulo": {"type": "string"}, "por_que": {"type": "string"}},
-    "required": ["modelo_id", "titulo", "angulo", "por_que"], "additionalProperties": False}}},
+    "modelo_id": {"type": "string"}, "titulo": {"type": "string"}, "angulo": {"type": "string"}, "elenco": {"type": "array", "items": {"type": "string"}}, "por_que": {"type": "string"}},
+    "required": ["modelo_id", "titulo", "angulo", "elenco", "por_que"], "additionalProperties": False}}},
     "required": ["escolhas"], "additionalProperties": False}
 
-def escolher(pools, seq, ja, n, ultimo_canal):
+def escolher(pools, seq, ja, n, ultimo_canal, historico=""):
     import anthropic
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
-    txt = f"""Você escolhe os temas do canal de YouTube "Tião Poupador": vídeos longos (20 a 25 min) em desenho 2D, finanças pessoais para famílias brasileiras de classe média e baixa, contados como HISTÓRIA do Tião (um brasileiro simples que cuida do dinheiro com caderno e lista) e dos vizinhos Sandra e Marcos (que gastam mal). O app FinMoovi entra só no fim. Formato que funciona no nicho: "Como X te faz gastar", "O que acontece se...", "Por que o vizinho com picape está mais pobre", "Você ganhou na loteria e...".
+    txt = f"""Você escolhe os temas do canal de YouTube "Tião Poupador": vídeos longos (20 a 25 min) em desenho 2D, finanças pessoais para famílias brasileiras de classe média e baixa, contados como HISTÓRIA do Tião (um brasileiro simples que cuida do dinheiro com caderno, lista e a caneca velha) e da turma do bairro dele.
+
+A turma do bairro (escolha quem combina com cada tema):
+""" + chr(10).join(f"- {p['nome']} ({p['idade']}): {p['papel']} Temas: {', '.join(p['temas'])}." for p in ELENCO["personagens"]) + """
+Regras do elenco:
+""" + chr(10).join("- " + r for r in ELENCO["regras"]) + f"""
+Elenco dos últimos vídeos (para revezar): {historico or '(nenhum)'}. O app FinMoovi entra só no fim. Formato que funciona no nicho: "Como X te faz gastar", "O que acontece se...", "Por que o vizinho com picape está mais pobre", "Você ganhou na loteria e...".
 
 Já temos (não repetir o assunto):
 {chr(10).join('- ' + t for t in ja)}
@@ -64,7 +71,8 @@ MODELE E MELHORE cada um para o Tião:
 - dentro de cada lista, prefira os que mais views fazem; reveze os canais (o primeiro NÃO pode ser do canal {ultimo_canal or '(nenhum)'}, e não use dois do mesmo canal seguidos);
 - só temas de dinheiro do dia a dia (gasto, dívida, cartão, compra, golpe, salário, aposentadoria, hábito). NÃO: cripto, ação específica, política, notícia que envelhece;
 - título NOSSO, nunca copiado: segunda pessoa ("Você...") ou personagem, curiosidade forte, até 70 caracteres, sem travessão;
-- "angulo": 1 ou 2 frases com a história do Tião e dos vizinhos que o vídeo vai contar, com um número concreto em reais;
+- "angulo": 1 ou 2 frases com a história que o vídeo vai contar (o Tião e os protagonistas escolhidos), com um número concreto em reais;
+- "elenco": os nomes de quem entra (sempre "Tião"; 1 ou 2 protagonistas do problema; e "Valéria" quando ela fizer a participação de novela). Reveze: nada de repetir os mesmos protagonistas dos últimos 2 vídeos;
 - "por_que": 1 frase com o motivo (ex.: "92 mil views em 12 dias no Tuco")."""
     r = cli.messages.create(model="claude-sonnet-5-5", max_tokens=3000, messages=[{"role": "user", "content": txt}],
                             output_config={"format": {"type": "json_schema", "schema": ESQ}})
@@ -95,7 +103,7 @@ def main():
     cands = rec + ger
     log(f"🔎 {len(todos)} vídeos longos vistos · recentes 20 mil+: {len(rec)} · mais vistos de sempre: {len(ger)} · ordem: {seq}")
     ultimo = usados[-1]["canal"] if usados else None
-    escolhas, custo = escolher(pools, seq, [c["titulo"] for c in cal], falta, ultimo)
+    escolhas, custo = escolher(pools, seq, [c["titulo"] for c in cal], falta, ultimo, "; ".join(f"{c['nn']}: {', '.join(c['elenco'])}" for c in cal[-4:] if c.get("elenco")))
     porid = {c["id"]: c for c in cands}; vagas = proximas_vagas(cal, falta); nn = max(int(c["nn"]) for c in cal) if cal else 1
     msg = []
     for e, quando, fonte in zip(escolhas, vagas, seq):
@@ -103,11 +111,11 @@ def main():
         if not m: continue
         a["ultima_fonte"] = fonte
         nn += 1; tit = re.sub(r"\s*[—–]\s*", ", ", e["titulo"])
-        cal.append({"nn": f"{nn:02d}", "quando": quando.strftime("%Y-%m-%d %H:%M"), "titulo": tit, "angulo": e["angulo"],
+        cal.append({"nn": f"{nn:02d}", "quando": quando.strftime("%Y-%m-%d %H:%M"), "titulo": tit, "angulo": e["angulo"], "elenco": e["elenco"],
                     "fonte": fonte, "modelo": {"id": m["id"], "titulo": m["titulo"], "canal": m["canal"], "views": m["views"], "dias": m["dias"]}})
         usados.append({"id": m["id"], "canal": m["canal"]})
         vw = f"{m['views']:,}".replace(",", ".")
-        msg.append(f"- **Vídeo {nn:02d} · {quando:%d/%m %Hh}** · {tit}\n  Modelo ({'subindo agora' if fonte == 'recente' else 'dos mais vistos de sempre'}): «{m['titulo']}» ({m['canal']}, {vw} views em {m['dias']} dias) https://youtu.be/{m['id']}\n  História: {e['angulo']}\n  Por quê: {e['por_que']}")
+        msg.append(f"- **Vídeo {nn:02d} · {quando:%d/%m %Hh}** · {tit}\n  Modelo ({'subindo agora' if fonte == 'recente' else 'dos mais vistos de sempre'}): «{m['titulo']}» ({m['canal']}, {vw} views em {m['dias']} dias) https://youtu.be/{m['id']}\n  Quem entra: {', '.join(e['elenco'])}\n  História: {e['angulo']}\n  Por quê: {e['por_que']}")
     log("\n".join(msg) + f"\n💲 custo do Claude: US$ {custo:.3f}")
     if ENSAIO or not msg: return
     agenda.gravar(a)

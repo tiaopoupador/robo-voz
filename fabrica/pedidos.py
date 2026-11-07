@@ -15,6 +15,9 @@ QUEM = {
  "sandra": "Sandra: woman in her late 30s, long wavy brown hair, sunglasses pushed up on her head, gold hoop earrings, red blouse, blue jeans, brown handbag. ",
  "marcos": "Marcos: TALL slim man in his late 30s, gelled dark hair, light skin, white shirt with rolled sleeves, dark jeans, brown belt, big silver watch, clean-shaven (NO mustache). ",
 }
+import json  # o resto do elenco do bairro (fabrica/elenco.json, Ed 07/11): a referencia e a ficha (varias poses) de cada um
+for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["personagens"]:
+    QUEM.setdefault(_p["id"], f"The attached {_p['ref']} is {_p['id'].capitalize()}'s character sheet: use it only to know the character, draw this person ONCE in a natural pose. " + _p["visual"] + " ")
 NEG = " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark."
 def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
 QUATRO = ("GENERATE 4 SEPARATE IMAGES AT ONCE: the SAME scene shown from 4 DIFFERENT CAMERA ANGLES, one per image: "
@@ -66,10 +69,11 @@ for j, cp in enumerate(CAPAS):
                [f"{cc}_{cp[2]}.jpg" if len(cp) > 2 else arq(cc, "capa", ".jpg")],
                QUATRO + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(cp[0]) + cp[1] + " No logos, no brand names.\n" + QUATRO_FIM + "\n" + FIM4)
 o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações e o GIF animado, cada um com o seu nome.", ""]
-def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos
-    r = C.IMG[i_n[1]][1]; t, sa, ma = "tiao" in r, "sandra" in r, "marcos" in r
-    return (0 if t and not (sa or ma) else 1 if sa and not (t or ma) else 2 if ma and not (t or sa) else 3 if t else 4 if sa or ma else 5, r, i_n[0])
-o += ["Os pedidos vêm agrupados por personagem (primeiro só o Tião, depois só a Sandra, depois só o Marcos, depois os juntos): gere na ordem, que a IA mantém o rosto mais igual.", ""]
+IDS = [x["id"] for x in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["personagens"]]
+def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos (cada um sozinho na ordem do elenco, depois os juntos, depois sem ninguem)
+    r = C.IMG[i_n[1]][1]; tem = [k for k, x in enumerate(IDS) if x in r]
+    return (tem[0] if len(tem) == 1 else len(IDS) + tem[0] if tem else 2 * len(IDS), r, i_n[0])
+o += ["Os pedidos vêm agrupados por personagem (cada personagem sozinho, um de cada vez, e depois as cenas com mais de um): gere na ordem, que a IA mantém o rosto mais igual.", ""]
 for i, n in sorted(enumerate(meta, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
     o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"] + [arq(f"{c}-gif", n, ".gif")], QUATRO + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + QUATRO_FIM + "\n" + GIF + "\n" + FIM4)
