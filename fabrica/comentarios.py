@@ -136,7 +136,9 @@ def main():
         # 1) o primeiro comentario do canal
         if not any(t["snippet"]["topLevelComment"]["snippet"].get("authorChannelId", {}).get("value") == eu for t in th) and not cad["primeiro"].get(v["id"]):
             t = primeiro_texto(nn); log(f"   📌 {v['titulo'][:50]}: sem o nosso primeiro comentário" + ("" if not ENSAIO else f"\n{t}"))
-            if not ENSAIO: escrever_conversa(v["id"], t); cad["primeiro"][v["id"]] = hora.isoformat()
+            if not ENSAIO:
+                try: escrever_conversa(v["id"], t); cad["primeiro"][v["id"]] = hora.isoformat()
+                except Exception as e: log("      não consegui comentar (falta a permissão force-ssl? rodar youtube/autorizar.py):", e)
         # 2) os comentarios novos de outras pessoas, que ainda nao tem resposta nossa
         for t in th:
             c = t["snippet"]["topLevelComment"]; s = c["snippet"]
@@ -163,7 +165,9 @@ def main():
                 if feitas >= MAX: continue   # fica para a proxima rodada (nao marca como visto)
                 resp = i["resposta"] if i["acao"] == "responder" else random.choice(LINK_RESP)
                 log(f"   💬 {c['autor']}: {c['texto'][:90]!r}\n      ↳ Tião: {resp}")
-                if not ENSAIO: responder(c["id"], resp); time.sleep(random.randint(20, 40))
+                if not ENSAIO:
+                    try: responder(c["id"], resp); time.sleep(random.randint(20, 40))
+                    except Exception as e: log("      não consegui responder:", e); continue  # fica para a proxima rodada
                 feitas += 1
             elif i["acao"] == "spam":
                 log(f"   🚫 spam (vai para revisão): {c['autor']}: {c['texto'][:90]!r}")
