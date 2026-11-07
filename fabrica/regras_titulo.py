@@ -16,7 +16,8 @@ As famílias que ganham (views reais):
 5. ESCADA "em cada nível" / "de R$ 0 a R$ 25 mi": a pessoa quer achar o próprio degrau.
 6. "O QUE ACONTECE SE...": medo concreto, resposta escondida.
 7. LISTA com adjetivo forte: "11 PEQUENOS NEGÓCIOS Com Margens de Lucro Gigantescas".
-O que perde: título que dá a resposta; matemática seca de investidor; notícia; "psicologia/neurociência"; CÓPIA da frase do canal grande (o Edu copiou o título da loteria e fez 305 views). Modela-se a FAMÍLIA e a emoção, nunca a frase.
+O que perde: título que dá a resposta; matemática seca de investidor; notícia; "psicologia/neurociência"; cópia RÁPIDA e fraca (o Edu fez "loteria" e "buffets" poucos dias depois do original: 305 e 193 views).
+O que funciona: o TEMA de um campeão de 1 a 3 meses atrás (ou um campeão em inglês ainda sem versão brasileira), com o mesmo molde de título e palavras nossas: o Tuco pegou "Corrida dos Ratos e Ninguém Percebeu" 48 dias depois e fez 555 mil; o Edu pegou "Parecer Pobre" 73 dias depois e fez 499 mil.
 
 Forma do título: até 60 caracteres; "Você" ou um personagem; no máximo 1 ou 2 palavras em MAIÚSCULAS para ênfase; número em reais só se ele aumentar a pergunta, nunca se for a resposta; parênteses de reviravolta servem ("(Não É Comida)", "(Veja Como)"); sem travessão; nunca prometer o que o vídeo não entrega.
 Capa: 2 a 4 palavras gigantes que completam o título sem repetir: um veredito ("ALL INCLUSIVE É ROUBADA", "A ARMADILHA DO CRUZEIRO"), uma provocação ("PAREÇA POBRE?!", "NÃO É O SALÁRIO") ou uma pergunta com número ("CASAS DE R$600.000!?"). A cena tem um personagem com emoção forte, uma seta para o que importa e, se servir, etiquetas com números que abrem curiosidade sem explicar (a escada de preços R$ 300 > R$ 900 > R$ 7.000 no navio). Nunca mostra o final."""
