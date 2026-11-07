@@ -25,7 +25,14 @@ if not capas:
 elif SUBIR:
     # a principal e "CAPA..." sem letra; "CAPA-B...", "CAPA-C..." sao as versoes do teste do YouTube (Test & compare)
     import re as _re, shutil as _sh
-    extra = [c for c in capas if _re.match(r"(?i)capa-[b-z]", c)]; capas = [c for c in capas if c not in extra] + extra
+    # so conta a versao com a letra MAIUSCULA e o "_" (CAPA-B_..., como no pedido). "CAPA-c_..." em minuscula e uma variacao
+    # extra que o Ed guardou (07/11: tres variacoes da Sandra viraram C, D e E e misturaram com a C de verdade). O YouTube testa ate 3.
+    por_letra = {}
+    for c in sorted(capas):
+        m_ = _re.match(r"CAPA-([B-Z])[_.]", c)
+        if m_ and m_[1] not in por_letra and len(por_letra) < 2: por_letra[m_[1]] = c
+    extra = list(por_letra.values())
+    capas = [c for c in capas if not _re.match(r"(?i)capa-[a-z]", c)] + extra  # a principal e a sem letra
     teste = []
     for c in extra:
         subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{c}"], check=True)
@@ -38,7 +45,7 @@ elif SUBIR:
     if teste:
         principal = drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")
         txt += ["", "## 🧪 Teste das capas (2 minutos seus)", "O YouTube não deixa um robô ligar o teste: ele só existe no Studio. As capas já estão no tamanho certo:",
-                f"- principal: {principal}", *[f"- versão {chr(66 + i)}: {u}" for i, u in enumerate(teste)],
+                f"- principal: {principal}", *[f"- versão {l}: {u}" for l, u in zip(por_letra, teste)],
                 "Baixe as 3, abra o vídeo no YouTube Studio, clique em **Miniatura**, depois **Testar e comparar**, e suba as 3. Ele testa sozinho quando o vídeo for ao ar."]
 else:
     txt += ["", "Montado e guardado no Drive. Não subi no YouTube (pedido para só montar)."]
