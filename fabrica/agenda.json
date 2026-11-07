@@ -5,68 +5,113 @@
  "calendario": [
   {
    "nn": "02",
-   "quando": "2026-11-08 17:00",
+   "quando": "2026-11-11 18:00",
    "titulo": "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber",
    "elenco": [
     "Tião",
     "Sandra",
     "Marcos"
-   ]
+   ],
+   "adiado": "07/11: adiado do dia 08 para consertar imagens e voz"
   },
   {
    "nn": "03",
-   "quando": "2026-11-11 18:00",
-   "titulo": "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte",
+   "quando": "2026-11-15 17:00",
+   "titulo": "Como o Banco Te Trata em Cada Nível de Dinheiro",
    "elenco": [
     "Tião",
-    "Rafa",
-    "Valéria"
+    "Valéria",
+    "Seu Lourival"
    ],
-   "angulo": "Rafa, primo do Tião e motorista de aplicativo, ganha R$ 2 milhões na loteria; a Valéria, que nunca olhou para ele, fica toda simpática, e o Tião fica com ciúme. Em 18 meses o Rafa gasta tudo e o Tião mostra no caderno o que os R$ 2 milhões renderiam guardados."
+   "familia": "escada em cada nível",
+   "formato": "você",
+   "esconde": "em cada nível o banco ganha de um jeito diferente, e quem ele mais paparica (quem parece rico e está no limite) é quem mais paga; quem tem dinheiro guardado quieto é tratado de outro jeito",
+   "capa": {
+    "texto": "QUAL É O SEU NÍVEL?",
+    "cena": "agência do banco: o gerente serve cafezinho sorrindo para a Valéria, de óculos escuros e bolsa de marca, enquanto o Tião espera na fila com a caneca velha; uma escada de etiquetas R$ 0 > R$ 5 mil > R$ 100 mil > R$ 1 mi ao lado, seta vermelha no Tião"
+   },
+   "angulo": "Contado em VOCÊ (o Tião na tela é você). Escada de níveis do saldo: R$ -40 no cheque especial, R$ 0, R$ 5 mil, R$ 50 mil, R$ 300 mil, R$ 1 milhão, R$ 10 milhões. Em cada nível: a cena na agência e no app, o que o banco oferece, a tarifa ou o juro escondido, e o refrão. A Valéria aparece no nível do cartão black no limite; o Seu Lourival na conta do mercadinho com maquininha e antecipação.",
+   "modelo": {
+    "id": "2LXED3ENhck",
+    "titulo": "How Banks Treat You at Every Level of Wealth — $0 to $25M",
+    "canal": "@darkledger13",
+    "views": 1180801
+   }
   },
   {
    "nn": "04",
-   "quando": "2026-11-15 17:00",
-   "titulo": "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?",
+   "quando": "2026-11-18 18:00",
+   "titulo": "Como a Família Te Trata Quando Você Junta Dinheiro",
    "elenco": [
     "Tião",
-    "Jéssica",
-    "Valéria"
+    "Rafa",
+    "Dona Cida"
    ],
-   "angulo": "Jéssica, no primeiro emprego, paga só o mínimo de uma fatura de R$ 2.000 e em um ano deve mais de R$ 6.000. O Tião faz a conta no caderno; a Valéria, que posta compras todo dia, aparece com o cartão recusado na loja."
+   "familia": "você fez X e algo estranho aconteceu",
+   "formato": "você",
+   "esconde": "quem pede emprestado, quem some, quem julga, e quem mostra que ama de verdade; e o que você faz para não perder nem o dinheiro nem a família",
+   "capa": {
+    "texto": "EMPRESTA AÍ?",
+    "cena": "almoço de domingo em família: todos olham para o Tião com a mão estendida, o primo Rafa sorrindo de braço no ombro dele; só a Dona Cida, no canto, olha com carinho"
+   },
+   "angulo": "Contado em VOCÊ. Escada do saldo guardado (R$ 1 mil, R$ 10 mil, R$ 50 mil, R$ 150 mil, R$ 500 mil) e o que muda em cada almoço de domingo: o primo Rafa pede para o carro de aplicativo, a tia julga a caneca velha, o cunhado oferece 'investimento', a Dona Cida é a única que pergunta se você está feliz.",
+   "modelo": {
+    "titulo": "How Your Own Family Treats You When You Become the First Millionaire",
+    "canal": "@darkledger13",
+    "views": 117393,
+    "id": "yg_Bl2lfCSA"
+   }
   },
   {
    "nn": "05",
-   "quando": "2026-11-18 18:00",
-   "titulo": "Por Que o Cruzeiro em Promoção Sai Mais Caro?",
-   "angulo": "Sandra e Marcos compram o pacote de cruzeiro em promoção por R$ 6.000 o casal e voltam com mais R$ 4.200 no cartão em bebida, excursão, internet, gorjeta e foto. Tião faz a conta no caderno, passa a semana numa praia por R$ 1.500 e guarda os R$ 4.500 que sobraram. A Valéria posta as fotos do navio e a Sandra quer ir também.",
-   "modelo": {
-    "id": "WRmiOO7V3U8",
-    "titulo": "Como os Cruzeiros Te Enganam em Cada Nível",
-    "canal": "@dinheirodescomplicadooficial",
-    "views": 480655,
-    "dias": 5
-   },
-   "fonte": "recente",
+   "quando": "2026-11-22 17:00",
+   "titulo": "O Que Acontece Quando Você Fica 10 Anos Com o Mesmo Carro",
    "elenco": [
     "Tião",
-    "Sandra",
-    "Marcos",
-    "Valéria"
+    "Valéria",
+    "Jéssica"
    ],
+   "familia": "o que acontece se",
+   "formato": "você",
+   "esconde": "o que as parcelas que você não pagou viraram em 10 anos, e o dia em que quem riu do carro precisou de você",
    "capa": {
-    "texto": "NÃO É O PACOTE",
-    "cena": "Sandra de boca aberta segurando a pulseira do navio, Marcos sorrindo com um drinque, ao fundo o navio com etiquetas de preço subindo pelos andares (R$ 39 > R$ 120 > R$ 890), seta vermelha na pulseira; a Valéria tirando selfie no deck."
+    "texto": "ANO 10",
+    "cena": "o Tião encostado no carro velho e limpo, a Valéria passando de SUV novo e rindo com a mão na boca; etiquetas Ano 1, Ano 5, Ano 10 sobre o carro"
    },
-   "esconde": "o pacote é a isca: o lucro vem do que se paga a bordo (bebida, internet, excursão, gorjeta, foto), e o casal volta com R$ 4.200 a mais no cartão",
-   "familia": "1. BASTIDOR + 2. PARADOXO"
+   "angulo": "Contado em VOCÊ. Escada de anos (1 a 10): a cada ano o carro velho, a conta da parcela que não existe, a Valéria trocando de SUV em 60 parcelas, a Jéssica do primeiro emprego querendo financiar o primeiro carro.",
+   "modelo": {
+    "titulo": "Your Life Driving the Same Car for 10 Years",
+    "canal": "@darkledger13",
+    "views": 176429,
+    "id": "2_TcC2ohCFs"
+   }
   }
  ],
  "modelos_usados": [
   {
    "id": "WRmiOO7V3U8",
    "canal": "@dinheirodescomplicadooficial"
+  },
+  {
+   "id": "2LXED3ENhck",
+   "canal": "@darkledger13",
+   "titulo": "How Banks Treat You at Every Level of Wealth — $0 to $25M"
+  },
+  {
+   "id": "yg_Bl2lfCSA",
+   "canal": "@darkledger13",
+   "titulo": "How Your Own Family Treats You When You Become the First Millionaire"
+  },
+  {
+   "id": "2_TcC2ohCFs",
+   "canal": "@darkledger13",
+   "titulo": "Your Life Driving the Same Car for 10 Years"
   }
  ],
- "ultima_fonte": "recente"
+ "ultima_fonte": "recente",
+ "guardados": [
+  "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte",
+  "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?",
+  "Por Que o Cruzeiro em Promoção Sai Mais Caro?"
+ ]
 }

@@ -1,6 +1,6 @@
 # Peca do robo: ESCOLHE OS TEMAS sozinho (regra do Ed, 06/11/2026: «eu nao vou decidir novos temas nao»).
 #   1. olha os canais vigiados (os mesmos do pesquisa/vigiar.py), so videos longos;
-#   2. candidatos: ate 30 dias e mais de 20 mil views; se nao houver, os mais vistos de sempre desses canais;
+#   2. candidatos: os fora da curva (5x+ a mediana do canal) de 21 a 120 dias; depois os mais vistos de sempre (21+ dias);
 #   3. reveza os canais (o proximo modelo vem de um canal diferente do ultimo) e nunca repete um modelo ja usado;
 #   4. o Claude escolhe o melhor para o Tiao e MODELA E MELHORA: titulo nosso (nunca copiado), angulo da historia;
 #   5. preenche o calendario (domingo 17h, quarta 18h) ate ter VAGAS_A_FRENTE videos marcados, e avisa o Ed (so aviso).
@@ -12,7 +12,7 @@ from fabrica import agenda
 from fabrica.regras_titulo import REGRAS, revisar
 ENSAIO = "--ensaio" in sys.argv
 CANAIS = ["@tucoinveste", "@obastidordodinheiro", "@dinheirodescomplicadooficial", "@eduinvesteoficial", "@povinvestimento", "@darkledger13"]
-MIN_VIEWS, DIAS_RECENTE, VAGAS_A_FRENTE = 20000, 30, 4
+MIN_VIEWS, DIAS_MIN_COPIA, DIAS_MAX_COPIA, VAGAS_A_FRENTE = 20000, 21, 120, 4
 Y = "https://www.googleapis.com/youtube/v3/"
 log = lambda *m: print(*m, flush=True)
 ELENCO = json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))  # a turma do bairro (Ed, 07/11)
@@ -65,7 +65,7 @@ Já temos (não repetir o assunto):
 {chr(10).join('- ' + t for t in ja)}
 
 Candidatos de dois tipos (vídeos que deram muitas views nos canais que vigiamos):
-""" + "\n\n".join(f"═══ {k.upper()} ({'até 30 dias e 20 mil+ views, ordenados por views ao dia' if k == 'recente' else 'os mais vistos de sempre desses canais'}) ═══\n" + "\n".join(json.dumps({x: c[x] for x in ('id', 'titulo', 'canal', 'views', 'dias', 'por_dia')}, ensure_ascii=False) for c in pools[k]) for k in pools if pools[k]) + f"""
+""" + "\n\n".join(f"═══ {k.upper()} ({'fora da curva (5x+ a média do canal) com 3 semanas a 4 meses: a hora certa de refazer, ordenados por vezes a média' if k == 'recente' else 'os mais vistos de sempre desses canais'}) ═══\n" + "\n".join(json.dumps({x: c[x] for x in ('id', 'titulo', 'canal', 'views', 'dias', 'por_dia', 'vezes_a_media')}, ensure_ascii=False) for c in pools[k]) for k in pools if pools[k]) + f"""
 
 Escolha {n} temas, UM POR VAGA, nesta ordem de tipos (é obrigatório: a escolha da vaga 1 vem da lista do tipo 1, e assim por diante): {", ".join(f"vaga {i + 1} = {t.upper()}" for i, t in enumerate(seq))}.
 MODELE E MELHORE cada um para o Tião:
@@ -73,6 +73,7 @@ MODELE E MELHORE cada um para o Tião:
 - só temas de dinheiro do dia a dia (gasto, dívida, cartão, compra, golpe, salário, aposentadoria, hábito). NÃO: cripto, ação específica, política, notícia que envelhece;
 - "familia": qual das famílias de título abaixo você usou (de preferência a mesma do modelo);
 - "o_que_esconde": em 1 frase, a resposta que o vídeo revela e que o título NÃO pode contar;
+- PREFIRA o modelo com mais "vezes_a_media"; um campeão em INGLÊS que ainda não tem versão brasileira nesses canais vale ouro (o "How Banks Treat You at Every Level" fez 1,18 mi e ninguém refez em português). Evite tema que um canal brasileiro já refez nas últimas 3 semanas;
 - "titulo": NOSSO, nunca a frase do modelo, até 60 caracteres, sem travessão. Escreva 5 na cabeça e fique com o que deixa a pergunta mais forte;
 - "capa_texto": 2 a 4 palavras da capa que completam o título sem repetir (veredito, provocação ou pergunta com número);
 - "capa_cena": 1 frase com a cena da capa (quem aparece, com que emoção, a seta, as etiquetas com números), sem mostrar o final;
@@ -105,8 +106,17 @@ def main():
         except Exception as e: log("canal", h, "falhou:", e)
     novos = [v for v in todos if v["id"] not in {u["id"] for u in usados}]
     # Ed, 06/11: MESCLAR os que estao subindo agora (30 dias, 20 mil+) com os mais vistos de sempre, alternando
-    rec = sorted([v for v in novos if v["dias"] <= DIAS_RECENTE and v["views"] >= MIN_VIEWS], key=lambda v: -v["por_dia"])[:15]
-    ger = sorted([v for v in novos if v not in rec], key=lambda v: -v["views"])[:15]
+    # Ed, 07/11 («copie esses videos que dao bom»): o estudo dos 20 campeoes mostrou que a copia do TEMA funciona
+    # quando o original tem 3 semanas a 4 meses (Tuco 555 mil, POV 504 mil, Edu 499 mil) e falha quando e feita poucos
+    # dias depois (Edu 305 e 193 views). Candidato = "fora da curva": 5x ou mais a mediana do proprio canal.
+    med = {}
+    for h in CANAIS:
+        vs = sorted(v["views"] for v in todos if v["canal"] == h)
+        if vs: med[h] = max(1, vs[len(vs) // 2])
+    for v in novos: v["vezes_a_media"] = round(v["views"] / med.get(v["canal"], 1), 1)
+    fora = [v for v in novos if v["vezes_a_media"] >= 5 and v["views"] >= MIN_VIEWS]
+    rec = sorted([v for v in fora if DIAS_MIN_COPIA <= v["dias"] <= DIAS_MAX_COPIA], key=lambda v: -v["vezes_a_media"])[:15]
+    ger = sorted([v for v in fora if v not in rec and v["dias"] >= DIAS_MIN_COPIA], key=lambda v: -v["views"])[:15]
     pools = {"recente": rec, "geral": ger}
     prox = "geral" if a.get("ultima_fonte") == "recente" else "recente"
     seq = []
