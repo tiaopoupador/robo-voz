@@ -79,7 +79,12 @@ for k in linhas:
         if tipo == "M":
             spec = dict(cont); spec.update(ini=s, chave=chave)
             if spec["k"] == "montagem":
-                spec["imgs"] = [x for x in (publica(n)[1] for n in spec["imgs"]) if x]
+                def so_foto(n):  # a montagem rapida so mostra fotos: um clipe (Flow, GIF) vira a foto de reserva dele
+                    tp_, src_ = publica(n)
+                    if tp_ != "vid": return src_
+                    q_ = C.IMG.get(n)
+                    return publica(q_[2][3:])[1] if q_ and str(q_[2]).startswith("cf:") else None
+                spec["imgs"] = [x for x in (so_foto(n) for n in spec["imgs"]) if x]
                 if len(spec["imgs"]) < 3: spec = {"k": "frase", "texto": "", "ini": s, "chave": chave}; avisos.append(f"{chave}: montagem rapida sem imagens")
             cenas.append(spec); continue
         nome, ov = (cont if isinstance(cont, tuple) else (cont, []))
