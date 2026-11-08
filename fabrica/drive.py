@@ -55,21 +55,39 @@ def baixar_tudo(NN):
     e = achar(f"video-{NN}", achar("entrada", raiz))
     print("do Ed:", baixar_pasta(e, f"{P}/fabrica/videos/v{NN}/entrada") if e else 0)
 def guardar(NN, arq):
+    """sobe primeiro e so depois apaga o antigo com o mesmo nome (se o envio cair, o antigo fica)"""
     raiz = pasta("Tiao Poupador"); v = pasta(f"video-{NN}", pasta("robo", raiz))
-    for f in listar(v):
-        if f["name"] == os.path.basename(arq): api(f"{D}/{f['id']}", metodo="DELETE", bruto=True)
-    r = subir_grande(arq, v); return f"https://drive.google.com/file/d/{r['id']}/view"
-def subir_grande(arq, pai):
-    """envio retomavel (para o video de 1 GB)"""
-    import urllib.request
+    antigos = [f for f in listar(v) if f["name"] == os.path.basename(arq)]
+    r = subir_grande(arq, v)
+    for f in antigos: api(f"{D}/{f['id']}", metodo="DELETE", bruto=True)
+    return f"https://drive.google.com/file/d/{r['id']}/view"
+def subir_grande(arq, pai, parte=32 * 2**20):
+    """envio retomavel em pedacos de 32 MB; se a conexao cair, pergunta onde parou e continua (ate 8 vezes)"""
+    import time, urllib.request, urllib.error
     from fabrica.google import token
     tipo = mimetypes.guess_type(arq)[0] or "application/octet-stream"; tam = os.path.getsize(arq)
     ini = urllib.request.Request("https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", method="POST",
         data=json.dumps({"name": os.path.basename(arq), "parents": [pai]}).encode(),
         headers={"Authorization": "Bearer " + token(), "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Type": tipo, "X-Upload-Content-Length": str(tam)})
-    url = urllib.request.urlopen(ini).headers["Location"]
+    url = urllib.request.urlopen(ini).headers["Location"]; pos, falhas = 0, 0
     with open(arq, "rb") as f:
-        r = urllib.request.urlopen(urllib.request.Request(url, data=f.read(), method="PUT", headers={"Content-Length": str(tam)}), timeout=1800)
-    return json.loads(r.read())
+        while True:
+            f.seek(pos); dados = f.read(parte); fim = pos + len(dados) - 1
+            try:
+                r = urllib.request.urlopen(urllib.request.Request(url, data=dados, method="PUT", headers={
+                    "Content-Length": str(len(dados)), "Content-Range": f"bytes {pos}-{fim}/{tam}"}), timeout=600)
+                return json.loads(r.read())
+            except urllib.error.HTTPError as e:
+                if e.code != 308: raise
+                g = e.headers.get("Range"); pos = int(g.split("-")[1]) + 1 if g else 0; falhas = 0
+            except (urllib.error.URLError, OSError, TimeoutError):
+                falhas += 1
+                if falhas > 8: raise
+                time.sleep(5 * falhas)
+                try:
+                    urllib.request.urlopen(urllib.request.Request(url, data=b"", method="PUT", headers={"Content-Length": "0", "Content-Range": f"bytes */{tam}"}), timeout=60)
+                except urllib.error.HTTPError as e:
+                    if e.code != 308: raise
+                    g = e.headers.get("Range"); pos = int(g.split("-")[1]) + 1 if g else 0
 if __name__ == "__main__":
     {"preparar": preparar, "baixar": baixar, "baixar-tudo": baixar_tudo}[sys.argv[1]](sys.argv[2])
