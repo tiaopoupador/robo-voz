@@ -62,7 +62,7 @@ IMG = {
  "tiao-sacolas-antes": ("cf", T, "FLASHBACK in the evening. Medium-wide shot, he walks out of a supermarket in three-quarter view carrying a full shopping bag in EACH hand (two bags in total, one per hand), shoulders down, regretful tired face. The shop front above the door is a plain dark wall with no sign, the bags are plain brown paper."),
  "tiao-come-antes":("cf", T, "Morning at home. Medium shot, he SITS at a small kitchen table; his RIGHT hand holds a piece of bread, his LEFT hand holds a white coffee cup. Calm face."),
  "tiao-brinda":    ("cf", T, "Medium shot at a supermarket entrance, three-quarter view. A small red basket hangs from his LEFT forearm; his RIGHT hand raises a short yellow pencil like a toast. Warm smile, looking to the side."),
- "tiao-foto":      ("cf", T, "Medium shot outside a supermarket door. His LEFT hand holds a paper receipt up, his RIGHT hand holds a smartphone pointed at it, screen facing away from the camera. Satisfied face."),
+ "tiao-foto":      ("cf", T, "Medium shot outside a supermarket door, front three-quarter view. Both arms are in front of his belly: a small paper receipt lies flat on his open LEFT palm, and his RIGHT hand holds a smartphone just above it, taking a photo of it. Each arm comes from its own shoulder. Satisfied smile."),
  # ---- Sandra sozinha ----
  "sandra-entra":   ("cf", S, "She walks into a bright supermarket through automatic glass doors in a hurry, holding her brown handbag, sunglasses on her head, " + MERC),
  "sandra-pao":     ("cf", S, "Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, " + MERC + "Sandra is a WOMAN with a smooth feminine face: absolutely NO mustache, no beard. She carries ONE handbag only."),
@@ -78,7 +78,7 @@ IMG = {
  "sandra-cestinha":("cf", S, "She walks past a line of big carts and picks up a small red basket instead, shy proud smile, " + MERC + "All sign boards are plain red or yellow with nothing written. Her sunglasses stay pushed up on her HEAD, not on her eyes."),
  "sandra-gramas":  ("cf", S, "She turns a yellow cookie package around and reads the weight on the back, serious and curious, " + MERC),
  "sandra-devolve": ("cf", S, "She calmly puts a yellow cookie package back on the shelf, serene, not angry, " + MERC),
- "sandra-sacola":  ("cf", S, "She walks out of a supermarket carrying ONE shopping bag, light and happy, sunny parking lot."),
+ "sandra-sacola":  ("cf", S, "She walks out of a supermarket, light and happy, sunny parking lot. Her RIGHT hand carries a single small brown paper bag; her LEFT hand is empty, swinging freely. Only one bag in the whole image."),
  # ---- Marcos sozinho ----
  "marcos-grita":   ("cf", M, "At the end of a supermarket beverage aisle he laughs loudly with one hand cupped near his mouth, shouting mockingly, " + MERC),
  "marcos-fila":    ("cf", M, "In a supermarket checkout line he laughs loudly, pointing down at something, mocking, " + MERC),
