@@ -13,7 +13,9 @@ FALA = [(r"FinMoovi", "Fin Múvi"), (r"picapes", "pikápis"), (r"picape", "piká
         (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
         (r"IPVA", "i pê vê á"),
         (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
-        (r"opções", "ôpissões"), (r"Opções", "Ôpissões"), (r"opção", "ôpissão"), (r"Opção", "Ôpissão")]
+        (r"opções", "ôpissões"), (r"Opções", "Ôpissões"), (r"opção", "ôpissão"), (r"Opção", "Ôpissão"),
+        # Ed, 08/11/2026: «o correto é falar nótinhas (...) o certo é pão de fôrma»
+        (r"notinha", "nótinha"), (r"Notinha", "Nótinha"), (r"pão de forma", "pão de fôrma")]
 for a, b in FALA:
     texto = re.sub(a, b, texto)
 t0 = time.time()
