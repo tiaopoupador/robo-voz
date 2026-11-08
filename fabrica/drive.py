@@ -42,7 +42,12 @@ def baixar_pasta(pid, sai):
         if f["mimeType"].endswith("folder"): continue
         dst = f"{sai}/{f['name']}"
         if os.path.exists(dst) and os.path.getsize(dst) == int(f.get("size", -1)): continue
-        open(dst, "wb").write(api(f"{D}/{f['id']}?alt=media", bruto=True)); n += 1
+        for tent in range(5):  # a conexao as vezes cai no meio (IncompleteRead): tenta de novo
+            try: dados = api(f"{D}/{f['id']}?alt=media", bruto=True); break
+            except Exception:
+                if tent == 4: raise
+                import time; time.sleep(5 * (tent + 1))
+        open(dst, "wb").write(dados); n += 1
     return n
 def baixar_tudo(NN):
     """na nuvem, no dia da montagem: imagens do robo, o que o Ed salvou, a narracao e os tempos das palavras"""
