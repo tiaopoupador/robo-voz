@@ -214,7 +214,7 @@ L = {
  86: [("^", "M", fr("Comprar o que você *quer* é ótimo.")), ("o mercado quis", "M", fr("O problema é comprar o que o mercado quis por *você*."))],
  87: [("^", "SIL", "fachada"), ("A mesma porta", "I", "porta-abre"), ("mesmas flores", "I", "banca-flores"), ("cheiro de pão", "I", "padaria")],
  88: [("^", "I", "tiao-entra"), ("cestinha vermelha", "I", "cestinha")],
- 89: [("^", "I", "sandra-entra"), ("tira um papel", "I", "sandra-lista"), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 70, 26, VERDE)]))],
+ 89: [("^", "I", "sandra-entra"), ("tira um papel", "I", "sandra-lista"), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 82, 36, VERDE)]))],
  90: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
  91: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
  92: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
