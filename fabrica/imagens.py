@@ -2,7 +2,8 @@
 # Uso: python fabrica/imagens.py 02 [nome ...]
 # Conta os pontos gastos no dia e para em LIMITE (a cota gratis e 10.000 por dia, zera as 21h de Brasilia),
 # para nunca passar do gratis. Rodar de novo depois das 21h continua de onde parou.
-import base64, datetime, importlib, json, os, sys, time, urllib.error, urllib.request, uuid
+import base64, datetime, importlib, json, os, random, sys, time, urllib.error, urllib.request, uuid
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."
 sys.path.insert(0, P)
 NN = sys.argv[1]; ARGS = [a for a in sys.argv[2:] if not a.startswith("--")]
@@ -10,18 +11,24 @@ C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 SAI = f"{P}/fabrica/videos/v{NN}/img"; os.makedirs(SAI, exist_ok=True)
 from fabrica.google import chaves
 env = chaves()  # acessos.env no PC, segredos do GitHub na nuvem
-NUVEM = "--drive" in sys.argv  # na nuvem: as imagens ficam no Drive (Tiao Poupador/robo/video-NN/img)
+NUVEM = "--drive" in sys.argv
+REVISAR = "--sem-revisor" not in sys.argv and "--revisar" in sys.argv or (NUVEM and "--sem-revisor" not in sys.argv)
+CUSTO_REV, RUINS = [0.0], {}
+if REVISAR: from fabrica.revisor_imagens import revisar  # na nuvem: as imagens ficam no Drive (Tiao Poupador/robo/video-NN/img)
 URL = f"https://api.cloudflare.com/client/v4/accounts/{env['CLOUDFLARE_TIAO_CONTA']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b"
-REF = {"T": "tiao-frente-sozinho.jpg", "N": "marcos-neutro.jpg", "R": "sandra-neutra.jpg", "F": "tiao-ficha-oficial.jpg"}
-# com o Tiao vai tambem a ficha oficial (ele em varias poses e angulos), pedido do Ed a 06/11, para ele nao sair sempre de frente e parado
+REF = {"T": "tiao-sem-caneca.jpg", "N": "marcos-neutro.jpg", "R": "sandra-neutra.jpg", "F": "tiao-ficha-oficial.jpg"}
+# 07/11: o Tiao vai so com a referencia SEM caneca (a ficha de varias poses saiu do pedido da Cloudflare: dava 3a mao)
 LIMITE = 9300  # de 10.000: folga para nao estourar
 CONTA = f"{P}/fabrica/saida/cloudflare-cota.json"  # pontos gastos no "dia" da Cloudflare (que vira as 00:00 UTC)
 
-ESTILO = ("Flat 2D cartoon illustration, clean thin black outlines, soft cel shading, warm slightly desaturated colors, "
-          "modern explainer animation style, 16:9 widescreen, Brazilian working-class setting. ")
-IGUAL = "The character must be IDENTICAL to the reference image, not similar: same face, eyes, hair, mustache, skin tone, body shape and clothes. Pose and framing follow the scene, NOT the reference pose. "
+# 07/11/2026 (Ed: «melhorar o prompt», gratis): o modelo pequeno (4B) obedece o comeco e ignora listas compridas de "nao".
+# Por isso: pedido CURTO e positivo, enquadramento + o que cada MAO faz + a expressao, e a referencia do Tiao SEM caneca
+# (as duas antigas tinham a caneca em todas as poses: ele punha a caneca e a cestinha, e saia uma 3a mao).
+# Teste lado a lado em fabrica/saida/teste-prompt/comparar.jpg.
+ESTILO = "Flat 2D cartoon illustration, clean black outlines, soft cel shading, warm colors, modern explainer animation, 16:9, Brazilian working-class setting. "
+IGUAL = "Same face, hair, skin and clothes as the reference image, drawn once, in a natural pose that fits the action (three-quarter or profile view when it fits). "
 QUEM = {
- "T": IGUAL + "Tiao, the man from the reference image, drawn ONCE, as a single character: about 30 years old, short and slightly chubby, round face, short messy black hair, a small thin black pencil mustache (always present, a thin line, never thick), light brown skin, mustard yellow polo shirt, black wristwatch; when legs are visible: faded denim shorts and black flip-flops. ",
+ "T": "Tiao is the man in the reference image: about 30, short and slightly chubby, round face, short messy black hair, a small neat black mustache (always visible), light brown skin, mustard yellow polo, black watch, denim shorts, black flip-flops. " + IGUAL + "His hands hold only what the scene says (no mug unless the scene asks). ",
  "N": IGUAL + "Marcos, the man from the reference image, drawn ONCE: tall slim man in his late 30s, gelled dark hair, light skin, white shirt with rolled sleeves, dark jeans, brown belt, big silver watch, clean-shaven (NO mustache). ",
  "F": "The LAST attached image is Tiao's official CHARACTER SHEET: the same man seen from many angles, poses and expressions. "
       "Use it ONLY to know how he looks from the side, from behind, bending, walking and with each expression. Do NOT copy the sheet layout: draw Tiao ONLY ONCE, inside the scene. "
@@ -35,12 +42,8 @@ for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["persona
     REF[_p["letra"]] = _p["ref"]
     QUEM[_p["letra"]] = (f"One attached image is {_p['id'].capitalize()}'s CHARACTER SHEET (many angles, poses and expressions): use it only to know the character, "
                          "do NOT copy the sheet layout, draw this person ONCE, in a natural dynamic pose that fits the scene. " + IGUAL + _p["visual"] + " ")
-ANATOMIA = (" Correct anatomy for EVERY person, including people in the background: exactly two well-formed, symmetrical eyes of the same size,"
-            " a normal nose and mouth, two arms and two hands with five fingers each, no extra or missing limbs, no fused fingers,"
-            " no deformed or melted faces, faces never inside or merged with objects (blinds, curtains, windows).")
-FIM = ANATOMIA + (" ABSOLUTELY NO WRITING ANYWHERE: every sign, banner, store front, shelf label, price tag, package, paper, receipt, phone and screen"
-       " shows only plain colors, simple shapes or wavy scribble lines, never letters or words (they always come out misspelled)."
-       " No eyes or faces drawn on walls, doors, objects, speakers or devices. Exactly the number of people the scene asks for, each person appears only once.") + " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark, no license plates."
+ANATOMIA = " Every person appears once, with a normal face, two eyes, two arms and two hands."
+FIM = ANATOMIA + " All signs, boards, labels, packages, papers and screens are blank colored shapes or wavy lines, with no letters, numbers or logos."
 
 def tiles(w, h): return -(-w // 512) * -(-h // 512)
 def custo(refs):
@@ -61,7 +64,9 @@ def gerar(nome, refs, desc):
     def campo(k, v, arq=None):
         cab = f'--{b}\r\nContent-Disposition: form-data; name="{k}"' + (f'; filename="{arq}"\r\nContent-Type: image/jpeg' if arq else "") + "\r\n\r\n"
         corpo.append(cab.encode() + (v if isinstance(v, bytes) else v.encode()) + b"\r\n")
-    campo("prompt", ESTILO + "".join(QUEM[r] for r in refs) + desc + FIM); campo("width", "1024"); campo("height", "576")
+    bigode = " His small black mustache is clearly visible." if "T" in refs else ""  # 07/11: dito de novo no fim, senao o 4B esquece
+    campo("prompt", ESTILO + "".join(QUEM[r] for r in refs) + desc + bigode + FIM); campo("width", "1024"); campo("height", "576")
+    campo("seed", str(random.randint(1, 10**9)))  # cada tentativa sai diferente (o revisor pode pedir outra)
     for n, r in enumerate(refs): campo(f"input_image_{n}", open(P + "/banco/referencia/" + REF[r], "rb").read(), f"ref{n}.jpg")
     dados = b"".join(corpo) + f"--{b}--\r\n".encode()
     req = urllib.request.Request(URL, data=dados, method="POST", headers={"Authorization": "Bearer " + env["CLOUDFLARE_TIAO"], "Content-Type": "multipart/form-data; boundary=" + b})
@@ -107,10 +112,20 @@ if __name__ == "__main__":
     print(f"{len(alvo)} imagens para gerar · ja gastos hoje {g:.0f} de {LIMITE}", flush=True)
     feitas = 0
     for n in alvo:
-        q = C.IMG[n]; refs = list(q[1]) + (["F"] if "T" in q[1] else []); c = custo(refs)
+        q = C.IMG[n]; refs = list(q[1]); c = custo(refs)  # 07/11: sem a ficha de varias poses (caneca em todas): dava a 3a mao e a pose dura
         if gasto()[1] + c > LIMITE: print(f"PAREI perto do limite gratis do dia ({gasto()[1]:.0f}). Continua depois das 21h.", flush=True); break
-        r = gerar(n, refs, q[2])
-        soma(c)  # a Cloudflare cobra mesmo quando a imagem sai ruim
+        for tent in range(3 if REVISAR else 1):  # 07/11: o revisor (Claude) olha e pede outra se tiver defeito que se nota
+            r = gerar(n, refs, q[2])
+            soma(c)  # a Cloudflare cobra mesmo quando a imagem sai ruim
+            if r != "ok" or not REVISAR: break
+            try:
+                ok, prob, cu = revisar(f"{SAI}/{n}.jpg", refs, q[2]); CUSTO_REV[0] += cu
+            except Exception as e: print("revisor falhou, fica a imagem:", e, flush=True); break
+            if ok: break
+            print(f"  revisor: {n} tentativa {tent + 1} ruim: {'; '.join(prob)[:220]}", flush=True)
+            if tent == 2: RUINS[n] = prob
+            elif gasto()[1] + c > LIMITE: RUINS[n] = prob; break
+            time.sleep(5)
         if r == "cota": print("PAREI: a Cloudflare disse que a cota acabou.", flush=True); soma(LIMITE); break
         if r == "ok":
             feitas += 1; JA.add(n); print(f"OK {n} ({gasto()[1]:.0f})", flush=True)
@@ -121,5 +136,8 @@ if __name__ == "__main__":
                     except Exception as e: print("Drive falhou, tento de novo:", e, flush=True); time.sleep(10 * (t + 1))
                 else: print("NAO SUBIU", n, flush=True); JA.discard(n)
         time.sleep(20)  # com calma: uma imagem a cada ~30 s (pedido do Ed, 06/11)
+    if REVISAR:
+        print(f"revisor: US$ {CUSTO_REV[0]:.3f} · ficaram com defeito: {len(RUINS)}", flush=True)
+        if RUINS: json.dump(RUINS, open(f"{P}/fabrica/saida/{NN}-imagens-ruins.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     falta = [n for n in na_ordem() if n not in JA]
     print(f"feitas agora: {feitas} · faltam: {len(falta)}", flush=True)

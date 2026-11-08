@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pillow
+      - run: pip install -q pillow anthropic
       - name: abrir o cofre (banco do canal, cifrado)
         env:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
@@ -39,6 +39,7 @@ jobs:
         env:
           CLOUDFLARE_TIAO: ${{ secrets.CLOUDFLARE_TIAO }}
           CLOUDFLARE_TIAO_CONTA: ${{ secrets.CLOUDFLARE_TIAO_CONTA }}
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
           YT_ID: ${{ secrets.YT_ID }}
           YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
           YT_TOKEN: ${{ secrets.YT_TOKEN }}

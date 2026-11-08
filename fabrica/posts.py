@@ -131,7 +131,7 @@ def imagem(cena, arq):
           "light brown skin, mustard yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch. The second reference is his character sheet: draw him ONCE, in a natural pose. "
           f"Scene: {cena} Correct anatomy, five fingers. ABSOLUTELY NO text, letters, numbers, signs, logos or screens with writing anywhere.")
     campo("prompt", pr); campo("width", "1024"); campo("height", "1024")
-    for n, r in enumerate(("tiao-frente-sozinho.jpg", "tiao-ficha-oficial.jpg")): campo(f"input_image_{n}", open(f"{P}/banco/referencia/{r}", "rb").read(), f"r{n}.jpg")
+    for n, r in enumerate(("tiao-sem-caneca.jpg",)): campo(f"input_image_{n}", open(f"{P}/banco/referencia/{r}", "rb").read(), f"r{n}.jpg")
     req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{e['CLOUDFLARE_TIAO_CONTA']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b",
                                  data=b"".join(corpo) + f"--{b}--\r\n".encode(), method="POST", headers={"Authorization": "Bearer " + e["CLOUDFLARE_TIAO"], "Content-Type": "multipart/form-data; boundary=" + b})
     try: open(arq, "wb").write(base64.b64decode(json.load(urllib.request.urlopen(req, timeout=180))["result"]["image"])); return True

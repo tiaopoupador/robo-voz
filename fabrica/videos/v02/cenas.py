@@ -12,7 +12,7 @@ T, S, M = "T", "R", "N"  # Tiao, Sandra (neutra), Marcos (neutro)
 IMG = {
  # ---- lugar e objetos (Cloudflare, sem pessoa) ----
  "fachada":        ("cf", "", "Exterior of a mid-size Brazilian neighborhood supermarket on a sunny Saturday morning, automatic glass doors, red and yellow facade, a few parked cars. No people."),
- "porta-abre":     ("cf", "", "View from inside a bright Brazilian supermarket towards the automatic glass doors sliding open, morning sunlight coming in, " + MERC + "No people."),
+ "porta-abre":     ("cf", "", "View from inside a bright Brazilian supermarket towards the automatic glass doors sliding open, morning sunlight coming in, empty white tiled floor, red and yellow shelves on both sides. Nobody inside the store, the doorway is empty."),
  "banca-flores":   ("cf", "", "Right after the entrance " + MERC + "a flower stand with colorful bouquets and a fruit stand with shiny red apples stacked one by one. No people."),
  "macas":          ("cf", "", "Close-up of shiny red apples stacked in a neat pyramid, sprayed with a fine mist of water, light reflections, supermarket. No people."),
  "padaria":        ("cf", "", "Supermarket bakery counter: golden French bread rolls in a metal tray just out of the oven, steam rising, wicker baskets full of bread. No people."),
@@ -29,7 +29,7 @@ IMG = {
  "etiqueta":       ("cf", "", "Extreme close-up of a yellow shelf price tag with a big price area and a small line underneath, all blank, no readable numbers. No people."),
  "dois-cafes":     ("cf", "", "Two vacuum-packed coffee packages without brand on a shelf, one small and one twice as big; a blank yellow promotion sign hangs only on the small one. No people."),
  "placa-amarela":  ("cf", "", "A blank bright yellow promotion sign with a red border hanging from a supermarket shelf, nothing written. No people."),
- "latas":          ("cf", "", "A neat pyramid of identical soup cans with plain red labels in a supermarket aisle, a blank sign on top. No people."),
+ "latas":          ("cf", "", "A neat pyramid of identical soup cans with plain red labels on a low table, soft blurred colorful shelves behind, no signs or boards anywhere. No people."),
  "biscoito":       ("cf", "", "Close-up of ONE yellow package of chocolate cookies without brand on a supermarket shelf, cheerful design with a cookie drawing, other colorful packages around. No people."),
  "biscoito-encolheu": ("cf", "", "Close-up of two yellow cookie packages without brand side by side on a plain white table, plain white wall behind (no door, no eyes, no faces anywhere), identical design, the right one slightly thinner and smaller. No people. No hands, no arms, no body parts anywhere in the image."),
  "rack-caixa":     ("cf", "", "Checkout impulse rack full of chocolate bars, chewing gum, candies and batteries next to a conveyor belt. No people."),
@@ -45,31 +45,31 @@ IMG = {
  "chocolate-fila": ("cf", "", "Inside a supermarket checkout line, close-up of a hand taking a chocolate bar from a small metal impulse rack next to the conveyor belt, people waiting in line blurred behind. No brand, no office. The sign boards and screens above are plain colors with nothing written, no scribbles that look like letters."),
  "geladeira-casa": ("cf", "", "A simple Brazilian kitchen in the morning, a plate with bread and coffee on the table, sunlight through the window. No people."),
  # ---- Tiao sozinho (Cloudflare com a referencia) ----
- "tiao-entra":     ("cf", T, "He walks into a bright supermarket through automatic glass doors holding a small piece of paper folded in four, calm, " + MERC),
- "tiao-guarda-lapis": ("cf", T, "Medium shot, he smiles calmly and puts a short yellow pencil into his shirt pocket, holding a folded paper, " + MERC),
- "tiao-passa":     ("cf", T, "He walks past a flower stand without looking at it, eyes on his small folded paper list, a small red basket on his arm, " + MERC),
- "tiao-cestinha":  ("cf", T, "He walks down a supermarket aisle with a small red basket with a taped handle hanging on his forearm, only two items inside, " + MERC),
- "tiao-arroz":     ("cf", T, "He stands calmly reading the label on the back of a rice package, " + MERC),
- "tiao-risca":     ("cf", T, "Close-up: he crosses out a line on his small folded paper list with a short yellow pencil, slight smile, " + MERC),
- "tiao-agachado":  ("cf", T, "He crouches down in front of the LOWEST shelf reading a small price tag closely, red basket on the floor next to him, " + MERC),
- "tiao-cafes":     ("cf", T, "He holds two coffee packages without brand, a small one in his left hand and a big one in his right, comparing them, thoughtful, " + MERC),
- "tiao-gramas":    ("cf", T, "Close-up, he turns a cookie package around to read the weight on the back, one eyebrow raised, " + MERC),
- "tiao-esteira":   ("cf", T, "At the supermarket checkout he places a few items from his small red basket on the conveyor belt, polite smile."),
- "tiao-debito":    ("cf", T, "At the supermarket checkout he pays with a debit card on a card machine, relaxed, thanking the cashier."),
- "tiao-volta":     ("cf", T, "He walks home relaxed carrying ONE shopping bag on a sunny colorful Brazilian suburban street with small houses and palm trees, birds in the sky."),
- "tiao-notinhas":  ("cf", T, "FLASHBACK, Tuesday night, he SITS at a kitchen table with a red and white checkered tablecloth covered with crumpled supermarket receipts and an open shoe box, adding them one by one with a short yellow pencil, tired, one warm ceiling lamp, medium shot from the waist up."),
- "tiao-susto":     ("cf", T, "Night kitchen, close-up of his face: eyes wide open in shock looking at an envelope with wavy scribble lines (no letters, no numbers), one hand on his forehead."),
- "tiao-sacolas-antes": ("cf", T, "FLASHBACK, evening, he walks out of a supermarket tired and hungry carrying THREE full shopping bags, regretful face."),
- "tiao-come-antes":("cf", T, "Morning at home, he SITS at a small kitchen table eating bread and drinking coffee before going out, calm, medium shot."),
- "tiao-brinda":    ("cf", T, "At a supermarket entrance, holding a small red basket, he raises a short yellow pencil like a toast with a warm smile, looking to the side."),
- "tiao-foto":      ("cf", T, "Outside a supermarket door he takes a photo of a paper receipt with his smartphone, satisfied; the phone screen faces away from the camera."),
+ "tiao-entra":     ("cf", T, "Medium-wide shot. He walks in through automatic glass doors in three-quarter view, mid-stride, holding a small folded paper in his RIGHT hand, LEFT arm swinging relaxed, calm face, " + MERC),
+ "tiao-guarda-lapis": ("cf", T, "Medium shot from the waist up, three-quarter view. With his RIGHT hand he tucks a short yellow pencil behind his right ear; his LEFT hand holds a small folded paper. Calm small smile, " + MERC),
+ "tiao-passa":     ("cf", T, "Medium-wide shot next to a colorful flower stand. He walks in three-quarter view, mid-stride, ignoring the flowers, eyes down on a small folded paper list in his RIGHT hand; a small red plastic basket hangs from his LEFT forearm. Focused face, " + MERC),
+ "tiao-cestinha":  ("cf", T, "Medium-wide shot down an aisle. He walks toward the camera in three-quarter view; a small red plastic basket with a taped handle hangs from his LEFT forearm with only two items inside; his RIGHT arm swings relaxed. Content face, " + MERC),
+ "tiao-arroz":     ("cf", T, "Medium shot, profile view. He holds a white rice package with BOTH hands at chest height, arms bent, looking down at the back of the package as if reading a long label, eyebrows slightly raised, mouth closed, " + MERC),
+ "tiao-risca":     ("cf", T, "Close-up from the chest up. His LEFT hand holds a small folded paper list, his RIGHT hand crosses out a line with a short yellow pencil. Slight satisfied smile, " + MERC),
+ "tiao-agachado":  ("cf", T, "Wide shot, side view. He crouches low in front of the bottom shelf, RIGHT hand pointing at a small blank price tag, LEFT hand on his knee, a red basket on the floor beside him. Curious squint, " + MERC),
+ "tiao-cafes":     ("cf", T, "Medium shot, front three-quarter view. He holds a small coffee package in his LEFT hand and a big one in his RIGHT hand, looking from one to the other, thoughtful, one eyebrow raised, " + MERC),
+ "tiao-gramas":    ("cf", T, "Close-up of his face and chest, slightly from below. He turns a plain red cookie package (only a cookie drawing on it) in BOTH hands, one eyebrow raised, a small sly suspicious smile under his small black mustache. Background: soft blurred colorful supermarket shelves only, no signs, no boards."),
+ "tiao-esteira":   ("cf", T, "Medium shot at the supermarket checkout, three-quarter view. With his RIGHT hand he places a milk carton on the conveyor belt; his LEFT hand holds the small red basket. Polite smile at the cashier, a woman in a green uniform."),
+ "tiao-debito":    ("cf", T, "Medium shot at the supermarket checkout, three-quarter view. He holds a debit card in his RIGHT hand next to a card machine on the counter; his LEFT hand rests flat on the counter. He smiles at the cashier, a woman in a green uniform behind the counter."),
+ "tiao-volta":     ("cf", T, "Wide shot on a sunny colorful Brazilian suburban street with small houses and palm trees. He walks in three-quarter view, mid-stride, carrying ONE shopping bag in his RIGHT hand, LEFT arm swinging, relaxed happy face, birds in the sky."),
+ "tiao-notinhas":  ("cf", T, "FLASHBACK at night. Medium shot from the waist up, he SITS at a kitchen table with a red and white checkered tablecloth covered in crumpled receipts and an open shoe box; his RIGHT hand writes with a short yellow pencil, his LEFT hand holds a receipt. Tired face, one warm ceiling lamp."),
+ "tiao-susto":     ("cf", T, "FLASHBACK at night. Waist-up close-up in a simple kitchen, one warm lamp, red and white checkered tablecloth with crumpled receipts in front of him. Eyes wide open, eyebrows raised, mouth open in shock; his RIGHT hand pressed on his forehead, his LEFT hand holds an envelope."),
+ "tiao-sacolas-antes": ("cf", T, "FLASHBACK in the evening. Medium-wide shot, he walks out of a supermarket in three-quarter view carrying a full shopping bag in EACH hand (two bags in total, one per hand), shoulders down, regretful tired face. The shop front above the door is a plain dark wall with no sign, the bags are plain brown paper."),
+ "tiao-come-antes":("cf", T, "Morning at home. Medium shot, he SITS at a small kitchen table; his RIGHT hand holds a piece of bread, his LEFT hand holds a white coffee cup. Calm face."),
+ "tiao-brinda":    ("cf", T, "Medium shot at a supermarket entrance, three-quarter view. A small red basket hangs from his LEFT forearm; his RIGHT hand raises a short yellow pencil like a toast. Warm smile, looking to the side."),
+ "tiao-foto":      ("cf", T, "Medium shot outside a supermarket door. His LEFT hand holds a paper receipt up, his RIGHT hand holds a smartphone pointed at it, screen facing away from the camera. Satisfied face."),
  # ---- Sandra sozinha ----
  "sandra-entra":   ("cf", S, "She walks into a bright supermarket through automatic glass doors in a hurry, holding her brown handbag, sunglasses on her head, " + MERC),
  "sandra-pao":     ("cf", S, "Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, " + MERC + "Sandra is a WOMAN with a smooth feminine face: absolutely NO mustache, no beard. She carries ONE handbag only."),
  "sandra-carrinho":("cf", S, "She pulls a BIG empty shopping cart from a line of carts and drops her handbag into it, " + MERC),
  "sandra-queijo":  ("cf", S, "She walks slowly pushing a big cart, looking with desire at cheese in a refrigerated display, " + MERC),
  "sandra-biscoito":("cf", S, "She reaches for a YELLOW package of chocolate cookies on a shelf with a soft nostalgic smile, " + MERC),
- "sandra-ri":      ("cf", S, "She laughs out loud mockingly, one hand on her belly, pointing at someone off-screen, " + MERC),
+ "sandra-ri":      ("cf", S, "She laughs out loud mockingly, one hand on her belly, pointing at someone off-screen, her one pair of sunglasses pushed up on top of her head (her eyes are visible), " + MERC),
  "sandra-chocolate": ("cf", S, "In a checkout line she grabs a chocolate bar from the impulse rack, bored; her big cart is FULL, " + MERC),
  "sandra-visor":   ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a cash register (NOT a kitchen, no fridge): she stares in shock at the register display, mouth open, one hand on her cheek, her full shopping cart next to her. Only ONE Sandra."),
  "sandra-cartao":  ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a card machine (NOT a kitchen, no fridge): she hands a credit card to the cashier while distracted looking at her phone. Only ONE Sandra in the image. Background: supermarket shelves and other checkouts only. NO fridge, NO kitchen cabinets, NO home furniture."),
@@ -237,8 +237,8 @@ CLIMA = {0: "calma", 5: "tensao", 7: "triste", 14: "curiosa", 24: "curiosa", 32:
 CAPA = ("sandra-neutra.jpg + tiao-frente-sozinho.jpg",
         "Inside a bright Brazilian supermarket aisle full of colorful products, warm cinematic light. LEFT side, big and close: Sandra pushes a HUGE shopping cart overflowing with products, holding a very long paper receipt that falls to the floor, shocked guilty face, mouth open. RIGHT side, closer to the camera: Tiao holds a tiny red basket with only a few items, calm, one eyebrow raised, half smile, looking straight at the viewer as if he knows a secret. A big thick RED ARROW points at the overflowing cart. Big bold text at the top left, white letters with thick black outline, the second word in yellow: ELES SABEM. Keep the text away from the edges.")
 TITULO = "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"
-PUBLICA = "2026-11-08 17:00"
-PUBLICA_TXT = "domingo, 08/11, às 17h (Brasília)"
+PUBLICA = "2026-11-11 18:00"
+PUBLICA_TXT = "quarta, 11/11, às 18h (Brasília, 21h em Lisboa)"
 PRAZO_ISO = "2026-11-07T10:00:00-03:00"
 PRAZO = "sábado, 07/11, até as 10h (este primeiro vídeo está apertado; nos próximos você terá 3 dias)"
 # sons de cena: (som, linha, gatilho, segundos, volume). Sons em render/public/amb (o montar.py cria o "bip").
