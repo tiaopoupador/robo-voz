@@ -38,6 +38,7 @@ jobs:
       - name: montar
         env:
           FINMOOVI_BROLL: ${{ github.workspace }}/finmoovi/
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
           APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
           YT_ID: ${{ secrets.YT_ID }}
           YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
@@ -110,9 +111,20 @@ jobs:
       - name: juntar os 16 pedacos e acertar o som (padrao do YouTube)
         run: |
           mkdir -p videos-prontos
-          for i in $(seq 0 15); do echo "file 'pedacos/p$i.mp4'"; done > lista.txt
-          ffmpeg -v error -f concat -safe 0 -i lista.txt -c copy -y junto.mp4
-          ffmpeg -v error -i junto.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
+          # 08/11 (Ed: chiados e a voz ficando atrasada): juntar o som com "-c copy" somava o atraso do AAC de cada pedaco
+          # (quase 1 s no fim) e fazia estalo na emenda. Agora: a imagem junta-se sem mexer; o som de cada pedaco vira WAV
+          # cortado no tamanho EXATO dos quadros dele, junta-se em WAV e so no fim vira AAC uma vez.
+          TOTAL=$(python3 -c "import json;d=json.load(open('montado/props.json'));print(round((d['fim']+d['tela'])*30))")
+          : > lv.txt; : > la.txt
+          for i in $(seq 0 15); do
+            A=$(( TOTAL * i / 16 )); B=$(( TOTAL * (i + 1) / 16 - 1 )); D=$(python3 -c "print(($B - $A + 1) / 30)")
+            ffmpeg -v error -i pedacos/p$i.mp4 -map 0:v -c copy -y v$i.mp4
+            ffmpeg -v error -i pedacos/p$i.mp4 -map 0:a -af "aresample=48000,apad,atrim=0:$D" -ac 2 -c:a pcm_s16le -y a$i.wav
+            echo "file 'v$i.mp4'" >> lv.txt; echo "file 'a$i.wav'" >> la.txt
+          done
+          ffmpeg -v error -f concat -safe 0 -i lv.txt -c copy -y so-imagem.mp4
+          ffmpeg -v error -f concat -safe 0 -i la.txt -c copy -y som.wav
+          ffmpeg -v error -i so-imagem.mp4 -i som.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -shortest -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
           ffprobe -v error -show_entries format=duration -of csv=p=0 videos-prontos/VIDEO-$NN.mp4
       - name: guardar no Drive, capa e agendar no YouTube
         env:

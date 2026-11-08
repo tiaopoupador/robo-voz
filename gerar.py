@@ -15,7 +15,8 @@ FALA = [(r"FinMoovi", "Fin Múvi"), (r"picapes", "pikápis"), (r"picape", "piká
         (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
         (r"opções", "ôpissões"), (r"Opções", "Ôpissões"), (r"opção", "ôpissão"), (r"Opção", "Ôpissão"),
         # Ed, 08/11/2026: «o correto é falar nótinhas (...) o certo é pão de fôrma»
-        (r"notinha", "nótinha"), (r"Notinha", "Nótinha"), (r"pão de forma", "pão de fôrma")]
+        # 08/11: «nótinha» deu força demais no NÓ; o certo é nó-TI-nha (ó aberto, força no ti). E «de cor» = de cór (decorar)
+        (r"notinha", "nótínha"), (r"Notinha", "Nótínha"), (r"pão de forma", "pão de fôrma"), (r"(?<![a-zà-ú])de cor(?=[:,.!?])", "de cór")]
 for a, b in FALA:
     texto = re.sub(a, b, texto)
 t0 = time.time()
