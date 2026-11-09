@@ -58,11 +58,13 @@ try:
 except ImportError: num2words = None
 def norm(s):
     if num2words:
+        s = re.sub(r"(\d)\.(\d{3})(?!\d)", r"\1\2", s).replace("%", " por cento")  # 3.640 -> 3640; 40% -> 40 por cento
         s = re.sub(r"(\d+),(\d+)", lambda m: f"{m.group(1)} vírgula {m.group(2)}", s)
         s = re.sub(r"\d+", lambda m: num2words(int(m.group()), lang="pt_BR"), s.replace(".", " ").replace("R$", " reais "))
     s = unicodedata.normalize("NFKD", s.lower()); s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"[^a-z ]", " ", s).split()
 SR_W = 16000
+NUMW = set("zero dois duas tres quatro cinco seis sete oito nove dez onze doze treze quatorze catorze quinze dezesseis dezessete dezoito dezenove vinte trinta quarenta cinquenta sessenta setenta oitenta noventa cem cento duzentos duzentas trezentos trezentas quatrocentos quinhentos seiscentos setecentos oitocentos novecentos mil milhao milhoes".split())
 def nota(wav, sr, texto, whisper):
     """devolve (ok, motivo, dados). wav: tensor [1, n]"""
     a = ta.functional.resample(wav, sr, SR_W)[0].numpy().astype(np.float32)
@@ -74,6 +76,9 @@ def nota(wav, sr, texto, whisper):
     A, B = norm(texto.replace("Tchião", "Tião")), norm(ouviu)
     sim = difflib.SequenceMatcher(None, A, B).ratio(); d["sim"] = round(sim, 2)
     if sim < 0.82: return False, f"palavras nao batem ({sim:.2f})", d
+    # 09/11: numero tem de bater EXATO (a lei 13.175 saiu "3.175" e passou com 0,95 de parecido)
+    na, nb = [w for w in A if w in NUMW], [w for w in B if w in NUMW]
+    if na != nb: return False, f"numero diferente ({' '.join(na)} / {' '.join(nb)})", d
     if not ws: return False, "sem palavras", d
     # energia em janelas de 20 ms
     fr = a[: len(a) // 320 * 320].reshape(-1, 320); r = np.sqrt((fr ** 2).mean(1)); voz = (r > 0.01).sum() * 0.02
