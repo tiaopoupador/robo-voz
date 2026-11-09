@@ -215,7 +215,9 @@ export const LinhaTempo: React.FC<{ marcos: string[]; ativo: number; titulo?: st
             return (
               <div key={i} style={{ position: "absolute", left: i * passo - 60, top: 88, width: 120, textAlign: "center", transform: `scale(${e * (atual ? 1 + 0.06 * Math.sin(t * 4) : 1)})` }}>
                 <div style={{ width: 120, height: 120, borderRadius: 99, background: feito ? (atual ? COR.amarelo : COR.verde) : COR.branco, border: `${LINHA}px solid ${COR.tinta}`, boxShadow: sombra(6) }} />
-                <div style={{ ...txt(atual ? 64 : 46, atual ? COR.tinta : COR.cinza, atual ? 800 : 600), marginTop: 24, whiteSpace: "nowrap", marginLeft: -100, marginRight: -100 }}>{r}</div>
+                {/* 09/11 (Ed: «o 3 passos: Devagar só mostra o Dev»): a ponta da linha alinha para dentro, nunca sai da tela */}
+                <div style={{ ...txt(atual ? 64 : 46, atual ? COR.tinta : COR.cinza, atual ? 800 : 600), marginTop: 24, whiteSpace: "nowrap",
+                  ...(i === 0 ? { marginLeft: 0, marginRight: -600, textAlign: "left" as const } : i === marcos.length - 1 ? { marginLeft: -600, marginRight: 0, textAlign: "right" as const } : { marginLeft: -100, marginRight: -100 }) }}>{r}</div>
               </div>
             );
           })}

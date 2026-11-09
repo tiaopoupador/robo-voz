@@ -88,8 +88,39 @@ jobs:
           name: pedaco-${{ matrix.p }}
           path: render/out/p${{ matrix.p }}.mp4
           retention-days: 2
+  som:
+    # 09/11 (Ed: «fica picotando, o som some e volta (...) quero que gere tudo novamente sem cortes, sem juntar nada»):
+    # o SOM do video sai INTEIRO de uma vez, numa maquina so, do primeiro ao ultimo segundo. Nao ha mais emenda de som.
+    # (os 16 pedacos continuam so para a IMAGEM, que e o que demora; a imagem nao tem som para emendar.)
+    needs: montar
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: render/package-lock.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: montado
+          path: render/public/v${{ inputs.video }}
+      - name: instalar o motor de video
+        working-directory: render
+        run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - name: gerar o som inteiro
+        working-directory: render
+        run: |
+          npx remotion render src/nuvem.ts Video out/som.wav --props=public/v$NN/props.json --codec=wav --concurrency=4 --log=error
+          ffprobe -v error -show_entries format=duration -of csv=p=0 out/som.wav
+      - uses: actions/upload-artifact@v4
+        with:
+          name: som-inteiro
+          path: render/out/som.wav
+          retention-days: 2
   juntar:
-    needs: pedaco
+    needs: [pedaco, som]
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -108,26 +139,20 @@ jobs:
         with:
           name: montado
           path: montado
-      - name: juntar os 16 pedacos e acertar o som (padrao do YouTube)
+      - uses: actions/download-artifact@v4
+        with:
+          name: som-inteiro
+          path: som
+      - name: juntar a imagem dos 16 pedacos com o som inteiro (padrao do YouTube)
         run: |
           mkdir -p videos-prontos
-          # 08/11 (Ed: chiados e a voz ficando atrasada): juntar o som com "-c copy" somava o atraso do AAC de cada pedaco
-          # (quase 1 s no fim) e fazia estalo na emenda. Agora: a imagem junta-se sem mexer; o som de cada pedaco vira WAV
-          # cortado no tamanho EXATO dos quadros dele, junta-se em WAV e so no fim vira AAC uma vez.
-          # Cada ponta ganha 4 ms de entrada e saida suave: sem isso a emenda estalava (09/11, 1:19 do video 02).
-          # E cada pedaco comeca com 2048 amostras (42,7 ms) de silencio que o codificador AAC poe sozinho: corta-se, senao
-          # a voz fica 43 ms atrasada e cada emenda vira um buraco de 43 ms no meio da fala (medido a 09/11).
-          TOTAL=$(python3 -c "import json;d=json.load(open('montado/props.json'));print(round((d['fim']+d['tela'])*30))")
-          : > lv.txt; : > la.txt
-          for i in $(seq 0 15); do
-            A=$(( TOTAL * i / 16 )); B=$(( TOTAL * (i + 1) / 16 - 1 )); D=$(python3 -c "print(($B - $A + 1) / 30)")
-            ffmpeg -v error -i pedacos/p$i.mp4 -map 0:v -c copy -y v$i.mp4
-            ffmpeg -v error -i pedacos/p$i.mp4 -map 0:a -af "aresample=48000,atrim=start_sample=2048,asetpts=PTS-STARTPTS,apad,atrim=0:$D,afade=t=in:d=0.004,afade=t=out:st=$(python3 -c "print($D - 0.004)"):d=0.004" -ac 2 -c:a pcm_s16le -y a$i.wav
-            echo "file 'v$i.mp4'" >> lv.txt; echo "file 'a$i.wav'" >> la.txt
-          done
+          # 09/11: o som NAO se emenda mais (antes vinha do som de cada pedaco, com estalo, buraco de 43 ms e atraso).
+          # A imagem junta-se sem mexer; o som vem inteiro do job "som" e so vira AAC uma vez.
+          : > lv.txt
+          for i in $(seq 0 15); do ffmpeg -v error -i pedacos/p$i.mp4 -map 0:v -c copy -y v$i.mp4; echo "file 'v$i.mp4'" >> lv.txt; done
           ffmpeg -v error -f concat -safe 0 -i lv.txt -c copy -y so-imagem.mp4
-          ffmpeg -v error -f concat -safe 0 -i la.txt -c copy -y som.wav
-          ffmpeg -v error -i so-imagem.mp4 -i som.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -shortest -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
+          # o som inteiro (job "som"): uma peca so, sem emenda
+          ffmpeg -v error -i so-imagem.mp4 -i som/som.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -shortest -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
           ffprobe -v error -show_entries format=duration -of csv=p=0 videos-prontos/VIDEO-$NN.mp4
       - name: guardar no Drive, capa e agendar no YouTube
         env:

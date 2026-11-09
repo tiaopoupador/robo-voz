@@ -37,7 +37,7 @@ Só que o supermercado sabia. Sabia antes de ela passar pela porta. Porque tem n
 
 Mas antes, uma coisa que a Sandra não sabe. O Tião já caiu em todas essas nove. Durante anos.
 
-Uns anos atrás, o Tião ia ao mercado como todo mundo: de cabeça, com fome, no fim do expediente. Entrava para comprar café e saía com quatro sacolas. E no dia vinte, o salário já tinha acabado. Ele não sabia para onde ia. Simplesmente sumia.
+Uns anos atrás, o Tião ia ao mercado como todo mundo: sem lista nenhuma, confiando só na memória, com fome e no fim do expediente. Entrava para comprar café e saía com quatro sacolas. E no dia vinte, o salário já tinha acabado. Ele não sabia para onde ia. Simplesmente sumia.
 
 [TRILHA: triste, baixa] [SOM: relógio da cozinha, geladeira zumbindo]
 
