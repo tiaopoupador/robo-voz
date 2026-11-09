@@ -173,7 +173,7 @@ L = {
  41: [("^", "I", "etiqueta"), ("conta de cada pacote", "H", ("sandra-ri", [bl("Vai sair daqui *amanhã*!", 72, 20, "esq"), re_("😂", 28, 28)]))],
  42: [("^", "M", fr("O número pequeno é uma *arma*.")), ("treze mil", "M", ci("Lei 13.175", "2015", "lei federal", "Em muitos produtos, o preço por *quilo*, por litro ou por metro.", "Lei 13.175/2015 (art. 2º-A da Lei 10.962/2004)"))],
  43: [("^", "H", ("etiqueta", [et("preço por quilo", 50, 70, VERDE)]))],
- 44: [("^", "I", "dois-cafes"), ("placa amarela", "H", ("dois-cafes", [pl("R$ 18,90", 30, 22, VERM)])), ("trinta e dois", "H", ("tiao-cafes", [pl("R$ 32,90", 72, 22, VERDE)]))],
+ 44: [("^", "I", "dois-cafes"), ("placa amarela", "H", ("dois-cafes", [pl("R$ 18,90", 30, 22, VERM)])), ("não tem placa", "H", ("tiao-cafes", [pl("R$ 32,90", 72, 22, VERDE)]))],
  45: [("^", "M", ba(CAFE, "O mesmo quilo de café", "reais"))],
  46: [("^", "M", nu(4.90, "O pacote da promoção é mais caro", "por quilo", cor=VERM, casas=2, emoji="😮")), ("não te contou a conta", "M", fr("Ela só não te contou a *conta*.", "a placa não mentiu", True))],
  47: [("^", "H", ("placa-amarela", [cb("ARMADILHA 6", 50, 40, VERM)])), ("Nove e noventa", "H", ("placa-amarela", [pl("R$ 9,99", 50, 50, VERM, tam=150)]))],
