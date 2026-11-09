@@ -19,9 +19,9 @@ Regras deste texto: o nome se escreve "Tião" (o robô da voz troca sozinho). Se
 
 [TRILHA: calma, manhã] [SOM: porta automática abrindo, bip de caixa ao fundo]
 
-Sábado, nove e dez da manhã. A porta automática do supermercado do bairro se abre com aquele chiado, e a Sandra entra de óculos escuros na cabeça. Ela veio buscar duas coisas. Só duas. Pão e leite.
+Sábado, nove e dez da manhã. A porta automática do supermercado do bairro se abre com aquele chiado, e a Sandra entra de óculos escuros na cabeça. O marido dela, o Marcos, ficou lá fora, esperando na picape preta. Ela veio buscar duas coisas. Só duas. Pão e leite.
 
-Atrás dela, entra o Tião, de chinelo, com um papel dobrado em quatro na mão. É o verso de um envelope da conta de luz. Ele pega uma cestinha vermelha, aquela do canto, com a alça remendada com fita. Ninguém quer aquela cestinha. O Tião sempre pega ela.
+Atrás dela, entra o Tião, o vizinho da frente dos dois, de chinelo, com um papel dobrado em quatro na mão. É o verso de um envelope da conta de luz. Ele pega uma cestinha vermelha, aquela do canto, com a alça remendada com fita. Ninguém quer aquela cestinha. O Tião sempre pega ela.
 
 A Sandra olha para o papel e ri. "Tião, você faz lista até para comprar pão? Daqui a pouco vai trazer calculadora." O Tião sorri, guarda o toco de lápis no bolso da camisa, e não responde.
 
@@ -31,7 +31,7 @@ Ela veio buscar pão e leite. E ela nem percebeu quando aconteceu.
 
 [TRILHA: tensão baixa entra]
 
-Só que o supermercado sabia. Sabia antes de ela passar pela porta. Porque lá dentro tem nove armadilhas, uma em cada metro do caminho. Hoje eu vou te mostrar todas, na ordem em que elas te pegam. E a nona é a mais cara de todas: ela só aparece trinta dias depois, quando você já está em casa.
+Só que o supermercado sabia. Sabia antes de ela passar pela porta. Porque tem nove armadilhas esperando por ela: oito lá dentro, uma depois da outra, da porta até o caixa, e uma que só aparece depois. Hoje eu vou te mostrar todas, na ordem em que elas te pegam. E essa nona é a mais cara de todas: ela só aparece trinta dias depois, quando você já está em casa.
 
 ## 2. O Tião também caía
 
@@ -45,7 +45,7 @@ Era uma noite de terça, fria, no fim do mês. O Tião espalhou na mesa da cozin
 
 Ele achava que gastava uns seiscentos reais por mês no mercado. Somou as notinhas de um mês inteiro. Deu novecentos e doze.
 
-Ele somou de novo, achando que tinha errado. Novecentos e doze. Trezentos reais por mês que ele nem lembrava de ter gastado. Não era luxo. Era um chocolate aqui, um queijo ali, uma promoção que parecia boa. Foi aí que ele entendeu: o mercado não é um lugar onde você vai comprar o que precisa. É um lugar desenhado para você comprar o que não planejou. No dia seguinte, ele comprou um caderno simples, de capa azul, e começou a anotar ali cada real que gastava, com o dia e o motivo. É esse caderno que ele carrega até hoje. E é nele que estão as regras que você vai ver neste vídeo.
+Ele somou de novo, achando que tinha errado. Novecentos e doze. Trezentos reais por mês que ele nem lembrava de ter gastado. Não era luxo. Era um chocolate aqui, um queijo ali, uma promoção que parecia boa. No dia seguinte, ele comprou um caderno simples, de capa azul, e começou a anotar ali cada real que gastava, com o dia e o motivo. E, nos sábados seguintes, ia ao mercado só para observar. Reparou que o leite ficava sempre no fundo, que o mais caro ficava na altura dos olhos, que a música tocava devagar. E anotava tudo no caderno. Foi aí que ele entendeu: o mercado não é um lugar onde você vai comprar o que precisa. É um lugar desenhado para você comprar o que não planejou. E é nesse caderno, que ele guarda em casa até hoje, que estão as regras que você vai ver neste vídeo.
 
 Então vamos para as nove armadilhas. Uma por uma, na ordem em que elas aparecem, entrando no mercado junto com a Sandra.
 
@@ -53,7 +53,7 @@ Então vamos para as nove armadilhas. Uma por uma, na ordem em que elas aparecem
 
 [TRILHA: calma, leve] [SOM: vozes baixas, carrinho rolando]
 
-Armadilha número um: a entrada. Repara no que a Sandra vê primeiro quando a porta abre. Não é arroz. Não é sabão em pó. São flores. Uma banca de frutas brilhando, as maçãs empilhadas uma por uma, borrifadas com água. E, logo ao lado, a padaria, com o cheiro de pão quente saindo do forno.
+Armadilha número um: a entrada. Vamos voltar para as nove e dez, quando a porta se abre. Repara no que a Sandra vê primeiro quando a porta abre. Não é arroz. Não é sabão em pó. São flores. Uma banca de frutas brilhando, as maçãs empilhadas uma por uma, borrifadas com água. E, logo ao lado, a padaria, com o cheiro de pão quente saindo do forno.
 
 Isso tem nome. O pesquisador americano Paco Underhill passou décadas filmando clientes dentro de lojas, e contou no livro "Vamos às Compras", de mil novecentos e noventa e nove. Os primeiros metros depois da porta são a zona de descompressão. É ali que a pessoa diminui o passo, tira o barulho da rua da cabeça e muda para o modo de compra.
 
@@ -91,7 +91,7 @@ Armadilha número quatro: o caminho mais longo. Onde fica o leite? Onde fica o p
 
 Não é por acaso. É o que o Underhill chamou de levar o cliente para passear. Aquilo que todo mundo precisa comprar fica longe da porta, para que você atravesse a loja inteira para chegar lá. E, no caminho, passe por tudo que você não precisava.
 
-No corredor das bebidas, o Marcos aparece. Ele estava no carro, cansou de esperar e entrou. Vê o Tião parado, lendo o rótulo de um pacote de arroz, e grita do outro lado do corredor: "Ô Tião, tá lendo o livro do arroz? Conta o final para mim!" Duas pessoas olham. A Sandra ri. O Tião vira a página do envelope, risca o arroz, e segue.
+No corredor das bebidas, o Marcos aparece. Ele estava na picape, cansou de esperar e entrou. Vê o Tião parado, lendo o rótulo do pacote de arroz que ele acabou de pegar lá no fundo, e grita do outro lado do corredor: "Ô Tião, tá lendo o livro do arroz? Conta o final para mim!" Duas pessoas olham. A Sandra ri. O Tião vira a página do envelope, risca o arroz, e segue.
 
 [SOM: risada do Marcos] [EMOÇÃO: Marcos debochando; Tião tranquilo]
 
@@ -119,7 +119,7 @@ Ele lê a etiqueta pequena. Não o preço grande, o pequeno, embaixo. "Tião, vo
 
 Só que aquele número pequeno é uma arma. Desde dois mil e quinze, uma lei federal, a treze mil cento e setenta e cinco, manda o comércio informar, em muitos produtos, o preço por quilo, por litro ou por metro. Ele está ali justamente para você comparar pacotes de tamanhos diferentes.
 
-Olha o café. O pacote pequeno, de meio quilo, está com uma placa de promoção: dezoito e noventa. O pacote grande, de um quilo, não tem placa nenhuma: trinta e dois e noventa. Parece que o pequeno é o negócio. Mas dois pacotes pequenos dão trinta e sete e oitenta.
+Olha o café. O pacote pequeno, de meio quilo, está com uma placa amarela de promoção: dezoito e noventa. O pacote grande, de um quilo, não tem placa nenhuma: trinta e dois e noventa. Parece que o pequeno é o negócio. Mas dois pacotes pequenos dão trinta e sete e oitenta.
 
 O pacote "em promoção" é quase cinco reais mais caro por quilo. A placa amarela não mentiu sobre o preço. Ela só não te contou a conta.
 
@@ -135,7 +135,7 @@ E aí vem a irmã do nove: a placa "leve três, pague dois", ou então a famosa 
 
 Ninguém precisava de sete latas de sopa. Mas o número doze ficou na cabeça, e a cabeça usou ele como régua.
 
-O Tião tem uma regra para isso, escrita na primeira página do caderno: só leva três se já ia levar três. Se ia levar um, a promoção de três não é desconto. É gasto.
+O Tião tem uma regra para isso, escrita na segunda página do caderno: só leva três se já ia levar três. Se ia levar um, a promoção de três não é desconto. É gasto.
 
 ## 9. Armadilha 7: o pacote que encolheu
 
@@ -163,7 +163,7 @@ São as compras de impulso. Coisas de dois, três, cinco reais que ninguém colo
 
 Na frente dela, o Tião coloca as seis coisas na esteira. O Marcos olha para a cestinha e fala alto, para a fila inteira ouvir: "Isso aí é compra do mês ou amostra grátis, Tião?" A moça do caixa segura o riso. O Tião paga no débito, agradece, e diz só: "Bom sábado, Marcos."
 
-Aí é a vez da Sandra. [SOM: bip, bip, bip] A moça do caixa passa item por item, e o visor não para de subir. Cento e oitenta e sete reais e quarenta centavos. A Sandra olha para o visor, olha para o carrinho, e não consegue lembrar quando pegou metade daquilo.
+Aí é a vez da Sandra. [SOM: bip, bip, bip] A moça do caixa passa item por item, e o visor não para de subir. Cento e oitenta e sete reais e quarenta centavos. A Sandra olha para o visor, olha para o carrinho, e não consegue lembrar quando pegou metade daquilo. E passa o cartão de crédito, como faz todo mês.
 
 [SILÊNCIO: corte seco, a música para]
 
@@ -181,11 +181,11 @@ Em dois mil e treze, pesquisadores da Universidade Cornell publicaram um estudo 
 
 Armadilha número nove, a que eu prometi lá no começo. A mais cara de todas. E ela não está dentro do mercado.
 
-Na hora de pagar, a Sandra passa o cartão de crédito. Na casa dela e do Marcos, o mercado já vai para o cartão faz tempo, porque no fim do mês o dinheiro não fecha.
+Lembra do cartão de crédito que a Sandra passou no caixa? Na casa dela e do Marcos, o mercado já vai para o cartão faz tempo, porque no fim do mês o dinheiro não fecha.
 
 Trinta dias depois, chega a fatura. E, como em tantos meses, eles pagam só uma parte. O resto entra no rotativo. Segundo o Banco Central, os juros médios do rotativo do cartão chegaram a quatrocentos e cinquenta e um por cento ao ano em setembro de dois mil e vinte e seis. É um dos juros mais caros do país.
 
-Desde dois mil e vinte e quatro existe um teto: juros e encargos não podem passar de cem por cento da dívida. Parece uma proteção, e é. Mas olha o que ela permite: aqueles cento e oitenta e sete reais do pão e do leite podem virar até trezentos e setenta e quatro.
+Desde dois mil e vinte e quatro existe um teto: juros e encargos não podem passar de cem por cento da dívida. Parece uma proteção, e é. Mas olha o que ela permite: se ficarem rodando no rotativo, aqueles cento e oitenta e sete reais do pão e do leite podem virar até trezentos e setenta e quatro.
 
 O pão mais caro da vida da Sandra. E ela vai pagar por ele em parcelas, sem lembrar que um dia foi pão.
 
@@ -195,7 +195,7 @@ O pão mais caro da vida da Sandra. E ela vai pagar por ele em parcelas, sem lem
 
 Vamos fazer a conta que o mercado torce para você nunca fazer.
 
-A Sandra não foi ao mercado uma vez. Ela vai umas duas vezes por semana, "rapidinho", buscar pão e leite. E vamos ser bem generosos: digamos que, em cada ida, ela gasta só trinta e cinco reais a mais do que planejou. Não cento e trinta, como naquele sábado. Só trinta e cinco.
+A Sandra não foi ao mercado uma vez. Ela vai umas duas vezes por semana, "rapidinho", buscar pão e leite. E vamos ser bem generosos: digamos que, em cada ida, ela gasta só trinta e cinco reais a mais do que planejou. Bem menos do que naquele sábado, quando o carrinho passou do planejado em mais de cento e setenta reais. Só trinta e cinco.
 
 Trinta e cinco reais, duas vezes por semana, são setenta reais por semana. Em um ano, três mil seiscentos e quarenta reais. Uns trezentos reais por mês. Lembra dos trezentos reais que sumiam do Tião, antes do caderno? É o mesmo buraco.
 
@@ -205,7 +205,31 @@ Sessenta mil reais. Em chocolate da fila, em queijo do terceiro corredor, em bis
 
 E repara: ninguém está dizendo para você nunca mais comprar um chocolate. Comprar o que você quer é ótimo. O problema é comprar o que o mercado quis por você, e nem saber que comprou.
 
-## 13. O sábado seguinte
+## 13. A virada: o que fez a Sandra e o Marcos mudarem
+
+Só que essa história não termina no caixa. Falta contar o que aconteceu com a Sandra e com o Marcos depois daquele sábado. Porque foi ali que tudo começou a mudar.
+
+Naquela mesma tarde, o Tião estava regando as plantas no portão de casa. Do outro lado da rua, na casa da frente, o Marcos lavava a picape preta. E a Sandra, ainda curiosa, atravessou a rua e perguntou, rindo: "Tião, sério. Como é que a sua conta deu só cinquenta e oito reais?"
+
+O Tião respondeu sem largar a mangueira: "O mercado tem nove armadilhas, Sandra. Eu caí em todas elas, durante anos." O Marcos riu alto, com a esponja na mão: "Nove armadilhas! Agora o mercado virou filme de terror, Tião?" A Sandra riu junto. E ninguém levou aquilo a sério.
+
+À noite, a Sandra foi guardar as compras e achou a notinha no fundo da sacola. Era tão comprida que, quando ela esticou na mesa da cozinha, a ponta passou da beirada e caiu até o chão. Vinte e três coisas.
+
+Ela pegou uma caneta e foi marcando o que tinha ido buscar. Pão, oito e noventa. Leite, cinco e quarenta e nove. Só essas duas. As outras vinte e uma ela não tinha planejado. E, somadas, davam cento e setenta e três reais.
+
+Foi aí que ela parou de rir. Era a mesma cena do Tião, anos atrás: uma mesa de cozinha, uma notinha na mão, e um número que não fazia sentido.
+
+O Marcos entrou na cozinha ainda brincando com a história das armadilhas. A Sandra não respondeu. Só virou a notinha para ele e perguntou: "Isso vai para o cartão de novo?" Ele abriu o aplicativo do banco no celular, para ver o cartão. E, na fatura do mês anterior, aquela que eles tinham pago só uma parte, tinha uma linha que ele nunca tinha lido com atenção: juros do rotativo, cento e doze reais.
+
+Cento e doze reais de juros, por comida que eles já tinham comido semanas antes. O Marcos ficou um tempão olhando aquela linha. E, pela primeira vez naquele dia, não fez piada. A Sandra tirou o cartão de crédito da carteira e guardou na gaveta da cozinha. "Mercado, agora, só no débito."
+
+No domingo à noite, quando a rua já estava vazia, os dois atravessaram até o portão do Tião e bateram baixinho. O Marcos ficou um passo atrás, com as mãos no bolso, sem graça. E a Sandra falou quase cochichando, para nenhum vizinho ouvir: "Tião, aquelas nove armadilhas. Você ensina a gente?"
+
+O Tião não riu deles. Entrou em casa e voltou com o caderno de capa azul. Abriu na primeira página. Ali, colado, estava o verso daquele envelope da noite de terça, com a soma a lápis: novecentos e doze. "Eu também caí em todas", ele disse. "Ninguém nasce sabendo."
+
+Ele não falou das nove de uma vez. Falou de três, para começar. "Antes de sair de casa, a lista no papel. Na porta, a cestinha, nunca o carrinho grande. E, antes de pegar qualquer pacote, vira e lê os gramas." E deu um exemplo: o biscoito amarelo que a Sandra levava toda semana, o mesmo que a avó dela comprava, já teve duzentos gramas. A Sandra lembrou na hora: era o biscoito da avó. O Marcos, que tinha rido de manhã, pediu a caneta e anotou as três no verso de um boleto.
+
+## 14. O sábado seguinte
 
 [TRILHA: calma, manhã, a mesma do começo] [SOM: porta automática abrindo]
 
@@ -213,7 +237,7 @@ Sábado seguinte. Nove e dez da manhã. A mesma porta automática, com o mesmo c
 
 O Tião entra com o envelope dobrado em quatro e pega a cestinha vermelha do canto, a da alça remendada com fita.
 
-E, atrás dele, entra a Sandra. Ela para na porta. Abre a bolsa. E tira um papel dobrado. É o verso de um boleto. Uma lista. Cinco coisas, escritas à caneta.
+E, atrás dele, entra a Sandra. Ela para na porta. Abre a bolsa. E tira um papel dobrado. É aquele boleto do domingo. De um lado, as três regras do Tião, com a letra do Marcos. Do outro, uma lista. Cinco coisas, escritas à caneta.
 
 Ela olha para o Tião, meio sem graça. Ele não fala nada. Só levanta o toco de lápis amarelo, como quem brinda.
 
@@ -225,11 +249,11 @@ No corredor do biscoito, a mão dela vai sozinha até o pacote amarelo, o biscoi
 
 Na fila do caixa, o Tião ouve a voz dela atrás dele. "Tião, quanto deu o seu?" "Cinquenta e dois." "O meu deu quarenta e um." E dessa vez quem riu foi ele. Não da Sandra. Junto com ela.
 
-Lá fora, no carro, o Marcos buzinou duas vezes, impaciente. A Sandra saiu com uma sacola só. E, quando ela entrou no carro, o Marcos olhou para a sacola, olhou para ela, e perguntou: "Só isso?" Ela respondeu: "Só o que estava na lista."
+Lá fora, o Marcos esperava na picape, de vidro aberto. A Sandra saiu com uma sacola só e entregou a notinha para ele. Curtinha. Quarenta e um reais, pagos no débito. O Marcos olhou a notinha, olhou para ela, e ficou um segundo quieto. "Semana que vem", ele disse, "eu também levo a minha lista."
 
 [TRILHA: virada, quente]
 
-## 14. O que o Tião faz, em uma frase cada
+## 15. O que o Tião faz, em uma frase cada
 
 [MOTION: lista com os 5 itens aparecendo um por um]
 
@@ -237,7 +261,7 @@ Se você quiser levar só uma coisa deste vídeo, leva isto. Antes de entrar, a 
 
 Cinco coisas. Nenhuma custa um real.
 
-## 15. Chamada para o app
+## 16. Chamada para o app
 
 Mas tem uma coisa que nenhuma dessas regras resolve sozinha. Lembra do susto do Tião? Ele achava que gastava seiscentos no mercado, e eram novecentos e doze. Ninguém sabe quanto gasta no mercado até ver a soma do mês.
 
@@ -245,7 +269,7 @@ Por isso eu uso o FinMoovi, um aplicativo de controle de gastos. Funciona assim:
 
 Então, se você aprendeu com o Tião e quer gastar menos no mercado, já pode começar na próxima compra. Usa o FinMoovi, e com uma foto da notinha você já tem o controle de tudo.
 
-## 16. Fecho
+## 17. Fecho
 
 Se esse vídeo te abriu os olhos, se inscreve no canal, porque toda semana tem uma história nova do Tião. E me conta aqui nos comentários: qual dessas nove armadilhas te pega sempre? É o pão da porta ou o chocolate da fila? Até a próxima.
 

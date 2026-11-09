@@ -127,12 +127,12 @@ PEDIDO = {
 
 CAFE = [("Pacote de 500 g", 18.90, AMAR), ("2 de 500 g = 1 kg", 37.80, VERM), ("Pacote de 1 kg", 32.90, VERDE)]
 L = {
- 0: [("^", "I", "flow-fachada"), ("porta automática", "V", "flow-sandra-entra"), ("duas coisas", "H", ("sandra-entra", [ls(["pão", "leite"], 76, 46)])), ("Pão e leite", "M", fr("Só *duas* coisas.", "pão e leite"))],
+ 0: [("^", "I", "flow-fachada"), ("porta automática", "V", "flow-sandra-entra"), ("esperando na picape", "I", "marcos-espera"), ("duas coisas", "H", ("sandra-entra", [ls(["pão", "leite"], 76, 46)])), ("Pão e leite", "M", fr("Só *duas* coisas.", "pão e leite"))],
  1: [("^", "I", "tiao-entra"), ("verso de um envelope", "I", "lapis"), ("cestinha vermelha", "V", "flow-tiao-cestinha"), ("alça remendada", "I", "cestinha"), ("Ninguém quer", "H", ("carrinhos", [et("a do canto", 18, 30)]))],
  2: [("^", "I", "meta-sandra-ri-lista"), ("você faz lista", "H", ("sandra-ri", [bl("Lista até para comprar *pão*?", 72, 20, "esq"), re_("😂", 30, 30)])), ("O Tião sorri", "I", "tiao-guarda-lapis")],
  3: [("^", "M", li(["9h10", "9h30", "9h50"], 2, "Quarenta minutos depois")), ("fila do caixa", "I", "meta-fila-dois"), ("seis coisas", "M", ba([("Tião: 6 coisas", 6, VERDE), ("Sandra: 23 coisas", 23, VERM)], "No caixa", "int")), ("cinquenta e oito", "M", nu(58.30, "A conta do Tião", "6 coisas", cor=VERDE, casas=2, emoji="😌")), ("cento e oitenta e sete", "M", nu(187.40, "A conta da Sandra", "23 coisas", cor=VERM, casas=2, emoji="😱"))],
  4: [("^", "H", ("sandra-visor", [ls(["pão", "leite"], 78, 40, True)])), ("nem percebeu", "M", fr("Ela nem *percebeu* quando aconteceu.", None, True))],
- 5: [("^", "H", ("porta-abre", [ft("O mercado *sabia*.")])), ("nove armadilhas", "M", {"k": "grade", "total": 9, "cols": 9, "titulo": "9 armadilhas, uma em cada metro", "cor": VERM, "rotuloFim": "da porta ao caixa"}), ("mostrar todas", "I", "corredor-fundo")],
+ 5: [("^", "H", ("porta-abre", [ft("O mercado *sabia*.")])), ("nove armadilhas", "M", {"k": "grade", "total": 9, "cols": 9, "titulo": "9 armadilhas: 8 na loja, 1 em casa", "cor": VERM, "rotuloFim": "a nona chega depois"}), ("mostrar todas", "I", "corredor-fundo")],
  6: [("^", "M", fr("A nona é a mais *cara*.", "e ela só aparece em casa")), ("trinta dias depois", "M", {"k": "cal", "mes": "Depois do mercado", "ate": 30, "marcados": {"1": {"cor": AMAR, "rotulo": "mercado"}, "30": {"cor": VERM, "rotulo": "a nona"}}})],
  7: [("^", "I", "tiao-arroz"), ("caiu em todas", "M", fr("O Tião já caiu nas *nove*.", "durante anos"))],
  8: [("^", "M", fr("Uns anos atrás, o Tião era *igual* a todo mundo.")), ("de cabeça", "M", ic([("🧠", "de cabeça", False), ("😋", "com fome", False), ("🌙", "fim do expediente", False)], "Como todo mundo")), ("quatro sacolas", "I", "flow-tiao-sacolas-antes"), ("dia vinte", "M", {"k": "cal", "mes": "O salário", "ate": 20, "marcados": {"5": {"cor": VERDE, "rotulo": "entra"}, "20": {"cor": VERM, "rotulo": "acabou"}}}), ("Simplesmente sumia", "M", fr("Simplesmente *sumia*.", None, True))],
@@ -140,9 +140,9 @@ L = {
  10: [("^", "I", "lapis"), ("primeiro emprego", "H", ("lapis", [et("do primeiro emprego, na obra", 70, 26)])), ("somando", "I", "tiao-notinhas")],
  11: [("^", "V", "banco:videos/tiao-em-cena/tiao-caderno-escreve-grok-01.mp4"), ("seiscentos", "M", nu(600, "O que ele achava", "por mês no mercado", cor=AMAR, emoji="🤔")), ("Deu novecentos", "M", nu(912, "O que deu", "um mês de notinhas", de=600, cor=VERM, emoji="😱"))],
  12: [("^", "I", "meta-tiao-susto"), ("Trezentos reais", "M", nu(300, "Todo mês, sem lembrar", "a diferença", cor=VERM, emoji="💸")), ("chocolate aqui", "M", ic([("🍫", "um chocolate", False), ("🧀", "um queijo", False), ("🏷️", "uma promoção", False)], "Não era luxo"))],
- 13: [("^", "I", "banco:video01/tiao-pensando.jpg"), ("desenhado", "M", fr("Desenhado para você comprar o que *não* planejou.")),
-      ("caderno simples", "H", ("banco:video01/caderno-fechado.jpg", [et("cada real, com o dia e o motivo", 50, 14)])), ("carrega até hoje", "I", "banco:video01/tiao-caderno.jpg"),
-      ("as regras", "M", fr("As regras do caderno do *Tião*.", "você vai ver todas neste vídeo"))],
+ 13: [("^", "H", ("banco:video01/caderno-fechado.jpg", [et("cada real, com o dia e o motivo", 50, 14)])), ("só para observar", "I", "tiao-observa"),
+      ("leite ficava", "I", "corredor-fundo"), ("altura dos olhos", "I", "prateleira-olho"), ("música tocava", "I", "som-teto"), ("anotava tudo", "I", "banco:video01/tiao-caderno.jpg"),
+      ("desenhado", "M", fr("Desenhado para você comprar o que *não* planejou.")), ("as regras", "M", fr("As regras do caderno do *Tião*.", "você vai ver todas neste vídeo"))],
  14: [("^", "M", {"k": "grade", "total": 9, "cols": 9, "titulo": "As 9 armadilhas", "cor": VERM, "rotuloFim": "uma por uma, com a Sandra"}), ("entrando no mercado", "I", "porta-abre")],
  15: [("^", "H", ("porta-abre", [cb("ARMADILHA 1", 50, 40, VERM)])), ("Repara no que", "I", "sandra-entra"), ("São flores", "I", "banca-flores"), ("maçãs empilhadas", "I", "macas"), ("a padaria", "I", "padaria")],
  16: [("^", "M", fr("Isso tem *nome*.")), ("Paco Underhill", "I", "pesquisador"), ("Vamos às Compras", "M", ci("Paco Underhill", "1999", "pesquisador de lojas, EUA", "Os primeiros metros depois da porta são a zona de *descompressão*.", "Vamos às Compras (Why We Buy, 1999)"))],
@@ -173,7 +173,7 @@ L = {
  41: [("^", "I", "etiqueta"), ("conta de cada pacote", "H", ("sandra-ri", [bl("Vai sair daqui *amanhã*!", 72, 20, "esq"), re_("😂", 28, 28)]))],
  42: [("^", "M", fr("O número pequeno é uma *arma*.")), ("treze mil", "M", ci("Lei 13.175", "2015", "lei federal", "Em muitos produtos, o preço por *quilo*, por litro ou por metro.", "Lei 13.175/2015 (art. 2º-A da Lei 10.962/2004)"))],
  43: [("^", "H", ("etiqueta", [et("preço por quilo", 50, 70, VERDE)]))],
- 44: [("^", "I", "dois-cafes"), ("placa de promoção", "H", ("dois-cafes", [pl("R$ 18,90", 30, 22, VERM)])), ("trinta e dois", "H", ("tiao-cafes", [pl("R$ 32,90", 72, 22, VERDE)]))],
+ 44: [("^", "I", "dois-cafes"), ("placa amarela", "H", ("dois-cafes", [pl("R$ 18,90", 30, 22, VERM)])), ("trinta e dois", "H", ("tiao-cafes", [pl("R$ 32,90", 72, 22, VERDE)]))],
  45: [("^", "M", ba(CAFE, "O mesmo quilo de café", "reais"))],
  46: [("^", "M", nu(4.90, "O pacote da promoção é mais caro", "por quilo", cor=VERM, casas=2, emoji="😮")), ("não te contou a conta", "M", fr("Ela só não te contou a *conta*.", "a placa não mentiu", True))],
  47: [("^", "H", ("placa-amarela", [cb("ARMADILHA 6", 50, 40, VERM)])), ("Nove e noventa", "H", ("placa-amarela", [pl("R$ 9,99", 50, 50, VERM, tam=150)]))],
@@ -197,7 +197,7 @@ L = {
  65: [("^", "M", fr("Compras de *impulso*.", "ninguém põe na lista")), ("pega um chocolate", "I", "sandra-pega-chocolate"), ("uma pilha", "H", ("sandra-pega-chocolate", [bl("Pilha? Vai que *precisa*.", 72, 20, "esq")]))],
  66: [("^", "I", "tiao-esteira"), ("o Marcos olha", "I", "marcos-fila"), ("amostra grátis", "H", ("meta-marcos-cestinha", [bl("Compra do mês ou amostra *grátis*?", 62, 12, "dir")]))],
  67: [("^", "I", "tiao-debito"), ("Bom sábado", "H", ("tiao-debito", [bl("Bom sábado, *Marcos*.", 70, 18, "esq")]))],
- 68: [("^", "M", {"k": "montagem", "imgs": ["flow-esteira", "queijo", "biscoito", "sandra-pega-chocolate", "rack-caixa", "flow-esteira", "visor"], "seg": 0.45}), ("o visor", "V", "flow-caixa-bip"), ("Cento e oitenta", "H", ("meta-sandra-visor", [pl("R$ 187,40", 72, 20, VERM, tam=110), re_("😱", 26, 28)])), ("não consegue lembrar", "M", fr("Quando ela pegou *metade* daquilo?", None, True))],
+ 68: [("^", "M", {"k": "montagem", "imgs": ["flow-esteira", "queijo", "biscoito", "sandra-pega-chocolate", "rack-caixa", "flow-esteira", "visor"], "seg": 0.45}), ("o visor", "V", "flow-caixa-bip"), ("Cento e oitenta", "H", ("meta-sandra-visor", [pl("R$ 187,40", 72, 20, VERM, tam=110), re_("😱", 26, 28)])), ("não consegue lembrar", "M", fr("Quando ela pegou *metade* daquilo?", None, True)), ("passa o cartão", "I", "meta-sandra-cartao")],
  69: [("^", "SIL", "flow-tiao-volta"), ("envelope da conta", "I", "lista-riscada"), ("Cinquenta e oito", "H", ("flow-tiao-volta", [pl("R$ 58,30", 70, 20, VERDE)]))],
  70: [("^", "M", fr("Ele não é mais *disciplinado* que você.")), ("sabendo onde", "M", fr("Ele só sabia onde estavam as *armadilhas*.")), ("com fome", "I", "tiao-come-antes")],
  71: [("^", "M", ci("Universidade Cornell", "2013", "JAMA Internal Medicine", "Com fome, as pessoas escolheram muito mais comida *calórica*.", "Tal e Wansink, Fattening Fasting (2013)")), ("A fome não compra", "I", "geladeira-casa")],
@@ -216,27 +216,47 @@ L = {
  84: [("^", "M", {"k": "graf", "titulo": "R$ 303 por mês, uns 10% ao ano", "series": [{"r": "guardado", "cor": VERDE, "pts": [round(303 * ((1 + (1.1 ** (1 / 12) - 1)) ** (12 * a) - 1) / (1.1 ** (1 / 12) - 1) / 1000, 1) for a in range(11)]}], "eixo": ["ano 0", "", "ano 2", "", "ano 4", "", "ano 6", "", "ano 8", "", "ano 10"], "fim": "uns R$ 60 mil"}), ("cinco anos", "M", nu(23000, "Em 5 anos", "guardando, não gastando", cor=VERDE)), ("dez anos", "M", nu(60000, "Em 10 anos", "", de=23000, cor=VERDE, emoji="🎉"))],
  85: [("^", "M", ic([("🍫", "chocolate da fila", True), ("🧀", "queijo do 3º corredor", True), ("🍪", "biscoito que encolheu", True)], "R$ 60 mil em")), ("nada caro", "M", fr("Sem nunca ter comprado nada *caro*.", None, True))],
  86: [("^", "M", fr("Comprar o que você *quer* é ótimo.")), ("o mercado quis", "M", fr("O problema é comprar o que o mercado quis por *você*."))],
- 87: [("^", "SIL", "fachada"), ("A mesma porta", "I", "porta-abre"), ("mesmas flores", "I", "banca-flores"), ("cheiro de pão", "I", "padaria")],
- 88: [("^", "I", "tiao-entra"), ("cestinha vermelha", "I", "cestinha")],
- 89: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 82, 36, VERDE)]))],
- 90: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
- 91: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
- 92: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
- 93: [("^", "V", "flow-sandra-devolve"), ("Só sabendo", "H", ("meta-sandra-devolve", [ft("Não com raiva. Só *sabendo*.")]))],
- 94: [("^", "I", "meta-fila-dois"), ("quanto deu o seu", "H", ("meta-fila-dois", [bl("Tião, quanto deu o *seu*?", 70, 14, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
- 95: [("^", "I", "flow-marcos-buzina"), ("uma sacola só", "I", "sandra-sacola"), ("Só isso", "H", ("meta-marcos-so-isso", [bl("Só *isso*?", 30, 18, "dir")])), ("estava na lista", "M", fr("Só o que estava na *lista*.", "ela respondeu"))],
- 96: [("^", "M", fr("Se for levar só uma coisa, leva *isto*.")), ("a lista no papel", "M", ic([("📝", "a lista no papel", False)], "Antes de entrar")), ("barriga cheia", "I", "tiao-come-antes"), ("a cestinha", "I", "cestinha"), ("preço por quilo", "M", ic([("🏷️", "preço por quilo", False), ("⚖️", "os gramas", False)], "Na prateleira"))],
- 97: [("^", "M", ic([("💳", "débito ou dinheiro", False), ("🚫", "nunca o rotativo", False)], "No caixa"))],
- 98: [("^", "M", fr("Cinco coisas. Nenhuma custa um *real*.", None, True))],
- 99: [("^", "M", fr("Uma coisa que nenhuma regra resolve *sozinha*.")), ("susto do Tião", "M", nu(912, "Achava R$ 600. Eram", "no mercado, por mês", de=600, cor=VERM)), ("soma do mês", "I", "tiao-foto")],
- 100: [("^", "V", "banco:FM:7-smart-capture/smart-capture__estilo-moldura-celular__horizontal.mp4"), ("foto da notinha", "M", {"k": "fotonota", "itens": [["Pão francês", 8.90], ["Leite", 5.49], ["Arroz 5 kg", 22.90], ["Café", 9.99], ["Feijão", 6.02], ["Ovos", 5.00]], "total": 58.30, "categoria": "Mercado"}), ("fim do mês", "V", "banco:FM:4-balanco/balanco__estilo-donut-despesas__horizontal.mp4"), ("sete dias", "M", nu(7, "Dá para testar o FinMoovi", "sem pagar nada · link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="🎉"))],
- 101: [("^", "M", {"k": "botao", "tipo": "like", "texto": "O link está na *descrição*"})],
- 102: [("^", "I", "tiao-foto"), ("Usa o FinMoovi", "H", ("tiao-foto", [ft("Uma foto da notinha. O controle de *tudo*.", "esq")]))],
- 103: [("^", "M", {"k": "botao", "tipo": "inscrever", "texto": "Toda semana, uma história nova do *Tião*"}), ("me conta aqui", "M", fr("Qual armadilha te pega *sempre*?", "me conta nos comentários"))],
+ # ---- a VIRADA (Ed, 09/11: «nao mostra no video em momento algum a mudanca, o que motivou a Sandra e o Marcos») ----
+ 87: [("^", "M", fr("A história não termina no *caixa*.", "o que aconteceu depois")), ("começou a mudar", "I", "rua-tarde")],
+ 88: [("^", "I", "tiao-rega"), ("o Marcos lavava", "I", "marcos-lava"), ("atravessou a rua", "I", "meta-portao-tarde"),
+      ("Como é que", "H", ("meta-portao-tarde", [bl("Como é que deu só *R$ 58*?", 30, 18, "dir")]))],
+ 89: [("^", "H", ("tiao-rega", [bl("O mercado tem *9 armadilhas*.", 70, 18, "esq")])), ("O Marcos riu alto", "V", "flow-marcos-ri-picape"),
+      ("A Sandra riu junto", "H", ("marcos-ri-rua", [re_("😂", 80, 30)])), ("ninguém levou", "M", fr("E ninguém levou a *sério*."))],
+ 90: [("^", "V", "flow-notinha-comprida"), ("Vinte e três coisas", "M", nu(23, "Coisas na notinha", "ela foi buscar duas", cor=VERM, fmt="int", emoji="😳"))],
+ 91: [("^", "I", "meta-sandra-caneta"), ("Pão, oito", "M", ba([("Pão", 8.90, VERDE), ("Leite", 5.49, VERDE), ("As outras 21 coisas", 173.01, VERM)], "A notinha de R$ 187,40")),
+      ("cento e setenta e três", "M", nu(173, "O que ela não planejou", "21 de 23 coisas", cor=VERM, emoji="💸"))],
+ 92: [("^", "I", "meta-sandra-seria"), ("a mesma cena do Tião", "I", "meta-tiao-susto"), ("não fazia sentido", "M", fr("A mesma mesa. Outra *notinha*.", None, True))],
+ 93: [("^", "I", "meta-marcos-celular"), ("Isso vai para o cartão", "H", ("meta-marcos-celular", [bl("Isso vai para o *cartão* de novo?", 30, 16, "dir")])),
+      ("aplicativo do banco", "I", "marcos-celular"), ("juros do rotativo", "M", nu(112, "Juros do rotativo", "na fatura do mês anterior", cor=VERM, emoji="😱"))],
+ 94: [("^", "I", "marcos-serio"), ("não fez piada", "M", fr("Pela primeira vez, ele não fez *piada*.")), ("tirou o cartão", "V", "flow-cartao-gaveta"),
+      ("só no débito", "M", fr("Mercado, agora, só no *débito*.", "a Sandra"))],
+ 95: [("^", "I", "rua-noite"), ("bateram baixinho", "V", "flow-portao-noite"), ("Você ensina a gente", "H", ("meta-portao-noite", [bl("Você *ensina* a gente?", 30, 16, "dir")]))],
+ 96: [("^", "I", "meta-tiao-caderno-mostra"), ("novecentos e doze", "M", nu(912, "A primeira página do caderno", "a soma daquela terça", cor=VERM)),
+      ("Ninguém nasce sabendo", "M", fr("Ninguém nasce *sabendo*.", "o Tião"))],
+ 97: [("^", "M", ic([("📝", "a lista no papel", False), ("🧺", "a cestinha", False), ("⚖️", "os gramas", False)], "As 3 primeiras regras")),
+      ("biscoito amarelo", "I", "biscoito"), ("biscoito da avó", "I", "meta-avo-portao"), ("O Marcos, que tinha rido", "I", "meta-marcos-anota")],
+ 98: [("^", "SIL", "fachada"), ("A mesma porta", "I", "porta-abre"), ("mesmas flores", "I", "banca-flores"), ("cheiro de pão", "I", "padaria")],
+ 99: [("^", "I", "tiao-entra"), ("cestinha vermelha", "I", "cestinha")],
+ 100: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("três regras do Tião", "H", ("sandra-lista", [et("as 3 regras do Tião", 82, 36, AMAR)])), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 82, 36, VERDE)]))],
+ 101: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
+ 102: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
+ 103: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
+ 104: [("^", "V", "flow-sandra-devolve"), ("Só sabendo", "H", ("meta-sandra-devolve", [ft("Não com raiva. Só *sabendo*.")]))],
+ 105: [("^", "I", "meta-fila-dois"), ("quanto deu o seu", "H", ("meta-fila-dois", [bl("Tião, quanto deu o *seu*?", 70, 14, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
+ 106: [("^", "I", "meta-marcos-so-isso"), ("uma sacola só", "I", "sandra-sacola"), ("Quarenta e um", "M", nu(41, "A notinha curtinha", "no débito", cor=VERDE, emoji="😌")),
+       ("ficou um segundo quieto", "I", "marcos-so-isso"), ("Semana que vem", "M", fr("Semana que vem, eu também levo a minha *lista*.", "o Marcos"))],
+ 107: [("^", "M", fr("Se for levar só uma coisa, leva *isto*.")), ("a lista no papel", "M", ic([("📝", "a lista no papel", False)], "Antes de entrar")), ("barriga cheia", "I", "tiao-come-antes"), ("a cestinha", "I", "cestinha"), ("preço por quilo", "M", ic([("🏷️", "preço por quilo", False), ("⚖️", "os gramas", False)], "Na prateleira"))],
+ 108: [("^", "M", ic([("💳", "débito ou dinheiro", False), ("🚫", "nunca o rotativo", False)], "No caixa"))],
+ 109: [("^", "M", fr("Cinco coisas. Nenhuma custa um *real*.", None, True))],
+ 110: [("^", "M", fr("Uma coisa que nenhuma regra resolve *sozinha*.")), ("susto do Tião", "M", nu(912, "Achava R$ 600. Eram", "no mercado, por mês", de=600, cor=VERM)), ("soma do mês", "I", "tiao-foto")],
+ 111: [("^", "V", "banco:FM:7-smart-capture/smart-capture__estilo-moldura-celular__horizontal.mp4"), ("foto da notinha", "M", {"k": "fotonota", "itens": [["Pão francês", 8.90], ["Leite", 5.49], ["Arroz 5 kg", 22.90], ["Café", 9.99], ["Feijão", 6.02], ["Ovos", 5.00]], "total": 58.30, "categoria": "Mercado"}), ("fim do mês", "V", "banco:FM:4-balanco/balanco__estilo-donut-despesas__horizontal.mp4"), ("sete dias", "M", nu(7, "Dá para testar o FinMoovi", "sem pagar nada · link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="🎉"))],
+ 112: [("^", "M", {"k": "botao", "tipo": "like", "texto": "O link está na *descrição*"})],
+ 113: [("^", "I", "tiao-foto"), ("Usa o FinMoovi", "H", ("tiao-foto", [ft("Uma foto da notinha. O controle de *tudo*.", "esq")]))],
+ 114: [("^", "M", {"k": "botao", "tipo": "inscrever", "texto": "Toda semana, uma história nova do *Tião*"}), ("me conta aqui", "M", fr("Qual armadilha te pega *sempre*?", "me conta nos comentários"))],
 }
 # o efeito "trilha": climas por linha (a montagem escolhe a musica do banco de trilhas)
 CLIMA = {0: "calma", 5: "tensao", 7: "triste", 14: "curiosa", 24: "curiosa", 32: "humor", 37: "calma", 56: "tensao", 64: "tensao",
-         68: "montagem", 69: "silencio", 73: "tensao", 80: "reflexiva", 87: "calma", 94: "virada", 96: "calma", 103: "final"}
+         68: "montagem", 69: "silencio", 73: "tensao", 80: "reflexiva", 87: "calma", 90: "tensao", 95: "reflexiva", 98: "calma", 105: "virada", 107: "calma", 114: "final"}
 # a capa (o Ed gera no meta.ai; o robo passa no Real-ESRGAN). Estilo novo, de cenario (Ed, 05/11: «sim»)
 CAPA = ("sandra-neutra.jpg + tiao-frente-sozinho.jpg",
         "Inside a bright Brazilian supermarket aisle full of colorful products, warm cinematic light. LEFT side, big and close: Sandra pushes a HUGE shopping cart overflowing with products, holding a very long paper receipt that falls to the floor, shocked guilty face, mouth open. RIGHT side, closer to the camera: Tiao holds a tiny red basket with only a few items, calm, one eyebrow raised, half smile, looking straight at the viewer as if he knows a secret. A big thick RED ARROW points at the overflowing cart. Big bold text at the top left, white letters with thick black outline, the second word in yellow: ELES SABEM. Keep the text away from the edges.")
@@ -248,7 +268,8 @@ PRAZO = "sábado, 07/11, até as 10h (este primeiro vídeo está apertado; nos p
 # sons de cena: (som, linha, gatilho, segundos, volume). Sons em render/public/amb (o montar.py cria o "bip").
 AMB = [("passaros", 0, "^", 18, 0.22), ("grilos", 9, "^", 40, 0.28), ("relogio", 9, "^", 14, 0.3), ("coracao", 11, "Deu novecentos", 8, 0.5),
        ("coracao", 12, "^", 6, 0.4), ("bip", 68, "^", 8, 0.3), ("passaros", 69, "^", 24, 0.3), ("coracao", 76, "^", 10, 0.45),
-       ("passaros", 87, "^", 14, 0.22)]
+       ("passaros", 88, "^", 14, 0.2), ("grilos", 90, "^", 40, 0.25), ("relogio", 92, "^", 10, 0.25),
+       ("grilos", 95, "^", 30, 0.25), ("passaros", 98, "^", 14, 0.22)]
 FORTES = {"armadilha", "armadilhas", "cestinha", "lista", "biscoito", "rotativo", "carrinho", "reduflação", "fome", "nove", "nona"}
 # para o YouTube
 DESC = ("A Sandra entrou no mercado para comprar pão e leite. Saiu com 23 coisas e uma conta de R$ 187,40. O Tião, com uma lista no verso de um envelope, gastou R$ 58,30. E a Sandra nem percebeu quando aconteceu.\n\n"
@@ -256,7 +277,7 @@ DESC = ("A Sandra entrou no mercado para comprar pão e leite. Saiu com 23 coisa
 TAGS = ["supermercado", "como economizar no mercado", "educação financeira", "finanças pessoais", "compras por impulso", "reduflação",
         "cartão de crédito", "rotativo", "controle de gastos", "lista de compras", "Tião Poupador", "história de dinheiro"]
 PERGUNTA = "Qual dessas nove armadilhas te pega sempre? É o pão da porta ou o chocolate da fila?"
-CAP_NOMES = {"Gancho": "Sábado, 9h10: só pão e leite", "O que o Tião faz, em uma frase cada": "O que o Tião faz", "Chamada para o app": "A soma do mês", "Fecho": "Qual armadilha te pega?"}
+CAP_NOMES = {"Gancho": "Sábado, 9h10: só pão e leite", "A virada: o que fez a Sandra e o Marcos mudarem": "A noite da notinha comprida", "O que o Tião faz, em uma frase cada": "O que o Tião faz", "Chamada para o app": "A soma do mês", "Fecho": "Qual armadilha te pega?"}
 
 # O nome de cada arquivo que o Ed gera (vai para o banco): personagens_lugar_o-que-acontece. O codigo (M01, F01) vem na frente.
 NOMES = {
@@ -306,3 +327,67 @@ CAPAS_TESTE = [
   "Big bold text at the top left, white letters with thick black outline, the last word in yellow: OLHE PRA BAIXO. Keep the text away from the edges.",
   "tiao_supermercado-prateleira_tiao-cochicha-e-aponta-a-prateleira-de-baixo-capa-olhe-pra-baixo"),
 ]
+
+# 09/11: a VIRADA (falas 87 a 97). O que fez a Sandra e o Marcos mudarem, cena por cena. O Ed gera 7 imagens (meta.ai) e
+# 4 clipes (Flow); plano B de cada um na Cloudflare.
+RUA = "a quiet colorful Brazilian suburban street with two simple houses facing each other, small front gates, potted plants, palm trees, "
+CASA_S = "Sandra and Marcos's simple Brazilian kitchen at night (NOT Tiao's kitchen, no checkered tablecloth): light wooden table, white cabinets, a warm pendant lamp, grocery bags on the counter. "
+REC = " The receipt has only wavy grey lines, nothing readable."
+IMG.update({
+ "marcos-espera":   ("cf", M, "He SITS at the wheel of a shiny black pickup truck in a sunny supermarket parking lot, bored, looking at his phone, window open."),
+ "tiao-observa":    ("cf", T, "FLASHBACK. Medium shot in a supermarket aisle: he stands still with a small notebook with a BLUE cover in his LEFT hand and a short yellow pencil in his RIGHT hand, looking up and around carefully like a detective, curious eyes, " + MERC),
+ "rua-tarde":       ("cf", "", "A quiet colorful Brazilian suburban street on a sunny Saturday afternoon, two simple houses facing each other with small front gates and potted plants, a black pickup truck parked in front of one house. No people."),
+ "tiao-rega":       ("cf", T, "On " + RUA + "Saturday afternoon. Medium shot: he stands at the small gate of his house watering potted plants with a green garden hose, calm small smile, looking to the side as if answering someone."),
+ "marcos-lava":     ("cf", M, "On " + RUA + "Saturday afternoon. Medium shot: he washes a shiny black pickup truck with a big yellow sponge, soap foam on the hood, relaxed."),
+ "marcos-ri-rua":   ("cf", M, "On " + RUA + "Saturday afternoon, next to a shiny black pickup truck covered in soap foam. He laughs out loud, head thrown back, a yellow sponge in his hand, pointing mockingly."),
+ "marcos-celular":  ("cf", M, CASA_S + "ONE single picture, no panels, no split screen, only ONE Marcos. Close-up of his face and hands: he stares at his phone screen (blurred, nothing readable) with a WORRIED face, worried eyebrows pulled together, mouth slightly open, NOT smiling at all."),
+ "marcos-serio":    ("cf", M, CASA_S + "Medium shot: he stands still holding his phone at his side, serious and quiet, looking down, not joking anymore."),
+ "rua-noite":       ("cf", "", "The same quiet Brazilian suburban street on a Sunday night, empty, street lamps glowing, two simple houses facing each other, a yellow porch light on at one small gate. No people."),
+ # planos B dos pedidos do Ed
+ "portao-tarde":    ("cf", T + S, "On " + RUA + "Saturday afternoon. Tiao stands at his small gate watering plants with a green garden hose; Sandra stands at the gate facing him, laughing and asking something with one open hand. Tiao LEFT, Sandra RIGHT."),
+ "sandra-caneta":   ("cf", S, CASA_S + "Close-up: she sits at the table holding a blue pen, circling two short lines at the top of a very long paper receipt that hangs off the table, concentrated." + REC),
+ "sandra-seria":    ("cf", S, CASA_S + "Medium shot: she sits alone at the table staring seriously at a very long paper receipt that hangs to the floor, worried, not laughing." + REC),
+ "notinha-comprida":("cf", S, CASA_S + "Wide shot showing the table AND the floor: a VERY long paper receipt lies on the table and hangs over the edge, its end curling on the kitchen floor. She stands next to the table holding the top of the receipt, serious surprised face, NOT smiling." + REC),
+ "cartao-gaveta":   ("cf", S, CASA_S + "She puts a credit card into an open kitchen drawer with a determined small smile, about to close it."),
+ "portao-noite":    ("cf", S + M, "Night, quiet Brazilian suburban street, street lamps. Sandra stands at a small house gate under a yellow porch light, whispering with one hand near her mouth; Marcos one step behind her with his hands in his pockets, embarrassed."),
+ "tiao-caderno-mostra": ("cf", T, "Night, at the small gate of his house under a yellow porch light. Medium shot: he holds an open small notebook with a BLUE cover toward the camera, showing the first page with an old envelope glued on it, kind serious face."),
+ "marcos-anota":    ("cf", M, "Night, at a small house gate under a yellow porch light. Medium shot: he writes with a pen on the back of a folded paper bill, leaning it on top of the gate, concentrated, not laughing."),
+ # o Ed gera
+ "meta-portao-tarde":       ("meta", "tiao-frente-sozinho.jpg + sandra-neutra.jpg + rua-das-duas-casas.jpg", "cf:portao-tarde"),
+ "meta-sandra-caneta":      ("meta", "sandra-neutra.jpg", "cf:sandra-caneta"),
+ "meta-sandra-seria":       ("meta", "sandra-neutra.jpg", "cf:sandra-seria"),
+ "meta-marcos-celular":     ("meta", "marcos-neutro.jpg + sandra-neutra.jpg", "cf:marcos-celular"),
+ "meta-portao-noite":       ("meta", "sandra-neutra.jpg + marcos-neutro.jpg + tiao-frente-sozinho.jpg + rua-das-duas-casas.jpg", "cf:portao-noite"),
+ "meta-tiao-caderno-mostra":("meta", "tiao-frente-sozinho.jpg + sandra-neutra.jpg + marcos-neutro.jpg", "cf:tiao-caderno-mostra"),
+ "meta-marcos-anota":       ("meta", "marcos-neutro.jpg + tiao-frente-sozinho.jpg", "cf:marcos-anota"),
+ "flow-marcos-ri-picape":   ("flow", "marcos-neutro.jpg + rua-das-duas-casas.jpg", "cf:marcos-ri-rua"),
+ "flow-notinha-comprida":   ("flow", "sandra-neutra.jpg", "cf:notinha-comprida"),
+ "flow-cartao-gaveta":      ("flow", "sandra-neutra.jpg + marcos-neutro.jpg", "cf:cartao-gaveta"),
+ "flow-portao-noite":       ("flow", "sandra-neutra.jpg + marcos-neutro.jpg + tiao-frente-sozinho.jpg + rua-das-duas-casas.jpg", "cf:portao-noite"),
+})
+PEDIDO.update({
+ "meta-portao-tarde": "Saturday afternoon on the street of the reference image. Tiao stands at the small gate of his house watering potted plants with a green garden hose. Sandra has just crossed the street from the house in front and stands at his gate, laughing, asking him something with one open hand. In the background, across the street, a shiny black pickup truck covered in soap foam is parked in front of the other house. Tiao LEFT, Sandra RIGHT.",
+ "meta-sandra-caneta": CASA_S + "Close-up: Sandra sits at the table holding a blue pen and circles only two short lines at the top of a very long paper receipt that hangs off the table; the rest of the long receipt is unmarked. Concentrated face." + REC,
+ "meta-sandra-seria": CASA_S + "Medium shot: Sandra sits alone at the table, elbows on the table, staring seriously at the very long receipt in front of her, no longer laughing, worried, the long paper hanging down to the floor." + REC,
+ "meta-marcos-celular": CASA_S + "Marcos walks into the kitchen, still grinning, holding his phone. Sandra, seated at the table, silently turns the very long receipt toward him with both hands, serious. Marcos LEFT standing, Sandra RIGHT seated. The phone screen shows only blurred shapes." + REC,
+ "meta-portao-noite": "Sunday night on the street of the reference image, empty, street lamps glowing. Sandra whispers to Tiao at his small gate with one hand next to her mouth, looking around so no neighbor hears; Marcos stands one step behind her with his hands in his pockets, embarrassed. Tiao listens kindly under the yellow porch light. Sandra LEFT, Marcos behind her, Tiao RIGHT.",
+ "meta-tiao-caderno-mostra": "Sunday night at Tiao's small gate under the yellow porch light. Tiao holds an open small notebook with a BLUE cover and shows the first page to Sandra and Marcos: an old folded envelope is glued on the page, with pencil marks (wavy lines, nothing readable). Sandra and Marcos lean in, surprised and attentive. Tiao in the CENTER, Sandra LEFT, Marcos RIGHT.",
+ "meta-marcos-anota": "Sunday night at Tiao's small gate under the yellow porch light. Marcos writes with a pen on the back of a folded paper bill, leaning the paper on top of the gate, concentrated, no longer laughing. Tiao, on the other side of the gate, holds up three fingers, calm smile. Marcos LEFT, Tiao RIGHT.",
+ "flow-marcos-ri-picape": "Saturday afternoon, in front of his house on the street of the reference image, Marcos washes a shiny black pickup truck with a big yellow sponge, soap foam on the hood. He turns toward the house across the street and laughs out loud, throwing his head back, pointing with the sponge. Static camera.",
+ "flow-notinha-comprida": CASA_S + "Sandra takes a supermarket receipt out of a grocery bag and unrolls it on the table: it is absurdly long, the paper keeps unrolling, goes past the edge of the table and falls all the way to the floor. Her smile slowly disappears. Static camera." + REC,
+ "flow-cartao-gaveta": CASA_S + "Sandra takes a credit card out of her wallet, opens a kitchen drawer, places the card inside and closes the drawer firmly, with a determined small smile. Marcos stands behind her holding his phone and watches in silence, serious. Static camera.",
+ "flow-portao-noite": "Sunday night on the street of the reference image, empty, only street lamps. Sandra and Marcos stand at Tiao's small gate. Sandra knocks softly on the gate, looking around to check that no neighbor is watching; Marcos stays one step behind her, hands in his pockets, embarrassed. The door opens and Tiao appears under the yellow porch light, surprised and kind. Static camera.",
+})
+NOMES.update({
+ "meta-portao-tarde":        "tiao-sandra_rua-portao-tarde_sandra-pergunta-rindo-tiao-rega-as-plantas",
+ "meta-sandra-caneta":       "sandra_cozinha-noite_sandra-marca-a-notinha-comprida-com-caneta",
+ "meta-sandra-seria":        "sandra_cozinha-noite_sandra-seria-olhando-a-notinha",
+ "meta-marcos-celular":      "marcos-sandra_cozinha-noite_sandra-mostra-a-notinha-marcos-com-celular",
+ "meta-portao-noite":        "sandra-marcos-tiao_rua-portao-noite_sandra-cochicha-com-o-tiao",
+ "meta-tiao-caderno-mostra": "tiao-sandra-marcos_portao-noite_tiao-mostra-o-caderno-azul",
+ "meta-marcos-anota":        "marcos-tiao_portao-noite_marcos-anota-as-tres-regras",
+ "flow-marcos-ri-picape":    "marcos_rua-tarde_marcos-lava-a-picape-e-ri",
+ "flow-notinha-comprida":    "sandra_cozinha-noite_notinha-comprida-cai-ate-o-chao",
+ "flow-cartao-gaveta":       "sandra-marcos_cozinha-noite_sandra-guarda-o-cartao-na-gaveta",
+ "flow-portao-noite":        "sandra-marcos-tiao_rua-portao-noite_batem-baixinho-no-portao",
+})

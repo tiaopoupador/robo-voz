@@ -1,0 +1,308 @@
+# Cenas do video 02 (supermercado). Este e o FORMATO que o robo escreve para todo video (fabrica/LEIA-ME.md).
+# L[linha] = lista de cenas da fala daquela linha do robo-voz/roteiro-02.txt. Cada cena: (gatilho, tipo, conteudo)
+#   gatilho: "^" = comeco da fala, ou as palavras (do roteiro) em que a cena entra
+#   tipo: "I" imagem com camera · "H" imagem + coisas animadas por cima · "M" motion grafico · "V" clipe animado
+# IMG[nome] = (quem gera, referencias, pedido). quem gera: "cf" Cloudflare gratis · "meta" o Ed no meta.ai ·
+#   "flow" o Ed no Flow (clipe) · "banco:<arquivo>" ja existe. Pedido de meta/flow tem plano B na Cloudflare ("cf:<nome>").
+from fabrica.kit import *  # fr, nu, ci, ba, li, ic, pl, et, cb, bl, ft, ls, tr, re_, xi, ck, br, VERDE, VERM, AMAR, AZUL
+
+MERC = ("inside a bright mid-size Brazilian neighborhood supermarket, white tiled floor, red and yellow details, "
+        "colorful shelves, small blank yellow price tags, white ceiling lights, plain red and yellow sign boards with NO words, ")  # sem o nome da loja: o gerador escrevia na parede (e errado)
+T, S, M = "T", "R", "N"  # Tiao, Sandra (neutra), Marcos (neutro)
+IMG = {
+ # ---- lugar e objetos (Cloudflare, sem pessoa) ----
+ "fachada":        ("cf", "", "Exterior of a mid-size Brazilian neighborhood supermarket on a sunny Saturday morning, automatic glass doors, red and yellow facade, a few parked cars. No people."),
+ "porta-abre":     ("cf", "", "View from inside a bright Brazilian supermarket towards the automatic glass doors sliding open, morning sunlight coming in, empty white tiled floor, red and yellow shelves on both sides. Nobody inside the store, the doorway is empty."),
+ "banca-flores":   ("cf", "", "Right after the entrance " + MERC + "a flower stand with colorful bouquets and a fruit stand with shiny red apples stacked one by one. No people."),
+ "macas":          ("cf", "", "Close-up of shiny red apples stacked in a neat pyramid, sprayed with a fine mist of water, light reflections, supermarket. No people."),
+ "padaria":        ("cf", "", "Supermarket bakery counter: golden French bread rolls in a metal tray just out of the oven, steam rising, wicker baskets full of bread. No people."),
+ "carrinhos":      ("cf", "", "A long line of BIG shopping carts against a supermarket wall and, in the corner, a short stack of small red plastic baskets. No people."),
+ "carrinho-vazio": ("cf", "", "Top view of a BIG shopping cart with only a bread bag and a milk carton at the bottom, looking very empty. No people."),
+ "cestinha":       ("cf", "", "Close-up of a small red plastic shopping basket on a supermarket floor, one handle repaired with grey tape, slightly worn. No people."),
+ "som-teto":       ("cf", "", "Low angle view of a plain round white ceiling speaker grille (just a round grille with small holes, no eyes, no face) between supermarket ceiling lights, soft cartoon music notes floating out. No people."),
+ "vinhos":         ("cf", "", "A supermarket wine shelf full of bottles, half with red labels and half with green labels, no readable text, a small speaker above. No people."),
+ "corredor-fundo": ("cf", "", "Long supermarket aisle in one-point perspective, the milk refrigerator very far at the end, shelves on both sides full of plain single-color boxes and bottles with no labels and no writing at all. No people."),
+ "leite":          ("cf", "", "Supermarket refrigerator full of milk cartons and eggs at the back wall of the store, cold light. No people."),
+ "queijo":         ("cf", "", "Refrigerated display of cheeses and cold cuts in a supermarket, warm appetizing light. No people."),
+ "prateleira-olho":("cf", "", "Front view of a supermarket shelf: the middle shelf at eye height has shiny premium packages lit like a stage, top and bottom shelves have plain cheaper packages. No people."),
+ "prateleira-baixo":("cf", "", "Front view of a cereal shelf: very colorful packages with cartoon animals and toys on the LOWEST shelf, at a small child's height. No people."),
+ "etiqueta":       ("cf", "", "Extreme close-up of a yellow shelf price tag with a big price area and a small line underneath, all blank, no readable numbers. No people."),
+ "dois-cafes":     ("cf", "", "Two vacuum-packed coffee packages without brand on a shelf, one small and one twice as big; a blank yellow promotion sign hangs only on the small one. No people."),
+ "placa-amarela":  ("cf", "", "A blank bright yellow promotion sign with a red border hanging from a supermarket shelf, nothing written. No people."),
+ "latas":          ("cf", "", "A neat pyramid of identical soup cans with plain red labels on a low table, soft blurred colorful shelves behind, no signs or boards anywhere. No people."),
+ "biscoito":       ("cf", "", "Close-up of ONE yellow package of chocolate cookies without brand on a supermarket shelf, cheerful design with a cookie drawing, other colorful packages around. No people."),
+ "biscoito-encolheu": ("cf", "", "Close-up of two yellow cookie packages without brand side by side on a plain white table, plain white wall behind (no door, no eyes, no faces anywhere), identical design, the right one slightly thinner and smaller. No people. No hands, no arms, no body parts anywhere in the image."),
+ "rack-caixa":     ("cf", "", "Checkout impulse rack full of chocolate bars, chewing gum, candies and batteries next to a conveyor belt. No people."),
+ "esteira":        ("cf", "", "Supermarket conveyor belt full of items rolling towards the cashier: cheese, soda bottle, cookies, chocolate, scented candle, yogurt, batteries. No people."),
+ "visor":          ("cf", "", "Close-up of a supermarket cash register customer display glowing green, numbers blurred and unreadable. No people."),
+ "notinhas":       ("cf", "", "An old shoe box overflowing with crumpled paper receipts on a kitchen table with a red and white checkered tablecloth at night, warm lamp light. No people."),
+ "lapis":          ("cf", "", "Close-up of a short yellow carpenter pencil lying on the back of a folded envelope with wavy scribble lines (not letters), on a plain wooden kitchen table, plain wall behind. No people, no hands."),
+ "lista-riscada":  ("cf", "", "Close-up of the back of a folded envelope with six illegible handwritten lines, each one crossed out with pencil, a short yellow carpenter pencil on top. No people."),
+ "maquininha":     ("cf", "", "Close-up of a hand inserting a credit card into a card machine at a supermarket checkout, no brand, no readable text."),
+ "fatura":         ("cf", "", "A credit card bill envelope opened on a kitchen table at night next to a cold cup of coffee and a calculator, nothing readable. No people."),
+ "sacola":         ("cf", "", "A single shopping bag on a sunny sidewalk of a colorful Brazilian suburban street with small houses and palm trees, morning. No people."),
+ "pesquisador":    ("cf", "", "An anonymous cartoon researcher with glasses and a 1990s video camera on a tripod, filming shoppers inside a store, notebook in hand."),
+ "chocolate-fila": ("cf", "", "Inside a supermarket checkout line, close-up of a hand taking a chocolate bar from a small metal impulse rack next to the conveyor belt, people waiting in line blurred behind. No brand, no office. The sign boards and screens above are plain colors with nothing written, no scribbles that look like letters."),
+ "geladeira-casa": ("cf", "", "A simple Brazilian kitchen in the morning, a plate with bread and coffee on the table, sunlight through the window. No people."),
+ # ---- Tiao sozinho (Cloudflare com a referencia) ----
+ "tiao-entra":     ("cf", T, "Medium-wide shot. He walks in through automatic glass doors in three-quarter view, mid-stride, holding a small folded paper in his RIGHT hand, LEFT arm swinging relaxed, calm face, " + MERC),
+ "tiao-guarda-lapis": ("cf", T, "Medium shot from the waist up, three-quarter view. With his RIGHT hand he slides a short yellow pencil into the small chest pocket of his polo shirt; his LEFT hand holds a small folded paper. Calm small smile, " + MERC),
+ "tiao-passa":     ("cf", T, "Medium-wide shot next to a colorful flower stand. He walks in three-quarter view, mid-stride, ignoring the flowers, eyes down on a small folded paper list in his RIGHT hand; a small red plastic basket hangs from his LEFT forearm. Focused face, " + MERC),
+ "tiao-cestinha":  ("cf", T, "Medium-wide shot down an aisle. He walks toward the camera in three-quarter view; a small red plastic basket with a taped handle hangs from his LEFT forearm with only two items inside; his RIGHT arm swings relaxed. Content face, " + MERC),
+ "tiao-arroz":     ("cf", T, "Medium shot, profile view. He holds a white rice package with BOTH hands at chest height, arms bent, looking down at the back of the package as if reading a long label, eyebrows slightly raised, mouth closed, " + MERC),
+ "tiao-risca":     ("cf", T, "Close-up from the chest up. His LEFT hand holds a small folded paper list, his RIGHT hand crosses out a line with a short yellow pencil. Slight satisfied smile, " + MERC),
+ "tiao-agachado":  ("cf", T, "Wide shot, side view. He crouches low in front of the bottom shelf, RIGHT hand pointing at a small blank price tag, LEFT hand on his knee, a red basket on the floor beside him. Curious squint, " + MERC),
+ "tiao-cafes":     ("cf", T, "Medium shot, front three-quarter view. He holds a small coffee package in his LEFT hand and a big one in his RIGHT hand, looking from one to the other, thoughtful, one eyebrow raised, " + MERC),
+ "tiao-gramas":    ("cf", T, "Close-up of his face and chest, slightly from below. He turns a plain red cookie package (only a cookie drawing on it) in BOTH hands, one eyebrow raised, a small sly suspicious smile under his small black mustache. Background: soft blurred colorful supermarket shelves only, no signs, no boards."),
+ "tiao-esteira":   ("cf", T, "Medium shot at the supermarket checkout, three-quarter view. With his RIGHT hand he places a milk carton on the conveyor belt; his LEFT hand holds the small red basket. Polite smile at the cashier, a woman in a green uniform."),
+ "tiao-debito":    ("cf", T, "Medium shot at the supermarket checkout, three-quarter view. He holds a debit card in his RIGHT hand next to a card machine on the counter; his LEFT hand rests flat on the counter. He smiles at the cashier, a woman in a green uniform behind the counter."),
+ "tiao-volta":     ("cf", T, "Wide shot on a sunny colorful Brazilian suburban street with small houses and palm trees. He walks in three-quarter view, mid-stride, carrying ONE shopping bag in his RIGHT hand, LEFT arm swinging, relaxed happy face, birds in the sky."),
+ "tiao-notinhas":  ("cf", T, "FLASHBACK at night. Medium shot from the waist up, he SITS at a kitchen table with a red and white checkered tablecloth covered in crumpled receipts and an open shoe box; his RIGHT hand writes with a short yellow pencil, his LEFT hand holds a receipt. Tired face, one warm ceiling lamp."),
+ "tiao-susto":     ("cf", T, "FLASHBACK at night. Waist-up close-up in a simple kitchen, one warm lamp, red and white checkered tablecloth with crumpled receipts in front of him. Eyes wide open, eyebrows raised, mouth open in shock; his RIGHT hand pressed on his forehead, his LEFT hand holds an envelope."),
+ "tiao-sacolas-antes": ("cf", T, "FLASHBACK in the evening. Medium-wide shot, he walks out of a supermarket in three-quarter view carrying a full shopping bag in EACH hand (two bags in total, one per hand), shoulders down, regretful tired face. The shop front above the door is a plain dark wall with no sign, the bags are plain brown paper."),
+ "tiao-come-antes":("cf", T, "Morning at home. Medium shot, he SITS at a small kitchen table; his RIGHT hand holds a piece of bread, his LEFT hand holds a white coffee cup. Calm face."),
+ "tiao-brinda":    ("cf", T, "Medium shot at a supermarket entrance, three-quarter view. A small red basket hangs from his LEFT forearm; his RIGHT hand raises a short yellow pencil like a toast. Warm smile, looking to the side."),
+ "tiao-foto":      ("cf", T, "Medium shot outside a supermarket door, front three-quarter view. Both arms are in front of his belly: a small paper receipt lies flat on his open LEFT palm, and his RIGHT hand holds a smartphone just above it, taking a photo of it. Each arm comes from its own shoulder. Satisfied smile."),
+ # ---- Sandra sozinha ----
+ "sandra-entra":   ("cf", S, "Medium-wide shot. She walks in a hurry into a bright supermarket, just past the open automatic doors, holding her brown handbag, sunglasses on her head. Behind her only the plain sunny street, no glass reflections, nobody else. " + MERC),
+ "sandra-pao":     ("cf", S, "Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, " + MERC + "Sandra is a WOMAN with a smooth feminine face: absolutely NO mustache, no beard. She carries ONE handbag only."),
+ "sandra-carrinho":("cf", S, "She pulls a BIG empty shopping cart from a line of carts and drops her handbag into it, " + MERC),
+ "sandra-queijo":  ("cf", S, "She walks slowly pushing a big cart, looking with desire at cheese in a refrigerated display, " + MERC),
+ "sandra-biscoito":("cf", S, "Medium shot, three-quarter view. With her RIGHT hand she takes one YELLOW cookie package from a shelf at chest height; her LEFT hand holds the handle of her shopping cart. Soft nostalgic smile, " + MERC),
+ "sandra-ri":      ("cf", S, "She laughs out loud mockingly, one hand on her belly, pointing at someone off-screen, her one pair of sunglasses pushed up on top of her head (her eyes are visible), " + MERC),
+ "sandra-fila-parada": ("cf", S, "Medium shot in a supermarket checkout line. She STANDS STILL behind other customers, holding the handle of her big full shopping cart with both hands, bored and tired face, sighing, looking at a small metal impulse rack beside her full of chocolate bars, candies and batteries at hand height. She is not walking. Plain colored sign boards with nothing written."),
+ "sandra-pega-chocolate": ("cf", S, "Medium shot in a supermarket checkout line, three-quarter view. Standing next to her big full shopping cart, with her RIGHT hand she takes one chocolate bar from a small metal impulse rack beside the conveyor belt, a small guilty smile; her LEFT hand rests on the cart handle. Plain colored sign boards with nothing written."),
+ "sandra-chocolate": ("cf", S, "In a checkout line she grabs a chocolate bar from the impulse rack, bored; her big cart is FULL, " + MERC),
+ "sandra-visor":   ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a cash register (NOT a kitchen, no fridge): she stares in shock at the register display, mouth open, one hand on her cheek, her full shopping cart next to her. Only ONE Sandra."),
+ "sandra-cartao":  ("cf", S, "Inside a supermarket, at the checkout counter with a conveyor belt and a card machine (NOT a kitchen, no fridge): she hands a credit card to the cashier while distracted looking at her phone. Only ONE Sandra in the image. Background: supermarket shelves and other checkouts only. NO fridge, NO kitchen cabinets, NO home furniture."),
+ "sandra-fatura":  ("banco:video01/sandra-fatura.jpg", "", ""),
+ "sandra-lista":   ("cf", S, "At a supermarket entrance she opens her handbag and takes out a folded paper list, a little embarrassed smile, " + MERC),
+ "sandra-cestinha":("cf", S, "She walks past a line of big carts and picks up a small red basket instead, shy proud smile, " + MERC + "All sign boards are plain red or yellow with nothing written. Her sunglasses stay pushed up on her HEAD, not on her eyes."),
+ "sandra-gramas":  ("cf", S, "She turns a yellow cookie package around and reads the weight on the back, serious and curious, " + MERC),
+ "sandra-devolve": ("cf", S, "She calmly puts a yellow cookie package back on the shelf, serene, not angry, " + MERC),
+ "sandra-sacola":  ("cf", S, "She walks out of a supermarket, light and happy, sunny parking lot. Her RIGHT hand carries a single small brown paper bag; her LEFT hand is empty, swinging freely. Only one bag in the whole image."),
+ # ---- Marcos sozinho ----
+ "marcos-grita":   ("cf", M, "At the end of a supermarket beverage aisle he laughs loudly with one hand cupped near his mouth, shouting mockingly, " + MERC),
+ "marcos-fila":    ("cf", M, "Medium shot, waist up, in a supermarket checkout line. He laughs loudly and mocking, his RIGHT index finger points down at something off-screen; his LEFT hand rests in his jeans pocket, fully hidden. " + MERC),
+ "marcos-buzina":  ("cf", M, "He SITS in the driver's seat of a shiny black pickup truck in a supermarket parking lot, honking impatiently, both hands on the wheel."),
+ "marcos-so-isso": ("cf", M, "He SITS at the wheel of a shiny black pickup truck, surprised, eyebrows raised, looking at the passenger seat."),
+ # ---- as PRINCIPAIS, no meta.ai (o Ed gera; sai melhor). Plano B na Cloudflare ----
+ "meta-sandra-ri-lista": ("meta", "sandra-neutra.jpg + tiao-frente-sozinho.jpg", "cf:sandra-ri"),
+ "meta-marcos-debocha":  ("meta", "marcos-neutro.jpg + tiao-frente-sozinho.jpg", "cf:marcos-grita"),
+ "meta-fila-dois":       ("meta", "tiao-frente-sozinho.jpg + sandra-neutra.jpg", "cf:tiao-esteira"),
+ "meta-marcos-cestinha": ("meta", "marcos-neutro.jpg + tiao-frente-sozinho.jpg", "cf:marcos-fila"),
+ "meta-avo-portao":      ("meta", "sandra-neutra.jpg", "cf:biscoito"),
+ "meta-sandra-visor":    ("meta", "sandra-neutra.jpg", "cf:sandra-visor"),
+ "meta-riem-juntos":     ("meta", "tiao-frente-sozinho.jpg + sandra-neutra.jpg", "cf:tiao-brinda"),
+ "meta-tiao-susto":      ("meta", "tiao-frente-sozinho.jpg", "cf:tiao-susto"),
+ "meta-sandra-devolve":  ("meta", "sandra-neutra.jpg", "cf:sandra-devolve"),
+ "meta-marcos-so-isso":  ("meta", "marcos-neutro.jpg + sandra-neutra.jpg", "cf:marcos-so-isso"),
+ # ---- clipes do Flow (o Ed gera). Plano B: a imagem com camera ----
+ "flow-sandra-entra":    ("flow", "sandra-neutra.jpg", "cf:sandra-entra"),
+ "flow-tiao-cestinha":   ("flow", "tiao-frente-sozinho.jpg", "cf:tiao-cestinha"),
+ "flow-marcos-grita":    ("flow", "marcos-neutro.jpg + tiao-frente-sozinho.jpg", "cf:marcos-grita"),
+ "flow-caixa-bip":       ("flow", "sandra-neutra.jpg", "cf:sandra-visor"),
+ "flow-sandra-devolve":  ("flow", "sandra-neutra.jpg", "cf:sandra-devolve"),
+ "flow-tiao-brinda":     ("flow", "tiao-frente-sozinho.jpg", "cf:tiao-brinda"),
+}
+# o que o Ed le no e-mail: a cena de cada pedido do meta.ai e do Flow (em ingles, para a IA)
+PEDIDO = {
+ "meta-sandra-ri-lista": "Near the supermarket entrance. Sandra laughs mockingly and points at the small folded paper list in Tiao's hand. Tiao smiles calmly and puts a short yellow pencil back into his shirt pocket, not answering. Sandra on the LEFT, Tiao on the RIGHT.",
+ "meta-marcos-debocha":  "Beverage aisle. Marcos, at the far end of the aisle, laughs loudly and points at Tiao. Tiao stands calmly reading the label on the back of a rice package. Two shoppers in the background look. Marcos LEFT, Tiao RIGHT.",
+ "meta-fila-dois":       "Checkout line. Tiao in front with a small red basket with only six items; Sandra right behind him with a HUGE overflowing cart, looking at his tiny basket with a mocking smile.",
+ "meta-marcos-cestinha": "At the checkout, Tiao puts six items on the conveyor belt. Marcos behind him laughs loudly pointing at the tiny red basket. A young cashier with a red vest holds her laugh. Tiao stays calm and polite.",
+ "meta-avo-portao":      "FLASHBACK in warm faded colors, Sunday afternoon at the gate of a simple Brazilian house. A kind grandmother with grey hair in a bun and a flowered dress secretly gives a yellow cookie package to a happy 7-year-old girl with long wavy brown hair (Sandra as a child, same face features as the reference).",
+ "meta-sandra-visor":    "Close-up at the checkout: Sandra stares in total shock at the cash register display (numbers not readable), mouth open, one hand on her cheek, her overflowing cart behind her.",
+ "meta-riem-juntos":     "Checkout line the next Saturday. Tiao and Sandra, each holding a small red basket, laugh together in a warm friendly way.",
+ "meta-tiao-susto":      "FLASHBACK, Tuesday night in Tiao's simple kitchen with a red and white checkered tablecloth, one warm lamp. Close-up of Tiao, eyes wide open in shock, looking at a sum he wrote on the back of an envelope, crumpled receipts everywhere, a shoe box.",
+ "meta-sandra-devolve":  "Cookie aisle. Sandra reads the weight on the back of a yellow cookie package, then calmly puts it back on the shelf, serene, a small knowing smile.",
+ "meta-marcos-so-isso":  "Supermarket parking lot, a shiny black pickup truck. Marcos at the wheel looks surprised at the single bag Sandra carries as she gets into the passenger seat; Sandra smiles, proud.",
+ "flow-sandra-entra":    "Saturday 9 am. The automatic glass doors of the supermarket slide open and Sandra walks in fast, in a hurry, holding her handbag, sunglasses on her head. She slows down when she smells the bakery. Static camera.",
+ "flow-tiao-cestinha":   "Tiao walks in holding a small folded paper, and picks up a small RED plastic basket from a stack in the corner; its handle is repaired with grey tape. He hangs it on his forearm and walks on, calm. Static camera.",
+ "flow-marcos-grita":    "Beverage aisle. Marcos at the end of the aisle cups his hand near his mouth and shouts laughing towards Tiao, who is reading a rice package label; Tiao does not react, crosses a line on his paper and walks on. Static camera.",
+ "flow-caixa-bip":       "Checkout. The cashier scans item after item from Sandra's overflowing cart; Sandra watches the register display and her face slowly changes from relaxed to shocked. Slow push-in.",
+ "flow-sandra-devolve":  "Cookie aisle. Sandra picks up a yellow cookie package, turns it around, reads the weight, pauses, and calmly puts it back on the shelf with a small serene smile. Static camera.",
+ "flow-tiao-brinda":     "Supermarket entrance. Tiao, holding his small red basket, looks to the side, smiles warmly and raises a short yellow pencil like a toast. Static camera.",
+}
+
+CAFE = [("Pacote de 500 g", 18.90, AMAR), ("2 de 500 g = 1 kg", 37.80, VERM), ("Pacote de 1 kg", 32.90, VERDE)]
+L = {
+ 0: [("^", "I", "flow-fachada"), ("porta automática", "V", "flow-sandra-entra"), ("duas coisas", "H", ("sandra-entra", [ls(["pão", "leite"], 76, 46)])), ("Pão e leite", "M", fr("Só *duas* coisas.", "pão e leite"))],
+ 1: [("^", "I", "tiao-entra"), ("verso de um envelope", "I", "lapis"), ("cestinha vermelha", "V", "flow-tiao-cestinha"), ("alça remendada", "I", "cestinha"), ("Ninguém quer", "H", ("carrinhos", [et("a do canto", 18, 30)]))],
+ 2: [("^", "I", "meta-sandra-ri-lista"), ("você faz lista", "H", ("sandra-ri", [bl("Lista até para comprar *pão*?", 72, 20, "esq"), re_("😂", 30, 30)])), ("O Tião sorri", "I", "tiao-guarda-lapis")],
+ 3: [("^", "M", li(["9h10", "9h30", "9h50"], 2, "Quarenta minutos depois")), ("fila do caixa", "I", "meta-fila-dois"), ("seis coisas", "M", ba([("Tião: 6 coisas", 6, VERDE), ("Sandra: 23 coisas", 23, VERM)], "No caixa", "int")), ("cinquenta e oito", "M", nu(58.30, "A conta do Tião", "6 coisas", cor=VERDE, casas=2, emoji="😌")), ("cento e oitenta e sete", "M", nu(187.40, "A conta da Sandra", "23 coisas", cor=VERM, casas=2, emoji="😱"))],
+ 4: [("^", "H", ("sandra-visor", [ls(["pão", "leite"], 78, 40, True)])), ("nem percebeu", "M", fr("Ela nem *percebeu* quando aconteceu.", None, True))],
+ 5: [("^", "H", ("porta-abre", [ft("O mercado *sabia*.")])), ("nove armadilhas", "M", {"k": "grade", "total": 9, "cols": 9, "titulo": "9 armadilhas, uma em cada metro", "cor": VERM, "rotuloFim": "da porta ao caixa"}), ("mostrar todas", "I", "corredor-fundo")],
+ 6: [("^", "M", fr("A nona é a mais *cara*.", "e ela só aparece em casa")), ("trinta dias depois", "M", {"k": "cal", "mes": "Depois do mercado", "ate": 30, "marcados": {"1": {"cor": AMAR, "rotulo": "mercado"}, "30": {"cor": VERM, "rotulo": "a nona"}}})],
+ 7: [("^", "I", "tiao-arroz"), ("caiu em todas", "M", fr("O Tião já caiu nas *nove*.", "durante anos"))],
+ 8: [("^", "M", fr("Uns anos atrás, o Tião era *igual* a todo mundo.")), ("de cabeça", "M", ic([("🧠", "de cabeça", False), ("😋", "com fome", False), ("🌙", "fim do expediente", False)], "Como todo mundo")), ("quatro sacolas", "I", "flow-tiao-sacolas-antes"), ("dia vinte", "M", {"k": "cal", "mes": "O salário", "ate": 20, "marcados": {"5": {"cor": VERDE, "rotulo": "entra"}, "20": {"cor": VERM, "rotulo": "acabou"}}}), ("Simplesmente sumia", "M", fr("Simplesmente *sumia*.", None, True))],
+ 9: [("^", "V", "banco:videos/tiao-em-cena/T01-cozinha-noite-flow.mp4"), ("notinhas de mercado", "I", "tiao-notinhas"), ("caixa de sapato", "I", "notinhas"), ("Notinha amassada", "M", ic([("🧾", "amassada", False), ("🧾", "apagada", False), ("☕", "com mancha de café", False)]))],
+ 10: [("^", "I", "lapis"), ("primeiro emprego", "H", ("lapis", [et("do primeiro emprego, na obra", 70, 26)])), ("somando", "I", "tiao-notinhas")],
+ 11: [("^", "V", "banco:videos/tiao-em-cena/tiao-caderno-escreve-grok-01.mp4"), ("seiscentos", "M", nu(600, "O que ele achava", "por mês no mercado", cor=AMAR, emoji="🤔")), ("Deu novecentos", "M", nu(912, "O que deu", "um mês de notinhas", de=600, cor=VERM, emoji="😱"))],
+ 12: [("^", "I", "meta-tiao-susto"), ("Trezentos reais", "M", nu(300, "Todo mês, sem lembrar", "a diferença", cor=VERM, emoji="💸")), ("chocolate aqui", "M", ic([("🍫", "um chocolate", False), ("🧀", "um queijo", False), ("🏷️", "uma promoção", False)], "Não era luxo"))],
+ 13: [("^", "I", "banco:video01/tiao-pensando.jpg"), ("desenhado", "M", fr("Desenhado para você comprar o que *não* planejou.")),
+      ("caderno simples", "H", ("banco:video01/caderno-fechado.jpg", [et("cada real, com o dia e o motivo", 50, 14)])), ("carrega até hoje", "I", "banco:video01/tiao-caderno.jpg"),
+      ("as regras", "M", fr("As regras do caderno do *Tião*.", "você vai ver todas neste vídeo"))],
+ 14: [("^", "M", {"k": "grade", "total": 9, "cols": 9, "titulo": "As 9 armadilhas", "cor": VERM, "rotuloFim": "uma por uma, com a Sandra"}), ("entrando no mercado", "I", "porta-abre")],
+ 15: [("^", "H", ("porta-abre", [cb("ARMADILHA 1", 50, 40, VERM)])), ("Repara no que", "I", "sandra-entra"), ("São flores", "I", "banca-flores"), ("maçãs empilhadas", "I", "macas"), ("a padaria", "I", "padaria")],
+ 16: [("^", "M", fr("Isso tem *nome*.")), ("Paco Underhill", "I", "pesquisador"), ("Vamos às Compras", "M", ci("Paco Underhill", "1999", "pesquisador de lojas, EUA", "Os primeiros metros depois da porta são a zona de *descompressão*.", "Vamos às Compras (Why We Buy, 1999)"))],
+ 17: [("^", "H", ("meta-sandra-pao", [ft("Aqui ela muda para o modo de *compra*.")]))],
+ 18: [("^", "H", ("banca-flores", [ls(["fresco", "bom"], 76, 44)])), ("cheiro de pão", "I", "meta-sandra-pao"), ("apressada", "M", {"k": "linha", "marcos": ["porta: apressada", "3 passos: devagar"], "ativo": 1, "titulo": "A Sandra"})],
+ 19: [("^", "I", "tiao-passa"), ("já sabe", "H", ("lista-riscada", [ft("Está no *papel*.")]))],
+ 20: [("^", "H", ("carrinhos", [cb("ARMADILHA 2", 50, 40, VERM)])), ("pega um carrinho", "I", "flow-sandra-carrinho"), ("apoiar a bolsa", "H", ("flow-sandra-carrinho", [bl("Só para apoiar a *bolsa*.", 72, 20, "esq")]))],
+ 21: [("^", "M", ci("Martin Lindstrom", "2011", "consultor de marcas", "Carrinho com o *dobro* do tamanho: os clientes compraram uns 40% a mais.", "Brandwashed (2011)")), ("quarenta por cento", "M", ba([("Carrinho normal", 100, AMAR), ("Carrinho em dobro", 140, VERM)], "Quanto se compra", "nada"))],
+ 22: [("^", "I", "carrinho-vazio"), ("esqueceu", "M", fr("Parece que você *esqueceu* alguma coisa.")), ("Ela quer encher", "M", fr("A cabeça quer *encher*.", None, True))],
+ 23: [("^", "I", "cestinha"), ("um limite", "H", ("tiao-cestinha", [cb("LIMITE", 70, 30, VERDE)])), ("dói no ombro", "M", fr("A cestinha diz *chega* antes da carteira.", "cada coisa a mais pesa"))],
+ 24: [("^", "H", ("som-teto", [cb("ARMADILHA 3", 50, 40, VERM)])), ("dentro do mercado", "M", fr("A *música*.", "quase ninguém escuta"))],
+ 25: [("^", "M", ci("Ronald Milliman", "1982", "professor, EUA", "Num supermercado: alguns dias música *rápida*, outros música *lenta*.", "Journal of Marketing (1982)")), ("música lenta", "I", "som-teto")],
+ 26: [("^", "I", "corredor-fundo"), ("trinta e oito", "M", ba([("Música rápida", 100, AMAR), ("Música lenta", 138, VERM)], "Vendas do dia", "nada")), ("Journal of Marketing", "M", fr("Mais devagar no corredor, mais coisa no *carrinho*."))],
+ 27: [("^", "M", ci("Universidade de Leicester", "1997", "Inglaterra, revista Nature", "Música francesa: vendia vinho *francês*. Música alemã: o alemão.", "North, Hargreaves e McKendrick, Nature (1997)")), ("prateleira de vinhos", "I", "vinhos"), ("acordeão", "H", ("vinhos", [et("acordeão francês", 70, 24)]))],
+ 28: [("^", "H", ("vinhos", [et("música alemã", 30, 24)])), ("quase ninguém", "M", {"k": "pessoas", "titulo": "Quase ninguém achou que a música mudou a escolha", "total": 40, "verm": 3})],
+ 29: [("^", "M", fr("A Sandra não escutou a música. A música escutou *ela*.")), ("terceiro corredor", "I", "sandra-queijo")],
+ 30: [("^", "H", ("corredor-fundo", [cb("ARMADILHA 4", 50, 40, VERM)])), ("pão de forma", "M", ic([("🥛", "leite", False), ("🍞", "pão de forma", False), ("🍚", "arroz", False), ("🥚", "ovo", False)], "Onde fica?")), ("no fundo", "I", "leite")],
+ 31: [("^", "M", fr("Levar o cliente para *passear*.", "o Underhill chamou de")), ("longe da porta", "I", "corredor-fundo"), ("no caminho", "M", fr("No caminho, tudo o que você *não* precisava."))],
+ 32: [("^", "I", "marcos-grita"), ("lendo o rótulo", "I", "tiao-arroz"), ("grita do outro lado", "V", "flow-marcos-grita"), ("livro do arroz", "H", ("meta-marcos-debocha", [bl("Tá lendo o livro do *arroz*?", 30, 18, "dir"), re_("😂", 18, 40)]))],
+ 33: [("^", "H", ("sandra-ri", [re_("😂", 70, 30)])), ("risca o arroz", "I", "tiao-risca")],
+ 34: [("^", "I", "sandra-queijo"), ("chega ao leite", "M", ic([("🧀", "queijo", False), ("🥤", "refrigerante 2 L", False), ("🍪", "biscoito", False)], "Antes do leite, já tinha")), ("biscoito de chocolate", "I", "sandra-biscoito")],
+ 35: [("^", "I", "biscoito"), ("a avó dela", "I", "meta-avo-portao"), ("no portão", "H", ("meta-avo-portao", [re_("🥰", 74, 26)]))],
+ 36: [("^", "M", fr("A mão foi *sozinha*.")), ("antes da cabeça", "M", fr("Que a mão vá antes da *cabeça*.", "é isso que o mercado quer", True))],
+ 37: [("^", "M", {"k": "botao", "tipo": "like", "texto": "Parece a sua ida ao mercado? Deixa o *like*"}), ("altura dos seus olhos", "I", "prateleira-olho")],
+ 38: [("^", "H", ("prateleira-olho", [cb("ARMADILHA 5", 50, 40, VERM)])), ("mais caras", "H", ("prateleira-olho", [et("o que dá mais lucro", 50, 30, VERM)])), ("fábricas pagam", "M", fr("Muitas fábricas *pagam* por esse lugar.", "na altura da mão"))],
+ 39: [("^", "I", "prateleira-baixo"), ("criança de cinco", "H", ("prateleira-baixo", [et("altura de uma criança", 50, 70)]))],
+ 40: [("^", "M", {"k": "torre", "itens": ["no alto: mais barato", "nos olhos: mais caro", "no chão: mais barato"], "titulo": "Onde fica cada preço"}), ("Ele se abaixa", "I", "tiao-agachado")],
+ 41: [("^", "I", "etiqueta"), ("conta de cada pacote", "H", ("sandra-ri", [bl("Vai sair daqui *amanhã*!", 72, 20, "esq"), re_("😂", 28, 28)]))],
+ 42: [("^", "M", fr("O número pequeno é uma *arma*.")), ("treze mil", "M", ci("Lei 13.175", "2015", "lei federal", "Em muitos produtos, o preço por *quilo*, por litro ou por metro.", "Lei 13.175/2015 (art. 2º-A da Lei 10.962/2004)"))],
+ 43: [("^", "H", ("etiqueta", [et("preço por quilo", 50, 70, VERDE)]))],
+ 44: [("^", "I", "dois-cafes"), ("placa de promoção", "H", ("dois-cafes", [pl("R$ 18,90", 30, 22, VERM)])), ("trinta e dois", "H", ("tiao-cafes", [pl("R$ 32,90", 72, 22, VERDE)]))],
+ 45: [("^", "M", ba(CAFE, "O mesmo quilo de café", "reais"))],
+ 46: [("^", "M", nu(4.90, "O pacote da promoção é mais caro", "por quilo", cor=VERM, casas=2, emoji="😮")), ("não te contou a conta", "M", fr("Ela só não te contou a *conta*.", "a placa não mentiu", True))],
+ 47: [("^", "H", ("placa-amarela", [cb("ARMADILHA 6", 50, 40, VERM)])), ("Nove e noventa", "H", ("placa-amarela", [pl("R$ 9,99", 50, 50, VERM, tam=150)]))],
+ 48: [("^", "M", ci("Thomas e Morwitz", "2005", "Journal of Consumer Research", "A cabeça lê o primeiro número e quase *ignora* o resto.", "Penny Wise and Pound Foolish (2005)")), ("dígito da esquerda", "M", fr("Efeito do dígito da *esquerda*."))],
+ 49: [("^", "M", ba([("O que parece: R$ 9", 9, AMAR), ("O que é: R$ 10", 10, VERM)], "R$ 9,99", "nada"))],
+ 50: [("^", "M", fr("Um centavo, e o produto muda de *faixa*.")), ("vinte coisas", "M", {"k": "grade", "total": 20, "cols": 10, "titulo": "Vezes vinte coisas no carrinho", "cor": VERM, "rotuloFim": "a conta sobe"})],
+ 51: [("^", "H", ("placa-amarela", [pl("LEVE 3 PAGUE 2", 50, 50, VERM, tam=96)])), ("limite de doze", "H", ("latas", [pl("MÁXIMO 12", 50, 20, VERM)]))],
+ 52: [("^", "M", ci("Wansink, Kent e Hoch", "1998", "Journal of Marketing Research", "Uma placa de limite nas latas de *sopa*.", "Journal of Marketing Research (1998)")), ("Sem a placa", "M", nu(3, "Sem a placa", "latas, em média", fmt="int", suf=" latas"))],
+ 53: [("^", "M", ba([("Sem a placa", 3, AMAR), ("Com 'máximo 12'", 7, VERM)], "Latas de sopa por pessoa", "int"))],
+ 54: [("^", "I", "latas"), ("como régua", "M", fr("O doze virou a *régua*.", "ninguém precisava de sete latas"))],
+ 55: [("^", "I", "banco:video01/tiao-caderno.jpg"), ("só leva três", "M", fr("Só leva três se já ia levar *três*.", "a regra do Tião")), ("É gasto", "M", fr("Não é desconto. É *gasto*.", None, True))],
+ 56: [("^", "H", ("biscoito", [cb("ARMADILHA 7", 50, 40, VERM)])), ("na mão da Sandra", "I", "sandra-biscoito")],
+ 57: [("^", "I", "meta-biscoito-encolheu"), ("duzentos gramas", "M", ba([("Antes", 200, AMAR), ("Hoje", 170, VERM)], "O biscoito da Sandra", "int")), ("Mesmo preço", "H", ("meta-biscoito-encolheu", [cb("MESMO PREÇO", 50, 30, VERM)]))],
+ 58: [("^", "M", fr("*Reduflação*.", "isso tem nome")), ("faz a conta", "M", nu(17, "Aumento escondido", "30 gramas a menos, mesmo preço", cor=VERM, fmt="int", suf="%", emoji="😬")), ("Sem nenhuma placa", "M", fr("Sem nenhuma placa avisando que *subiu*."))],
+ 59: [("^", "M", fr("No Brasil, a regra manda *avisar*."))],
+ 60: [("^", "M", ci("Portaria 392", "2021", "Ministério da Justiça, vale desde 2022", "A embalagem tem que dizer quanto era, quanto é e quanto *diminuiu*.", "Portaria MJSP 392/2021")), ("na frente", "M", ic([("📦", "quanto era", False), ("📦", "quanto é agora", False), ("📉", "quanto diminuiu", False)], "Na frente da embalagem"))],
+ 61: [("^", "M", nu(6, "O aviso fica", "no mínimo", fmt="int", suf=" meses"))],
+ 62: [("^", "M", {"k": "cal", "mes": "O aviso na embalagem", "ate": 30, "marcados": {"1": {"cor": AMAR, "rotulo": "aviso"}, "30": {"cor": VERM, "rotulo": "sumiu"}}}), ("nunca mais vai saber", "M", fr("Quem não olhou, nunca mais vai *saber*.", None, True))],
+ 63: [("^", "I", "tiao-gramas"), ("depois do preço por quilo", "M", ic([("1️⃣", "preço por quilo", False), ("2️⃣", "os gramas", False)], "O que o Tião lê"))],
+ 64: [("^", "H", ("rack-caixa", [cb("ARMADILHA 8", 50, 40, VERM)])), ("sem nada para fazer", "I", "sandra-fila-parada"), ("chocolate, chiclete", "M", ic([("🍫", "chocolate", False), ("🍬", "bala", False), ("🔋", "pilha", False), ("📰", "revista", False)], "Tudo na altura da mão"))],
+ 65: [("^", "M", fr("Compras de *impulso*.", "ninguém põe na lista")), ("pega um chocolate", "I", "sandra-pega-chocolate"), ("uma pilha", "H", ("sandra-pega-chocolate", [bl("Pilha? Vai que *precisa*.", 72, 20, "esq")]))],
+ 66: [("^", "I", "tiao-esteira"), ("o Marcos olha", "I", "marcos-fila"), ("amostra grátis", "H", ("meta-marcos-cestinha", [bl("Compra do mês ou amostra *grátis*?", 62, 12, "dir")]))],
+ 67: [("^", "I", "tiao-debito"), ("Bom sábado", "H", ("tiao-debito", [bl("Bom sábado, *Marcos*.", 70, 18, "esq")]))],
+ 68: [("^", "M", {"k": "montagem", "imgs": ["flow-esteira", "queijo", "biscoito", "sandra-pega-chocolate", "rack-caixa", "flow-esteira", "visor"], "seg": 0.45}), ("o visor", "V", "flow-caixa-bip"), ("Cento e oitenta", "H", ("meta-sandra-visor", [pl("R$ 187,40", 72, 20, VERM, tam=110), re_("😱", 26, 28)])), ("não consegue lembrar", "M", fr("Quando ela pegou *metade* daquilo?", None, True))],
+ 69: [("^", "SIL", "flow-tiao-volta"), ("envelope da conta", "I", "lista-riscada"), ("Cinquenta e oito", "H", ("flow-tiao-volta", [pl("R$ 58,30", 70, 20, VERDE)]))],
+ 70: [("^", "M", fr("Ele não é mais *disciplinado* que você.")), ("sabendo onde", "M", fr("Ele só sabia onde estavam as *armadilhas*.")), ("com fome", "I", "tiao-come-antes")],
+ 71: [("^", "M", ci("Universidade Cornell", "2013", "JAMA Internal Medicine", "Com fome, as pessoas escolheram muito mais comida *calórica*.", "Tal e Wansink, Fattening Fasting (2013)")), ("A fome não compra", "I", "geladeira-casa")],
+ 72: [("^", "M", fr("A fome compra o que *ela* quer.", None, True))],
+ 73: [("^", "M", fr("A nona armadilha. A mais *cara*.", "a que eu prometi")), ("não está dentro", "I", "fachada")],
+ 74: [("^", "H", ("maquininha", [cb("ARMADILHA 9", 50, 40, VERM)])), ("cartão de crédito", "I", "meta-sandra-cartao"), ("vai para o cartão", "M", fr("O mercado vai para o *cartão*.", "na casa do Marcos e da Sandra"))],
+ 75: [("^", "I", "sandra-fatura"), ("só uma parte", "M", ba([("A fatura", 100, VERM), ("O que eles pagam", 30, AMAR)], "Todo mês", "nada")), ("rotativo", "M", fr("O resto entra no *rotativo*."))],
+ 76: [("^", "M", ci("Banco Central", "451%", "rotativo do cartão, set/2026", "Os juros médios do rotativo: *451%* ao ano.", "Banco Central, Estatísticas de Crédito (out/2026)")), ("mais caros do país", "M", nu(451.7, "Juros do rotativo", "ao ano", cor=VERM, fmt="num", casas=1, suf="%", emoji="🔥"))],
+ 77: [("^", "M", ci("Lei 14.690", "2023", "vale desde 2024", "Juros e encargos não passam de *100%* da dívida.", "Lei 14.690/2023")), ("proteção", "M", fr("Parece uma *proteção*. E é."))],
+ 78: [("^", "M", nu(374.80, "O pão e o leite podem virar", "a dívida pode dobrar", de=187.40, cor=VERM, casas=2, emoji="😱"))],
+ 79: [("^", "H", ("sandra-fatura", [ft("O pão mais caro da *vida* dela.")])), ("em parcelas", "M", fr("Sem lembrar que um dia foi *pão*.", None, True))],
+ 80: [("^", "M", fr("A conta que o mercado torce para você nunca *fazer*."))],
+ 81: [("^", "M", {"k": "cal", "mes": "Uma semana", "ate": 7, "marcados": {"2": {"cor": AMAR, "rotulo": "rapidinho"}, "6": {"cor": AMAR, "rotulo": "rapidinho"}}}), ("trinta e cinco reais", "M", nu(35, "A mais em cada ida", "bem generoso", cor=VERM))],
+ 82: [("^", "M", fr("Só *trinta e cinco*."))],
+ 83: [("^", "M", {"k": "conta", "titulo": "A conta do ano", "linhas": [{"rotulo": "R$ 35 x 2 por semana", "valor": 70}, {"rotulo": "x 52 semanas", "valor": 3640}], "total": "Por ano", "neutro": True}), ("Uns trezentos", "M", nu(303, "Por mês", "o mesmo buraco do Tião", cor=VERM, emoji="💸")), ("mesmo buraco", "I", "meta-tiao-susto")],
+ 84: [("^", "M", {"k": "graf", "titulo": "R$ 303 por mês, uns 10% ao ano", "series": [{"r": "guardado", "cor": VERDE, "pts": [round(303 * ((1 + (1.1 ** (1 / 12) - 1)) ** (12 * a) - 1) / (1.1 ** (1 / 12) - 1) / 1000, 1) for a in range(11)]}], "eixo": ["ano 0", "", "ano 2", "", "ano 4", "", "ano 6", "", "ano 8", "", "ano 10"], "fim": "uns R$ 60 mil"}), ("cinco anos", "M", nu(23000, "Em 5 anos", "guardando, não gastando", cor=VERDE)), ("dez anos", "M", nu(60000, "Em 10 anos", "", de=23000, cor=VERDE, emoji="🎉"))],
+ 85: [("^", "M", ic([("🍫", "chocolate da fila", True), ("🧀", "queijo do 3º corredor", True), ("🍪", "biscoito que encolheu", True)], "R$ 60 mil em")), ("nada caro", "M", fr("Sem nunca ter comprado nada *caro*.", None, True))],
+ 86: [("^", "M", fr("Comprar o que você *quer* é ótimo.")), ("o mercado quis", "M", fr("O problema é comprar o que o mercado quis por *você*."))],
+ 87: [("^", "SIL", "fachada"), ("A mesma porta", "I", "porta-abre"), ("mesmas flores", "I", "banca-flores"), ("cheiro de pão", "I", "padaria")],
+ 88: [("^", "I", "tiao-entra"), ("cestinha vermelha", "I", "cestinha")],
+ 89: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 82, 36, VERDE)]))],
+ 90: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
+ 91: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
+ 92: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
+ 93: [("^", "V", "flow-sandra-devolve"), ("Só sabendo", "H", ("meta-sandra-devolve", [ft("Não com raiva. Só *sabendo*.")]))],
+ 94: [("^", "I", "meta-fila-dois"), ("quanto deu o seu", "H", ("meta-fila-dois", [bl("Tião, quanto deu o *seu*?", 70, 14, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
+ 95: [("^", "I", "flow-marcos-buzina"), ("uma sacola só", "I", "sandra-sacola"), ("Só isso", "H", ("meta-marcos-so-isso", [bl("Só *isso*?", 30, 18, "dir")])), ("estava na lista", "M", fr("Só o que estava na *lista*.", "ela respondeu"))],
+ 96: [("^", "M", fr("Se for levar só uma coisa, leva *isto*.")), ("a lista no papel", "M", ic([("📝", "a lista no papel", False)], "Antes de entrar")), ("barriga cheia", "I", "tiao-come-antes"), ("a cestinha", "I", "cestinha"), ("preço por quilo", "M", ic([("🏷️", "preço por quilo", False), ("⚖️", "os gramas", False)], "Na prateleira"))],
+ 97: [("^", "M", ic([("💳", "débito ou dinheiro", False), ("🚫", "nunca o rotativo", False)], "No caixa"))],
+ 98: [("^", "M", fr("Cinco coisas. Nenhuma custa um *real*.", None, True))],
+ 99: [("^", "M", fr("Uma coisa que nenhuma regra resolve *sozinha*.")), ("susto do Tião", "M", nu(912, "Achava R$ 600. Eram", "no mercado, por mês", de=600, cor=VERM)), ("soma do mês", "I", "tiao-foto")],
+ 100: [("^", "V", "banco:FM:7-smart-capture/smart-capture__estilo-moldura-celular__horizontal.mp4"), ("foto da notinha", "M", {"k": "fotonota", "itens": [["Pão francês", 8.90], ["Leite", 5.49], ["Arroz 5 kg", 22.90], ["Café", 9.99], ["Feijão", 6.02], ["Ovos", 5.00]], "total": 58.30, "categoria": "Mercado"}), ("fim do mês", "V", "banco:FM:4-balanco/balanco__estilo-donut-despesas__horizontal.mp4"), ("sete dias", "M", nu(7, "Dá para testar o FinMoovi", "sem pagar nada · link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="🎉"))],
+ 101: [("^", "M", {"k": "botao", "tipo": "like", "texto": "O link está na *descrição*"})],
+ 102: [("^", "I", "tiao-foto"), ("Usa o FinMoovi", "H", ("tiao-foto", [ft("Uma foto da notinha. O controle de *tudo*.", "esq")]))],
+ 103: [("^", "M", {"k": "botao", "tipo": "inscrever", "texto": "Toda semana, uma história nova do *Tião*"}), ("me conta aqui", "M", fr("Qual armadilha te pega *sempre*?", "me conta nos comentários"))],
+}
+# o efeito "trilha": climas por linha (a montagem escolhe a musica do banco de trilhas)
+CLIMA = {0: "calma", 5: "tensao", 7: "triste", 14: "curiosa", 24: "curiosa", 32: "humor", 37: "calma", 56: "tensao", 64: "tensao",
+         68: "montagem", 69: "silencio", 73: "tensao", 80: "reflexiva", 87: "calma", 94: "virada", 96: "calma", 103: "final"}
+# a capa (o Ed gera no meta.ai; o robo passa no Real-ESRGAN). Estilo novo, de cenario (Ed, 05/11: «sim»)
+CAPA = ("sandra-neutra.jpg + tiao-frente-sozinho.jpg",
+        "Inside a bright Brazilian supermarket aisle full of colorful products, warm cinematic light. LEFT side, big and close: Sandra pushes a HUGE shopping cart overflowing with products, holding a very long paper receipt that falls to the floor, shocked guilty face, mouth open. RIGHT side, closer to the camera: Tiao holds a tiny red basket with only a few items, calm, one eyebrow raised, half smile, looking straight at the viewer as if he knows a secret. A big thick RED ARROW points at the overflowing cart. Big bold text at the top left, white letters with thick black outline, the second word in yellow: ELES SABEM. Keep the text away from the edges.")
+TITULO = "Como o Supermercado Te Faz Gastar Mais Sem Você Perceber"
+PUBLICA = "2026-11-11 18:00"
+PUBLICA_TXT = "quarta, 11/11, às 18h (Brasília, 21h em Lisboa)"
+PRAZO_ISO = "2026-11-07T10:00:00-03:00"
+PRAZO = "sábado, 07/11, até as 10h (este primeiro vídeo está apertado; nos próximos você terá 3 dias)"
+# sons de cena: (som, linha, gatilho, segundos, volume). Sons em render/public/amb (o montar.py cria o "bip").
+AMB = [("passaros", 0, "^", 18, 0.22), ("grilos", 9, "^", 40, 0.28), ("relogio", 9, "^", 14, 0.3), ("coracao", 11, "Deu novecentos", 8, 0.5),
+       ("coracao", 12, "^", 6, 0.4), ("bip", 68, "^", 8, 0.3), ("passaros", 69, "^", 24, 0.3), ("coracao", 76, "^", 10, 0.45),
+       ("passaros", 87, "^", 14, 0.22)]
+FORTES = {"armadilha", "armadilhas", "cestinha", "lista", "biscoito", "rotativo", "carrinho", "reduflação", "fome", "nove", "nona"}
+# para o YouTube
+DESC = ("A Sandra entrou no mercado para comprar pão e leite. Saiu com 23 coisas e uma conta de R$ 187,40. O Tião, com uma lista no verso de um envelope, gastou R$ 58,30. E a Sandra nem percebeu quando aconteceu.\n\n"
+        "Neste vídeo você vê as nove armadilhas que o supermercado arma da porta até o caixa, com as pesquisas que mostram cada uma. E a nona, a mais cara, só aparece trinta dias depois, em casa.")
+TAGS = ["supermercado", "como economizar no mercado", "educação financeira", "finanças pessoais", "compras por impulso", "reduflação",
+        "cartão de crédito", "rotativo", "controle de gastos", "lista de compras", "Tião Poupador", "história de dinheiro"]
+PERGUNTA = "Qual dessas nove armadilhas te pega sempre? É o pão da porta ou o chocolate da fila?"
+CAP_NOMES = {"Gancho": "Sábado, 9h10: só pão e leite", "O que o Tião faz, em uma frase cada": "O que o Tião faz", "Chamada para o app": "A soma do mês", "Fecho": "Qual armadilha te pega?"}
+
+# O nome de cada arquivo que o Ed gera (vai para o banco): personagens_lugar_o-que-acontece. O codigo (M01, F01) vem na frente.
+NOMES = {
+ "capa":                 "sandra-tiao_supermercado-corredor_carrinho-lotado-x-cestinha-capa-eles-sabem",
+ "meta-sandra-ri-lista": "sandra-tiao_supermercado-entrada_sandra-ri-da-lista-de-papel-do-tiao",
+ "meta-marcos-debocha":  "marcos-tiao_supermercado-corredor-bebidas_marcos-ri-e-aponta-tiao-le-rotulo",
+ "meta-fila-dois":       "tiao-sandra_supermercado-fila-caixa_cestinha-x-carrinho-lotado",
+ "meta-marcos-cestinha": "marcos-tiao-caixa_supermercado-caixa_marcos-ri-da-cestinha-vermelha",
+ "meta-avo-portao":      "avo-sandra-crianca_portao-de-casa-flashback_avo-da-bolacha-amarela",
+ "meta-sandra-visor":    "sandra_supermercado-caixa_sandra-em-choque-com-o-total",
+ "meta-riem-juntos":     "tiao-sandra_supermercado-fila-caixa_os-dois-com-cestinha-rindo-juntos",
+ "meta-tiao-susto":      "tiao_cozinha-noite-flashback_tiao-assustado-com-a-conta",
+ "meta-sandra-devolve":  "sandra_supermercado-corredor-bolachas_sandra-le-o-peso-e-devolve",
+ "meta-marcos-so-isso":  "marcos-sandra_estacionamento-picape-preta_marcos-surpreso-com-uma-sacola",
+ "flow-sandra-entra":    "sandra_supermercado-porta-automatica_sandra-entra-com-pressa",
+ "flow-tiao-cestinha":   "tiao_supermercado-entrada_tiao-pega-cestinha-vermelha-com-lista",
+ "flow-marcos-grita":    "marcos-tiao_supermercado-corredor-bebidas_marcos-grita-rindo",
+ "flow-caixa-bip":       "caixa-sandra_supermercado-caixa_passando-as-compras-sandra-olha-o-visor",
+ "flow-sandra-devolve":  "sandra_supermercado-corredor-bolachas_sandra-le-o-peso-e-devolve",
+ "flow-tiao-brinda":     "tiao_supermercado-entrada_tiao-sorri-e-levanta-o-lapis",
+}
+
+# 06/11: mais pedidos ao Ed (5 que a Cloudflare errou duas vezes vao para o meta.ai; 7 clipes a mais no Flow para dar movimento)
+IMG["meta-sandra-pao"] = ("meta", 'sandra-neutra.jpg', "cf:sandra-pao"); PEDIDO["meta-sandra-pao"] = 'Near the supermarket bakery she slows down, eyes half closed, smiling, smelling the warm bread, inside a bright mid-size Brazilian neighborhood supermarket, white tiled floor, red and yellow details, colorful shelves, small blank yellow price tags, white ceiling lights, plain red and yellow sign boards with NO words, Sandra is a WOMAN with a smooth feminine face: absolutely NO mustache, no beard. She carries ONE handbag only.'; NOMES["meta-sandra-pao"] = 'sandra_supermercado-padaria_sandra-cheira-o-pao'
+IMG["meta-biscoito-encolheu"] = ("meta", '(nenhuma)', "cf:biscoito-encolheu"); PEDIDO["meta-biscoito-encolheu"] = 'Close-up of two yellow cookie packages without brand side by side on a plain white table, plain white wall behind (no door, no eyes, no faces anywhere), identical design, the right one slightly thinner and smaller. No people. No hands, no arms, no body parts anywhere in the image.'; NOMES["meta-biscoito-encolheu"] = 'objeto_mesa-branca_dois-pacotes-de-biscoito-um-menor'
+IMG["meta-sandra-cestinha"] = ("meta", 'sandra-neutra.jpg', "cf:sandra-cestinha"); PEDIDO["meta-sandra-cestinha"] = 'She walks past a line of big carts and picks up a small red basket instead, shy proud smile, inside a bright mid-size Brazilian neighborhood supermarket, white tiled floor, red and yellow details, colorful shelves, small blank yellow price tags, white ceiling lights, plain red and yellow sign boards with NO words, All sign boards are plain red or yellow with nothing written. Her sunglasses stay pushed up on her HEAD, not on her eyes.'; NOMES["meta-sandra-cestinha"] = 'sandra_supermercado-entrada_sandra-pega-a-cestinha-vermelha'
+IMG["meta-sandra-cartao"] = ("meta", 'sandra-neutra.jpg', "cf:sandra-cartao"); PEDIDO["meta-sandra-cartao"] = 'Inside a supermarket, at the checkout counter with a conveyor belt and a card machine (NOT a kitchen, no fridge): she hands a credit card to the cashier while distracted looking at her phone. Only ONE Sandra in the image. Background: supermarket shelves and other checkouts only. NO fridge, NO kitchen cabinets, NO home furniture.'; NOMES["meta-sandra-cartao"] = 'sandra-caixa_supermercado-caixa_sandra-paga-com-cartao-distraida'
+IMG["meta-chocolate-fila"] = ("meta", '(nenhuma)', "cf:chocolate-fila"); PEDIDO["meta-chocolate-fila"] = 'Inside a supermarket checkout line, close-up of a hand taking a chocolate bar from a small metal impulse rack next to the conveyor belt, people waiting in line blurred behind. No brand, no office. The sign boards and screens above are plain colors with nothing written, no scribbles that look like letters.'; NOMES["meta-chocolate-fila"] = 'mao_supermercado-fila-caixa_pega-chocolate-do-rack'
+IMG["flow-fachada"] = ("flow", '(nenhuma)', "cf:fachada"); PEDIDO["flow-fachada"] = 'Establishing shot of the front of a mid-size Brazilian neighborhood supermarket on a sunny Saturday morning, red and yellow facade with plain sign boards (nothing written), glass doors. A few cars slowly park, two shoppers walk in, a light breeze moves a tree. Slow push-in camera.'; NOMES["flow-fachada"] = 'lugar_supermercado-fachada_carros-chegando-sabado'
+IMG["flow-sandra-carrinho"] = ("flow", 'sandra-neutra.jpg', "cf:sandra-carrinho"); PEDIDO["flow-sandra-carrinho"] = 'Inside a bright supermarket aisle, Sandra pushes a big shopping cart down the aisle, distracted, tossing two colorful packages into the cart without looking at the prices. Camera tracks beside her.'; NOMES["flow-sandra-carrinho"] = 'sandra_supermercado-corredor_sandra-empurra-o-carrinho-sem-olhar-preco'
+IMG["flow-sandra-chocolate"] = ("flow", 'sandra-neutra.jpg', "cf:sandra-chocolate"); PEDIDO["flow-sandra-chocolate"] = 'Supermarket aisle near the checkout: Sandra, pushing her cart, stops, hesitates for a second, then grabs a chocolate bar from the shelf and drops it into the cart with a guilty little smile. Static camera.'; NOMES["flow-sandra-chocolate"] = 'sandra_supermercado-corredor_sandra-pega-chocolate-com-culpa'
+IMG["flow-esteira"] = ("flow", '(nenhuma)', "cf:esteira"); PEDIDO["flow-esteira"] = 'Close-up of a supermarket checkout conveyor belt moving slowly, carrying many products (cheese, soda, cookies, yogurt) towards the cashier, a hand places one more item. No faces. Static camera.'; NOMES["flow-esteira"] = 'objeto_supermercado-caixa_esteira-com-as-compras'
+IMG["flow-tiao-sacolas-antes"] = ("flow", 'tiao-frente-sozinho.jpg', "cf:tiao-sacolas-antes"); PEDIDO["flow-tiao-sacolas-antes"] = 'FLASHBACK in warm evening colors: Tiao walks out of a supermarket through the glass doors, tired and hungry, carrying three heavy full shopping bags, sighs and shakes his head with regret. Camera slowly follows him.'; NOMES["flow-tiao-sacolas-antes"] = 'tiao_supermercado-saida-flashback_tiao-cansado-com-3-sacolas'
+IMG["flow-marcos-buzina"] = ("flow", 'marcos-neutro.jpg', "cf:marcos-buzina"); PEDIDO["flow-marcos-buzina"] = 'Supermarket parking lot: Marcos inside his shiny black pickup truck honks the horn impatiently and gestures with one hand, annoyed, then laughs. Static camera from outside the driver window.'; NOMES["flow-marcos-buzina"] = 'marcos_estacionamento-picape-preta_marcos-buzina-impaciente'
+IMG["flow-tiao-volta"] = ("flow", 'tiao-frente-sozinho.jpg', "cf:tiao-volta"); PEDIDO["flow-tiao-volta"] = 'Sunny Brazilian neighborhood street with colorful simple houses and palm trees: Tiao walks home calmly and happy carrying ONE small paper bag, smiling, a few birds fly by. Camera tracks in front of him.'; NOMES["flow-tiao-volta"] = 'tiao_rua-do-bairro_tiao-volta-para-casa-com-uma-sacola'
+
+# versoes da capa para o teste do YouTube (Test & compare, ate 3). (referencias, cena, nome do arquivo)
+CAPAS_TESTE = [
+ ("sandra-neutra.jpg",
+  "EXTREME CLOSE-UP of Sandra's face filling half of the image on the LEFT, total shock, mouth wide open, eyes huge, one hand on her cheek, sunglasses on her head. "
+  "She holds a gigantic paper receipt that unrolls all the way down to the floor. Background: a blurred bright supermarket aisle. A big thick RED ARROW points at the end of the receipt. "
+  "Big bold text at the top right, white letters with thick black outline, the last word in yellow: CAÍ NESSA. Keep the text away from the edges.",
+  "sandra_supermercado-corredor_sandra-em-choque-com-a-nota-gigante-capa-cai-nessa"),
+ ("tiao-frente-sozinho.jpg",
+  "Tiao close to the camera on the RIGHT, leaning in and whispering to the viewer with one hand next to his mouth, the other hand pointing DOWN at the bottom shelf. "
+  "Behind him a supermarket shelf: the products at eye level are bright and glowing, the cheap ones on the bottom shelf are in shadow. A big thick RED ARROW points at the bottom shelf. "
+  "Big bold text at the top left, white letters with thick black outline, the last word in yellow: OLHE PRA BAIXO. Keep the text away from the edges.",
+  "tiao_supermercado-prateleira_tiao-cochicha-e-aponta-a-prateleira-de-baixo-capa-olhe-pra-baixo"),
+]

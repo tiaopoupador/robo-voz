@@ -545,5 +545,79 @@
 "y1": 47.5
 }
 ]
+},
+"portao-tarde.jpg": {
+"tam": 467227,
+"rostos": [
+{
+"quem": "Homem de camisa amarela",
+"x0": 28.3,
+"y0": 30.5,
+"x1": 38.4,
+"y1": 49.4
+},
+{
+"quem": "Mulher de blusa vermelha",
+"x0": 66.5,
+"y0": 24.5,
+"x1": 78.3,
+"y1": 53.5
+}
+]
+},
+"tiao-rega.jpg": {
+"tam": 475852,
+"rostos": [
+{
+"quem": "homem regando plantas",
+"x0": 43.5,
+"y0": 20.5,
+"x1": 55.5,
+"y1": 42.5
+}
+]
+},
+"marcos-ri-rua.jpg": {
+"tam": 392631,
+"rostos": [
+{
+"quem": "homem sorrindo",
+"x0": 39.5,
+"y0": 4.5,
+"x1": 51.5,
+"y1": 32.5
+}
+]
+},
+"marcos-celular.jpg": {
+"tam": 361927,
+"rostos": [
+{
+"quem": "homem de camisa branca",
+"x0": 34.0,
+"y0": 3.0,
+"x1": 51.5,
+"y1": 38.0
+}
+]
+},
+"portao-noite.jpg": {
+"tam": 398239,
+"rostos": [
+{
+"quem": "mulher de blusa vermelha",
+"x0": 26.5,
+"y0": 23.0,
+"x1": 45.0,
+"y1": 60.0
+},
+{
+"quem": "homem de camisa branca",
+"x0": 56.0,
+"y0": 5.5,
+"x1": 68.5,
+"y1": 40.5
+}
+]
 }
 }

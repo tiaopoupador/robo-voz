@@ -67,7 +67,16 @@ ruins = []; lista = open(TMP + "/lista.txt", "w")
 for i, txt in enumerate(textos):
     f = f"{PASTA}/p{i}.wav"
     if not os.path.exists(f): ruins.append([i, "faltou"]); continue
-    if CONFERIR:
+    # ja conferido antes (mesmo texto, mesmo arquivo de voz): usa o que ficou guardado e nao escuta de novo
+    marca = f"{TMP}/ok{i}.json"; chave = f"{os.path.getsize(f)}|{txt}"
+    if CONFERIR and os.path.exists(marca) and os.path.exists(f"{TMP}/r{i}.wav"):
+        j = json.load(open(marca, encoding="utf-8"))
+        if j.get("chave") == chave:
+            ruins += j["ruins"]; f = f"{TMP}/r{i}.wav"; CONFERIR_ESTA = False
+        else: CONFERIR_ESTA = True
+    else: CONFERIR_ESTA = CONFERIR
+    if CONFERIR_ESTA:
+        antes = len(ruins)
         seg, _ = m.transcribe(f, language="pt", word_timestamps=True); seg = list(seg)
         ouviu = " ".join(s.text for s in seg)
         ws = [(w.start, w.end, w.word) for s_ in seg for w in s_.words]
@@ -79,6 +88,7 @@ for i, txt in enumerate(textos):
         sim = difflib.SequenceMatcher(None, a, b).ratio()
         if sim < 0.80 or len(b) > len(a) * 1.15 + 1:
             ruins.append([i, f"sim={sim:.2f} palavras {len(a)}->{len(b)} | {ouviu.strip()[:160]}"])
+        json.dump({"chave": chave, "ruins": ruins[antes:]}, open(marca, "w", encoding="utf-8"), ensure_ascii=False)
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).decode())
     if dur >= 39.5: ruins.append([i, f"bateu no limite de 40 s do gravador: pode ter cortado ou inventado som no fim ({dur:.1f} s)"])
     pausa = 0.9 if secoes[i] else 0.35
