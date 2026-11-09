@@ -223,7 +223,7 @@ L = {
  89: [("^", "H", ("tiao-rega", [bl("O mercado tem *9 armadilhas*.", 70, 18, "esq")])), ("O Marcos riu alto", "V", "flow-marcos-ri-picape"),
       ("A Sandra riu junto", "H", ("marcos-ri-rua", [re_("😂", 80, 30)])), ("ninguém levou", "M", fr("E ninguém levou a *sério*."))],
  90: [("^", "V", "flow-notinha-comprida"), ("Vinte e três coisas", "M", nu(23, "Coisas na notinha", "ela foi buscar duas", cor=VERM, fmt="int", emoji="😳"))],
- 91: [("^", "I", "meta-sandra-caneta"), ("Pão, oito", "M", ba([("Pão", 8.90, VERDE), ("Leite", 5.49, VERDE), ("As outras 21 coisas", 173.01, VERM)], "A notinha de R$ 187,40")),
+ 91: [("^", "I", "meta-sandra-caneta"), ("Pão, oito", "M", ba([("Pão", 8.90, VERDE), ("Leite", 5.49, VERDE), ("As outras 21 coisas", 173.01, VERM)], "A notinha de R$ 187,40") | {"casas": 2}),
       ("cento e setenta e três", "M", nu(173, "O que ela não planejou", "21 de 23 coisas", cor=VERM, emoji="💸"))],
  92: [("^", "I", "meta-sandra-seria"), ("a mesma cena do Tião", "I", "meta-tiao-susto"), ("não fazia sentido", "M", fr("A mesma mesa. Outra *notinha*.", None, True))],
  93: [("^", "I", "meta-marcos-celular"), ("Isso vai para o cartão", "H", ("meta-marcos-celular", [bl("Isso vai para o *cartão* de novo?", 30, 16, "dir")])),
