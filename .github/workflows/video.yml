@@ -113,7 +113,7 @@ jobs:
         working-directory: render
         run: |
           npx remotion render src/nuvem.ts Video out/som.wav --props=public/v$NN/props.json --codec=wav --concurrency=4 --log=error
-          ffprobe -v error -show_entries format=duration -of csv=p=0 out/som.wav
+          ls -la out/som.wav   # (sem ffprobe aqui: esta maquina nao tem ffmpeg; 09/11 falhou so por isso, depois de 40 min)
       - uses: actions/upload-artifact@v4
         with:
           name: som-inteiro
