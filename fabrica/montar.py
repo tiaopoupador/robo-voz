@@ -93,9 +93,22 @@ for k in linhas:
         if tp == "vid": cenas.append({"ini": s, "k": "vid", "src": src, "mov": mv, "de": 0, "chave": chave, "clip": round(dur_de(f"{P}/render/public/{src}"), 2), "ov": ov})
         else: cenas.append({"ini": s, "k": "hib" if ov else "img", "src": src, "mov": mv, "ov": ov, "chave": chave, "sil": tipo == "SIL"})
 cenas.sort(key=lambda c: c["ini"])
+# guarda dos rostos (Ed, 08/11): balao, emoji, placa e etiqueta nunca em cima de rosto (fabrica/rostos.py)
+if "--sem-rostos" not in sys.argv:
+    try:
+        from fabrica.rostos import Caderno, desviar, CUSTO as CUSTO_ROSTO
+        cad = Caderno(NN)
+        for c in cenas:
+            if c.get("ov"):
+                c["ov"] = [dict(o) for o in c["ov"]]
+                try: ros = cad.de(f"{P}/render/public/{c['src']}")
+                except Exception as e: avisos.insert(0, f"ATENCAO {c['chave']}: nao consegui marcar os rostos ({e!r})"); continue
+                avisos.extend(desviar(c["ov"], ros, c["chave"]))
+        print(f"rostos conferidos (US$ {CUSTO_ROSTO[0]:.3f})")
+    except Exception as e: avisos.insert(0, f"ATENCAO: a guarda dos rostos nao rodou: {e!r}")
 # prova de mesa: cada motion com o que ele precisa (um campo vazio derruba a geracao do video inteiro)
 PRECISA = {"graf": ["series"], "barras": ["itens"], "icones": ["itens"], "linha": ["marcos"], "conta": ["linhas"], "torre": ["itens"],
-           "cal": ["marcados"], "montagem": ["imgs"], "cita": ["nome", "achado"], "frase": [], "num": ["valor"], "grade": ["total"]}
+           "cal": ["marcados"], "montagem": ["imgs"], "cita": ["nome", "achado"], "frase": [], "num": ["valor"], "grade": ["total"], "fotonota": ["itens", "total"]}
 erros = []
 for c in cenas:
     for campo in PRECISA.get(c["k"], []):

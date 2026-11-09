@@ -11,7 +11,7 @@ QUEM = {"T": "Tião: homem de uns 30 anos, baixo e gordinho, cabelo preto bagun�
         "R": "Sandra: mulher de uns 38, cabelo castanho ondulado comprido, óculos escuros na cabeça, blusa vermelha, jeans, SEM bigode",
         "N": "Marcos: homem alto e magro, cabelo escuro com gel, camisa branca, SEM bigode"}
 _cli = None
-def revisar(caminho, refs, pedido):
+def revisar(caminho, refs, pedido, fala=None):
     """devolve (passa, problemas, custo_usd)"""
     global _cli
     import anthropic
@@ -21,16 +21,18 @@ def revisar(caminho, refs, pedido):
     quem = "; ".join(QUEM[r] for r in refs if r in QUEM) or "personagens do bairro"
     txt = ("Você é o revisor chato de um desenho 2D para um vídeo do YouTube. Reprove se houver QUALQUER um destes defeitos:\n"
            "1. alguém com braço, mão ou perna a mais ou a menos, mão saindo de lugar errado, braço que sai das costas ou cruza o corpo sem ligar no ombro certo, objeto flutuando sem mão;\n"
+           "1b. MÃO DEFORMADA: dedos tortos, derretidos, grudados, a mais ou a menos, mão que vira uma massa (olhe CADA mão de perto, também a que fica no canto ou mais embaixo);\n"
            "2. rosto ou olhos deformados, olho maior que o outro, rosto derretido, rosto em objeto ou parede;\n"
            "3. a mesma pessoa desenhada duas vezes;\n"
            "4. letras ou palavras legíveis ou inventadas em placas, pacotes, papéis ou telas (rabisco ondulado é OK);\n"
-           "5. o personagem principal diferente da descrição (no Tião: SEM BIGODE é reprovado);\n"
-           "6. a cena mostra outra coisa que não a AÇÃO principal do pedido, ou a QUANTIDADE errada (pediu UMA sacola e aparecem duas = reprovado).\n"
+           "5. o personagem principal diferente da descrição (no Tião: SEM BIGODE é reprovado). Se o pedido é de um personagem e aparece OUTRA pessoa (outra mulher, uma menina, outro homem) = reprovado;\n"
+           "6. a cena mostra outra coisa que não a AÇÃO principal do pedido, ou a QUANTIDADE errada (pediu UMA sacola e aparecem duas = reprovado);\n"
+           "7. a imagem CONTRADIZ a narração que toca enquanto ela aparece: outra pessoa, outra ação (a fala diz que ela está parada e a imagem mostra andando), outro lugar, outra quantidade.\n"
            "NÃO reprove por detalhe pequeno: mão esquerda e direita trocadas, relógio ou chinelo fora do quadro, corpo um pouco mais magro, "
            "olhar para outro lado, enquadramento um pouco diferente, tipo de embalagem. Só reprove o que um espectador notaria em 2 segundos.\n"
-           f"Personagem: {quem}.\nPedido da cena: {pedido[:600]}\n"
-           "Pessoas pequenas no fundo podem ser simples. Responda passa=true só se estiver limpa; em problemas, frases curtas.")
-    r = _cli.messages.create(model="claude-sonnet-5-5", max_tokens=800, output_config={"format": {"type": "json_schema", "schema": VEREDITO}},
+           f"Personagem: {quem}.\nPedido da cena: {pedido[:600]}\n" + (f"Narração neste momento: «{fala[:400]}»\n" if fala else "") +
+           "Pessoas pequenas no fundo podem ser simples. Responda passa=true só se estiver limpa; em problemas, no máximo 4 frases curtas (até 15 palavras cada).")
+    r = _cli.messages.create(model="claude-sonnet-5-5", max_tokens=3000, output_config={"format": {"type": "json_schema", "schema": VEREDITO}},
                              messages=[{"role": "user", "content": [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": base64.b64encode(buf.getvalue()).decode()}}, {"type": "text", "text": txt}]}])
     t = next((b.text for b in r.content if b.type == "text"), None)
     if t is None: raise RuntimeError(f"sem resposta: {r.stop_reason} {[b.type for b in r.content]}")

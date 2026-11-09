@@ -19,7 +19,7 @@ Regras deste texto: o nome se escreve "Tião" (o robô da voz troca sozinho). Se
 
 [TRILHA: calma, manhã] [SOM: porta automática abrindo, bip de caixa ao fundo]
 
-Sábado, nove e dez da manhã. A porta automática do Supermercado Boa Compra se abre com aquele chiado, e a Sandra entra de óculos escuros na cabeça. Ela veio buscar duas coisas. Só duas. Pão e leite.
+Sábado, nove e dez da manhã. A porta automática do supermercado do bairro se abre com aquele chiado, e a Sandra entra de óculos escuros na cabeça. Ela veio buscar duas coisas. Só duas. Pão e leite.
 
 Atrás dela, entra o Tião, de chinelo, com um papel dobrado em quatro na mão. É o verso de um envelope da conta de luz. Ele pega uma cestinha vermelha, aquela do canto, com a alça remendada com fita. Ninguém quer aquela cestinha. O Tião sempre pega ela.
 
@@ -37,23 +37,23 @@ Só que o supermercado sabia. Sabia antes de ela passar pela porta. Porque lá d
 
 Mas antes, uma coisa que a Sandra não sabe. O Tião já caiu em todas essas nove. Durante anos.
 
-Antes do caderno de capa azul, o Tião ia ao mercado como todo mundo: de cabeça, com fome, no fim do expediente. Entrava para comprar café e saía com três sacolas. E no dia vinte, o salário já tinha acabado. Ele não sabia para onde ia. Simplesmente sumia.
+Uns anos atrás, o Tião ia ao mercado como todo mundo: de cabeça, com fome, no fim do expediente. Entrava para comprar café e saía com quatro sacolas. E no dia vinte, o salário já tinha acabado. Ele não sabia para onde ia. Simplesmente sumia.
 
 [TRILHA: triste, baixa] [SOM: relógio da cozinha, geladeira zumbindo]
 
 Era uma noite de terça, fria, no fim do mês. O Tião espalhou na mesa da cozinha todas as notinhas de mercado que tinha guardado numa caixa de sapato. Notinha amassada, notinha apagada, notinha com mancha de café. Pegou um toco de lápis amarelo, daqueles de marceneiro, que ele trouxe do primeiro emprego numa obra, e foi somando uma por uma, no verso de um envelope.
 
-Quando ele começou a anotar tudo no caderno, a primeira surpresa foi justamente o mercado. Ele achava que gastava uns seiscentos reais por mês. Somou as notinhas de um mês inteiro. Deu novecentos e doze.
+Ele achava que gastava uns seiscentos reais por mês no mercado. Somou as notinhas de um mês inteiro. Deu novecentos e doze.
 
-Ele somou de novo, achando que tinha errado. Novecentos e doze. Trezentos reais por mês que ele nem lembrava de ter gastado. Não era luxo. Era um chocolate aqui, um queijo ali, uma promoção que parecia boa. Foi aí que ele entendeu: o mercado não é um lugar onde você vai comprar o que precisa. É um lugar desenhado para você comprar o que não planejou.
+Ele somou de novo, achando que tinha errado. Novecentos e doze. Trezentos reais por mês que ele nem lembrava de ter gastado. Não era luxo. Era um chocolate aqui, um queijo ali, uma promoção que parecia boa. Foi aí que ele entendeu: o mercado não é um lugar onde você vai comprar o que precisa. É um lugar desenhado para você comprar o que não planejou. No dia seguinte, ele comprou um caderno simples, de capa azul, e começou a anotar ali cada real que gastava, com o dia e o motivo. É esse caderno que ele carrega até hoje. E é nele que estão as regras que você vai ver neste vídeo.
 
-Então vamos entrar com a Sandra. Armadilha por armadilha.
+Então vamos para as nove armadilhas. Uma por uma, na ordem em que elas aparecem, entrando no mercado junto com a Sandra.
 
 ## 3. Armadilha 1: a porta
 
 [TRILHA: calma, leve] [SOM: vozes baixas, carrinho rolando]
 
-Repara no que a Sandra vê primeiro quando a porta abre. Não é arroz. Não é sabão em pó. São flores. Uma banca de frutas brilhando, as maçãs empilhadas uma por uma, borrifadas com água. E, logo ao lado, a padaria, com o cheiro de pão quente saindo do forno.
+Armadilha número um: a entrada. Repara no que a Sandra vê primeiro quando a porta abre. Não é arroz. Não é sabão em pó. São flores. Uma banca de frutas brilhando, as maçãs empilhadas uma por uma, borrifadas com água. E, logo ao lado, a padaria, com o cheiro de pão quente saindo do forno.
 
 Isso tem nome. O pesquisador americano Paco Underhill passou décadas filmando clientes dentro de lojas, e contou no livro "Vamos às Compras", de mil novecentos e noventa e nove. Os primeiros metros depois da porta são a zona de descompressão. É ali que a pessoa diminui o passo, tira o barulho da rua da cabeça e muda para o modo de compra.
 
@@ -63,7 +63,7 @@ O Tião, não. Ele passa direto pela banca de flores. Não porque ele seja mais 
 
 ## 4. Armadilha 2: o carrinho
 
-A segunda armadilha está encostada na parede. A Sandra veio buscar duas coisas, mas pega um carrinho. Daqueles grandes. "Só para apoiar a bolsa", ela pensa.
+Armadilha número dois: o carrinho grande. Ele fica logo ali, encostado na parede. A Sandra veio buscar duas coisas, mas pega um carrinho. Daqueles grandes. "Só para apoiar a bolsa", ela pensa.
 
 O consultor de marcas Martin Lindstrom conta, no livro "Brandwashed", de dois mil e onze, um teste que uma rede de mercados fez: dobraram o tamanho dos carrinhos. E os clientes passaram a comprar uns quarenta por cento a mais.
 
@@ -75,7 +75,7 @@ Lembra da cestinha do Tião? A vermelha, do canto, com a alça remendada com fit
 
 [TRILHA: muda para uma música de fundo lenta, de mercado]
 
-Agora presta atenção numa coisa que quase ninguém escuta. A música.
+Armadilha número três: a música. Presta atenção numa coisa que quase ninguém escuta dentro do mercado. A música.
 
 Em mil novecentos e oitenta e dois, o professor Ronald Milliman fez um teste num supermercado nos Estados Unidos. Em alguns dias, tocava música rápida. Em outros, música lenta. Os clientes não sabiam de nada.
 
@@ -87,7 +87,7 @@ A Sandra não escutou a música. Mas a música escutou ela. Ela já está no ter
 
 ## 6. Armadilha 4: o caminho até o leite
 
-Por falar em corredor: onde fica o leite? Onde fica o pão de forma, o arroz, o feijão, o ovo? Em quase todo mercado, no fundo. Do outro lado da loja.
+Armadilha número quatro: o caminho mais longo. Onde fica o leite? Onde fica o pão de forma, o arroz, o feijão, o ovo? Em quase todo mercado, no fundo. Do outro lado da loja.
 
 Não é por acaso. É o que o Underhill chamou de levar o cliente para passear. Aquilo que todo mundo precisa comprar fica longe da porta, para que você atravesse a loja inteira para chegar lá. E, no caminho, passe por tudo que você não precisava.
 
@@ -107,7 +107,7 @@ Se essa história já está parecendo a sua ida ao mercado, deixa o like aqui, q
 
 [TRILHA: curiosa]
 
-Repara em qualquer prateleira. Na altura dos seus olhos ficam as marcas mais caras e as que mais dão lucro para a loja. Em muitas redes, as próprias fábricas pagam para o produto ficar ali, no lugar onde a mão chega sem esforço.
+Armadilha número cinco: a altura dos olhos. Repara em qualquer prateleira. Na altura dos seus olhos ficam as marcas mais caras e as que mais dão lucro para a loja. Em muitas redes, as próprias fábricas pagam para o produto ficar ali, no lugar onde a mão chega sem esforço.
 
 E nos corredores de biscoito e cereal tem um detalhe ainda mais esperto: os pacotes coloridos, com desenho, ficam na prateleira de baixo. Na altura dos olhos de uma criança de cinco anos.
 
@@ -125,7 +125,7 @@ O pacote "em promoção" é quase cinco reais mais caro por quilo. A placa amare
 
 ## 8. Armadilha 6: o nove e o leve três
 
-E a placa amarela tem mais um truque, que você conhece de cor: o nove. Nove e noventa e nove. Quatro e noventa e oito.
+Armadilha número seis: o nove da placa amarela. Esse truque você já conhece de cor: o nove. Nove e noventa e nove. Quatro e noventa e oito.
 
 Em dois mil e cinco, os pesquisadores Manoj Thomas e Vicki Morwitz publicaram um estudo no Journal of Consumer Research sobre isso. Eles chamaram de efeito do dígito da esquerda. A cabeça lê o primeiro número e quase ignora o resto. Nove e noventa e nove parece nove. Mesmo sendo, na prática, dez.
 
@@ -141,7 +141,7 @@ O Tião tem uma regra para isso, escrita na primeira página do caderno: só lev
 
 [TRILHA: tensão sobe um pouco]
 
-A sétima armadilha é a mais silenciosa de todas. E ela está na mão da Sandra agora mesmo: o biscoito de chocolate.
+Armadilha número sete: o pacote que encolhe. É a mais silenciosa de todas. E ela está na mão da Sandra agora mesmo: o biscoito de chocolate.
 
 Aquele pacote amarelo, que ela compra desde criança, tinha duzentos gramas. Hoje, tem cento e setenta. Mesma cor, mesmo desenho, mesmo tamanho de caixa. Mesmo preço.
 
@@ -157,7 +157,7 @@ O Tião olha os gramas. Sempre. É a segunda coisa que ele lê, depois do preço
 
 [MONTAGEM RÁPIDA: o carrinho da Sandra enchendo, uma coisa por vez, cada uma com um bip; queijo, refrigerante, biscoito, chocolate, vela aromática, iogurte, pilha, chiclete; o coração batendo cada vez mais rápido; o visor do caixa subindo]
 
-A Sandra chega à fila do caixa. E a fila é a última armadilha dentro da loja. Ela está parada, sem nada para fazer, cansada, e bem do lado dela tem chocolate, chiclete, pilha, bala, revista. Tudo pequeno, tudo barato, tudo na altura da mão.
+Armadilha número oito: a fila do caixa. A Sandra chega à fila. E a fila é a última armadilha dentro da loja. Ela está parada, sem nada para fazer, cansada, e bem do lado dela tem chocolate, chiclete, pilha, bala, revista. Tudo pequeno, tudo barato, tudo na altura da mão.
 
 São as compras de impulso. Coisas de dois, três, cinco reais que ninguém coloca na lista e quase todo mundo leva. A Sandra pega um chocolate. E uma pilha, que ela nem sabe se precisa.
 
@@ -179,7 +179,7 @@ Em dois mil e treze, pesquisadores da Universidade Cornell publicaram um estudo 
 
 [TRILHA: tensão volta, grave]
 
-Agora vem a armadilha que eu prometi lá no começo. A mais cara. E ela não está dentro do mercado.
+Armadilha número nove, a que eu prometi lá no começo. A mais cara de todas. E ela não está dentro do mercado.
 
 Na hora de pagar, a Sandra passa o cartão de crédito. Na casa dela e do Marcos, o mercado já vai para o cartão faz tempo, porque no fim do mês o dinheiro não fecha.
 
@@ -241,9 +241,9 @@ Cinco coisas. Nenhuma custa um real.
 
 Mas tem uma coisa que nenhuma dessas regras resolve sozinha. Lembra do susto do Tião? Ele achava que gastava seiscentos no mercado, e eram novecentos e doze. Ninguém sabe quanto gasta no mercado até ver a soma do mês.
 
-Por isso eu uso o FinMoovi. Você sai do caixa, tira uma foto da notinha, e ele lê tudo sozinho e mostra, no fim do mês, quanto foi para o mercado, e quanto disso foi pão e leite e quanto foi a fila do caixa. Dá para testar sete dias sem pagar nada. O link está aqui embaixo, na descrição.
+Por isso eu uso o FinMoovi, um aplicativo de controle de gastos. Funciona assim: você sai do caixa, abre o aplicativo e tira uma foto da notinha. Ele lê a notinha sozinho, item por item, e guarda cada gasto no lugar certo. No fim do mês, ele mostra quanto foi para o mercado, e quanto disso foi pão e leite e quanto foi a fila do caixa. Dá para testar sete dias sem pagar nada. O link está aqui embaixo, na descrição.
 
-Começa no próximo mercado. Só uma foto. O resto vem.
+Então, se você aprendeu com o Tião e quer gastar menos no mercado, já pode começar na próxima compra. Usa o FinMoovi, e com uma foto da notinha você já tem o controle de tudo.
 
 ## 16. Fecho
 

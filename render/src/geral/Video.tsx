@@ -6,6 +6,7 @@ import { mola, MOLAS } from "../mola";
 import { Balao, Barras, Calendario, Carimbo, Cita, Conta, COR, Etiqueta, Frase, LinhaTempo, Numero, reais } from "../motion/kit";
 import { Balanca, Botao, Celular, Divide, FraseTopo, Grade, Grafico, Icones, Lista, Pessoas, Pizza, Placa, Torre, Trinca } from "../motion/kit2";
 import { TelaFinal } from "../motion/TelaFinal";
+import { FotoNota } from "../motion/fotonota";
 import { Brilho, Check, Reacao, tremor, Voa, Xis } from "../motion/reacoes";
 
 const { fontFamily } = loadFont("normal", { weights: ["800"] });
@@ -84,6 +85,7 @@ const Peca: React.FC<{ c: Cena; dur: number; lado: number }> = ({ c, dur, lado }
     case "divide": return <Divide a={c.a} b={c.b} titulo={c.titulo} />;
     case "botao": return <Botao tipo={c.tipo} texto={c.texto} />;
     case "torre": return <Torre itens={c.itens} titulo={c.titulo} />;
+    case "fotonota": return <FotoNota itens={c.itens} total={c.total} categoria={c.categoria} />;
     case "final": return <TelaFinal />;
     case "montagem": return <Montagem imgs={c.imgs} seg={c.seg ?? 0.45} />;
     case "grade": return <Grade total={c.total} cols={c.cols} titulo={c.titulo} ate={c.ate} cor={c.cor} rotuloFim={c.rotuloFim} corFim={c.corFim} />;

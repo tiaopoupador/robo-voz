@@ -22,13 +22,59 @@ if CONFERIR:
 def norm(s):
     s = unicodedata.normalize("NFKD", s.lower()); s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"[^a-z ]", " ", s).split()
+# 08/11 (Ed: «Ela para vira o pacote, sem respiração» e «um som de zumbi no fundo da fala»):
+# 1. RESPIRO: em cada ponto final, interrogação, exclamação e dois-pontos, a pausa tem de ter pelo menos 0,42 s
+#    (vírgula: 0,18 s). Se o gravador emendou, o robô abre o silêncio no ponto mais quieto entre as duas palavras.
+# 2. CAUDA: depois da última palavra não pode haver som (o gravador às vezes geme ou chia no fim). Corta no primeiro
+#    silêncio depois da última palavra; se ainda houver som forte ali, a fala vai para a lista de regravar.
+import numpy as np
+SR = 24000
+def ler(f): return np.frombuffer(subprocess.check_output(["ffmpeg", "-v", "error", "-i", f, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"]), dtype=np.float32).copy()
+def rms(a, t0, t1): x = a[max(0, int(t0 * SR)):max(0, int(t1 * SR))]; return float(np.sqrt((x ** 2).mean())) if len(x) else 0.0
+def quieto(a, t0, t1, j=0.01):
+    """o instante mais silencioso entre t0 e t1"""
+    best = (9, t0)
+    for t in np.arange(t0, max(t0 + j, t1 - j), j): best = min(best, (rms(a, t, t + j), t))
+    return best[1] + j / 2
+def respirar(a, txt, ws):
+    """ws: [(ini, fim, palavra)] do Whisper. Devolve (audio novo, quantas pausas abriu, aviso de cauda ou None)"""
+    toks = txt.split(); A = [" ".join(norm(t)) for t in toks]; B = [" ".join(norm(w[2])) for w in ws]
+    pos = {}
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, A, B, autojunk=False).get_opcodes():
+        if op == "equal":
+            for d in range(i2 - i1): pos[i1 + d] = j1 + d
+    cortes = []
+    for i, t in enumerate(toks[:-1]):
+        alvo = 0.42 if re.search(r"[.!?:][\"»”]?$", t) else 0.18 if re.search(r"[,;][\"»”]?$", t) else 0
+        j = pos.get(i)
+        if not alvo or j is None or j + 1 >= len(ws): continue
+        gap = ws[j + 1][0] - ws[j][1]
+        if gap < alvo: cortes.append((quieto(a, ws[j][1] - 0.03, ws[j + 1][0] + 0.03), alvo - max(0, gap)))
+    aviso = None
+    if ws:  # a cauda
+        fim = ws[-1][1]; c = None
+        for t in np.arange(fim - 0.05, len(a) / SR - 0.03, 0.01):
+            if rms(a, t, t + 0.15) < 0.004: c = t + 0.03; break
+        forte = sum(0.02 for t in np.arange(fim + 0.08, min(len(a) / SR, fim + 0.7), 0.02) if rms(a, t, t + 0.02) > 0.012)
+        if forte > 0.3 and not re.search(r"\d", ws[-1][2]): aviso = f"som estranho depois da ultima palavra ({forte:.2f} s): regravar"
+        if c is not None and c < len(a) / SR:
+            n = int(c * SR); a = a[:n].copy(); k = min(len(a), int(0.04 * SR)); a[-k:] *= np.linspace(1, 0, k)
+    for t, d in sorted(cortes, reverse=True):
+        n = int(t * SR); a = np.concatenate([a[:n], np.zeros(int(d * SR), np.float32), a[n:]])
+    return a, len(cortes), aviso
+def gravar(a, f): subprocess.run(["ffmpeg", "-v", "error", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-", "-y", f], input=a.astype(np.float32).tobytes(), check=True)
 ruins = []; lista = open(TMP + "/lista.txt", "w")
 for i, txt in enumerate(textos):
     f = f"{PASTA}/p{i}.wav"
     if not os.path.exists(f): ruins.append([i, "faltou"]); continue
     if CONFERIR:
-        seg, _ = m.transcribe(f, language="pt")
+        seg, _ = m.transcribe(f, language="pt", word_timestamps=True); seg = list(seg)
         ouviu = " ".join(s.text for s in seg)
+        ws = [(w.start, w.end, w.word) for s_ in seg for w in s_.words]
+        au, npausas, aviso = respirar(ler(f), txt, ws)
+        if aviso: ruins.append([i, aviso])
+        f = f"{TMP}/r{i}.wav"; gravar(au, f)
+        if npausas: print(f"  fala {i}: abri {npausas} respiro(s)", flush=True)
         a, b = norm(txt.replace("FinMoovi", "Fin Muvi")), norm(ouviu)
         sim = difflib.SequenceMatcher(None, a, b).ratio()
         if sim < 0.80 or len(b) > len(a) * 1.15 + 1:

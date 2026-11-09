@@ -99,6 +99,21 @@ def na_ordem():
         if q[0] in ("meta", "flow") and q[2].startswith("cf:"): vistos.append(q[2][3:])
     return [n for n in dict.fromkeys(vistos) if C.IMG[n][0] == "cf"]
 
+ROTEIRO = open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines()
+def fala_de(nome):
+    """o que a narracao diz quando a imagem aparece (Ed, 08/11: a fala dizia «parada» e a imagem mostrava ela andando)"""
+    usos = []
+    for k in sorted(C.L):
+        for g, tipo, cont in C.L[k]:
+            n = cont[0] if isinstance(cont, tuple) else cont
+            alvo = [n] + ([C.IMG[n][2][3:]] if isinstance(n, str) and n in C.IMG and str(C.IMG[n][2]).startswith("cf:") else [])
+            planos = [x for x, q in C.IMG.items() if str(q[2]) == "cf:" + nome]
+            if nome in alvo or n in planos:
+                t = ROTEIRO[k] if k < len(ROTEIRO) else ""
+                i = t.lower().find(g.lower()) if g != "^" else 0
+                usos.append(t[max(0, i):][:260])
+    return " | ".join(usos)[:500] or None
+
 def no_drive():
     from fabrica import drive
     raiz = drive.pasta("Tiao Poupador"); robo = drive.pasta("robo", raiz); v = drive.pasta(f"video-{NN}", robo); img = drive.pasta("img", v)
@@ -119,7 +134,7 @@ if __name__ == "__main__":
             soma(c)  # a Cloudflare cobra mesmo quando a imagem sai ruim
             if r != "ok" or not REVISAR: break
             try:
-                ok, prob, cu = revisar(f"{SAI}/{n}.jpg", refs, q[2]); CUSTO_REV[0] += cu
+                ok, prob, cu = revisar(f"{SAI}/{n}.jpg", refs, q[2], fala_de(n)); CUSTO_REV[0] += cu
             except Exception as e: print("revisor falhou, fica a imagem:", e, flush=True); break
             if ok: break
             print(f"  revisor: {n} tentativa {tent + 1} ruim: {'; '.join(prob)[:220]}", flush=True)

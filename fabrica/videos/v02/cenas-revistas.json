@@ -1,0 +1,1130 @@
+{
+"33f2db8b18da5acd9c291310bdc24ea7": {
+"cena": "0-0",
+"arquivo": "f07-lugar-supermercado-fachada-carros-chegando-sabado.mp4",
+"passa": true,
+"problemas": []
+},
+"1b4cbf4c31976e98bf6a6f0c6292a012": {
+"cena": "0-1",
+"arquivo": "f01-sandra-supermercado-porta-automatica-sandra-entra-com-pressa.mp4",
+"passa": false,
+"problemas": [
+"Placa no canto esquerdo com letras legíveis ('9an'), texto inventado.",
+"Sandra está saindo do mercado, vindo da loja em direção à câmera, mas o pedido e a narração dizem que ela entra.",
+"A cena não mostra a ação principal: ela deveria entrar com pressa e diminuir o passo ao sentir o cheiro da padaria."
+]
+},
+"219105cee94f5b4e7b8a85e376372bf3": {
+"cena": "0-2",
+"arquivo": "sandra-entra.jpg",
+"passa": false,
+"problemas": [
+"Atrás do vidro à esquerda aparece uma segunda Sandra, com cabelo e bolsa iguais, em outra posição. Parece a mesma pessoa desenhada duas vezes, e não um reflexo coerente.",
+"A alça da bolsa é longa demais e se arrasta pelo chão até a outra mão. A bolsa já está na mão esquerda pela alça curta, então a alça solta parece um objeto estranho e confuso."
+]
+},
+"900fb3764a4fac45a1af4e1d211abc81": {
+"cena": "1-0",
+"arquivo": "tiao-entra.jpg",
+"passa": true,
+"problemas": []
+},
+"8d7c816f4cfb34769d938bc591a114d8": {
+"cena": "1-1",
+"arquivo": "lapis.jpg",
+"passa": false,
+"problemas": [
+"O lápis não é curto: aparece comprido, com borracha, e não é um lápis de carpinteiro curto e achatado.",
+"O lápis está meio inclinado, apoiado no envelope, e não deitado sobre o verso dele.",
+"O envelope parece aberto com a aba de frente, não o verso dobrado como a narração descreve; os rabiscos ondulados estão flutuando no ar, fora do envelope."
+]
+},
+"2a12ee81d40337c4be6c1a72f1503c79": {
+"cena": "1-2",
+"arquivo": "f02-tiao-supermercado-entrada-tiao-pega-cestinha-vermelha-com-lista.mp4",
+"passa": false,
+"problemas": [
+"A ação do pedido não aparece: ele não está pegando a cestinha nem pendurando no antebraço.",
+"Ele segura uma tira cinza solta sobre a pilha, em vez de a fita estar consertando a alça da cesta.",
+"As cestas não têm alça visível, então o conserto com fita cinza não existe.",
+"Aparecem várias pilhas grandes de cestas, e não uma cestinha pequena pegada de uma pilha no canto.",
+"Ele não está entrando andando com o papelzinho dobrado; o papel parece um copinho ou pano branco.",
+"O bigode é muito fraco e quase não aparece, e há um lápis estranho preso na bermuda."
+]
+},
+"a3b90a3e317f57890f702e626236d7e0": {
+"cena": "1-3",
+"arquivo": "cestinha.jpg",
+"passa": true,
+"problemas": []
+},
+"fc2eb6dc93213cd488d7075015e4bd25": {
+"cena": "1-4",
+"arquivo": "carrinhos.jpg",
+"passa": true,
+"problemas": []
+},
+"aca441b0c2a7b4c1d33f02ff07e328f7": {
+"cena": "2-0",
+"arquivo": "m01-a.jpg",
+"passa": true,
+"problemas": []
+},
+"75080ca0281709c80df2a7bee82105e3": {
+"cena": "2-1",
+"arquivo": "sandra-ri.jpg",
+"passa": true,
+"problemas": []
+},
+"50ed6a2ea36ae78fef7345876642c4d2": {
+"cena": "2-2",
+"arquivo": "tiao-guarda-lapis.jpg",
+"passa": false,
+"problemas": [
+"Contradiz a narração: a fala diz que o Tião guarda o lápis no bolso da camisa, mas na imagem ele segura o lápis junto à cabeça/orelha (a polo nem tem bolso visível).",
+"Ação principal confusa: o pedido era enfiar o lápis atrás da orelha com um sorriso; ele coça a cabeça segurando o lápis, com ar de dúvida, e não sorri claramente.",
+"Composição diferente do pedido: aparece de corpo inteiro (com bermuda e chinelo), não em plano médio da cintura para cima."
+]
+},
+"a5aefba63d8e7ca97ce230ffab7602f6": {
+"cena": "3-1",
+"arquivo": "m03-a-tiao-sandra-supermercado-fila-caixa-cestinha-x-carrinho-lotado.jpg",
+"passa": true,
+"problemas": []
+},
+"066c2dba6bbc55f4007d5f9cee0b0031": {
+"cena": "4-0",
+"arquivo": "sandra-visor.jpg",
+"passa": false,
+"problemas": [
+"O carrinho de compras está vazio, mas o pedido era um carrinho cheio de compras.",
+"Ela não olha para o visor do caixa: os olhos estão voltados para outro lado, e a tela do caixa fica fora do foco dela.",
+"A mão direita dela segura a barriga/cintura de modo estranho e os dedos ficam mal definidos."
+]
+},
+"8d3b4e7cfd0e7fc6b64d05b3723cef60": {
+"cena": "5-0",
+"arquivo": "porta-abre.jpg",
+"passa": true,
+"problemas": []
+},
+"85b89291fc01c933f82b8a0317a98947": {
+"cena": "5-2",
+"arquivo": "corredor-fundo.jpg",
+"passa": false,
+"problemas": [
+"Há letras legíveis ou inventadas nos pacotes verdes do canto superior direito (parecem \"ALCIO\" e \"HELIO\"), e o pedido não admite texto, só rabisco ondulado."
+]
+},
+"4dc11e9fc267413419e3c6ce6a5179b5": {
+"cena": "7-0",
+"arquivo": "tiao-arroz.jpg",
+"passa": true,
+"problemas": []
+},
+"1edbdfa897b2ae76e97264a843a7c0ae": {
+"cena": "8-2",
+"arquivo": "f11-tiao-supermercado--saida-flashback-tiao-cansado-com-3-sacolas.mp4.mp4",
+"passa": false,
+"problemas": [
+"Tião está sem bigode (bigode preto obrigatório não aparece), só um pouco de sombra/rugas no rosto",
+"Quantidade de sacolas errada: o pedido diz três sacolas e a narração diz quatro, mas a imagem mostra aparentemente três (duas na frente e uma atrás) ou quantidade ambígua, não bate com a narração",
+"Tião não está magro nem baixo e gordinho de forma clara, mas o principal defeito é a ausência do bigode"
+]
+},
+"04dfbace7f748c2beb19b008e6686174": {
+"cena": "9-0",
+"arquivo": "t01-cozinha-noite-flow.mp4",
+"passa": true,
+"problemas": []
+},
+"1094e0d7f5265c058512d00703a7af58": {
+"cena": "9-1",
+"arquivo": "tiao-notinhas.jpg",
+"passa": true,
+"problemas": []
+},
+"808f16968e8635ec472968866befc966": {
+"cena": "9-2",
+"arquivo": "notinhas.jpg",
+"passa": true,
+"problemas": []
+},
+"462919143ef3da83c5b7344bd2386581": {
+"cena": "10-0",
+"arquivo": "lapis.jpg",
+"passa": false,
+"problemas": [
+"O lápis não é um toco curto de marceneiro: é um lápis redondo e comprido, de ponta afiada e borracha, e está apoiado inclinado sobre o envelope, não deitado.",
+"O envelope aparece fechado, de frente, com a aba visível, e não dobrado com o verso à mostra como pedido.",
+"Os rabiscos ondulados estão flutuando no ar acima do envelope, e não escritos sobre ele."
+]
+},
+"404cabb929125b3a9a8f3eebbd1b0ba6": {
+"cena": "10-1",
+"arquivo": "lapis.jpg",
+"passa": false,
+"problemas": [
+"O lápis não está deitado sobre o envelope: aparece inclinado, apoiado na diagonal com a ponta no envelope e o corpo no ar, como se flutuasse.",
+"O lápis não é curto de carpinteiro: é um lápis comprido e redondo, de formato comum, não o lápis chato e curto do pedido.",
+"Os rabiscos ondulados estão fora do envelope, flutuando na parede, e não no verso do envelope como pedido.",
+"O envelope aparece de frente com a aba aberta, e não dobrado como pedido; também não é um close-up."
+]
+},
+"5602a1dd030ce81a07227b6b7205842f": {
+"cena": "10-2",
+"arquivo": "tiao-boletos-mao-grok-01.mp4",
+"passa": false,
+"problemas": [
+"A narração fala em somar uma por uma no verso de um envelope, mas o homem está só com as mãos na cabeça, desesperado.",
+"Não aparece envelope nem caneta ou lápis, e ninguém está escrevendo ou fazendo conta.",
+"A ação principal da cena não bate com a fala."
+]
+},
+"8bfae8ab8cf8a33d5148f83676b03d2e": {
+"cena": "11-0",
+"arquivo": "tiao-caderno-escreve-grok-01.mp4",
+"passa": true,
+"problemas": []
+},
+"cbf2e8347ea0df28d1ef4e10ae58aac5": {
+"cena": "12-0",
+"arquivo": "m08-gif-tiao-cozinha-noite-flashback-tiao-assustado-com-a-conta-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"c413b8a47bfaf2db6d58ec61d28d7cec": {
+"cena": "13-0",
+"arquivo": "tiao-pensando.jpg",
+"passa": true,
+"problemas": []
+},
+"0178ed8d45fcc64ff17cc606e8c8ca0f": {
+"cena": "13-2",
+"arquivo": "caderno-fechado.jpg",
+"passa": true,
+"problemas": []
+},
+"fbae894399094c665e8418a2eddf37cf": {
+"cena": "13-3",
+"arquivo": "tiao-caderno.jpg",
+"passa": true,
+"problemas": []
+},
+"1b55c400be96645523051689f0b4cf5a": {
+"cena": "14-1",
+"arquivo": "porta-abre.jpg",
+"passa": true,
+"problemas": []
+},
+"09873d8f488239a1a3cdfdd46cda56ab": {
+"cena": "15-0",
+"arquivo": "porta-abre.jpg",
+"passa": true,
+"problemas": []
+},
+"3924d74aace67d2152894fba5d4e4350": {
+"cena": "15-1",
+"arquivo": "sandra-entra.jpg",
+"passa": false,
+"problemas": [
+"Reflexo no vidro mostra outra mulher com bolsa marrom, parecendo a Sandra duplicada.",
+"Alça longa da bolsa arrasta no chão e faz laço estranho ligado à mão.",
+"Mão direita da Sandra, na cintura, está confusa e mal ligada à alça."
+]
+},
+"f688f18f6e0d256839237525f97ce619": {
+"cena": "15-2",
+"arquivo": "banca-flores.jpg",
+"passa": true,
+"problemas": []
+},
+"6bfbe651b1c4b5bc0137f2979efb367b": {
+"cena": "15-3",
+"arquivo": "macas.jpg",
+"passa": true,
+"problemas": []
+},
+"9c2027b566498caa5d2c0c76b107b807": {
+"cena": "15-4",
+"arquivo": "padaria.jpg",
+"passa": true,
+"problemas": []
+},
+"65890310dec3150eb0257c17e9b6690d": {
+"cena": "16-1",
+"arquivo": "pesquisador.jpg",
+"passa": false,
+"problemas": [
+"Aparecem dois pesquisadores de óculos; o pedido era só um.",
+"O caderno está na mão da mulher, não na do homem da câmera.",
+"A câmera aponta para a mulher e não para os clientes da loja.",
+"Há letras inventadas na lateral da câmera."
+]
+},
+"4d242aec6f4a6d818ff3babc407852ef": {
+"cena": "17-0",
+"arquivo": "m11-a-sandra-supermercado-padaria-sandra-cheira-o-pao.jpg",
+"passa": true,
+"problemas": []
+},
+"c55f9d8b65654a67e5ca98e88773f3e0": {
+"cena": "18-0",
+"arquivo": "banca-flores.jpg",
+"passa": true,
+"problemas": []
+},
+"cd3d841076125226921f415918aa6328": {
+"cena": "18-1",
+"arquivo": "m11-a-sandra-supermercado-padaria-sandra-cheira-o-pao.jpg",
+"passa": true,
+"problemas": []
+},
+"1d71a774413e04dd09c7f5dcb96f99f8": {
+"cena": "19-0",
+"arquivo": "tiao-passa.jpg",
+"passa": true,
+"problemas": []
+},
+"838736a07972c814a54af7b5845c763d": {
+"cena": "19-1",
+"arquivo": "lista-riscada.jpg",
+"passa": false,
+"problemas": [
+"O pedido diz 'No people', mas a imagem mostra duas mãos segurando o papel.",
+"O papel parece uma folha solta, não o verso de um envelope dobrado.",
+"Há só cinco linhas e apenas duas estão riscadas, não seis todas riscadas.",
+"O lápis amarelo é comprido e está sendo segurado, não é um lápis de carpinteiro curto sobre o papel."
+]
+},
+"a8ce4886abcddceb263480e504b863e0": {
+"cena": "20-0",
+"arquivo": "carrinhos.jpg",
+"passa": true,
+"problemas": []
+},
+"6aaa1e97a9a33bd19ea6adad21b7f873": {
+"cena": "20-1",
+"arquivo": "f08-sandra-supermercado-corredor-sandra-empurra-o-carrinho-sem-olhar-preco.mp4",
+"passa": false,
+"problemas": [
+"Placas no alto têm letras inventadas legíveis, e as etiquetas de preço mostram números legíveis.",
+"Mão que segura o pacote está deformada, parece uma massa.",
+"A outra mão não aparece segurando o carrinho; o braço termina sem mão.",
+"Aparece só um pacote colorido sendo jogado, não dois."
+]
+},
+"779817055a65549a8144e5814a86d1d4": {
+"cena": "20-2",
+"arquivo": "f08-sandra-supermercado-corredor-sandra-empurra-o-carrinho-sem-olhar-preco.mp4",
+"passa": false,
+"problemas": [
+"Placas ao fundo têm letras legíveis ou inventadas (laranja e verde).",
+"Etiquetas de preço nas prateleiras mostram números legíveis como 3.99 e 5.99.",
+"Parece haver só um pacote sendo jogado, e não dois como pedido."
+]
+},
+"7aff382183267ea1ab5631fb93921ad3": {
+"cena": "22-0",
+"arquivo": "carrinho-vazio.jpg",
+"passa": false,
+"problemas": [
+"O pedido diz 'No people', mas há duas pessoas ao fundo, no alto da rua."
+]
+},
+"c8329a72511908cd85c701c6c0d5f6b7": {
+"cena": "23-0",
+"arquivo": "cestinha.jpg",
+"passa": true,
+"problemas": []
+},
+"ad565818a4d70f1279646cd2e31fb8e4": {
+"cena": "23-1",
+"arquivo": "tiao-cestinha.jpg",
+"passa": true,
+"problemas": []
+},
+"b7fc3429870b31d85143280fe2213148": {
+"cena": "24-0",
+"arquivo": "som-teto.jpg",
+"passa": false,
+"problemas": [
+"O pedido dizia 'No people', mas aparecem uma mulher e um homem em primeiro plano, além de outras pessoas ao fundo.",
+"A cena mostra pessoas andando na loja, não só o alto-falante no teto como pedido.",
+"O ângulo não é low angle puro do alto-falante; o foco ficou dividido com os personagens."
+]
+},
+"7c0857075f8a2119b13eac575c3e1bcd": {
+"cena": "25-1",
+"arquivo": "som-teto.jpg",
+"passa": false,
+"problemas": [
+"O pedido dizia 'No people', mas a imagem mostra pelo menos quatro pessoas em primeiro plano e ao fundo.",
+"A cena deveria focar só no alto-falante no teto, mas mostra corredores e prateleiras cheios de gente."
+]
+},
+"e4815fd3bfddabf9d7887cc875613854": {
+"cena": "26-0",
+"arquivo": "corredor-fundo.jpg",
+"passa": false,
+"problemas": [
+"Há letras legíveis inventadas nas caixas verdes do alto à direita, parecidas com 'ALOIO' e 'HELIO'."
+]
+},
+"09805a37e416630dcf011696d54ba929": {
+"cena": "27-1",
+"arquivo": "vinhos.jpg",
+"passa": true,
+"problemas": []
+},
+"593b8b25ef78eb3772a87c1fee8d9c91": {
+"cena": "27-2",
+"arquivo": "vinhos.jpg",
+"passa": false,
+"problemas": [
+"As garrafas têm rótulos em branco; só o vinho tinto e o verde variam, não os rótulos vermelhos e verdes pedidos.",
+"A divisão não é metade e metade: há garrafas tintas e verdes, mas as prateleiras laterais misturam as cores de forma diferente.",
+"A imagem não mostra acordeão nem música francesa; só um alto-falante, o que não ilustra a narração."
+]
+},
+"d18038981e484726cb81c7a014c6efcb": {
+"cena": "28-0",
+"arquivo": "vinhos.jpg",
+"passa": false,
+"problemas": [
+"As garrafas vermelhas e verdes têm rótulos brancos em branco; o pedido era metade com rótulos vermelhos e metade com verdes.",
+"A cor está no vidro das garrafas, não nos rótulos, então não bate com o pedido."
+]
+},
+"6228bbe9905d88810c1e99f57f52b395": {
+"cena": "29-1",
+"arquivo": "sandra-queijo.jpg",
+"passa": true,
+"problemas": []
+},
+"e38ad7a33a073ecaa997ce452966f4a4": {
+"cena": "30-0",
+"arquivo": "corredor-fundo.jpg",
+"passa": false,
+"problemas": [
+"Pacotes verdes no alto à direita têm letras legíveis inventadas, tipo \"ALOIC\" e \"HELO\".",
+"Texto inventado em embalagens é defeito; deveria ser só rabisco ondulado."
+]
+},
+"b2cdec5f4b6a8b330e5b4665d7c60717": {
+"cena": "30-2",
+"arquivo": "leite.jpg",
+"passa": true,
+"problemas": []
+},
+"d0c12177b1345015a6fa969a0bb0e454": {
+"cena": "31-1",
+"arquivo": "corredor-fundo.jpg",
+"passa": false,
+"problemas": [
+"Há letras inventadas legíveis nos pacotes verdes do canto superior direito.",
+"Os rótulos parecem dizer \"ALCIO\" e \"HEIO\", e deveriam ser rabiscos ondulados."
+]
+},
+"2e226cc647359839bf336f091ff368ce": {
+"cena": "32-0",
+"arquivo": "marcos-grita.jpg",
+"passa": true,
+"problemas": []
+},
+"78b0eefd26109b7c18b80d39501a56fa": {
+"cena": "32-1",
+"arquivo": "tiao-arroz.jpg",
+"passa": false,
+"problemas": [
+"O pacote tem texto pequeno e código de barras parecendo rótulo legível, não rabisco simples.",
+"A cena está de frente, não de perfil como o pedido.",
+"Falta o relógio preto no pulso do Tião, mas isso é detalhe menor.",
+"As sobrancelhas parecem franzidas e tristes, não levemente erguidas."
+]
+},
+"93327ea2f671361a65746547b2789cdc": {
+"cena": "32-2",
+"arquivo": "f03-marcos-tiao-supermercado-corredor-bebidas-marcos-grita-rindo.mp4",
+"passa": false,
+"problemas": [
+"Marcos não faz concha com a mão na boca para gritar; os braços ficam soltos.",
+"Etiquetas de preço à esquerda mostram número legível, como '15'.",
+"Tião não segura papel para riscar a linha, só um lápis."
+]
+},
+"bf05b67e68ba94e0f218e54c12fcf60d": {
+"cena": "32-3",
+"arquivo": "m02-a-marcos-tiao-supermercado-corredor-bebidas-marcos-ri-e-aponta-tiao-le-rotulo.jpg",
+"passa": true,
+"problemas": []
+},
+"dbcdcb3436462d6df7bb62fc8a55f9c8": {
+"cena": "33-0",
+"arquivo": "sandra-ri.jpg",
+"passa": true,
+"problemas": []
+},
+"9f3e1a2d3e072641eef485b9a74c0606": {
+"cena": "33-1",
+"arquivo": "tiao-risca.jpg",
+"passa": true,
+"problemas": []
+},
+"1eb5c33d4c132c29420f9071a5c7e98c": {
+"cena": "34-0",
+"arquivo": "sandra-queijo.jpg",
+"passa": true,
+"problemas": []
+},
+"7bf8a586720200b8b8060c25319b8dbe": {
+"cena": "34-2",
+"arquivo": "sandra-biscoito.jpg",
+"passa": false,
+"problemas": [
+"Aparecem duas mãos no pacote, mas só um braço visível; uma mão parece sem braço.",
+"Os dedos junto ao pacote estão amontoados e confusos, com mão possivelmente deformada."
+]
+},
+"9c44e686e788a6af86330df4054452df": {
+"cena": "35-0",
+"arquivo": "biscoito.jpg",
+"passa": false,
+"problemas": [
+"O biscoito da embalagem parece ter rostinho sorrindo: gotas como olhos e um sorriso.",
+"O pacote está numa mesa no meio do corredor, não na prateleira como pedido."
+]
+},
+"352f4a7496be2fbe479501a46fc77ed6": {
+"cena": "35-1",
+"arquivo": "m05-a-avo-sandra-crianca-portao-de-casa-flashback-avo-da-bolacha-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"f20ce1bb501a663c0acba0b431bb37a8": {
+"cena": "35-2",
+"arquivo": "m05-a-avo-sandra-crianca-portao-de-casa-flashback-avo-da-bolacha-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"e515b663a39df5b134de17d3a677b9fd": {
+"cena": "37-1",
+"arquivo": "prateleira-olho.jpg",
+"passa": false,
+"problemas": [
+"A prateleira do meio não se destaca: as três prateleiras têm embalagens parecidas e coloridas.",
+"Faltam embalagens simples e baratas em cima e embaixo, em contraste com as premium.",
+"A luz cobre a prateleira inteira, não ilumina só a do meio como um palco.",
+"A imagem não mostra que a prateleira do meio fica na altura dos olhos."
+]
+},
+"5e52f65d86a9b1eebfc4517800f5e6ef": {
+"cena": "38-0",
+"arquivo": "prateleira-olho.jpg",
+"passa": false,
+"problemas": [
+"A prateleira do meio não se destaca: os pacotes de cima e de baixo são tão coloridos e brilhantes quanto os dela.",
+"A luz de palco ilumina a prateleira toda, não só a do meio na altura dos olhos.",
+"Os pacotes baratos não parecem simples, então a imagem não mostra o contraste premium contra barato."
+]
+},
+"84088a1fb025ec27a742cabe01632931": {
+"cena": "38-1",
+"arquivo": "prateleira-olho.jpg",
+"passa": false,
+"problemas": [
+"A prateleira do meio não se destaca: as três prateleiras parecem iguais, com embalagens coloridas e brilhantes.",
+"Falta o efeito de palco: a luz cobre a estante inteira, não só a prateleira do meio.",
+"As prateleiras de cima e de baixo não têm embalagens simples ou baratas, então a ideia de produto premium contra produto comum se perde."
+]
+},
+"74705f3d1f0fd20ebdf2dccd2c1fe060": {
+"cena": "39-0",
+"arquivo": "prateleira-baixo.jpg",
+"passa": false,
+"problemas": [
+"O pedido diz 'No people', mas aparecem pessoas: um menino à esquerda e crianças e adultos na rua à direita.",
+"Os pacotes coloridos estão espalhados pelas três prateleiras, não só na de baixo, na altura da criança.",
+"A cena não mostra a ação pedida: a prateleira de baixo deveria ser o destaque."
+]
+},
+"7e13a061831f40a488b83c6c6be6175a": {
+"cena": "39-1",
+"arquivo": "prateleira-baixo.jpg",
+"passa": false,
+"problemas": [
+"O pedido diz 'No people', mas aparecem pessoas: um menino à esquerda e crianças e adultos na rua à direita.",
+"Os pacotes coloridos estão espalhados pelas três prateleiras, não só na mais baixa, na altura de uma criança pequena.",
+"A ação principal não está clara: a prateleira de cereais compete com as pessoas e a cena da rua.",
+"Há uma placa à direita com letras legíveis ou inventadas, parecida com 'ONNU'."
+]
+},
+"5c76290d2be46a5fde11e24e77d86436": {
+"cena": "40-1",
+"arquivo": "tiao-agachado.jpg",
+"passa": true,
+"problemas": []
+},
+"71437f5dedac890846e0f3f96cdf8534": {
+"cena": "41-0",
+"arquivo": "etiqueta.jpg",
+"passa": false,
+"problemas": [
+"O pedido dizia 'No people', mas aparecem duas mãos segurando a etiqueta.",
+"A etiqueta é segurada à mão, não está numa prateleira como pedido.",
+"Não há área de preço grande e linha pequena embaixo bem definidas; são só duas linhas parecidas."
+]
+},
+"7ec394cc5437a06f14958597876a5793": {
+"cena": "41-1",
+"arquivo": "sandra-ri.jpg",
+"passa": true,
+"problemas": []
+},
+"34654b009a1097682828acd4c9beb1ef": {
+"cena": "43-0",
+"arquivo": "etiqueta.jpg",
+"passa": false,
+"problemas": [
+"Duas mãos aparecem segurando a etiqueta, mas o pedido dizia explicitamente: sem pessoas.",
+"A etiqueta não está numa prateleira; é segurada no ar, numa cozinha, e não em close extremo.",
+"Falta a área grande de preço e a linha pequena embaixo; há só duas linhas parecidas."
+]
+},
+"dde683b9cab890d9ce6baa0e740ebe97": {
+"cena": "44-0",
+"arquivo": "dois-cafes.jpg",
+"passa": true,
+"problemas": []
+},
+"fe0df08130b99b5bfc08f9655b5428ec": {
+"cena": "44-1",
+"arquivo": "dois-cafes.jpg",
+"passa": true,
+"problemas": []
+},
+"7c5d34953f5b9908723ff34153c6eaa6": {
+"cena": "44-2",
+"arquivo": "tiao-cafes.jpg",
+"passa": false,
+"problemas": [
+"O pacote grande tem letras inventadas no rótulo.",
+"O pacote pequeno tem rótulo azul com texto parecido com letras."
+]
+},
+"7c52e953c833bec9bc77983ddaba9c78": {
+"cena": "47-0",
+"arquivo": "placa-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"760dc5aad163f9dfaa775261ae299f00": {
+"cena": "47-1",
+"arquivo": "placa-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"ff3a40b6b9cd6c408fccd02f5868fef0": {
+"cena": "51-0",
+"arquivo": "placa-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"9a78bdffcdc1b386a236c73b842cefdc": {
+"cena": "51-1",
+"arquivo": "latas.jpg",
+"passa": true,
+"problemas": []
+},
+"058992489af9e403f1ded4046e773374": {
+"cena": "54-0",
+"arquivo": "latas.jpg",
+"passa": true,
+"problemas": []
+},
+"9d2f4cd377ef0bf36d3253ec1bd4a05b": {
+"cena": "55-0",
+"arquivo": "tiao-caderno.jpg",
+"passa": true,
+"problemas": []
+},
+"c1c9b430d69dbf10cc7abff2e28e7911": {
+"cena": "56-0",
+"arquivo": "biscoito.jpg",
+"passa": false,
+"problemas": [
+"Biscoito do pacote parece ter rosto: duas gotas como olhos e um sorriso.",
+"Pacote está numa mesa no meio do corredor, não numa prateleira como pedido."
+]
+},
+"290d71cfbdcc3d93ced3ef1a2562f725": {
+"cena": "56-1",
+"arquivo": "sandra-biscoito.jpg",
+"passa": true,
+"problemas": []
+},
+"f17d59cee1348fa8ecddc7ac726fbe88": {
+"cena": "57-0",
+"arquivo": "m12-a-objeto-mesa-branca-dois-pacotes-de-biscoito-um-menor.jpg",
+"passa": true,
+"problemas": []
+},
+"4125309681490456e16231484c8f9189": {
+"cena": "57-2",
+"arquivo": "m12-a-objeto-mesa-branca-dois-pacotes-de-biscoito-um-menor.jpg",
+"passa": true,
+"problemas": []
+},
+"a48924ac59f548f87abe0317f800ab59": {
+"cena": "63-0",
+"arquivo": "tiao-gramas.jpg",
+"passa": true,
+"problemas": []
+},
+"850d9092052995118f4618a64be96d4a": {
+"cena": "64-0",
+"arquivo": "rack-caixa.jpg",
+"passa": false,
+"problemas": [
+"Doces e embalagens têm rostos com olhos e boca (azul, amarelo, vermelho).",
+"Pacotes roxos e coloridos mostram letras que parecem palavras inventadas, não rabisco ondulado."
+]
+},
+"6277bf1b5589cce5dd54288a5b4368ff": {
+"cena": "66-0",
+"arquivo": "tiao-esteira.jpg",
+"passa": false,
+"problemas": [
+"A narração diz seis coisas na esteira, mas aparece só uma garrafa de leite na cesta.",
+"Ele não coloca o leite na esteira: a mão está dentro da cesta.",
+"A cesta vermelha está apoiada no balcão e a outra mão do Tião fica solta, sem segurá-la.",
+"O leite é uma garrafa, não uma caixa de leite como no pedido."
+]
+},
+"94f3464de7160f712123a27028ba89ae": {
+"cena": "66-2",
+"arquivo": "m04-a-marcos-tiao-caixa-supermercado-caixa-marcos-ri-da-cestinha-vermelha.jpg",
+"passa": true,
+"problemas": []
+},
+"e0443480856fd994f55ecf9dfd3c56b1": {
+"cena": "67-0",
+"arquivo": "tiao-debito.jpg",
+"passa": true,
+"problemas": []
+},
+"2f371c95563fde20fd066ab29bb43497": {
+"cena": "67-1",
+"arquivo": "tiao-debito.jpg",
+"passa": true,
+"problemas": []
+},
+"ea05c500507601eb4cc1f645503e59ca": {
+"cena": "68-1",
+"arquivo": "f04-caixa-sandra-supermercado-caixa-passando-as-compras-sandra-olha-o-visor.mp4",
+"passa": true,
+"problemas": []
+},
+"e4c4c797b7fb81e5ad99dc133ca78b59": {
+"cena": "68-2",
+"arquivo": "m06-gif-sandra-supermercado-caixa-sandra-em-choque-com-o-total-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"4ef5cb0ead870650fe354a2d3e2b42e1": {
+"cena": "69-0",
+"arquivo": "f13-tiao-rua-do-bairro-tiao-volta-para--casa-com-uma-sacola.mp4.mp4",
+"passa": true,
+"problemas": []
+},
+"a1f1595f3e1f5535a2ed6b715a7e55a0": {
+"cena": "69-1",
+"arquivo": "lista-riscada.jpg",
+"passa": false,
+"problemas": [
+"Aparecem duas mãos segurando o papel, mas o pedido dizia 'Sem pessoas'.",
+"Não é um envelope dobrado, parece uma folha de papel solta.",
+"Há só quatro linhas e apenas duas riscadas, não seis linhas riscadas.",
+"O lápis amarelo é comprido e comum, não um lápis de carpinteiro curto, e está sendo segurado."
+]
+},
+"26d7d3bffa67272224892ecdf17a7f66": {
+"cena": "69-2",
+"arquivo": "f13-tiao-rua-do-bairro-tiao-volta-para--casa-com-uma-sacola.mp4.mp4",
+"passa": true,
+"problemas": []
+},
+"fccae94b0e40f2b9768159e53d15bd3c": {
+"cena": "70-2",
+"arquivo": "tiao-come-antes.jpg",
+"passa": true,
+"problemas": []
+},
+"79e282f791b3acbafa45a81edf6a3a82": {
+"cena": "71-1",
+"arquivo": "geladeira-casa.jpg",
+"passa": true,
+"problemas": []
+},
+"24ec883681bb969d0bcb67a4fa1bd7c4": {
+"cena": "73-1",
+"arquivo": "fachada.jpg",
+"passa": true,
+"problemas": []
+},
+"e79da69f8ac1c65f57cf66424f6b8c27": {
+"cena": "74-0",
+"arquivo": "maquininha.jpg",
+"passa": true,
+"problemas": []
+},
+"25a4f9bb0972d8bd61c8de929c481d45": {
+"cena": "74-1",
+"arquivo": "m14-a-sandra-caixa-supermercado-caixa-sandra-paga-com-cartao-distraida.jpg",
+"passa": true,
+"problemas": []
+},
+"17325f847b9982012c144cc3f32afd4d": {
+"cena": "75-0",
+"arquivo": "sandra-fatura.jpg",
+"passa": true,
+"problemas": []
+},
+"365eb6c765ca234a074efa6c36a4cbe4": {
+"cena": "79-0",
+"arquivo": "sandra-fatura.jpg",
+"passa": true,
+"problemas": []
+},
+"99ffe2f18ec2d76f4377dedda91f9a09": {
+"cena": "83-2",
+"arquivo": "m08-gif-tiao-cozinha-noite-flashback-tiao-assustado-com-a-conta-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"406c7aa397aa0b930f8133ff2a4f06dd": {
+"cena": "87-0",
+"arquivo": "fachada.jpg",
+"passa": true,
+"problemas": []
+},
+"75ffa9cecde73bda3518a0ffaab0a801": {
+"cena": "87-1",
+"arquivo": "porta-abre.jpg",
+"passa": true,
+"problemas": []
+},
+"76b0f522f50eae2a44b871bf12f4c2cf": {
+"cena": "87-2",
+"arquivo": "banca-flores.jpg",
+"passa": true,
+"problemas": []
+},
+"7bdd35dacf5740cb96901e765f1a841e": {
+"cena": "87-3",
+"arquivo": "padaria.jpg",
+"passa": true,
+"problemas": []
+},
+"53d8adf2ad4cadf30d47edf1d1b371a9": {
+"cena": "88-0",
+"arquivo": "tiao-entra.jpg",
+"passa": true,
+"problemas": []
+},
+"6c9fe580c10630b60aab33e28aaf5366": {
+"cena": "88-1",
+"arquivo": "cestinha.jpg",
+"passa": true,
+"problemas": []
+},
+"3ee6ebb3b4121e37a79bb10a05c110a5": {
+"cena": "89-0",
+"arquivo": "sandra-entra.jpg",
+"passa": false,
+"problemas": [
+"A narração diz que Sandra para na porta, mas a imagem mostra ela andando rápido.",
+"A narração diz que ela abre a bolsa, mas a bolsa está fechada.",
+"Atrás do vidro aparece outra mulher com bolsa, parecendo Sandra duplicada.",
+"A alça da bolsa faz uma volta estranha no chão e liga mal à outra mão."
+]
+},
+"2013a7d7d76af68daff2fb61f7f96b09": {
+"cena": "89-1",
+"arquivo": "sandra-lista.jpg",
+"passa": true,
+"problemas": []
+},
+"0a1fc80b9225f5731d6fa67d3bcfffd6": {
+"cena": "89-2",
+"arquivo": "sandra-lista.jpg",
+"passa": true,
+"problemas": []
+},
+"431d7bac658390a8aef8bf00056615ac": {
+"cena": "90-0",
+"arquivo": "sandra-lista.jpg",
+"passa": false,
+"problemas": [
+"Ela não abre a bolsa nem tira a lista: já segura o papel, com a bolsa pendurada e fechada.",
+"A expressão é preocupada e triste, não um sorriso meio sem graça como pedido.",
+"A narração diz que ela olha para o Tião, mas ela olha para o papel e não há Tião.",
+"A cena não está na entrada do supermercado: ela está num corredor entre prateleiras."
+]
+},
+"3874e469afbbbc3d1ba8709ae0e6cd04": {
+"cena": "90-1",
+"arquivo": "f06-tiao-supermercado-entrada-tiao-sorri-e-levanta-o-lapis.mp4",
+"passa": true,
+"problemas": []
+},
+"a0e094f3e5ec6eec9d6d4373e694a9ad": {
+"cena": "91-0",
+"arquivo": "carrinhos.jpg",
+"passa": true,
+"problemas": []
+},
+"baee08df0ac21c77f5a87710fede1100": {
+"cena": "91-1",
+"arquivo": "m13-a-sandra-supermercado-entrada-sandra-pega-a-cestinha-vermelha.jpg",
+"passa": true,
+"problemas": []
+},
+"dbd5be6c78b371914c543fda438a3659": {
+"cena": "92-0",
+"arquivo": "sandra-biscoito.jpg",
+"passa": true,
+"problemas": []
+},
+"3a86d9d4a2e7f6f5cc6845da19cfdea9": {
+"cena": "92-1",
+"arquivo": "m05-a-avo-sandra-crianca-portao-de-casa-flashback-avo-da-bolacha-amarela.jpg",
+"passa": true,
+"problemas": []
+},
+"b3a07677932e3daf4b36d4a1381ce23c": {
+"cena": "92-2",
+"arquivo": "sandra-gramas.jpg",
+"passa": true,
+"problemas": []
+},
+"ced1fbc48024d435fe7d5957905a9738": {
+"cena": "93-0",
+"arquivo": "f05-sandra-supermercado-corredor-bolachas-sandra-le-o-peso-e-devolve.mp4",
+"passa": false,
+"problemas": [
+"Pacotes mostram palavras legíveis como 'Cookie' e a placa verde diz 'Brokie'.",
+"Sandra ainda segura o pacote amarelo, mas a narração diz que ela o coloca de volta.",
+"Ela não sorri serenamente; a expressão é séria e concentrada, diferente do pedido.",
+"Os dedos da mão direita, segurando o pacote, parecem grudados e mal definidos."
+]
+},
+"db6d7487de4ac7a95b09dd39239b023d": {
+"cena": "93-1",
+"arquivo": "m09-gif-sandra-supermercado-corredor-bolachas-sandra-le-o-peso-e-devolve-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"d709b54d7fe0279e71f16982883d61d0": {
+"cena": "94-0",
+"arquivo": "m03-a-tiao-sandra-supermercado-fila-caixa-cestinha-x-carrinho-lotado.jpg",
+"passa": true,
+"problemas": []
+},
+"95e8e6e4c02a7ea49d62b5bb69f5c75a": {
+"cena": "94-1",
+"arquivo": "m03-a-tiao-sandra-supermercado-fila-caixa-cestinha-x-carrinho-lotado.jpg",
+"passa": true,
+"problemas": []
+},
+"2b912b54dc46a0eed806a238b74f7ba1": {
+"cena": "94-3",
+"arquivo": "m07-gif-tiao-sandra-supermercado-fila-caixa-os-dois-com-cestinha-rindo-juntos-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"ec80b4ddbf051c73595dccbdea48cbae": {
+"cena": "95-0",
+"arquivo": "f12-marcos-estacionamento-picape-preta-marcos-buzina-impaciente.mp4.mp4",
+"passa": true,
+"problemas": []
+},
+"fb624907fa7bbc8caebe23938620d48e": {
+"cena": "95-1",
+"arquivo": "sandra-sacola.jpg",
+"passa": true,
+"problemas": []
+},
+"7899ff59a9b810e7d8f097d56a4fbb5c": {
+"cena": "95-2",
+"arquivo": "m10-gif-marcos-sandra-estacionamento-picape-preta-marcos-surpreso-com-uma-sacola-gif.mp4",
+"passa": true,
+"problemas": []
+},
+"78cec24457ff66f281809becffb8c1d2": {
+"cena": "96-2",
+"arquivo": "tiao-come-antes.jpg",
+"passa": true,
+"problemas": []
+},
+"e72c44e5432eadc3b2a9b8ed35b2f285": {
+"cena": "96-3",
+"arquivo": "cestinha.jpg",
+"passa": true,
+"problemas": []
+},
+"14f9d402bd144ab6dccd2a309779bf25": {
+"cena": "99-2",
+"arquivo": "tiao-foto.jpg",
+"passa": true,
+"problemas": []
+},
+"2f29d2fe36e97ef5f938f11bab95c3b8": {
+"cena": "100-0",
+"arquivo": "smart-capture--estilo-moldura-celular--horizontal.mp4",
+"passa": false,
+"problemas": [
+"A tela do aplicativo mostra textos legíveis: Saldo Atual das Contas, Nubank, Banco do Brasil, Carteira.",
+"Valores em reais e rótulos como Receitas e Despesas aparecem legíveis, não são rabiscos.",
+"A imagem mostra só um celular, sem pessoa saindo do caixa, então não ilustra a ação da narração."
+]
+},
+"29a25672eba1a9a074eb4c15103d01c1": {
+"cena": "100-2",
+"arquivo": "balanco--estilo-donut-despesas--horizontal.mp4",
+"passa": false,
+"problemas": [
+"A imagem é um gráfico de despesas, não uma cena de personagem do bairro.",
+"A narração fala de mercado, pão, leite e fila do caixa; o gráfico mostra aluguel, faculdade e iPhone.",
+"Supermercado aparece só como a menor fatia, 4,7%, sem separar pão, leite ou fila.",
+"Textos legíveis em português aparecem no gráfico, e a soma das fatias não fecha 100%."
+]
+},
+"3f3823d47ccbf7f462ffe6701b8b68dd": {
+"cena": "102-0",
+"arquivo": "tiao-foto.jpg",
+"passa": true,
+"problemas": []
+},
+"85bb5c64dc8e5f5b867bd6bf3be96159": {
+"cena": "102-1",
+"arquivo": "tiao-foto.jpg",
+"passa": true,
+"problemas": []
+},
+"d65a370c0fdba5c3167e7ecb9b348eb2": {
+"cena": "0-2",
+"arquivo": "sandra-entra.jpg",
+"passa": true,
+"problemas": []
+},
+"2e4e65c7e563294d5a1fab57edd6e0dc": {
+"cena": "2-2",
+"arquivo": "tiao-guarda-lapis.jpg",
+"passa": true,
+"problemas": []
+},
+"592f254b94d99c2cf886fe67dd64611f": {
+"cena": "5-2",
+"arquivo": "corredor-fundo.jpg",
+"passa": true,
+"problemas": []
+},
+"16668fb1660eea9395fd065a81bde3a1": {
+"cena": "10-2",
+"arquivo": "tiao-notinhas.jpg",
+"passa": true,
+"problemas": []
+},
+"9f93de301e42f49a70a26191a26afa5c": {
+"cena": "15-1",
+"arquivo": "sandra-entra.jpg",
+"passa": true,
+"problemas": []
+},
+"3d5d569c42e5aa9cd4ad6741a24cc9b3": {
+"cena": "26-0",
+"arquivo": "corredor-fundo.jpg",
+"passa": true,
+"problemas": []
+},
+"d5162e35529660f34d54305a6621dd27": {
+"cena": "30-0",
+"arquivo": "corredor-fundo.jpg",
+"passa": true,
+"problemas": []
+},
+"7cc884d466f85055f2d0b2a144d9d692": {
+"cena": "31-1",
+"arquivo": "corredor-fundo.jpg",
+"passa": true,
+"problemas": []
+},
+"4ca4bee5d4d638aa70ff9eb49d091968": {
+"cena": "34-2",
+"arquivo": "sandra-biscoito.jpg",
+"passa": true,
+"problemas": []
+},
+"f6bef4800b26e84231ba230ee790c1b0": {
+"cena": "56-1",
+"arquivo": "sandra-biscoito.jpg",
+"passa": true,
+"problemas": []
+},
+"13c5a52cd96adfba1804fd16f2b12735": {
+"cena": "64-1",
+"arquivo": "sandra-fila-parada.jpg",
+"passa": false,
+"problemas": [
+"Embalagens do expositor têm marcas de letras legíveis, como \"LUXO\" e símbolos parecidos com texto.",
+"Carrinho parece vazio na frente, com poucos produtos visíveis, e não \"grande e cheio\" como pedido.",
+"Ela olha para o lado, não para o expositor ao lado dela como pedido."
+]
+},
+"0a0c421a58e5f18697927209865ff133": {
+"cena": "65-1",
+"arquivo": "sandra-pega-chocolate.jpg",
+"passa": true,
+"problemas": []
+},
+"cf81b6f69acc46f6b3cacc6a5d1394e6": {
+"cena": "65-2",
+"arquivo": "sandra-pega-chocolate.jpg",
+"passa": false,
+"problemas": [
+"O carrinho aparece vazio, mas o pedido era um carrinho grande e cheio.",
+"A narração fala em pilha, mas ela pega uma barra de chocolate."
+]
+},
+"8b640ee0241385f8b6c0e8d01a915780": {
+"cena": "66-1",
+"arquivo": "marcos-fila.jpg",
+"passa": true,
+"problemas": []
+},
+"fd59cb4b51d9a9ab478570a307bab6c0": {
+"cena": "89-0",
+"arquivo": "porta-abre.jpg",
+"passa": true,
+"problemas": []
+},
+"e1f91ae0a8391b3de8999e60e9db62a0": {
+"cena": "89-1",
+"arquivo": "sandra-lista.jpg",
+"passa": false,
+"problemas": [
+"A bolsa está fechada; ela não abre nem tira o papel da bolsa.",
+"O papel já está aberto e esticado, não dobrado como na narração.",
+"Ela está num corredor de prateleiras, não parada na porta de entrada.",
+"A expressão é preocupada, sem o sorriso envergonhado pedido."
+]
+},
+"c14f33d4152b718608ab6f63159229d4": {
+"cena": "92-0",
+"arquivo": "sandra-biscoito.jpg",
+"passa": true,
+"problemas": []
+}
+}
