@@ -14,7 +14,7 @@ env = chaves()  # acessos.env no PC, segredos do GitHub na nuvem
 NUVEM = "--drive" in sys.argv
 REVISAR = "--sem-revisor" not in sys.argv and "--revisar" in sys.argv or (NUVEM and "--sem-revisor" not in sys.argv)
 CUSTO_REV, RUINS = [0.0], {}
-if REVISAR: from fabrica.revisor_imagens import revisar  # na nuvem: as imagens ficam no Drive (Tiao Poupador/robo/video-NN/img)
+if REVISAR: from fabrica.revisor_imagens import revisar, contexto  # na nuvem: as imagens ficam no Drive (Tiao Poupador/robo/video-NN/img)
 URL = f"https://api.cloudflare.com/client/v4/accounts/{env['CLOUDFLARE_TIAO_CONTA']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b"
 REF = {"T": "tiao-sem-caneca.jpg", "N": "marcos-neutro.jpg", "R": "sandra-neutra.jpg", "F": "tiao-ficha-oficial.jpg"}
 # 07/11: o Tiao vai so com a referencia SEM caneca (a ficha de varias poses saiu do pedido da Cloudflare: dava 3a mao)
@@ -134,7 +134,7 @@ if __name__ == "__main__":
             soma(c)  # a Cloudflare cobra mesmo quando a imagem sai ruim
             if r != "ok" or not REVISAR: break
             try:
-                ok, prob, cu = revisar(f"{SAI}/{n}.jpg", refs, q[2], fala_de(n)); CUSTO_REV[0] += cu
+                ok, prob, cu = revisar(f"{SAI}/{n}.jpg", refs, q[2], fala_de(n), contexto(NN, C, n)[1]); CUSTO_REV[0] += cu
             except Exception as e: print("revisor falhou, fica a imagem:", e, flush=True); break
             if ok: break
             print(f"  revisor: {n} tentativa {tent + 1} ruim: {'; '.join(prob)[:220]}", flush=True)

@@ -11,7 +11,7 @@ permissions:
 jobs:
   voz:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 150
     strategy:
       fail-fast: false
       matrix:
@@ -26,11 +26,11 @@ jobs:
           path: |
             ~/.cache/huggingface
             ~/.cache/pip
-          key: chatterbox-0.1.7-v1
+          key: chatterbox-0.1.7-whisper-v2
       - name: instalar
         run: |
           pip install torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
-          pip install chatterbox-tts==0.1.7
+          pip install chatterbox-tts==0.1.7 faster-whisper==1.1.1 num2words==0.5.14
       - name: abrir a voz (cifrada)
         env:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
@@ -42,9 +42,12 @@ jobs:
           VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
         run: |
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in parte.wav -out parte-${{ matrix.parte }}.enc -pass env:VOZ_SENHA
-          rm -f ref.wav parte.wav
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in parte.json -out parte-${{ matrix.parte }}.json.enc -pass env:VOZ_SENHA
+          rm -f ref.wav parte.wav parte.json
       - uses: actions/upload-artifact@v4
         with:
           name: parte-${{ matrix.parte }}
-          path: parte-${{ matrix.parte }}.enc
+          path: |
+            parte-${{ matrix.parte }}.enc
+            parte-${{ matrix.parte }}.json.enc
           retention-days: 1
