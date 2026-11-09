@@ -44,7 +44,8 @@ class Caderno:
         self.d = json.load(open(self.f, encoding="utf-8")) if os.path.exists(self.f) else {}
     def de(self, caminho):
         k = os.path.basename(caminho); tam = os.path.getsize(caminho)
-        if k in self.d and self.d[k]["tam"] == tam: return self.d[k]["rostos"]
+        # na nuvem os clipes saem do cofre com outro tamanho (outra compressao): vale o que foi marcado aqui no PC
+        if k in self.d and (self.d[k]["tam"] == tam or os.environ.get("GITHUB_ACTIONS")): return self.d[k]["rostos"]
         self.d[k] = {"tam": tam, "rostos": perguntar(caminho)}
         json.dump(self.d, open(self.f, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
         return self.d[k]["rostos"]
