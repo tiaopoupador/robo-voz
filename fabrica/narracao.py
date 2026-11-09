@@ -10,10 +10,16 @@ textos = open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitli
 secoes = json.load(open(f"{P}/robo-voz/roteiro-{NN}-secoes.json"))
 TMP = PASTA + "/_junta"; os.makedirs(TMP, exist_ok=True); os.makedirs(P + "/fabrica/saida", exist_ok=True)
 # 1. abre os cifrados (a senha fica so dentro do programa)
-for enc in glob.glob(PASTA + "/**/parte-*.enc", recursive=True):
+for enc in [e for e in glob.glob(PASTA + "/**/parte-*.enc", recursive=True) if not e.endswith(".json.enc")]:
     n = re.search(r"parte-(\d+)\.enc", enc).group(1); wav = f"{PASTA}/p{n}.wav"
     if not os.path.exists(wav) or os.path.getmtime(enc) > os.path.getmtime(wav):
         subprocess.run(["openssl", "enc", "-d", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-in", enc, "-out", wav, "-pass", "env:VOZ_SENHA"],
+                       check=True, env={**os.environ, "VOZ_SENHA": env["VOZ_SENHA"]})
+# 1b. 09/11: o relatorio de cada fala (o gerar.py novo ja escutou cada frase na nuvem e regravou as ruins)
+for enc in glob.glob(PASTA + "/**/parte-*.json.enc", recursive=True):
+    n = re.search(r"parte-(\d+)\.json\.enc", enc).group(1); js = f"{PASTA}/j{n}.json"
+    if not os.path.exists(js) or os.path.getmtime(enc) > os.path.getmtime(js):
+        subprocess.run(["openssl", "enc", "-d", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-in", enc, "-out", js, "-pass", "env:VOZ_SENHA"],
                        check=True, env={**os.environ, "VOZ_SENHA": env["VOZ_SENHA"]})
 # 2. confere ouvindo e junta
 if CONFERIR:
@@ -68,8 +74,17 @@ for i, txt in enumerate(textos):
     f = f"{PASTA}/p{i}.wav"
     if not os.path.exists(f): ruins.append([i, "faltou"]); continue
     # ja conferido antes (mesmo texto, mesmo arquivo de voz): usa o que ficou guardado e nao escuta de novo
-    marca = f"{TMP}/ok{i}.json"; chave = f"{os.path.getsize(f)}|{txt}"
-    if CONFERIR and os.path.exists(marca) and os.path.exists(f"{TMP}/r{i}.wav"):
+    # 09/11: fala gravada pelo gerar.py novo (frase a frase, ja escutada na nuvem): entra como veio, sem "respiro"
+    # inserido no meio (era isso que picotava a fala: silencio digital enfiado entre palavras).
+    rel = f"{PASTA}/j{i}.json"
+    if os.path.exists(rel):
+        rj = json.load(open(rel, encoding="utf-8"))
+        ruins += [[i, f"frase {k + 1}: {fr_['motivo']} | {fr_.get('ouviu', '')[:120]}"] for k, fr_ in enumerate(rj["frases"]) if not fr_["ok"]]
+        CONFERIR_ESTA = False; marca = None
+    else: marca = ""
+    if marca is not None: marca = f"{TMP}/ok{i}.json"; chave = f"{os.path.getsize(f)}|{txt}"
+    if marca is None: pass
+    elif CONFERIR and os.path.exists(marca) and os.path.exists(f"{TMP}/r{i}.wav"):
         j = json.load(open(marca, encoding="utf-8"))
         if j.get("chave") == chave:
             ruins += j["ruins"]; f = f"{TMP}/r{i}.wav"; CONFERIR_ESTA = False

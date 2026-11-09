@@ -103,12 +103,14 @@ t0 = time.time()
 m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 whisper = WhisperModel("small", device="cpu", compute_type="int8")
 print("MEDIDA modelos carregados em", round(time.time() - t0), "s", flush=True)
+import os
+RODADA = 7919 * (int(os.environ.get("GITHUB_RUN_ID", "0")) % 1000)  # cada rodada nova tenta outras sementes (regravar uma fala nao repete a mesma voz ruim)
 rel, pedacos = {"parte": parte, "frases": []}, []
 fs = frases(original)
 for k, fr in enumerate(fs):
     melhor = None
     for tent in range(5):
-        torch.manual_seed(1000 * parte + 17 * k + tent)
+        torch.manual_seed(1000 * parte + 17 * k + tent + RODADA)
         w = m.generate(falado(fr), language_id="pt", audio_prompt_path=ref, exaggeration=0.5, cfg_weight=0.5, temperature=0.8)
         ok, motivo, d = nota(w, m.sr, falado(fr), whisper)
         print(f"  frase {k + 1}/{len(fs)} tentativa {tent + 1}: {motivo} | {d.get('ouviu', '')[:90]}", flush=True)
