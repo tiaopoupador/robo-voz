@@ -231,7 +231,7 @@ L = {
  94: [("^", "I", "marcos-serio"), ("não fez piada", "M", fr("Pela primeira vez, ele não fez *piada*.")), ("tirou o cartão", "V", "flow-cartao-gaveta"),
       ("só no débito", "M", fr("Mercado, agora, só no *débito*.", "a Sandra"))],
  95: [("^", "I", "rua-noite"), ("bateram baixinho", "V", "flow-portao-noite"), ("Você ensina a gente", "H", ("meta-portao-noite", [bl("Você *ensina* a gente?", 30, 16, "dir")]))],
- 96: [("^", "I", "meta-tiao-caderno-mostra"), ("novecentos e doze", "M", nu(912, "A primeira página do caderno", "a soma daquela terça", cor=VERM)),
+ 96: [("^", "I", "meta-tiao-caderno-mostra"), ("Ali, colado", "I", "caderno-envelope"), ("novecentos e doze", "M", nu(912, "A primeira página do caderno", "a soma daquela terça", cor=VERM)),
       ("Ninguém nasce sabendo", "M", fr("Ninguém nasce *sabendo*.", "o Tião"))],
  97: [("^", "M", ic([("📝", "a lista no papel", False), ("🧺", "a cestinha", False), ("⚖️", "os gramas", False)], "As 3 primeiras regras")),
       ("biscoito amarelo", "I", "biscoito"), ("biscoito da avó", "I", "meta-avo-portao"), ("O Marcos, que tinha rido", "I", "meta-marcos-anota")],
@@ -372,7 +372,7 @@ PEDIDO.update({
  "meta-marcos-celular": CASA_S + "Marcos walks into the kitchen, still grinning, holding his phone. Sandra, seated at the table, silently turns the very long receipt toward him with both hands, serious. Marcos LEFT standing, Sandra RIGHT seated. The phone screen shows only blurred shapes." + REC,
  "meta-portao-noite": "Sunday night on the street of the reference image, empty, street lamps glowing. Sandra whispers to Tiao at his small gate with one hand next to her mouth, looking around so no neighbor hears; Marcos stands one step behind her with his hands in his pockets, embarrassed. Tiao listens kindly under the yellow porch light. Sandra LEFT, Marcos behind her, Tiao RIGHT.",
  "meta-tiao-caderno-mostra": "Sunday night at Tiao's small gate under the yellow porch light. Tiao holds an open small notebook with a BLUE cover and shows the first page to Sandra and Marcos: an old folded envelope is glued on the page, with pencil marks (wavy lines, nothing readable). Sandra and Marcos lean in, surprised and attentive. Tiao in the CENTER, Sandra LEFT, Marcos RIGHT.",
- "meta-marcos-anota": "Sunday night at Tiao's small gate under the yellow porch light. Marcos writes with a pen on the back of a folded paper bill, leaning the paper on top of the gate, concentrated, no longer laughing. Tiao, on the other side of the gate, holds up three fingers, calm smile. Marcos LEFT, Tiao RIGHT.",
+ "meta-marcos-anota": "Sunday night at Tiao's small gate under the yellow porch light. Marcos writes with a pen on the back of a white A4 sheet of office paper (a utility bill printout with only wavy grey lines and a black barcode strip, NOT money, NOT a banknote, NOT green), leaning the paper on top of the gate, concentrated, no longer laughing. Tiao, on the other side of the gate, holds up three fingers, calm smile. Marcos LEFT, Tiao RIGHT.",
  "flow-marcos-ri-picape": "Saturday afternoon, in front of his house on the street of the reference image, Marcos washes a shiny black pickup truck with a big yellow sponge, soap foam on the hood. He turns toward the house across the street and laughs out loud, throwing his head back, pointing with the sponge. Static camera.",
  "flow-notinha-comprida": CASA_S + "Sandra takes a supermarket receipt out of a grocery bag and unrolls it on the table: it is absurdly long, the paper keeps unrolling, goes past the edge of the table and falls all the way to the floor. Her smile slowly disappears. Static camera." + REC,
  "flow-cartao-gaveta": CASA_S + "Sandra takes a credit card out of her wallet, opens a kitchen drawer, places the card inside and closes the drawer firmly, with a determined small smile. Marcos stands behind her holding his phone and watches in silence, serious. Static camera.",
@@ -391,3 +391,8 @@ NOMES.update({
  "flow-cartao-gaveta":       "sandra-marcos_cozinha-noite_sandra-guarda-o-cartao-na-gaveta",
  "flow-portao-noite":        "sandra-marcos-tiao_rua-portao-noite_batem-baixinho-no-portao",
 })
+
+# 09/11, conferindo o que o Ed gerou: M20-b (bigode fino, como na ficha) em vez do M20-a; e o close do envelope colado no
+# caderno, porque no M21 as paginas estao em branco e a fala diz «Ali, colado, estava o verso daquele envelope».
+ESCOLHA = {"meta-portao-noite": "b"}
+IMG["caderno-envelope"] = ("cf", "", "Close-up, top view, at night under warm yellow light: an open small notebook with a BLUE cover; on the first page an old folded white paper envelope is glued with yellowed tape, its back covered with pencil scribble lines (wavy lines, nothing readable) and one sum underlined twice at the bottom. A short yellow carpenter pencil beside it. No people, no hands, no readable words or numbers.")

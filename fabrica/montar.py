@@ -28,8 +28,24 @@ def do_ed(nome, ext):
     """o que o Ed salvou no Drive para este pedido (M01-a.jpg ... ou F01.mp4); None se nao chegou"""
     cod = COD.get(nome)
     if not cod or not os.path.isdir(ENT): return None
-    achados = sorted(f for f in os.listdir(ENT) if f.upper().startswith(cod) and f.lower().endswith(ext))
+    achados = sorted(f for f in os.listdir(ENT) if f.upper().startswith(cod) and f.lower().endswith(ext) and "-semfaixa" not in f.lower())
+    v = getattr(C, "ESCOLHA", {}).get(nome)  # 09/11: a variante que eu escolhi olhando (ex.: "b" = M20-b), em vez da primeira
+    if v: achados = sorted(achados, key=lambda f: not f.upper().startswith(f"{cod}-{v.upper()}"))
     return f"{ENT}/{achados[0]}" if achados else None
+def sem_faixas(f):
+    """09/11: o Flow as vezes entrega o clipe com faixa preta em cima e embaixo nos primeiros segundos (o F17 do 02).
+    Mede a faixa maior do clipe inteiro e corta-a no clipe todo (fica um pouco mais perto, sem buraco preto)."""
+    H = int(subprocess.check_output(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=height", "-of", "csv=p=0", f]).decode())
+    log = subprocess.run(["ffmpeg", "-v", "info", "-i", f, "-vf", "cropdetect=16:2:0", "-f", "null", "-"], capture_output=True, text=True).stderr
+    hs = [(int(h), int(y)) for h, y in re.findall(r"crop=\d+:(\d+):\d+:(\d+)", log)]
+    if not hs: return f
+    h, y = min(hs)
+    if h > 0.95 * H or abs(y - (H - h) / 2) > 8: return f  # sem faixa, ou o escuro nao e faixa (cena de noite)
+    out = os.path.splitext(f)[0] + "-semfaixa.mp4"
+    if not os.path.exists(out):
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f, "-vf", f"crop=iw:{h}:0:{y},scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080",
+                        "-c:v", "libx264", "-crf", "18", "-an", out], check=True)
+    avisos.append(f"{os.path.basename(f)}: tinha faixa preta, cortei ({H - h} px)"); return out
 def fonte(nome):
     """devolve (tipo, arquivo local): 'img' ou 'vid'"""
     if nome.startswith("banco:FM:"): return "vid", FM + nome[9:]
@@ -50,7 +66,7 @@ def fonte(nome):
         planoB.append(nome); return fonte(q[2][3:])
     if q[0] == "flow":
         f = do_ed(nome, (".mp4", ".mov"))
-        if f: usados_ed.append(nome); return "vid", f
+        if f: usados_ed.append(nome); return "vid", sem_faixas(f)
         planoB.append(nome); return fonte(q[2][3:])
     f = f"{IMG_CF}/{nome}.jpg"
     if not os.path.exists(f): avisos.append(f"FALTA a imagem {nome}"); return "img", None

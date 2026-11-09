@@ -227,7 +227,7 @@ No domingo à noite, quando a rua já estava vazia, os dois atravessaram até o 
 
 O Tião não riu deles. Entrou em casa e voltou com o caderno de capa azul. Abriu na primeira página. Ali, colado, estava o verso daquele envelope da noite de terça, com a soma a lápis: novecentos e doze. "Eu também caí em todas", ele disse. "Ninguém nasce sabendo."
 
-Ele não falou das nove de uma vez. Falou de três, para começar. "Antes de sair de casa, a lista no papel. Na porta, a cestinha, nunca o carrinho grande. E, antes de pegar qualquer pacote, vira e lê os gramas." E deu um exemplo: o biscoito amarelo que a Sandra levava toda semana, o mesmo que a avó dela comprava, já teve duzentos gramas. A Sandra lembrou na hora: era o biscoito da avó. O Marcos, que tinha rido de manhã, pediu a caneta e anotou as três no verso de um boleto.
+Ele não falou das nove de uma vez. Falou de três, para começar. "Antes de sair de casa, a lista no papel. Na porta, a cestinha, nunca o carrinho grande. E, antes de pegar qualquer pacote, vira e lê os gramas." E deu um exemplo: o biscoito amarelo que a Sandra levava toda semana, o mesmo que a avó dela comprava, já teve duzentos gramas. A Sandra lembrou na hora: era o biscoito da avó. O Marcos, que tinha rido do Tião no sábado, pediu a caneta e anotou as três no verso de um boleto.
 
 ## 14. O sábado seguinte
 
