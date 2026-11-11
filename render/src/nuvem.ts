@@ -2,10 +2,12 @@
 import React from "react";
 import { Composition, registerRoot } from "remotion";
 import { Video, VAZIO, Dados } from "./geral/Video";
+import { Vinheta } from "./motion/Vinheta";
 
-const Raiz: React.FC = () =>
+const Raiz: React.FC = () => React.createElement(React.Fragment, null,
+  React.createElement(Composition, { id: "Vinheta", component: Vinheta as React.FC<any>, fps: 30, width: 1920, height: 1080, durationInFrames: 60, defaultProps: { som: "marca/vinheta-b.wav" } }),
   React.createElement(Composition, {
     id: "Video", component: Video as React.FC<any>, fps: 30, width: 1920, height: 1080, durationInFrames: 300, defaultProps: VAZIO,
     calculateMetadata: ({ props }: { props: Dados }) => ({ durationInFrames: Math.max(30, Math.round((props.fim + (props.tela ?? 0)) * 30)) }),
-  });
+  }));
 registerRoot(Raiz);

@@ -4,7 +4,7 @@ import importlib, os, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 NN = sys.argv[1]; ONDE = sys.argv[2] if len(sys.argv) > 2 else f"Google Drive > Tiao Poupador > entrada > video-{NN}"
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
-FIM4 = "Gere a imagem em 4 ângulos diferentes e com total consistência com o personagem que está em referência:"
+FIM4 = "Gere a imagem em 2 ângulos diferentes e com total consistência com o personagem que está em referência:"
 CONS = ("CHARACTER AND SCENERY CONSISTENCY ARE THE TOP PRIORITY. The characters must be IDENTICAL to the attached reference images, not similar: "
         "same face shape, eyes, eyebrows, nose, mouth, mustache, hairstyle, hair color, skin tone, body shape, height, age, clothes, clothing colors and accessories. "
         "Do not redesign, restyle, beautify, age, slim down or reinterpret them. A similar-looking character is NOT acceptable: match the attached images as closely as possible, in the exact same drawing style. "
@@ -20,11 +20,12 @@ for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["persona
     QUEM.setdefault(_p["id"], f"The attached {_p['ref']} is {_p['id'].capitalize()}'s character sheet: use it only to know the character, draw this person ONCE in a natural pose. " + _p["visual"] + " ")
 NEG = " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark."
 def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
-QUATRO = ("GENERATE 4 SEPARATE IMAGES AT ONCE: the SAME scene shown from 4 DIFFERENT CAMERA ANGLES, one per image: "
-          "1) wide shot showing the whole place, 2) medium shot, 3) close-up on the faces and hands, 4) low angle or over-the-shoulder. "
-          "Same characters, same clothes, same place and same moment in all 4 images. ")
-QUATRO_FIM = "Remember: 4 separate images, 4 different camera angles, each one 16:9."
-GIF = "E por último crie um gif animado com esses ângulos, pode ser um gif de 5 segundos."  # o jeito do Ed no meta.ai (06/11): mais animacao no video
+# Ed, 10/11/2026: «tire as 4 cenas, vamos deixar apenas 2» (menos tempo no meta.ai)
+QUATRO = ("GENERATE 2 SEPARATE IMAGES AT ONCE: the SAME scene shown from 2 DIFFERENT CAMERA ANGLES, one per image: "
+          "1) medium-wide shot showing the place and the whole action, 2) closer shot on the main detail (faces, hands and what they hold). "
+          "Same characters, same clothes, same place and same moment in both images. ")
+QUATRO_FIM = "Remember: 2 separate images, 2 different camera angles, each one 16:9."
+GIF = "E por último crie um gif animado com esses 2 ângulos, pode ser um gif de 5 segundos."  # o jeito do Ed no meta.ai (06/11): mais animacao no video
 R169 = "ASPECT RATIO 16:9, horizontal widescreen (1920x1080), never square, never vertical. "
 SOM = " SILENT VIDEO: no sound, no audio, no music, no sound effects, no voices, no dialogue, no speech, no subtitles."
 meta = [n for n, v in C.IMG.items() if v[0] == "meta"]; flow = [n for n, v in C.IMG.items() if v[0] == "flow"]
@@ -60,7 +61,7 @@ o = [f"# Tião Poupador · vídeo {NN}: o que gerar à mão", "",
      "**Como fazer cada pedido:** abra o link de cada imagem em «Anexar», baixe e anexe no meta.ai (ou no Flow); copie o texto da caixa cinza; gere; salve com o nome indicado, na pasta indicada.",
      "Se algum pedido não ficar bom ou faltar tempo, não tem problema: o robô usa a imagem dele no lugar e o vídeo sai do mesmo jeito.", ""]
 CAPAS = [C.CAPA] + list(getattr(C, "CAPAS_TESTE", []))  # o YouTube testa ate 3 capas (Test & compare)
-o += [f"## 1. As capas (meta.ai) · {len(CAPAS)} versões, as mais importantes", "", "No meta.ai, escolha o formato **16:9** (horizontal). De cada versão, salve só a melhor das 4. O YouTube testa as versões e fica com a que mais prende.", ""]
+o += [f"## 1. As capas (meta.ai) · {len(CAPAS)} versões, as mais importantes", "", "No meta.ai, escolha o formato **16:9** (horizontal). De cada versão, salve só a melhor das 2. O YouTube testa as versões e fica com a que mais prende.", ""]
 NOMES = getattr(C, "NOMES", {})
 def arq(cod, n, ext): return f"{cod}_{NOMES[n]}{ext}" if n in NOMES else f"{cod}{ext}"  # o robo acha pelo codigo do comeco
 for j, cp in enumerate(CAPAS):
@@ -68,7 +69,7 @@ for j, cp in enumerate(CAPAS):
     o += bloco(cc, "a capa principal" if j == 0 else f"capa para o teste, versão {'ABCDE'[j]}", cp[0],
                [f"{cc}_{cp[2]}.jpg" if len(cp) > 2 else arq(cc, "capa", ".jpg")],
                QUATRO + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(cp[0]) + cp[1] + " No logos, no brand names.\n" + QUATRO_FIM + "\n" + FIM4)
-o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 4 variações e o GIF animado, cada um com o seu nome.", ""]
+o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Salve as 2 variações e o GIF animado, cada um com o seu nome.", ""]
 IDS = [x["id"] for x in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["personagens"]]
 def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos (cada um sozinho na ordem do elenco, depois os juntos, depois sem ninguem)
     r = C.IMG[i_n[1]][1]; tem = [k for k, x in enumerate(IDS) if x in r]
@@ -76,7 +77,7 @@ def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos (cada um soz
 o += ["Os pedidos vêm agrupados por personagem (cada personagem sozinho, um de cada vez, e depois as cenas com mais de um): gere na ordem, que a IA mantém o rosto mais igual.", ""]
 for i, n in sorted(enumerate(meta, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
-    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "abcd"] + [arq(f"{c}-gif", n, ".gif")], QUATRO + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + QUATRO_FIM + "\n" + GIF + "\n" + FIM4)
+    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "ab"] + [arq(f"{c}-gif", n, ".gif")], QUATRO + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + QUATRO_FIM + "\n" + GIF + "\n" + FIM4)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in sorted(enumerate(flow, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"F{i:02d}"

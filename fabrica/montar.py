@@ -103,6 +103,11 @@ for k in linhas:
                 spec["imgs"] = [x for x in (so_foto(n) for n in spec["imgs"]) if x]
                 if len(spec["imgs"]) < 3: spec = {"k": "frase", "texto": "", "ini": s, "chave": chave}; avisos.append(f"{chave}: montagem rapida sem imagens")
             cenas.append(spec); continue
+        if tipo == "C":  # "Tião conversa" (Ed, 11/11): (fundo, pose[, lado]) = imagem de fundo do IMG + foto parada do Tião em render/public/marca/poses/
+            fundo, pose = cont[0], cont[1]; tp, src = publica(fundo)
+            if src is None or not os.path.exists(f"{P}/render/public/marca/poses/{pose}.png"):
+                avisos.append(f"{chave}: conversa sem fundo '{fundo}' ou sem pose '{pose}'"); cenas.append({"ini": s, "k": "frase", "texto": "", "chave": chave}); continue
+            cenas.append({"ini": s, "k": "conversa", "src": src, "pose": f"marca/poses/{pose}.png", "lado": cont[2] if len(cont) > 2 else 1, "chave": chave}); continue
         nome, ov = (cont if isinstance(cont, tuple) else (cont, []))
         tp, src = publica(nome)
         if src is None: cenas.append({"ini": s, "k": "frase", "texto": "", "chave": chave}); continue
@@ -201,7 +206,7 @@ def em_motion(t):
     for s0, kk in motion:
         if s0 <= t: k = kk
         else: break
-    return k not in ("img", "vid", "hib")
+    return k not in ("img", "vid", "hib", "conversa")
 leg = []; grupo = []
 for i, (s0, e0, w, lin) in enumerate(ALIN):
     grupo.append((s0, e0, w))
@@ -213,8 +218,45 @@ for i, (s0, e0, w, lin) in enumerate(ALIN):
         leg.append([round(grupo[0][0], 2), round(grupo[-1][1] + 0.15, 2), texto]); grupo = []
 leg = [l for l in leg if not em_motion(l[0] + 0.05)]
 
+# ---------------- barra "Plantão do Tião" (Ed, 11/11/2026): 5 recados por vídeo, estilo telejornal ----------------
+# «quanto mais se pede pra se inscrever, curtir, fazer alguma ação, mais a audiência faz. Se não pedir, eles não fazem nada»
+# Cada recado entra numa parte do vídeo (12%, 30%, 48%, 66%, 84%), nunca por cima de gráfico, linha do tempo ou tela final (usam a base)
+# O cenas.py pode trocar com BARRAS = [[(frase, acao), ...], ...]. *palavra* sai em amarelo.
+RECADOS = [  # (frase, animação do cartão): inscrever, like, comentar, finmoovi, compartilhar, fim (render/src/motion/Plantao.tsx)
+    [("Está gostando da história do Tião? *Deixe o seu like*: é ele que leva este vídeo a mais gente", "like"),
+     ("Ainda não é inscrito? Toque em *INSCREVER-SE* e no sininho para não perder o próximo", "inscrever")],
+    [("E você, já passou por isso? *Conte nos comentários*", "comentar"), ("A gente lê e *responde todos* os comentários, de verdade", "")],
+    [("*FinMoovi*: o app que o Tião usa para saber para onde vai cada real", "finmoovi"),
+     ("Teste *7 dias* e veja o seu dinheiro com outros olhos. O link está na descrição", "")],
+    [("Conhece alguém que precisa ouvir isto? *Mande este vídeo* para essa pessoa", "compartilhar"),
+     ("Ainda não se inscreveu? Leva *1 segundo* e ajuda o Tião a continuar", "inscrever")],
+    [("Fique até o fim: *a lição mais importante* vem agora", "fim"), ("Já deixou o seu like? Ele ajuda o canal *mais do que você imagina*", "like")],
+]
+def dur_barra(fr): return round(0.9 + (1920 + sum(len(x.replace('*', '')) * 23 + 90 for x, _ in fr)) / 210 + 0.8, 2)  # mesmo passo do Plantao.tsx
+BLOQ = {"final", "montagem", "linha", "barras", "graf", "torre", "pessoas", "grade", "conta", "fotonota"}  # pecas que usam a base da tela
+def so_imagem(a, b):
+    for i, c in enumerate(cenas):
+        fim_c = cenas[i + 1]["ini"] if i + 1 < len(cenas) else FIM
+        if fim_c > a and c["ini"] < b and c["k"] in BLOQ: return False
+    return b < FIM - 1
+barras = []
+for k, fr in enumerate(getattr(C, "BARRAS", RECADOS)):
+    d = dur_barra(fr); alvo = FIM * (0.12 + 0.72 * k / max(1, len(getattr(C, "BARRAS", RECADOS)) - 1))
+    alvo = min(alvo, FIM - d - 5)
+    cand = sorted({c["ini"] for c in cenas if c["k"] in ("img", "vid", "hib")} | {alvo}, key=lambda x: abs(x - alvo))
+    t = next((x for x in cand if abs(x - alvo) < 90 and so_imagem(x, x + d) and all(abs(x - b["ini"]) > 120 for b in barras)), None)
+    if t is None: avisos.append(f"barra {k + 1}: sem lugar só com imagem perto de {alvo / 60:.1f} min"); continue
+    barras.append({"ini": round(t + 0.4, 2), "dur": d, "frases": [x for x, _ in fr], "acoes": [a for _, a in fr]})
+
 copia(f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3", "narracao.mp3")
-props = {"pasta": PASTA, "fim": FIM, "tela": TELA, "cenas": cenas, "legendas": leg, "efeitos": efeitos}
+# volume da voz 15 vezes por segundo, para as ondas da cena "conversa" (só se o vídeo tiver alguma)
+onda = []
+if any(c["k"] == "conversa" for c in cenas):
+    import numpy as np
+    pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", PUB + "/narracao.mp3", "-ac", "1", "-ar", "3000", "-f", "s16le", "-"], capture_output=True, check=True).stdout
+    x = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768; n = len(x) // 200
+    r = np.sqrt((x[: n * 200].reshape(n, 200) ** 2).mean(1)); onda = [round(float(v), 3) for v in np.clip(r / (np.percentile(r, 97) + 1e-6), 0, 1)]
+props = {"pasta": PASTA, "fim": FIM, "tela": TELA, "cenas": cenas, "legendas": leg, "efeitos": efeitos, "barras": barras, "onda": onda}
 json.dump(props, open(PUB + "/props.json", "w", encoding="utf-8"), ensure_ascii=False)
 relato = {"cenas": len(cenas), "fim": FIM, "musicas": musicas, "do_ed": usados_ed, "plano_b": planoB, "avisos": avisos}
 json.dump(relato, open(f"{P}/fabrica/saida/{NN}-montagem.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

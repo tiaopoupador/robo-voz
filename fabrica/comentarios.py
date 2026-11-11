@@ -18,7 +18,7 @@ from fabrica import drive
 from fabrica.drive import D
 Y = "https://www.googleapis.com/youtube/v3"
 ENSAIO = "--ensaio" in sys.argv
-MAX = next((int(a.split("=")[1]) for a in sys.argv if a.startswith("--max=")), 15)
+MAX = next((int(a.split("=")[1]) for a in sys.argv if a.startswith("--max=")), 8)   # 8 com pausas de gente cabem nos 30 min da nuvem
 MODELO = "claude-sonnet-5-5"   # US$ 2 / 10 por milhao de tokens: uns US$ 0,003 por resposta
 LINK = "https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign={c}"
 PERGUNTA_01 = "Na sua rua, você é o Tião ou já foi o Marcos?"
@@ -93,13 +93,19 @@ Para cada comentário, decida a ação:
 - "humano": ofensa pesada, política, religião, briga, assunto delicado (luto, doença, dívida grave, desespero), ou pedido de conselho de investimento pessoal ("onde ponho meu dinheiro", "vale a pena tal ação"). NÃO responda: o dono do canal vê.
 - "ignorar": só emoji, texto sem sentido, ou algo que não pede resposta.
 
-Como o Tião escreve:
-- Curto: 1 ou 2 frases, no máximo 220 caracteres. Jeito de conversa de vizinho, caloroso, com humor leve.
-- Fale do que a pessoa contou (repita um detalhe dela). Nunca frase genérica tipo "obrigado pelo comentário".
-- No máximo 1 emoji. Nunca use travessão (o traço comprido); use vírgula ou ponto.
+Como o Tião escreve (tem de parecer gente, nunca atendimento de empresa):
+- Escreve como no celular: "vc", "pra", "tá", "né", "kkkk" quando é engraçado. Pode começar com letra minúscula. Pontuação simples, sem frase perfeitinha.
+- Tamanho varia de verdade: às vezes 3 palavras ("kkkk é bem assim"), às vezes 1 frase, no máximo 2 frases e 220 caracteres.
+- Responde ao detalhe que a pessoa contou, com uma reação sincera (ri, concorda, conta um pedacinho seu: o caderno, a lista do mercado, a Sandra, o Marcos, a rua).
+- Em mais ou menos 1 de cada 3 respostas, devolve uma pergunta curta para a conversa continuar ("e aí, deu certo?", "qual foi o pior gasto?").
+- Às vezes usa o primeiro nome da pessoa, quase sempre não.
+- Emoji: na maioria das vezes nenhum, no máximo 1.
+- Proibido: "Que legal", "Ótima pergunta", "Obrigado pelo comentário", "Fico feliz", "Com certeza!", "Excelente", "Seja bem-vindo", começar com "Opa" ou com o nome em toda resposta, e qualquer frase que sirva para qualquer comentário.
+- Cada resposta começa de um jeito diferente das outras do lote E das respostas recentes que vêm na mensagem. Nunca repete uma frase.
+- Nunca use travessão (o traço comprido); use vírgula ou ponto.
 - Nunca prometa dinheiro, nunca dê recomendação de investimento, nunca diga que o FinMoovi é grátis (ele tem 7 dias de teste).
-- Não mencione o FinMoovi, a não ser na ação "link".
-- Nunca diga que é um robô ou uma IA.
+- Não mencione o FinMoovi, a não ser na ação "link". Na ação "link", escreva você mesmo, com palavras novas a cada vez, que o link está no primeiro comentário fixado e na descrição (sem escrever o link).
+- Se perguntarem a sério se quem responde é robô ou IA, use a ação "humano": o dono do canal responde.
 
 Se o comentário pedir um tema de vídeo novo ("faz um sobre X"), preencha "tema" com o tema curto. Marque "destaque" true se o comentário for muito bom (história forte, engraçado, gera conversa)."""
 ESQUEMA = {"type": "object", "properties": {"itens": {"type": "array", "items": {"type": "object", "properties": {
@@ -107,10 +113,11 @@ ESQUEMA = {"type": "object", "properties": {"itens": {"type": "array", "items": 
     "resposta": {"type": "string"}, "tema": {"type": "string"}, "destaque": {"type": "boolean"}},
     "required": ["id", "acao", "resposta", "tema", "destaque"], "additionalProperties": False}}},
     "required": ["itens"], "additionalProperties": False}
-def decidir(video, lote):
+def decidir(video, lote, recentes=()):
     import anthropic
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
-    txt = (f"Vídeo: {video['titulo']}\nSobre o vídeo: {video['desc']}\n\nComentários (responda todos, mesmo id):\n"
+    rec = ("Respostas recentes do Tião (não repita o começo nem as frases):\n" + "\n".join(f"- {r}" for r in recentes[-25:]) + "\n\n") if recentes else ""
+    txt = rec + (f"Vídeo: {video['titulo']}\nSobre o vídeo: {video['desc']}\n\nComentários (responda todos, mesmo id):\n"
            + "\n".join(json.dumps({"id": c["id"], "autor": c["autor"], "texto": c["texto"][:800]}, ensure_ascii=False) for c in lote))
     r = cli.messages.create(model=MODELO, max_tokens=4000, system=SISTEMA, messages=[{"role": "user", "content": txt}],
                             output_config={"format": {"type": "json_schema", "schema": ESQUEMA}})
@@ -145,6 +152,8 @@ def main():
             if s.get("authorChannelId", {}).get("value") == eu or c["id"] in cad["vistos"]: continue
             if any(r["snippet"].get("authorChannelId", {}).get("value") == eu for r in t.get("replies", {}).get("comments", [])):
                 cad["vistos"][c["id"]] = "ja-respondido"; continue
+            idade_c = (hora - datetime.datetime.fromisoformat(s["publishedAt"].replace("Z", "+00:00"))).total_seconds() / 60
+            if idade_c < 15 + (int(c["id"].encode().hex()[-4:], 16) % 76) and "--todos" not in sys.argv: continue  # gente nao responde no mesmo minuto
             pendentes.append((v, {"id": c["id"], "autor": s.get("authorDisplayName", ""), "texto": s.get("textOriginal", "")}))
     log(f"📝 comentários novos: {len(pendentes)}")
     porvideo = {}
@@ -152,7 +161,7 @@ def main():
     for vid, (v, lote) in porvideo.items():
         lote = lote[: max(0, MAX - feitas) + 10]
         if not lote: break
-        itens, custo = decidir(v, lote); custo_total += custo
+        itens, custo = decidir(v, lote, cad.get("recentes", [])); custo_total += custo
         textos = {c["id"]: c for c in lote}
         for i in itens:
             c = textos.get(i["id"])
@@ -163,12 +172,12 @@ def main():
                 cad["para_resumo"].append(d); cad.setdefault("semana", []).append(d)  # o robo dos posts usa o melhor da semana
             if i["acao"] in ("responder", "link"):
                 if feitas >= MAX: continue   # fica para a proxima rodada (nao marca como visto)
-                resp = i["resposta"] if i["acao"] == "responder" else random.choice(LINK_RESP)
+                resp = i["resposta"] or random.choice(LINK_RESP)
                 log(f"   💬 {c['autor']}: {c['texto'][:90]!r}\n      ↳ Tião: {resp}")
                 if not ENSAIO:
-                    try: responder(c["id"], resp); time.sleep(random.randint(20, 40))
+                    try: responder(c["id"], resp); time.sleep(random.randint(45, 150))  # ritmo de gente, nao de maquina
                     except Exception as e: log("      não consegui responder:", e); continue  # fica para a proxima rodada
-                feitas += 1
+                feitas += 1; cad["recentes"] = (cad.get("recentes", []) + [resp])[-40:]
             elif i["acao"] == "spam":
                 log(f"   🚫 spam (vai para revisão): {c['autor']}: {c['texto'][:90]!r}")
                 if not ENSAIO:

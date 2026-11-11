@@ -11,7 +11,7 @@ from fabrica.google import api, chaves
 from fabrica import agenda
 from fabrica.regras_titulo import REGRAS, revisar
 ENSAIO = "--ensaio" in sys.argv
-CANAIS = ["@tucoinveste", "@obastidordodinheiro", "@dinheirodescomplicadooficial", "@eduinvesteoficial", "@povinvestimento", "@darkledger13"]
+CANAIS = ["@tucoinveste", "@obastidordodinheiro", "@dinheirodescomplicadooficial", "@eduinvesteoficial", "@povinvestimento", "@darkledger13", "@CanalInvestidorSincero", "@ProsaqueRende"]
 MIN_VIEWS, DIAS_MIN_COPIA, DIAS_MAX_COPIA, VAGAS_A_FRENTE = 20000, 21, 120, 4
 Y = "https://www.googleapis.com/youtube/v3/"
 log = lambda *m: print(*m, flush=True)

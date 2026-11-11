@@ -113,5 +113,12 @@
   "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte",
   "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?",
   "Por Que o Cruzeiro em Promoção Sai Mais Caro?"
- ]
+ ],
+ "semana": {
+  "nota": "Ed aprovou a 11/11/2026 (horas de Brasilia; Lisboa = +3h)",
+  "domingo 17:00": "longo",
+  "terca 10:00": "conversa",
+  "quarta 18:00": "longo",
+  "sexta 10:00": "conversa"
+ }
 }

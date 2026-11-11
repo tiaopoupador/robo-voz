@@ -32,7 +32,7 @@ def baixar(NN, sai=None):
     """baixa os anexos que o Ed pos no Team para fabrica/videos/vNN/entrada (antes de olhar o Drive)"""
     sai = sai or f"{P}/fabrica/videos/v{NN}/entrada"; os.makedirs(sai, exist_ok=True)
     anexos = []
-    for ch in (chave_unica(NN), chave_unica(NN) + "-extras", f"tiao-v{NN}-capas"):  # a tarefa do video e a dos pedidos extras
+    for ch in (chave_unica(NN), chave_unica(NN) + "-extras", chave_unica(NN) + "-refazer", f"tiao-v{NN}-capas"):  # a tarefa do video, a dos extras e a das refeitas
         try: t = _pedir(f"/tarefas/{ch}")
         except urllib.error.HTTPError as e:
             if e.code != 404: print("Team:", ch, e.code)

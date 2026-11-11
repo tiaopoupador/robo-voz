@@ -8,11 +8,14 @@ import { Balanca, Botao, Celular, Divide, FraseTopo, Grade, Grafico, Icones, Lis
 import { TelaFinal } from "../motion/TelaFinal";
 import { FotoNota } from "../motion/fotonota";
 import { Brilho, Check, Reacao, tremor, Voa, Xis } from "../motion/reacoes";
+import { Acao, Plantao, PLANTAO_ALTURA } from "../motion/Plantao";
+import { Conversa, OndaCtx } from "../motion/Conversa";
 
 const { fontFamily } = loadFont("normal", { weights: ["800"] });
 type Cena = { ini: number; k: string; [x: string]: any };
 type Efeito = { src: string; ini: number; dur: number; vol: number; fi: number; fo: number };
-export type Dados = { pasta: string; fim: number; tela: number; cenas: Cena[]; legendas: [number, number, string][]; efeitos: Efeito[] };
+type Barra = { ini: number; dur: number; frases: string[]; acoes?: Acao[] };
+export type Dados = { pasta: string; fim: number; tela: number; cenas: Cena[]; legendas: [number, number, string][]; efeitos: Efeito[]; barras?: Barra[]; onda?: number[] };
 export const VAZIO: Dados = { pasta: "v02", fim: 10, tela: 0, cenas: [], legendas: [], efeitos: [] };
 
 const formato = (c: Cena) => {
@@ -69,6 +72,7 @@ const Peca: React.FC<{ c: Cena; dur: number; lado: number }> = ({ c, dur, lado }
   switch (c.k) {
     case "img": case "vid":
     case "hib": return <Camera c={c} dur={dur} lado={lado}>{(c.ov ?? []).map((o: any, i: number) => <PorCima key={i} o={o} />)}</Camera>;
+    case "conversa": return <Conversa fundo={c.src} pose={c.pose} t0={c.ini} dur={dur} lado={c.lado ?? 1} />;
     case "frase": return <Frase texto={c.texto} sobre={c.sobre ?? undefined} escuro={c.escuro} emoji={c.emoji ?? undefined} />;
     case "num": return <Numero valor={c.valor} rotulo={c.rotulo ?? undefined} embaixo={c.embaixo ?? undefined} de={c.de} cor={c.cor} formato={formato(c)} emoji={c.emoji ?? undefined} />;
     case "conta": return <Conta titulo={c.titulo} linhas={c.linhas} ja={c.ja} total={c.total} neutro={c.neutro} passo={c.passo} />;
@@ -108,13 +112,22 @@ const Montagem: React.FC<{ imgs: string[]; seg: number }> = ({ imgs, seg }) => {
 
 // legenda (igual a do piloto): mola de texto, *palavra* em amarelo
 const AMARELO = "#FFD43B";
-const Legenda: React.FC<{ texto: string }> = ({ texto }) => {
+const Legenda: React.FC<{ texto: string; acima?: number; grande?: number }> = ({ texto, acima = 0, grande = 0 }) => {
+  const lado = acima ? -230 : 0;  // com a barra na tela, a legenda vai para a esquerda: o cartão animado fica no canto direito
   const f = useCurrentFrame(); const { fps } = useVideoConfig();
   const [w, z] = MOLAS.texto; const m = mola(f / fps, w, z);
   const partes = texto.split(/(\*[^*]+\*)/g).filter(Boolean);
+  if (grande) return (  // cena "Tião conversa": a frase grande do lado oposto ao Tião, como no Prosa que Rende
+    <AbsoluteFill style={{ justifyContent: "center", alignItems: grande > 0 ? "flex-end" : "flex-start", padding: "0 110px 120px" }}>
+      <div style={{ fontFamily, fontWeight: 800, fontSize: 112, lineHeight: 1.02, color: "white", textAlign: "center", width: 900,
+        textShadow: "0 6px 30px rgba(0,0,0,0.6)", transform: `translateY(${(1 - m) * 30}px) scale(${0.94 + 0.06 * m})`, opacity: Math.min(1, m * 1.6) }}>
+        {partes.map((p, i) => p.startsWith("*") ? <span key={i} style={{ color: AMARELO }}>{p.slice(1, -1)}</span> : <span key={i}>{p}</span>)}
+      </div>
+    </AbsoluteFill>
+  );
   return (
-    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 92 }}>
-      <div style={{ fontFamily, fontWeight: 800, fontSize: 92, lineHeight: 1.05, color: "white", textAlign: "center", maxWidth: 1500,
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 92 + acima }}>
+      <div style={{ fontFamily, fontWeight: 800, fontSize: 92, lineHeight: 1.05, color: "white", textAlign: "center", maxWidth: acima ? 1100 : 1500, marginLeft: lado * 2,
         WebkitTextStroke: "14px black", paintOrder: "stroke fill", transform: `translateY(${(1 - m) * 26}px) scale(${0.92 + 0.08 * m})`, opacity: Math.min(1, m * 1.6) }}>
         {partes.map((p, i) => p.startsWith("*") ? <span key={i} style={{ color: AMARELO }}>{p.slice(1, -1)}</span> : <span key={i}>{p}</span>)}
       </div>
@@ -125,8 +138,11 @@ const Legenda: React.FC<{ texto: string }> = ({ texto }) => {
 export const Video: React.FC<Dados> = (dados) => {
   const { fps } = useVideoConfig();
   const CENAS = dados.cenas, FALA = dados.fim, FIM = FALA + (dados.tela ?? 0);
-  const leg = dados.legendas;
+  const leg = dados.legendas, barras = dados.barras ?? [];
+  const cenaEm = (t: number) => { let k: Cena | null = null; for (const c of CENAS) { if (c.ini <= t + 0.05) k = c; else break; } return k; };
+  const sobBarra = (a: number, b: number) => barras.some((x) => a < x.ini + x.dur && b > x.ini);  // a legenda sobe por cima da barra
   return (
+    <OndaCtx.Provider value={dados.onda ?? []}>
     <AbsoluteFill style={{ backgroundColor: COR.tinta }}>
       {CENAS.map((c, i) => {
         const fim = i + 1 < CENAS.length ? CENAS[i + 1].ini : FIM;
@@ -136,8 +152,11 @@ export const Video: React.FC<Dados> = (dados) => {
       {leg.map(([ini, fim, txt], i) => {
         const prox = i + 1 < leg.length ? leg[i + 1][0] : FALA;
         const de = Math.round(ini * fps), ate = Math.round(Math.min(fim + 0.25, prox) * fps);
-        return <Sequence key={"l" + i} from={de} durationInFrames={Math.max(1, ate - de)}><Legenda texto={txt} /></Sequence>;
+        return <Sequence key={"l" + i} from={de} durationInFrames={Math.max(1, ate - de)}><Legenda texto={txt} acima={sobBarra(ini, fim) ? PLANTAO_ALTURA : 0} grande={cenaEm(ini)?.k === "conversa" ? (cenaEm(ini)?.lado ?? 1) : 0} /></Sequence>;
       })}
+      {barras.map((b, i) => (
+        <Sequence key={"b" + i} from={Math.round(b.ini * fps)} durationInFrames={Math.round(b.dur * fps)}><Plantao frases={b.frases} dur={b.dur} acoes={b.acoes} /></Sequence>
+      ))}
       <Audio src={staticFile(dados.pasta + "/narracao.mp3")} />
       <Audio src={staticFile(dados.pasta + "/trilha.mp3")} volume={1} />
       {dados.efeitos.map((e, i) => {
@@ -149,5 +168,6 @@ export const Video: React.FC<Dados> = (dados) => {
         );
       })}
     </AbsoluteFill>
+    </OndaCtx.Provider>
   );
 };

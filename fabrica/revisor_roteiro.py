@@ -7,13 +7,14 @@
 #   3. salto de tempo ou de lugar sem aviso;
 #   4. numero, dia ou fato que nao bate com outra linha;
 #   5. promessa sem pagamento (o que foi anunciado e nunca aparece) e personagem que some sem fim de historia;
-#   6. frase solta que um espectador novo nao entenderia.
+#   6. frase solta que um espectador novo nao entenderia;
+#   7. cliche que a IA da a todo canal (lista em fabrica/cliches.txt, Ed 11/11: «quero ser unico»).
 # Custo: uns US$ 0,20 a 0,30 por roteiro (credito de revisor). Uso: python fabrica/revisor_roteiro.py 02 [arquivo]
 import json, os, re, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 from fabrica.google import chaves
 ESQ = {"type": "object", "properties": {"problemas": {"type": "array", "items": {"type": "object", "properties": {
-    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta"]},
+    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta", "cliche"]},
     "grave": {"type": "boolean"}, "problema": {"type": "string"}, "como_resolver": {"type": "string"}},
     "required": ["linha", "tipo", "grave", "problema", "como_resolver"], "additionalProperties": False}}},
     "required": ["problemas"], "additionalProperties": False}
@@ -28,7 +29,10 @@ Aponte cada lugar onde a história falha:
 4. NÃO BATE: número, dia, quantidade ou fato que contradiz outra linha (faça as contas).
 5. PROMESSA SEM PAGAMENTO: o que é anunciado e nunca aparece; personagem que some sem fim de história.
 6. FRASE SOLTA: frase de efeito que um espectador novo não entenderia.
-Não aponte estilo, ritmo ou gosto. Só lógica da história. "grave" = o espectador notaria e ficaria confuso.
+7. CLICHÊ (o canal quer ser ÚNICO): qualquer item da LISTA DE CLICHÊS abaixo, ou outro recurso que todo canal de finanças feito
+   com IA usa. Em como_resolver, troque por algo que só o bairro do Tião teria (um lugar, um objeto, um costume, um bordão nosso).
+   Clichê é sempre grave.
+Não aponte estilo, ritmo ou gosto. Só lógica da história e clichê. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.
 O roteiro, uma linha por número:
@@ -37,7 +41,9 @@ O roteiro, uma linha por número:
 def revisar(NN, arq=None):
     import anthropic
     L = open(arq or f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines()
-    txt = PEDIDO + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
+    cl = [x.strip() for x in open(f"{P}/fabrica/cliches.txt", encoding="utf-8") if x.strip() and not x.startswith("#")]
+    lista = "LISTA DE CLICHÊS (Ed, 11/11/2026):\n" + "\n".join("- " + x for x in cl) + "\n\nO roteiro, uma linha por número:"
+    txt = PEDIDO.replace("O roteiro, uma linha por número:", lista) + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
     with cli.messages.stream(model="claude-sonnet-5-5", max_tokens=32000, thinking={"type": "adaptive"},
                              output_config={"format": {"type": "json_schema", "schema": ESQ}},

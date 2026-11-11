@@ -43,7 +43,13 @@ for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["persona
     QUEM[_p["letra"]] = (f"One attached image is {_p['id'].capitalize()}'s CHARACTER SHEET (many angles, poses and expressions): use it only to know the character, "
                          "do NOT copy the sheet layout, draw this person ONCE, in a natural dynamic pose that fits the scene. " + IGUAL + _p["visual"] + " ")
 ANATOMIA = " Every person appears once, with a normal face, two eyes, two arms and two hands."
-FIM = ANATOMIA + " All signs, boards, labels, packages, papers and screens are blank colored shapes or wavy lines, with no letters, numbers or logos."
+# 11/11 (teste FLUX 3 na kie): "linhas onduladas" vira letra inventada ("NERCE", "Hurt"). Pedir em POSITIVO, embalagem lisa, resolveu.
+LISO = "in PLAIN SOLID-COLOR packaging with NO labels at all: every package, bag, bottle and can is one flat color with at most a simple round shape, never any letters, words or numbers"
+FIM = ANATOMIA + " All signs, boards, papers and screens are blank colored shapes. Every package is plain solid color with no label, no letters, no numbers, no logos."
+GENTE = ("people", "crowd", "queue", "line of", "customers", "cashier", "others", "neighbors", "family", "children", "kids", "couple")
+def sozinho(refs, desc):  # 11/11 (Ed: «tratando melhor os prompts pra nao gerar com muitos erros»): gente de fundo e onde nasce o olho vesgo
+    d = desc.lower()
+    return "" if any(g in d for g in GENTE) or "nobody else" in d or len(refs) > 1 else " Nobody else in the scene: no other people, no faces in the background."
 
 def tiles(w, h): return -(-w // 512) * -(-h // 512)
 def custo(refs):
@@ -65,7 +71,8 @@ def gerar(nome, refs, desc):
         cab = f'--{b}\r\nContent-Disposition: form-data; name="{k}"' + (f'; filename="{arq}"\r\nContent-Type: image/jpeg' if arq else "") + "\r\n\r\n"
         corpo.append(cab.encode() + (v if isinstance(v, bytes) else v.encode()) + b"\r\n")
     bigode = " His small black mustache is clearly visible." if "T" in refs else ""  # 07/11: dito de novo no fim, senao o 4B esquece
-    campo("prompt", ESTILO + "".join(QUEM[r] for r in refs) + desc + bigode + FIM); campo("width", "1024"); campo("height", "576")
+    desc = desc.replace("whose labels have only wavy lines", LISO)
+    campo("prompt", ESTILO + "".join(QUEM[r] for r in refs) + desc + bigode + sozinho(refs, desc) + FIM); campo("width", "1024"); campo("height", "576")
     campo("seed", str(random.randint(1, 10**9)))  # cada tentativa sai diferente (o revisor pode pedir outra)
     for n, r in enumerate(refs): campo(f"input_image_{n}", open(P + "/banco/referencia/" + REF[r], "rb").read(), f"ref{n}.jpg")
     dados = b"".join(corpo) + f"--{b}--\r\n".encode()
