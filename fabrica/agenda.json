@@ -15,30 +15,6 @@
    "adiado": "07/11: adiado do dia 08 para consertar imagens e voz"
   },
   {
-   "nn": "03",
-   "quando": "2026-11-15 17:00",
-   "titulo": "Como o Banco Te Trata em Cada Nível de Dinheiro",
-   "elenco": [
-    "Tião",
-    "Valéria",
-    "Seu Lourival"
-   ],
-   "familia": "escada em cada nível",
-   "formato": "você",
-   "esconde": "em cada nível o banco ganha de um jeito diferente, e quem ele mais paparica (quem parece rico e está no limite) é quem mais paga; quem tem dinheiro guardado quieto é tratado de outro jeito",
-   "capa": {
-    "texto": "QUAL É O SEU NÍVEL?",
-    "cena": "agência do banco: o gerente serve cafezinho sorrindo para a Valéria, de óculos escuros e bolsa de marca, enquanto o Tião espera na fila com a caneca velha; uma escada de etiquetas R$ 0 > R$ 5 mil > R$ 100 mil > R$ 1 mi ao lado, seta vermelha no Tião"
-   },
-   "angulo": "Contado em VOCÊ (o Tião na tela é você). Escada de níveis do saldo: R$ -40 no cheque especial, R$ 0, R$ 5 mil, R$ 50 mil, R$ 300 mil, R$ 1 milhão, R$ 10 milhões. Em cada nível: a cena na agência e no app, o que o banco oferece, a tarifa ou o juro escondido, e o refrão. A Valéria aparece no nível do cartão black no limite; o Seu Lourival na conta do mercadinho com maquininha e antecipação.",
-   "modelo": {
-    "id": "2LXED3ENhck",
-    "titulo": "How Banks Treat You at Every Level of Wealth — $0 to $25M",
-    "canal": "@darkledger13",
-    "views": 1180801
-   }
-  },
-  {
    "nn": "04",
    "quando": "2026-11-18 18:00",
    "titulo": "Como a Família Te Trata Quando Você Junta Dinheiro",
