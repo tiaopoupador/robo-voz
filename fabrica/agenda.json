@@ -13,54 +13,6 @@
     "Marcos"
    ],
    "adiado": "07/11: adiado do dia 08 para consertar imagens e voz"
-  },
-  {
-   "nn": "04",
-   "quando": "2026-11-18 18:00",
-   "titulo": "Como a Família Te Trata Quando Você Junta Dinheiro",
-   "elenco": [
-    "Tião",
-    "Rafa",
-    "Dona Cida"
-   ],
-   "familia": "você fez X e algo estranho aconteceu",
-   "formato": "você",
-   "esconde": "quem pede emprestado, quem some, quem julga, e quem mostra que ama de verdade; e o que você faz para não perder nem o dinheiro nem a família",
-   "capa": {
-    "texto": "EMPRESTA AÍ?",
-    "cena": "almoço de domingo em família: todos olham para o Tião com a mão estendida, o primo Rafa sorrindo de braço no ombro dele; só a Dona Cida, no canto, olha com carinho"
-   },
-   "angulo": "Contado em VOCÊ. Escada do saldo guardado (R$ 1 mil, R$ 10 mil, R$ 50 mil, R$ 150 mil, R$ 500 mil) e o que muda em cada almoço de domingo: o primo Rafa pede para o carro de aplicativo, a tia julga a caneca velha, o cunhado oferece 'investimento', a Dona Cida é a única que pergunta se você está feliz.",
-   "modelo": {
-    "titulo": "How Your Own Family Treats You When You Become the First Millionaire",
-    "canal": "@darkledger13",
-    "views": 117393,
-    "id": "yg_Bl2lfCSA"
-   }
-  },
-  {
-   "nn": "05",
-   "quando": "2026-11-22 17:00",
-   "titulo": "O Que Acontece Quando Você Fica 10 Anos Com o Mesmo Carro",
-   "elenco": [
-    "Tião",
-    "Valéria",
-    "Jéssica"
-   ],
-   "familia": "o que acontece se",
-   "formato": "você",
-   "esconde": "o que as parcelas que você não pagou viraram em 10 anos, e o dia em que quem riu do carro precisou de você",
-   "capa": {
-    "texto": "ANO 10",
-    "cena": "o Tião encostado no carro velho e limpo, a Valéria passando de SUV novo e rindo com a mão na boca; etiquetas Ano 1, Ano 5, Ano 10 sobre o carro"
-   },
-   "angulo": "Contado em VOCÊ. Escada de anos (1 a 10): a cada ano o carro velho, a conta da parcela que não existe, a Valéria trocando de SUV em 60 parcelas, a Jéssica do primeiro emprego querendo financiar o primeiro carro.",
-   "modelo": {
-    "titulo": "Your Life Driving the Same Car for 10 Years",
-    "canal": "@darkledger13",
-    "views": 176429,
-    "id": "2_TcC2ohCFs"
-   }
   }
  ],
  "modelos_usados": [
