@@ -1,9 +1,10 @@
 // Barra de recados estilo telejornal (Ed, 11/11/2026: «uma barra embaixo mostrando várias informações (...) umas 5 vezes
 // por vídeo (...) quanto mais se pede pra se inscrever, curtir, mais a audiência faz»).
 // Sobe da base com mola, o selo vermelho "PLANTÃO DO TIÃO" pisca, o texto corre da direita para a esquerda e a barra desce.
-// Tudo é função do tempo (seek puro). Som: um "slide" ao subir e um "ding" leve quando o selo acende.
+// Tudo é função do tempo (seek puro). Som: um "slide" ao subir e o PLIM do canal (3 notas do jingle) quando o selo acende.
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { PLIM } from "./assinatura";
 import { loadFont } from "@remotion/google-fonts/Baloo2";
 import { mola } from "../mola";
 import { Emoji, Som } from "./vivo";
@@ -33,7 +34,7 @@ export const Plantao: React.FC<{ frases: string[]; dur: number; acoes?: Acao[] }
         return a && t >= de - 0.05 && t < ate + 0.5 ? <CartaoAcao key={i} acao={a} t={t - de} dur={ate - de} /> : null;
       })}
       <Som nome="slide" em={0} vol={0.28} />
-      <Som nome="ding" em={0.4} vol={0.22} />
+      <Sequence from={Math.round(0.35 * fps)} durationInFrames={Math.round(0.8 * fps)} layout="none"><Audio src={staticFile(PLIM)} volume={0.45} /></Sequence>{/* o plim do canal quando o selo acende */}
       <div style={{ height: PLANTAO_ALTURA, transform: `translateY(${y}px)`, position: "relative", overflow: "hidden",
         background: AZUL, borderTop: `5px solid ${AMARELO}`, boxShadow: "0 -8px 24px rgba(0,0,0,0.35)" }}>
         <div style={{ position: "absolute", left: 0, top: "50%", whiteSpace: "nowrap", transform: `translate(${x}px,-50%)`,

@@ -5,7 +5,7 @@ import { loadFont } from "@remotion/google-fonts/Baloo2";
 import { mola, MOLAS } from "../mola";
 import { Balao, Barras, Calendario, Carimbo, Cita, Conta, COR, Etiqueta, Frase, LinhaTempo, Numero, reais } from "../motion/kit";
 import { Balanca, Botao, Celular, Divide, FraseTopo, Grade, Grafico, Icones, Lista, Pessoas, Pizza, Placa, Torre, Trinca } from "../motion/kit2";
-import { TelaFinal } from "../motion/TelaFinal";
+import { TelaFinalNova } from "../motion/TelaFinalNova";  // Ed 13/11: «pode» (a TelaFinal antiga fica no arquivo, fora de uso)
 import { FotoNota } from "../motion/fotonota";
 import { Brilho, Check, Reacao, tremor, Voa, Xis } from "../motion/reacoes";
 import { Acao, Plantao, PLANTAO_ALTURA } from "../motion/Plantao";
@@ -90,7 +90,7 @@ const Peca: React.FC<{ c: Cena; dur: number; lado: number }> = ({ c, dur, lado }
     case "botao": return <Botao tipo={c.tipo} texto={c.texto} />;
     case "torre": return <Torre itens={c.itens} titulo={c.titulo} />;
     case "fotonota": return <FotoNota itens={c.itens} total={c.total} categoria={c.categoria} />;
-    case "final": return <TelaFinal />;
+    case "final": return <TelaFinalNova />;
     case "montagem": return <Montagem imgs={c.imgs} seg={c.seg ?? 0.45} />;
     case "grade": return <Grade total={c.total} cols={c.cols} titulo={c.titulo} ate={c.ate} cor={c.cor} rotuloFim={c.rotuloFim} corFim={c.corFim} />;
   }
@@ -145,7 +145,8 @@ export const Video: React.FC<Dados> = (dados) => {
     <OndaCtx.Provider value={dados.onda ?? []}>
     <AbsoluteFill style={{ backgroundColor: COR.tinta }}>
       {CENAS.map((c, i) => {
-        const fim = i + 1 < CENAS.length ? CENAS[i + 1].ini : FIM;
+        // a cena antes da tela final dura mais 0,8 s: é ela que a onda amarela cobre ao entrar (por baixo, nunca um fundo vazio)
+        const fim = i + 1 < CENAS.length ? CENAS[i + 1].ini + (CENAS[i + 1].k === "final" ? 0.8 : 0) : FIM;
         const de = Math.round(c.ini * fps), n = Math.max(1, Math.round(fim * fps) - de);
         return <Sequence key={i} from={de} durationInFrames={n}><Peca c={c} dur={n / fps} lado={i % 2 ? -1 : 1} /></Sequence>;
       })}

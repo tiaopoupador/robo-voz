@@ -2,7 +2,8 @@
 // Os dois quadros da direita e o circulo de inscricao sao os lugares onde o YouTube Studio poe a "tela final"
 // (video recomendado, playlist, botao de inscrever). Posicoes no padrao do YouTube para 1920x1080.
 import React from "react";
-import { AbsoluteFill, Img, staticFile } from "remotion";
+import { AbsoluteFill, Audio, Img, Sequence, staticFile, useVideoConfig } from "remotion";
+import { JINGLE } from "./assinatura";
 import { fontFamily, m, useT } from "./kit";
 import { Som } from "./vivo";
 
@@ -10,6 +11,7 @@ const OURO = "#F2C14E", OURO2 = "#FFE7A3", NOITE = "#0B1020";
 const brilho = (t: number, ini: number, vel = 0.9) => ((t - ini) * vel) % 2.4; // posicao da faixa de luz que passa
 
 export const TelaFinal: React.FC = () => {
+  const { fps } = useVideoConfig();
   const t = useT();
   const fundo = m(t, 0, "lenta"), tiao = m(t, 0.35, "cartao"), nome = m(t, 0.9, "cartao"), sub = m(t, 1.4), q1 = m(t, 1.8, "cartao"), q2 = m(t, 2.1, "cartao"), anel = m(t, 2.5, "estalo");
   const sai = t > 9.2 ? Math.max(0, 1 - (t - 9.2) / 0.8) : 1;
@@ -28,7 +30,7 @@ export const TelaFinal: React.FC = () => {
   };
   return (
     <AbsoluteFill style={{ background: NOITE, overflow: "hidden", opacity: sai }}>
-      <Som nome="sparkle" em={0.3} /><Som nome="ding" em={0.95} /><Som nome="pop" em={1.85} /><Som nome="pop" em={2.15} /><Som nome="sparkle" em={2.6} />
+      <Sequence from={Math.round(0.25 * fps)} durationInFrames={Math.round(2.1 * fps)} layout="none"><Audio src={staticFile(JINGLE)} volume={0.6} /></Sequence>{/* o jingle do canal abre a tela final */}<Som nome="pop" em={1.85} /><Som nome="pop" em={2.15} /><Som nome="sparkle" em={2.6} />
       {/* luz de fundo que respira */}
       <AbsoluteFill style={{ background: `radial-gradient(1100px 760px at ${30 + 4 * Math.sin(t * 0.5)}% 55%, rgba(242,193,78,${0.20 * fundo}), transparent 70%), radial-gradient(900px 600px at 85% 20%, rgba(80,110,200,${0.18 * fundo}), transparent 70%)` }} />
       {/* poeira dourada subindo devagar */}

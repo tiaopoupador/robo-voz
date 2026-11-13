@@ -8,13 +8,15 @@
 #   4. numero, dia ou fato que nao bate com outra linha;
 #   5. promessa sem pagamento (o que foi anunciado e nunca aparece) e personagem que some sem fim de historia;
 #   6. frase solta que um espectador novo nao entenderia;
-#   7. cliche que a IA da a todo canal (lista em fabrica/cliches.txt, Ed 11/11: «quero ser unico»).
+#   7. cliche que a IA da a todo canal (lista em fabrica/cliches.txt, Ed 11/11: «quero ser unico»);
+#   8. FUNIL do Joba (Ed 13/11, canal-dark longo.md secao 20): gancho-espelho, "vamos comecar", FinMoovi antes do fim,
+#      2 pedidos falados, nunca dizer que acaba, fim = gancho do proximo video.
 # Custo: uns US$ 0,20 a 0,30 por roteiro (credito de revisor). Uso: python fabrica/revisor_roteiro.py 02 [arquivo]
 import json, os, re, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 from fabrica.google import chaves
 ESQ = {"type": "object", "properties": {"problemas": {"type": "array", "items": {"type": "object", "properties": {
-    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta", "cliche"]},
+    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta", "cliche", "funil"]},
     "grave": {"type": "boolean"}, "problema": {"type": "string"}, "como_resolver": {"type": "string"}},
     "required": ["linha", "tipo", "grave", "problema", "como_resolver"], "additionalProperties": False}}},
     "required": ["problemas"], "additionalProperties": False}
@@ -32,7 +34,15 @@ Aponte cada lugar onde a história falha:
 7. CLICHÊ (o canal quer ser ÚNICO): qualquer item da LISTA DE CLICHÊS abaixo, ou outro recurso que todo canal de finanças feito
    com IA usa. Em como_resolver, troque por algo que só o bairro do Tião teria (um lugar, um objeto, um costume, um bordão nosso).
    Clichê é sempre grave.
-Não aponte estilo, ritmo ou gosto. Só lógica da história e clichê. "grave" = o espectador notaria e ficaria confuso.
+8. FUNIL (sempre grave; aponte o que falta, na linha onde devia estar):
+   a) a abertura (10 primeiros segundos) tem de ser um trecho chocante que se repete, com as MESMAS palavras, no meio do roteiro;
+   b) depois do gancho e da promessa, o Tião chama "vamos começar?" (aí entra a vinheta) e logo diz quem ele é, em 2 ou 3 frases;
+   c) o FinMoovi entra no fim do penúltimo capítulo, depois de anunciar o que vem ("mas antes, um recado rápido"), e NUNCA no fim;
+   d) pelo menos 2 pedidos FALADOS de like/inscrição/comentário, cada um colado a um gancho do que vem a seguir;
+   e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
+   f) as últimas frases são o gancho para o PRÓXIMO vídeo, ligado à dor deste, com "já está aparecendo aqui, clica e vê agora",
+      e o vídeo acaba logo ali; nunca "no próximo capítulo" entre partes.
+Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê e funil. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.
 O roteiro, uma linha por número:

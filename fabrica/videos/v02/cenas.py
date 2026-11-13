@@ -464,3 +464,21 @@ for _n, (_refs, _ped) in REFAZER.items():
     _novo = "ed-" + _n
     IMG[_novo] = ("meta", _refs, "cf:" + _n); PEDIDO[_novo] = _ped; NOMES[_novo] = "refazer_" + _n
     for _k in L: L[_k] = [(g, t, _troca(c, _n, _novo)) for g, t, c in L[_k]]
+
+# 13/11/2026: as 40 refeitas chegaram (Drive entrada/video-02). Escolhidas olhando uma a uma (folhas a e b lado a lado).
+# "c" = metade de uma imagem dupla do meta.ai (dois quadros lado a lado), cortada em 16:9 e aumentada no Real-ESRGAN:
+# o M28 e o M29 só vieram assim. Nas outras com imagem dupla (M35-b, M42-b, M45-b, M47-b, M49-b, M55-b) ficou a simples.
+ESCOLHA.update({
+    "ed-marcos-espera": "a", "ed-sandra-entra": "a", "ed-lapis": "b", "ed-carrinhos": "b", "ed-sandra-ri": "c", "ed-sandra-visor": "c",
+    "ed-porta-abre": "a", "ed-som-teto": "b", "ed-padaria": "a", "ed-pesquisador": "a", "ed-tiao-passa": "a", "ed-lista-riscada": "a",
+    "ed-carrinho-vazio": "b", "ed-leite": "a", "ed-marcos-grita": "a", "ed-sandra-biscoito": "a", "ed-biscoito": "b",
+    "ed-prateleira-baixo": "b", "ed-tiao-agachado": "a", "ed-etiqueta": "a", "ed-tiao-cafes": "a", "ed-latas": "b", "ed-tiao-gramas": "a",
+    "ed-rack-caixa": "a", "ed-sandra-fila-parada": "b", "ed-sandra-pega-chocolate": "b", "ed-tiao-esteira": "a", "ed-marcos-fila": "a",
+    "ed-tiao-debito": "a", "ed-visor": "b", "ed-maquininha": "b", "ed-marcos-celular": "b", "ed-marcos-serio": "a", "ed-sandra-lista": "b",
+    "ed-sandra-bolsa-carrinho": "b"})
+
+# 11/11/2026: a barra "Plantão do Tião" só entra a partir do vídeo 03 (combinado com o Ed: o 02 sai como está)
+BARRAS = []
+
+# 13/11/2026: Ed escolheu o "Jeito 2": GIF do meta.ai tremido (3 quadros por segundo) vira a foto parada com a camera andando.
+GIF = "foto"

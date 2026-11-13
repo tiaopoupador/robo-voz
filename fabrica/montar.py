@@ -46,6 +46,14 @@ def sem_faixas(f):
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f, "-vf", f"crop=iw:{h}:0:{y},scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080",
                         "-c:v", "libx264", "-crf", "18", "-an", out], check=True)
     avisos.append(f"{os.path.basename(f)}: tinha faixa preta, cortei ({H - h} px)"); return out
+def gif_tremido(g):
+    """True se o GIF tem menos de 8 quadros por segundo (os do meta.ai de 12/11 tinham 3: cortes secos entre ângulos)"""
+    from PIL import Image
+    im = Image.open(g); ds = []
+    try:
+        while True: ds.append(im.info.get("duration") or 100); im.seek(im.tell() + 1)
+    except EOFError: pass
+    return sum(ds) / max(1, len(ds)) > 125
 def fonte(nome):
     """devolve (tipo, arquivo local): 'img' ou 'vid'"""
     if nome.startswith("banco:FM:"): return "vid", FM + nome[9:]
@@ -55,10 +63,12 @@ def fonte(nome):
     if q[0].startswith("banco:"): return "img", f"{P}/banco/imagens/{q[0][6:]}"
     if q[0] == "meta":
         g = do_ed(nome, (".gif",))  # o GIF animado do meta.ai (5 s) vira uma cena que se mexe
+        if g and getattr(C, "GIF", "gif") == "foto" and gif_tremido(g):  # 13/11: o Ed escolhe (GIF = "gif" ou "foto" no cenas.py; suavizar deu rosto duplicado)
+            avisos.append(f"{os.path.basename(g)}: GIF tremido (poucos quadros por segundo), usei a foto"); g = None
         if g:
             mp4 = os.path.splitext(g)[0] + "-gif.mp4"
             if not os.path.exists(mp4):
-                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", g, "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,format=yuv420p",
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", g, "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080," + "fps=30,format=yuv420p",
                                 "-c:v", "libx264", "-crf", "18", "-an", mp4], check=True)
             usados_ed.append(nome); return "vid", mp4
         f = do_ed(nome, (".jpg", ".jpeg", ".png", ".webp"))
@@ -165,19 +175,26 @@ for i, (a, cl) in enumerate(pontos):
     lista = FAIXAS[cl]; f = lista[uso.get(cl, 0) % len(lista)]; uso[cl] = uso.get(cl, 0) + 1
     partes.append((a, b, f))
 if partes and partes[0][0] > 0: partes[0] = (0, partes[0][1], partes[0][2])
-X = 2.0; ent, filt = [], []
+X = 2.0
+# 13/11/2026: em partes (abrir as 20 musicas num ffmpeg so estourava a memoria do PC): cada trecho vira um wav, depois junta de 2 em 2
+import tempfile; TMPM = tempfile.mkdtemp(prefix="trilha")
 for i, (a, b, f) in enumerate(partes):
     d = b - a + (X if i < len(partes) - 1 else 0)
-    if f: ent += ["-stream_loop", "-1", "-i", MUS + f + ".mp3"]
-    else: ent += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+    ent = ["-stream_loop", "-1", "-i", MUS + f + ".mp3"] if f else ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
     norm = ",loudnorm=I=-30:TP=-6:LRA=7" if f else ""
-    filt.append(f"[{i}:a]atrim=0:{d:.2f},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo{norm}[m{i}]")
-cad = "[m0]"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *ent, "-af", f"atrim=0:{d:.2f},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo{norm}",
+                    "-ar", "44100", "-ac", "2", "-c:a", "pcm_s16le", f"{TMPM}/m{i}.wav"], check=True)
+cad = f"{TMPM}/m0.wav"
 for i in range(1, len(partes)):
     xd = 0.4 if (partes[i][2] is None or partes[i - 1][2] is None) else X  # o silencio entra em CORTE (Ed: "cai o volume")
-    filt.append(f"{cad}[m{i}]acrossfade=d={xd}:c1=tri:c2=tri[x{i}]"); cad = f"[x{i}]"
-filt.append(f"{cad}volume='if(gte(t,{FIM}),1.0+1.6*min(1,(t-{FIM})/1.5),1.0)':eval=frame,afade=t=in:d=2,afade=t=out:st={TOTAL - 2.5:.2f}:d=2.5[o]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", *ent, "-filter_complex", ";".join(filt), "-map", "[o]", "-t", f"{TOTAL:.2f}", "-c:a", "libmp3lame", "-q:a", "3", PUB + "/trilha.mp3"], check=True)
+    sai = f"{TMPM}/x{i}.wav"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", cad, "-i", f"{TMPM}/m{i}.wav", "-filter_complex", f"[0:a][1:a]acrossfade=d={xd}:c1=tri:c2=tri[o]",
+                    "-map", "[o]", "-c:a", "pcm_s16le", sai], check=True)
+    if i > 1: os.remove(cad)
+    cad = sai
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", cad, "-af", f"volume='if(gte(t,{FIM}),1.0+1.6*min(1,(t-{FIM})/1.5),1.0)':eval=frame,afade=t=in:d=2,afade=t=out:st={TOTAL - 2.5:.2f}:d=2.5",
+                "-t", f"{TOTAL:.2f}", "-c:a", "libmp3lame", "-q:a", "3", PUB + "/trilha.mp3"], check=True)
+import shutil; shutil.rmtree(TMPM, ignore_errors=True)
 musicas = sorted({f for _, _, f in partes if f})
 
 # ---------------- sons de cena (AMB em cenas.py) ----------------
