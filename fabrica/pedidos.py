@@ -94,6 +94,10 @@ if "--enviar" in sys.argv:
     import datetime
     from fabrica import team, correio
     ok, ja = False, False
+    try:  # antes da tarefa nova: o que o Ed escreveu nas do video anterior (manual da porta, secao 3, Ed 13/11)
+        ant = f"{int(NN) - 1:02d}"; rec = team.recados([team.chave_unica(ant), team.chave_unica(ant) + "-extras", team.chave_unica(ant) + "-refazer", f"tiao-v{ant}-capas"])
+        print("📝 recados do Ed no vídeo anterior:" + ("".join(f"\n  {r}" for r in rec) + "\n  ⚠️ conferir se algum muda estes pedidos antes de mandar" if rec else " nenhum"))
+    except Exception as e: print("recados do Team não vieram:", e)
     try:
         ja = team.ver(NN) is not None
         if ja: print("Team: a tarefa ja existe, nao mando de novo")

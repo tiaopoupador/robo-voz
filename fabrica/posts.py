@@ -49,17 +49,20 @@ def video(nn):
 # ---------------- o pedido ao Claude ----------------
 def plano(dom, qua, dom2, comunidade):
     return [
-     ("segunda", "texto", f"O VÍDEO DE ONTEM (domingo): «{dom['titulo']}». Conte em 2 ou 3 frases, na voz do Tião, o problema que o vídeo mostra, como quem já passou por isso, e termine convidando a assistir. NÃO escreva link."),
+     ("segunda", "texto", f"O VÍDEO DE ONTEM (domingo): «{dom['titulo']}». Conte em 2 ou 3 frases, na voz do Tião, o problema que o vídeo mostra, como quem já passou por isso, e termine convidando a assistir. NÃO escreva link."
+                          if dom["titulo"] else f"UMA CONVERSA DE SEGUNDA (ontem NÃO teve vídeo, não diga que teve): 2 ou 3 frases na voz do Tião sobre uma situação do dia a dia ligada ao vídeo de quarta («{qua['titulo']}»), e termine dizendo que quarta, às 18h, tem vídeo novo."),
      ("terça", "enquete", f"ENQUETE sobre o tema do vídeo de domingo («{dom['titulo']}»): uma situação do dia a dia em que a pessoa se reconhece. 3 ou 4 opções curtas, todas plausíveis, nenhuma 'certa'."),
      ("quarta", "texto", f"O AVISO DE HOJE: hoje, quarta, às 18h, estreia o vídeo novo: «{qua['titulo']}». Desperte curiosidade pelo problema, sem entregar o final."),
-     ("quinta", "texto", f"O VÍDEO DE ONTEM (quarta): «{qua['titulo']}». 2 ou 3 frases na voz do Tião sobre o problema, convidando a assistir. NÃO escreva link."),
+     ("quinta", "texto", f"O VÍDEO DE ONTEM (quarta): «{qua['titulo']}». 2 ou 3 frases na voz do Tião sobre o problema, convidando a assistir. NÃO escreva link."
+                         if qua["titulo"] else "UMA CONVERSA DE QUINTA (ontem NÃO teve vídeo, não diga que teve): 2 ou 3 frases na voz do Tião sobre uma situação do dia a dia ligada aos vídeos da semana, terminando com uma pergunta para os comentários."),
      ("sexta", "quiz", "QUIZ: uma pergunta com UMA resposta certa, tirada de um fato dos vídeos da semana (só fatos que estão nos roteiros). 3 ou 4 opções curtas; diga qual é a certa em 'correta' (0 a 3) e escreva em 'explicacao' 1 frase curta que o YouTube mostra depois da resposta."),
      ("sábado", "texto", (f"A COMUNIDADE: um de vocês contou isto nos comentários (NÃO diga o nome da pessoa): «{comunidade}». Comente como o Tião, com carinho e humor, e pergunte quem mais já passou por isso."
                           if comunidade else "O CADERNO DO TIÃO: uma dica curta e concreta tirada dos vídeos da semana, que a pessoa pode usar hoje, contada como algo que o Tião faz na vida dele. Sem conta, sem lista longa.")),
      ("domingo", "texto", f"O AVISO DE HOJE: hoje, domingo, às 17h, estreia o vídeo novo: «{dom2['titulo'] or '(tema ainda não definido: diga só que hoje às 17h tem história nova do Tião)'}». Desperte curiosidade, sem entregar o final."),
     ]
-def pedido(pl, vids):
+def pedido(pl, vids, recados=()):
     ctx = "\n\n".join(f"═══ ROTEIRO DO VÍDEO «{v['titulo']}» ═══\n{v['roteiro'][:14000]}" for v in vids if v["roteiro"])
+    if recados: ctx += "\n\n═══ O QUE O DONO DO CANAL ESCREVEU NAS TAREFAS ANTERIORES (siga isto, vale mais que o resto) ═══\n" + "\n".join(f"- {r}" for r in recados)
     return f"""Você escreve os posts da aba "Posts" do canal de YouTube Tião Poupador. Quem fala é o próprio Tião, na primeira pessoa: um brasileiro simples, uns 30 anos, que aprendeu a cuidar do dinheiro no dia a dia (caderno, lista, sem dívida). Público: famílias brasileiras de classe média e baixa.
 Linguagem: português do Brasil, simples, conversa de vizinho, frases curtas, no máximo 1 ou 2 emojis por post, sem jargão.
 
@@ -107,9 +110,9 @@ def validar(posts, pl, ok_num):
             if len(p["cena"]) < 30: erros.append(f"{r}: falta a 'cena' da imagem")
             elif m := CENA_COM_LETRAS.search(p["cena"]): erros.append(f"{r}: a cena pede «{m[0]}»; a imagem não pode ter letras nem números")
     return erros
-def escrever(pl, vids):
+def escrever(pl, vids, recados=()):
     import anthropic
-    cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"]); base = pedido(pl, vids); ok = numeros(vids); erros, versao, custo = [], None, 0.0
+    cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"]); base = pedido(pl, vids, recados); ok = numeros(vids); erros, versao, custo = [], None, 0.0
     for tent in range(1, 5):
         msg = base + ("" if not erros else f"\n\n⚠️ A versão abaixo foi REPROVADA:\n{json.dumps(versao, ensure_ascii=False)}\n\nCorrija SÓ isto e deixe o resto igual:\n" + "\n".join(f"- {e}" for e in erros))
         r = cli.messages.create(model=MODELO, max_tokens=6000, messages=[{"role": "user", "content": msg}], output_config={"format": {"type": "json_schema", "schema": ESQ}})
@@ -121,21 +124,66 @@ def escrever(pl, vids):
     raise SystemExit("os posts não passaram nas travas: " + " | ".join(erros))
 
 # ---------------- a imagem (Cloudflare gratis, quadrada, com o Tiao) ----------------
+def prompt_imagem(cena):
+    return ("Flat 2D cartoon illustration, clean thin black outlines, soft cel shading, warm colors, square 1:1 social media post image, simple background. "
+            "The character must be IDENTICAL to the reference images: Tiao, about 30, short and slightly chubby, round face, short messy black hair, a THIN black pencil mustache, "
+            "light brown skin, mustard yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch. The second reference is his character sheet: draw him ONCE, in a natural pose. "
+            f"Scene: {cena} Correct anatomy, five fingers. ABSOLUTELY NO text, letters, numbers, signs, logos or screens with writing anywhere.")
 def imagem(cena, arq):
     e = chaves(); b = uuid.uuid4().hex; corpo = []
     def campo(k, v, nome=None):
         cab = f'--{b}\r\nContent-Disposition: form-data; name="{k}"' + (f'; filename="{nome}"\r\nContent-Type: image/jpeg' if nome else "") + "\r\n\r\n"
         corpo.append(cab.encode() + (v if isinstance(v, bytes) else v.encode()) + b"\r\n")
-    pr = ("Flat 2D cartoon illustration, clean thin black outlines, soft cel shading, warm colors, square 1:1 social media post image, simple background. "
-          "The character must be IDENTICAL to the reference images: Tiao, about 30, short and slightly chubby, round face, short messy black hair, a THIN black pencil mustache, "
-          "light brown skin, mustard yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch. The second reference is his character sheet: draw him ONCE, in a natural pose. "
-          f"Scene: {cena} Correct anatomy, five fingers. ABSOLUTELY NO text, letters, numbers, signs, logos or screens with writing anywhere.")
-    campo("prompt", pr); campo("width", "1024"); campo("height", "1024")
+    campo("prompt", prompt_imagem(cena)); campo("width", "1024"); campo("height", "1024")
     for n, r in enumerate(("tiao-sem-caneca.jpg",)): campo(f"input_image_{n}", open(f"{P}/banco/referencia/{r}", "rb").read(), f"r{n}.jpg")
     req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{e['CLOUDFLARE_TIAO_CONTA']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b",
                                  data=b"".join(corpo) + f"--{b}--\r\n".encode(), method="POST", headers={"Authorization": "Bearer " + e["CLOUDFLARE_TIAO"], "Content-Type": "multipart/form-data; boundary=" + b})
     try: open(arq, "wb").write(base64.b64decode(json.load(urllib.request.urlopen(req, timeout=180))["result"]["image"])); return True
     except Exception as x: log("imagem não saiu (o Ed gera pela cena):", getattr(x, "code", x)); return False
+
+# ---------------- montar os passos (manual da porta, secao 3b: Ed, 13/11) ----------------
+LETRAS = "ABCD"
+def frase(o):  # a opcao com ponto final («Opção A: Fico sem saber para onde ele foi.»)
+    o = o.strip(); return o if o[-1:] in ".?!" else o + "."
+def copiar_post(it):
+    """o texto pronto a colar: o post; na enquete e no quiz, linha vazia e «Opção A: ...» com ponto final"""
+    if it["tipo"] == "texto": return it["texto"]
+    c = it["texto"] + "\n\n" + "\n".join(f"Opção {LETRAS[k]}: {frase(o)}" for k, o in enumerate(it["opcoes"]))
+    if it["tipo"] == "quiz": c += f"\n\nResposta certa: Opção {LETRAS[it['correta']]}.\nExplicação: {frase(it['explicacao'])}"
+    return c
+def formato(it):
+    if it["tipo"] == "enquete": return "📊 Enquete com imagem" if it.get("url_img") or it.get("cena") else "📊 Enquete só de texto"
+    if it["tipo"] == "quiz": return "🧠 Quiz"
+    return "🖼️ Imagem com texto" if it.get("url_img") or it.get("cena") else "📝 Só texto"
+def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a imagem a mao
+    try:
+        ref = drive.achar("referencia", drive.achar("Tiao Poupador"))
+        return [{"rotulo": "Anexar: " + f["name"], "url": f"https://drive.google.com/file/d/{f['id']}/view"}
+                for f in drive.listar(ref) if f["name"] in ("tiao-sem-caneca.jpg", "tiao-ficha-oficial.jpg")]
+    except Exception: return []
+def montar(seg, itens):
+    """itens: dia, tipo, texto (ja com o link), opcoes, correta, explicacao, cena, url_img, capa -> (passos do Team, texto do e-mail)"""
+    passos, md, refs = [], [f"# Tião Poupador · posts da semana {seg:%d/%m} a {seg + datetime.timedelta(days=6):%d/%m}", "",
+                            "Cole cada um no YouTube Studio (Criar > Criar post) e **agende para o dia e a hora indicados**. Quando o post leva imagem, o passo da imagem vem logo antes.", ""], None
+    for i, it in enumerate(itens):
+        data = seg + datetime.timedelta(days=i); cod = f"P{i + 1}"; dia = it["dia"]; fmt = formato(it)
+        tem_img = bool(it.get("url_img") or it.get("cena"))
+        if tem_img:
+            pr = prompt_imagem(it["cena"]) if it.get("cena") else ""
+            if it.get("capa"): onde = "é a capa do vídeo: só baixar no link"
+            elif it.get("url_img"): onde = "o robô já fez: só baixar no link (se não gostar, gere de novo com o prompt)"
+            else: onde = "gerar à mão (meta.ai) com o prompt e as fotos do Tião"
+            if pr and refs is None: refs = [] if ENSAIO else refs_tiao()
+            lk = ([{"rotulo": "A imagem do post", "url": it["url_img"]}] if it.get("url_img") else []) + ((refs or []) if pr else [])
+            passos.append({"codigo": f"{cod}-IMG", "texto": f"{dia.capitalize()} {data:%d/%m} · 🖼️ Imagem quadrada do post {cod} (imagem, não é vídeo) · {onde}",
+                           "copiar": pr, "links": lk, "ficheiro": f"{cod}-{dia}.jpg"})
+            md += [f"### {cod}-IMG · a imagem do post de {dia} {data:%d/%m} (imagem quadrada, não é vídeo)", "", onde, ""] + \
+                  ([f"🖼️ {it['url_img']}", ""] if it.get("url_img") else []) + (["```", pr, "```", ""] if pr else [])
+        c = copiar_post(it)
+        passos.append({"codigo": cod, "texto": f"{dia.capitalize()} {data:%d/%m} · {fmt} · agendar 12h (Brasília)" + (f" · imagem do passo {cod}-IMG" if tem_img else ""),
+                       "copiar": c, "links": [], "ficheiro": ""})
+        md += [f"### {cod} · {dia} {data:%d/%m} · {fmt} · agendar 12h (Brasília)", "", "```", c, "```", ""]
+    return passos, md
 
 # ---------------- montar e mandar ----------------
 def main():
@@ -154,37 +202,37 @@ def main():
         d = [i for i in ler_caderno().get("semana", []) if i.get("tipo") == "destaque"]
         if d: comunidade = d[-1]["texto"]
     except Exception: pass
-    pl = plano(vd, vq, vd2, comunidade); posts, custo = escrever(pl, [v for v in (vd, vq, vd2) if v["roteiro"]])
+    # antes da tarefa nova: o que o Ed escreveu nas anteriores (notas dos passos e conversa), manual secao 3
+    from fabrica import team
+    ant = [f"tiao-posts-{(seg - datetime.timedelta(weeks=k)).isocalendar()[0]}-w{(seg - datetime.timedelta(weeks=k)).isocalendar()[1]:02d}" for k in (1, 2)]
+    ant += [team.chave_unica(v["nn"]) for v in (vd, vq) if v["nn"]]
+    rec = []
+    try: rec = team.recados(ant)
+    except Exception as e: log("recados do Team não vieram:", e)
+    log("📝 recados do Ed nas tarefas anteriores:" + ("".join(f"\n  {r}" for r in rec) if rec else " nenhum"))
+    pl = plano(vd, vq, vd2, comunidade); posts, custo = escrever(pl, [v for v in (vd, vq, vd2) if v["roteiro"]], rec)
     sai = f"{P}/fabrica/saida/posts-{semana}"; os.makedirs(sai, exist_ok=True)
     links = {"segunda": vd, "quinta": vq}
     pasta = None if ENSAIO else drive.pasta(semana, drive.pasta("posts", drive.pasta("Tiao Poupador")))
-    passos, md = [], [f"# Tião Poupador · posts da semana {seg:%d/%m} a {seg + datetime.timedelta(days=6):%d/%m}", "",
-                      "Cole cada um no YouTube Studio (Criar > Criar post), anexe a imagem e **agende para o dia e a hora indicados**.", ""]
+    itens = []
     for i, (p, (dia, tipo, _)) in enumerate(zip(posts, pl)):
-        data = seg + datetime.timedelta(days=i); cod = f"P{i + 1}"; txt = p["texto"].strip()
-        v = links.get(dia)
+        cod = f"P{i + 1}"; txt = p["texto"].strip(); v = links.get(dia) if (links.get(dia) or {}).get("titulo") else None
         if v and v.get("id"): txt += f"\n\n▶️ https://youtu.be/{v['id']}"
         elif v: txt += "\n\n▶️ (o link do vídeo: cole o do vídeo de " + ("domingo" if dia == "segunda" else "quarta") + ")"
-        arq_img, url_img = None, None
+        url_img, cena, capa = None, "", False
         if dia in ("quarta", "sábado", "domingo") and p["cena"]:
-            arq_img = f"{sai}/{cod}-{dia}.jpg"
-            if not ENSAIO and imagem(p["cena"], arq_img): url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
+            cena = p["cena"]; arq_img = f"{sai}/{cod}-{dia}.jpg"
+            if not ENSAIO and imagem(cena, arq_img): url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
             time.sleep(5)
-        elif v and v.get("capa"): url_img = f"https://drive.google.com/file/d/{v['capa']}/view"
-        tit = {"texto": "📝 texto", "enquete": "📊 enquete", "quiz": "🧠 quiz"}[tipo]
-        extra = ""
-        if tipo in ("enquete", "quiz"):
-            extra = "\nOpções (uma em cada campo):\n" + "\n".join(f"{'✅ ' if tipo == 'quiz' and k == p['correta'] else '- '}{o}" for k, o in enumerate(p["opcoes"]))
-            if tipo == "quiz": extra += f"\nExplicação (aparece depois da resposta): {p['explicacao']}"
-        quando_txt = f"{dia} {data:%d/%m}, agendar para as 12h (Brasília)"
-        passos.append({"codigo": cod, "texto": f"{dia.capitalize()} {data:%d/%m} · {tit} · agendar 12h" + (" · enquete não leva imagem" if tipo != "texto" else ""),
-                       "copiar": txt + extra, "links": [{"rotulo": "A imagem do post", "url": url_img}] if url_img else [], "ficheiro": f"{cod}-{dia}.jpg" if url_img else ""})
-        md += [f"### {cod} · {quando_txt} · {tit}", "", "```", txt, "```"] + ([extra.strip(), ""] if extra else [""]) + \
-              ([f"🖼️ **Imagem:** {url_img}", ""] if url_img else ([f"🎨 Cena para gerar (a Cloudflare não fez): {p['cena']}", ""] if p["cena"] else [""]))
+        elif v and v.get("capa"): url_img, capa = f"https://drive.google.com/file/d/{v['capa']}/view", True
+        itens.append({"dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
+                      "cena": cena, "url_img": url_img, "capa": capa})
+    passos, md = montar(seg, itens)
+    json.dump(itens, open(f"{sai}/itens.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     open(f"{sai}/posts.md", "w", encoding="utf-8").write("\n".join(md))
     log("\n".join(md))
     if ENSAIO: log(f"\n(ensaio: nada enviado) custo US$ {custo:.3f}"); return
-    from fabrica import team, correio
+    from fabrica import correio
     try:
         r = team.mandar({"chave_unica": f"tiao-posts-{semana}", "tipo": "posts-da-semana", "projeto": "Tião Poupador",
                          "titulo": f"Posts do YouTube da semana {seg:%d/%m} (7 para agendar)", "descricao": "Cole no YouTube Studio (Criar > Criar post) e agende cada um para o dia indicado, às 12h de Brasília.",
