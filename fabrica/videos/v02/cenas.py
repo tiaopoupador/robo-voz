@@ -237,7 +237,7 @@ L = {
       ("biscoito amarelo", "I", "biscoito"), ("biscoito da avó", "I", "meta-avo-portao"), ("O Marcos, que tinha rido", "I", "meta-marcos-anota")],
  98: [("^", "SIL", "fachada"), ("A mesma porta", "I", "porta-abre"), ("mesmas flores", "I", "banca-flores"), ("cheiro de pão", "I", "padaria")],
  99: [("^", "I", "tiao-entra"), ("cestinha vermelha", "I", "cestinha")],
- 100: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("três regras do Tião", "H", ("sandra-lista", [et("as 3 regras do Tião", 82, 36, AMAR)])), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 82, 36, VERDE)]))],
+ 100: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("três regras do Tião", "H", ("sandra-lista", [et("as 3 regras do Tião", 73, 36, AMAR)])), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 73, 36, VERDE)]))],
  101: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
  102: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
  103: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
