@@ -24,12 +24,12 @@ def copia(src, nome):
     d = f"{PUB}/{nome}"
     if not os.path.exists(d) or os.path.getsize(d) != os.path.getsize(src): shutil.copy(src, d)
     return f"{PASTA}/{nome}"
-def do_ed(nome, ext):
+def do_ed(nome, ext, var=None):
     """o que o Ed salvou no Drive para este pedido (M01-a.jpg ... ou F01.mp4); None se nao chegou"""
     cod = COD.get(nome)
     if not cod or not os.path.isdir(ENT): return None
     achados = sorted(f for f in os.listdir(ENT) if f.upper().startswith(cod) and f.lower().endswith(ext) and "-semfaixa" not in f.lower())
-    v = getattr(C, "ESCOLHA", {}).get(nome)  # 09/11: a variante que eu escolhi olhando (ex.: "b" = M20-b), em vez da primeira
+    v = var or getattr(C, "ESCOLHA", {}).get(nome)  # 09/11: a variante que eu escolhi olhando (ex.: "b" = M20-b), em vez da primeira
     if v: achados = sorted(achados, key=lambda f: not f.upper().startswith(f"{cod}-{v.upper()}"))
     return f"{ENT}/{achados[0]}" if achados else None
 def sem_faixas(f):
@@ -59,6 +59,12 @@ def fonte(nome):
     if nome.startswith("banco:FM:"): return "vid", FM + nome[9:]
     if nome.startswith("banco:videos/"): return "vid", f"{P}/banco/{nome[6:]}"
     if nome.startswith("banco:"): return "img", f"{P}/banco/imagens/{nome[6:]}"
+    var = None
+    if "@" in nome:  # 14/11: "meta-riem-juntos@c" = a variante c DESSA imagem nesta cena (a mesma foto do meta.ai mostra outro momento)
+        nome, var = nome.split("@")
+        f = do_ed(nome, (".jpg", ".jpeg", ".png", ".webp"), var)
+        if f and os.path.basename(f).upper().startswith(f"{COD.get(nome)}-{var.upper()}"): usados_ed.append(nome); return "img", f
+        avisos.insert(0, f"ATENCAO {nome}@{var}: essa variante nao chegou, usei a escolhida")
     q = C.IMG[nome]
     if q[0].startswith("banco:"): return "img", f"{P}/banco/imagens/{q[0][6:]}"
     if q[0] == "meta":

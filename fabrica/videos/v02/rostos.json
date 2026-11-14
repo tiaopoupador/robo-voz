@@ -921,5 +921,24 @@
 "y1": 35.0
 }
 ]
+},
+"m07-c-tiao-sandra-supermercado-fila-caixa-os-dois-com-cestinha-rindo-juntos.jpg": {
+"tam": 245547,
+"rostos": [
+{
+"quem": "mulher de cabelo castanho",
+"x0": 4,
+"y0": 6,
+"x1": 43,
+"y1": 79
+},
+{
+"quem": "homem sorrindo",
+"x0": 59,
+"y0": 15,
+"x1": 78,
+"y1": 47
+}
+]
 }
 }

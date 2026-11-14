@@ -240,9 +240,10 @@ L = {
  100: [("^", "I", "porta-abre"), ("Ela para na porta", "I", "sandra-lista"), ("três regras do Tião", "H", ("sandra-lista", [et("as 3 regras do Tião", 73, 36, AMAR)])), ("Cinco coisas", "H", ("sandra-lista", [et("5 coisas, à caneta", 73, 36, VERDE)]))],
  101: [("^", "H", ("sandra-lista", [re_("😳", 70, 28)])), ("toco de lápis", "V", "flow-tiao-brinda")],
  102: [("^", "I", "carrinhos"), ("pega uma cestinha", "H", ("meta-sandra-cestinha", [ck(70, 30)]))],
- 103: [("^", "I", "sandra-biscoito"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
+# 14/11 (Ed): no 2o sabado a Sandra so tem a cestinha. Antes: sandra-biscoito e meta-fila-dois, as duas com o carrinho do 1o sabado.
+ 103: [("^", "I", "meta-sandra-devolve@b"), ("o biscoito da avó", "I", "meta-avo-portao"), ("Lê os gramas", "I", "sandra-gramas"), ("Duzentos gramas", "M", ba([("No tempo da avó", 200, AMAR), ("Agora", 170, VERM)], "Gramas, pelo mesmo preço", "int"))],
  104: [("^", "V", "flow-sandra-devolve"), ("Só sabendo", "H", ("meta-sandra-devolve", [ft("Não com raiva. Só *sabendo*.")]))],
- 105: [("^", "I", "meta-fila-dois"), ("quanto deu o seu", "H", ("meta-fila-dois", [bl("Tião, quanto deu o *seu*?", 70, 14, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
+ 105: [("^", "I", "meta-riem-juntos@c"), ("quanto deu o seu", "H", ("meta-riem-juntos@c", [bl("Tião, quanto deu o *seu*?", 70, 14, "dir")])), ("O meu deu", "M", ba([("Tião", 52, VERDE), ("Sandra", 41, VERDE)], "Sábado seguinte", "reais")), ("quem riu foi ele", "H", ("meta-riem-juntos", [re_("😄", 50, 22)]))],
  106: [("^", "I", "meta-marcos-so-isso"), ("uma sacola só", "I", "sandra-sacola"), ("Quarenta e um", "M", nu(41, "A notinha curtinha", "no débito", cor=VERDE, emoji="😌")),
        ("ficou um segundo quieto", "I", "marcos-so-isso"), ("Semana que vem", "M", fr("Semana que vem, eu também levo a minha *lista*.", "o Marcos"))],
  107: [("^", "M", fr("Se for levar só uma coisa, leva *isto*.")), ("a lista no papel", "M", ic([("📝", "a lista no papel", False)], "Antes de entrar")), ("barriga cheia", "I", "tiao-come-antes"), ("a cestinha", "I", "cestinha"), ("preço por quilo", "M", ic([("🏷️", "preço por quilo", False), ("⚖️", "os gramas", False)], "Na prateleira"))],
