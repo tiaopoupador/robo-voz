@@ -109,7 +109,7 @@ m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 whisper = WhisperModel("small", device="cpu", compute_type="int8")
 print("MEDIDA modelos carregados em", round(time.time() - t0), "s", flush=True)
 import os
-EXAG = float(os.environ.get("EXAG") or 0.5)  # expressao: mais alto fala mais animado e mais rapido (teste do Ed, 18/11)
+EXAG = float(os.environ.get("EXAG") or 0.8)  # expressao 0.8: fala mais animada e uns 3% mais rapida, aprovada pelo Ed a 18/11 (amostra 6)
 RODADA = 7919 * (int(os.environ.get("GITHUB_RUN_ID", "0")) % 1000)  # cada rodada nova tenta outras sementes (regravar uma fala nao repete a mesma voz ruim)
 rel, pedacos = {"parte": parte, "frases": []}, []
 fs = frases(original)

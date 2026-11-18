@@ -7,7 +7,7 @@ on:
       partes:
         default: "[0, 1, 2, 3, 4, 5]"
       exag:
-        default: "0.5"
+        default: "0.8"
 permissions:
   contents: read
 jobs:
