@@ -16,6 +16,8 @@ MODELO = "claude-sonnet-5-5"
 BR = datetime.timezone(datetime.timedelta(hours=-3))
 DIAS = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"]
 LIMITE_TEXTO, LIMITE_OPCAO = 500, 65
+LETRAS = "ABCD"
+COM_CENA = ("terça", "quarta", "sábado", "domingo")  # a enquete de terça leva imagem; o quiz de sexta e so de texto (Ed, 18/11)
 PROIBIDO_TAREFA = re.compile(r"\b(calcul\w*|fa[çc]a a conta|faz a conta|fa[çc]a as contas|somar|anot\w+|pegue o extrato|abra o extrato)", re.I)
 GRATIS = re.compile(r"gr[aá]t[ií]s|de gra[çc]a|gratuit", re.I)
 CENA_COM_LETRAS = re.compile(r"(escrit|texto|letreiro|placa|palavra|frase|legenda|t[ií]tulo|n[uú]mero|etiqueta|cartaz|r\$|\d|logo|marca)", re.I)
@@ -80,7 +82,7 @@ Linguagem: português do Brasil, simples, conversa de vizinho, frases curtas, no
 - Mais de {LIMITE_TEXTO} caracteres por texto; opção de enquete ou quiz com mais de {LIMITE_OPCAO} caracteres.
 
 ═══ A IMAGEM ═══
-Nos posts de TEXTO de quarta, sábado e domingo, escreva também "cena": 1 ou 2 frases descrevendo UMA imagem quadrada com o Tião (o que ele faz, onde, com que objeto do dia a dia, a emoção), em inglês. A cena NÃO pode pedir palavra, número, valor, placa, etiqueta, cartaz, logotipo nem tela com texto. Nos outros posts, "cena" fica vazia (segunda e quinta usam a capa do vídeo)."""
+Na ENQUETE de terça e nos posts de TEXTO de quarta, sábado e domingo, escreva também "cena": 1 ou 2 frases descrevendo UMA imagem quadrada com o Tião (o que ele faz, onde, com que objeto do dia a dia, a emoção), em inglês. A cena NÃO pode pedir palavra, número, valor, placa, etiqueta, cartaz, logotipo nem tela com texto. Nos outros posts, "cena" fica vazia (segunda e quinta usam a capa do vídeo; o quiz de sexta é só de texto)."""
 ESQ = {"type": "object", "properties": {"posts": {"type": "array", "items": {"type": "object", "properties": {
     "dia": {"type": "string"}, "texto": {"type": "string"}, "opcoes": {"type": "array", "items": {"type": "string"}},
     "correta": {"type": "integer"}, "explicacao": {"type": "string"}, "cena": {"type": "string"}},
@@ -106,7 +108,7 @@ def validar(posts, pl, ok_num):
             for o in p["opcoes"]:
                 if len(o) > LIMITE_OPCAO: erros.append(f"{r}: opção com {len(o)} caracteres: «{o}»")
         if tipo == "quiz" and not (0 <= p["correta"] < len(p["opcoes"])): erros.append(f"{r}: 'correta' tem de apontar uma das opções")
-        if dia in ("quarta", "sábado", "domingo"):
+        if dia in COM_CENA:
             if len(p["cena"]) < 30: erros.append(f"{r}: falta a 'cena' da imagem")
             elif m := CENA_COM_LETRAS.search(p["cena"]): erros.append(f"{r}: a cena pede «{m[0]}»; a imagem não pode ter letras nem números")
     return erros
@@ -141,48 +143,59 @@ def imagem(cena, arq):
     try: open(arq, "wb").write(base64.b64decode(json.load(urllib.request.urlopen(req, timeout=180))["result"]["image"])); return True
     except Exception as x: log("imagem não saiu (o Ed gera pela cena):", getattr(x, "code", x)); return False
 
-# ---------------- montar os passos (manual da porta, secao 3b: Ed, 13/11) ----------------
-LETRAS = "ABCD"
-def frase(o):  # a opcao com ponto final («Opção A: Fico sem saber para onde ele foi.»)
+# ---------------- montar os passos (manual da porta, secao 3b; padrao novo do Ed, 17 e 18/11) ----------------
+# Um post = um passo (codigo post-AAAA-MM-DD). O texto do passo diz o tipo, o dia e a hora; cada coisa a colar vai em
+# "copias", com o seu botao. Links e ficheiro ficam no passo que leva imagem. Modelo: blog-finmoovi 3885be3d.
+NOME_DIA = {"segunda": "Segunda", "terça": "Terça", "quarta": "Quarta", "quinta": "Quinta", "sexta": "Sexta", "sábado": "Sábado", "domingo": "Domingo"}
+SIGLA = {"segunda": "seg", "terça": "ter", "quarta": "qua", "quinta": "qui", "sexta": "sex", "sábado": "sab", "domingo": "dom"}
+STUDIO = {"rotulo": "🎬 Abrir o YouTube Studio", "url": "https://studio.youtube.com/"}
+META_AI = {"rotulo": "🎨 Abrir o Meta AI", "url": "https://www.meta.ai/"}
+def frase(o):  # a explicacao do quiz com ponto final
     o = o.strip(); return o if o[-1:] in ".?!" else o + "."
-def copiar_post(it):
-    """o texto pronto a colar: o post; na enquete e no quiz, linha vazia e «Opção A: ...» com ponto final"""
-    if it["tipo"] == "texto": return it["texto"]
-    c = it["texto"] + "\n\n" + "\n".join(f"Opção {LETRAS[k]}: {frase(o)}" for k, o in enumerate(it["opcoes"]))
-    if it["tipo"] == "quiz": c += f"\n\nResposta certa: Opção {LETRAS[it['correta']]}.\nExplicação: {frase(it['explicacao'])}"
-    return c
+def tem_img(it): return bool(it.get("url_img") or it.get("cena"))
 def formato(it):
-    if it["tipo"] == "enquete": return "📊 Enquete com imagem" if it.get("url_img") or it.get("cena") else "📊 Enquete só de texto"
-    if it["tipo"] == "quiz": return "🧠 Quiz"
-    return "🖼️ Imagem com texto" if it.get("url_img") or it.get("cena") else "📝 Só texto"
+    if it["tipo"] == "enquete": return "📊 ENQUETE COM IMAGEM" if tem_img(it) else "📊 ENQUETE SÓ DE TEXTO"
+    if it["tipo"] == "quiz": return "🧠 QUIZ (só de texto)"
+    return "📝 POST DE TEXTO"
+def copias(it):
+    """cada coisa a colar, pela ordem em que se cola no Studio"""
+    if it["tipo"] == "texto": c = [{"rotulo": "Texto do post", "texto": it["texto"]}]
+    else: c = [{"rotulo": "Pergunta", "texto": it["texto"]}] + [{"rotulo": f"Opção {LETRAS[k]}", "texto": o.strip()} for k, o in enumerate(it["opcoes"])]
+    if it["tipo"] == "quiz": c.append({"rotulo": "Explicação (depois da resposta)", "texto": frase(it["explicacao"])})
+    if it.get("cena"): c.append({"rotulo": "Prompt da imagem (Meta AI)", "texto": prompt_imagem(it["cena"])})
+    return c
 def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a imagem a mao
     try:
         ref = drive.achar("referencia", drive.achar("Tiao Poupador"))
-        return [{"rotulo": "Anexar: " + f["name"], "url": f"https://drive.google.com/file/d/{f['id']}/view"}
+        return [{"rotulo": "📎 Anexar no Meta AI: " + f["name"], "url": f"https://drive.google.com/file/d/{f['id']}/view"}
                 for f in drive.listar(ref) if f["name"] in ("tiao-sem-caneca.jpg", "tiao-ficha-oficial.jpg")]
     except Exception: return []
+DESCRICAO = "\n".join([
+    "Post de texto: copie o texto; a imagem vem no link (capa do vídeo ou a que o robô fez) ou gere no Meta AI com o prompt e as fotos do Tião. No YouTube Studio: Criar > Criar post, cole o texto, junte a imagem, seta ao lado de Publicar > Agendar.",
+    "Enquete (terça, com imagem): Criar > Criar post > Enquete. A pergunta vai no 1º campo e cada opção no seu, junte a imagem.",
+    "Quiz (sexta, só de texto): Criar > Criar post > Quiz. Pergunta, opções, marque a certa (vem no título do passo) e cole a explicação.",
+    "O YouTube não deixa robô publicar posts, por isso vêm para agendar à mão."])
 def montar(seg, itens):
-    """itens: dia, tipo, texto (ja com o link), opcoes, correta, explicacao, cena, url_img, capa -> (passos do Team, texto do e-mail)"""
+    """itens: dia, tipo, texto (ja com o link), opcoes, correta, explicacao, cena, url_img, capa, video, falta_link -> (passos do Team, texto do e-mail)"""
     passos, md, refs = [], [f"# Tião Poupador · posts da semana {seg:%d/%m} a {seg + datetime.timedelta(days=6):%d/%m}", "",
-                            "Cole cada um no YouTube Studio (Criar > Criar post) e **agende para o dia e a hora indicados**. Quando o post leva imagem, o passo da imagem vem logo antes.", ""], None
+                            "Cole cada um no YouTube Studio (Criar > Criar post) e **agende para o dia e a hora indicados**.", ""], None
     for i, it in enumerate(itens):
-        data = seg + datetime.timedelta(days=i); cod = f"P{i + 1}"; dia = it["dia"]; fmt = formato(it)
-        tem_img = bool(it.get("url_img") or it.get("cena"))
-        if tem_img:
-            pr = prompt_imagem(it["cena"]) if it.get("cena") else ""
-            if it.get("capa"): onde = "é a capa do vídeo: só baixar no link"
-            elif it.get("url_img"): onde = "o robô já fez: só baixar no link (se não gostar, gere de novo com o prompt)"
-            else: onde = "gerar à mão (meta.ai) com o prompt e as fotos do Tião"
-            if pr and refs is None: refs = [] if ENSAIO else refs_tiao()
-            lk = ([{"rotulo": "A imagem do post", "url": it["url_img"]}] if it.get("url_img") else []) + ((refs or []) if pr else [])
-            passos.append({"codigo": f"{cod}-IMG", "texto": f"{dia.capitalize()} {data:%d/%m} · 🖼️ Imagem quadrada do post {cod} (imagem, não é vídeo) · {onde}",
-                           "copiar": pr, "links": lk, "ficheiro": f"{cod}-{dia}.jpg"})
-            md += [f"### {cod}-IMG · a imagem do post de {dia} {data:%d/%m} (imagem quadrada, não é vídeo)", "", onde, ""] + \
-                  ([f"🖼️ {it['url_img']}", ""] if it.get("url_img") else []) + (["```", pr, "```", ""] if pr else [])
-        c = copiar_post(it)
-        passos.append({"codigo": cod, "texto": f"{dia.capitalize()} {data:%d/%m} · {fmt} · agendar 12h (Brasília)" + (f" · imagem do passo {cod}-IMG" if tem_img else ""),
-                       "copiar": c, "links": [], "ficheiro": ""})
-        md += [f"### {cod} · {dia} {data:%d/%m} · {fmt} · agendar 12h (Brasília)", "", "```", c, "```", ""]
+        data = seg + datetime.timedelta(days=i); dia = it["dia"]; fmt = formato(it)
+        texto = f"{fmt} · {NOME_DIA[dia]} {data:%d/%m} · agendar para as 12h"
+        if it["tipo"] == "quiz": texto += f" · resposta certa: Opção {LETRAS[it['correta']]}"
+        if it.get("falta_link"): texto += f" · ⚠️ falta o link do vídeo de {'domingo' if dia == 'segunda' else 'quarta'}: junte-o no fim do texto"
+        p = {"codigo": f"post-{data.isoformat()}", "texto": texto, "copias": copias(it), "links": [STUDIO]}
+        if it.get("video"): p["links"].append({"rotulo": "▶️ O vídeo deste post", "url": it["video"]})
+        if tem_img(it):
+            if it.get("capa"): p["links"].append({"rotulo": "🖼️ A imagem: a capa do vídeo (baixar)", "url": it["url_img"]})
+            else:
+                if it.get("url_img"): p["links"].append({"rotulo": "🖼️ A imagem que o robô já fez (se não gostar, gere no Meta AI)", "url": it["url_img"]})
+                if refs is None: refs = [] if ENSAIO else refs_tiao()
+                p["links"] += [META_AI] + refs
+            p["ficheiro"] = f"post-{data.isoformat()}-{SIGLA[dia]}.jpg"
+        passos.append(p)
+        md += [f"### {texto}", ""] + [l for l in (f"🖼️ {x['rotulo']}: {x['url']}" for x in p["links"][1:])] + [""]
+        for c in p["copias"]: md += [f"**{c['rotulo']}**", "```", c["texto"], "```", ""]
     return passos, md
 
 # ---------------- montar e mandar ----------------
@@ -217,16 +230,16 @@ def main():
     itens = []
     for i, (p, (dia, tipo, _)) in enumerate(zip(posts, pl)):
         cod = f"P{i + 1}"; txt = p["texto"].strip(); v = links.get(dia) if (links.get(dia) or {}).get("titulo") else None
-        if v and v.get("id"): txt += f"\n\n▶️ https://youtu.be/{v['id']}"
-        elif v: txt += "\n\n▶️ (o link do vídeo: cole o do vídeo de " + ("domingo" if dia == "segunda" else "quarta") + ")"
+        url_v = f"https://youtu.be/{v['id']}" if v and v.get("id") else ""  # sem o id, o passo avisa (nada de texto provisorio a colar)
+        if url_v: txt += f"\n\n▶️ {url_v}"
         url_img, cena, capa = None, "", False
-        if dia in ("quarta", "sábado", "domingo") and p["cena"]:
+        if dia in COM_CENA and p["cena"]:
             cena = p["cena"]; arq_img = f"{sai}/{cod}-{dia}.jpg"
             if not ENSAIO and imagem(cena, arq_img): url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
             time.sleep(5)
         elif v and v.get("capa"): url_img, capa = f"https://drive.google.com/file/d/{v['capa']}/view", True
         itens.append({"dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
-                      "cena": cena, "url_img": url_img, "capa": capa})
+                      "cena": cena, "url_img": url_img, "capa": capa, "video": url_v, "falta_link": bool(v and not url_v)})
     passos, md = montar(seg, itens)
     json.dump(itens, open(f"{sai}/itens.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     open(f"{sai}/posts.md", "w", encoding="utf-8").write("\n".join(md))
@@ -235,7 +248,7 @@ def main():
     from fabrica import correio
     try:
         r = team.mandar({"chave_unica": f"tiao-posts-{semana}", "tipo": "posts-da-semana", "projeto": "Tião Poupador",
-                         "titulo": f"Posts do YouTube da semana {seg:%d/%m} (7 para agendar)", "descricao": "Cole no YouTube Studio (Criar > Criar post) e agende cada um para o dia indicado, às 12h de Brasília.",
+                         "titulo": f"Posts do YouTube da semana {seg:%d/%m} (7 para agendar)", "descricao": DESCRICAO,
                          "prazo": f"{seg.isoformat()}T12:00:00-03:00", "passos": passos})
         log("Team:", r.get("criada"), r.get("url"))
     except Exception as e: log("Team recusou (vai só o e-mail):", e)
