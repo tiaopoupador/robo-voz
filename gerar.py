@@ -12,6 +12,7 @@
 #      entre elas. Nada e inserido no meio de uma frase (o antigo "respiro" do narracao.py picotava a fala).
 # Sai: saida.wav e saida.json (o relatorio de cada frase: tentativas, nota, o que o Whisper ouviu).
 import json, re, sys, time
+from tom import tom  # o medidor do tom (robo-voz/tom.py)
 import numpy as np, torch, torchaudio as ta
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
@@ -126,6 +127,9 @@ for k, fr in enumerate(fs):
         ex, cf = (EXAG_FORTE, 0.35) if forte(fr) else (EXAG, 0.5)
         w = m.generate(falado(fr), language_id="pt", audio_prompt_path=ref, exaggeration=ex, cfg_weight=cf, temperature=0.8)
         ok, motivo, d = nota(w, m.sr, falado(fr), whisper)
+        if ok and forte(fr):  # 19/11 (Ed: «no automático como vamos resolver isso?»): pergunta tem de subir, espanto tem de variar
+            tok, d["tom"], tm = tom(w[0].numpy(), m.sr, fr)
+            if not tok: ok, motivo = False, tm
         print(f"  frase {k + 1}/{len(fs)} tentativa {tent + 1}: {motivo} | {d.get('ouviu', '')[:90]}", flush=True)
         pontos = (2 if ok else 0) + d.get("sim", 0)
         if melhor is None or pontos > melhor[0]: melhor = (pontos, w, ok, motivo, d, tent + 1)

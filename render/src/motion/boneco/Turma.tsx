@@ -84,7 +84,7 @@ export const Pose: React.FC<{ pid: Pid; cod: string; x: number; y: number; alt: 
       {((q.olhos && p > 0) || falando) && (
         <svg viewBox={`0 0 ${w} ${hh}`} width="100%" height="100%" style={{ position: "absolute", inset: 0, overflow: "visible" }}>
           {q.olhos && p > 0 && q.olhos.map((o, i) => <Palpebra key={i} o={o} p={p} esc={esc} />)}
-          {falando && (() => { const [bx, by, bw, ab, sor] = q.boca!; return <Boca cx={bx} cy={by} mw={bw} aberta={Math.max(fala!, ab * 0.4)} sorriso={sor} esc={bw / 80} />; })()}
+          {falando && (() => { const [bx, by, bw, ab, sor] = q.boca!; return <Boca cx={bx} cy={by + 0.09 * bw} mw={bw} aberta={Math.max(fala!, ab * 0.4)} sorriso={sor} esc={bw / 80} />; })()}
         </svg>
       )}
       {falando && pid === "tiao" && <Img src={staticFile(`boneco/turma/tiao/${cod}_bigode.png`)} style={cheio} />}

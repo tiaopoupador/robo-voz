@@ -14,7 +14,7 @@ A CONFERIR antes do roteiro: número mais novo (2026) na página de estatística
    «Todos os serviços do Valores a Receber são totalmente gratuitos.» · golpe: «NÃO faça qualquer tipo de pagamento para ter acesso aos valores», o BC «NÃO envia links NEM entra em contato», a instituição «NUNCA vai pedir sua senha».
    https://www.gov.br/pt-br/servicos/consultar-e-solicitar-a-devolucao-de-valores-a-receber
 5. Número mais novo (dados até agosto de 2026, divulgado em outubro): R$ 5,79 bilhões; R$ 4,31 bilhões de 23,94 milhões de pessoas físicas; R$ 1,48 bilhão de 2,36 milhões de empresas.
-   Fonte: Agência Brasil (EBC), agência pública citando o BC. ✅ Vale como fonte (regra do Ed, 18/11/2026).
+   Fonte: Agência Brasil (EBC), agência pública citando o BC. ✅ Vale como fonte (regra do Ed, 18/11/2026). Título da matéria: «Dinheiro esquecido em bancos SOBE para R$ 5,8 bilhões em agosto» (base da frase «em agosto o dinheiro esquecido subiu de novo», conferido 19/11).
    https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dinheiro-esquecido-em-bancos-sobe-para-r-58-bilhoes-em-agosto
 6. Medida Provisória 1.355, de 4/5/2026 (Novo Desenrola), texto da Câmara:
    art. 12: recursos informados até 31/12/2024 como «valores a devolver» «serão imediatamente transferidos ao FGO»; § 6º parte «será reservado para atender a eventuais demandas de devolução».

@@ -30,7 +30,7 @@ Você ficou sabendo? A Dona Cida, aqui da esquina, não ficou. Ela só ficou sab
 
 [POSE P2 explica] [TEXTO: R$ 1.847?]
 
-Ela estava a um dedo de pagar. E hoje eu vou te mostrar três coisas: como saber em dois minutos se essa mensagem é golpe, onde se confere de verdade se tem dinheiro no seu nome, e o que a medida de maio fez com o dinheiro esquecido até o fim de dois mil e vinte e quatro. Essa terceira, o edital não gritou na rua.
+Ela estava a um dedo de pagar. E hoje eu vou te mostrar três coisas: como saber em dois minutos se essa mensagem é golpe, onde se confere de verdade se tem dinheiro no seu nome, e o que a medida de maio fez com o dinheiro esquecido até o fim de dois mil e vinte e quatro. Essa terceira, quase ninguém ficou sabendo, porque o aviso saiu só no papel oficial do governo, e não no jornal da televisão.
 
 Se você tem conta em banco, ou já teve uma que nem lembra mais, fica comigo até o fim que eu vou te mostrar onde está o dinheiro que é seu, e como não cair no golpe que quase pegou a Dona Cida. Então já puxa a cadeira. Vamos começar?
 
@@ -56,17 +56,17 @@ A Dona Cida tem sessenta e sete anos e vê a rua inteira da janela dela. Sabe qu
 
 [POSE P4 alerta] [SOM: alerta curto] [TEXTO: TAXA PARA LIBERAR?]
 
-Eu nem entrei. Pedi o celular pela janela mesmo. A tela trincada no canto, a capinha rosa, e lá estava. Ela já tinha clicado no link. O link abriu uma conversa de WhatsApp com um número que ninguém conhecia, e ali pediram o Pix de trinta e nove e noventa.
+Eu nem entrei. Pedi o celular pela janela mesmo. A tela trincada no canto, a capinha rosa, e lá estava. Ela já tinha clicado no link. O link abriu uma conversa de WhatsApp com um número que ninguém conhecia, e ali pediram o Pix de trinta e nove e noventa. E ainda pediram a senha do aplicativo do banco, para confirmar.
 
 Aí eu fiz com ela o teste que eu vou fazer com você agora. Três perguntas. Se a resposta de uma delas for sim, é golpe.
 
 [TEXTO: 1. PEDIU DINHEIRO?]
 
-Primeira: pediu algum pagamento para liberar? O próprio governo escreve, na página oficial, com letra maiúscula: não faça qualquer tipo de pagamento para ter acesso aos valores. Todos os serviços são totalmente gratuitos. Se pediu taxa, acabou a conversa.
+Primeira: pediu algum pagamento para liberar? O próprio governo escreve, na página oficial do Valores a Receber, no portal do governo federal, com letra maiúscula: não faça qualquer tipo de pagamento para ter acesso aos valores. Todos os serviços são totalmente gratuitos. Se pediu taxa, acabou a conversa.
 
 [TEXTO: 2. MANDOU LINK?]
 
-Segunda: chegou link por mensagem? O Banco Central diz que não envia links nem entra em contato com você para tratar desse dinheiro. Nem por SMS, nem por WhatsApp, nem por e-mail, nem por ligação. Quem vai atrás é você. Nunca ele.
+Segunda: chegou link por mensagem? O Banco Central diz que não envia links nem entra em contato com você para tratar desse dinheiro. Nem por mensagem de texto no celular, nem por WhatsApp, nem por e-mail, nem por ligação. Quem vai atrás é você. Nunca ele.
 
 [TEXTO: 3. PEDIU SENHA?]
 
@@ -74,9 +74,9 @@ Terceira: pediu senha? O banco nunca pede a sua senha. Nem o Banco Central, nem 
 
 [POSE P3 aponta] [CENA: Dona Cida com a mão no peito]
 
-A mensagem da Dona Cida respondia sim para as três. A Dona Cida ficou branca. Ela já tinha aberto o aplicativo do banco para fazer o Pix.
+A mensagem da Dona Cida respondia sim para as três: pediu dinheiro, mandou link e pediu senha. A Dona Cida ficou branca. Ela já tinha aberto o aplicativo do banco para fazer o Pix.
 
-E se você quer ajudar mais gente a não cair nessa, deixa o like agora e se inscreve, que no próximo pedaço eu vou te mostrar de onde vem esse dinheiro esquecido de verdade. E conta aqui embaixo o seu nome, a sua cidade, e se você já recebeu uma mensagem dessas. Eu leio e respondo.
+E se você quer ajudar mais gente a não cair nessa, deixa o like agora e se inscreve, que daqui a pouco a Dona Cida me fez a pergunta que você também está fazendo, e eu te mostro de onde vem esse dinheiro esquecido de verdade. E conta aqui embaixo o seu nome, a sua cidade, e se você já recebeu uma mensagem dessas. Eu leio e respondo.
 
 [FUNDO PRETO 3 s]
 
@@ -114,7 +114,7 @@ Ele não sumiu. Ele saiu andando do seu bolso e ficou sentado no banco, quietinh
 
 Eu sei porque comigo foi assim. Meu primeiro emprego foi numa loja de material de construção, no balcão. Abriram uma conta salário no meu nome. Saí de lá, abri outra conta, e esqueci daquela.
 
-Anos depois, já na portaria do prédio, ouvi um morador contando no elevador que tinha achado dinheiro esquecido no site do Banco Central. Fui conferir no intervalo do almoço. E ela estava lá: quarenta e sete reais e dez centavos. Pouco? É. Mas era meu, e ficou anos com o banco e não comigo.
+Anos depois, já na portaria do prédio, ouvi um morador contando no elevador que tinha achado dinheiro esquecido no site do Banco Central. Fui conferir no intervalo do almoço, no site Valores a Receber. E a minha conta antiga estava lá: quarenta e sete reais e dez centavos. Pouco? É. Mas era meu, e ficou anos com o banco e não comigo.
 
 [POSE P2 explica] [TEXTO: R$ 13,35 BI DEVOLVIDOS]
 
@@ -122,7 +122,7 @@ E tem gente lembrando. Até dezembro do ano passado, o sistema já tinha devolvi
 
 Só que aí a Dona Cida perguntou uma coisa que me fez largar o café. "E o dinheiro mais antigo, Tião? O que estava lá faz tempo?"
 
-E aqui a conversa na cozinha mudou de tom.
+A Dona Cida pousou a xícara no pires, devagar. E na cozinha só se ouvia o relógio da parede.
 
 [FUNDO PRETO 3 s]
 
@@ -144,7 +144,7 @@ O artigo doze dela diz assim: o dinheiro informado como valores a devolver até 
 
 [TEXTO: 30 DIAS PARA RECLAMAR]
 
-O artigo treze diz que sairia um edital, um aviso oficial, com prazo de trinta dias para quem quisesse contestar. E diz que, passado esse prazo, o dinheiro não contestado ficaria incorporado de forma definitiva ao fundo.
+O artigo treze diz que o governo ia publicar um aviso oficial, e o dono teria trinta dias para dizer: esse dinheiro é meu. Passados os trinta dias sem ninguém reclamar, pela regra, o dinheiro ficava com o fundo de vez.
 
 [POSE P3 aponta] [CENA: Dona Cida tirando os óculos]
 
@@ -152,7 +152,7 @@ A Dona Cida tirou os óculos. "Trinta dias? E alguém me avisou?" Ninguém aviso
 
 [POSE P2 explica] [TEXTO: CAIU EM 31/08]
 
-Tem mais um pedaço. Essa medida provisória teve a vigência encerrada em trinta e um de agosto. Não virou lei. O que aconteceu, depois disso, com o dinheiro que já tinha sido levado para o fundo, eu procurei nas fontes oficiais e não achei escrito em lugar nenhum. E aqui na prosa eu não invento. Se eu achar, eu volto e te conto.
+Tem mais um pedaço. Essa medida provisória teve a vigência encerrada em trinta e um de agosto. Não virou lei. O que aconteceu, depois disso, com o dinheiro que já tinha sido levado para o fundo, eu procurei no site do Banco Central e no texto da Câmara, e não achei escrito em lugar nenhum. E aqui na prosa eu não invento: o que não está escrito, eu não afirmo.
 
 [POSE P1 pensativo]
 
@@ -166,7 +166,7 @@ Depende de quando ele entrou no sistema. No papel de pão, eu risquei duas colun
 
 [CENA: o papel de pão com as duas colunas, a segunda circulada]
 
-A segunda coluna é a que importa hoje. Aqueles cinco bilhões e setecentos e noventa milhões de que eu te falei são de agosto, depois da medida. Esse dinheiro está lá agora. E o Banco Central diz, com todas as letras: os valores continuam guardados pelas instituições, esperando que você peça a devolução.
+A segunda coluna é a que importa hoje. Aqueles cinco bilhões e setecentos e noventa milhões de que eu te falei são a conta de agosto, quando a medida já tinha mandado o dinheiro antigo para o fundo. É o dinheiro que está lá agora. E o Banco Central diz, com todas as letras: os valores continuam guardados pelas instituições, esperando que você peça a devolução.
 
 Só que ele espera você ir buscar. Ele não vai bater na sua janela. E a próxima medida, se vier, pode dar trinta dias de novo.
 
@@ -204,7 +204,7 @@ Repara numa coisa. O golpe prometia mil e oitocentos e cobrava trinta e nove. O 
 
 [POSE P2 explica] [SOM: check]
 
-Ela pediu ali, na hora. Doze dias úteis depois, os trezentos e doze reais caíram na conta. Ela me chamou da janela, gritando tão alto que a rua inteira ouviu. E eu gritei de volta, daqui da varanda, do jeito que eu sempre grito quando alguém pega de volta o que é seu:
+Ela pediu ali, na hora. Doze dias úteis depois, os trezentos e doze reais caíram na conta. Ela me chamou da janela, gritando tão alto que a rua inteira ouviu. E eu gritei de volta, daqui da varanda, do jeito que eu sempre faço quando alguém pega de volta o que é seu: levantei a minha caneca lascada e gritei:
 
 Caneca velha, bolso cheio!
 
@@ -238,7 +238,7 @@ Voltando. No verso do papel de pão, eu escrevi para a Dona Cida três dicas, pa
 
 [TEXTO: DICA 1: UMA VEZ POR ANO]
 
-Dica número um: uma vez por ano, entra no site Valores a Receber. Escolhe um dia fácil de lembrar, o do seu aniversário, por exemplo. Por quê? Porque o sistema recebe dinheiro novo o tempo todo. Em agosto, tinha mais dinheiro esquecido do que no mês anterior.
+Dica número um: uma vez por ano, entra no site Valores a Receber. Escolhe um dia fácil de lembrar, o do seu aniversário, por exemplo. E confere também sempre que ouvir falar de uma regra nova do governo, porque a próxima pode dar só trinta dias de novo. Por que conferir sempre? Porque o sistema recebe dinheiro novo o tempo todo: em agosto, segundo o Banco Central, o dinheiro esquecido subiu de novo.
 
 [TEXTO: DICA 2: CONTA QUE NÃO USA, FECHA]
 
@@ -246,7 +246,7 @@ Dica número dois: conta que você não usa mais, você pede para o banco fechar
 
 [TEXTO: DICA 3: CONFERE POR QUEM NÃO SABE]
 
-Dica número três: confere por quem não sabe conferir. Seu pai, sua mãe, sua avó, aquele tio que não mexe no celular. E o Banco Central tem até um jeito de a família consultar o dinheiro de quem já faleceu.
+Dica número três: confere por quem não sabe conferir. Seu pai, sua mãe, sua avó, aquele tio que não mexe no celular. E no mesmo site do Valores a Receber tem até uma opção para a família consultar o dinheiro de quem já faleceu.
 
 [POSE P3 aponta]
 
@@ -270,9 +270,9 @@ Foi o Plano Collor. Da noite para o dia, a poupança acima de cinquenta mil cruz
 
 [POSE P3 aponta] [TEXTO: MARÇO DE 1990]
 
-Ela me contou a história inteira daquele março de mil novecentos e noventa: a fila na porta do banco, o dinheiro que não saía, e o que ela fez para recomeçar com o pouco que sobrou. E se você também tem medo de o governo mexer no seu dinheiro de novo, você não pode perder o próximo vídeo. Nele eu vou te contar o que foi o Plano Collor, por que a poupança da Dona Cida ficou presa, e o que ela aprendeu para nunca mais ficar sem saída.
+Ela me contou a história inteira daquele março de mil novecentos e noventa. E olha: se você passou sufoco naquela época, você vai se lembrar de cada detalhe. E se você ainda não tinha nascido, ou era criança, e não quer passar pelo aperto que milhões de brasileiros passaram de um dia para o outro por causa de um plano do governo, você precisa ver o próximo vídeo.
 
-Então, se você quer entender de verdade o que aconteceu com o dinheiro do brasileiro em mil novecentos e noventa, essa conversa é para você. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Nele eu vou te contar o que a Dona Cida viu na porta do banco naquela manhã, o que fizeram com a poupança de quem trabalhou a vida inteira, e a única coisa que ela faz até hoje para nunca mais ser pega de surpresa. Essa última, quase ninguém sabe. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
 

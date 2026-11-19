@@ -43,8 +43,10 @@ Aponte cada lugar onde a história falha:
    c) o FinMoovi entra no fim do penúltimo capítulo, depois de anunciar o que vem ("mas antes, um recado rápido"), e NUNCA no fim;
    d) pelo menos 2 pedidos FALADOS de like/inscrição/comentário, cada um colado a um gancho do que vem a seguir;
    e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
-   f) as últimas frases são o gancho para o PRÓXIMO vídeo, ligado à dor deste, com "já está aparecendo aqui, clica e vê agora",
-      e o vídeo acaba logo ali; nunca "no próximo capítulo" entre partes.
+   f) as últimas frases são o gancho para o PRÓXIMO vídeo, como um trailer: chama quem assiste pela situação dele (quem já passou
+      e quem quer evitar), toca na dor com a causa, promete 2 ou 3 coisas concretas do próximo vídeo (a última sem contar o que é)
+      e só então manda clicar ("Clica agora, que o vídeo já está aparecendo aqui na tela!"); o vídeo acaba logo ali.
+      Gancho vago ("essa conversa é para você" sem dizer o que vem e para quem) é falha. Nunca "no próximo capítulo" entre partes.
 9. FALA DE GENTE (o dono do canal, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»; sempre grave):
    a) sigla sem dizer o que é (diga o nome inteiro: "Fundo de Garantia de Operações", não "FGO");
    b) "hein" (a voz lê "rein"): proibido;
