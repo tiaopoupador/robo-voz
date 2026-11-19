@@ -75,7 +75,7 @@ L = {
  42: [("^", "I", "cida-tiao-celular")],
  43: [("^", "M", fr("*valoresareceber.bcb.gov.br*", "digite você mesmo, nunca clique em link"))],
  44: [("^", "M", ic([("🪪", "conta gov.br prata ou ouro", False), ("🔐", "verificação em duas etapas", False)], "Para entrar"))],
- 45: [("^", "M", ic([("🔑", "escolha a sua chave Pix", False), ("📝", "anote o protocolo", False), ("📅", "12 dias úteis", False)], "Para receber")), ("não custa nada", "M", fr("Não custa *nada*.", "todos os serviços são gratuitos"))],
+ 45: [("^", "M", ic([("🔑", "escolha a sua chave Pix", False), ("📝", "anote o protocolo", False), ("⏳", "12 dias úteis", False)], "Para receber")), ("não custa nada", "M", fr("Não custa *nada*.", "todos os serviços são gratuitos"))],
  46: [("^", "C", (RUA, "P3", -1))],
  47: [("^", "I", "celular-toalha"), ("trezentos e doze", "M", nu(312.48, "O dinheiro de verdade da Dona Cida", "uma tarifa cobrada a mais", cor=VERDE, casas=2, emoji="🎉"))],
  48: [("^", "M", ba([("O golpe prometia", 1847, VERM), ("O de verdade", 312.48, VERDE)], "O golpe sempre promete mais")), ("é seu", "C", (RUA, "P1", 1))],
