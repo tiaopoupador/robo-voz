@@ -57,14 +57,16 @@ PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi T
 def bloco(cod, titulo, refs, nomes, prompt):
     refs = com_ficha(refs)
     lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar junto ao Prompt - " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
-    for k, nm in enumerate(nomes):
-        gif = nm.endswith(".gif")
-        extra = ((" (o GIF lento de 4 a 5 s, saiu do prompt de cima)" if gif else " (imagem 2, saiu do prompt de cima)") if k else " (imagem 1: o prompt gera as 2 imagens e o GIF)") if len(nomes) > 1 else ""
-        pr = prompt if k == 0 else None  # um prompt so por cena: vai no 1º passo; os outros salvam o que saiu dele (Ed, 19/11)
-        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", **({"copiar": pr} if pr else {}), "links": lr if k == 0 else [], "ficheiro": nm, "formato": "16:9",
-                       "tipo": "video" if nm.endswith(".mp4") else ("gif" if gif else "imagem"), "onde": "Flow" if nm.endswith(".mp4") else "meta.ai",
-                       "o_que": f"{titulo}{extra}",
-                       "pasta": {"rotulo": f"Google Drive > Tiao Poupador > entrada > video-{NN}", "url": PASTA}})
+    pasta = {"rotulo": f"Google Drive > Tiao Poupador > entrada > video-{NN}", "url": PASTA}
+    if len(nomes) > 1:  # Ed, 19/11: «um prompt por imagem (...) 2 imagens e mais um gif (...) 3 botoes: imagem 1, imagem 2 e gif»
+        rot = lambda k, nm: "Nome do GIF" if nm.endswith(".gif") else f"Nome da imagem {k + 1}"
+        PASSOS.append({"codigo": cod, "texto": f"{cod} · {titulo}", "links": lr, "formato": "16:9", "tipo": "imagem", "onde": "meta.ai",
+                       "o_que": f"{titulo} (2 imagens + GIF lento)", "pasta": pasta, "varios": True,
+                       "copias": [{"rotulo": "Prompt", "texto": prompt}] + [{"rotulo": rot(k, nm), "texto": nm} for k, nm in enumerate(nomes)]})
+    for nm in (nomes if len(nomes) == 1 else []):
+        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}", "copiar": prompt, "links": lr, "ficheiro": nm, "formato": "16:9",
+                       "tipo": "video" if nm.endswith(".mp4") else "imagem", "onde": "Flow" if nm.endswith(".mp4") else "meta.ai",
+                       "o_que": titulo, "pasta": pasta})
     return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
             "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]
 def bonito(n): return n.split("-", 1)[1].replace("-", " ").capitalize()

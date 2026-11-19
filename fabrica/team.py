@@ -86,7 +86,7 @@ def mastigar(tarefa):
         p["links"] = [l for l in p.get("links", []) if (l.get("rotulo") or "").rstrip(" -").split(" - ")[-1].strip() not in ("", "Anexar junto ao Prompt")]
         if tipo in ("imagem", "video", "gif") and not p["links"] and cop:  # nada para anexar: diz-se com todas as letras
             cop.insert(0, {"rotulo": "📎 Referências", "texto": SEM_REFS})
-        if p.get("ficheiro"):
+        if p.pop("varios", False) or p.get("ficheiro"):  # varios: um passo que salva varios arquivos (2 imagens + GIF)
             if pasta:
                 cop.append({"rotulo": "📁 Salvar nessa pasta", "texto": caminho(pasta)})
                 p["links"] = [l for l in p.get("links", []) if l.get("url") != pasta["url"]]
