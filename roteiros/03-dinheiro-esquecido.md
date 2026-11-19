@@ -273,3 +273,16 @@ Foi o Plano Collor. Da noite para o dia, a poupança acima de cinquenta mil cruz
 Ela me contou a história inteira, e o que ela fez com o pouco que sobrou. E se você também tem medo de o governo mexer no seu dinheiro de novo, essa conversa é para você. Já está aparecendo aqui, clica e vê agora. Fui! E cuida do teu suado, hein!
 
 [TELA FINAL NOVA]
+
+## Ficha de fontes
+
+(detalhe, trechos e data de cada uma em `roteiros/03-fontes.md`)
+
+| Dado no roteiro | Fonte |
+|---|---|
+| R$ 5,79 bilhões esquecidos até agosto de 2026; R$ 4,31 bilhões de 23,94 milhões de pessoas; R$ 1,48 bilhão de 2,36 milhões de empresas | Banco Central, via Agência Brasil (EBC), outubro de 2026 |
+| Como pedir: conta gov.br prata ou ouro, chave Pix, 12 dias úteis, de graça; o BC não manda link nem liga | gov.br, serviço «Consultar e solicitar a devolução de Valores a Receber» |
+| O único site de consulta | Banco Central, valoresareceber.bcb.gov.br |
+| Os tipos de dinheiro esquecido (conta encerrada, cooperativa, consórcio, tarifa cobrada a mais) | Banco Central, Orientações sobre o Sistema Valores a Receber, versão 13 |
+| A medida de maio: transferência ao FGO, edital com prazo de trinta dias, «incorporados de forma definitiva»; vigência encerrada em 31/8/2026 | Medida Provisória 1.355, de 4 de maio de 2026 (texto da Câmara dos Deputados) |
+| Plano Collor: a poupança presa em março de 1990 | Lei 8.024, de 12 de abril de 1990 |

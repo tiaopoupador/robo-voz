@@ -102,3 +102,19 @@ TITULO = "Tem Dinheiro Seu Parado no Banco e Ninguém Te Avisou"
 CAPA_TEXTO = "R$ ??? NO SEU NOME"
 CLIMA = {0: "alerta"}  # Tiao Conversa: musica de alerta (Ed 18/11)
 VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)
+PUBLICA = "2026-11-21 10:00"
+PUBLICA_TXT = "sábado, 21/11, às 10h (Brasília, 13h em Lisboa)"
+PRAZO = "nada à mão neste vídeo (as imagens saíram da Cloudflare)"
+CAPA = ("cida-ficha.jpg + tiao-frente-sozinho.jpg",
+        "Bright warm yellow background. LEFT, big and close: Tiao, shocked face, mouth open, pointing with one finger at an old phone with a pink case held by Dona Cida. "
+        "RIGHT: Dona Cida, an elderly Black Brazilian woman with dark brown skin, white curly hair, round glasses, blue flowered dress and beige cardigan, holding the phone, surprised. "
+        "The phone screen shows only a big yellow question mark. Leave the top third empty for the title text.")
+DESC = ("Uma mensagem dizia que a Dona Cida tinha R$ 1.847,00 esquecidos no Banco Central. Era golpe. Mas o dinheiro esquecido existe de verdade: são R$ 5,79 bilhões, de 23,94 milhões de pessoas, segundo o Banco Central.\n\n"
+        "Neste vídeo o Tião mostra de onde vem esse dinheiro, o que a medida do governo de maio de 2026 fez com o dinheiro antigo, o único site oficial para conferir, e como não cair no golpe.")
+TAGS = ["dinheiro esquecido", "valores a receber", "banco central", "valores a receber banco central", "golpe do pix", "golpe dinheiro esquecido",
+        "MP 1355", "educação financeira", "finanças pessoais", "Tião Poupador", "Tião Conversa", "dinheiro parado no banco"]
+PERGUNTA = "Você já conferiu se tem dinheiro esquecido no seu nome? Achou quanto?"
+CAP_NOMES = {"Abertura (é um Reels: entende-se sozinha)": "Trinta dias para reclamar", "Quem fala": "Chega mais",
+             "A mensagem da Dona Cida": "A mensagem da Dona Cida", "De onde vem esse dinheiro": "De onde vem esse dinheiro",
+             "Os trinta dias": "Os trinta dias da medida de maio", "A conferida de dois minutos": "A conferida de dois minutos",
+             "Para não esquecer de novo": "Para não esquecer de novo"}

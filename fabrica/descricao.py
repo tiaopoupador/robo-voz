@@ -15,7 +15,7 @@ caps = []
 NOMES = getattr(C, "CAP_NOMES", {})
 for t, l in zip(titulos, comeco):
     t = NOMES.get(t, t)
-    s = 0 if not caps else int(ini.get(l, 0))
+    s = 0 if not caps else int(ini.get(l, 0) + (4.5 if getattr(C, "VINHETA", None) is not None and l > C.VINHETA else 0))  # a vinheta empurra o resto 4,5 s
     caps.append(f"{s // 60:02d}:{s % 60:02d} {re.sub(r'^Armadilha (\d): ', r'Armadilha \1: ', t)}")
 fontes = []
 for linha in md.split("## Ficha de fontes")[1].splitlines():
@@ -27,10 +27,11 @@ mont = json.load(open(f"{P}/fabrica/saida/{NN}-montagem.json", encoding="utf-8")
 mus = ", ".join(m.replace("---", " ").replace("-", " ") for m in mont["musicas"])
 quando = datetime.datetime.strptime(C.PUBLICA, "%Y-%m-%d %H:%M")
 DIA = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][quando.weekday()]
-desc = f"""{C.DESC}
+desc = f"""📱 FinMoovi, o app do Tião, 7 dias grátis: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=video{NN}
 
-📱 O FinMoovi, o app que o Tião usaria hoje: tira foto da notinha do mercado, lê tudo sozinho e mostra para onde foi cada real do mês. Teste 7 dias sem pagar nada:
-https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=video{NN}
+{C.DESC}
+
+O FinMoovi tira foto da notinha do mercado, lê tudo sozinho e mostra para onde foi cada real do mês.
 
 ⏱️ Capítulos
 """ + "\n".join(caps) + """
