@@ -12,7 +12,7 @@ CONS = ("CHARACTER AND SCENERY CONSISTENCY ARE THE TOP PRIORITY. The characters 
         "Correct anatomy: exactly five fingers on each hand, two normal symmetrical eyes, no extra limbs, no faces inside objects. Pose and expression follow the scene, NOT the reference pose. ")
 STYLE = "Flat 2D cartoon illustration, clean thin black outlines, soft cel shading, warm slightly desaturated colors, modern explainer animation style, 16:9 widescreen, Brazilian setting. "
 QUEM = {
- "tiao": "The last attached image is Tiao's character sheet (many angles and poses): use it only to know him from every side, draw him ONCE, in a natural pose that fits the action, never stiff facing the camera. Tiao: about 30 years old, SHORT and slightly CHUBBY, ROUND face, short messy black hair, a small THIN black pencil mustache (always present, never thick), light brown skin, mustard-yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch, a short yellow carpenter pencil in the shirt pocket. ",
+ "tiao": "One of the attached images is Tiao's character sheet (many angles and poses): use it only to know him from every side, draw him ONCE, in a natural pose that fits the action, never stiff facing the camera. Tiao: about 30 years old, SHORT and slightly CHUBBY, ROUND face, short messy black hair, a small THIN black pencil mustache (always present, never thick), light brown skin, mustard-yellow polo shirt, faded denim shorts, black flip-flops, black wristwatch, a short yellow carpenter pencil in the shirt pocket. ",
  "sandra": "Sandra: woman in her late 30s, long wavy brown hair, sunglasses pushed up on her head, gold hoop earrings, red blouse, blue jeans, brown handbag. ",
  "marcos": "Marcos: TALL slim man in his late 30s, gelled dark hair, light skin, white shirt with rolled sleeves, dark jeans, brown belt, big silver watch, clean-shaven (NO mustache). ",
 }
@@ -41,7 +41,9 @@ try:
 except Exception as e:
     print("sem Drive agora (links simples):", e)
 def com_ficha(refs):  # com o Tiao vai tambem a ficha oficial (ele em varias poses), pedido do Ed a 06/11
-    return refs + " + tiao-ficha-oficial.jpg" if "tiao-frente-sozinho" in refs and "ficha" not in refs else refs
+    if "nenhuma" in refs: return refs  # Ed 19/11: Tiao e Marcos vao sempre com as DUAS referencias (team.REFERENCIAS)
+    from fabrica.team import completar_refs
+    return " + ".join(completar_refs([x.strip() for x in refs.split("+")]))
 def anexar(refs):
     refs = com_ficha(refs)
     if "nenhuma" in refs: return ["📎 **Anexar:** nada (cena sem personagem)"]
@@ -49,10 +51,12 @@ def anexar(refs):
 PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi Team
 def bloco(cod, titulo, refs, nomes, prompt):
     refs = com_ficha(refs)
-    lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
+    lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar junto ao Prompt - " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
     for k, nm in enumerate(nomes):
         extra = " (o GIF animado de 5 s, da mesma geração)" if nm.split("_")[0].endswith("-gif") else (f" (imagem {k + 1} de {len([x for x in nomes if not x.split('_')[0].endswith('-gif')])}, todas da mesma geração)" if len(nomes) > 1 else "")
         PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": prompt, "links": lr, "ficheiro": nm, "formato": "16:9",
+                       "tipo": "video" if nm.endswith(".mp4") else ("gif" if nm.endswith(".gif") else "imagem"), "onde": "Flow" if nm.endswith(".mp4") else "meta.ai",
+                       "o_que": f"{titulo}{extra}",
                        "pasta": {"rotulo": f"Google Drive > Tiao Poupador > entrada > video-{NN}", "url": PASTA}})
     return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
             "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]

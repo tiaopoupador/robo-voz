@@ -167,8 +167,8 @@ def copias(it):
 def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a imagem a mao
     try:
         ref = drive.achar("referencia", drive.achar("Tiao Poupador"))
-        return [{"rotulo": "📎 Anexar no Meta AI: " + f["name"], "url": f"https://drive.google.com/file/d/{f['id']}/view"}
-                for f in drive.listar(ref) if f["name"] in ("tiao-sem-caneca.jpg", "tiao-ficha-oficial.jpg")]
+        return [{"rotulo": "Anexar junto ao Prompt - " + f["name"], "url": f"https://drive.google.com/file/d/{f['id']}/view"}
+                for f in drive.listar(ref) if f["name"] in ("tiao-ficha-oficial.jpg", "tiao-frente-sozinho.jpg")]  # as duas do Tiao (Ed 19/11)
     except Exception: return []
 DESCRICAO = "\n".join([
     "Post de texto: copie o texto; a imagem vem no link (capa do vídeo ou a que o robô fez) ou gere no Meta AI com o prompt e as fotos do Tião. No YouTube Studio: Criar > Criar post, cole o texto, junte a imagem, seta ao lado de Publicar > Agendar.",

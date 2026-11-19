@@ -30,9 +30,12 @@ def ver(NN):
 # Cada coisa aparece UMA vez so, no passo:
 #   1. o formato (16:9, 9:16, 1:1) vai DENTRO do prompt: o meta.ai e os outros nao tem onde escolher;
 #   2. a ficha (e todo link de referencia) e um link que ABRE numa aba nova (Ed: «quero que ja abra a ficha direto»);
-#   3. a pasta onde salvar e uma caixa «📁 Salvar nessa pasta» com o botao Copiar (sem repetir no titulo nem em link);
+#   3. a pasta onde salvar e uma caixa «📁 Salvar nessa pasta» com o CAMINHO no PC (G:\Meu Drive\...), nunca http;
 #   4. o botao do prompt chama-se so «Prompt». O passo a passo fica uma vez, na descricao da tarefa.
-# Campos nossos (nao vao ao Team): passo["formato"], passo["pasta"] e tarefa["pasta"] = {"rotulo", "url"}.
+#   5. o TITULO do passo no molde B (Ed, 19/11: «B»): «7 de 18 · 🖼️ Imagem no meta.ai · Tiao acenando tchau · 📱 em pe».
+#      Sai sozinho quando o passo traz tipo ("imagem", "video", "gif"), onde ("meta.ai", "Flow") e o_que.
+# Campos nossos (nao vao ao Team): passo["formato"], passo["pasta"], passo["tipo"], passo["onde"], passo["o_que"]
+# e tarefa["pasta"] = {"rotulo", "url"}.
 FORMATOS = {"16:9": "ASPECT RATIO 16:9, horizontal widescreen image (1920x1080), never square, never vertical. ",
             "9:16": "ASPECT RATIO 9:16, vertical portrait image (1080x1920), never square, never horizontal. ",
             "1:1": "ASPECT RATIO 1:1, square image (1080x1080), never vertical, never horizontal. "}
@@ -40,11 +43,37 @@ def _formato(p):
     if p.get("formato"): return p["formato"]
     for f in FORMATOS:
         if f in p.get("texto", ""): return f
+# REFERENCIAS FIXAS (Ed, 19/11: «sempre que for referencias ao tiao pra ficar com mais consistencia eu uso essa:
+# tiao-ficha-oficial e essa: tiao-frente-sozinho (...) Pro Marcos essas duas: marcos-neutro, marcos-referencia»).
+# Em todo pedido manual com o personagem vao AS DUAS, nesta ordem.
+REFERENCIAS = {"tiao": ["tiao-ficha-oficial.jpg", "tiao-frente-sozinho.jpg"],
+               "marcos": ["marcos-neutro.jpg", "marcos-referencia.jpg"]}
+def completar_refs(nomes):
+    """nomes de arquivos de referencia -> a mesma lista com as duas de cada personagem fixo (sem repetir)"""
+    out = []
+    for n in nomes:
+        for par in REFERENCIAS.values():
+            if n in par: out += [x for x in par if x not in out]; break
+        else:
+            if n not in out: out.append(n)
+    return out
+def caminho(pasta):
+    """a pasta como o Ed a ve no PC (Google Drive para computador, disco G:), nunca o link http (Ed, 19/11:
+    «nao dve ser um http, tem q ser o caminho da pasta, tipo assim: G:/Meu Drive/Tiao Poupador/banco/poses/tiao (com barras invertidas)»)"""
+    if pasta.get("caminho"): return pasta["caminho"]
+    r = pasta.get("rotulo", "")
+    if r.startswith("Google Drive > "): return "G:\\Meu Drive\\" + "\\".join(x.strip() for x in r.split(">")[1:])
+    return pasta["url"]
+TIPOS = {"imagem": "🖼️ Imagem", "video": "🎬 Vídeo", "gif": "🎞️ GIF animado"}
+JEITO = {"9:16": "📱 em pé", "16:9": "🖥️ deitado", "1:1": "⬜ quadrado"}
 def mastigar(tarefa):
     t = dict(tarefa); pasta_geral = t.pop("pasta", None); avisos = []
-    passos = []
-    for p in t.get("passos", []):
+    passos = []; total = len(t.get("passos", []))
+    for n, p in enumerate(t.get("passos", []), 1):
         p = dict(p); fmt = _formato(p); p.pop("formato", None); pasta = p.pop("pasta", None) or pasta_geral
+        tipo, onde, o_que = p.pop("tipo", None), p.pop("onde", None), p.pop("o_que", None)
+        if tipo and onde and o_que:
+            p["texto"] = f"{n} de {total} · {TIPOS.get(tipo, tipo)} no {onde} · {o_que}" + (f" · {JEITO[fmt]}" if fmt in JEITO else "")
         cop = p.pop("copias", None) or ([{"rotulo": "Prompt", "texto": p["copiar"]}] if p.get("copiar") else [])
         p.pop("copiar", None)
         if fmt in FORMATOS:  # o formato dentro do prompt
@@ -53,7 +82,7 @@ def mastigar(tarefa):
                     c["texto"] = FORMATOS[fmt] + c["texto"]
         if p.get("ficheiro"):
             if pasta:
-                cop.append({"rotulo": "📁 Salvar nessa pasta", "texto": pasta["url"]})
+                cop.append({"rotulo": "📁 Salvar nessa pasta", "texto": caminho(pasta)})
                 p["links"] = [l for l in p.get("links", []) if l.get("url") != pasta["url"]]
             else: avisos.append(p.get("codigo", "?"))
         if cop: p["copias"] = cop[:10]
