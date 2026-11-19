@@ -284,6 +284,6 @@ E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão,
 
 [TIÃO P02 contando dinheiro]
 
-Se o seu salário cai e no dia dez já sumiu, ou se ainda sobra, mas você não sabe direito para onde vai, você não pode perder o próximo vídeo. A Valéria achava que o problema dela era só o carrão. Mas, naquele domingo, a gente viu que o salário dela já chegava furado, por buracos pequenos que ela nem via. No próximo vídeo eu vou te mostrar quais são esses furos que comem o salário antes do dia dez, quanto cada um leva por mês, e o único que quase todo mundo tem e nunca percebe. Esse último, nem a Valéria tinha visto. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Se o seu salário cai e no dia dez já sumiu, ou se ainda sobra, mas você não sabe direito para onde vai, você não pode perder o próximo vídeo. A Valéria achava que o problema dela era só o carrão. Mas, naquele domingo, a gente viu que o salário dela já chegava furado, por buracos pequenos que ela nem via. Seu salário acaba no dia dez? Então escuta: o problema não é o salário. No próximo vídeo eu vou te mostrar quais são esses furos que comem o salário antes do dia dez, quanto cada um leva por mês, e o único que quase todo mundo tem e nunca percebe. Esse último, nem a Valéria tinha visto. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]

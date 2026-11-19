@@ -266,13 +266,13 @@ Mas teve uma coisa que eu ainda não te contei. Na tarde da conferida, antes do 
 
 [CENA: lembrança, fila na porta de um banco antigo]
 
-Foi o Plano Collor. Da noite para o dia, a poupança acima de cinquenta mil cruzados novos ficou presa no Banco Central, e só começou a voltar um ano e meio depois, em parcelas.
+Foi o confisco da poupança, em mil novecentos e noventa. Da noite para o dia, a poupança acima de cinquenta mil cruzados novos ficou presa no Banco Central, e só começou a voltar um ano e meio depois, em parcelas.
 
 [POSE P3 aponta] [TEXTO: MARÇO DE 1990]
 
 Ela me contou a história inteira daquele março de mil novecentos e noventa. E olha: se você passou sufoco naquela época, você vai se lembrar de cada detalhe. E se você ainda não tinha nascido, ou era criança, e não quer passar pelo aperto que milhões de brasileiros passaram de um dia para o outro por causa de um plano do governo, você precisa ver o próximo vídeo.
 
-Nele eu vou te contar o que a Dona Cida viu na porta do banco naquela manhã, o que fizeram com a poupança de quem trabalhou a vida inteira, e a única coisa que ela faz até hoje para nunca mais ser pega de surpresa. Essa última, quase ninguém sabe. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Nele eu vou te contar o que a Dona Cida viu na porta do banco naquela manhã, o que fizeram com a poupança de quem trabalhou a vida inteira, e a única coisa que ela faz até hoje para nunca mais ser pega de surpresa. Essa última, quase ninguém sabe. A Dona Cida não confia em banco desde mil novecentos e noventa. Será que ela tem razão? Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
 

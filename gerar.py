@@ -24,7 +24,7 @@ def falado(texto):
     # o roteiro escreve "Tião" normal; para a voz sair certa escreve-se "Tchião" (escolha do Ed, 03/11/2026)
     texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Tião", "Tchião")
     # pronuncia escolhida pelo Ed de ouvido (04/11/2026): o roteiro escreve normal, a voz le assim
-    FALA = [(r"FinMoovi", "Fin Múvi"), (r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
+    FALA = [(r"FinMoovi", "Finmúvi"), (r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
             (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
             (r"IPVA", "i pê vê á"),
             (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
@@ -32,9 +32,9 @@ def falado(texto):
             # Ed, 08/11/2026: «o correto é falar nótinhas (...) o certo é pão de fôrma»
             (r"notinha", "nótínha"), (r"Notinha", "Nótínha"), (r"pão de forma", "pão de fôrma"), (r"(?<![a-zà-ú])de cor(?=[:,.!?])", "de cór"),
             # Ed, 19/11/2026: «deveria ser B R, bê, érre»; «góv ponto bê érre»; «plano Cólor»; sigla soletrada letra por letra
-            (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Kólor"), (r"\bFGO\b", "éfe gê ó"),
-            # Ed, 19/11/2026, escolhidas de ouvido no teste (opções 1, 3, 6, 7, 11): «móro», «móstro», «ní-vel», «Kólor», «sufôco»
-            (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1í-vel"), (r"\bsufoco\b", "sufôco")]
+            (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Cóllo"), (r"\bFGO\b", "éfe gê ó"),
+            # Ed, 19/11/2026, escolhidas de ouvido: teste 1 (1, 3, 11) e teste 2 (2 «nívio», 6 «Cóllo», 8 «Finmúvi»); o Collor ainda não agrada: evitar o nome na fala: «móro», «móstro», «ní-vel», «Kólor», «sufôco»
+            (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1ívio"), (r"\bsufoco\b", "sufôco")]
     for a, b in FALA: texto = re.sub(a, b, texto)
     return texto
 

@@ -31,5 +31,22 @@ for a, b in zip(cortes, cortes[1:]):
         ws = [[round(x + a, 2), round(y + a, 2), w] for x, y, w in rel]
         print(f"trecho {a / 60:.1f} a {b / 60:.1f} min: {len(ws)} palavras", flush=True)
     out += ws
+# 19/11/2026 (Ed: «a sincronizacao das imagens, da fala e da legenda tem alguns lugares que nao batem»): o Whisper marca o
+# comeco da palavra ainda no silencio (ex.: «No» com 0,66 s). Cada palavra passa a comecar onde a VOZ comeca de verdade,
+# medido no som (10 ms), procurando ate 0,7 s depois do que o Whisper disse. A legenda e as cenas usam estes tempos.
+import numpy as np
+raw = subprocess.run(["ffmpeg", "-v", "error", "-i", MP3, "-ac", "1", "-ar", "8000", "-f", "s16le", "-"], capture_output=True).stdout
+x = np.frombuffer(raw, np.int16).astype(float); n = len(x) // 80
+e = np.sqrt((x[: n * 80].reshape(n, 80) ** 2).mean(1)); voz = e > max(150.0, np.percentile(e, 35) * 1.5)
+mexidas = 0
+for k, wd in enumerate(out):
+    a = int(wd[0] * 100)
+    if a >= n or voz[a]: continue  # ja comeca com voz
+    lim = min(n, int(min(wd[0] + 0.7, wd[1] - 0.05) * 100) + 1)
+    j = next((q for q in range(a, lim) if voz[q]), None)
+    if j is not None and j > a:
+        wd[0] = round(j / 100, 2); mexidas += 1
+        if k > 0 and out[k - 1][1] > wd[0]: out[k - 1][1] = wd[0]
+print(f"comeco afinado pela voz em {mexidas} palavras")
 json.dump(out, open(f"{P}/fabrica/saida/{NN}-palavras.json", "w", encoding="utf-8"), ensure_ascii=False)
 print(len(out), "palavras")

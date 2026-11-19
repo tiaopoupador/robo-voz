@@ -34,3 +34,19 @@ for i, f in enumerate(falas):
     if re.search(r"\b(está escrito|no site)\b[.!]", f, re.I): avisos.append(f"fala {i}: 'está escrito'/'no site' sem dizer onde")
 for a in avisos: print("AVISO", a)
 if not avisos: print("fala de gente: nenhum aviso")
+
+# Guarda da sequencia (Ed, 19/11/2026: «o video x no final tem que fazer o gancho com o titulo do proximo video»):
+# o gancho final (as 2 ultimas falas) tem de trazer as palavras fortes do TITULO do proximo video na agenda.json.
+import unicodedata
+def _sem_acento(s): return "".join(c for c in unicodedata.normalize("NFD", s.lower()) if unicodedata.category(c) != "Mn")
+FRACAS = set("a o as os um uma de da do das dos no na nos nas em e que se seu sua por para pra ao com nao sem te ja ou ela ele voce mais tem foi isso esse essa quem por que porque como".split())
+NUM = {"10": "dez", "50": "cinquenta", "1990": "noventa", "7": "sete"}
+cal = json.load(open(f"{P}/fabrica/agenda.json", encoding="utf-8"))["calendario"]
+prox = next((v for v in cal if v["nn"] > NN), None)
+if prox:
+    fimtxt = _sem_acento(" ".join(falas[-2:]))
+    fortes = [w for w in re.findall(r"[\w$]+", _sem_acento(prox["titulo"])) if w not in FRACAS and len(w) > 2 or w in NUM]
+    faltam = [w for w in fortes if (NUM.get(w, w)[:5] not in fimtxt)]
+    tem = len(fortes) - len(faltam)
+    print(f"gancho do proximo ({prox['nn']}: {prox['titulo']}): {tem} de {len(fortes)} palavras do titulo no fim")
+    if tem < max(2, len(fortes) // 2): print(f"AVISO o fim nao chama o titulo do {prox['nn']}: faltam {', '.join(faltam)}")

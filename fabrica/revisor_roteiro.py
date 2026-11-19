@@ -47,6 +47,10 @@ Aponte cada lugar onde a história falha:
       e quem quer evitar), toca na dor com a causa, promete 2 ou 3 coisas concretas do próximo vídeo (a última sem contar o que é)
       e só então manda clicar ("Clica agora, que o vídeo já está aparecendo aqui na tela!"); o vídeo acaba logo ali.
       Gancho vago ("essa conversa é para você" sem dizer o que vem e para quem) é falha. Nunca "no próximo capítulo" entre partes.
+   g) SEQUÊNCIA (o dono do canal, 19/11/2026: «o video x no final tem que fazer o gancho com o titulo do proximo video»): o gancho
+      final repete a pergunta ou as palavras fortes do TÍTULO DO PRÓXIMO VÍDEO, que é: «{PROXIMO}». Se o fim não chama esse título,
+      ou promete outro assunto, é falha grave;
+   h) a abertura deste vídeo paga o que o FIM DO VÍDEO ANTERIOR prometeu: «{ANTERIOR}». Se o vídeo não entrega o prometido, é falha grave.
 9. FALA DE GENTE (o dono do canal, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»; sempre grave):
    a) sigla sem dizer o que é (diga o nome inteiro: "Fundo de Garantia de Operações", não "FGO");
    b) "hein" (a voz lê "rein"): proibido;
@@ -67,7 +71,14 @@ def revisar(NN, arq=None):
     L = open(arq or f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines()
     cl = [x.strip() for x in open(f"{P}/fabrica/cliches.txt", encoding="utf-8") if x.strip() and not x.startswith("#")]
     lista = "LISTA DE CLICHÊS (Ed, 11/11/2026):\n" + "\n".join("- " + x for x in cl) + "\n\nO roteiro, uma linha por número:"
-    txt = PEDIDO.replace("O roteiro, uma linha por número:", lista) + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
+    # a sequencia: o titulo do proximo (agenda.json) e as 2 ultimas falas do anterior (se ja tem voz)
+    cal = json.load(open(f"{P}/fabrica/agenda.json", encoding="utf-8"))["calendario"]
+    prox = next((v["titulo"] for v in cal if v["nn"] > NN), "(ainda sem próximo na agenda: ignore o item 8g)")
+    ant = [v["nn"] for v in cal if v["nn"] < NN]
+    arq_ant = f"{P}/robo-voz/roteiro-{ant[-1]}.txt" if ant else ""
+    anterior = " ".join(open(arq_ant, encoding="utf-8").read().splitlines()[-2:]) if arq_ant and os.path.exists(arq_ant) else "(o roteiro anterior ainda não existe: ignore o item 8h)"
+    pedido = PEDIDO.replace("{PROXIMO}", prox).replace("{ANTERIOR}", anterior)
+    txt = pedido.replace("O roteiro, uma linha por número:", lista) + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
     with cli.messages.stream(model="claude-sonnet-5-5", max_tokens=32000, thinking={"type": "adaptive"},
                              output_config={"format": {"type": "json_schema", "schema": ESQ}},
