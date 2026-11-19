@@ -97,6 +97,13 @@ def publica(nome):
 ALIN = alinhar(NN)
 for o in ALIN:  # na legenda o app e sempre FinMoovi
     o[2] = re.sub(r"Fin\s*M[óúuo]+vi", "FinMoovi", o[2], flags=re.I)
+# VINHETA no meio da voz (funil do Joba, canal-dark longo.md 20.3 e 21): VINHETA = <linha do "Vamos começar?"> no cenas.py.
+# Abre-se um buraco de VIN_DUR s na voz logo depois dessa fala e tudo o que vem depois anda para a frente.
+VIN = getattr(C, "VINHETA", None); VIN_DUR = 4.5; VIN_T = None
+if VIN is not None:
+    VIN_T = round(max(o[1] for o in ALIN if o[3] == VIN) + 0.25, 2)
+    for o in ALIN:
+        if o[0] >= VIN_T: o[0] = round(o[0] + VIN_DUR, 3); o[1] = round(o[1] + VIN_DUR, 3)
 linhas = sorted(C.L); N_LIN = len(open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines())
 ini_lin = {k: next((o[0] for o in ALIN if o[3] == k), None) for k in range(N_LIN)}
 FIM = round(max(o[1] for o in ALIN) + 0.6, 2)
@@ -129,7 +136,50 @@ for k in linhas:
         if src is None: cenas.append({"ini": s, "k": "frase", "texto": "", "chave": chave}); continue
         if tp == "vid": cenas.append({"ini": s, "k": "vid", "src": src, "mov": mv, "de": 0, "chave": chave, "clip": round(dur_de(f"{P}/render/public/{src}"), 2), "ov": ov})
         else: cenas.append({"ini": s, "k": "hib" if ov else "img", "src": src, "mov": mv, "ov": ov, "chave": chave, "sil": tipo == "SIL"})
+if VIN_T is not None: cenas.append({"ini": VIN_T, "k": "vinheta", "chave": "vinheta"})
 cenas.sort(key=lambda c: c["ini"])
+# Tiao Conversa (19/11): imagem ou cartao parado no maximo ~10 s; depois o video volta ao Tiao falando (pose seguinte, lado trocado)
+conv = [c for c in cenas if c["k"] == "conversa"]
+if conv:
+    POSES = ["P2", "P3", "P1", "P4"]; extra = []; n_ex = 0
+    for i, c in enumerate(cenas):
+        if c["k"] in ("vinheta", "final", "vid"): continue
+        prox = cenas[i + 1]["ini"] if i + 1 < len(cenas) else FIM
+        falando = c["k"] == "conversa"   # o Tiao ja esta na tela: so troca de pose, do mesmo lado
+        t = c["ini"] + (11.0 if falando else 8.0)
+        while prox - t > 3.0:
+            ult = c if falando else max((x for x in conv if x["ini"] <= t), key=lambda x: x["ini"], default=conv[0])
+            atual = POSES.index(ult["pose"][-6:-4]) if ult["pose"][-6:-4] in POSES else n_ex
+            pose = f"marca/poses/{POSES[(atual + 1 + n_ex) % 4]}.png"; n_ex += 1
+            extra.append({"ini": round(t, 2), "k": "conversa", "src": ult["src"], "pose": pose, "lado": ult.get("lado", 1) if falando else -ult.get("lado", 1), "chave": c["chave"] + "-volta"})
+            t += 11.0
+    cenas += extra; cenas.sort(key=lambda c: c["ini"])
+# clima de cada cena pela fala (Ed, 18/11/2026): luz de cinema sempre + chuva, brasas, tensao, brilho, passado ou poeira calma.
+# Vale do video 03 em diante (Ed: «as mudancas reais somente a partir do 3»). cenas.py pode mandar: CLIMA = {linha: "chuva"}.
+ACABAMENTO = int(NN) >= 3
+if ACABAMENTO:
+    from fabrica.climas import escolher
+    FALAS = open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines(); MANDA = getattr(C, "CLIMA", {})
+    for c in cenas:
+        if c["k"] not in ("img", "vid", "hib", "conversa"): continue
+        lin = int(c["chave"].split("-")[0])
+        fb = any("flashback" in (x.get("src") or "") for x in cenas if x["chave"].split("-")[0] == str(lin))
+        c["clima"] = MANDA.get(lin) or escolher(FALAS[lin] if lin < len(FALAS) else "", c.get("src", ""), linha_tem_flashback=fb)
+    # transicao de entrada (Ed aprovou as 6 a 18/11: «gostei de todas»), escolhida pelo sentido, so entre duas imagens:
+    # entra no passado = pagina; volta do passado = rasgo; susto = zoom; coisa boa = clarao; o resto fica no chicote de sempre.
+    # cenas.py pode mandar: ENTRA = {linha: "cortina"} (troca de capitulo). Uma especial a cada 6 s no minimo (o passado sempre).
+    ENTRA = getattr(C, "ENTRA", {}); IMGS = ("img", "vid", "hib", "conversa"); ultima = -99
+    for i in range(1, len(cenas)):
+        c, a_ = cenas[i], cenas[i - 1]
+        if c["k"] not in IMGS or a_["k"] not in IMGS: continue
+        lin = int(c["chave"].split("-")[0]); ca, cb = a_.get("clima"), c.get("clima"); tr = ENTRA.get(lin) if cenas[i - 1]["chave"].split("-")[0] != str(lin) else None
+        tempo = tr is not None
+        if not tr:
+            if cb == "passado" and ca != "passado": tr, tempo = "pagina", True
+            elif ca == "passado" and cb != "passado": tr, tempo = "rasgo", True
+            elif cb == "tensao" and ca != "tensao": tr = "zoom"
+            elif cb == "brilho" and ca != "brilho": tr = "clarao"
+        if tr and c["ini"] - ultima >= (2.5 if tempo else 6): c["entra"] = tr; ultima = c["ini"]
 # guarda dos rostos (Ed, 08/11): balao, emoji, placa e etiqueta nunca em cima de rosto (fabrica/rostos.py)
 if "--sem-rostos" not in sys.argv:
     try:
@@ -171,23 +221,29 @@ MUS = P + "/render/public/musica/"
 FAIXAS = {"calma": ["Wallpaper", "Dreamer", "Life-of-Riley"], "tensao": ["Investigations", "Hitman", "Dark-Times"],
           "triste": ["Heartbreaking", "Sad-Trio"], "curiosa": ["Thinking-Music", "Local-Forecast---Elevator"], "humor": ["Sneaky-Snitch"],
           "montagem": ["Impending-Boom"], "reflexiva": ["Lasting-Hope", "Touching-Moments-Two---Higher"], "virada": ["Inspired"],
-          "final": ["Inspired"], "drama": ["Long-Note-Two"]}
+          "final": ["Inspired"], "drama": ["Long-Note-Two"],
+          # Tiao Conversa (Ed 18/11: «musica de tensao, de alerta, de aviso! estilo aqueles jornais policiais (...) bem marcante»)
+          # escolhida: Interloper (grave, pancadas fortes e silencios). Recusadas: Aggressor, Cut and Run, Chase Pulse, Prelude and Action, Oppressive Gloom, The Dread
+          "alerta": ["Interloper"]}
+if os.environ.get("TRILHA_ALERTA"): FAIXAS["alerta"] = [os.environ["TRILHA_ALERTA"]]  # para comparar uma musica de cada vez
 uso = {}; partes = []
 pontos = sorted((ini_lin[k], cl) for k, cl in C.CLIMA.items() if ini_lin.get(k) is not None)
+if VIN_T is not None:  # a musica para na vinheta (ela tem o som dela) e volta com o mesmo clima logo depois
+    antes = [cl for t, cl in pontos if t <= VIN_T]; pontos = sorted(pontos + [(VIN_T, "silencio"), (VIN_T + VIN_DUR, antes[-1] if antes else "calma")])
 TOTAL = FIM + TELA
 for i, (a, cl) in enumerate(pontos):
     b = pontos[i + 1][0] if i + 1 < len(pontos) else TOTAL
-    if cl == "silencio": partes.append((a, b, None)); continue
+    if cl == "silencio": partes.append((a, b, None, cl)); continue
     lista = FAIXAS[cl]; f = lista[uso.get(cl, 0) % len(lista)]; uso[cl] = uso.get(cl, 0) + 1
-    partes.append((a, b, f))
-if partes and partes[0][0] > 0: partes[0] = (0, partes[0][1], partes[0][2])
+    partes.append((a, b, f, cl))
+if partes and partes[0][0] > 0: partes[0] = (0, partes[0][1], partes[0][2], partes[0][3])
 X = 2.0
 # 13/11/2026: em partes (abrir as 20 musicas num ffmpeg so estourava a memoria do PC): cada trecho vira um wav, depois junta de 2 em 2
 import tempfile; TMPM = tempfile.mkdtemp(prefix="trilha")
-for i, (a, b, f) in enumerate(partes):
+for i, (a, b, f, cl) in enumerate(partes):
     d = b - a + (X if i < len(partes) - 1 else 0)
     ent = ["-stream_loop", "-1", "-i", MUS + f + ".mp3"] if f else ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
-    norm = ",loudnorm=I=-30:TP=-6:LRA=7" if f else ""
+    norm = (",loudnorm=I=-26:TP=-4:LRA=7" if cl == "alerta" else ",loudnorm=I=-30:TP=-6:LRA=7") if f else ""  # o alerta vem mais presente
     subprocess.run(["ffmpeg", "-v", "error", "-y", *ent, "-af", f"atrim=0:{d:.2f},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo{norm}",
                     "-ar", "44100", "-ac", "2", "-c:a", "pcm_s16le", f"{TMPM}/m{i}.wav"], check=True)
 cad = f"{TMPM}/m0.wav"
@@ -201,7 +257,7 @@ for i in range(1, len(partes)):
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", cad, "-af", f"volume='if(gte(t,{FIM}),1.0+1.6*min(1,(t-{FIM})/1.5),1.0)':eval=frame,afade=t=in:d=2,afade=t=out:st={TOTAL - 2.5:.2f}:d=2.5",
                 "-t", f"{TOTAL:.2f}", "-c:a", "libmp3lame", "-q:a", "3", PUB + "/trilha.mp3"], check=True)
 import shutil; shutil.rmtree(TMPM, ignore_errors=True)
-musicas = sorted({f for _, _, f in partes if f})
+musicas = sorted({p[2] for p in partes if p[2]})
 
 # ---------------- sons de cena (AMB em cenas.py) ----------------
 AMB = P + "/render/public/amb"
@@ -271,7 +327,12 @@ for k, fr in enumerate(getattr(C, "BARRAS", RECADOS)):
     if t is None: avisos.append(f"barra {k + 1}: sem lugar só com imagem perto de {alvo / 60:.1f} min"); continue
     barras.append({"ini": round(t + 0.4, 2), "dur": d, "frases": [x for x, _ in fr], "acoes": [a for _, a in fr]})
 
-copia(f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3", "narracao.mp3")
+if VIN_T is None: copia(f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3", "narracao.mp3")
+else:  # a voz com o buraco da vinheta
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3", "-filter_complex",
+                    f"[0:a]atrim=0:{VIN_T},asetpts=PTS-STARTPTS[a];anullsrc=r=44100:cl=mono,atrim=0:{VIN_DUR}[s];[0:a]atrim={VIN_T},asetpts=PTS-STARTPTS[b];"
+                    "[a]aformat=sample_rates=44100:channel_layouts=mono[a2];[b]aformat=sample_rates=44100:channel_layouts=mono[b2];[a2][s][b2]concat=n=3:v=0:a=1[o]",
+                    "-map", "[o]", "-c:a", "libmp3lame", "-q:a", "2", PUB + "/narracao.mp3"], check=True)
 # volume da voz 15 vezes por segundo, para as ondas da cena "conversa" (só se o vídeo tiver alguma)
 onda = []
 if any(c["k"] == "conversa" for c in cenas):
@@ -279,7 +340,9 @@ if any(c["k"] == "conversa" for c in cenas):
     pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", PUB + "/narracao.mp3", "-ac", "1", "-ar", "3000", "-f", "s16le", "-"], capture_output=True, check=True).stdout
     x = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768; n = len(x) // 200
     r = np.sqrt((x[: n * 200].reshape(n, 200) ** 2).mean(1)); onda = [round(float(v), 3) for v in np.clip(r / (np.percentile(r, 97) + 1e-6), 0, 1)]
-props = {"pasta": PASTA, "fim": FIM, "tela": TELA, "cenas": cenas, "legendas": leg, "efeitos": efeitos, "barras": barras, "onda": onda}
+props = {"pasta": PASTA, "fim": FIM, "tela": TELA, "cenas": cenas, "legendas": leg, "efeitos": efeitos, "barras": barras, "onda": onda, "acabamento": ACABAMENTO,
+         # Tiao Conversa (Ed 18/11): ondas em pilulas da marca e a placa TIAO CONVERSA com o Tiao tomando cafe; cenas.py pode trocar
+         "ondaEstilo": getattr(C, "ONDA", "pilulas"), "selo": getattr(C, "SELO", "placa")}
 json.dump(props, open(PUB + "/props.json", "w", encoding="utf-8"), ensure_ascii=False)
 relato = {"cenas": len(cenas), "fim": FIM, "musicas": musicas, "do_ed": usados_ed, "plano_b": planoB, "avisos": avisos}
 json.dump(relato, open(f"{P}/fabrica/saida/{NN}-montagem.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

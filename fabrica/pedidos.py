@@ -1,8 +1,9 @@
 # Peca do robo: monta o e-mail com os pedidos que o Ed gera a mao (meta.ai: as imagens principais; Flow: os clipes; a capa).
-# Uso: python fabrica/pedidos.py 02 ["pasta onde salvar"]   -> fabrica/saida/02-pedidos.md (o e-mail.py manda este texto)
+# Uso: python fabrica/pedidos.py 02 ["pasta onde salvar"] [--enviar] [--matheus]   -> fabrica/saida/02-pedidos.md (o e-mail.py manda este texto)
 import importlib, os, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
-NN = sys.argv[1]; ONDE = sys.argv[2] if len(sys.argv) > 2 else f"Google Drive > Tiao Poupador > entrada > video-{NN}"
+_ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]  # as opcoes (--enviar, --matheus) nao contam como pasta
+NN = _ARGS[0]; ONDE = _ARGS[1] if len(_ARGS) > 1 else f"Google Drive > Tiao Poupador > entrada > video-{NN}"
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 FIM4 = "Gere a imagem em 2 ângulos diferentes e com total consistência com o personagem que está em referência:"
 CONS = ("CHARACTER AND SCENERY CONSISTENCY ARE THE TOP PRIORITY. The characters must be IDENTICAL to the attached reference images, not similar: "
@@ -90,6 +91,8 @@ print(f"{len(meta)} meta, {len(flow)} flow -> fabrica/saida/{NN}-pedidos.md")
 # --enviar: manda a tarefa para o Apexi Team (uma vez: se ja existe, nao mexe, para nao apagar o que o Ed marcou)
 # e o e-mail de reserva junto (ate RESERVA_ATE). Se o Team recusar, o e-mail sai de qualquer jeito.
 RESERVA_ATE = "2026-11-20"
+# --matheus: a tarefa vai com um tipo proprio; no Team (Projetos > o espaco > Robos) o Ed escolhe uma vez que esse tipo e do Matheus (Ed, 18/11)
+TIPO = "imagens-do-video-matheus" if "--matheus" in sys.argv else "imagens-do-video"
 if "--enviar" in sys.argv:
     import datetime
     from fabrica import team, correio
@@ -102,7 +105,7 @@ if "--enviar" in sys.argv:
         ja = team.ver(NN) is not None
         if ja: print("Team: a tarefa ja existe, nao mando de novo")
         else:
-            r = team.mandar({"chave_unica": team.chave_unica(NN), "tipo": "imagens-do-video", "projeto": "Tião Poupador",
+            r = team.mandar({"chave_unica": team.chave_unica(NN), "tipo": TIPO, "projeto": "Tião Poupador",
                              "titulo": f"Vídeo {NN}: o que gerar à mão ({len(PASSOS)} arquivos)",
                              "descricao": f"{C.TITULO}. Vai ao ar: {C.PUBLICA_TXT}. Anexe cada arquivo no seu passo (ou salve na pasta do Drive). "
                                           "Se faltar algum, o robô usa a imagem dele no lugar.",

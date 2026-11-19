@@ -52,3 +52,4 @@ Codec **Opus** em `.ogg`, 48 kHz. Nomes do contrato: `click`→click · `ding`�
 | `ding.ogg` | sino suave único (pontos da assinatura final) | interface-sounds · `bong_001` (sino) + 2 cópias atrasadas/atenuadas = cauda de reverb |
 | `thud.ogg` | impacto surdo/suave | impact-sounds · `impactSoft_medium_000` + `impactSoft_heavy_001`, ambos com pitch↓ (`asetrate`) para abafar |
 | `sparkle.ogg` | brilho/glitter curto (varredura da assinatura) | interface-sounds · `glass_001/002/003/005` com pitch↑ crescente e defasagem = shimmer ascendente |
+- rasgo.wav: sintetizado em codigo (ruido e estalos), 18/11/2026, sem licenca de terceiros

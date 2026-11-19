@@ -1,21 +1,24 @@
 // Video de QUALQUER numero: recebe os dados de fora (--props=public/vNN/props.json, feito pelo fabrica/montar.py).
 import React from "react";
+import { Mistura, DUR_TRANS, SOM_TRANS, Trans } from "../motion/efeitos/Transicoes";
+import { LuzCinema, PoeiraLenta, PontosDeLuz, Chuva, Brasas, BrilhoDourado, Tensao, FILTRO_PASSADO, BordaPassado } from "../motion/efeitos/Acabamento";
 import { AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Baloo2";
 import { mola, MOLAS } from "../mola";
 import { Balao, Barras, Calendario, Carimbo, Cita, Conta, COR, Etiqueta, Frase, LinhaTempo, Numero, reais } from "../motion/kit";
 import { Balanca, Botao, Celular, Divide, FraseTopo, Grade, Grafico, Icones, Lista, Pessoas, Pizza, Placa, Torre, Trinca } from "../motion/kit2";
-import { TelaFinalNova } from "../motion/TelaFinalNova";  // Ed 13/11: «pode» (a TelaFinal antiga fica no arquivo, fora de uso)
+import { TelaFinalNova } from "../motion/TelaFinalNova";
+import { VinhetaNova } from "../motion/VinhetaNova";  // 19/11: entra no meio do video, depois do "Vamos começar?" (VINHETA no cenas.py)  // Ed 13/11: «pode» (a TelaFinal antiga fica no arquivo, fora de uso)
 import { FotoNota } from "../motion/fotonota";
 import { Brilho, Check, Reacao, tremor, Voa, Xis } from "../motion/reacoes";
 import { Acao, Plantao, PLANTAO_ALTURA } from "../motion/Plantao";
-import { Conversa, OndaCtx } from "../motion/Conversa";
+import { Conversa, OndaCtx, EstiloCtx } from "../motion/Conversa";
 
 const { fontFamily } = loadFont("normal", { weights: ["800"] });
 type Cena = { ini: number; k: string; [x: string]: any };
 type Efeito = { src: string; ini: number; dur: number; vol: number; fi: number; fo: number };
 type Barra = { ini: number; dur: number; frases: string[]; acoes?: Acao[] };
-export type Dados = { pasta: string; fim: number; tela: number; cenas: Cena[]; legendas: [number, number, string][]; efeitos: Efeito[]; barras?: Barra[]; onda?: number[] };
+export type Dados = { pasta: string; fim: number; tela: number; cenas: Cena[]; legendas: [number, number, string][]; efeitos: Efeito[]; barras?: Barra[]; onda?: number[]; acabamento?: boolean; ondaEstilo?: string; selo?: string };
 export const VAZIO: Dados = { pasta: "v02", fim: 10, tela: 0, cenas: [], legendas: [], efeitos: [] };
 
 const formato = (c: Cena) => {
@@ -33,7 +36,7 @@ const Camera: React.FC<{ c: Cena; dur: number; lado: number; children?: React.Re
   const p = mola(t, 3.5 / dur, 1);
   const esc = c.mov === "entra" ? 1.0 + 0.08 * p : c.mov === "sai" ? 1.1 - 0.08 * p : 1.08;
   const dx = c.mov === "esq" ? 2.5 - 5 * p : c.mov === "dir" ? -2.5 + 5 * p : 0;
-  const [ew, ez] = MOLAS.estalo; const e = mola(t, ew, ez);
+  const [ew, ez] = MOLAS.estalo; const e = c.entra ? 1 : mola(t, ew, ez);  // com transicao propria, sem o chicote
   const entraX = (1 - e) * 9 * lado, borrao = Math.max(0, (1 - e) * 22);
   const sustos = (c.ov ?? []).filter((o: any) => o.t === "xis" || (o.t === "reacao" && ["😱", "💥", "🤯"].includes(o.e))).map((o: any) => o.ini ?? 0.6);
   const [tx, ty] = tremor(t, sustos);
@@ -91,6 +94,7 @@ const Peca: React.FC<{ c: Cena; dur: number; lado: number }> = ({ c, dur, lado }
     case "torre": return <Torre itens={c.itens} titulo={c.titulo} />;
     case "fotonota": return <FotoNota itens={c.itens} total={c.total} categoria={c.categoria} />;
     case "final": return <TelaFinalNova />;
+    case "vinheta": return <VinhetaNova />;
     case "montagem": return <Montagem imgs={c.imgs} seg={c.seg ?? 0.45} />;
     case "grade": return <Grade total={c.total} cols={c.cols} titulo={c.titulo} ate={c.ate} cor={c.cor} rotuloFim={c.rotuloFim} corFim={c.corFim} />;
   }
@@ -135,6 +139,25 @@ const Legenda: React.FC<{ texto: string; acima?: number; grande?: number }> = ({
   );
 };
 
+// clima da cena (Ed, 18/11/2026), sempre sutil: entra em 0,6 s; o passado e «lembranca» (cor apagada, bordas claras)
+const ComClima: React.FC<{ clima: string; t0: number; children: React.ReactNode }> = ({ clima, t0, children }) => {
+  const t = useCurrentFrame() / useVideoConfig().fps, f = Math.min(1, t / 0.6);
+  const Efeito = ({ lenta: PoeiraLenta, luz: PontosDeLuz, chuva: Chuva, brasas: Brasas, brilho: BrilhoDourado, tensao: Tensao } as Record<string, React.FC<{ t: number }>>)[clima];
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={clima === "passado" ? { filter: FILTRO_PASSADO.memoria } : undefined}>{children}</AbsoluteFill>
+      {clima === "passado" && <AbsoluteFill style={{ opacity: f }}><BordaPassado tipo="memoria" t={t} /></AbsoluteFill>}
+      {Efeito && <AbsoluteFill style={{ opacity: f, pointerEvents: "none" }}><Efeito t={t + t0} /></AbsoluteFill>}
+    </AbsoluteFill>
+  );
+};
+// a entrada da cena com uma das 6 transicoes: nos primeiros instantes mistura a cena de antes (a) com a nova (b)
+const Entrada: React.FC<{ tipo: Trans; a: React.ReactNode; b: React.ReactNode }> = ({ tipo, a, b }) => {
+  const t = useCurrentFrame() / useVideoConfig().fps, td = DUR_TRANS[tipo];
+  return t < td ? <Mistura tipo={tipo} p={t / td} a={a} b={b} /> : <>{b}</>;
+};
+const LuzGeral: React.FC = () => <LuzCinema t={useCurrentFrame() / useVideoConfig().fps} />;
+
 export const Video: React.FC<Dados> = (dados) => {
   const { fps } = useVideoConfig();
   const CENAS = dados.cenas, FALA = dados.fim, FIM = FALA + (dados.tela ?? 0);
@@ -142,18 +165,36 @@ export const Video: React.FC<Dados> = (dados) => {
   const cenaEm = (t: number) => { let k: Cena | null = null; for (const c of CENAS) { if (c.ini <= t + 0.05) k = c; else break; } return k; };
   const sobBarra = (a: number, b: number) => barras.some((x) => a < x.ini + x.dur && b > x.ini);  // a legenda sobe por cima da barra
   return (
-    <OndaCtx.Provider value={dados.onda ?? []}>
+    <OndaCtx.Provider value={dados.onda ?? []}><EstiloCtx.Provider value={{ onda: dados.ondaEstilo ?? "barras", selo: dados.selo ?? "" }}>
     <AbsoluteFill style={{ backgroundColor: COR.tinta }}>
       {CENAS.map((c, i) => {
         // a cena antes da tela final dura mais 0,8 s: é ela que a onda amarela cobre ao entrar (por baixo, nunca um fundo vazio)
         const fim = i + 1 < CENAS.length ? CENAS[i + 1].ini + (CENAS[i + 1].k === "final" ? 0.8 : 0) : FIM;
         const de = Math.round(c.ini * fps), n = Math.max(1, Math.round(fim * fps) - de);
-        return <Sequence key={i} from={de} durationInFrames={n}><Peca c={c} dur={n / fps} lado={i % 2 ? -1 : 1} /></Sequence>;
+        const no = (j: number, nn: number) => { const x = CENAS[j]; const p = <Peca c={x} dur={nn / fps} lado={j % 2 ? -1 : 1} />; return x.clima ? <ComClima clima={x.clima} t0={x.ini}>{p}</ComClima> : p; };
+        const atual = no(i, n);
+        if (!c.entra || i === 0) return <Sequence key={i} from={de} durationInFrames={n}>{atual}</Sequence>;
+        const dp = Math.round(CENAS[i - 1].ini * fps), np = de - dp + Math.round(DUR_TRANS[c.entra as Trans] * fps);
+        const antes = <Sequence from={dp - de} durationInFrames={np}>{no(i - 1, de - dp)}</Sequence>;
+        const som = SOM_TRANS[c.entra as Trans];
+        return (
+          <Sequence key={i} from={de} durationInFrames={n}>
+            <Entrada tipo={c.entra} a={antes} b={atual} />
+            {som && <Sequence durationInFrames={60} layout="none"><Audio src={staticFile(som[0])} volume={som[1]} /></Sequence>}
+          </Sequence>
+        );
       })}
+      {dados.acabamento && <Sequence durationInFrames={Math.round(FALA * fps)} layout="none"><LuzGeral /></Sequence>}
       {leg.map(([ini, fim, txt], i) => {
         const prox = i + 1 < leg.length ? leg[i + 1][0] : FALA;
         const de = Math.round(ini * fps), ate = Math.round(Math.min(fim + 0.25, prox) * fps);
-        return <Sequence key={"l" + i} from={de} durationInFrames={Math.max(1, ate - de)}><Legenda texto={txt} acima={sobBarra(ini, fim) ? PLANTAO_ALTURA : 0} grande={cenaEm(ini)?.k === "conversa" ? (cenaEm(ini)?.lado ?? 1) : 0} /></Sequence>;
+        // 18/11 (Ed: «o texto sobressai por cima do outro»): se a cena troca no meio da frase, a frase troca de jeito na mesma hora
+        // (grande ao lado do Tião na conversa, embaixo nas outras cenas), para nunca ficar por cima de um número ou cartão
+        const jeito = (t: number) => (cenaEm(t)?.k === "conversa" ? (cenaEm(t)?.lado ?? 1) : 0);
+        const ac = Math.min(fim + 0.25, prox); const corte = CENAS.find((c) => c.ini > ini && c.ini < ac && jeito(c.ini + 0.01) !== jeito(ini))?.ini;
+        const peca = (a: number, b: number, g: number, k: string) => <Sequence key={k} from={Math.round(a * fps)} durationInFrames={Math.max(1, Math.round(b * fps) - Math.round(a * fps))}><Legenda texto={txt} acima={sobBarra(ini, fim) ? PLANTAO_ALTURA : 0} grande={g} /></Sequence>;
+        if (corte === undefined) return peca(ini, ac, jeito(ini), "l" + i);
+        return <React.Fragment key={"l" + i}>{peca(ini, corte, jeito(ini), "a")}{peca(corte, ac, jeito(corte + 0.01), "b")}</React.Fragment>;
       })}
       {barras.map((b, i) => (
         <Sequence key={"b" + i} from={Math.round(b.ini * fps)} durationInFrames={Math.round(b.dur * fps)}><Plantao frases={b.frases} dur={b.dur} acoes={b.acoes} /></Sequence>
@@ -169,6 +210,6 @@ export const Video: React.FC<Dados> = (dados) => {
         );
       })}
     </AbsoluteFill>
-    </OndaCtx.Provider>
+    </EstiloCtx.Provider></OndaCtx.Provider>
   );
 };

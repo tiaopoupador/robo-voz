@@ -1,6 +1,7 @@
 {
  "em_producao": [
-  "02"
+  "03",
+  "04"
  ],
  "calendario": [
   {
@@ -13,6 +14,126 @@
     "Marcos"
    ],
    "adiado": "07/11: adiado do dia 08 para consertar imagens e voz"
+  },
+  {
+   "nn": "03",
+   "quando": "2026-11-21 10:00",
+   "formato": "conversa",
+   "titulo": "Tem Dinheiro Seu Parado no Banco Central e Ninguém Te Avisou",
+   "capa": "R$ ??? NO SEU NOME",
+   "elenco": [
+    "Tião",
+    "Dona Cida"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "04",
+   "quando": "2026-11-25 18:00",
+   "formato": "longo-motion",
+   "titulo": "Por Que a Vizinha da SUV Pediu R$ 50 Emprestado ao Tião",
+   "capa": "ELA? PEDINDO?!",
+   "elenco": [
+    "Tião",
+    "Valéria"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "05",
+   "quando": "2026-11-27 10:00",
+   "formato": "conversa",
+   "titulo": "Dona Cida Não Confia em Banco Desde 1990. Ela Tem Razão?",
+   "capa": "E SE VOLTAR?!",
+   "elenco": [
+    "Tião",
+    "Dona Cida"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "06",
+   "quando": "2026-11-29 17:00",
+   "formato": "longo-imagens",
+   "titulo": "Por Que a Farmácia Sempre Pede o Seu CPF (Não É o Desconto)",
+   "capa": "SEU CPF TEM PREÇO",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "07",
+   "quando": "2026-12-01 10:00",
+   "formato": "conversa",
+   "titulo": "Seu Salário Acaba no Dia 10? O Problema Não É o Salário",
+   "capa": "O FURO É OUTRO",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "08",
+   "quando": "2026-12-02 18:00",
+   "formato": "longo-motion",
+   "titulo": "O Bairro Soube Que o Tião Tem Dinheiro. Aí Ficou Estranho",
+   "capa": "TODO MUNDO PEDE",
+   "elenco": [
+    "Tião",
+    "Rafa",
+    "Sandra",
+    "Marcos",
+    "Dona Cida"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "09",
+   "quando": "2026-12-04 10:00",
+   "formato": "conversa",
+   "titulo": "7 Coisas Que o Tião Se Recusa a Comprar (Mesmo Podendo)",
+   "capa": "NEM DE GRAÇA",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "10",
+   "quando": "2026-12-06 17:00",
+   "formato": "longo-imagens",
+   "titulo": "Por Que a Loja Insiste Tanto Pra Você Fazer o Cartão Dela",
+   "capa": "O DESCONTO É A ISCA",
+   "elenco": [
+    "Tião",
+    "Jéssica"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "11",
+   "quando": "2026-12-08 10:00",
+   "formato": "conversa",
+   "titulo": "Como o Banco Te Trata em Cada Saldo da Sua Conta",
+   "capa": "R$ 0 > R$ 1 MIL > R$ 100 MIL",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+  },
+  {
+   "nn": "12",
+   "quando": "2026-12-09 18:00",
+   "formato": "longo-motion",
+   "titulo": "O Tião Pediu Demissão e o Bairro Achou Que Ele Quebrou",
+   "capa": "ELE QUEBROU?!",
+   "elenco": [
+    "Tião",
+    "Valéria",
+    "Sandra"
+   ],
+   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
   }
  ],
  "modelos_usados": [
@@ -34,9 +155,13 @@
    "id": "2_TcC2ohCFs",
    "canal": "@darkledger13",
    "titulo": "Your Life Driving the Same Car for 10 Years"
+  },
+  {
+   "id": "IGT_46yYC0Q",
+   "canal": "@dinheirodescomplicadooficial"
   }
  ],
- "ultima_fonte": "recente",
+ "ultima_fonte": "geral",
  "guardados": [
   "Você Ganhou na Loteria e Voltou ao Trabalho no Dia Seguinte",
   "O Que Acontece Se Você Só Pagar o Mínimo do Cartão?",
@@ -47,6 +172,7 @@
   "domingo 17:00": "longo",
   "terca 10:00": "conversa",
   "quarta 18:00": "longo",
-  "sexta 10:00": "conversa"
+  "sexta 10:00": "conversa",
+  "formatos": "Ed 18/11: quarta 18h = longo SÓ MOTION, domingo 17h = longo com imagens do Matheus; terça e sexta 10h = Tião Conversa (o 03 abre num sábado, fora da grade)"
  }
 }

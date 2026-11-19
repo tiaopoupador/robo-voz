@@ -36,7 +36,10 @@ Aponte cada lugar onde a história falha:
    Clichê é sempre grave.
 8. FUNIL (sempre grave; aponte o que falta, na linha onde devia estar):
    a) a abertura (10 primeiros segundos) tem de ser um trecho chocante que se repete, com as MESMAS palavras, no meio do roteiro;
-   b) depois do gancho e da promessa, o Tião chama "vamos começar?" (aí entra a vinheta) e logo diz quem ele é, em 2 ou 3 frases;
+   b) antes do "vamos começar?" vem um CONVITE COM SENTIDO: "Se você [a situação de quem assiste], fica comigo até o fim que eu vou te
+      [a promessa concreta deste vídeo]. Então já puxa a cadeira." Convite solto ("puxa a cadeira, vamos começar?") sem dizer por que ficar
+      é falha. Depois da vinheta o Tião cumprimenta ("Chega mais! O café tá passado e hoje tem conta pra fazer.") e diz quem ele é, em 2 ou 3 frases.
+      "Ô de casa" e "banquinho" são proibidos (o dono do canal recusou);
    c) o FinMoovi entra no fim do penúltimo capítulo, depois de anunciar o que vem ("mas antes, um recado rápido"), e NUNCA no fim;
    d) pelo menos 2 pedidos FALADOS de like/inscrição/comentário, cada um colado a um gancho do que vem a seguir;
    e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
