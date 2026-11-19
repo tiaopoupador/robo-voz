@@ -45,13 +45,16 @@ def _formato(p):
         if f in p.get("texto", ""): return f
 # REFERENCIAS FIXAS (Ed, 19/11: «sempre que for referencias ao tiao pra ficar com mais consistencia eu uso essa:
 # tiao-ficha-oficial e essa: tiao-frente-sozinho (...) Pro Marcos essas duas: marcos-neutro, marcos-referencia»).
-# Em todo pedido manual com o personagem vao AS DUAS, nesta ordem.
-REFERENCIAS = {"tiao": ["tiao-ficha-oficial.jpg", "tiao-frente-sozinho.jpg"],
+# Ed, 19/11 (mais tarde): «tiao-frente-sozinho.jpg nao precisa mais anexar essa! Sempre que for fazer referencia ao TIAO
+# colocar somente a tiao-ficha-oficial». O Marcos segue com as duas.
+REFERENCIAS = {"tiao": ["tiao-ficha-oficial.jpg"],
                "marcos": ["marcos-neutro.jpg", "marcos-referencia.jpg"]}
+TROCA = {"tiao-frente-sozinho.jpg": "tiao-ficha-oficial.jpg"}  # cenas antigas que ainda pedem a outra foto do Tiao
+SEM_REFS = "Não é preciso anexar imagem de referência nenhuma!"  # Ed, 19/11: «tem que informar quando nao tem nada pra anexar»
 def completar_refs(nomes):
-    """nomes de arquivos de referencia -> a mesma lista com as duas de cada personagem fixo (sem repetir)"""
+    """nomes de arquivos de referencia -> a mesma lista com as de cada personagem fixo (sem repetir, sem nome vazio)"""
     out = []
-    for n in nomes:
+    for n in [TROCA.get(x.strip(), x.strip()) for x in nomes if x and x.strip()]:
         for par in REFERENCIAS.values():
             if n in par: out += [x for x in par if x not in out]; break
         else:
@@ -80,6 +83,9 @@ def mastigar(tarefa):
             for c in cop:
                 if ("prompt" in c["rotulo"].lower() or "pedido" in c["rotulo"].lower()) and "ASPECT RATIO" not in c["texto"].upper():
                     c["texto"] = FORMATOS[fmt] + c["texto"]
+        p["links"] = [l for l in p.get("links", []) if (l.get("rotulo") or "").rstrip(" -").split(" - ")[-1].strip() not in ("", "Anexar junto ao Prompt")]
+        if tipo in ("imagem", "video", "gif") and not p["links"] and cop:  # nada para anexar: diz-se com todas as letras
+            cop.insert(0, {"rotulo": "📎 Referências", "texto": SEM_REFS})
         if p.get("ficheiro"):
             if pasta:
                 cop.append({"rotulo": "📁 Salvar nessa pasta", "texto": caminho(pasta)})

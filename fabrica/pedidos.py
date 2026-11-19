@@ -6,6 +6,7 @@ _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]  # as opcoes (--envi
 NN = _ARGS[0]; ONDE = _ARGS[1] if len(_ARGS) > 1 else f"Google Drive > Tiao Poupador > entrada > video-{NN}"
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 FIM4 = "Gere UMA imagem só, com total consistência com o personagem que está em referência."
+FIM_DUAS = "Gere as 2 imagens e depois o GIF lento, com total consistência com o personagem que está em referência."
 CONS = ("CHARACTER AND SCENERY CONSISTENCY ARE THE TOP PRIORITY. The characters must be IDENTICAL to the attached reference images, not similar: "
         "same face shape, eyes, eyebrows, nose, mouth, mustache, hairstyle, hair color, skin tone, body shape, height, age, clothes, clothing colors and accessories. "
         "Do not redesign, restyle, beautify, age, slim down or reinterpret them. A similar-looking character is NOT acceptable: match the attached images as closely as possible, in the exact same drawing style. "
@@ -22,10 +23,14 @@ for _p in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["persona
 NEG = " No text, no letters, no numbers, no readable writing, no logos, no brand names, no watermark."
 def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
 # Ed, 10/11/2026: «tire as 4 cenas, vamos deixar apenas 2» (menos tempo no meta.ai)
-# Ed, 19/11/2026: «tem que ser um prompt por imagem, um botao de copiar o prompt para cada imagem!» e «nunca mandar mais a
-# solicitacao de gerar GIF, nao iremos mais usar GIFS». Cada imagem tem o SEU prompt, com o SEU angulo, e nao ha GIF.
-ANGULOS = {"a": "ONE single image. Camera: medium-wide shot showing the place and the whole action. ",
-           "b": "ONE single image. Camera: closer shot on the main detail (faces, hands and what they hold). "}
+# Ed, 19/11/2026 (mais tarde, mudou de ideia): «para cada pedido de imagem, vc deve colocar no prompt q deseja 2 versoes
+# diferentes dessa imagem, ou seja, gerar duas imagens diferentes, mas que se complementam. E depois com essas duas imagens
+# gerar um GIF lento entre as duas de 4 a 5 segundos!». Um prompt so por cena; dele saem a imagem 1, a 2 e o GIF.
+DUAS = ("GENERATE 2 DIFFERENT IMAGES of this same scene that COMPLEMENT each other, like two moments of the same shot: "
+        "image 1 = medium-wide view showing the place and the whole action; image 2 = closer view of the main detail (faces, hands and what they hold), "
+        "a moment right after image 1. Same characters, same clothes, same place, same light in both. Each image 16:9. ")
+GIF_LENTO = ("Then, with these 2 images, create a SLOW animated GIF of 4 to 5 seconds that goes smoothly from image 1 to image 2 "
+             "(gentle crossfade and slow camera movement, no fast cuts), 16:9.")
 UMA = "ONE single image, 16:9. "
 R169 = "ASPECT RATIO 16:9, horizontal widescreen (1920x1080), never square, never vertical. "
 SOM = " SILENT VIDEO: no sound, no audio, no music, no sound effects, no voices, no dialogue, no speech, no subtitles."
@@ -40,29 +45,28 @@ try:
     REFS = {f["name"]: f"https://drive.google.com/file/d/{f['id']}/view" for f in drive.listar(ref)}
 except Exception as e:
     print("sem Drive agora (links simples):", e)
-def com_ficha(refs):  # com o Tiao vai tambem a ficha oficial (ele em varias poses), pedido do Ed a 06/11
-    if "nenhuma" in refs: return refs  # Ed 19/11: Tiao e Marcos vao sempre com as DUAS referencias (team.REFERENCIAS)
+def com_ficha(refs):  # com o Tiao vai so a ficha oficial (Ed, 19/11)
+    if "nenhuma" in refs or not refs.strip(): return "nenhuma"  # Ed 19/11: Tiao e Marcos vao sempre com as DUAS referencias (team.REFERENCIAS)
     from fabrica.team import completar_refs
     return " + ".join(completar_refs([x.strip() for x in refs.split("+")]))
 def anexar(refs):
     refs = com_ficha(refs)
-    if "nenhuma" in refs: return ["📎 **Anexar:** nada (cena sem personagem)"]
+    if "nenhuma" in refs: return ["📎 **Anexar:** Não é preciso anexar imagem de referência nenhuma!"]
     return ["📎 **Anexar** (clique para abrir e baixar):"] + [f"- {r}: {REFS.get(r, PASTA_REF)}" for r in [x.strip() for x in refs.split("+")]]
 PASSOS = []  # os mesmos pedidos, um passo por arquivo, para a tarefa do Apexi Team
 def bloco(cod, titulo, refs, nomes, prompt):
     refs = com_ficha(refs)
     lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar junto ao Prompt - " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
     for k, nm in enumerate(nomes):
-        extra = f" (imagem {k + 1} de {len(nomes)}, mesma cena)" if len(nomes) > 1 else ""
-        pr = prompt[k] if isinstance(prompt, list) else prompt  # um prompt por imagem (Ed, 19/11)
-        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": pr, "links": lr, "ficheiro": nm, "formato": "16:9",
-                       "tipo": "video" if nm.endswith(".mp4") else ("gif" if nm.endswith(".gif") else "imagem"), "onde": "Flow" if nm.endswith(".mp4") else "meta.ai",
+        gif = nm.endswith(".gif")
+        extra = ((" (o GIF lento de 4 a 5 s, saiu do prompt de cima)" if gif else " (imagem 2, saiu do prompt de cima)") if k else " (imagem 1: o prompt gera as 2 imagens e o GIF)") if len(nomes) > 1 else ""
+        pr = prompt if k == 0 else None  # um prompt so por cena: vai no 1º passo; os outros salvam o que saiu dele (Ed, 19/11)
+        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", **({"copiar": pr} if pr else {}), "links": lr if k == 0 else [], "ficheiro": nm, "formato": "16:9",
+                       "tipo": "video" if nm.endswith(".mp4") else ("gif" if gif else "imagem"), "onde": "Flow" if nm.endswith(".mp4") else "meta.ai",
                        "o_que": f"{titulo}{extra}",
                        "pasta": {"rotulo": f"Google Drive > Tiao Poupador > entrada > video-{NN}", "url": PASTA}})
     return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
-            "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + [""] + \
-           sum(([f"**Prompt da imagem {k + 1}** ({n}):", "```", pr, "```", ""] for k, (n, pr) in
-                enumerate(zip(nomes, prompt if isinstance(prompt, list) else [prompt] * len(nomes)))), [])
+            "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]
 def bonito(n): return n.split("-", 1)[1].replace("-", " ").capitalize()
 o = [f"# Tião Poupador · vídeo {NN}: o que gerar à mão", "",
      f"**Vídeo:** {C.TITULO}  ", f"**Vai ao ar:** {C.PUBLICA_TXT}  ", f"**Prazo:** {C.PRAZO}  ", "",
@@ -78,7 +82,7 @@ for j, cp in enumerate(CAPAS):
     o += bloco(cc, "a capa principal" if j == 0 else f"capa para o teste, versão {'ABCDE'[j]}", cp[0],
                [f"{cc}_{cp[2]}.jpg" if len(cp) > 2 else arq(cc, "capa", ".jpg")],
                UMA + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(cp[0]) + cp[1] + " No logos, no brand names.\n" + FIM4)
-o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Cada imagem tem o seu prompt: gere uma de cada vez e salve cada uma com o seu nome.", ""]
+o += [f"## 2. Imagens principais (meta.ai) · {len(meta)} pedidos", "", "No meta.ai, escolha o formato **16:9** (horizontal). Cada pedido gera 2 imagens que se completam e depois um GIF lento de 4 a 5 segundos entre as duas: salve as 3, cada uma com o seu nome.", ""]
 IDS = [x["id"] for x in json.load(open(P + "/fabrica/elenco.json", encoding="utf-8"))["personagens"]]
 def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos (cada um sozinho na ordem do elenco, depois os juntos, depois sem ninguem)
     r = C.IMG[i_n[1]][1]; tem = [k for k, x in enumerate(IDS) if x in r]
@@ -86,8 +90,8 @@ def grupo(i_n):  # Ed, 06/11: gerar todos de um personagem seguidos (cada um soz
 o += ["Os pedidos vêm agrupados por personagem (cada personagem sozinho, um de cada vez, e depois as cenas com mais de um): gere na ordem, que a IA mantém o rosto mais igual.", ""]
 for i, n in sorted(enumerate(meta, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
-    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "ab"],
-               [ANGULOS[x] + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + FIM4 for x in "ab"])
+    o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "ab"] + [arq(f"{c}-gif", n, ".gif")],
+               DUAS + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + GIF_LENTO + "\n" + FIM_DUAS)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in sorted(enumerate(flow, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"F{i:02d}"
