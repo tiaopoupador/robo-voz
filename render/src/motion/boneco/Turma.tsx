@@ -156,21 +156,26 @@ export const Sombra: React.FC<{ x: number; y: number; larg: number; f?: number }
 );
 
 // andar: a pose de perfil a andar (R3), com o passo a subir e descer, o corpo a inclinar e a sombra a respirar
-export const Andando: React.FC<{ pid: Pid; de: number; ate: number; y: number; alt: number; t: number; dur: number; passo?: number; luz?: Luz }> = ({ pid, de, ate, y, alt, t, dur, passo = 1.9, luz }) => {
+export const Andando: React.FC<{ pid: Pid; de: number; ate: number; y: number; alt: number; t: number; dur: number; passo?: number; luz?: Luz; oculosNaCabeca?: boolean }> = ({ pid, de, ate, y, alt, t, dur, passo = 1.9, luz, oculosNaCabeca }) => {
   // o passo em 2 desenhos (como no desenho animado classico): a passada (R3) em baixo e as pernas juntas (R2) no alto
   const k = mola(t, 2.6 / dur * 3, 1); const x = de + (ate - de) * k; const vel = cl(1 - k * 1.03) ** 0.5;
   const fase = t * passo * Math.PI * 2;
   const alto = Math.abs(Math.sin(fase)) > 0.72 && vel > 0.15;
   // parado fica de perfil: a pose de frente (R1) da Valeria tem os oculos na cabeca e o andar no rosto (pulo de continuidade)
   const parou = false;
-  const cod = parou ? "R1" : vel < 0.15 ? "R2" : alto ? "R2" : "R3";
+  // oculos na cabeca (Valeria, 19/11): R4 a passada, R5 a passada curta
+  const [JUN, PAS] = oculosNaCabeca ? ["R5", "R4"] : ["R2", "R3"];
+  const cod = parou ? "R1" : vel < 0.15 ? JUN : alto ? JUN : PAS;
   const q = info(pid, cod); const wd = q.tam[0] * (alt / q.tam[1]);
+  // o nariz no mesmo x nos 2 desenhos (medido: distancia do nariz ao centro, em fracao da altura), para o corpo nao pular de lado
+  const NARIZ: Record<string, number> = { R4: 0.1224, R5: 0.1003 };
+  const ajX = oculosNaCabeca ? (NARIZ[PAS] - (NARIZ[cod] ?? NARIZ[PAS])) * alt * (ate < de ? -1 : 1) : 0;
   const pulo = -Math.abs(Math.sin(fase)) * 14 * vel, inc = 1.4 * Math.sin(fase) * vel, amassa = 1 - 0.018 * Math.cos(fase * 2) * vel;
   const esq = ate < de && !parou;
   return (
     <>
-      <Sombra x={x} y={y} larg={info(pid, "R3").tam[0] * (alt / info(pid, "R3").tam[1]) * 0.7} f={1 - 0.12 * (-pulo / 14)} />
-      <div style={{ position: "absolute", left: x - wd / 2, top: y - alt + pulo, width: wd, height: alt, transformOrigin: "50% 100%", transform: `rotate(${esq ? -inc : inc}deg) scale(${esq ? -1 : 1}, ${amassa})` }}>
+      <Sombra x={x} y={y} larg={info(pid, PAS).tam[0] * (alt / info(pid, PAS).tam[1]) * 0.7} f={1 - 0.12 * (-pulo / 14)} />
+      <div style={{ position: "absolute", left: x - wd / 2 + ajX, top: y - alt + pulo, width: wd, height: alt, transformOrigin: "50% 100%", transform: `rotate(${esq ? -inc : inc}deg) scale(${esq ? -1 : 1}, ${amassa})` }}>
         <Img src={staticFile(`boneco/turma/${pid}/${cod}.png`)} style={{ width: "100%", height: "100%", filter: filtroLuz(luz) }} />
         {luz && luz.tipo !== "dia" && <CorDaLuz luz={{ ...luz, lado: ((luz.lado ?? 1) * (esq ? -1 : 1)) as 1 | -1 }} src={staticFile(`boneco/turma/${pid}/${cod}.png`)} />}
       </div>

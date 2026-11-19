@@ -3,10 +3,10 @@
 // o Tião, perto dela, bem aceso; a Valéria, mais longe, mais fraco. O fundo de noite é a rua da SUV escurecida (o de verdade vem do meta.ai).
 import React from "react";
 import { AbsoluteFill, Img, Sequence, staticFile, useCurrentFrame } from "remotion";
-import { Pose, Sombra, Balao } from "./Turma";
+import { Pose, Sombra, Balao, Andando } from "./Turma";
 
 const FPS = 30;
-export const FIM_CENA_NOITE = 10;
+export const FIM_CENA_NOITE = 10.6;
 const Fundo: React.FC<{ t: number; zoom?: number; fx?: number }> = ({ t, zoom = 1, fx = 50 }) => (
   <AbsoluteFill style={{ overflow: "hidden", background: "#0b1020" }}>
     <Img src={staticFile("piloto-motion/suv-casa.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover", transformOrigin: `${fx}% 70%`, transform: `scale(${zoom * (1.02 + 0.03 * Math.min(1, t / 6))})`, filter: "brightness(0.36) saturate(0.55) hue-rotate(195deg)" + (zoom > 1 ? " blur(3px)" : "") }} />
@@ -23,8 +23,9 @@ const Chega: React.FC = () => {
     <AbsoluteFill>
       <Fundo t={t} />
       {/* parada ao lado do carro, com os óculos na cabeça (a pose de andar tem os óculos no rosto: pularia de um plano para o outro) */}
-      <Sombra x={1010} y={1010} larg={240} />
-      <Pose pid="valeria" cod="R1" x={1010} y={1015} alt={600} t={t} entra={0.3} luz={{ tipo: "varanda", lado: 1, forca: 0.55 }} />
+      {/* chega andando de perfil com os oculos na cabeca (R4/R5) e para de frente (R1), oculos sempre no mesmo lugar */}
+      {t < 2.6 ? <Andando pid="valeria" de={-250} ate={1010} y={1015} alt={600} t={t} dur={2.6} oculosNaCabeca luz={{ tipo: "varanda", lado: 1, forca: 0.55 }} />
+        : <><Sombra x={1010} y={1010} larg={240} /><Pose pid="valeria" cod="R1" x={1010} y={1015} alt={600} t={t} entra={2.6} luz={{ tipo: "varanda", lado: 1, forca: 0.55 }} /></>}
     </AbsoluteFill>
   );
 };
@@ -45,7 +46,7 @@ const Pede: React.FC = () => {
 
 export const ProvaCenaNoite: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
-    <Sequence durationInFrames={Math.round(3.6 * FPS)}><Chega /></Sequence>
-    <Sequence from={Math.round(3.6 * FPS)}><Pede /></Sequence>
+    <Sequence durationInFrames={Math.round(4.2 * FPS)}><Chega /></Sequence>
+    <Sequence from={Math.round(4.2 * FPS)}><Pede /></Sequence>
   </AbsoluteFill>
 );

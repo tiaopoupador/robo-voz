@@ -2457,11 +2457,18 @@
   "R4": {
    "nome": "andando-oculos-na-cabeca-passada",
    "tam": [
-    937,
-    1860
+    966,
+    1879
    ],
    "olhos": null,
    "boca2": null
+  },
+  "R5": {
+   "nome": "andando-oculos-na-cabeca-pes-juntos",
+   "tam": [
+    589,
+    1879
+   ]
   }
  }
 }
