@@ -38,7 +38,7 @@ def video(nn):
         import importlib; C = importlib.import_module(f"fabrica.videos.v{nn}.cenas")
         v["titulo"] = C.TITULO; v["pergunta"] = getattr(C, "PERGUNTA", "")
     except Exception: pass
-    r = next((f for f in os.listdir(f"{P}/roteiros") if f.startswith(f"{nn}-") and f.endswith(".md") and "pedidos" not in f), None)
+    r = next((f for f in sorted(os.listdir(f"{P}/roteiros")) if f.startswith(f"{nn}-") and f.endswith(".md") and "pedidos" not in f and "fontes" not in f), None)
     if r: v["roteiro"] = open(f"{P}/roteiros/{r}", encoding="utf-8").read()
     try:
         pasta = drive.achar(f"video-{nn}", drive.achar("robo", drive.achar("Tiao Poupador")))

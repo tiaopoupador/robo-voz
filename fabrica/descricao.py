@@ -5,7 +5,7 @@ P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 NN = sys.argv[1]
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 from fabrica.sincronia import alinhar
-md = open(next(f"{P}/roteiros/{f}" for f in os.listdir(P + "/roteiros") if f.startswith(f"{NN}-") and f.endswith(".md") and "pedidos" not in f), encoding="utf-8").read()
+md = open(next(f"{P}/roteiros/{f}" for f in sorted(os.listdir(P + "/roteiros")) if f.startswith(f"{NN}-") and f.endswith(".md") and "pedidos" not in f and "fontes" not in f), encoding="utf-8").read()
 secoes = json.load(open(f"{P}/robo-voz/roteiro-{NN}-secoes.json"))
 titulos = [t.strip() for t in re.findall(r"^## \d+[a-z]?\.\s*(.+)$", md.split("## Ficha de fontes")[0], re.M)]
 ALIN = alinhar(NN); ini = {}
