@@ -131,7 +131,7 @@ for k, fr in enumerate(fs):
             tok, d["tom"], tm = tom(w[0].numpy(), m.sr, fr)
             if not tok: ok, motivo = False, tm
         print(f"  frase {k + 1}/{len(fs)} tentativa {tent + 1}: {motivo} | {d.get('ouviu', '')[:90]}", flush=True)
-        pontos = (2 if ok else 0) + d.get("sim", 0)
+        pontos = (2 if ok else 0) + d.get("sim", 0) + d.get("tom", 0)  # sem nenhuma boa: fica a de tom mais forte
         if melhor is None or pontos > melhor[0]: melhor = (pontos, w, ok, motivo, d, tent + 1)
         if ok: break
     _, w, ok, motivo, d, nt = melhor

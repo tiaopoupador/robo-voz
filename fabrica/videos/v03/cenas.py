@@ -116,6 +116,23 @@ CAPA = ("cida-ficha.jpg + tiao-frente-sozinho.jpg",
         "Bright warm yellow background. LEFT, big and close: Tiao, shocked face, mouth open, pointing with one finger at an old phone with a pink case held by Dona Cida. "
         "RIGHT: Dona Cida, an elderly Black Brazilian woman with dark brown skin, white curly hair, round glasses, blue flowered dress and beige cardigan, holding the phone, surprised. "
         "The phone screen shows only a big yellow question mark. Leave the top third empty for the title text.")
+
+# Ed, 19/11 (nota na capa, no Team): «Nao gostei dessa nao! Sempre mande 4 prompts de capas diferentes! Espero mais 3!»
+# Identidade das capas (canal-dark titulo-e-capa.md): cor pelo assunto, nunca fundo vazio, Tiao com emocao forte, sem texto (as letras vao por codigo).
+CAPAS_TESTE = [
+    ("tiao-ficha-oficial.jpg",
+     "SECRET / DISCOVERY mood, warm yellow and gold. Inside an old dusty bank vault: a huge round steel safe door slightly open, cobwebs on it, warm golden light and a pile of old coins and banknotes glowing inside. "
+     "Tiao, close to the camera, peeks through the gap with wide surprised eyes, one finger on his lips as if keeping a secret, the other hand pulling the heavy door. "
+     "Leave the right third empty for the title text.", "cofre-esquecido"),
+    ("tiao-ficha-oficial.jpg",
+     "URGENT / DEADLINE mood, strong red background with a dark vignette. Tiao, big and close, alarmed, eyebrows up, holds with both hands a giant glass hourglass almost empty: "
+     "instead of sand, small gold coins fall to the bottom. A large plain wall calendar behind him with many days crossed out in red (no numbers, no words). "
+     "Leave the left third empty for the title text.", "ampulheta-moedas"),
+    ("cida-ficha.jpg + tiao-ficha-oficial.jpg",
+     "TRAP / SCAM mood, red and dark blue contrast. RIGHT: Dona Cida, happy and naive, holds up her old phone with a pink case; a big metal FISHING HOOK comes out of the phone screen, hanging just in front of her. "
+     "LEFT, big and close: Tiao, suspicious, eyes narrowed, stops her with one open hand and points at the hook with the other. Blank glowing phone screen. "
+     "Leave the top third empty for the title text.", "anzol-no-celular"),
+]
 DESC = ("Uma mensagem dizia que a Dona Cida tinha R$ 1.847,00 esquecidos no Banco Central. Era golpe. Mas o dinheiro esquecido existe de verdade: são R$ 5,79 bilhões, de 23,94 milhões de pessoas, segundo o Banco Central.\n\n"
         "Neste vídeo o Tião mostra de onde vem esse dinheiro, o que a medida do governo de maio de 2026 fez com o dinheiro antigo, o único site oficial para conferir, e como não cair no golpe.")
 TAGS = ["dinheiro esquecido", "valores a receber", "banco central", "valores a receber banco central", "golpe do pix", "golpe dinheiro esquecido",

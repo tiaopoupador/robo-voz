@@ -105,7 +105,8 @@ for i, txt in enumerate(textos):
             ruins.append([i, f"sim={sim:.2f} palavras {len(a)}->{len(b)} | {ouviu.strip()[:160]}"])
         json.dump({"chave": chave, "ruins": ruins[antes:]}, open(marca, "w", encoding="utf-8"), ensure_ascii=False)
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).decode())
-    if dur >= 39.5: ruins.append([i, f"bateu no limite de 40 s do gravador: pode ter cortado ou inventado som no fim ({dur:.1f} s)"])
+    # 19/11: com o relatorio (jN.json) cada frase grava sozinha, e o limite de 40 s e por frase, nao pela fala inteira
+    if dur >= 39.5 and not os.path.exists(f"{PASTA}/j{i}.json"): ruins.append([i, f"bateu no limite de 40 s do gravador: pode ter cortado ou inventado som no fim ({dur:.1f} s)"])
     pausa = 0.9 if secoes[i] else 0.35
     subprocess.run(["ffmpeg", "-v", "error", "-i", f, "-af", f"apad=pad_dur={pausa}", "-ar", "24000", "-ac", "1", "-y", f"{TMP}/q{i}.wav"], check=True)
     lista.write(f"file 'q{i}.wav'\n")
