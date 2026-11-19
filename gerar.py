@@ -48,7 +48,8 @@ def frases(t, maxc=200):
         out.append(p)
     grupos = []
     for p in out:  # 19/11 (Ed: «sem entonação de interrogação»): pergunta e exclamação gravam SOZINHAS, para a voz subir no fim
-        if grupos and len(grupos[-1]) + len(p) < 90 and not forte(grupos[-1]) and not forte(p): grupos[-1] += " " + p
+        # mas frase curtinha sozinha a voz nao aguenta («Fui!» sozinho saiu ruido, 19/11): so isola com 25 letras ou mais
+        if grupos and len(grupos[-1]) + len(p) < 90 and not (forte(grupos[-1]) and len(grupos[-1]) >= 25) and not (forte(p) and len(p) >= 25): grupos[-1] += " " + p
         else: grupos.append(p)
     return grupos
 def forte(t): return bool(re.search(r'[!?]["»”]?$', t.strip()))

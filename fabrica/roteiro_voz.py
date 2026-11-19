@@ -24,3 +24,13 @@ secoes = [i in fim for i in range(len(falas))]
 open(f"{P}/robo-voz/roteiro-{NN}.txt", "w", encoding="utf-8").write("\n".join(falas) + "\n")
 json.dump(secoes, open(f"{P}/robo-voz/roteiro-{NN}-secoes.json", "w"))
 print(f"{len(falas)} falas, {len(fim)} partes -> robo-voz/roteiro-{NN}.txt")
+
+# Guarda de graca (Ed, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»): avisa antes de gravar a voz
+SIGLA_OK = {"CPF", "SMS", "PIX", "WHATSAPP"}
+avisos = []
+for i, f in enumerate(falas):
+    if re.search(r"\bhein\b", f, re.I): avisos.append(f"fala {i}: tem 'hein' (a voz le 'rein'): tirar")
+    for s in set(re.findall(r"\b[A-Z]{2,6}\b", f)) - SIGLA_OK: avisos.append(f"fala {i}: sigla {s}: dizer o nome inteiro")
+    if re.search(r"\b(está escrito|no site)\b[.!]", f, re.I): avisos.append(f"fala {i}: 'está escrito'/'no site' sem dizer onde")
+for a in avisos: print("AVISO", a)
+if not avisos: print("fala de gente: nenhum aviso")

@@ -7,25 +7,28 @@ import { Emoji, Som } from "./vivo";
 // 8. ICONES em fichas (emoji + rotulo); risca = um X vermelho passa por cima
 export const Icones: React.FC<{ titulo?: string; itens: { e: string; r: string; risca?: boolean }[] }> = ({ titulo, itens }) => {
   const t = useT();
+  // 19/11 (Ed: «as imagens das laterais saíram cortadas»): com 5 cartões não cabia (5 x 400 + 4 x 60 = 2240 px numa tela de 1920).
+  // Agora o cartão encolhe para caber sempre em 1760 px, e o emoji e a letra encolhem junto.
+  const gap = itens.length > 3 ? 40 : 60, W = Math.min(400, Math.floor((1760 - gap * (itens.length - 1)) / itens.length)), k = W / 400;
   return (
     <Fundo>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 70 }}>
         {titulo && <div style={{ ...txt(76), opacity: m(t, 0), transform: `translateY(${(1 - m(t, 0)) * -30}px)`, textAlign: "center", maxWidth: 1600 }}>{titulo}</div>}
-        <div style={{ display: "flex", gap: 60 }}>
+        <div style={{ display: "flex", gap }}>
           {itens.map((it, i) => {
             const d = 0.3 + i * 0.35, e = m(t, d, "estalo"), x = it.risca ? Math.min(1, Math.max(0, (t - d - 0.7) / 0.35)) : 0;
             return (
-              <div key={i} style={{ ...caixa(), width: 400, padding: "34px 20px 34px", textAlign: "center", position: "relative", transform: `scale(${e}) rotate(${(i % 2 ? 2 : -2) * e}deg) translateY(${flutua(t + i, 6)}px)` }}>
+              <div key={i} style={{ ...caixa(), width: W, padding: "34px 20px 34px", textAlign: "center", position: "relative", transform: `scale(${e}) rotate(${(i % 2 ? 2 : -2) * e}deg) translateY(${flutua(t + i, 6)}px)` }}>
                 <Som nome="pop" em={d} />
                 {it.risca && <Som nome="thud" em={d + 0.75} />}
-                <div style={{ position: "relative", width: 200, height: 200, margin: "0 auto" }}>
-                  <Emoji e={it.e} tam={200} />
+                <div style={{ position: "relative", width: 200 * k, height: 200 * k, margin: "0 auto" }}>
+                  <Emoji e={it.e} tam={Math.round(200 * k)} />
                   {x > 0 && <svg viewBox="0 0 100 100" style={{ position: "absolute", inset: -10, width: 220, height: 220 }}>
                   <line x1="8" y1="8" x2={8 + 84 * Math.min(1, x * 2)} y2={8 + 84 * Math.min(1, x * 2)} stroke={COR.vermelho} strokeWidth="9" strokeLinecap="round" />
                   {x > 0.5 && <line x1="92" y1="8" x2={92 - 84 * (x - 0.5) * 2} y2={8 + 84 * (x - 0.5) * 2} stroke={COR.vermelho} strokeWidth="9" strokeLinecap="round" />}
                   </svg>}
                 </div>
-                <div style={{ ...txt(50, it.risca && x > 0.5 ? COR.cinza : COR.tinta), marginTop: 14, textDecoration: it.risca && x > 0.9 ? "line-through" : "none", textDecorationColor: COR.vermelho, textDecorationThickness: 5 }}>{it.r}</div>
+                <div style={{ ...txt(Math.round(50 * Math.max(0.8, k)), it.risca && x > 0.5 ? COR.cinza : COR.tinta), marginTop: 14, textDecoration: it.risca && x > 0.9 ? "line-through" : "none", textDecorationColor: COR.vermelho, textDecorationThickness: 5 }}>{it.r}</div>
               </div>
             );
           })}

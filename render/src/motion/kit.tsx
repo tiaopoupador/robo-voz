@@ -215,10 +215,17 @@ export const LinhaTempo: React.FC<{ marcos: string[]; ativo: number; titulo?: st
             return (
               <div key={i} style={{ position: "absolute", left: i * passo - 60, top: 88, width: 120, textAlign: "center", transform: `scale(${e * (atual ? 1 + 0.06 * Math.sin(t * 4) : 1)})` }}>
                 <div style={{ width: 120, height: 120, borderRadius: 99, background: feito ? (atual ? COR.amarelo : COR.verde) : COR.branco, border: `${LINHA}px solid ${COR.tinta}`, boxShadow: sombra(6) }} />
-                {/* 09/11 (Ed: «o 3 passos: Devagar só mostra o Dev»): a ponta da linha alinha para dentro, nunca sai da tela */}
-                <div style={{ ...txt(atual ? 64 : 46, atual ? COR.tinta : COR.cinza, atual ? 800 : 600), marginTop: 24, whiteSpace: "nowrap",
-                  ...(i === 0 ? { marginLeft: 0, marginRight: -600, textAlign: "left" as const } : i === marcos.length - 1 ? { marginLeft: -600, marginRight: 0, textAlign: "right" as const } : { marginLeft: -100, marginRight: -100 }) }}>{r}</div>
               </div>
+            );
+          })}
+          {/* 09/11 (Ed: «o 3 passos: Devagar só mostra o Dev»): a ponta da linha alinha para dentro, nunca sai da tela.
+              19/11 (Ed: «a frase 30 dias pra reclamar está por cima das outras»): cada rótulo tem a SUA faixa da largura
+              (nunca invade a do vizinho) e quebra a linha em vez de passar por cima. */}
+          {marcos.map((r, i) => {
+            const S = (larg + 120) / marcos.length, atual = i === ativo, e = m(t, 0.1 + i * 0.12, "estalo");
+            return (
+              <div key={"r" + i} style={{ ...txt(atual ? 52 : 40, atual ? COR.tinta : COR.cinza, atual ? 800 : 600), position: "absolute", top: 232, left: i * S - 60, width: S - 30,
+                lineHeight: 1.15, opacity: e, textAlign: i === 0 ? "left" : i === marcos.length - 1 ? "right" : "center", ...(i === marcos.length - 1 ? { left: i * S - 60 + 30 } : {}) }}>{r}</div>
             );
           })}
           <div style={{ position: "absolute", left: pos * passo - 40, top: 30, fontSize: 70, transform: `translateY(${Math.sin(t * 6) * 6}px)` }}>▼</div>

@@ -4,8 +4,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Img, Sequence, staticFile } from "remotion";
 import { mola } from "../../mola";
-import { Pose, Andando, Sombra } from "./Turma";
-import { TiaoPose, TAM_POSE } from "./TiaoReal";
+import { Pose, Andando, Sombra, aceno, brinde } from "./Turma";
 import { Cenas, Bloco, tempos } from "../efeitos/Transicoes";
 import { Acabamento, BrilhoDourado, Tensao } from "../efeitos/Acabamento";
 import { Reacao } from "../reacoes";
@@ -18,7 +17,6 @@ const falar = (t: number, k: 0 | 1, ini: number) => {
   if (i < 0 || i >= v.length) return 0;
   return Math.min(1, 1.15 * (0.6 * v[i] + 0.4 * (v[Math.max(0, i - 1)] ?? 0)));
 };
-const piscaT = (t: number, q: number[]) => Math.max(0, ...q.map((c) => cl(1 - Math.abs(t - c) / 0.085)));
 
 const Fundo: React.FC<{ src: string; t: number; dur: number; zoom?: number; borrao?: number; fx?: number; fy?: number }> = ({ src, t, dur, zoom = 1, borrao = 0, fx = 50, fy = 50 }) => (
   <AbsoluteFill style={{ overflow: "hidden", background: "#2a2118" }}>
@@ -30,12 +28,12 @@ const Camera: React.FC<{ t: number; dur: number; de?: number; ate?: number; fx?:
   <AbsoluteFill style={{ transformOrigin: `${fx}% ${fy}%`, transform: `scale(${de + (ate - de) * cl(t / dur)})` }}>{children}</AbsoluteFill>
 );
 
-// A · a Valeria chega a andar pela rua
+// A · a Valeria chega a andar pela calcada e para ao lado da SUV dela (o cenario dela: a casa de vitrine)
 const A_DUR = 3.3;
 const Chega = (t: number) => (
   <AbsoluteFill>
-    <Fundo src="piloto-motion/rua.jpg" t={t} dur={A_DUR} />
-    <Andando pid="valeria" de={2250} ate={1250} y={1050} alt={720} t={t} dur={A_DUR} />
+    <Fundo src="piloto-motion/suv-casa.jpg" t={t} dur={A_DUR} />
+    <Andando pid="valeria" de={2250} ate={1660} y={1040} alt={700} t={t} dur={A_DUR} />
     <Acabamento t={t} poeira="lenta" />
   </AbsoluteFill>
 );
@@ -43,7 +41,7 @@ const Chega = (t: number) => (
 const B_DUR = 3.0;
 const Chave = (t: number) => (
   <AbsoluteFill>
-    <Fundo src="piloto-motion/rua.jpg" t={t} dur={B_DUR} zoom={1.5} borrao={4} fx={55} fy={60} />
+    <Fundo src="piloto-motion/suv-casa.jpg" t={t} dur={B_DUR} zoom={1.6} borrao={4} fx={52} fy={68} />
     <Camera t={t} dur={B_DUR}>
       <Pose pid="valeria" cod="P07" x={980} y={1120} alt={1080} t={t} entra={0.05} pisca={false} />
     </Camera>
@@ -51,26 +49,22 @@ const Chave = (t: number) => (
     <Acabamento t={t} poeira="nada" />
   </AbsoluteFill>
 );
-// C · o Tiao comenta (pose da Conversa: boca a seguir a voz)
+// C · o Tiao comenta, com o caderno na mao (pose nova P09, a boca a seguir a voz)
 const C_FALA = 0.2, C_DUR = C_FALA + D0 + 0.45;
-const Comenta = (t: number) => {
-  const [w, h] = TAM_POSE("explica"); const alt = 1350; const wd = alt * (w / h);
-  const e = mola(t, 9, 0.75), resp = Math.sin(t * 2.3), bal = 0.7 * Math.sin(t * 1.3), b = falar(t, 0, C_FALA);
-  return (
-    <AbsoluteFill>
-      <Fundo src="piloto-motion/cozinha.jpg" t={t} dur={C_DUR} zoom={1.45} borrao={4} fx={40} fy={55} />
-      <div style={{ position: "absolute", left: 640 - wd / 2, top: 90, width: wd, height: alt, transformOrigin: "50% 100%", transform: `scale(${(1.06 - 0.06 * e) * (1 + 0.012 * b)}) rotate(${bal - 0.8 * b}deg) scaleY(${1 + 0.006 * resp})` }}>
-        <TiaoPose pose="explica" piscar={piscaT(t, [1.7, 3.9])} boca={b} />
-      </div>
-      <Acabamento t={t} poeira="luz" />
-    </AbsoluteFill>
-  );
-};
+const Comenta = (t: number) => (
+  <AbsoluteFill>
+    <Fundo src="piloto-motion/cozinha.jpg" t={t} dur={C_DUR} zoom={1.45} borrao={4} fx={40} fy={55} />
+    <Camera t={t} dur={C_DUR} de={1.0} ate={1.04} fx={45} fy={30}>
+      <Pose pid="tiao" cod="P09" x={720} y={1150} alt={1150} t={t} entra={0.0} fala={falar(t, 0, C_FALA)} />
+    </Camera>
+    <Acabamento t={t} poeira="luz" />
+  </AbsoluteFill>
+);
 // D · a fatura chega: susto, treme, pisca depressa
 const D_DUR = 3.0;
 const Fatura = (t: number) => (
   <AbsoluteFill>
-    <Fundo src="piloto-motion/rua.jpg" t={t} dur={D_DUR} zoom={1.7} borrao={5} fx={40} fy={55} />
+    <Fundo src="piloto-motion/suv-casa.jpg" t={t} dur={D_DUR} zoom={1.7} borrao={5} fx={45} fy={65} />
     <Camera t={t} dur={D_DUR} de={1.0} ate={1.09} fx={50} fy={35}>
       <Pose pid="valeria" cod="P08" x={960} y={1130} alt={1100} t={t} entra={0.0} treme={cl(1 - Math.abs(t - 0.55) / 0.5)} />
     </Camera>
@@ -82,21 +76,33 @@ const Fatura = (t: number) => (
 const E_DUR = 2.6;
 const Vergonha = (t: number) => (
   <AbsoluteFill>
-    <Fundo src="piloto-motion/rua.jpg" t={t} dur={E_DUR} zoom={1.6} borrao={5} fx={60} fy={55} />
+    <Fundo src="piloto-motion/suv-casa.jpg" t={t} dur={E_DUR} zoom={1.6} borrao={5} fx={62} fy={62} />
     <Pose pid="valeria" cod="P11" x={1180} y={1110} alt={1060 - 25 * cl(t / E_DUR)} t={t} entra={0.0} pisca={false} respira={1.6} />
     <Acabamento t={t} poeira="lenta" />
   </AbsoluteFill>
 );
-// F · o Tiao brinda com a caneca velha
-const F_DUR = 3.2;
+// F · o Tiao brinda com a caneca velha: o braco sobe no "tchim"
+const F_DUR = 3.2, F_TCHIM = 0.55;
 const Brinde = (t: number) => (
   <AbsoluteFill>
     <Fundo src="piloto-motion/cozinha.jpg" t={t} dur={F_DUR} zoom={1.4} borrao={4} fx={50} fy={55} />
     <Camera t={t} dur={F_DUR} de={1.0} ate={1.06}>
       <Sombra x={960} y={1075} larg={520} />
-      <Pose pid="tiao" cod="P08" x={960} y={1130} alt={1120} t={t} entra={0.1} />
+      <Pose pid="tiao" cod="P08" x={960} y={1130} alt={1120} t={t} entra={0.1} braco={brinde(t, F_TCHIM - 0.2)} />
     </Camera>
     <BrilhoDourado t={t} />
+    <Acabamento t={t} poeira="luz" />
+  </AbsoluteFill>
+);
+
+// G · o Tiao acena tchau (o braco abana no ombro)
+const G_DUR = 2.4;
+const Tchau = (t: number) => (
+  <AbsoluteFill>
+    <Fundo src="piloto-motion/cozinha.jpg" t={t} dur={G_DUR} zoom={1.4} borrao={4} fx={55} fy={55} />
+    <Camera t={t} dur={G_DUR} de={1.0} ate={1.04}>
+      <Pose pid="tiao" cod="P12" x={900} y={1130} alt={1120} t={t} entra={0.0} braco={aceno(t, 0.25)} />
+    </Camera>
     <Acabamento t={t} poeira="luz" />
   </AbsoluteFill>
 );
@@ -108,6 +114,7 @@ const BLOCOS: Bloco[] = [
   { dur: D_DUR, el: Fatura, entra: "zoom", td: 0.3 },
   { dur: E_DUR, el: Vergonha, entra: "corte" },
   { dur: F_DUR, el: Brinde, entra: "pagina" },
+  { dur: G_DUR, el: Tchau, entra: "corte" },
 ];
 const T = tempos(BLOCOS);
 export const FIM_PILOTO_TURMA = T.fim;
@@ -124,7 +131,7 @@ export const PilotoTurma: React.FC = () => {
       <Sequence from={Math.round((iB + 0.35) * FPS)} durationInFrames={45} layout="none"><Audio src={staticFile("sfx/card.ogg")} volume={0.4} /></Sequence>
       <Sequence from={Math.round((iC + C_FALA) * FPS)} layout="none"><Audio src={staticFile("piloto-motion/fala0.wav")} /></Sequence>
       <Sequence from={Math.round((iD + 0.1) * FPS)} durationInFrames={45} layout="none"><Audio src={staticFile("sfx/warning.ogg")} volume={0.35} /></Sequence>
-      <Sequence from={Math.round((iF + 0.4) * FPS)} durationInFrames={60} layout="none"><Audio src={staticFile("sfx/ding.ogg")} volume={0.4} /></Sequence>
+      <Sequence from={Math.round((iF + F_TCHIM) * FPS)} durationInFrames={60} layout="none"><Audio src={staticFile("sfx/ding.ogg")} volume={0.4} /></Sequence>
       <Audio src={staticFile("v02/trilha.mp3")} volume={0.07} />
     </AbsoluteFill>
   );

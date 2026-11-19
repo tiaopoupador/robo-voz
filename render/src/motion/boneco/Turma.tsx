@@ -8,9 +8,11 @@ import React from "react";
 import { Img, staticFile } from "remotion";
 import { mola } from "../../mola";
 import TURMA from "../../../public/boneco/turma/turma.json";
+import { Boca } from "./TiaoReal";
 
 export type Pid = "tiao" | "sandra" | "marcos" | "valeria" | "cida" | "jessica" | "rafa" | "lourival" | "patricia";
-type Info = { nome: string; tam: [number, number]; olhos?: number[][] | null };
+// boca: [cx, y do labio de cima, meia largura, aberta no desenho, sorriso]; braco: o ombro onde o braco roda
+type Info = { nome: string; tam: [number, number]; olhos?: number[][] | null; boca?: number[]; braco?: { eixo: [number, number] } };
 export const info = (pid: Pid, cod: string): Info => (TURMA as any)[pid][cod];
 
 const cl = (v: number) => Math.max(0, Math.min(1, v));
@@ -56,9 +58,11 @@ export type Vida = {
   respira?: number;     // forca da respiracao (1 = normal)
   pisca?: boolean;      // false = nao pisca (olho fechado, oculos escuros)
   espelho?: boolean;
+  fala?: number;        // 0..1 a boca a abrir com a voz; undefined = a boca do desenho
+  braco?: number;       // graus que o braco roda no ombro (so nas poses com braco separado)
 };
 // uma pose do personagem, de pe, presa pelos pes em (x, y) e com altura alt
-export const Pose: React.FC<{ pid: Pid; cod: string; x: number; y: number; alt: number } & Vida> = ({ pid, cod, x, y, alt, t, entra, treme = 0, respira = 1, pisca = true, espelho }) => {
+export const Pose: React.FC<{ pid: Pid; cod: string; x: number; y: number; alt: number } & Vida> = ({ pid, cod, x, y, alt, t, entra, treme = 0, respira = 1, pisca = true, espelho, fala, braco }) => {
   const q = info(pid, cod); const [w, hh] = q.tam; const esc = alt / hh; const wd = w * esc; const s = semente(pid + cod);
   const e = entra === undefined ? 1 : mola(t - entra, 11, 0.55);
   if (entra !== undefined && t < entra) return null;
@@ -70,16 +74,29 @@ export const Pose: React.FC<{ pid: Pid; cod: string; x: number; y: number; alt: 
     `scale(${(0.9 + 0.1 * e) * (espelho ? -1 : 1)}, ${(0.9 + 0.1 * e) * (1 + 0.009 * resp * respira)})`,
   ].join(" ");
   const p = pisca && q.olhos ? fecho(t, piscadas(s)) : 0;
+  const falando = fala !== undefined && !!q.boca; const mexe = braco !== undefined && !!q.braco;
+  const base = `boneco/turma/${pid}/${cod}${mexe ? "_corpo" : ""}${falando ? "_sb" : ""}.png`;
+  const cheio: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
   return (
     <div style={{ position: "absolute", left: x - wd / 2, top: y - alt, width: wd, height: alt, transformOrigin: "50% 100%", transform: tf, opacity: entra === undefined ? 1 : cl((t - entra) / 0.08) }}>
-      <Img src={staticFile(`boneco/turma/${pid}/${cod}.png`)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
-      {q.olhos && p > 0 && (
+      {mexe && <Img src={staticFile(`boneco/turma/${pid}/${cod}_braco.png`)} style={{ ...cheio, transformOrigin: `${(q.braco!.eixo[0] / w) * 100}% ${(q.braco!.eixo[1] / hh) * 100}%`, transform: `rotate(${braco}deg)` }} />}
+      <Img src={staticFile(base)} style={cheio} />
+      {((q.olhos && p > 0) || falando) && (
         <svg viewBox={`0 0 ${w} ${hh}`} width="100%" height="100%" style={{ position: "absolute", inset: 0, overflow: "visible" }}>
-          {q.olhos.map((o, i) => <Palpebra key={i} o={o} p={p} esc={esc} />)}
+          {q.olhos && p > 0 && q.olhos.map((o, i) => <Palpebra key={i} o={o} p={p} esc={esc} />)}
+          {falando && (() => { const [bx, by, bw, ab, sor] = q.boca!; return <Boca cx={bx} cy={by} mw={bw} aberta={Math.max(fala!, ab * 0.4)} sorriso={sor} esc={bw / 80} />; })()}
         </svg>
       )}
+      {falando && pid === "tiao" && <Img src={staticFile(`boneco/turma/tiao/${cod}_bigode.png`)} style={cheio} />}
     </div>
   );
+};
+
+// o braco a acenar (tchau) e a subir no brinde: so funcoes do tempo
+export const aceno = (t: number, ini = 0, forca = 9) => (t < ini ? 0 : forca * Math.sin((t - ini) * 2 * Math.PI * 1.7) * Math.min(1, (t - ini) / 0.25));
+export const brinde = (t: number, ini = 0, forca = 7) => {
+  if (t < ini) return 0; const k = t - ini;
+  return forca * (mola(k, 9, 0.45) - 0.35 * Math.max(0, Math.sin(Math.max(0, k - 0.5) * 9)) * Math.exp(-Math.max(0, k - 0.5) * 3));
 };
 
 // a sombra no chao, para nao boiar

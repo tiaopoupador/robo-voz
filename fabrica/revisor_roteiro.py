@@ -45,7 +45,16 @@ Aponte cada lugar onde a história falha:
    e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
    f) as últimas frases são o gancho para o PRÓXIMO vídeo, ligado à dor deste, com "já está aparecendo aqui, clica e vê agora",
       e o vídeo acaba logo ali; nunca "no próximo capítulo" entre partes.
-Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê e funil. "grave" = o espectador notaria e ficaria confuso.
+9. FALA DE GENTE (o dono do canal, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»; sempre grave):
+   a) sigla sem dizer o que é (diga o nome inteiro: "Fundo de Garantia de Operações", não "FGO");
+   b) "hein" (a voz lê "rein"): proibido;
+   c) frase solta sem contexto: "está escrito" sem dizer ONDE (site oficial de quem), "no site" sem dizer qual, fala de personagem
+      curta demais para quem chegou agora entender;
+   d) pergunta ou espanto escrito sem "?" ou "!" (a voz só sobe o tom com a pontuação);
+   e) lista de dicas sem "Dica número um", "Dica número dois"...;
+   f) frase complicada que um amigo não diria na mesa da cozinha;
+   g) o gancho final vago: tem de dizer o que o próximo vídeo vai explicar, para quem ele é, e mandar clicar.
+Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê, funil e fala de gente. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.
 O roteiro, uma linha por número:
