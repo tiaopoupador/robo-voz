@@ -1,11 +1,12 @@
-Picape, opção um. Na garagem dele, uma picápe preta, zero quilômetro, brilhando.
-Picape, opção dois. Na garagem dele, uma pikápi preta, zero quilômetro, brilhando.
-Picape, opção três. Na garagem dele, uma pi-cápi preta, zero quilômetro, brilhando.
-Picape, opção quatro. Na garagem dele, uma caminhonete preta, zero quilômetro, brilhando.
-Setecentos, opção um. A parcela ficou em cinco mil sete centos e catorze reais.
-Setecentos, opção dois. A parcela ficou em cinco mil setecêntos e catorze reais.
-Setecentos, opção três. A parcela ficou em cinco mil setessêntos e catorze reais.
-Setecentos, opção quatro. A parcela ficou em cinco mil sétecentos e catorze reais.
-Imposto, opção um. E o i pê vê á. Em São Paulo, quatro por cento do valor do carro.
-Imposto, opção dois. E o ipêvêá. Em São Paulo, quatro por cento do valor do carro.
-Imposto, opção três. E o imposto do carro, o i pê vê á. Em São Paulo, quatro por cento do valor.
+Opção um. Eu móro no mesmo bairro desde menino.
+Opção dois. Eu mó-ro no mesmo bairro desde menino.
+Opção três. E eu te móstro de onde vem esse dinheiro.
+Opção quatro. E eu te mós-tro de onde vem esse dinheiro.
+Opção cinco. Ela tem que ser níveu prata ou ouro.
+Opção seis. Ela tem que ser ní-vel prata ou ouro.
+Opção sete. Foi o Plano Kólor.
+Opção oito. Foi o Plano Có-lor.
+Opção nove. Foi o Plano Cólur.
+Opção dez. Foi o Plano Cóllôr.
+Opção onze. Se você passou sufôco naquela época.
+Opção doze. Se você passou sufôcu naquela época.
