@@ -32,6 +32,11 @@ DUAS = ("GENERATE 2 DIFFERENT IMAGES of this same scene that COMPLEMENT each oth
 GIF_LENTO = ("Then, with these 2 images, create a SLOW animated GIF of 4 to 5 seconds that goes smoothly from image 1 to image 2 "
              "(gentle crossfade and slow camera movement, no fast cuts), 16:9.")
 UMA = "ONE single image, 16:9. "
+# Ed, 19/11 (video 05, so motion): cenario VAZIO, onde os personagens entram depois por codigo. Sem o texto de personagem
+# (puxava gente para dentro) e a imagem 2 e um detalhe do lugar, nao de rostos. No cenas.py: VAZIOS = {"meta-...", ...}.
+DUAS_VAZIO = ("GENERATE 2 DIFFERENT IMAGES of this same EMPTY place that COMPLEMENT each other: image 1 = wide view of the whole place; "
+              "image 2 = closer view of one detail of the same place, same light. NOBODY in either image. Each image 16:9. ")
+FIM_VAZIO = "Gere as 2 imagens e depois o GIF lento, sem nenhuma pessoa no lugar."
 R169 = "ASPECT RATIO 16:9, horizontal widescreen (1920x1080), never square, never vertical. "
 SOM = " SILENT VIDEO: no sound, no audio, no music, no sound effects, no voices, no dialogue, no speech, no subtitles."
 meta = [n for n, v in C.IMG.items() if v[0] == "meta"]; flow = [n for n, v in C.IMG.items() if v[0] == "flow"]
@@ -93,6 +98,7 @@ o += ["Os pedidos vêm agrupados por personagem (cada personagem sozinho, um de 
 for i, n in sorted(enumerate(meta, 1), key=grupo):
     refs = C.IMG[n][1]; c = f"M{i:02d}"
     o += bloco(c, bonito(n), refs, [arq(f"{c}-{x}", n, ".jpg") for x in "ab"] + [arq(f"{c}-gif", n, ".gif")],
+               (DUAS_VAZIO + R169 + STYLE + "Scene: " + C.PEDIDO[n] + NEG + "\n" + GIF_LENTO + "\n" + FIM_VAZIO) if n in getattr(C, "VAZIOS", ()) else
                DUAS + R169 + CONS + STYLE + quem(refs) + "Scene: " + C.PEDIDO[n] + NEG + "\n" + GIF_LENTO + "\n" + FIM_DUAS)
 o += [f"## 3. Clipes animados (Flow) · {len(flow)} pedidos", "", "No Google Flow: modo **Ingredients to Video**, formato **16:9**, e **sem som** (se aparecer a opção de áudio, desligue).", ""]
 for i, n in sorted(enumerate(flow, 1), key=grupo):
