@@ -1,12 +1,10 @@
-Opção um. Eu móro no mesmo bairro desde menino.
-Opção dois. Eu mó-ro no mesmo bairro desde menino.
-Opção três. E eu te móstro de onde vem esse dinheiro.
-Opção quatro. E eu te mós-tro de onde vem esse dinheiro.
-Opção cinco. Ela tem que ser níveu prata ou ouro.
-Opção seis. Ela tem que ser ní-vel prata ou ouro.
-Opção sete. Foi o Plano Kólor.
-Opção oito. Foi o Plano Có-lor.
-Opção nove. Foi o Plano Cólur.
-Opção dez. Foi o Plano Cóllôr.
-Opção onze. Se você passou sufôco naquela época.
-Opção doze. Se você passou sufôcu naquela época.
+Opção um. Ela tem que ser níveu prata ou ouro, com a verificação em duas etapas ligada.
+Opção dois. Ela tem que ser nívio prata ou ouro, com a verificação em duas etapas ligada.
+Opção três. Ela tem que ser ní veu prata ou ouro, com a verificação em duas etapas ligada.
+Opção quatro. Foi o Plano Kólo. Da noite para o dia, a poupança ficou presa.
+Opção cinco. Foi o Plano Kólur. Da noite para o dia, a poupança ficou presa.
+Opção seis. Foi o Plano Cóllo. Da noite para o dia, a poupança ficou presa.
+Opção sete. Foi o Plano Kólôr. Da noite para o dia, a poupança ficou presa.
+Opção oito. Eu uso o Finmúvi para isso.
+Opção nove. Eu uso o Fin-múvi para isso.
+Opção dez. Eu uso o Finmuuvi para isso.
