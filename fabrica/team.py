@@ -26,10 +26,12 @@ def ver(NN):
         raise
 
 # ---- REGRA DE TODA TAREFA MANUAL (Ed, 19/11/2026: «essas tarefas sao manuais e preciso da sua maxima ajuda pra me
-# facilitar ao maximo tudo!»). Vale para todo passo que passa por aqui:
-#   1. todo link tem um botao «Copiar» (alem do link clicavel);
-#   2. o formato (16:9, 9:16, 1:1) vai DENTRO do prompt: o meta.ai e os outros nao tem onde escolher;
-#   3. todo passo que gera um arquivo diz a PASTA onde salvar (link clicavel + botao «Copiar»).
+# facilitar ao maximo tudo!» · «vc nao esta com visao de um diretor chato (...) tem muita informacao repetida»).
+# Cada coisa aparece UMA vez so, no passo:
+#   1. o formato (16:9, 9:16, 1:1) vai DENTRO do prompt: o meta.ai e os outros nao tem onde escolher;
+#   2. a ficha (e todo link de referencia) e um link que ABRE numa aba nova (Ed: «quero que ja abra a ficha direto»);
+#   3. a pasta onde salvar e uma caixa «📁 Salvar nessa pasta» com o botao Copiar (sem repetir no titulo nem em link);
+#   4. o botao do prompt chama-se so «Prompt». O passo a passo fica uma vez, na descricao da tarefa.
 # Campos nossos (nao vao ao Team): passo["formato"], passo["pasta"] e tarefa["pasta"] = {"rotulo", "url"}.
 FORMATOS = {"16:9": "ASPECT RATIO 16:9, horizontal widescreen image (1920x1080), never square, never vertical. ",
             "9:16": "ASPECT RATIO 9:16, vertical portrait image (1080x1920), never square, never horizontal. ",
@@ -40,11 +42,10 @@ def _formato(p):
         if f in p.get("texto", ""): return f
 def mastigar(tarefa):
     t = dict(tarefa); pasta_geral = t.pop("pasta", None); avisos = []
-    if pasta_geral: t["links"] = [{"rotulo": "📁 Pasta onde salvar: " + pasta_geral["rotulo"], "url": pasta_geral["url"]}] + [l for l in t.get("links", []) if l.get("url") != pasta_geral["url"]]
     passos = []
     for p in t.get("passos", []):
         p = dict(p); fmt = _formato(p); p.pop("formato", None); pasta = p.pop("pasta", None) or pasta_geral
-        cop = p.pop("copias", None) or ([{"rotulo": "📋 Copiar o pedido (prompt)", "texto": p["copiar"]}] if p.get("copiar") else [])
+        cop = p.pop("copias", None) or ([{"rotulo": "Prompt", "texto": p["copiar"]}] if p.get("copiar") else [])
         p.pop("copiar", None)
         if fmt in FORMATOS:  # o formato dentro do prompt
             for c in cop:
@@ -52,13 +53,9 @@ def mastigar(tarefa):
                     c["texto"] = FORMATOS[fmt] + c["texto"]
         if p.get("ficheiro"):
             if pasta:
-                p["texto"] = p.get("texto", "") + f" · 📁 Salve em: {pasta['rotulo']}"
-                p["links"] = [l for l in p.get("links", []) if l.get("url") != pasta["url"]] + [{"rotulo": "📁 Abrir a pasta onde salvar", "url": pasta["url"]}]
+                cop.append({"rotulo": "📁 Salvar nessa pasta", "texto": pasta["url"]})
+                p["links"] = [l for l in p.get("links", []) if l.get("url") != pasta["url"]]
             else: avisos.append(p.get("codigo", "?"))
-        for l in p.get("links", []):  # cada link com o seu botao de copiar
-            if not any(c["texto"] == l["url"] for c in cop):
-                rot = "📁 Copiar o link da pasta" if l["url"] == (pasta or {}).get("url") else "🔗 Copiar o link: " + l["rotulo"].lstrip("🔗📎🎬🎨🖼️▶️ ")
-                cop.append({"rotulo": rot[:60], "texto": l["url"]})
         if cop: p["copias"] = cop[:10]
         passos.append(p)
     if passos: t["passos"] = passos

@@ -8,3 +8,4 @@ render/out/
 !render/public/musica/*.mp3
 !render/public/amb/*.wav
 !render/public/marca/*.wav
+!render/public/sfx/*.wav
