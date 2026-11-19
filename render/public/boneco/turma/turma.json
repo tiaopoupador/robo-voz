@@ -25,7 +25,19 @@
      126,
      102
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 680,
+    "y": 427,
+    "w": 246,
+    "h": 223,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P02": {
    "nome": "rindo",
@@ -33,7 +45,8 @@
     1150,
     1108
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": null
   },
   "P03": {
    "nome": "surpresa",
@@ -87,7 +100,19 @@
      126,
      102
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 291,
+    "y": 434,
+    "w": 207,
+    "h": 178,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "R1": {
    "nome": "corpo-inteiro-de-frente",
@@ -95,7 +120,8 @@
     829,
     1870
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": null
   },
   "R2": {
    "nome": "corpo-inteiro-de-perfil",
@@ -140,7 +166,19 @@
      151,
      115
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 445,
+    "y": 359,
+    "w": 155,
+    "h": 146,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P02": {
    "nome": "rindo",
@@ -148,7 +186,19 @@
     1058,
     1108
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 492,
+    "y": 376,
+    "w": 77,
+    "h": 71,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P03": {
    "nome": "surpresa",
@@ -175,7 +225,8 @@
      195,
      191
     ]
-   ]
+   ],
+   "boca2": null
   },
   "P04": {
    "nome": "preocupacao",
@@ -202,7 +253,19 @@
      152,
      121
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 251,
+    "y": 418,
+    "w": 124,
+    "h": 104,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "R1": {
    "nome": "corpo-inteiro-de-frente",
@@ -210,7 +273,8 @@
     739,
     1964
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": null
   },
   "R2": {
    "nome": "corpo-inteiro-de-perfil",
@@ -619,7 +683,8 @@
     1506,
     1097
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": null
   },
   "P02": {
    "nome": "rindo",
@@ -627,7 +692,19 @@
     1276,
     1088
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 583,
+    "y": 352,
+    "w": 125,
+    "h": 103,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P03": {
    "nome": "surpresa",
@@ -654,7 +731,8 @@
      105,
      87
     ]
-   ]
+   ],
+   "boca2": null
   },
   "P04": {
    "nome": "preocupacao",
@@ -689,7 +767,8 @@
     903,
     1825
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": null
   },
   "R2": {
    "nome": "corpo-inteiro-de-perfil",
@@ -831,7 +910,19 @@
      160
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 704,
+    "y": 373,
+    "w": 138,
+    "h": 144,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P02": {
    "nome": "choque",
@@ -858,7 +949,8 @@
      189,
      159
     ]
-   ]
+   ],
+   "boca2": null
   },
   "P03": {
    "nome": "celular",
@@ -886,7 +978,19 @@
      158
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 294,
+    "y": 373,
+    "w": 130,
+    "h": 109,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P04": {
    "nome": "bracos-cruzados",
@@ -914,7 +1018,19 @@
      158
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 311,
+    "y": 348,
+    "w": 168,
+    "h": 132,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P05": {
    "nome": "explica",
@@ -942,7 +1058,19 @@
      157
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 422,
+    "y": 429,
+    "w": 136,
+    "h": 136,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P06": {
    "nome": "pensando",
@@ -970,7 +1098,19 @@
      160
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 294,
+    "y": 375,
+    "w": 169,
+    "h": 131,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P07": {
    "nome": "sem-graca",
@@ -998,7 +1138,19 @@
      152
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 426,
+    "y": 405,
+    "w": 202,
+    "h": 158,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "P08": {
    "nome": "feliz",
@@ -1026,7 +1178,19 @@
      158
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 339,
+    "y": 382,
+    "w": 148,
+    "h": 135,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "R1": {
    "nome": "corpo-inteiro-de-frente",
@@ -1054,7 +1218,19 @@
      146
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 340,
+    "y": 288,
+    "w": 125,
+    "h": 100,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   }
   },
   "R2": {
    "nome": "corpo-inteiro-de-perfil",
@@ -1609,6 +1785,60 @@
     1828
    ],
    "olhos": null
+  },
+  "P16": {
+   "nome": "sentado-cadeira-area",
+   "tam": [
+    1113,
+    1812
+   ],
+   "olhos": [
+    [
+     580,
+     283,
+     10,
+     26,
+     227,
+     167,
+     119
+    ]
+   ],
+   "olhos_mao": true,
+   "boca": [
+    620,
+    400,
+    40,
+    0,
+    0.7
+   ]
+  },
+  "P17": {
+   "nome": "sentado-fazendo-conta",
+   "tam": [
+    1106,
+    1728
+   ],
+   "olhos": [
+    [
+     735,
+     412,
+     16,
+     21,
+     230,
+     169,
+     124
+    ],
+    [
+     821,
+     430,
+     14,
+     15,
+     228,
+     168,
+     122
+    ]
+   ],
+   "olhos_mao": true
   }
  },
  "valeria": {
@@ -1638,7 +1868,26 @@
      144
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 496,
+    "y": 340,
+    "w": 167,
+    "h": 132,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 431,
+    "y": 123,
+    "w": 276,
+    "h": 146,
+    "n": 3
+   }
   },
   "P02": {
    "nome": "rindo",
@@ -1646,7 +1895,20 @@
     842,
     1094
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 358,
+    "y": 338,
+    "w": 116,
+    "h": 95,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P03": {
    "nome": "surpresa",
@@ -1673,7 +1935,15 @@
      181,
      144
     ]
-   ]
+   ],
+   "boca2": null,
+   "sobr": {
+    "x": 240,
+    "y": 99,
+    "w": 330,
+    "h": 215,
+    "n": 3
+   }
   },
   "P04": {
    "nome": "preocupacao",
@@ -1700,7 +1970,26 @@
      179,
      144
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 316,
+    "y": 367,
+    "w": 129,
+    "h": 102,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 216,
+    "y": 126,
+    "w": 314,
+    "h": 176,
+    "n": 3
+   }
   },
   "P05": {
    "nome": "esnobando",
@@ -1708,7 +1997,20 @@
     1093,
     1108
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 422,
+    "y": 368,
+    "w": 193,
+    "h": 155,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P06": {
    "nome": "ai-que-pobreza",
@@ -1736,7 +2038,26 @@
      142
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "boca2": {
+    "x": 521,
+    "y": 340,
+    "w": 175,
+    "h": 144,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 423,
+    "y": 133,
+    "w": 311,
+    "h": 160,
+    "n": 3
+   }
   },
   "P07": {
    "nome": "chave-da-suv",
@@ -1744,7 +2065,20 @@
     1267,
     1108
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 509,
+    "y": 427,
+    "w": 222,
+    "h": 162,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P08": {
    "nome": "celular-fatura",
@@ -1771,7 +2105,26 @@
      179,
      144
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 377,
+    "y": 343,
+    "w": 103,
+    "h": 99,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 287,
+    "y": 116,
+    "w": 277,
+    "h": 180,
+    "n": 3
+   }
   },
   "P09": {
    "nome": "olhando-se-alguem-ve",
@@ -1779,7 +2132,20 @@
     846,
     1098
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 389,
+    "y": 369,
+    "w": 187,
+    "h": 140,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P10": {
    "nome": "pedindo-sem-graca",
@@ -1806,7 +2172,26 @@
      179,
      141
     ]
-   ]
+   ],
+   "boca2": {
+    "x": 243,
+    "y": 372,
+    "w": 222,
+    "h": 163,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 195,
+    "y": 130,
+    "w": 317,
+    "h": 170,
+    "n": 3
+   }
   },
   "P11": {
    "nome": "vergonha",
@@ -1814,7 +2199,20 @@
     884,
     1115
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 439,
+    "y": 429,
+    "w": 100,
+    "h": 84,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P12": {
    "nome": "rindo-falso",
@@ -1822,7 +2220,20 @@
     826,
     1122
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 297,
+    "y": 308,
+    "w": 163,
+    "h": 136,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P13": {
    "nome": "bracos-cruzados",
@@ -1830,7 +2241,8 @@
     833,
     1116
    ],
-   "olhos": null
+   "olhos": null,
+   "sobr": null
   },
   "P14": {
    "nome": "chorando-escondido",
@@ -1838,7 +2250,20 @@
     1027,
     1108
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 442,
+    "y": 340,
+    "w": 151,
+    "h": 115,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P15": {
    "nome": "agradecida",
@@ -1846,7 +2271,20 @@
     817,
     1096
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 264,
+    "y": 372,
+    "w": 209,
+    "h": 155,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "P16": {
    "nome": "toda-derretida",
@@ -1874,7 +2312,14 @@
      144
     ]
    ],
-   "olhos_mao": true
+   "olhos_mao": true,
+   "sobr": {
+    "x": 585,
+    "y": 148,
+    "w": 247,
+    "h": 147,
+    "n": 3
+   }
   },
   "R1": {
    "nome": "corpo-inteiro-de-frente",
@@ -1882,7 +2327,20 @@
     708,
     1881
    ],
-   "olhos": null
+   "olhos": null,
+   "boca2": {
+    "x": 268,
+    "y": 355,
+    "w": 175,
+    "h": 131,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": null
   },
   "R2": {
    "nome": "corpo-inteiro-de-perfil",
@@ -1890,7 +2348,8 @@
     568,
     1883
    ],
-   "olhos": null
+   "olhos": null,
+   "sobr": null
   },
   "R3": {
    "nome": "corpo-inteiro-de-perfil",
@@ -1898,7 +2357,111 @@
     1004,
     1783
    ],
-   "olhos": null
+   "olhos": null,
+   "sobr": null
+  },
+  "P17": {
+   "nome": "sentada-cadeira-area",
+   "tam": [
+    1021,
+    1777
+   ],
+   "olhos": [
+    [
+     260,
+     336,
+     20,
+     16,
+     225,
+     177,
+     142
+    ],
+    [
+     351,
+     305,
+     31,
+     20,
+     231,
+     179,
+     142
+    ]
+   ],
+   "boca2": {
+    "x": 291,
+    "y": 407,
+    "w": 106,
+    "h": 89,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 217,
+    "y": 209,
+    "w": 187,
+    "h": 145,
+    "n": 3
+   },
+   "olhos_mao": true
+  },
+  "P18": {
+   "nome": "sentada-copiando-a-conta",
+   "tam": [
+    1064,
+    1797
+   ],
+   "olhos": [
+    [
+     328,
+     335,
+     18,
+     15,
+     216,
+     169,
+     141
+    ],
+    [
+     426,
+     307,
+     26,
+     18,
+     230,
+     179,
+     146
+    ]
+   ],
+   "boca2": {
+    "x": 367,
+    "y": 410,
+    "w": 99,
+    "h": 106,
+    "n": 8,
+    "larg": [
+     "n",
+     "m",
+     "w"
+    ]
+   },
+   "sobr": {
+    "x": 290,
+    "y": 219,
+    "w": 181,
+    "h": 133,
+    "n": 3
+   },
+   "olhos_mao": true
+  },
+  "R4": {
+   "nome": "andando-oculos-na-cabeca-passada",
+   "tam": [
+    937,
+    1860
+   ],
+   "olhos": null,
+   "boca2": null
   }
  }
 }

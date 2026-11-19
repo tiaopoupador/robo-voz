@@ -32,7 +32,9 @@ def falado(texto):
             # Ed, 08/11/2026: «o correto é falar nótinhas (...) o certo é pão de fôrma»
             (r"notinha", "nótínha"), (r"Notinha", "Nótínha"), (r"pão de forma", "pão de fôrma"), (r"(?<![a-zà-ú])de cor(?=[:,.!?])", "de cór"),
             # Ed, 19/11/2026: «deveria ser B R, bê, érre»; «góv ponto bê érre»; «plano Cólor»; sigla soletrada letra por letra
-            (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Cólor"), (r"\bFGO\b", "éfe gê ó")]
+            (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Kólor"), (r"\bFGO\b", "éfe gê ó"),
+            # Ed, 19/11/2026, escolhidas de ouvido no teste (opções 1, 3, 6, 7, 11): «móro», «móstro», «ní-vel», «Kólor», «sufôco»
+            (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1í-vel"), (r"\bsufoco\b", "sufôco")]
     for a, b in FALA: texto = re.sub(a, b, texto)
     return texto
 

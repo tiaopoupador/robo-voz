@@ -92,7 +92,7 @@ Existe. E é muito. Só não chega por mensagem.
 
 O Banco Central tem um sistema que se chama Valores a Receber. Ele junta, num lugar só, dinheiro que é seu e ficou parado em banco, cooperativa ou consórcio. Com os dados até agosto deste ano, tinha cinco bilhões e setecentos e noventa milhões de reais esperando os donos.
 
-Peguei o papel de pão e fiz a conta na frente dela. Quatro bilhões e trezentos e dez milhões são de pessoas como eu e você, vinte e três milhões e novecentas e quarenta mil pessoas. Dá, na média, cento e oitenta reais por pessoa. O resto, um bilhão e quatrocentos e oitenta milhões, é de empresas.
+Peguei o papel de pão e fiz a conta na frente dela. Quatro bilhões e trezentos e dez milhões são de pessoas como eu e você, quase vinte e quatro milhões de pessoas. Dá, na média, cento e oitenta reais por pessoa. O resto, um bilhão e quatrocentos e oitenta milhões, é de empresas.
 
 [TEXTO: R$ 180 EM MÉDIA]
 
@@ -180,7 +180,7 @@ Então a gente foi conferir se tinha dinheiro no nome dela, ali mesmo, na mesa d
 
 [TEXTO GRANDE: valoresareceber.bcb.gov.br]
 
-Primeiro: o endereço do site oficial do Banco Central. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link de ninguém. Nem no meu.
+Primeiro: o endereço do site oficial do Banco Central. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link que chega por mensagem, seja de quem for.
 
 [TEXTO: CONTA GOV.BR PRATA OU OURO]
 
@@ -226,7 +226,7 @@ Mas antes, um recado rápido.
 
 Sabe por que aquela tarifa ficou anos saindo sem a Dona Cida ver? Porque ninguém olha o extrato de conta que não usa.
 
-Eu uso o FinMoovi para isso. Ponho ali cada conta que eu tenho, e o extrato de cada uma, e lanço o gasto falando uma frase normal. Quando aparece uma tarifa que não devia, eu vejo no mês, e não dez anos depois. Tem sete dias de teste, e o link está aqui na descrição.
+Eu uso o FinMoovi para isso. Ponho ali cada conta que eu tenho, e o extrato de cada uma, e lanço o gasto falando uma frase normal. Quando aparece uma tarifa que não devia, eu vejo no mês, e não dez anos depois. Tem sete dias de teste, e o link está aqui na descrição do vídeo. Esse sim, você pode confiar sem problema, porque é o link do próprio canal.
 
 [FUNDO PRETO 3 s]
 

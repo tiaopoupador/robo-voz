@@ -29,6 +29,11 @@ def do_ed(nome, ext, var=None):
     cod = COD.get(nome)
     if not cod or not os.path.isdir(ENT): return None
     achados = sorted(f for f in os.listdir(ENT) if f.upper().startswith(cod) and f.lower().endswith(ext) and "-semfaixa" not in f.lower())
+    # 19/11 (Ed: «ficou piscando toda hora»): o meta.ai baixou um GIF animado com nome .jpg (M04-a.jpg). Foto que por dentro e GIF nao vale.
+    if ".jpg" in ext:
+        gif = [f for f in achados if open(f"{ENT}/{f}", "rb").read(4) == b"GIF8"]
+        for f in gif: avisos.append(f"{f}: e um GIF com nome de foto, nao usei")
+        achados = [f for f in achados if f not in gif]
     v = var or getattr(C, "ESCOLHA", {}).get(nome)  # 09/11: a variante que eu escolhi olhando (ex.: "b" = M20-b), em vez da primeira
     if v: achados = sorted(achados, key=lambda f: not f.upper().startswith(f"{cod}-{v.upper()}"))
     return f"{ENT}/{achados[0]}" if achados else None
@@ -133,9 +138,12 @@ for k in linhas:
             cenas.append({"ini": s, "k": "conversa", "src": src, "pose": f"marca/poses/{pose}.png", "lado": cont[2] if len(cont) > 2 else 1, "chave": chave}); continue
         nome, ov = (cont if isinstance(cont, tuple) else (cont, []))
         tp, src = publica(nome)
+        # 19/11: a lembranca vem marcada no PEDIDO da imagem ("FLASHBACK ..."), nao so no nome do arquivo (o do meta.ai e "M04-a")
+        _q = C.IMG.get(nome.split("@")[0]); _ped = (C.PEDIDO.get(nome.split("@")[0], "") if hasattr(C, "PEDIDO") else "") + (str(_q[2]) if _q else "")
+        _fb = "flashback" in _ped.lower()
         if src is None: cenas.append({"ini": s, "k": "frase", "texto": "", "chave": chave}); continue
-        if tp == "vid": cenas.append({"ini": s, "k": "vid", "src": src, "mov": mv, "de": 0, "chave": chave, "clip": round(dur_de(f"{P}/render/public/{src}"), 2), "ov": ov})
-        else: cenas.append({"ini": s, "k": "hib" if ov else "img", "src": src, "mov": mv, "ov": ov, "chave": chave, "sil": tipo == "SIL"})
+        if tp == "vid": cenas.append({"ini": s, "k": "vid", "src": src, "mov": mv, "de": 0, "chave": chave, "clip": round(dur_de(f"{P}/render/public/{src}"), 2), "ov": ov, "fb": _fb})
+        else: cenas.append({"ini": s, "k": "hib" if ov else "img", "src": src, "mov": mv, "ov": ov, "chave": chave, "sil": tipo == "SIL", "fb": _fb})
 if VIN_T is not None: cenas.append({"ini": VIN_T, "k": "vinheta", "chave": "vinheta"})
 cenas.sort(key=lambda c: c["ini"])
 # Tiao Conversa (19/11): imagem ou cartao parado no maximo ~10 s; depois o video volta ao Tiao falando (pose seguinte, lado trocado)
@@ -163,8 +171,9 @@ if ACABAMENTO:
     for c in cenas:
         if c["k"] not in ("img", "vid", "hib", "conversa"): continue
         lin = int(c["chave"].split("-")[0])
-        fb = any("flashback" in (x.get("src") or "") for x in cenas if x["chave"].split("-")[0] == str(lin))
-        c["clima"] = MANDA.get(lin) or escolher(FALAS[lin] if lin < len(FALAS) else "", c.get("src", ""), linha_tem_flashback=fb)
+        fb = any("flashback" in (x.get("src") or "") or x.get("fb") for x in cenas if x["chave"].split("-")[0] == str(lin))
+        c["clima"] = MANDA.get(lin) or escolher(FALAS[lin] if lin < len(FALAS) else "", c.get("src", ""), "flashback" if c.get("fb") else "", linha_tem_flashback=fb)
+        if c["k"] == "conversa" and c["clima"] == "passado": c["clima"] = "lenta"  # o Tiao falando e sempre hoje (19/11)
     # transicao de entrada (Ed aprovou as 6 a 18/11: «gostei de todas»), escolhida pelo sentido, so entre duas imagens:
     # entra no passado = pagina; volta do passado = rasgo; susto = zoom; coisa boa = clarao; o resto fica no chicote de sempre.
     # cenas.py pode mandar: ENTRA = {linha: "cortina"} (troca de capitulo). Uma especial a cada 6 s no minimo (o passado sempre).
@@ -311,7 +320,7 @@ RECADOS = [  # (frase, animação do cartão): inscrever, like, comentar, finmoo
      ("Ainda não se inscreveu? Leva *1 segundo* e ajuda o Tião a continuar", "inscrever")],
     [("Fique até o fim: *a lição mais importante* vem agora", "fim"), ("Já deixou o seu like? Ele ajuda o canal *mais do que você imagina*", "like")],
 ]
-def dur_barra(fr): return round(0.9 + (1920 + sum(len(x.replace('*', '')) * 23 + 90 for x, _ in fr)) / 210 + 0.8, 2)  # mesmo passo do Plantao.tsx
+def dur_barra(fr): return round(0.9 + (1920 + sum(len(x.replace('*', '')) * 23 + 90 for x, _ in fr)) / 170 + 0.8, 2)  # mesmo passo do Plantao.tsx (PLANTAO_VEL)
 BLOQ = {"final", "montagem", "linha", "barras", "graf", "torre", "pessoas", "grade", "conta", "fotonota"}  # pecas que usam a base da tela
 def so_imagem(a, b):
     for i, c in enumerate(cenas):

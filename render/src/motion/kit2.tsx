@@ -9,7 +9,7 @@ export const Icones: React.FC<{ titulo?: string; itens: { e: string; r: string; 
   const t = useT();
   // 19/11 (Ed: «as imagens das laterais saíram cortadas»): com 5 cartões não cabia (5 x 400 + 4 x 60 = 2240 px numa tela de 1920).
   // Agora o cartão encolhe para caber sempre em 1760 px, e o emoji e a letra encolhem junto.
-  const gap = itens.length > 3 ? 40 : 60, W = Math.min(400, Math.floor((1760 - gap * (itens.length - 1)) / itens.length)), k = W / 400;
+  const gap = itens.length > 3 ? 40 : 60, W = itens.length === 1 ? 660 : Math.min(400, Math.floor((1760 - gap * (itens.length - 1)) / itens.length)), k = W / 400;  // 1 cartão só (Dica 1): grande, sem tela vazia
   return (
     <Fundo>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 70 }}>

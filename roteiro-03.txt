@@ -17,7 +17,7 @@ E se você quer ajudar mais gente a não cair nessa, deixa o like agora e se ins
 Ela me fez entrar e passou um café. E fez a pergunta que você também está fazendo: "Mas então esse dinheiro não existe?"
 Existe. E é muito. Só não chega por mensagem.
 O Banco Central tem um sistema que se chama Valores a Receber. Ele junta, num lugar só, dinheiro que é seu e ficou parado em banco, cooperativa ou consórcio. Com os dados até agosto deste ano, tinha cinco bilhões e setecentos e noventa milhões de reais esperando os donos.
-Peguei o papel de pão e fiz a conta na frente dela. Quatro bilhões e trezentos e dez milhões são de pessoas como eu e você, vinte e três milhões e novecentas e quarenta mil pessoas. Dá, na média, cento e oitenta reais por pessoa. O resto, um bilhão e quatrocentos e oitenta milhões, é de empresas.
+Peguei o papel de pão e fiz a conta na frente dela. Quatro bilhões e trezentos e dez milhões são de pessoas como eu e você, quase vinte e quatro milhões de pessoas. Dá, na média, cento e oitenta reais por pessoa. O resto, um bilhão e quatrocentos e oitenta milhões, é de empresas.
 A Dona Cida deu risada: "Cento e oitenta reais, Tião?! Isso é um mês inteiro de remédio!" E é mesmo! É por isso que ninguém deveria deixar esse dinheiro parado no banco.
 Mas, afinal, de onde sai esse dinheiro? O próprio Banco Central responde, numa lista oficial. Conta corrente ou poupança que foi encerrada com saldo dentro. Tarifa que o banco cobrou e não devia. Parcela de empréstimo cobrada a mais. Sobra de cooperativa de crédito de quem saiu. Dinheiro de consórcio que terminou e ninguém foi buscar.
 Pensa comigo. Aquela conta salário do emprego de dez anos atrás. A poupança que a sua mãe abriu no seu nome quando você era criança. A tarifa que veio todo mês e você nunca conferiu.
@@ -41,7 +41,7 @@ Depende de quando ele entrou no sistema. No papel de pão, eu risquei duas colun
 A segunda coluna é a que importa hoje. Aqueles cinco bilhões e setecentos e noventa milhões de que eu te falei são a conta de agosto, quando a medida já tinha mandado o dinheiro antigo para o fundo. É o dinheiro que está lá agora. E o Banco Central diz, com todas as letras: os valores continuam guardados pelas instituições, esperando que você peça a devolução.
 Só que ele espera você ir buscar. Ele não vai bater na sua janela. E a próxima medida, se vier, pode dar trinta dias de novo.
 Então a gente foi conferir se tinha dinheiro no nome dela, ali mesmo, na mesa da cozinha. E eu vou fazer com você, passo por passo.
-Primeiro: o endereço do site oficial do Banco Central. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link de ninguém. Nem no meu.
+Primeiro: o endereço do site oficial do Banco Central. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link que chega por mensagem, seja de quem for.
 Segundo: você entra com a sua conta gov ponto b r, a mesma do aplicativo do governo. Ela tem que ser nível prata ou ouro, com a verificação em duas etapas ligada. Se a sua for bronze, o próprio aplicativo te mostra como subir de nível.
 Terceiro: se aparecer dinheiro, você escolhe uma chave Pix sua e informa seus dados. Anota o número do protocolo. O prazo para cair é de doze dias úteis. E não custa nada. Nem um centavo.
 Um detalhe que pega muita gente: se você não tiver chave Pix, a instituição não é obrigada a devolver nesses doze dias. Então, antes de tudo, tenha uma chave.
@@ -54,7 +54,7 @@ Ele ficou olhando a tela um tempão, e depois disse uma coisa que eu anotei no p
 Só que achar o dinheiro esquecido é metade do serviço. A outra metade é não deixar ele sumir de novo. E é isso que eu vou te mostrar agora, porque foi a tarifa de uma conta que ela nem olhava que criou esse dinheiro esquecido.
 Mas antes, um recado rápido.
 Sabe por que aquela tarifa ficou anos saindo sem a Dona Cida ver? Porque ninguém olha o extrato de conta que não usa.
-Eu uso o FinMoovi para isso. Ponho ali cada conta que eu tenho, e o extrato de cada uma, e lanço o gasto falando uma frase normal. Quando aparece uma tarifa que não devia, eu vejo no mês, e não dez anos depois. Tem sete dias de teste, e o link está aqui na descrição.
+Eu uso o FinMoovi para isso. Ponho ali cada conta que eu tenho, e o extrato de cada uma, e lanço o gasto falando uma frase normal. Quando aparece uma tarifa que não devia, eu vejo no mês, e não dez anos depois. Tem sete dias de teste, e o link está aqui na descrição do vídeo. Esse sim, você pode confiar sem problema, porque é o link do próprio canal.
 Voltando. No verso do papel de pão, eu escrevi para a Dona Cida três dicas, para esse dinheiro nunca mais ficar esquecido. Pega um papel e anota aí também.
 Dica número um: uma vez por ano, entra no site Valores a Receber. Escolhe um dia fácil de lembrar, o do seu aniversário, por exemplo. E confere também sempre que ouvir falar de uma regra nova do governo, porque a próxima pode dar só trinta dias de novo. Por que conferir sempre? Porque o sistema recebe dinheiro novo o tempo todo: em agosto, segundo o Banco Central, o dinheiro esquecido subiu de novo.
 Dica número dois: conta que você não usa mais, você pede para o banco fechar. Conta parada é o lugar onde a tarifa trabalha escondida, todo mês, sem ninguém ver. Foi assim com a Dona Cida.

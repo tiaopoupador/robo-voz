@@ -111,7 +111,7 @@ export type Passado = "pb" | "sepia" | "memoria";
 export const FILTRO_PASSADO: Record<Passado, string> = {
   pb: "grayscale(1) contrast(1.06) brightness(1.02)",
   sepia: "sepia(0.85) saturate(0.75) contrast(0.95) brightness(1.03)",
-  memoria: "sepia(0.45) saturate(0.6) brightness(1.06) contrast(0.92)",
+  memoria: "sepia(0.8) saturate(0.45) brightness(1.03) contrast(0.88)",  // 19/11 (Ed: «dar uma envelhecida na imagem pra dizer que voltou anos atrás»): era sepia 0.45
 };
 export const BordaPassado: React.FC<{ tipo: Passado; t: number }> = ({ tipo, t }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>

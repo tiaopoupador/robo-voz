@@ -171,7 +171,8 @@ export const Video: React.FC<Dados> = (dados) => {
         // a cena antes da tela final dura mais 0,8 s: é ela que a onda amarela cobre ao entrar (por baixo, nunca um fundo vazio)
         const fim = i + 1 < CENAS.length ? CENAS[i + 1].ini + (CENAS[i + 1].k === "final" ? 0.8 : 0) : FIM;
         const de = Math.round(c.ini * fps), n = Math.max(1, Math.round(fim * fps) - de);
-        const no = (j: number, nn: number) => { const x = CENAS[j]; const p = <Peca c={x} dur={nn / fps} lado={j % 2 ? -1 : 1} />; return x.clima ? <ComClima clima={x.clima} t0={x.ini}>{p}</ComClima> : p; };
+        const no = (j: number, nn: number) => { const x = CENAS[j]; const p = <Peca c={x} dur={nn / fps} lado={j % 2 ? -1 : 1} />; const cl = x.k === "conversa" && x.clima === "passado" ? "" : x.clima;  // 19/11: o Tião falando é sempre hoje; o passado só pinta a imagem da lembrança
+        return cl ? <ComClima clima={cl} t0={x.ini}>{p}</ComClima> : p; };
         const atual = no(i, n);
         if (!c.entra || i === 0) return <Sequence key={i} from={de} durationInFrames={n}>{atual}</Sequence>;
         const dp = Math.round(CENAS[i - 1].ini * fps), np = de - dp + Math.round(DUR_TRANS[c.entra as Trans] * fps);

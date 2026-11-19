@@ -11,7 +11,7 @@ import { Emoji, Som } from "./vivo";
 
 const { fontFamily } = loadFont("normal", { weights: ["700", "800"] });
 export const PLANTAO_ALTURA = 84;      // a legenda sobe isto quando a barra está na tela
-export const PLANTAO_VEL = 210;        // px por segundo do texto correndo
+export const PLANTAO_VEL = 170;        // px por segundo do texto correndo (19/11, Ed: «muito rapido, tem de desacelerar um pouco»: era 210)
 export const PLANTAO_CHAR = 23;        // largura média de uma letra (px), para o montar.py calcular a duração
 const AZUL = "#0E1A2B", VERMELHO = "#D62828", AMARELO = "#FFD43B";
 
