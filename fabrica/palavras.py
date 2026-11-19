@@ -41,9 +41,23 @@ e = np.sqrt((x[: n * 80].reshape(n, 80) ** 2).mean(1)); voz = e > max(150.0, np.
 mexidas = 0
 for k, wd in enumerate(out):
     a = int(wd[0] * 100)
-    if a >= n or voz[a]: continue  # ja comeca com voz
+    if a >= n: continue
     lim = min(n, int(min(wd[0] + 0.7, wd[1] - 0.05) * 100) + 1)
-    j = next((q for q in range(a, lim) if voz[q]), None)
+    if voz[a]:
+        # comeca "com voz" mas pode ser o rabo da palavra anterior: palavra comprida demais para as letras que tem
+        # (ex.: «No» com 0,66 s logo depois de «frente.») -> o comeco certo e onde a voz VOLTA depois de uma pausinha
+        if wd[1] - wd[0] <= 0.25 + 0.12 * len(wd[2]): continue
+        # procura uma pausa DE VERDADE (8 quadros seguidos de 10 ms quase mudos) e o comeco e onde a voz volta depois dela
+        mudo = e < 200; j = None; q = a
+        while q < lim:
+            if mudo[q]:
+                r = q
+                while r < lim and mudo[r]: r += 1
+                if r - q >= 8 and r < lim: j = r
+                q = r
+            else: q += 1
+    else:
+        j = next((q for q in range(a, lim) if voz[q]), None)
     if j is not None and j > a:
         wd[0] = round(j / 100, 2); mexidas += 1
         if k > 0 and out[k - 1][1] > wd[0]: out[k - 1][1] = wd[0]
