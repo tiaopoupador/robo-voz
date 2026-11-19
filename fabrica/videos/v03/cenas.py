@@ -44,7 +44,7 @@ L = {
  5: [("^", "C", (RUA, "P1", -1)), ("porteiro", "C", (RUA, "P2", -1))],
  6: [("^", "I", "banco:cenarios/rua-bairro-entardecer-01.jpg"), ("papel de pão", "C", (RUA, "P2", -1))],
  7: [("^", "I", "cida-janela"), ("bateu no vidro", "I", "meta-cida-tiao-janela")],
- 8: [("^", "I", "meta-cida-tiao-janela"), ("trinta e nove", "M", nu(39.90, "«Taxa para liberar»", "para receber R$ 1.847,00", cor=VERM, casas=2, emoji="🚨"))],
+ 8: [("^", "I", "meta-cida-tiao-janela@b"), ("trinta e nove", "M", nu(39.90, "«Taxa para liberar»", "para receber R$ 1.847,00", cor=VERM, casas=2, emoji="🚨"))],
  9: [("^", "C", (RUA, "P4", 1)), ("O link abriu", "M", fr("O link abriu um *WhatsApp* que ninguém conhecia.", "e pediu um Pix"))],
  10: [("^", "M", ic([("💸", "pediu dinheiro?", False), ("🔗", "mandou link?", False), ("🔑", "pediu senha?", False)], "Uma resposta sim = golpe"))],
  11: [("^", "C", (RUA, "P2", -1)), ("não faça qualquer tipo", "M", fr("NÃO faça qualquer tipo de *pagamento* para ter acesso aos valores.", "gov.br, Valores a Receber"))],
@@ -56,7 +56,7 @@ L = {
  17: [("^", "C", (RUA, "P2", -1))],
  18: [("^", "C", (RUA, "P2", 1)), ("cinco bilhões", "M", fr("*R$ 5,79 bilhões* esperando os donos.", "Banco Central, dados até agosto de 2026"))],
  19: [("^", "I", "papel-pao-conta"), ("cento e oitenta", "M", nu(180, "Na média, por pessoa", "R$ 4,31 bi para 23,94 milhões de pessoas", cor=VERDE, emoji="💰"))],
- 20: [("^", "I", "meta-cozinha-cida"), ("É mesmo", "C", (RUA, "P2", -1))],
+ 20: [("^", "I", "meta-cozinha-cida@b"), ("É mesmo", "C", (RUA, "P2", -1))],
  21: [("^", "C", (RUA, "P3", 1)), ("Conta corrente", "M", ic([("🏦", "conta encerrada com saldo", False), ("🧾", "tarifa cobrada a mais", False), ("📄", "parcela cobrada a mais", False), ("🤝", "sobra de cooperativa", False), ("🏍️", "consórcio encerrado", False)], "De onde vem"))],
  22: [("^", "C", (RUA, "P1", -1))],
  23: [("^", "C", (RUA, "P4", 1))],
@@ -70,7 +70,7 @@ L = {
  31: [("^", "C", (RUA, "P2", -1)), ("Medida Provisória", "M", fr("Medida Provisória *1.355*", "4 de maio de 2026, Novo Desenrola"))],
  32: [("^", "C", (RUA, "P2", 1))],
  33: [("^", "M", li(["até 31/12/2024", "maio: vai para o fundo", "30 dias para reclamar"], 1, "O que a medida mandou"))],
- 34: [("^", "M", li(["até 31/12/2024", "maio: vai para o fundo", "30 dias para reclamar"], 2, "O que a medida mandou")), ("forma definitiva", "M", fr("Não contestado: incorporado de forma *definitiva* ao fundo.", "art. 13 da MP 1.355"))],
+ 34: [("^", "M", li(["até 31/12/2024", "maio: vai para o fundo", "30 dias para reclamar"], 2, "O que a medida mandou")), ("fundo de vez", "M", fr("Ninguém reclamou em 30 dias? O dinheiro fica com o fundo *de vez*.", "art. 13 da MP 1.355"))],
  35: [("^", "I", "cida-oculos"), ("Ninguém avisou", "C", (RUA, "P3", -1))],
  36: [("^", "C", (RUA, "P2", 1)), ("trinta e um de agosto", "M", fr("A medida *caiu* em 31 de agosto.", "não virou lei")), ("não achei", "C", (RUA, "P1", 1))],
  37: [("^", "C", (RUA, "P1", -1))],
@@ -149,3 +149,5 @@ PEDIDO = {'meta-cida-tiao-janela': 'Morning, seen from the sidewalk of a simple 
  'meta-cozinha-cida': "A simple Brazilian kitchen in the morning. Dona Cida pours coffee from a thermos into Tiao's cup. Tiao, an ADULT man about 30 years old with adult body proportions (NOT a child), sits at a small table with a white crochet tablecloth, smiling politely; a brown paper bread bag and a short yellow pencil lie on the table. Cida LEFT, Tiao RIGHT.", 'meta-cida-vizinha': 'Seen from the sidewalk OUTSIDE the house: Dona Cida leans out of the open window of her small simple Brazilian house, knocking on the glass and showing her old phone with a pink case. On the sidewalk in front of the window, a neighbor woman in her thirties with long straight black hair and a red T-shirt passes carrying a shopping bag and stops to listen, surprised. Colorful street, potted plants under the window.',
  'meta-tiao-loja-lembranca': 'FLASHBACK with faded warm colors. Tiao when he was about 20 years old: the SAME face, the same short messy black hair and a thin black pencil mustache, slimmer and younger. He stands behind the counter of a small Brazilian building materials shop (paint cans, cement bags, tools on the wall), wearing a plain name badge on his mustard polo shirt, smiling shyly.',
  'meta-banco-1990': 'FLASHBACK, March 1990 in Brazil, faded colors like an old photo. A long line of worried Brazilian people of all ages, in 1990 clothes, in front of an old bank branch with its glass door closed and a metal grille half down. An elderly woman in the line holds a small savings passbook against her chest. A man reads a blank paper notice taped on the door. Nobody smiles.'}
+ESCOLHA = {"meta-banco-1990": "a"}  # a M05-b tem uma senhora com celular em 1990: nao serve
+CAPAS_TESTE = []  # as capas B, C e D que o Ed fez ja estao no Drive (CAPA-B_..., CAPA-C_..., CAPA-D_...)

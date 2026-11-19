@@ -1,7 +1,8 @@
 {
  "em_producao": [
   "03",
-  "04"
+  "04",
+  "05"
  ],
  "calendario": [
   {
@@ -29,19 +30,7 @@
   },
   {
    "nn": "04",
-   "quando": "2026-11-25 18:00",
-   "formato": "longo-motion",
-   "titulo": "Por Que a Vizinha da SUV Pediu R$ 50 Emprestado ao Tião",
-   "capa": "ELA? PEDINDO?!",
-   "elenco": [
-    "Tião",
-    "Valéria"
-   ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
-  },
-  {
-   "nn": "05",
-   "quando": "2026-11-27 10:00",
+   "quando": "2026-11-24 10:00",
    "formato": "conversa",
    "titulo": "Dona Cida Não Confia em Banco Desde 1990. Ela Tem Razão?",
    "capa": "E SE VOLTAR?!",
@@ -49,10 +38,33 @@
     "Tião",
     "Dona Cida"
    ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+  },
+  {
+   "nn": "05",
+   "quando": "2026-11-25 18:00",
+   "formato": "longo-motion",
+   "titulo": "Por Que a Vizinha da SUV Pediu R$ 50 Emprestado ao Porteiro",
+   "capa": "ELA? PEDINDO?!",
+   "elenco": [
+    "Tião",
+    "Valéria"
+   ],
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
   },
   {
    "nn": "06",
+   "quando": "2026-11-27 10:00",
+   "formato": "conversa",
+   "titulo": "Seu Salário Acaba no Dia 10? O Problema Não É o Salário",
+   "capa": "O FURO É OUTRO",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+  },
+  {
+   "nn": "07",
    "quando": "2026-11-29 17:00",
    "formato": "longo-imagens",
    "titulo": "Por Que a Farmácia Sempre Pede o Seu CPF (Não É o Desconto)",
@@ -60,21 +72,21 @@
    "elenco": [
     "Tião"
    ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
-  },
-  {
-   "nn": "07",
-   "quando": "2026-12-01 10:00",
-   "formato": "conversa",
-   "titulo": "Seu Salário Acaba no Dia 10? O Problema Não É o Salário",
-   "capa": "O FURO É OUTRO",
-   "elenco": [
-    "Tião"
-   ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
   },
   {
    "nn": "08",
+   "quando": "2026-12-01 10:00",
+   "formato": "conversa",
+   "titulo": "7 Coisas Que o Tião Se Recusa a Comprar (Mesmo Podendo)",
+   "capa": "NEM DE GRAÇA",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+  },
+  {
+   "nn": "09",
    "quando": "2026-12-02 18:00",
    "formato": "longo-motion",
    "titulo": "O Bairro Soube Que o Tião Tem Dinheiro. Aí Ficou Estranho",
@@ -86,21 +98,21 @@
     "Marcos",
     "Dona Cida"
    ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
-  },
-  {
-   "nn": "09",
-   "quando": "2026-12-04 10:00",
-   "formato": "conversa",
-   "titulo": "7 Coisas Que o Tião Se Recusa a Comprar (Mesmo Podendo)",
-   "capa": "NEM DE GRAÇA",
-   "elenco": [
-    "Tião"
-   ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
   },
   {
    "nn": "10",
+   "quando": "2026-12-04 10:00",
+   "formato": "conversa",
+   "titulo": "Como o Banco Te Trata em Cada Saldo da Sua Conta",
+   "capa": "R$ 0 > R$ 1 MIL > R$ 100 MIL",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+  },
+  {
+   "nn": "11",
    "quando": "2026-12-06 17:00",
    "formato": "longo-imagens",
    "titulo": "Por Que a Loja Insiste Tanto Pra Você Fazer o Cartão Dela",
@@ -109,18 +121,7 @@
     "Tião",
     "Jéssica"
    ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
-  },
-  {
-   "nn": "11",
-   "quando": "2026-12-08 10:00",
-   "formato": "conversa",
-   "titulo": "Como o Banco Te Trata em Cada Saldo da Sua Conta",
-   "capa": "R$ 0 > R$ 1 MIL > R$ 100 MIL",
-   "elenco": [
-    "Tião"
-   ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
   },
   {
    "nn": "12",
@@ -133,7 +134,7 @@
     "Valéria",
     "Sandra"
    ],
-   "estado": "previsto (Ed, 18/11: Prosa no sábado, Valéria na quarta)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
   }
  ],
  "modelos_usados": [
@@ -174,5 +175,8 @@
   "quarta 18:00": "longo",
   "sexta 10:00": "conversa",
   "formatos": "Ed 18/11: quarta 18h = longo SÓ MOTION, domingo 17h = longo com imagens do Matheus; terça e sexta 10h = Tião Conversa (o 03 abre num sábado, fora da grade)"
- }
+ },
+ "vago": [
+  "2026-12-08 10:00 (terça, Tião Conversa): sem tema ainda"
+ ]
 }

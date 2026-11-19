@@ -280,10 +280,10 @@ Eu tirei a nota, guardei no bolso, e levantei a caneca velha para ela, num brind
 
 Ela foi embora rindo. Dessa vez, de verdade.
 
-E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão, escreve aqui embaixo só o número um. E fica mais um pouquinho, que a Dona Cida me pediu para te dar um recado.
+E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão, escreve aqui embaixo só o número um. E fica mais um pouquinho, que a Valéria descobriu mais uma coisa naquele domingo.
 
 [TIÃO P02 contando dinheiro]
 
-E se você passou sufoco quando o governo prendeu o dinheiro da poupança, em mil novecentos e noventa, ou se você nunca passou e não quer passar por um aperto desses, você não pode perder o próximo vídeo. A Dona Cida, aqui da esquina, ficou com a poupança da vida inteira presa de um dia para o outro, por causa de um plano do governo. Nele ela vai contar o que viu na porta do banco naquela manhã, o que fizeram com o dinheiro de quem trabalhou a vida inteira, e a única coisa que ela faz até hoje para nunca mais ser pega de surpresa. Essa última, nem os filhos dela sabiam. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Se o seu salário cai e no dia dez já sumiu, ou se ainda sobra, mas você não sabe direito para onde vai, você não pode perder o próximo vídeo. A Valéria achava que o problema dela era só o carrão. Mas, naquele domingo, a gente viu que o salário dela já chegava furado, por buracos pequenos que ela nem via. No próximo vídeo eu vou te mostrar quais são esses furos que comem o salário antes do dia dez, quanto cada um leva por mês, e o único que quase todo mundo tem e nunca percebe. Esse último, nem a Valéria tinha visto. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]

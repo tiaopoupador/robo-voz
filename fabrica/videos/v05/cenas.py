@@ -30,8 +30,8 @@ PEDIDO = {
 }
 TITULO = "Por Que a Vizinha da SUV Pediu R$ 50 Emprestado ao Porteiro"
 CAPA_TEXTO = "ELA? PEDINDO?!"
-PUBLICA = "2026-11-25 18:00"  # ⚠️ data a confirmar com o Ed (a sequencia mudou a 19/11)
-PUBLICA_TXT = "quarta, 25/11, às 18h (Brasília, 21h em Lisboa), data a confirmar"
+PUBLICA = "2026-11-25 18:00"  # Ed 19/11: ordem nova aprovada
+PUBLICA_TXT = "quarta, 25/11, às 18h (Brasília, 21h em Lisboa)"
 PRAZO = "domingo, 22/11, até as 18h"
 PRAZO_ISO = "2026-11-22T18:00:00-03:00"
 _V = "valeria-ficha-a.jpg.jpg + tiao-ficha-oficial.jpg"
