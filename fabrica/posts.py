@@ -192,7 +192,7 @@ def montar(seg, itens):
                 if it.get("url_img"): p["links"].append({"rotulo": "🖼️ A imagem que o robô já fez (se não gostar, gere no Meta AI)", "url": it["url_img"]})
                 if refs is None: refs = [] if ENSAIO else refs_tiao()
                 p["links"] += [META_AI] + refs
-            p["ficheiro"] = f"post-{data.isoformat()}-{SIGLA[dia]}.jpg"
+            p["ficheiro"] = f"post-{data.isoformat()}-{SIGLA[dia]}.jpg"; p["formato"] = "1:1"
         passos.append(p)
         md += [f"### {texto}", ""] + [l for l in (f"🖼️ {x['rotulo']}: {x['url']}" for x in p["links"][1:])] + [""]
         for c in p["copias"]: md += [f"**{c['rotulo']}**", "```", c["texto"], "```", ""]
@@ -241,6 +241,8 @@ def main():
         itens.append({"dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
                       "cena": cena, "url_img": url_img, "capa": capa, "video": url_v, "falta_link": bool(v and not url_v)})
     passos, md = montar(seg, itens)
+    for p in passos:  # a pasta onde salvar a imagem (regra do Team, Ed 19/11)
+        if p.get("ficheiro") and pasta: p["pasta"] = {"rotulo": f"Google Drive > Tiao Poupador > posts > {semana}", "url": f"https://drive.google.com/drive/folders/{pasta}"}
     json.dump(itens, open(f"{sai}/itens.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     open(f"{sai}/posts.md", "w", encoding="utf-8").write("\n".join(md))
     log("\n".join(md))

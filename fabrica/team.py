@@ -25,8 +25,48 @@ def ver(NN):
         if e.code == 404: return None
         raise
 
+# ---- REGRA DE TODA TAREFA MANUAL (Ed, 19/11/2026: «essas tarefas sao manuais e preciso da sua maxima ajuda pra me
+# facilitar ao maximo tudo!»). Vale para todo passo que passa por aqui:
+#   1. todo link tem um botao «Copiar» (alem do link clicavel);
+#   2. o formato (16:9, 9:16, 1:1) vai DENTRO do prompt: o meta.ai e os outros nao tem onde escolher;
+#   3. todo passo que gera um arquivo diz a PASTA onde salvar (link clicavel + botao «Copiar»).
+# Campos nossos (nao vao ao Team): passo["formato"], passo["pasta"] e tarefa["pasta"] = {"rotulo", "url"}.
+FORMATOS = {"16:9": "ASPECT RATIO 16:9, horizontal widescreen image (1920x1080), never square, never vertical. ",
+            "9:16": "ASPECT RATIO 9:16, vertical portrait image (1080x1920), never square, never horizontal. ",
+            "1:1": "ASPECT RATIO 1:1, square image (1080x1080), never vertical, never horizontal. "}
+def _formato(p):
+    if p.get("formato"): return p["formato"]
+    for f in FORMATOS:
+        if f in p.get("texto", ""): return f
+def mastigar(tarefa):
+    t = dict(tarefa); pasta_geral = t.pop("pasta", None); avisos = []
+    if pasta_geral: t["links"] = [{"rotulo": "📁 Pasta onde salvar: " + pasta_geral["rotulo"], "url": pasta_geral["url"]}] + [l for l in t.get("links", []) if l.get("url") != pasta_geral["url"]]
+    passos = []
+    for p in t.get("passos", []):
+        p = dict(p); fmt = _formato(p); p.pop("formato", None); pasta = p.pop("pasta", None) or pasta_geral
+        cop = p.pop("copias", None) or ([{"rotulo": "📋 Copiar o pedido (prompt)", "texto": p["copiar"]}] if p.get("copiar") else [])
+        p.pop("copiar", None)
+        if fmt in FORMATOS:  # o formato dentro do prompt
+            for c in cop:
+                if ("prompt" in c["rotulo"].lower() or "pedido" in c["rotulo"].lower()) and "ASPECT RATIO" not in c["texto"].upper():
+                    c["texto"] = FORMATOS[fmt] + c["texto"]
+        if p.get("ficheiro"):
+            if pasta:
+                p["texto"] = p.get("texto", "") + f" · 📁 Salve em: {pasta['rotulo']}"
+                p["links"] = [l for l in p.get("links", []) if l.get("url") != pasta["url"]] + [{"rotulo": "📁 Abrir a pasta onde salvar", "url": pasta["url"]}]
+            else: avisos.append(p.get("codigo", "?"))
+        for l in p.get("links", []):  # cada link com o seu botao de copiar
+            if not any(c["texto"] == l["url"] for c in cop):
+                rot = "📁 Copiar o link da pasta" if l["url"] == (pasta or {}).get("url") else "🔗 Copiar o link: " + l["rotulo"].lstrip("🔗📎🎬🎨🖼️▶️ ")
+                cop.append({"rotulo": rot[:60], "texto": l["url"]})
+        if cop: p["copias"] = cop[:10]
+        passos.append(p)
+    if passos: t["passos"] = passos
+    if avisos: print(f"⚠️ Team: {len(avisos)} passos com arquivo e SEM pasta onde salvar ({', '.join(avisos[:5])}...). Ponha passo['pasta'] ou tarefa['pasta'].")
+    return t
+
 def mandar(tarefa):
-    return _pedir("/tarefas", tarefa)
+    return _pedir("/tarefas", mastigar(tarefa))
 
 def baixar(NN, sai=None):
     """baixa os anexos que o Ed pos no Team para fabrica/videos/vNN/entrada (antes de olhar o Drive)"""

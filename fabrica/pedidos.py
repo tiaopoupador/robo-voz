@@ -52,7 +52,8 @@ def bloco(cod, titulo, refs, nomes, prompt):
     lr = [] if "nenhuma" in refs else [{"rotulo": "Anexar: " + r, "url": REFS.get(r, PASTA_REF)} for r in [x.strip() for x in refs.split("+")] if REFS.get(r, PASTA_REF)]
     for k, nm in enumerate(nomes):
         extra = " (o GIF animado de 5 s, da mesma geração)" if nm.split("_")[0].endswith("-gif") else (f" (imagem {k + 1} de {len([x for x in nomes if not x.split('_')[0].endswith('-gif')])}, todas da mesma geração)" if len(nomes) > 1 else "")
-        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": prompt, "links": lr, "ficheiro": nm})
+        PASSOS.append({"codigo": nm.split("_")[0], "texto": f"{cod} · {titulo}{extra}", "copiar": prompt, "links": lr, "ficheiro": nm, "formato": "16:9",
+                       "pasta": {"rotulo": f"Google Drive > Tiao Poupador > entrada > video-{NN}", "url": PASTA}})
     return [f"### {cod} · {titulo}", "", f"📁 **Salvar na pasta:** {PASTA}", "",
             "📄 **Nome do arquivo** (toque 3 vezes no nome para selecionar e copiar):"] + [f"=> {n}" for n in nomes] + [""] + anexar(refs) + ["", "```", prompt, "```", ""]
 def bonito(n): return n.split("-", 1)[1].replace("-", " ").capitalize()
