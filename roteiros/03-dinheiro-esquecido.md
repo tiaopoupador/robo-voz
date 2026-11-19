@@ -96,11 +96,11 @@ Peguei o papel de pão e fiz a conta na frente dela. Quatro bilhões e trezentos
 
 [TEXTO: R$ 180 EM MÉDIA]
 
-A Dona Cida riu. "Cento e oitenta reais, Tião? Isso é um mês de remédio." É mesmo. E é por isso que ninguém deveria deixar lá.
+A Dona Cida deu risada: "Cento e oitenta reais, Tião?! Isso é um mês inteiro de remédio!" E é mesmo! É por isso que ninguém deveria deixar esse dinheiro parado no banco.
 
 [POSE P3 aponta] [TEXTO: DE ONDE VEM]
 
-Mas de onde sai esse dinheiro? O próprio Banco Central lista. Conta corrente ou poupança que foi encerrada com saldo dentro. Tarifa que o banco cobrou e não devia. Parcela de empréstimo cobrada a mais. Sobra de cooperativa de crédito de quem saiu. Dinheiro de consórcio que terminou e ninguém foi buscar.
+Mas, afinal, de onde sai esse dinheiro? O próprio Banco Central responde, numa lista oficial. Conta corrente ou poupança que foi encerrada com saldo dentro. Tarifa que o banco cobrou e não devia. Parcela de empréstimo cobrada a mais. Sobra de cooperativa de crédito de quem saiu. Dinheiro de consórcio que terminou e ninguém foi buscar.
 
 Pensa comigo. Aquela conta salário do emprego de dez anos atrás. A poupança que a sua mãe abriu no seu nome quando você era criança. A tarifa que veio todo mês e você nunca conferiu.
 
@@ -134,13 +134,13 @@ Em maio deste ano, uma medida do governo mandou o dinheiro esquecido nos bancos 
 
 [POSE P2 explica] [TEXTO: MEDIDA PROVISÓRIA 1.355]
 
-Agora eu te explico com calma, porque isso não é fofoca de grupo de família. Está escrito. É a Medida Provisória mil trezentos e cinquenta e cinco, de quatro de maio de dois mil e vinte e seis, a do Novo Desenrola.
+Agora eu te explico com calma, porque isso não é boato de grupo de família, não. Está escrito no site oficial da Câmara dos Deputados, que guarda o texto de cada lei e de cada medida do governo. Qualquer pessoa pode ler. É a Medida Provisória mil trezentos e cinquenta e cinco, de quatro de maio de dois mil e vinte e seis, a do Novo Desenrola.
 
 Medida provisória é uma regra que o presidente assina e que vale na hora, antes de o Congresso votar. Se o Congresso não aprovar a tempo, ela cai.
 
 [TEXTO: ATÉ 31/12/2024]
 
-O artigo doze dela diz assim: o dinheiro informado como valores a devolver até trinta e um de dezembro de dois mil e vinte e quatro seria imediatamente transferido para um fundo, o FGO. É um fundo que serve de garantia para empréstimos. No caso, os empréstimos do Desenrola.
+O artigo doze dela diz assim: o dinheiro informado como valores a devolver até trinta e um de dezembro de dois mil e vinte e quatro seria transferido na hora para um fundo do governo, o Fundo de Garantia de Operações. É um fundo que serve de garantia para empréstimos. No caso, os empréstimos do Desenrola.
 
 [TEXTO: 30 DIAS PARA RECLAMAR]
 
@@ -180,7 +180,7 @@ Então a gente foi conferir se tinha dinheiro no nome dela, ali mesmo, na mesa d
 
 [TEXTO GRANDE: valoresareceber.bcb.gov.br]
 
-Primeiro: o endereço. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link de ninguém. Nem no meu.
+Primeiro: o endereço do site oficial do Banco Central. É um só. Valores a receber, ponto, b c b, ponto, gov, ponto, b r. Você digita, você mesmo, no navegador. Não clica em link de ninguém. Nem no meu.
 
 [TEXTO: CONTA GOV.BR PRATA OU OURO]
 
@@ -204,7 +204,7 @@ Repara numa coisa. O golpe prometia mil e oitocentos e cobrava trinta e nove. O 
 
 [POSE P2 explica] [SOM: check]
 
-Ela pediu ali, na hora. Doze dias úteis depois, os trezentos e doze reais caíram na conta. Ela me ligou da janela, gritando para a rua inteira ouvir. E eu respondi com o grito aqui da varanda, o que a gente solta quando o dinheiro volta para o bolso certo:
+Ela pediu ali, na hora. Doze dias úteis depois, os trezentos e doze reais caíram na conta. Ela me chamou da janela, gritando tão alto que a rua inteira ouviu. E eu gritei de volta, daqui da varanda, do jeito que eu sempre grito quando alguém pega de volta o que é seu:
 
 Caneca velha, bolso cheio!
 
@@ -234,19 +234,19 @@ Eu uso o FinMoovi para isso. Ponho ali cada conta que eu tenho, e o extrato de c
 
 [POSE P2 explica] [CENA: o papel de pão com a lista]
 
-Voltando. No verso do papel de pão, eu escrevi para a Dona Cida três coisas. Escreve aí também.
+Voltando. No verso do papel de pão, eu escrevi para a Dona Cida três dicas, para esse dinheiro nunca mais ficar esquecido. Pega um papel e anota aí também.
 
-[TEXTO: 1. UMA VEZ POR ANO]
+[TEXTO: DICA 1: UMA VEZ POR ANO]
 
-Uma: uma vez por ano, entra no Valores a Receber. Escolhe um dia fácil de lembrar. O do seu aniversário, por exemplo. O sistema recebe dinheiro novo o tempo todo. Em agosto tinha mais do que no mês anterior.
+Dica número um: uma vez por ano, entra no site Valores a Receber. Escolhe um dia fácil de lembrar, o do seu aniversário, por exemplo. Por quê? Porque o sistema recebe dinheiro novo o tempo todo. Em agosto, tinha mais dinheiro esquecido do que no mês anterior.
 
-[TEXTO: 2. CONTA QUE NÃO USA, FECHA]
+[TEXTO: DICA 2: CONTA QUE NÃO USA, FECHA]
 
-Duas: conta que você não usa, você pede para fechar. Conta parada é o lugar onde a tarifa trabalha sem ninguém ver.
+Dica número dois: conta que você não usa mais, você pede para o banco fechar. Conta parada é o lugar onde a tarifa trabalha escondida, todo mês, sem ninguém ver. Foi assim com a Dona Cida.
 
-[TEXTO: 3. CONFERE POR QUEM NÃO SABE]
+[TEXTO: DICA 3: CONFERE POR QUEM NÃO SABE]
 
-Três: confere por quem não sabe conferir. Pai, mãe, avó, aquele tio que não mexe no celular. O Banco Central tem até um jeito de consultar o dinheiro de quem já faleceu, para a família.
+Dica número três: confere por quem não sabe conferir. Seu pai, sua mãe, sua avó, aquele tio que não mexe no celular. E o Banco Central tem até um jeito de a família consultar o dinheiro de quem já faleceu.
 
 [POSE P3 aponta]
 
@@ -254,7 +254,7 @@ E aqui eu te peço uma coisa, que vale mais que o like: manda este vídeo para u
 
 [POSE P1 pensativo] [CENA: Dona Cida na janela, mostrando o celular para outra vizinha]
 
-A Dona Cida, aliás, virou fiscal do bairro. No dia em que o Pix caiu, ela bateu no vidro para a vizinha que passava com a sacola: "Quase paguei trinta e nove reais para um golpe, sabia? Confere o seu, mas no site." E não parou mais. Agora quem passa na frente da janela dela ouve a pergunta: "Já conferiu o seu no Banco Central? No site, hein. Link, não."
+A Dona Cida, aliás, virou a fiscal do bairro. No dia em que o Pix caiu, ela bateu no vidro da janela para a vizinha que passava na calçada com a sacola: "Quase paguei trinta e nove reais para um golpe, sabia? Confere o seu, mas no site oficial do Banco Central, digitando você mesma!" E não parou mais. Agora todo mundo que passa na frente da janela dela ouve a mesma pergunta: "Já conferiu se tem dinheiro esquecido no seu nome? Mas no site certo, viu? Link que chega no celular, nunca!"
 
 [POSE P2 explica]
 
@@ -270,7 +270,9 @@ Foi o Plano Collor. Da noite para o dia, a poupança acima de cinquenta mil cruz
 
 [POSE P3 aponta] [TEXTO: MARÇO DE 1990]
 
-Ela me contou a história inteira, e o que ela fez com o pouco que sobrou. E se você também tem medo de o governo mexer no seu dinheiro de novo, essa conversa é para você. Já está aparecendo aqui, clica e vê agora. Fui! E cuida do teu suado, hein!
+Ela me contou a história inteira daquele março de mil novecentos e noventa: a fila na porta do banco, o dinheiro que não saía, e o que ela fez para recomeçar com o pouco que sobrou. E se você também tem medo de o governo mexer no seu dinheiro de novo, você não pode perder o próximo vídeo. Nele eu vou te contar o que foi o Plano Collor, por que a poupança da Dona Cida ficou presa, e o que ela aprendeu para nunca mais ficar sem saída.
+
+Então, se você quer entender de verdade o que aconteceu com o dinheiro do brasileiro em mil novecentos e noventa, essa conversa é para você. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
 

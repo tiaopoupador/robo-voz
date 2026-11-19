@@ -29,7 +29,9 @@ def falado(texto):
             (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
             (r"opções", "ôpissões"), (r"Opções", "Ôpissões"), (r"opção", "ôpissão"), (r"Opção", "Ôpissão"),
             # Ed, 08/11/2026: «o correto é falar nótinhas (...) o certo é pão de fôrma»
-            (r"notinha", "nótínha"), (r"Notinha", "Nótínha"), (r"pão de forma", "pão de fôrma"), (r"(?<![a-zà-ú])de cor(?=[:,.!?])", "de cór")]
+            (r"notinha", "nótínha"), (r"Notinha", "Nótínha"), (r"pão de forma", "pão de fôrma"), (r"(?<![a-zà-ú])de cor(?=[:,.!?])", "de cór"),
+            # Ed, 19/11/2026: «deveria ser B R, bê, érre»; «góv ponto bê érre»; «plano Cólor»; sigla soletrada letra por letra
+            (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Cólor"), (r"\bFGO\b", "éfe gê ó")]
     for a, b in FALA: texto = re.sub(a, b, texto)
     return texto
 
@@ -45,10 +47,11 @@ def frases(t, maxc=200):
                 c = min(vs, key=lambda x: abs(x - len(p) / 2)); out += [p[:c].strip(), p[c:].strip()]; continue
         out.append(p)
     grupos = []
-    for p in out:
-        if grupos and len(grupos[-1]) + len(p) < 90: grupos[-1] += " " + p
+    for p in out:  # 19/11 (Ed: «sem entonação de interrogação»): pergunta e exclamação gravam SOZINHAS, para a voz subir no fim
+        if grupos and len(grupos[-1]) + len(p) < 90 and not forte(grupos[-1]) and not forte(p): grupos[-1] += " " + p
         else: grupos.append(p)
     return grupos
+def forte(t): return bool(re.search(r'[!?]["»”]?$', t.strip()))
 
 # ---------- 2. escutar ----------
 import difflib, unicodedata
@@ -109,6 +112,7 @@ m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
 whisper = WhisperModel("small", device="cpu", compute_type="int8")
 print("MEDIDA modelos carregados em", round(time.time() - t0), "s", flush=True)
 import os
+EXAG_FORTE = float(os.environ.get("EXAG_FORTE") or 1.1)  # 19/11: frases com ? e ! (Ed: «assim que um humano fala de verdade»)
 EXAG = float(os.environ.get("EXAG") or 0.8)  # expressao 0.8: fala mais animada e uns 3% mais rapida, aprovada pelo Ed a 18/11 (amostra 6)
 RODADA = 7919 * (int(os.environ.get("GITHUB_RUN_ID", "0")) % 1000)  # cada rodada nova tenta outras sementes (regravar uma fala nao repete a mesma voz ruim)
 rel, pedacos = {"parte": parte, "frases": []}, []
@@ -117,7 +121,9 @@ for k, fr in enumerate(fs):
     melhor = None
     for tent in range(5):
         torch.manual_seed(1000 * parte + 17 * k + tent + RODADA)
-        w = m.generate(falado(fr), language_id="pt", audio_prompt_path=ref, exaggeration=EXAG, cfg_weight=0.5, temperature=0.8)
+        # pergunta e exclamação: mais emoção (exaggeration maior) e cfg menor, que segura o ritmo (sem acelerar)
+        ex, cf = (EXAG_FORTE, 0.35) if forte(fr) else (EXAG, 0.5)
+        w = m.generate(falado(fr), language_id="pt", audio_prompt_path=ref, exaggeration=ex, cfg_weight=cf, temperature=0.8)
         ok, motivo, d = nota(w, m.sr, falado(fr), whisper)
         print(f"  frase {k + 1}/{len(fs)} tentativa {tent + 1}: {motivo} | {d.get('ouviu', '')[:90]}", flush=True)
         pontos = (2 if ok else 0) + d.get("sim", 0)

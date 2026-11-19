@@ -88,15 +88,16 @@ L = {
  55: [("^", "C", (RUA, "P1", -1))],
  56: [("^", "V", "banco:FM:3-extrato/extrato__estilo-moldura-celular__horizontal.mp4"), ("sete dias", "M", nu(7, "Dá para testar o FinMoovi", "link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="📱"))],
  57: [("^", "I", "papel-lista")],
- 58: [("^", "M", ic([("🎂", "1 vez por ano: no seu aniversário", False)], "Para não esquecer de novo"))],
- 59: [("^", "M", ic([("🎂", "1 vez por ano", False), ("✂️", "conta parada, fecha", False)], "Para não esquecer de novo"))],
- 60: [("^", "M", ic([("🎂", "1 vez por ano", False), ("✂️", "conta parada, fecha", False), ("👵", "confere por quem não sabe", False)], "Para não esquecer de novo"))],
+ 58: [("^", "M", ic([("🎂", "uma vez por ano, no seu aniversário", False)], "Dica 1"))],
+ 59: [("^", "M", ic([("✂️", "conta que não usa, pede para fechar", False)], "Dica 2"))],
+ 60: [("^", "M", ic([("👵", "confere por quem não sabe conferir", False)], "Dica 3"))],
  61: [("^", "C", (RUA, "P3", 1))],
  62: [("^", "I", "cida-vizinha")],
  63: [("^", "C", (RUA, "P2", -1))],
  64: [("^", "I", "cida-foto-antiga")],
  65: [("^", "I", "banco-1990"), ("um ano e meio", "M", fr("A poupança ficou *presa* por um ano e meio.", "Plano Collor, 1990"))],
  66: [("^", "C", (RUA, "P3", 1))],
+ 67: [("^", "C", (RUA, "P2", -1))],
 }
 TITULO = "Tem Dinheiro Seu Parado no Banco e Ninguém Te Avisou"
 CAPA_TEXTO = "R$ ??? NO SEU NOME"
