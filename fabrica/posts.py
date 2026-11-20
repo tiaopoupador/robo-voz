@@ -17,7 +17,6 @@ BR = datetime.timezone(datetime.timedelta(hours=-3))
 DIAS = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"]
 LIMITE_TEXTO, LIMITE_OPCAO = 500, 65
 LETRAS = "ABCD"
-COM_CENA = ("terça", "quarta", "sábado", "domingo")  # a enquete de terça leva imagem; o quiz de sexta e so de texto (Ed, 18/11)
 PROIBIDO_TAREFA = re.compile(r"\b(calcul\w*|fa[çc]a a conta|faz a conta|fa[çc]a as contas|somar|anot\w+|pegue o extrato|abra o extrato)", re.I)
 GRATIS = re.compile(r"gr[aá]t[ií]s|de gra[çc]a|gratuit", re.I)
 CENA_COM_LETRAS = re.compile(r"(escrit|texto|letreiro|placa|palavra|frase|legenda|t[ií]tulo|n[uú]mero|etiqueta|cartaz|r\$|\d|logo|marca)", re.I)
@@ -49,51 +48,78 @@ def video(nn):
     return v
 
 # ---------------- o pedido ao Claude ----------------
-def plano(dom, qua, dom2, comunidade):
-    return [
-     ("segunda", "texto", f"O VÍDEO DE ONTEM (domingo): «{dom['titulo']}». Conte em 2 ou 3 frases, na voz do Tião, o problema que o vídeo mostra, como quem já passou por isso, e termine convidando a assistir. NÃO escreva link."
-                          if dom["titulo"] else f"UMA CONVERSA DE SEGUNDA (ontem NÃO teve vídeo, não diga que teve): 2 ou 3 frases na voz do Tião sobre uma situação do dia a dia ligada ao vídeo de quarta («{qua['titulo']}»), e termine dizendo que quarta, às 18h, tem vídeo novo."),
-     ("terça", "enquete", f"ENQUETE sobre o tema do vídeo de domingo («{dom['titulo']}»): uma situação do dia a dia em que a pessoa se reconhece. 3 ou 4 opções curtas, todas plausíveis, nenhuma 'certa'."),
-     ("quarta", "texto", f"O AVISO DE HOJE: hoje, quarta, às 18h, estreia o vídeo novo: «{qua['titulo']}». Desperte curiosidade pelo problema, sem entregar o final."),
-     ("quinta", "texto", f"O VÍDEO DE ONTEM (quarta): «{qua['titulo']}». 2 ou 3 frases na voz do Tião sobre o problema, convidando a assistir. NÃO escreva link."
-                         if qua["titulo"] else "UMA CONVERSA DE QUINTA (ontem NÃO teve vídeo, não diga que teve): 2 ou 3 frases na voz do Tião sobre uma situação do dia a dia ligada aos vídeos da semana, terminando com uma pergunta para os comentários."),
-     ("sexta", "quiz", "QUIZ: uma pergunta com UMA resposta certa, tirada de um fato dos vídeos da semana (só fatos que estão nos roteiros). 3 ou 4 opções curtas; diga qual é a certa em 'correta' (0 a 3) e escreva em 'explicacao' 1 frase curta que o YouTube mostra depois da resposta."),
-     ("sábado", "texto", (f"A COMUNIDADE: um de vocês contou isto nos comentários (NÃO diga o nome da pessoa): «{comunidade}». Comente como o Tião, com carinho e humor, e pergunte quem mais já passou por isso."
-                          if comunidade else "O CADERNO DO TIÃO: uma dica curta e concreta tirada dos vídeos da semana, que a pessoa pode usar hoje, contada como algo que o Tião faz na vida dele. Sem conta, sem lista longa.")),
-     ("domingo", "texto", f"O AVISO DE HOJE: hoje, domingo, às 17h, estreia o vídeo novo: «{dom2['titulo'] or '(tema ainda não definido: diga só que hoje às 17h tem história nova do Tião)'}». Desperte curiosidade, sem entregar o final."),
-    ]
+HORA_POST = 12  # todo post vai as 12h de Brasilia
+def plano(seg, cal, comunidade, desde=None):
+    """um post por dia, as 12h, tirado das DATAS da agenda (Ed, 20/11: «reveja as datas corretas»):
+    video que sai no dia antes das 12h -> «saiu hoje» com o link; video que sai depois das 12h -> «hoje as HHh»;
+    video que saiu na vespera depois das 12h -> «ontem» com o link; dia sem video -> enquete, quiz, comunidade ou dica.
+    Devolve (pl, vids): pl = [(dia, tipo, pedido, extra)], extra = {data, video (nn ou ""), cena (leva imagem?)}"""
+    quando = lambda c: datetime.datetime.fromisoformat(c["quando"])
+    por_dia = {}
+    for c in cal:
+        if c.get("titulo"): por_dia.setdefault(quando(c).date(), []).append(c)
+    vids, pl, livres = {}, [], ["enquete", "quiz", "comunidade", "dica"]
+    def v(c):
+        if c["nn"] not in vids: vids[c["nn"]] = video(c["nn"])
+        return vids[c["nn"]]
+    for d in range(-1, 8):  # a vespera e o domingo seguinte entram no contexto
+        for c in por_dia.get(seg + datetime.timedelta(days=d), []): v(c)
+    for i in range(7):
+        data = seg + datetime.timedelta(days=i); dia = DIAS[i]
+        if desde and data < desde: continue
+        hoje = por_dia.get(data, []); ontem = por_dia.get(data - datetime.timedelta(days=1), [])
+        cedo = [c for c in hoje if quando(c).hour < HORA_POST]; tarde = [c for c in hoje if quando(c).hour >= HORA_POST]
+        ontem_tarde = [c for c in ontem if quando(c).hour >= HORA_POST]
+        if cedo:
+            x = v(cedo[0]); pl.append((dia, "texto", f"O VÍDEO DE HOJE: saiu hoje, {dia}, às {quando(cedo[0]).hour}h, o vídeo novo: «{x['titulo']}». Conte em 2 ou 3 frases, na voz do Tião, o problema que o vídeo mostra, como quem já viu isso de perto, e termine convidando a assistir. NÃO escreva link.", {"data": data, "video": x["nn"], "cena": False}))
+        elif tarde:
+            x = v(tarde[0]); h = quando(tarde[0]).hour
+            pl.append((dia, "texto", f"O AVISO DE HOJE: hoje, {dia}, às {h}h, estreia o vídeo novo: «{x['titulo']}». Desperte curiosidade pelo problema, sem entregar o final.", {"data": data, "video": "", "cena": True}))
+        elif ontem_tarde:
+            x = v(ontem_tarde[0]); pl.append((dia, "texto", f"O VÍDEO DE ONTEM: «{x['titulo']}». 2 ou 3 frases na voz do Tião sobre o problema, convidando a assistir. NÃO escreva link.", {"data": data, "video": x["nn"], "cena": False}))
+        else:
+            k = livres.pop(0) if livres else "dica"
+            if k == "comunidade" and not comunidade: k = "dica"
+            perto = [c for d in (-1, -2, -3, 1, 2) for c in por_dia.get(data + datetime.timedelta(days=d), [])]
+            tema = f"«{v(perto[0])['titulo']}»" if perto else "dos vídeos da semana"
+            if k == "enquete": pl.append((dia, "enquete", f"ENQUETE sobre o tema do vídeo {tema}: uma situação do dia a dia em que a pessoa se reconhece. 3 ou 4 opções curtas, todas plausíveis, nenhuma 'certa'.", {"data": data, "video": "", "cena": True}))
+            elif k == "quiz": pl.append((dia, "quiz", "QUIZ: uma pergunta com UMA resposta certa, tirada de um fato dos vídeos da semana (só fatos que estão nos roteiros). 3 ou 4 opções curtas; diga qual é a certa em 'correta' (0 a 3) e escreva em 'explicacao' 1 frase curta que o YouTube mostra depois da resposta.", {"data": data, "video": "", "cena": False}))
+            elif k == "comunidade": pl.append((dia, "texto", f"A COMUNIDADE: um de vocês contou isto nos comentários (NÃO diga o nome da pessoa): «{comunidade}». Comente como o Tião, com carinho e humor, e pergunte quem mais já passou por isso.", {"data": data, "video": "", "cena": True}))
+            else: pl.append((dia, "texto", f"A DICA DO TIÃO: uma dica curta e concreta tirada do vídeo {tema}, que a pessoa pode usar hoje, contada como algo que o Tião faz na vida dele. Sem conta, sem lista longa.", {"data": data, "video": "", "cena": True}))
+    return pl, vids
 def pedido(pl, vids, recados=()):
     ctx = "\n\n".join(f"═══ ROTEIRO DO VÍDEO «{v['titulo']}» ═══\n{v['roteiro'][:14000]}" for v in vids if v["roteiro"])
     if recados: ctx += "\n\n═══ O QUE O DONO DO CANAL ESCREVEU NAS TAREFAS ANTERIORES (siga isto, vale mais que o resto) ═══\n" + "\n".join(f"- {r}" for r in recados)
-    return f"""Você escreve os posts da aba "Posts" do canal de YouTube Tião Poupador. Quem fala é o próprio Tião, na primeira pessoa: um brasileiro simples, uns 30 anos, que aprendeu a cuidar do dinheiro no dia a dia (caderno, lista, sem dívida). Público: famílias brasileiras de classe média e baixa.
+    return f"""Você escreve os posts da aba "Posts" do canal de YouTube Tião Poupador. Quem fala é o próprio Tião, na primeira pessoa: um brasileiro simples, uns 30 anos, porteiro de um prédio chique do centro, que aprendeu a cuidar do dinheiro no dia a dia (sem dívida, sem luxo). Público: famílias brasileiras de classe média e baixa.
 Linguagem: português do Brasil, simples, conversa de vizinho, frases curtas, no máximo 1 ou 2 emojis por post, sem jargão.
 
 {ctx}
 
-═══ OS 7 POSTS ═══
-""" + "\n".join(f"{i + 1}. {d.upper()} ({t}): {p}" for i, (d, t, p) in enumerate(pl)) + f"""
+═══ OS {len(pl)} POSTS ═══
+""" + "\n".join(f"{i + 1}. {d.upper()} ({t}): {p}" for i, (d, t, p, _) in enumerate(pl)) + f"""
 
 ═══ PROIBIDO (reprova) ═══
 - Pedir para a pessoa fazer conta, somar, calcular, anotar ou ir buscar o extrato. Pergunte pelo que ela JÁ VIVEU.
 - Dizer que o FinMoovi é grátis, de graça ou gratuito (ele tem 7 dias de teste). Nem precisa falar do app.
-- Qualquer número que não esteja nos roteiros acima (as horas 17h e 18h podem).
+- Qualquer número que não esteja nos roteiros acima (as horas 10h, 17h e 18h podem).
 - Escrever links ou endereços (o robô coloca depois).
 - Travessão (o traço comprido). Use vírgula ou ponto.
 - Mais de {LIMITE_TEXTO} caracteres por texto; opção de enquete ou quiz com mais de {LIMITE_OPCAO} caracteres.
 
 ═══ A IMAGEM ═══
-Na ENQUETE de terça e nos posts de TEXTO de quarta, sábado e domingo, escreva também "cena": 1 ou 2 frases descrevendo UMA imagem quadrada com o Tião (o que ele faz, onde, com que objeto do dia a dia, a emoção), em inglês. A cena NÃO pode pedir palavra, número, valor, placa, etiqueta, cartaz, logotipo nem tela com texto. Nos outros posts, "cena" fica vazia (segunda e quinta usam a capa do vídeo; o quiz de sexta é só de texto)."""
+Nos posts da lista COM IMAGEM (no fim), escreva também "cena": 1 ou 2 frases descrevendo UMA imagem quadrada com o Tião (o que ele faz, onde, com que objeto do dia a dia, a emoção), em inglês. A cena NÃO pode pedir palavra, número, valor, placa, etiqueta, cartaz, logotipo nem tela com texto. Nos outros posts, "cena" fica vazia (os do vídeo usam a capa; o quiz é só de texto).
+COM IMAGEM: """ + ", ".join(d for d, _, _, x in pl if x["cena"]) + "."
 ESQ = {"type": "object", "properties": {"posts": {"type": "array", "items": {"type": "object", "properties": {
     "dia": {"type": "string"}, "texto": {"type": "string"}, "opcoes": {"type": "array", "items": {"type": "string"}},
     "correta": {"type": "integer"}, "explicacao": {"type": "string"}, "cena": {"type": "string"}},
     "required": ["dia", "texto", "opcoes", "correta", "explicacao", "cena"], "additionalProperties": False}}},
     "required": ["posts"], "additionalProperties": False}
 def numeros(vids):
-    s = set(re.findall(r"\d+(?:[.,]\d+)?", " ".join(v["roteiro"] + " " + v["titulo"] for v in vids))); s |= {"7", "17", "18", "17h", "18h"}; return s
+    s = set(re.findall(r"\d+(?:[.,]\d+)?", " ".join(v["roteiro"] + " " + v["titulo"] for v in vids))); s |= {"7", "10", "12", "17", "18", "10h", "12h", "17h", "18h"}; return s
 def validar(posts, pl, ok_num):
     erros = []
     if len(posts) != len(pl): return [f"são {len(pl)} posts, vieram {len(posts)}"]
-    for i, (p, (dia, tipo, _)) in enumerate(zip(posts, pl)):
+    for i, (p, (dia, tipo, _, x)) in enumerate(zip(posts, pl)):
         r = f"post {i + 1} ({dia})"; t = p["texto"].strip(); tudo = " ".join([t, *p["opcoes"], p["explicacao"]])
         if not t: erros.append(f"{r}: texto vazio"); continue
         if len(t) > LIMITE_TEXTO: erros.append(f"{r}: {len(t)} caracteres (máximo {LIMITE_TEXTO})")
@@ -108,7 +134,7 @@ def validar(posts, pl, ok_num):
             for o in p["opcoes"]:
                 if len(o) > LIMITE_OPCAO: erros.append(f"{r}: opção com {len(o)} caracteres: «{o}»")
         if tipo == "quiz" and not (0 <= p["correta"] < len(p["opcoes"])): erros.append(f"{r}: 'correta' tem de apontar uma das opções")
-        if dia in COM_CENA:
+        if x["cena"]:
             if len(p["cena"]) < 30: erros.append(f"{r}: falta a 'cena' da imagem")
             elif m := CENA_COM_LETRAS.search(p["cena"]): erros.append(f"{r}: a cena pede «{m[0]}»; a imagem não pode ter letras nem números")
     return erros
@@ -172,18 +198,18 @@ def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a im
     except Exception: return []
 DESCRICAO = "\n".join([
     "Post de texto: copie o texto; a imagem vem no link (capa do vídeo ou a que o robô fez) ou gere no Meta AI com o prompt e as fotos do Tião. No YouTube Studio: Criar > Criar post, cole o texto, junte a imagem, seta ao lado de Publicar > Agendar.",
-    "Enquete (terça, com imagem): Criar > Criar post > Enquete. A pergunta vai no 1º campo e cada opção no seu, junte a imagem.",
-    "Quiz (sexta, só de texto): Criar > Criar post > Quiz. Pergunta, opções, marque a certa (vem no título do passo) e cole a explicação.",
+    "Enquete (com imagem): Criar > Criar post > Enquete. A pergunta vai no 1º campo e cada opção no seu, junte a imagem.",
+    "Quiz (só de texto): Criar > Criar post > Quiz. Pergunta, opções, marque a certa (vem no título do passo) e cole a explicação.",
     "O YouTube não deixa robô publicar posts, por isso vêm para agendar à mão."])
 def montar(seg, itens):
     """itens: dia, tipo, texto (ja com o link), opcoes, correta, explicacao, cena, url_img, capa, video, falta_link -> (passos do Team, texto do e-mail)"""
-    passos, md, refs = [], [f"# Tião Poupador · posts da semana {seg:%d/%m} a {seg + datetime.timedelta(days=6):%d/%m}", "",
+    passos, md, refs = [], [f"# Tião Poupador · posts de {itens[0]['data']:%d/%m} a {itens[-1]['data']:%d/%m}", "",
                             "Cole cada um no YouTube Studio (Criar > Criar post) e **agende para o dia e a hora indicados**.", ""], None
     for i, it in enumerate(itens):
-        data = seg + datetime.timedelta(days=i); dia = it["dia"]; fmt = formato(it)
+        data = it["data"]; dia = it["dia"]; fmt = formato(it)
         texto = f"{fmt} · {NOME_DIA[dia]} {data:%d/%m} · agendar para as 12h"
         if it["tipo"] == "quiz": texto += f" · resposta certa: Opção {LETRAS[it['correta']]}"
-        if it.get("falta_link"): texto += f" · ⚠️ falta o link do vídeo de {'domingo' if dia == 'segunda' else 'quarta'}: junte-o no fim do texto"
+        if it.get("falta_link"): texto += f" · ⚠️ falta o link do vídeo {it['nn']}: junte-o no fim do texto"
         p = {"codigo": f"post-{data.isoformat()}", "texto": texto, "copias": copias(it), "links": [STUDIO]}
         if it.get("video"): p["links"].append({"rotulo": "▶️ O vídeo deste post", "url": it["video"]})
         if tem_img(it):
@@ -201,14 +227,15 @@ def montar(seg, itens):
 # ---------------- montar e mandar ----------------
 def main():
     seg = segunda(); semana = f"{seg.isocalendar()[0]}-w{seg.isocalendar()[1]:02d}"
-    cal = calendario(); quando = lambda c: datetime.datetime.fromisoformat(c["quando"]).date()
-    dom = next((c for c in cal if quando(c) == seg - datetime.timedelta(days=1)), None)
-    qua = next((c for c in cal if quando(c) == seg + datetime.timedelta(days=2)), None)
-    dom2 = next((c for c in cal if quando(c) == seg + datetime.timedelta(days=6)), None)
-    vazio = {"nn": "", "titulo": "", "roteiro": "", "id": None, "capa": None}
-    vd, vq, vd2 = [video(c["nn"]) if c else dict(vazio) for c in (dom, qua, dom2)]
-    log(f"📅 semana {seg:%d/%m}: domingo «{vd['titulo']}» · quarta «{vq['titulo']}» · domingo que vem «{vd2['titulo']}»")
-    if not vd["titulo"] and not vq["titulo"]: log("sem vídeos nesta semana, nada a escrever"); return
+    cal = calendario()
+    desde = None if ENSAIO else datetime.datetime.now(BR).date() + datetime.timedelta(days=1)  # dia que ja passou (ou hoje) nao se agenda
+    a = next((x.split("=")[1] for x in sys.argv if x.startswith("--desde=")), None)
+    if a: desde = datetime.date.fromisoformat(a)
+    # a mesma semana nao se escreve duas vezes (o robo de segunda e o comando a mao): gastaria credito a toa
+    raiz = drive.achar("posts", drive.achar("Tiao Poupador"))
+    feita = drive.achar(semana, raiz) if raiz else None
+    if feita and not ENSAIO and "--forcar" not in sys.argv and any(f["name"] == "itens.json" for f in drive.listar(feita)):
+        log(f"a semana {semana} já foi escrita e mandada ao Team (use --forcar para refazer)"); return
     comunidade = ""
     try:
         from fabrica.comentarios import ler_caderno
@@ -218,40 +245,42 @@ def main():
     # antes da tarefa nova: o que o Ed escreveu nas anteriores (notas dos passos e conversa), manual secao 3
     from fabrica import team
     ant = [f"tiao-posts-{(seg - datetime.timedelta(weeks=k)).isocalendar()[0]}-w{(seg - datetime.timedelta(weeks=k)).isocalendar()[1]:02d}" for k in (1, 2)]
-    ant += [team.chave_unica(v["nn"]) for v in (vd, vq) if v["nn"]]
     rec = []
     try: rec = team.recados(ant)
     except Exception as e: log("recados do Team não vieram:", e)
     log("📝 recados do Ed nas tarefas anteriores:" + ("".join(f"\n  {r}" for r in rec) if rec else " nenhum"))
-    pl = plano(vd, vq, vd2, comunidade); posts, custo = escrever(pl, [v for v in (vd, vq, vd2) if v["roteiro"]], rec)
+    pl, vids = plano(seg, cal, comunidade, desde)
+    if not pl: log("nenhum dia por agendar nesta semana"); return
+    log(f"📅 semana {seg:%d/%m}: " + " · ".join(f"{d} {x['data']:%d/%m} {t}" + (f" (vídeo {x['video']})" if x['video'] else "") for d, t, _, x in pl))
+    posts, custo = escrever(pl, [v for v in vids.values() if v["roteiro"]], rec)
     sai = f"{P}/fabrica/saida/posts-{semana}"; os.makedirs(sai, exist_ok=True)
-    links = {"segunda": vd, "quinta": vq}
     pasta = None if ENSAIO else drive.pasta(semana, drive.pasta("posts", drive.pasta("Tiao Poupador")))
     itens = []
-    for i, (p, (dia, tipo, _)) in enumerate(zip(posts, pl)):
-        cod = f"P{i + 1}"; txt = p["texto"].strip(); v = links.get(dia) if (links.get(dia) or {}).get("titulo") else None
+    for i, (p, (dia, tipo, _, x)) in enumerate(zip(posts, pl)):
+        cod = f"P{i + 1}"; txt = p["texto"].strip(); v = vids.get(x["video"]) if x["video"] else None
         url_v = f"https://youtu.be/{v['id']}" if v and v.get("id") else ""  # sem o id, o passo avisa (nada de texto provisorio a colar)
         if url_v: txt += f"\n\n▶️ {url_v}"
         url_img, cena, capa = None, "", False
-        if dia in COM_CENA and p["cena"]:
+        if x["cena"] and p["cena"]:
             cena = p["cena"]; arq_img = f"{sai}/{cod}-{dia}.jpg"
             if not ENSAIO and imagem(cena, arq_img): url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
             time.sleep(5)
         elif v and v.get("capa"): url_img, capa = f"https://drive.google.com/file/d/{v['capa']}/view", True
-        itens.append({"dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
+        itens.append({"data": x["data"], "nn": x["video"], "dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
                       "cena": cena, "url_img": url_img, "capa": capa, "video": url_v, "falta_link": bool(v and not url_v)})
     passos, md = montar(seg, itens)
     for p in passos:  # a pasta onde salvar a imagem (regra do Team, Ed 19/11)
         if p.get("ficheiro") and pasta: p["pasta"] = {"rotulo": f"Google Drive > Tiao Poupador > posts > {semana}", "url": f"https://drive.google.com/drive/folders/{pasta}"}
-    json.dump(itens, open(f"{sai}/itens.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(itens, open(f"{sai}/itens.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
     open(f"{sai}/posts.md", "w", encoding="utf-8").write("\n".join(md))
     log("\n".join(md))
     if ENSAIO: log(f"\n(ensaio: nada enviado) custo US$ {custo:.3f}"); return
     from fabrica import correio
     try:
         r = team.mandar({"chave_unica": f"tiao-posts-{semana}", "tipo": "posts-da-semana", "projeto": "Tião Poupador",
-                         "titulo": f"Posts do YouTube da semana {seg:%d/%m} (7 para agendar)", "descricao": DESCRICAO,
-                         "prazo": f"{seg.isoformat()}T12:00:00-03:00", "passos": passos})
+                         "titulo": f"Posts do YouTube de {itens[0]['data']:%d/%m} a {itens[-1]['data']:%d/%m} ({len(passos)} para agendar)", "descricao": DESCRICAO,
+                         "prazo": f"{itens[0]['data'].isoformat()}T12:00:00-03:00", "passos": passos})
+        drive.subir(f"{sai}/itens.json", pasta)  # marca da semana feita
         log("Team:", r.get("criada"), r.get("url"))
     except Exception as e: log("Team recusou (vai só o e-mail):", e)
     if datetime.date.today().isoformat() <= "2026-11-20": correio.enviar(f"Tião Poupador · posts do YouTube da semana {seg:%d/%m} (7 para agendar)", "\n".join(md))
