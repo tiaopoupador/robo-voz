@@ -1,8 +1,8 @@
 # Peca do robo: os 7 posts da semana da aba "Posts" do YouTube (modelo: FINMOOVI/blog-finmoovi/src/scripts/youtube/posts-semana.js).
 # A API do YouTube NAO cria posts: o robo escreve, faz as imagens e manda para o Apexi Team; o Ed cola e AGENDA no Studio.
-# Pedido do Ed (06/11/2026): «pode ser assim». Um post por dia, as 12h de Brasilia, em volta dos 2 videos da semana:
-#   seg: o video de domingo (link + capa) · ter: enquete · qua: "hoje as 18h" · qui: o video de quarta (link + capa)
-#   sex: quiz (resposta certa) · sab: a comunidade (melhor comentario, sem nome) ou o caderno do Tiao · dom: "hoje as 17h"
+# Pedido do Ed (06/11/2026): «pode ser assim». Um post por dia, as 12h de Brasilia. Desde 20/11 os dias saem das DATAS da agenda
+#   (plano()): video antes das 12h = «saiu hoje» + link + capa; depois das 12h = «hoje as HHh»; na vespera a tarde = «ontem» + link;
+#   dia sem video = enquete (com imagem), quiz, comunidade ou dica. Dia ja passado nao entra; semana ja mandada nao se repete (--forcar).
 # Travas (por codigo): sem "gratis", so numeros que estao no roteiro, sem link escrito pela IA, sem mandar fazer conta,
 # sem travessao, cena da imagem sem letras. O que reprova volta para o Claude corrigir so o erro.
 # Uso: python fabrica/posts.py [--ensaio] [--semana=AAAA-MM-DD (a segunda)]
