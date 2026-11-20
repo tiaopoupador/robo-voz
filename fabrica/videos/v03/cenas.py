@@ -105,7 +105,7 @@ L = {
  66: [("^", "C", (RUA, "P3", 1))],
  67: [("^", "C", (RUA, "P2", -1))],
 }
-TITULO = "Dinheiro Esquecido no Banco: Tem o Seu e Ninguém Te Avisou"
+TITULO = "Dinheiro Esquecido no Banco Central: O Golpe do dinheiro esquecido que enganou a Dona Cida!"
 CAPA_TEXTO = "R$ ??? NO SEU NOME"
 CLIMA = {0: "alerta"}  # Tiao Conversa: musica de alerta (Ed 18/11)
 VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)

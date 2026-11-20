@@ -158,7 +158,7 @@ Lembra como foi em mil novecentos e noventa? Uma medida provisória, da noite pa
 
 [POSE P2 explica] [TEXTO: FGC · R$ 250 MIL]
 
-Segundo, o que protege o dinheiro se o banco quebrar. Existe o Fundo Garantidor de Créditos. Está escrito no site oficial do fundo: cada pessoa, pelo CPF, tem garantidos até duzentos e cinquenta mil reais em cada banco, somando poupança, conta corrente e algumas aplicações. Se o banco fechar as portas, o fundo devolve até esse valor.
+Segundo, o que protege o dinheiro se o banco quebrar. Existe o Fundo Garantidor de Créditos. Está escrito no site oficial do fundo: cada pessoa, pelo número do CPF dela, tem garantidos até duzentos e cinquenta mil reais em cada banco, somando poupança, conta corrente e algumas aplicações. Se o banco fechar as portas, o fundo devolve até esse valor.
 
 [POSE P1 pensativo]
 
