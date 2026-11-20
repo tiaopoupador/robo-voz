@@ -295,15 +295,22 @@ def em_motion(t):
         if s0 <= t: k = kk
         else: break
     return k not in ("img", "vid", "hib", "conversa")
+# 20/11/2026 (Ed: «a legenda da imagem anterior continua sendo mostrada na imagem seguinte (...) ou a legenda tem que sumir
+# antes ou as imagens seguintes devem aparecer somente quando a frase da legenda termina!»): toda troca de cena corta a legenda.
+# A frase quebra na troca (a palavra da imagem nova abre a legenda nova) e nenhuma legenda passa da hora da troca.
+CORTES = sorted({round(c["ini"], 2) for c in cenas if c["ini"] > 0})
+import bisect
+def corte_depois(t):  # a 1a troca de cena depois de t
+    j = bisect.bisect_right(CORTES, t + 0.02); return CORTES[j] if j < len(CORTES) else 1e9
 leg = []; grupo = []
 for i, (s0, e0, w, lin) in enumerate(ALIN):
     grupo.append((s0, e0, w))
     prox = ALIN[i + 1][0] if i + 1 < len(ALIN) else 1e9
-    quebra = len(grupo) >= 4 or re.search(r"[.,!?;:]$", w) or prox - e0 > 0.35 or sum(len(x[2]) for x in grupo) > 20 or (i + 1 < len(ALIN) and ALIN[i + 1][3] != lin)
+    quebra = corte_depois(grupo[0][0]) <= prox + 0.05 or len(grupo) >= 4 or re.search(r"[.,!?;:]$", w) or prox - e0 > 0.35 or sum(len(x[2]) for x in grupo) > 20 or (i + 1 < len(ALIN) and ALIN[i + 1][3] != lin)
     if quebra:
         forte = lambda x: re.search(r"\d", x) or re.sub(r"[^\wÀ-ú]", "", x).lower() in FORTES
         texto = " ".join("*" + x[2] + "*" if forte(x[2]) else x[2] for x in grupo).replace("* *", " ").replace('"', "")
-        leg.append([round(grupo[0][0], 2), round(grupo[-1][1] + 0.15, 2), texto]); grupo = []
+        leg.append([round(grupo[0][0], 2), round(min(grupo[-1][1] + 0.15, corte_depois(grupo[0][0]) - 0.04), 2), texto]); grupo = []
 leg = [l for l in leg if not em_motion(l[0] + 0.05)]
 
 # ---------------- barra "Plantão do Tião" (Ed, 11/11/2026): 5 recados por vídeo, estilo telejornal ----------------

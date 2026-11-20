@@ -192,7 +192,9 @@ export const Video: React.FC<Dados> = (dados) => {
         // 18/11 (Ed: «o texto sobressai por cima do outro»): se a cena troca no meio da frase, a frase troca de jeito na mesma hora
         // (grande ao lado do Tião na conversa, embaixo nas outras cenas), para nunca ficar por cima de um número ou cartão
         const jeito = (t: number) => (cenaEm(t)?.k === "conversa" ? (cenaEm(t)?.lado ?? 1) : 0);
-        const ac = Math.min(fim + 0.25, prox); const corte = CENAS.find((c) => c.ini > ini && c.ini < ac && jeito(c.ini + 0.01) !== jeito(ini))?.ini;
+        // 20/11 (Ed: «a legenda da imagem anterior continua sendo mostrada na imagem seguinte»): nunca passa da troca de cena
+        const troca = CENAS.find((c) => c.ini > ini + 0.02)?.ini ?? 1e9;
+        const ac = Math.min(fim + 0.25, prox, Math.max(fim, troca - 0.04)); const corte = CENAS.find((c) => c.ini > ini && c.ini < ac && jeito(c.ini + 0.01) !== jeito(ini))?.ini;
         const peca = (a: number, b: number, g: number, k: string) => <Sequence key={k} from={Math.round(a * fps)} durationInFrames={Math.max(1, Math.round(b * fps) - Math.round(a * fps))}><Legenda texto={txt} acima={sobBarra(ini, fim) ? PLANTAO_ALTURA : 0} grande={g} /></Sequence>;
         if (corte === undefined) return peca(ini, ac, jeito(ini), "l" + i);
         return <React.Fragment key={"l" + i}>{peca(ini, corte, jeito(ini), "a")}{peca(corte, ac, jeito(corte + 0.01), "b")}</React.Fragment>;

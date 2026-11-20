@@ -103,6 +103,10 @@ export const Numero: React.FC<{ valor: number; rotulo?: string; embaixo?: string
           {emoji && <Emoji e={emoji} tam={240} estilo={{ transform: `scale(${m(t, 0.25 + dur, "estalo")})` }} />}
         </div>
         {embaixo && <div style={{ ...txt(58, COR.tinta, 600), opacity: m(t, 0.4 + dur), transform: `translateY(${(1 - m(t, 0.4 + dur)) * 30}px)` }}>{embaixo}</div>}
+        {/* 20/11/2026 (Ed: «embaixo da frase link na descricao teria como colocar o endereço do finmoovi (...) a pessoa nao precisa sair
+            do video, ela pode memorizar e depois ir procurar no google»): todo «link na descrição» leva o endereço por baixo */}
+        {embaixo && /link na descri/i.test(embaixo) && <div style={{ ...txt(64, COR.verde, 800), marginTop: 6, opacity: m(t, 0.8 + dur),
+          transform: `scale(${0.8 + 0.2 * m(t, 0.8 + dur)})` }}>www.finmoovi.com</div>}
       </AbsoluteFill>
     </Fundo>
   );

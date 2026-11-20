@@ -26,7 +26,7 @@ json.dump(secoes, open(f"{P}/robo-voz/roteiro-{NN}-secoes.json", "w"))
 print(f"{len(falas)} falas, {len(fim)} partes -> robo-voz/roteiro-{NN}.txt")
 
 # Guarda de graca (Ed, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»): avisa antes de gravar a voz
-SIGLA_OK = {"CPF", "SMS", "PIX", "WHATSAPP"}
+SIGLA_OK = {"CPF", "SMS", "PIX", "WHATSAPP", "SUV"}  # SUV: o gerar.py soletra «ésse u vê» (20/11)
 avisos = []
 for i, f in enumerate(falas):
     if re.search(r"\bhein\b", f, re.I): avisos.append(f"fala {i}: tem 'hein' (a voz le 'rein'): tirar")

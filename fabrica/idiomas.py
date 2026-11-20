@@ -14,7 +14,14 @@ MODELO = "claude-sonnet-5-5"  # o mesmo do posts.py; US$ 2 / US$ 10 por milhao d
 def blocos():
     """frases curtas (ate ~12 palavras ou 6 s) com o tempo da fala; o texto e o do roteiro (numeros ja em algarismos)"""
     out, cur = [], []
-    for o in alinhar(NN):
+    ALIN = [list(o) for o in alinhar(NN)]
+    # 19/11: com a vinheta no meio da voz, tudo o que vem depois anda 4,5 s (igual ao montar.py), senao a legenda chega antes
+    import importlib; VIN = getattr(importlib.import_module(f"fabrica.videos.v{NN}.cenas"), "VINHETA", None)
+    if VIN is not None:
+        VT = round(max(o[1] for o in ALIN if o[3] == VIN) + 0.25, 2)
+        for o in ALIN:
+            if o[0] >= VT: o[0] = round(o[0] + 4.5, 3); o[1] = round(o[1] + 4.5, 3)
+    for o in ALIN:
         o = list(o); o[2] = re.sub(r"Fin\s*M[óúuo]+vi", "FinMoovi", o[2], flags=re.I).replace("*", "")
         if cur and (o[3] != cur[-1][3]): out.append(cur); cur = []
         cur.append(o)
@@ -41,21 +48,34 @@ elif ACAO == "traduzir":
     ESQ = {"type": "object", "additionalProperties": False, "required": ["titulo", "descricao", "linhas"],
            "properties": {"titulo": {"type": "string"}, "descricao": {"type": "string"}, "linhas": {"type": "array", "items": {"type": "string"}}}}
     for lg, nome in IDIOMAS.items():
-        numeradas = "\n".join(f"{i + 1}. {c[2]}" for i, c in enumerate(cues))
-        msg = (f"Traduza para {nome} o título, a descrição e as {len(cues)} linhas de legenda de um vídeo do YouTube do canal brasileiro 'Tião Poupador' "
-               "(desenho animado sobre dinheiro do dia a dia). Tom natural e falado, frases curtas como numa legenda. Mantenha: os nomes das pessoas "
-               "(Tião, Sandra, Marcos), 'FinMoovi', os valores em R$ como estão, os links, as hashtags e as quebras de linha da descrição. "
-               "O título até 100 caracteres, com o mesmo mistério do original. Nunca use travessão. "
-               f"Devolva exatamente {len(cues)} linhas, na mesma ordem, sem os números.\n\n"
-               f"TÍTULO:\n{titulo}\n\nDESCRIÇÃO:\n{desc}\n\nLINHAS:\n{numeradas}")
-        with cli.messages.stream(model=MODELO, max_tokens=64000, output_config={"effort": "low", "format": {"type": "json_schema", "schema": ESQ}},
-                                 messages=[{"role": "user", "content": msg}]) as s:
-            r = s.get_final_message()
-        custo += r.usage.input_tokens * 2e-6 + r.usage.output_tokens * 10e-6
-        d = json.loads(next(b.text for b in r.content if b.type == "text"))
-        if len(d["linhas"]) != len(cues): raise SystemExit(f"{lg}: voltaram {len(d['linhas'])} linhas, esperava {len(cues)}")
+        # 19/11 (o en voltou com 342 de 343 linhas e o es ja pago se perdeu): cada idioma fica guardado assim que sai;
+        # quem ja tem a legenda pronta so traduz titulo e descricao (centavos); faltou linha = tenta de novo uma vez.
+        cache = f"{SAI}/{NN}-idiomas-{lg}.json"
+        if os.path.exists(cache): res[lg] = json.load(open(cache, encoding="utf-8")); print(f"{lg}: ja estava pronto"); continue
+        so_texto = os.path.exists(f"{SAI}/{NN}-legenda-{lg}.srt") and "--refazer" not in sys.argv
+        for tentativa in (1, 2):
+            numeradas = "" if so_texto else "\n".join(f"{i + 1}. {c[2]}" for i, c in enumerate(cues))
+            pede = "o título e a descrição" if so_texto else f"o título, a descrição e as {len(cues)} linhas de legenda"
+            msg = (f"Traduza para {nome} {pede} de um vídeo do YouTube do canal brasileiro 'Tião Poupador' "
+                   "(desenho animado sobre dinheiro do dia a dia). Tom natural e falado, frases curtas como numa legenda. Mantenha: os nomes das pessoas "
+                   "(Tião, Sandra, Marcos), 'FinMoovi', os valores em R$ como estão, os links, as hashtags e as quebras de linha da descrição. "
+                   "O título até 100 caracteres, com o mesmo mistério do original. Nunca use travessão. "
+                   + ("Devolva 'linhas' vazio.\n\n" if so_texto else f"Devolva exatamente {len(cues)} linhas, na mesma ordem, sem os números. Uma linha de entrada = uma linha de saída, nunca junte duas.\n\n")
+                   + f"TÍTULO:\n{titulo}\n\nDESCRIÇÃO:\n{desc}" + ("" if so_texto else f"\n\nLINHAS:\n{numeradas}"))
+            with cli.messages.stream(model=MODELO, max_tokens=64000, output_config={"effort": "low", "format": {"type": "json_schema", "schema": ESQ}},
+                                     messages=[{"role": "user", "content": msg}]) as s:
+                r = s.get_final_message()
+            custo += r.usage.input_tokens * 2e-6 + r.usage.output_tokens * 10e-6
+            d = json.loads(next(b.text for b in r.content if b.type == "text"))
+            if so_texto: d["linhas"] = []; break
+            if len(d["linhas"]) == len(cues): break
+            print(f"{lg}: voltaram {len(d['linhas'])} linhas, esperava {len(cues)} (tentativa {tentativa}, custo ate agora US$ {custo:.3f})")
+            if tentativa == 2:
+                import datetime; open(f"{P}/gastos-claude.csv", "a", encoding="utf-8").write(f"{datetime.date.today()},video {NN} traducao {lg} falhou 2x (Sonnet),{custo:.3f}\n")
+                raise SystemExit(f"{lg}: falhou 2 vezes, nada subiu")
         d["linhas"] = [re.sub(r"\s*[\u2013\u2014]\s*", ", ", l) for l in d["linhas"]]  # sem travessao, nunca
-        res[lg] = d; open(f"{SAI}/{NN}-legenda-{lg}.srt", "w", encoding="utf-8").write(srt(cues, d["linhas"]))
+        res[lg] = d; json.dump(d, open(cache, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        if d["linhas"]: open(f"{SAI}/{NN}-legenda-{lg}.srt", "w", encoding="utf-8").write(srt(cues, d["linhas"]))
         print(f"{lg}: ok ({r.usage.input_tokens} entrada, {r.usage.output_tokens} saida) custo ate agora US$ {custo:.3f}")
     json.dump(res, open(f"{SAI}/{NN}-idiomas.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"custo total: US$ {custo:.3f}")
@@ -64,7 +84,13 @@ elif ACAO == "traduzir":
 elif ACAO == "subir":
     from fabrica.google import api
     vid = json.load(open(f"{P}/capas/video-{NN}/publicado.json", encoding="utf-8"))["id"]
-    res = json.load(open(f"{SAI}/{NN}-idiomas.json", encoding="utf-8"))
+    # 20/11: sobe o que ja estiver pronto (a legenda pt-BR e de graca; um idioma sem traducao fica para depois, sem travar o resto)
+    ij = f"{SAI}/{NN}-idiomas.json"
+    res = json.load(open(ij, encoding="utf-8")) if os.path.exists(ij) else {}
+    for lg in IDIOMAS:
+        c = f"{SAI}/{NN}-idiomas-{lg}.json"
+        if lg not in res and os.path.exists(c): res[lg] = json.load(open(c, encoding="utf-8"))
+    res = {lg: d for lg, d in res.items() if d.get("titulo")}
     v = api(f"https://www.googleapis.com/youtube/v3/videos?part=snippet,localizations&id={vid}")["items"][0]
     sn = v["snippet"]; sn["defaultLanguage"] = "pt-BR"; sn["defaultAudioLanguage"] = "pt-BR"
     loc = v.get("localizations", {}); loc.update({lg: {"title": d["titulo"][:100], "description": d["descricao"][:5000]} for lg, d in res.items()})
@@ -73,6 +99,7 @@ elif ACAO == "subir":
     ja = {c["snippet"]["language"] for c in api(f"https://www.googleapis.com/youtube/v3/captions?part=snippet&videoId={vid}").get("items", [])}
     for lg, nome in [("pt-BR", "Português"), ("es", "Español"), ("en", "English")]:
         if lg in ja: print(lg, "ja tinha"); continue
+        if not os.path.exists(f"{SAI}/{NN}-legenda-{lg}.srt"): print(lg, "sem legenda pronta: fica para depois"); continue
         meta = json.dumps({"snippet": {"videoId": vid, "language": lg, "name": nome, "isDraft": False}}).encode()
         corpo = open(f"{SAI}/{NN}-legenda-{lg}.srt", "rb").read(); b = uuid.uuid4().hex
         dados = (f"--{b}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n".encode() + meta +
