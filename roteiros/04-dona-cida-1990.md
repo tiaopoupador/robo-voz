@@ -13,7 +13,7 @@
 
 Regras deste texto: sem travessão; números por extenso na fala; as marcas entre colchetes não entram na voz; cada parágrafo é uma fala (menos de 40 s). Na voz não se diz o nome do presidente da época (nenhuma pronúncia agradou ao Ed): diz-se «o plano do governo de março de noventa»; o nome «Plano Collor» aparece só escrito na tela.
 
-**Estado das pessoas (continuidade):**
+**Estado das pessoas (continuidade):** (a sobrinha Marta: uns 25 anos, cabelo preto cacheado comprido, camiseta amarela)
 - Dona Cida hoje: vestido azul de flor, casaquinho bege, óculos redondos, cabelo branco. Na janela da casa dela e na cozinha dela.
 - Dona Cida em 1990 (lembrança): uns trinta anos, cabelo preto preso, vestido simples, bolsa de alça no ombro, a caderneta de poupança azul na mão.
 - Tião: camisa polo mostarda, o lápis amarelo de carpinteiro no bolso, a caneca lascada. O papel de pão do capítulo 4 ao 6.
@@ -30,11 +30,11 @@ Em março de mil novecentos e noventa, a Dona Cida foi ao banco buscar o dinheir
 
 [CENA: lembrança, a Dona Cida jovem na frente do caixa do banco, a caderneta azul na mão]
 
-Não era o banco que estava quebrado. Era o governo, que tinha mandado prender a poupança do país inteiro, de um dia para o outro. E a Dona Cida, que hoje tem sessenta e sete anos, nunca mais deixou um real dela no banco.
+Não era o banco que estava quebrado. Era o governo, que tinha mandado prender a poupança do país inteiro, de um dia para o outro. E a Dona Cida, que hoje tem sessenta e sete anos, nunca mais confiou em banco.
 
 [POSE P2 explica] [TEXTO: ELA TEM RAZÃO?]
 
-Mas será que ela tem razão? Hoje eu vou te mostrar três coisas: o que fizeram com a poupança de quem trabalhou a vida inteira, o que protege o seu dinheiro hoje, e o que não protege. E a única coisa que a Dona Cida faz até hoje para nunca mais ser pega de surpresa. Essa última, quase ninguém sabe.
+Mas será que ela tem razão? Hoje eu vou te mostrar três coisas: o que fizeram com a poupança de quem trabalhou a vida inteira, o que protege o seu dinheiro hoje, e o que não protege. E a única coisa que a Dona Cida faz até hoje para nunca mais ser pega de surpresa. Essa última, nem os vizinhos dela sabiam.
 
 Se você tem dinheiro guardado, no banco ou dentro de casa, fica comigo até o fim, que eu vou te mostrar com a lei na mão onde ele está mais seguro, e onde ele some sem ninguém levar. Então já puxa a cadeira. Vamos começar?
 
@@ -49,6 +49,8 @@ Chega mais! O café tá passado e hoje tem conta pra fazer.
 Se você chegou agora, eu sou o Tião. Sou porteiro de um prédio chique no centro, e de lá eu vejo todo dia quem parece rico e quem é rico.
 
 No último vídeo, eu ajudei a Dona Cida, a vizinha da esquina, a escapar de um golpe do falso dinheiro esquecido. E no fim da tarde ela me contou por que nunca confiou em banco. Hoje eu te conto essa história inteira, com a lei do governo na mão, e no fim a gente decide junto se ela tem razão.
+
+E fica até o fim, porque a Dona Cida, que vê a rua inteira da janela, tem um palpite sobre a Valéria, a vizinha da casa de vitrine, que vive de carrão branco. E ela acertou.
 
 ## 2. A manhã na porta do banco
 
@@ -72,7 +74,7 @@ Em mil novecentos e noventa, a Dona Cida tinha uns trinta anos e costurava para 
 
 [CENA: lembrança, a Dona Cida jovem na frente do caixa do banco, a caderneta azul na mão]
 
-"Quando chegou a minha vez, eu pedi tudo. O moço do caixa nem olhou o papel. Só disse: senhora, acima de cinquenta mil, não sai. Eu voltei para casa a pé, com a caderneta apertada no peito, sem dinheiro nem para o ônibus."
+"Quando chegou a minha vez, eu pedi tudo. Eu tinha o dobro do limite, Tião. O moço do caixa nem olhou o papel. Só disse: senhora, acima de cinquenta mil, não sai. A metade que saiu foi embora no aluguel e no mercado. A outra metade, a da entrada da casinha, ficou presa lá dentro."
 
 [POSE P1 pensativo]
 
@@ -110,7 +112,7 @@ Pensa de novo naquela frase. Em março de mil novecentos e noventa, a Dona Cida 
 
 [POSE P2 explica]
 
-Foi aí que ela decidiu. Nunca mais banco. A partir daquele dia, todo dinheiro que sobrava ia para a lata de biscoito azul, em cima do armário. Trinta e seis anos guardando dinheiro em casa.
+Foi aí que ela decidiu. Nunca mais banco. A partir daquele dia, todo dinheiro que sobrava ia para a lata de biscoito azul, em cima do armário. Desde aquele março, ela guarda dinheiro em casa.
 
 ## 4. O colchão também confisca
 
@@ -170,15 +172,15 @@ Mas a Dona Cida me surpreendeu. Quando eu terminei a conta, ela riu e falou: "Ti
 
 [POSE P3 aponta] [TEXTO: NUNCA TUDO NUM LUGAR SÓ]
 
-Nunca tudo num lugar só. Um pouco na lata, para o mês. E o resto ela tinha, sim, em banco. Em dois bancos. A desconfiada do bairro, com conta em dois bancos, e nenhum vizinho sabia.
+Nunca tudo num lugar só. Em mil novecentos e noventa e quatro, a casa da comadre dela pegou fogo, e a lata da comadre virou cinza, com o dinheiro dentro. Na semana seguinte, a Dona Cida abriu conta. E não foi em um banco: foi em dois! A lata ficou só com o dinheiro do mês. A desconfiada do bairro, com conta em dois bancos! E nenhum vizinho sabia, porque ela tinha jurado na rua inteira que nunca mais pisava num banco.
 
 [POSE P4 alerta] [TEXTO: MESMO GRUPO = 1 BANCO SÓ]
 
-E aqui está o detalhe que quase ninguém sabe. O limite dos duzentos e cinquenta mil reais do Fundo Garantidor não é por banco do jeito que a gente pensa. Está escrito no site oficial do fundo: vale para cada banco, ou para todos os bancos do mesmo grupo somados. Então dois bancos do mesmo grupo, com nomes diferentes, contam como um banco só.
+E aqui está o detalhe que eu só descobri lendo o site do fundo, de lápis na mão. O limite dos duzentos e cinquenta mil reais do Fundo Garantidor não é por banco do jeito que a gente pensa. Está escrito no site oficial do fundo: vale para cada banco, ou para todos os bancos do mesmo grupo somados. Então dois bancos do mesmo grupo, com nomes diferentes, contam como um banco só.
 
 [POSE P2 explica]
 
-A Dona Cida tinha os dois bancos de grupos diferentes. Sem saber o nome da regra, ela fez certo. Caneca velha, bolso cheio! E agora eu te passo o que eu escrevi para ela no verso do papel de pão, em três dicas. Pega um papel e anota aí também.
+A Dona Cida tinha os dois bancos de grupos diferentes. Sem saber o nome da regra, ela fez certo. Como eu sempre digo aqui na varanda: caneca velha, bolso cheio! E agora eu te passo o que eu escrevi para ela no verso do papel de pão, em três dicas. Pega um papel e anota aí também.
 
 [TEXTO: DICA 1: UM MÊS EM CASA, NÃO MAIS]
 
@@ -190,11 +192,11 @@ Dica número dois: se você guarda dinheiro em mais de um banco para se proteger
 
 [TEXTO: DICA 3: A FAMÍLIA PRECISA SABER]
 
-Dica número três: alguém da sua família precisa saber onde está o seu dinheiro. Em que banco, em que lata, em que gaveta. A Dona Cida, naquela tarde, chamou a sobrinha e mostrou a lata pela primeira vez.
+Dica número três: alguém da sua família precisa saber onde está o seu dinheiro. Em que banco, em que lata, em que gaveta. Foi a própria Dona Cida que me ensinou essa. Quando eu terminei a conta, ela ficou séria: "E se eu passar mal, Tião, quem acha a lata? Quem sabe dos bancos?" Pegou o telefone na hora e chamou a sobrinha, a Marta. E naquela tarde, pela primeira vez, alguém da família viu a lata.
 
 [POSE P1 pensativo]
 
-Mas antes, um recado rápido. Para guardar um pouco todo mês, primeiro você precisa saber para onde vai cada real. E é aí que eu uso o FinMoovi, o aplicativo que eu uso todo dia. Você tira foto da notinha do mercado, ele lê tudo sozinho e te mostra para onde foi o seu dinheiro no mês.
+Daqui a pouco eu te conto o que a Dona Cida me disse naquela noite, da janela, olhando para o carrão branco da Valéria. Mas antes, um recado rápido. Para guardar um pouco todo mês, primeiro você precisa saber para onde vai cada real. E é aí que eu uso o FinMoovi, o aplicativo que eu uso todo dia. Você tira foto da notinha do mercado, ele lê tudo sozinho e te mostra para onde foi o seu dinheiro no mês.
 
 [TEXTO: FINMOOVI · 7 DIAS GRÁTIS]
 
@@ -208,7 +210,7 @@ E aqui eu te peço uma coisa: manda este vídeo para alguém que guarda dinheiro
 
 [POSE P2 explica]
 
-E me conta aqui nos comentários: na sua família, alguém perdeu dinheiro naquele março de mil novecentos e noventa? Eu leio cada história. E se esta conversa valeu o seu café, deixa o like e se inscreve no canal, que toda semana tem conta nova aqui.
+E me conta aqui nos comentários: na sua família, alguém perdeu dinheiro naquele março de mil novecentos e noventa? Eu leio cada história. E se esta conversa valeu o seu café, deixa o like e se inscreve no canal, porque agora eu vou te contar o palpite da Dona Cida sobre a vizinha do carrão, e você não vai querer perder.
 
 [POSE P1 pensativo] [CENA: a Dona Cida na janela à noite, olhando a SUV branca parada do outro lado da rua]
 
@@ -220,9 +222,11 @@ Naquela noite, eu passei de novo na frente da janela da Dona Cida. Ela estava l�
 
 [POSE P3 aponta] [TEXTO: R$ 50?!]
 
-E ela acertou. Poucos dias depois, às onze e quarenta da noite, com a rua inteira apagada, a Valéria, a vizinha do carrão branco de cento e oitenta e nove mil reais, bateu na minha varanda e pediu cinquenta reais emprestados ao porteiro. Eu.
+E ela acertou. Poucos dias depois, às onze e quarenta da noite, com a rua inteira apagada, a Valéria, a vizinha do carrão branco de cento e oitenta e nove mil reais, o preço que ela mesma contou para a rua inteira, bateu na minha varanda e pediu cinquenta reais emprestados ao porteiro. Eu.
 
-Se você também conhece alguém que vive de carrão e de foto bonita, e não entende como a conta fecha, você não pode perder o próximo vídeo. Nele eu vou te mostrar as três contas que ninguém da rua via por trás daquele carrão, quanto cada uma come por mês, e o que eu respondi para a Valéria naquela noite. Por que a vizinha da SUV pediu cinquenta reais emprestado ao porteiro? Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Se você já emprestou dinheiro para quem vive de aparência, ou conhece alguém que gasta o que não tem para parecer rico, você não pode perder o próximo vídeo.
+
+Nele eu vou te mostrar as três contas que ninguém da rua via por trás daquele carrão, quanto cada uma come por mês, e a resposta que eu dei para a Valéria naquela noite. Essa, nem ela esperava. Por que a vizinha da SUV pediu cinquenta reais emprestado ao porteiro? Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
 

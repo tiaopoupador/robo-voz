@@ -17,6 +17,8 @@ IMG = {
  "meta-cida-lata-seria": ('meta', 'cida-ficha.jpg', 'cf:cida-oculos'),
  "meta-cida-janela-ri":  ('meta', 'cida-ficha.jpg', 'cf:cida-feliz'),
  "meta-cida-sobrinha":   ('meta', 'cida-ficha.jpg', 'cf:cida-vizinha'),
+ # 20/11 (revisor: a virada de 1994 precisa da causa): a lata da comadre queimada, sem ninguem (Cloudflare, gratis)
+ "lata-queimada-1994": ("cf", "", "FLASHBACK, faded colors like an old 1994 photo. Close-up of a burned, blackened round biscuit tin lying open on the floor of a burned room, gray ashes and a few burnt paper scraps inside, soft smoke. No people, no hands, no text."),
  "meta-janela-noite-suv": ('meta', 'cida-ficha.jpg + rua-casa-suv.jpg', 'cf:cida-janela'),
 }
 PEDIDO = {
