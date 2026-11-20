@@ -19,6 +19,7 @@ As famílias que ganham (views reais):
 O que perde: título que dá a resposta; matemática seca de investidor; notícia; "psicologia/neurociência"; cópia RÁPIDA e fraca (o Edu fez "loteria" e "buffets" poucos dias depois do original: 305 e 193 views).
 O que funciona: o TEMA de um campeão de 1 a 3 meses atrás (ou um campeão em inglês ainda sem versão brasileira), com o mesmo molde de título e palavras nossas: o Tuco pegou "Corrida dos Ratos e Ninguém Percebeu" 48 dias depois e fez 555 mil; o Edu pegou "Parecer Pobre" 73 dias depois e fez 499 mil.
 
+PALAVRA BUSCADA PRIMEIRO (Ed, 20/11/2026, aprendido com o VidIQ: o título só de mistério do 03 levou 70; os que abriam com o termo buscado, 80 a 86): o termo que o povo digita no YouTube vai nos primeiros 40 caracteres ("Dinheiro Esquecido no Banco: ..."), e o mistério vem depois dos dois-pontos ou na pergunta. Nunca troque o mistério pela busca: os dois juntos. Em tema de bastidor ou paradoxo sem termo buscado, o mistério manda.
 Forma do título: até 60 caracteres; "Você" ou um personagem; no máximo 1 ou 2 palavras em MAIÚSCULAS para ênfase; número em reais só se ele aumentar a pergunta, nunca se for a resposta; parênteses de reviravolta servem ("(Não É Comida)", "(Veja Como)"); sem travessão; nunca prometer o que o vídeo não entrega.
 Capa: 2 a 4 palavras gigantes que completam o título sem repetir: um veredito ("ALL INCLUSIVE É ROUBADA", "A ARMADILHA DO CRUZEIRO"), uma provocação ("PAREÇA POBRE?!", "NÃO É O SALÁRIO") ou uma pergunta com número ("CASAS DE R$600.000!?"). A cena tem um personagem com emoção forte, uma seta para o que importa e, se servir, etiquetas com números que abrem curiosidade sem explicar (a escada de preços R$ 300 > R$ 900 > R$ 7.000 no navio). Nunca mostra o final."""
 
@@ -50,3 +51,11 @@ def revisar(cli, itens, voltas=3):
                 ruins += 1; notas[n["i"]]["reescrito"] = True; itens[n["i"]]["titulo"] = limpa(n["titulo"]); itens[n["i"]]["capa_texto"] = limpa(n["capa_texto"])
         if not ruins: break
     return itens, custo, notas
+
+
+def busca_youtube(q):
+    """20/11/2026: o que o povo digita no YouTube a partir de q (autocompletar, gratis, sem chave). O 1o da lista e o termo mais buscado."""
+    import urllib.parse, urllib.request
+    u = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&hl=pt-BR&q=" + urllib.parse.quote(q)
+    try: return json.loads(urllib.request.urlopen(u, timeout=20).read().decode("latin-1"))[1]
+    except Exception: return []

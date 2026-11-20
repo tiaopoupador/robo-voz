@@ -2,7 +2,7 @@
 
 **Formato:** Tião Conversa (o Tião fala com quem assiste, nas poses P1 a P4, com a lembrança da Dona Cida em imagens).
 **Publica:** terça, 24/11/2026, 10:00 (Brasília).
-**Título (da agenda, escolhido pelo robô a 19/11):** Dona Cida Não Confia em Banco Desde 1990. Ela Tem Razão?
+**Título (da agenda, escolhido pelo robô a 19/11):** Plano Collor: Dona Cida Não Confia em Banco Desde 1990. Tem Razão?
 **Texto da capa:** E SE VOLTAR?! (as outras: O BANCO FECHOU · NO COLCHÃO TAMBÉM SOME)
 **Cor da capa:** vermelho (perigo, medo). Dona Cida séria, segurando uma caderneta de poupança antiga contra o peito; atrás, a porta de ferro de um banco antigo fechada.
 **O que fica escondido (a resposta que só o vídeo dá):** se ela tem razão ou não, o que protege o dinheiro hoje e o que não protege, e a única coisa que ela faz até hoje.

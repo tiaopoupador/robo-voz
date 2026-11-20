@@ -33,7 +33,7 @@ PEDIDO = {
  "meta-cida-sobrinha": f"Her small living room, afternoon. {CIDA_HOJE}, shows the open round blue biscuit tin and the old blue savings passbook to her niece, a young Brazilian woman in her twenties with long curly black hair and a yellow T-shirt, who listens surprised. Family photos on the wall (blank frames).",
  "meta-janela-noite-suv": f"NIGHT. Seen from the street: {CIDA_HOJE}, leans at her lit open window and points with her chin across the dark street at a big shiny WHITE SUV parked in front of a modern house with a large glass front, suspicious face. The street lamps are on, the rest of the street is dark and quiet.",
 }
-TITULO = "Dona Cida Não Confia em Banco Desde 1990. Ela Tem Razão?"
+TITULO = "Plano Collor: Dona Cida Não Confia em Banco Desde 1990. Tem Razão?"
 CAPA_TEXTO = "E SE VOLTAR?!"
 CLIMA = {0: "alerta"}
 VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)
@@ -67,4 +67,64 @@ CAP_NOMES = {"Abertura (é um Reels: entende-se sozinha)": "Março de 1990", "Qu
              "O colchão também confisca": "O colchão também confisca", "Ela tem razão?": "Ela tem razão?",
              "A única coisa que ela faz até hoje": "A única coisa que ela faz até hoje", "A lata, a janela e a vizinha da SUV": "A vizinha da SUV"}
 GIF = "foto"
+PLAYLIST = "tiao-conversa"  # o publicar.py poe o video na playlist sozinho
 L = {}  # entra depois da voz (os gatilhos sao palavras da fala)
+
+# 20/11: as imagens de reserva (Cloudflare, gratis) e o fundo da conversa vem do 03 (os "cf:" acima apontam para elas)
+from fabrica.videos.v03.cenas import IMG as _I3
+for _k in ("fundo-banquinho", "selo-tiao-cafe", "cozinha-cida", "cida-foto-antiga", "banco-1990", "papel-pao-conta", "cida-oculos", "cida-feliz", "cida-vizinha", "cida-janela"):
+    IMG.setdefault(_k, _I3[_k])
+
+L = {
+ 0: [("^", "C", (RUA, "P4", 1)), ("dez anos de costura", "I", "meta-caixa-1990")],
+ 1: [("^", "I", "meta-fila-banco-1990"), ("sessenta e sete", "C", (RUA, "P4", -1))],
+ 2: [("^", "C", (RUA, "P2", 1)), ("três coisas", "M", ic([("🔒", "o que fizeram com a poupança", False), ("🛡️", "o que protege hoje", False), ("🥫", "a única coisa que ela faz", False)], "Hoje, três coisas"))],
+ 3: [("^", "C", (RUA, "P2", -1))],
+ 4: [("^", "C", (RUA, "P2", 1))],
+ 5: [("^", "C", (RUA, "P1", -1)), ("porteiro", "C", (RUA, "P2", -1))],
+ 6: [("^", "I", "banco:cenarios/rua-bairro-entardecer-01.jpg"), ("lei do governo", "C", (RUA, "P2", 1))],
+ 7: [("^", "I", "meta-janela-noite-suv")],
+ 8: [("^", "I", "meta-cozinha-lata")],
+ 9: [("^", "I", "meta-cozinha-lata@b")],
+ 10: [("^", "I", "meta-costura-1990")],
+ 11: [("^", "I", "meta-fila-banco-1990")],
+ 12: [("^", "I", "meta-fila-banco-1990@b")],
+ 13: [("^", "I", "meta-caixa-1990"), ("dobro do limite", "M", nu(50000, "O limite da lei", "o resto ficou preso", cor=VERM, fmt="int", suf=" cruzados novos", emoji="🔒")), ("A metade que saiu", "I", "meta-caixa-1990@b")],
+ 14: [("^", "C", (RUA, "P1", 1))],
+ 15: [("^", "C", (RUA, "P3", -1))],
+ 16: [("^", "C", (RUA, "P2", 1)), ("quinze de março", "M", fr("Medida Provisória *168*, de 15/03/1990", "virou a Lei 8.024, de 12/04/1990 (Plano Collor)"))],
+ 17: [("^", "M", fr("Poupança e conta corrente: só até *NCz$ 50 mil*", "Lei 8.024, art. 5º e 6º, site da Câmara dos Deputados")), ("ficava preso", "C", (RUA, "P4", -1))],
+ 18: [("^", "C", (RUA, "P4", 1)), ("dezesseis de setembro", "M", li(["março de 1990: preso", "setembro de 1991: começa a voltar", "12 parcelas por mês"], 1, "Quanto tempo ficou preso"))],
+ 19: [("^", "M", li(["março de 1990: preso", "setembro de 1991: começa a voltar", "12 parcelas por mês"], 2, "Quanto tempo ficou preso")), ("imagina a vida", "C", (RUA, "P1", -1))],
+ 20: [("^", "I", "meta-cama-1990")],
+ 21: [("^", "C", (RUA, "P4", 1)), ("dez anos de costura", "I", "meta-caixa-1990")],
+ 22: [("^", "C", (RUA, "P2", -1)), ("lata de biscoito", "I", "meta-cozinha-lata@b")],
+ 23: [("^", "I", "meta-tiao-conta")],
+ 24: [("^", "I", "meta-tiao-conta@b")],
+ 25: [("^", "C", (RUA, "P3", 1)), ("setecentos e noventa e nove", "M", nu(799, "Os preços subiram, desde julho de 1994", "IPCA do IBGE, série do Banco Central", cor=VERM, fmt="int", suf="%", emoji="📈"))],
+ 26: [("^", "M", ba([("Em julho de 1994", 100, VERDE), ("O que compra hoje", 11.12, VERM)], "R$ 100 guardados na lata"))],
+ 27: [("^", "C", (RUA, "P4", -1))],
+ 28: [("^", "I", "meta-cida-lata-seria")],
+ 29: [("^", "C", (RUA, "P1", 1)), ("pega fogo", "M", ic([("🔥", "pega fogo", False), ("💧", "pega água", False), ("📦", "some na mudança", False), ("🦹", "atrai ladrão", False)], "Dinheiro em casa"))],
+ 30: [("^", "C", (RUA, "P2", -1))],
+ 31: [("^", "C", (RUA, "P3", 1)), ("Emenda Constitucional", "M", fr("Proibido prender a poupança por *medida provisória*", "Emenda Constitucional 32/2001, Constituição art. 62"))],
+ 32: [("^", "C", (RUA, "P4", -1))],
+ 33: [("^", "C", (RUA, "P2", 1)), ("duzentos e cinquenta mil", "M", nu(250000, "Garantido pelo FGC, por CPF", "em cada banco ou grupo de bancos", cor=VERDE, emoji="🛡️"))],
+ 34: [("^", "C", (RUA, "P1", -1))],
+ 35: [("^", "I", "meta-cida-janela-ri")],
+ 36: [("^", "C", (RUA, "P3", 1)), ("pegou fogo", "I", "lata-queimada-1994"), ("abriu conta", "I", "meta-cida-janela-ri@b")],
+ 37: [("^", "C", (RUA, "P4", -1)), ("mesmo grupo", "M", fr("Bancos do *mesmo grupo* contam como *um só*", "FGC, site oficial, perguntas frequentes"))],
+ 38: [("^", "C", (RUA, "P2", 1))],
+ 39: [("^", "M", ic([("🏠", "em casa, só um mês de despesas", False)], "Dica 1"))],
+ 40: [("^", "M", ic([("🏦", "confere o grupo do banco", False)], "Dica 2"))],
+ 41: [("^", "M", ic([("👨‍👩‍👧", "a família precisa saber", False)], "Dica 3")), ("própria Dona Cida", "I", "meta-cida-sobrinha")],
+ 42: [("^", "C", (RUA, "P1", -1)), ("FinMoovi", "V", "banco:FM:3-extrato/extrato__estilo-moldura-celular__horizontal.mp4")],
+ 43: [("^", "M", nu(7, "Dá para testar o FinMoovi", "link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="📱"))],
+ 44: [("^", "C", (RUA, "P3", 1))],
+ 45: [("^", "C", (RUA, "P2", -1))],
+ 46: [("^", "I", "meta-janela-noite-suv")],
+ 47: [("^", "I", "meta-janela-noite-suv@b")],
+ 48: [("^", "C", (RUA, "P3", 1)), ("cinquenta reais", "M", nu(50, "Pediu emprestado ao porteiro", "às 23h40, até sexta", cor=VERM, emoji="😳"))],
+ 49: [("^", "C", (RUA, "P4", -1))],
+ 50: [("^", "C", (RUA, "P2", 1))],
+}

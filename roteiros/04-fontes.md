@@ -1,4 +1,4 @@
-# Fontes oficiais do vídeo 04: «Dona Cida Não Confia em Banco Desde 1990. Ela Tem Razão?» (conferidas a 18 e 20/11/2026)
+# Fontes oficiais do vídeo 04: «Plano Collor: Dona Cida Não Confia em Banco Desde 1990. Tem Razão?» (conferidas a 18 e 20/11/2026)
 1. Lei 8.024, de 12/04/1990 (conversão da MP 168/1990, Plano Collor), Câmara dos Deputados, texto atualizado:
    art. 6º «Os saldos das cadernetas de poupança serão convertidos em cruzeiros (...) observado o limite de NCz$ 50.000,00».
    § 1º (redação da Lei 8.088/1990): o que passasse do limite seria convertido «a partir de 16 de setembro de 1991, em doze parcelas mensais iguais e sucessivas».

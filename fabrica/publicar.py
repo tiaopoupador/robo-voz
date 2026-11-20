@@ -41,6 +41,16 @@ elif SUBIR:
     subprocess.run([sys.executable, f"{P}/youtube/subir.py", f"video-{NN}"], check=True)
     publicado = json.load(open(f"{P}/capas/video-{NN}/publicado.json", encoding="utf-8"))
     drive.guardar(NN, f"{P}/capas/video-{NN}/publicado.json"); drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")
+    # 20/11/2026 (Ed: «Tem como vc criar a playlist da prosa?»): o video entra sozinho na playlist do formato
+    #  (PLAYLIST = "tiao-conversa" no cenas.py; os ids em youtube/playlists.json)
+    try:
+        _pl = getattr(C, "PLAYLIST", None)
+        if _pl:
+            from fabrica.google import api as _api
+            _pid = json.load(open(f"{P}/youtube/playlists.json", encoding="utf-8"))[_pl]
+            _api("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet", {"snippet": {"playlistId": _pid, "resourceId": {"kind": "youtube#video", "videoId": publicado["id"]}}}, "POST")
+            txt += ["", f"📂 Entrou na playlist {_pl}."]
+    except Exception as e: txt += ["", f"⚠️ Não consegui pôr na playlist: {e}"]
     txt += ["", "## ✅ Agendado no YouTube", f"{publicado['url']}  ", f"Vai ao ar: {C.PUBLICA_TXT}. Até lá fica privado: dá para assistir e mudar o que quiser no Studio."]
     if teste:
         principal = drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")

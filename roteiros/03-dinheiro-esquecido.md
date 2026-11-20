@@ -2,7 +2,7 @@
 
 **Formato:** Tião Conversa (o Tião fala com quem assiste, nas poses P1 a P4, com o causo da Dona Cida em imagens).
 **Publica:** sábado, 21/11/2026, 10:00 (Brasília).
-**Título (escolhido pelo robô, Ed 18/11: «pode seguir com suas recomendações»):** Tem Dinheiro Seu Parado no Banco e Ninguém Te Avisou
+**Título (escolhido pelo robô, Ed 18/11: «pode seguir com suas recomendações»):** Dinheiro Esquecido no Banco: Tem o Seu e Ninguém Te Avisou
 (as outras: «O Governo Deu 30 Dias Para Você Pegar Esse Dinheiro», «Você Tem Dinheiro Esquecido no Banco? Confere Hoje»)
 **Texto da capa:** R$ ??? NO SEU NOME (as outras: 30 DIAS E ACABOU · NÃO CLICA NISSO)
 **Cor da capa:** amarelo (segredo, descoberta). Tião espantado apontando o celular da Dona Cida.
