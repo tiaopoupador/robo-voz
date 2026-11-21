@@ -82,7 +82,7 @@ def plano(seg, cal, comunidade, desde=None):
             if k == "comunidade" and not comunidade: k = "dica"
             perto = [c for d in (-1, -2, -3, 1, 2) for c in por_dia.get(data + datetime.timedelta(days=d), [])]
             tema = f"«{v(perto[0])['titulo']}»" if perto else "dos vídeos da semana"
-            if k == "enquete": pl.append((dia, "enquete", f"ENQUETE sobre o tema do vídeo {tema}: uma situação do dia a dia em que a pessoa se reconhece. 3 ou 4 opções curtas, todas plausíveis, nenhuma 'certa'.", {"data": data, "video": "", "cena": True}))
+            if k == "enquete": pl.append((dia, "enquete", f"ENQUETE sobre o tema do vídeo {tema}: uma situação do dia a dia em que a pessoa se reconhece. 3 ou 4 opções curtas, todas plausíveis, nenhuma 'certa'.", {"data": data, "video": "", "cena": False}))
             elif k == "quiz": pl.append((dia, "quiz", "QUIZ: uma pergunta com UMA resposta certa, tirada de um fato dos vídeos da semana (só fatos que estão nos roteiros). 3 ou 4 opções curtas; diga qual é a certa em 'correta' (0 a 3) e escreva em 'explicacao' 1 frase curta que o YouTube mostra depois da resposta.", {"data": data, "video": "", "cena": False}))
             elif k == "comunidade": pl.append((dia, "texto", f"A COMUNIDADE: um de vocês contou isto nos comentários (NÃO diga o nome da pessoa): «{comunidade}». Comente como o Tião, com carinho e humor, e pergunte quem mais já passou por isso.", {"data": data, "video": "", "cena": True}))
             else: pl.append((dia, "texto", f"A DICA DO TIÃO: uma dica curta e concreta tirada do vídeo {tema}, que a pessoa pode usar hoje, contada como algo que o Tião faz na vida dele. Sem conta, sem lista longa.", {"data": data, "video": "", "cena": True}))
@@ -92,6 +92,7 @@ def pedido(pl, vids, recados=()):
     if recados: ctx += "\n\n═══ O QUE O DONO DO CANAL ESCREVEU NAS TAREFAS ANTERIORES (siga isto, vale mais que o resto) ═══\n" + "\n".join(f"- {r}" for r in recados)
     return f"""Você escreve os posts da aba "Posts" do canal de YouTube Tião Poupador. Quem fala é o próprio Tião, na primeira pessoa: um brasileiro simples, uns 30 anos, porteiro de um prédio chique do centro, que aprendeu a cuidar do dinheiro no dia a dia (sem dívida, sem luxo). Público: famílias brasileiras de classe média e baixa.
 Linguagem: português do Brasil, simples, conversa de vizinho, frases curtas, no máximo 1 ou 2 emojis por post, sem jargão.
+FORMATO DO TEXTO (obrigatório): parágrafos curtos de 1 ou 2 frases, separados por UMA linha vazia. O título de um vídeo fica SOZINHO no seu parágrafo, entre «». Nunca um bloco corrido.
 
 {ctx}
 
@@ -183,13 +184,32 @@ def formato(it):
     if it["tipo"] == "enquete": return "📊 ENQUETE COM IMAGEM" if tem_img(it) else "📊 ENQUETE SÓ DE TEXTO"
     if it["tipo"] == "quiz": return "🧠 QUIZ (só de texto)"
     return "📝 POST DE TEXTO"
+def arejar(t):
+    """o texto em blocos curtos, com linha vazia entre eles, e o titulo «...» sozinho no seu paragrafo (mesmo que o Claude esqueca)"""
+    t = re.sub(r"[ \t]*(«[^»]{8,}»[.!?]?)[ \t]*", r"\n\n\1\n\n", t.strip())
+    blocos = []
+    for b in re.split(r"\n\s*\n", t):
+        b = " ".join(b.split())
+        if not b: continue
+        if b.startswith("«") or b.startswith("▶") or len(b) < 140: blocos.append(b); continue
+        frases = re.findall(r"[^.!?]+[.!?]+[^\w«]*|[^.!?]+$", b); g = []
+        for f in frases:
+            g.append(f.strip())
+            if len(g) == 2: blocos.append(" ".join(g)); g = []
+        if g: blocos.append(" ".join(g))
+    return "\n\n".join(blocos)
 def copias(it):
     """cada coisa a colar, pela ordem em que se cola no Studio"""
-    if it["tipo"] == "texto": c = [{"rotulo": "Texto do post", "texto": it["texto"]}]
+    if it["tipo"] == "texto": c = [{"rotulo": "Texto do post", "texto": arejar(it["texto"])}]
     else: c = [{"rotulo": "Pergunta", "texto": it["texto"]}] + [{"rotulo": f"Opção {LETRAS[k]}", "texto": o.strip()} for k, o in enumerate(it["opcoes"])]
     if it["tipo"] == "quiz": c.append({"rotulo": "Explicação (depois da resposta)", "texto": frase(it["explicacao"])})
-    if it.get("cena"): c.append({"rotulo": "Prompt da imagem (Meta AI)", "texto": prompt_imagem(it["cena"])})
+    if it.get("img_caminho"): c.append({"rotulo": "🖼️ Imagem do post (no seu PC)", "texto": it["img_caminho"]})
+    if it.get("cena") and not it.get("capa"):
+        c.append({"rotulo": "Prompt da imagem (Meta AI, só se não gostar da do robô)", "texto": prompt_imagem(it["cena"])})
+        c.append({"rotulo": "📎 Anexar junto ao Prompt", "texto": FICHA})
     return c
+PC = "G:\\Meu Drive\\Tiao Poupador"  # o Drive do canal no PC do Ed (o link http abre na conta errada: Ed, 21/11)
+FICHA = PC + "\\referencia\\tiao-ficha-oficial.jpg"
 def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a imagem a mao
     try:
         ref = drive.achar("referencia", drive.achar("Tiao Poupador"))
@@ -197,8 +217,8 @@ def refs_tiao():  # as fotos do Tiao no Drive, para anexar quando o Ed gera a im
                 for f in drive.listar(ref) if f["name"] == "tiao-ficha-oficial.jpg"]  # so a ficha oficial do Tiao (Ed 19/11)
     except Exception: return []
 DESCRICAO = "\n".join([
-    "Post de texto: copie o texto; a imagem vem no link (capa do vídeo ou a que o robô fez) ou gere no Meta AI com o prompt e as fotos do Tião. No YouTube Studio: Criar > Criar post, cole o texto, junte a imagem, seta ao lado de Publicar > Agendar.",
-    "Enquete (com imagem): Criar > Criar post > Enquete. A pergunta vai no 1º campo e cada opção no seu, junte a imagem.",
+    "Post de texto: copie o texto (já vem com os parágrafos); a imagem está no seu PC, no caminho do passo. No YouTube Studio: Criar > Criar post, cole o texto, Imagem, seta ao lado de Postar > Agendar.",
+    "Enquete (só de texto): Criar > Criar post > Enquete com texto. A pergunta vai no 1º campo e cada opção no seu.",
     "Quiz (só de texto): Criar > Criar post > Quiz. Pergunta, opções, marque a certa (vem no título do passo) e cole a explicação.",
     "O YouTube não deixa robô publicar posts, por isso vêm para agendar à mão."])
 def montar(seg, itens):
@@ -211,16 +231,12 @@ def montar(seg, itens):
         if it["tipo"] == "quiz": texto += f" · resposta certa: Opção {LETRAS[it['correta']]}"
         if it.get("falta_link"): texto += f" · ⚠️ falta o link do vídeo {it['nn']}: junte-o no fim do texto"
         p = {"codigo": f"post-{data.isoformat()}", "texto": texto, "copias": copias(it), "links": [STUDIO]}
-        if it.get("video"): p["links"].append({"rotulo": "▶️ O vídeo deste post", "url": it["video"]})
-        if tem_img(it):
-            if it.get("capa"): p["links"].append({"rotulo": "🖼️ A imagem: a capa do vídeo (baixar)", "url": it["url_img"]})
-            else:
-                if it.get("url_img"): p["links"].append({"rotulo": "🖼️ A imagem que o robô já fez (se não gostar, gere no Meta AI)", "url": it["url_img"]})
-                if refs is None: refs = [] if ENSAIO else refs_tiao()
-                p["links"] += [META_AI] + refs
-            p["ficheiro"] = f"post-{data.isoformat()}-{SIGLA[dia]}.jpg"; p["formato"] = "1:1"
+        # o video ja vai no fim do texto, e a imagem e um CAMINHO no PC (o link do Drive abre noutra conta: Ed, 21/11)
+        if it.get("cena") and not it.get("capa"):
+            p["links"].append(META_AI)
+            if not it.get("img_caminho"): p["ficheiro"] = f"post-{data.isoformat()}-{SIGLA[dia]}.jpg"; p["formato"] = "1:1"
         passos.append(p)
-        md += [f"### {texto}", ""] + [l for l in (f"🖼️ {x['rotulo']}: {x['url']}" for x in p["links"][1:])] + [""]
+        md += [f"### {texto}", ""]
         for c in p["copias"]: md += [f"**{c['rotulo']}**", "```", c["texto"], "```", ""]
     return passos, md
 
@@ -260,14 +276,16 @@ def main():
         cod = f"P{i + 1}"; txt = p["texto"].strip(); v = vids.get(x["video"]) if x["video"] else None
         url_v = f"https://youtu.be/{v['id']}" if v and v.get("id") else ""  # sem o id, o passo avisa (nada de texto provisorio a colar)
         if url_v: txt += f"\n\n▶️ {url_v}"
-        url_img, cena, capa = None, "", False
+        url_img, cena, capa, img_cam = None, "", False, ""
         if x["cena"] and p["cena"]:
             cena = p["cena"]; arq_img = f"{sai}/{cod}-{dia}.jpg"
-            if not ENSAIO and imagem(cena, arq_img): url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
+            if not ENSAIO and imagem(cena, arq_img):
+                url_img = f"https://drive.google.com/file/d/{drive.subir(arq_img, pasta)['id']}/view"
+                img_cam = "\\".join([PC, "posts", semana, os.path.basename(arq_img)])
             time.sleep(5)
-        elif v and v.get("capa"): url_img, capa = f"https://drive.google.com/file/d/{v['capa']}/view", True
+        elif v and v.get("capa"): url_img, capa, img_cam = f"https://drive.google.com/file/d/{v['capa']}/view", True, "\\".join([PC, "robo", f"video-{v['nn']}", "capa.jpg"])
         itens.append({"data": x["data"], "nn": x["video"], "dia": dia, "tipo": tipo, "texto": txt, "opcoes": p["opcoes"], "correta": p["correta"], "explicacao": p["explicacao"],
-                      "cena": cena, "url_img": url_img, "capa": capa, "video": url_v, "falta_link": bool(v and not url_v)})
+                      "cena": cena, "url_img": url_img, "capa": capa, "img_caminho": img_cam, "video": url_v, "falta_link": bool(v and not url_v)})
     passos, md = montar(seg, itens)
     for p in passos:  # a pasta onde salvar a imagem (regra do Team, Ed 19/11)
         if p.get("ficheiro") and pasta: p["pasta"] = {"rotulo": f"Google Drive > Tiao Poupador > posts > {semana}", "url": f"https://drive.google.com/drive/folders/{pasta}"}
