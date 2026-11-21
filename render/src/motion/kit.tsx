@@ -98,7 +98,17 @@ export const Numero: React.FC<{ valor: number; rotulo?: string; embaixo?: string
         {rotulo && <div style={{ ...txt(64, COR.cinza, 600), transform: `translateY(${(1 - m(t, 0)) * -40}px)`, opacity: m(t, 0) }}>{rotulo}</div>}
         <div style={{ display: "flex", alignItems: "center", gap: 40, transform: `translateY(${flutua(t)}px)` }}>
           <div style={{ ...caixa(), padding: "26px 70px", transform: `scale(${(0.7 + 0.3 * m(t, 0.05, "estalo")) * pancada}) rotate(${(1 - m(t, 0.05)) * -4}deg)` }}>
-            <div style={{ ...txt(230, cor), fontVariantNumeric: "tabular-nums" }}>{formato(de + (valor - de) * ease)}</div>
+            {/* 21/11 (Ed: «esse quadro ficou muito grande quase esta saindo pra fora da tela»): numa linha so, a letra encolhe pelo
+                tamanho do texto final; um sufixo comprido («cruzados novos») vai numa linha menor por baixo do numero, que fica grande */}
+            {(() => {
+              const fim = formato(valor), partes = /^([^A-Za-zÀ-ú]*\d[\d.,]*)\s+([A-Za-zÀ-ú].{7,})$/.exec(fim);
+              const largura = emoji ? 1330 : 1600, cabe = (n: string, max: number) => Math.min(max, Math.floor(largura / (0.56 * Math.max(1, n.length))));
+              const agora = formato(de + (valor - de) * ease);
+              if (partes) return (<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ ...txt(cabe(partes[1], 230), cor), whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>{agora.slice(0, agora.length - partes[2].length).trim()}</div>
+                <div style={{ ...txt(cabe(partes[2], 96), cor, 700), whiteSpace: "nowrap", marginTop: 8 }}>{partes[2]}</div></div>);
+              return <div style={{ ...txt(cabe(fim, 230), cor), whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums" }}>{agora}</div>;
+            })()}
           </div>
           {emoji && <Emoji e={emoji} tam={240} estilo={{ transform: `scale(${m(t, 0.25 + dur, "estalo")})` }} />}
         </div>

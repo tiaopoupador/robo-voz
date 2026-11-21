@@ -23,7 +23,8 @@ export const VAZIO: Dados = { pasta: "v02", fim: 10, tela: 0, cenas: [], legenda
 
 const formato = (c: Cena) => {
   const suf = c.suf ?? "";
-  if (c.fmt === "int") return (v: number) => Math.round(v) + suf;
+  // 21/11: 50000 virava «50000»; de 10 mil para cima leva o ponto (os anos, como 1990, ficam sem ponto)
+  if (c.fmt === "int") return (v: number) => (Math.abs(c.valor ?? v) >= 10000 ? Math.round(v).toLocaleString("pt-BR") : String(Math.round(v))) + suf;
   if (c.fmt === "num") return (v: number) => v.toLocaleString("pt-BR", { minimumFractionDigits: c.casas, maximumFractionDigits: c.casas }) + suf;
   if (c.fmt === "pct") return (v: number) => v.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (c.fmt === "nada") return () => "";

@@ -52,7 +52,8 @@ def baixar_pasta(pid, sai):
 def baixar_tudo(NN):
     """na nuvem, no dia da montagem: imagens do robo, o que o Ed salvou, a narracao e os tempos das palavras"""
     raiz = achar("Tiao Poupador"); robo = achar("robo", raiz); v = achar(f"video-{NN}", robo)
-    print("imagens do robo:", baixar_pasta(achar("img", v), f"{P}/fabrica/videos/v{NN}/img"))
+    im = achar("img", v)  # 21/11: sem a pasta (video so com imagens do Ed) o 04 parou aqui com 404
+    print("imagens do robo:", baixar_pasta(im, f"{P}/fabrica/videos/v{NN}/img") if im else "nenhuma pasta img (segue)")
     tmp = f"{P}/fabrica/saida/_drive"; baixar_pasta(v, tmp); os.makedirs(P + "/teste-vozes", exist_ok=True)
     for a, b in ((f"NARRACAO-video-{NN}.mp3", f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3"), (f"{NN}-palavras.json", f"{P}/fabrica/saida/{NN}-palavras.json")):
         if os.path.exists(f"{tmp}/{a}"): os.replace(f"{tmp}/{a}", b); print("ok", a)
@@ -63,6 +64,8 @@ def guardar(NN, arq):
     """sobe primeiro e so depois apaga o antigo com o mesmo nome (se o envio cair, o antigo fica)"""
     raiz = pasta("Tiao Poupador"); v = pasta(f"video-{NN}", pasta("robo", raiz))
     antigos = [f for f in listar(v) if f["name"] == os.path.basename(arq)]
+    igual = [f for f in antigos if int(f.get("size", -1)) == os.path.getsize(arq)]
+    if igual: return f"https://drive.google.com/file/d/{igual[0]['id']}/view"  # 21/11: o mesmo arquivo ja esta la (nao se sobe 700 MB de novo)
     r = subir_grande(arq, v)
     for f in antigos: api(f"{D}/{f['id']}", metodo="DELETE", bruto=True)
     return f"https://drive.google.com/file/d/{r['id']}/view"
