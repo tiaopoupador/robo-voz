@@ -29,8 +29,12 @@ def quem(refs): return "".join(v for k, v in QUEM.items() if k in refs)
 DUAS = ("GENERATE 2 DIFFERENT IMAGES of this same scene that COMPLEMENT each other, like two moments of the same shot: "
         "image 1 = medium-wide view showing the place and the whole action; image 2 = closer view of the main detail (faces, hands and what they hold), "
         "a moment right after image 1. Same characters, same clothes, same place, same light in both. Each image 16:9. ")
-GIF_LENTO = ("Then, with these 2 images, create a SLOW animated GIF of 4 to 5 seconds that goes smoothly from image 1 to image 2 "
-             "(gentle crossfade and slow camera movement, no fast cuts), 16:9.")
+# Ed, 21/11: «no prompt do gif tem q reforçar que o gif tem q ser bem lento, ele esta muito rapido»
+GIF_LENTO = ("Then, with these 2 images, create a VERY SLOW, CALM animated GIF, at least 5 seconds long, 16:9. "
+             "SPEED IS THE TOP PRIORITY: everything moves in SLOW MOTION, like a gentle breath. "
+             "Hold image 1 still for about 2 seconds, then a very slow, soft crossfade (about 2 seconds) to image 2, then hold image 2 still for about 2 seconds. "
+             "Only a tiny, slow camera drift (slow zoom in). NO fast movement, NO quick cuts, NO flicker, NO jumping, NO looping back and forth fast. "
+             "If in doubt, make it SLOWER.")
 UMA = "ONE single image, 16:9. "
 # Ed, 19/11 (video 05, so motion): cenario VAZIO, onde os personagens entram depois por codigo. Sem o texto de personagem
 # (puxava gente para dentro) e a imagem 2 e um detalhe do lugar, nao de rostos. No cenas.py: VAZIOS = {"meta-...", ...}.
@@ -124,7 +128,7 @@ if "--enviar" in sys.argv:
     except Exception as e: print("recados do Team não vieram:", e)
     try:
         ja = team.ver(NN) is not None
-        if ja: print("Team: a tarefa ja existe, nao mando de novo")
+        if ja and "--atualizar" not in sys.argv: print("Team: a tarefa ja existe, nao mando de novo (--atualizar troca os textos e guarda o que o Ed marcou)")
         else:
             r = team.mandar({"chave_unica": team.chave_unica(NN), "tipo": TIPO, "projeto": "Tião Poupador",
                              "titulo": f"Vídeo {NN}: o que gerar à mão ({len(PASSOS)} arquivos)",
