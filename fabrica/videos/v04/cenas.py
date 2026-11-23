@@ -118,13 +118,13 @@ L = {
  39: [("^", "M", ic([("🏠", "em casa, só um mês de despesas", False)], "Dica 1"))],
  40: [("^", "M", ic([("🏦", "confere o grupo do banco", False)], "Dica 2"))],
  41: [("^", "M", ic([("👨‍👩‍👧", "a família precisa saber", False)], "Dica 3")), ("própria Dona Cida", "I", "meta-cida-sobrinha")],
- 42: [("^", "C", (RUA, "P1", -1)), ("FinMoovi", "V", "banco:FM:3-extrato/extrato__estilo-moldura-celular__horizontal.mp4")],
+ 42: [("^", "C", (RUA, "P1", -1)), ("fluxo de caixa", "V", "banco:FM:2-fluxo-caixa/fluxo__estilo-barras__horizontal.mp4")],
  43: [("^", "M", nu(7, "Dá para testar o FinMoovi", "link na descrição", cor=VERDE, fmt="int", suf=" dias", emoji="📱"))],
  44: [("^", "C", (RUA, "P3", 1))],
  45: [("^", "C", (RUA, "P2", -1))],
  46: [("^", "I", "meta-janela-noite-suv")],
  47: [("^", "I", "meta-janela-noite-suv@b")],
- 48: [("^", "C", (RUA, "P3", 1)), ("cinquenta reais", "M", nu(50, "Pediu emprestado ao porteiro", "às 23h40, até sexta", cor=VERM, emoji="😳"))],
+ 48: [("^", "I", "meta-janela-noite-suv"), ("E era ela", "C", (RUA, "P4", -1))],  # 23/11 (Ed: «nao entregar o ouro»): sem o cartão dos R$ 50, o pedido fica para o 05
  49: [("^", "C", (RUA, "P4", -1))],
  50: [("^", "C", (RUA, "P2", 1))],
 }

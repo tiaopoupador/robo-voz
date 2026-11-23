@@ -132,7 +132,7 @@ Em palavras de cozinha: cem reais guardados numa lata em julho de mil novecentos
 
 [POSE P4 alerta] [SOM: alerta curto]
 
-Ih, esse dinheiro criou perna! Ninguém abriu a lata, e de cada cem reais, quase noventa foram embora sozinhos.
+Esse dinheiro criou perna! Ninguém abriu a lata, e de cada cem reais, quase noventa foram embora sozinhos.
 
 [CENA: a Dona Cida olhando a lata aberta, séria]
 
@@ -196,7 +196,7 @@ Dica número três: alguém da sua família precisa saber onde está o seu dinhe
 
 [POSE P1 pensativo]
 
-Daqui a pouco eu te conto o que a Dona Cida me disse naquela noite, da janela, olhando para o carrão branco da Valéria. Mas antes, um recado rápido. Para guardar um pouco todo mês, primeiro você precisa saber para onde vai cada real. E é aí que eu uso o FinMoovi, o aplicativo que eu uso todo dia. Você tira foto da notinha do mercado, ele lê tudo sozinho e te mostra para onde foi o seu dinheiro no mês.
+Daqui a pouco eu te conto o que a Dona Cida me disse naquela noite, da janela, olhando para o carrão branco da Valéria. Mas antes, um recado rápido. Para guardar um pouco todo mês, primeiro você precisa saber para onde vai cada real. E é aí que eu uso o FinMoovi, o aplicativo que eu uso todo dia. Ele tem o fluxo de caixa: numa tela só, você vê o que entra, o que sai e quanto sobra no fim de cada mês. Aí fica fácil escolher quanto vai para guardar, antes de o dinheiro sumir.
 
 [TEXTO: FINMOOVI · 7 DIAS GRÁTIS]
 
@@ -222,11 +222,11 @@ Naquela noite, eu passei de novo na frente da janela da Dona Cida. Ela estava l�
 
 [POSE P3 aponta] [TEXTO: R$ 50?!]
 
-E ela acertou. Poucos dias depois, às onze e quarenta da noite, com a rua inteira apagada, a Valéria, a vizinha do carrão branco de cento e oitenta e nove mil reais, o preço que ela mesma contou para a rua inteira, bateu na minha varanda e pediu cinquenta reais emprestados ao porteiro. Eu.
+Poucos dias depois, já era quase meia-noite. A rua inteira apagada, só a luz da minha varanda acesa. Aí eu ouvi três batidinhas no portão, bem baixinho, de quem não quer que ninguém escute. Eu abri. E era ela. A Valéria. A vizinha da SUV. Ela olhou para um lado, olhou para o outro, chegou bem perto de mim e falou uma coisa que eu nunca imaginei ouvir de quem mora numa casa de vitrine.
 
-Se você já emprestou dinheiro para quem vive de aparência, ou conhece alguém que gasta o que não tem para parecer rico, você não pode perder o próximo vídeo.
+E o que ela me pediu, ali no escuro, eu não vou te contar aqui. Só te digo uma coisa: depois daquela noite, eu nunca mais olhei para aquele carrão do mesmo jeito.
 
-Nele eu vou te mostrar as três contas que ninguém da rua via por trás daquele carrão, quanto cada uma come por mês, e a resposta que eu dei para a Valéria naquela noite. Essa, nem ela esperava. Por que a vizinha da SUV pediu cinquenta reais emprestado ao porteiro? Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+O que a vizinha da SUV pediu ao porteiro, quase meia-noite, e por que ela foi bater justo na minha porta, eu te conto no próximo vídeo. E a resposta que eu dei, olha, nem ela esperava. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
 

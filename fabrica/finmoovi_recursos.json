@@ -1,0 +1,14 @@
+{
+  "_regra": "Ed, 23/11/2026: «cada video teria que falar uma funcionalidade diferente». Cada vídeo mostra UM recurso do FinMoovi que ainda não apareceu, o que combina com o tema. O roteiro_voz.py avisa se repetir. Clipes em FINMOOVI/VIDEOS-BROLL (os da nuvem estão na lista do para-nuvem.sh).",
+  "recursos": [
+    {"recurso": "foto da notinha (lê o cupom sozinho)", "palavras": ["foto da notinha", "tira foto", "tira uma foto"], "clipe": "7-smart-capture/smart-capture__estilo-moldura-celular__horizontal.mp4", "usado": ["02"]},
+    {"recurso": "lançar o gasto falando uma frase", "palavras": ["falando uma frase", "por voz"], "clipe": "7-smart-capture/smart-capture__estilo-captura-voz__horizontal.mp4", "usado": ["03"]},
+    {"recurso": "extrato de cada conta", "palavras": ["extrato"], "clipe": "3-extrato/extrato__estilo-moldura-celular__horizontal.mp4", "usado": ["03"]},
+    {"recurso": "fluxo de caixa (entra, sai, sobra)", "palavras": ["fluxo de caixa"], "clipe": "2-fluxo-caixa/fluxo__estilo-barras__horizontal.mp4", "usado": ["04"]},
+    {"recurso": "balanço: para onde foi cada real, por categoria", "palavras": ["balanço", "categoria"], "clipe": "4-balanco/balanco__estilo-donut-despesas__horizontal.mp4", "usado": []},
+    {"recurso": "cartões: fatura e limite de cada cartão", "palavras": ["cartões", "fatura", "limite do cartão"], "clipe": "1-cartoes/cartoes__estilo-moldura-celular__horizontal.mp4", "usado": ["05"]},
+    {"recurso": "lista de compras com o total na hora", "palavras": ["lista de compras", "carrinho"], "clipe": "5-compras/compras__estilo-carrinho__horizontal.mp4", "usado": []},
+    {"recurso": "painel do mês (tudo numa tela)", "palavras": ["painel"], "clipe": "6-dashboard", "usado": []},
+    {"recurso": "calculadoras (juros, financiamento, reserva): estão no SITE finmoovi.com; conferir se estão no app antes de dizer", "palavras": ["calculadora", "simulador"], "clipe": "8-calculadoras", "usado": []}
+  ]
+}

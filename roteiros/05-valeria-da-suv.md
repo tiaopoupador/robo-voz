@@ -136,7 +136,7 @@ Somando as sessenta, ela vai pagar duzentos e setenta e três mil, trezentos e t
 
 [TIÃO P03 braços cruzados]
 
-E cabia. A parcela cabia. Quem não cabia era a vida em volta dela. Ih, esse dinheiro criou perna!
+E cabia. A parcela cabia. Quem não cabia era a vida em volta dela. Esse dinheiro criou perna!
 
 [TEXTO: 48 MESES]
 

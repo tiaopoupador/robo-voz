@@ -17,6 +17,12 @@ for t, l in zip(titulos, comeco):
     t = NOMES.get(t, t)
     s = 0 if not caps else int(ini.get(l, 0) + (4.5 if getattr(C, "VINHETA", None) is not None and l > C.VINHETA else 0))  # a vinheta empurra o resto 4,5 s
     caps.append(f"{s // 60:02d}:{s % 60:02d} {re.sub(r'^Armadilha (\d): ', r'Armadilha \1: ', t)}")
+# 23/11 (do youtube-agent-skill, yt-chapters): o YouTube ignora a lista inteira, calado, se o 1o nao for 00:00,
+# se houver menos de 3, ou se um capitulo tiver menos de 10 s. Para aqui em vez de subir capitulos que nao aparecem.
+_seg = [int(c[:2]) * 60 + int(c[3:5]) for c in caps]
+assert caps and _seg[0] == 0 and len(caps) >= 3, f"capitulos invalidos para o YouTube: {caps}"
+_curtos = [caps[i] for i in range(len(_seg) - 1) if _seg[i + 1] - _seg[i] < 10]
+assert not _curtos, f"capitulo com menos de 10 s (o YouTube some com todos): {_curtos}"
 fontes = []
 for linha in md.split("## Ficha de fontes")[1].splitlines():
     c = [x.strip() for x in linha.strip("|").split("|")]

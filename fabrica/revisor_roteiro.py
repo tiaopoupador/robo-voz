@@ -41,19 +41,31 @@ Aponte cada lugar onde a história falha:
       é falha. Depois da vinheta o Tião cumprimenta ("Chega mais! O café tá passado e hoje tem conta pra fazer.") e diz quem ele é, em 2 ou 3 frases.
       "Ô de casa" e "banquinho" são proibidos (o dono do canal recusou);
    c) o FinMoovi entra no fim do penúltimo capítulo, depois de anunciar o que vem ("mas antes, um recado rápido"), e NUNCA no fim;
+      cada vídeo mostra UM recurso do app que os outros vídeos ainda não mostraram e que combina com o tema (o dono do canal,
+      23/11/2026: «cada video teria que falar uma funcionalidade diferente»); repetir a «foto da notinha» de novo é falha;
+      cada vídeo mostra UM recurso do app que os outros vídeos ainda não mostraram, e que combina com o tema (o dono do canal,
+      23/11/2026: «cada video teria que falar uma funcionalidade diferente»); repetir a «foto da notinha» de novo é falha;
    d) pelo menos 2 pedidos FALADOS de like/inscrição/comentário, cada um colado a um gancho do que vem a seguir;
    e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
    f) as últimas frases são o gancho para o PRÓXIMO vídeo, como um trailer: chama quem assiste pela situação dele (quem já passou
       e quem quer evitar), toca na dor com a causa, promete 2 ou 3 coisas concretas do próximo vídeo (a última sem contar o que é)
       e só então manda clicar ("Clica agora, que o vídeo já está aparecendo aqui na tela!"); o vídeo acaba logo ali.
       Gancho vago ("essa conversa é para você" sem dizer o que vem e para quem) é falha. Nunca "no próximo capítulo" entre partes.
+      NOVELA (o dono do canal, 23/11/2026: «nao entregar o ouro (...) como se fosse um escritor de novelas»; sempre GRAVE): o fim
+      MOSTRA um pedaço e CORTA antes do principal. Nunca conta o que acontece no próximo vídeo (o pedido, a resposta, a conta, o
+      número, a virada). Mostra a porta abrindo, não quem diz o quê; diz que algo aconteceu, não o quê;
+      NOVELA (o dono do canal, 23/11/2026: «nao entregar o ouro (...) como se fosse um escritor de novelas»; sempre GRAVE): o fim
+      MOSTRA um pedaço e CORTA antes do principal. Nunca conta o que acontece no próximo vídeo (o pedido, a resposta, a conta, o
+      número, a virada). Mostra a porta abrindo, não quem diz o quê; diz que algo aconteceu, não o quê. Cartão na tela com o
+      segredo do próximo vídeo também é falha grave;
    g) SEQUÊNCIA (o dono do canal, 19/11/2026: «o video x no final tem que fazer o gancho com o titulo do proximo video»): o gancho
       final repete a pergunta ou as palavras fortes do TÍTULO DO PRÓXIMO VÍDEO, que é: «{PROXIMO}». Se o fim não chama esse título,
       ou promete outro assunto, é falha grave;
    h) a abertura deste vídeo paga o que o FIM DO VÍDEO ANTERIOR prometeu: «{ANTERIOR}». Se o vídeo não entrega o prometido, é falha grave.
 9. FALA DE GENTE (o dono do canal, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»; sempre grave):
    a) sigla sem dizer o que é (diga o nome inteiro: "Fundo de Garantia de Operações", não "FGO");
-   b) "hein" (a voz lê "rein"): proibido;
+   b) "hein" (a voz lê "rein"): proibido; interjeição solta que a voz lê estranho ("Ih", "Eita", "Ué", "Uai", "Hum") também (o dono do canal, 23/11/2026);
+   b2) interjeição solta que a voz lê estranho ("Ih", "Eita", "Ué", "Uai", "Hum"): proibida (o dono do canal, 23/11/2026);
    c) frase solta sem contexto: "está escrito" sem dizer ONDE (site oficial de quem), "no site" sem dizer qual, fala de personagem
       curta demais para quem chegou agora entender;
    d) pergunta ou espanto escrito sem "?" ou "!" (a voz só sobe o tom com a pontuação);

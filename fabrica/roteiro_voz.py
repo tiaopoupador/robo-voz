@@ -30,6 +30,7 @@ SIGLA_OK = {"CPF", "SMS", "PIX", "WHATSAPP", "SUV"}  # SUV: o gerar.py soletra �
 avisos = []
 for i, f in enumerate(falas):
     if re.search(r"\bhein\b", f, re.I): avisos.append(f"fala {i}: tem 'hein' (a voz le 'rein'): tirar")
+    for w in re.findall(r"\b(Ih|Eita|Ué|Uai|Hum)\b", f): avisos.append(f"fala {i}: interjeicao '{w}' (Ed 23/11: a voz fala estranho): tirar")
     for s in set(re.findall(r"\b[A-Z]{2,6}\b", f)) - SIGLA_OK: avisos.append(f"fala {i}: sigla {s}: dizer o nome inteiro")
     if re.search(r"\b(está escrito|no site)\b[.!]", f, re.I): avisos.append(f"fala {i}: 'está escrito'/'no site' sem dizer onde")
 for a in avisos: print("AVISO", a)
@@ -50,3 +51,15 @@ if prox:
     tem = len(fortes) - len(faltam)
     print(f"gancho do proximo ({prox['nn']}: {prox['titulo']}): {tem} de {len(fortes)} palavras do titulo no fim")
     if tem < max(2, len(fortes) // 2): print(f"AVISO o fim nao chama o titulo do {prox['nn']}: faltam {', '.join(faltam)}")
+
+# Guarda do FinMoovi (Ed, 23/11/2026: «cada video teria que falar uma funcionalidade diferente»): o recado do app
+# mostra um recurso que nenhum outro video mostrou (lista em fabrica/finmoovi_recursos.json; marcar o "usado" la).
+REC = json.load(open(f"{P}/fabrica/finmoovi_recursos.json", encoding="utf-8"))["recursos"]
+fm = " ".join(f for f in falas if "FinMoovi" in f).lower()
+achados = [r for r in REC if any(w in fm for w in r["palavras"])]
+if fm and not achados: print("AVISO o recado do FinMoovi nao cita nenhum recurso da lista finmoovi_recursos.json")
+for r in achados:
+    outros = [v for v in r["usado"] if v != NN]
+    if outros: print(f"AVISO FinMoovi repetido: '{r['recurso']}' ja apareceu no video {', '.join(outros)}: escolher outro recurso")
+    elif NN in r["usado"]: print(f"FinMoovi: {r['recurso']} (so neste video)")
+    else: print(f"FinMoovi: {r['recurso']} (novo: marcar {NN} em 'usado')")

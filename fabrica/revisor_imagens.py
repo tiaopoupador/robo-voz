@@ -26,6 +26,8 @@ também nas pequenas do fundo:
 2. ROSTO deformado, torto, derretido, careta exagerada que fica feia, rosto em objeto ou parede.
 3. CORPO: braço, mão ou perna a mais ou a menos (conte: cada pessoa tem 2 braços ligados aos ombros), braço saindo das costas,
    mão que segura algo e não está ligada a um braço, alça de bolsa no ombro sem a mão/braço que deveria estar ali, membro cortado sem motivo.
+   CONTE AS MÃOS de cada pessoa, uma por uma, e siga cada mão até o ombro: são EXATAMENTE 2. Caso que já passou e não podia
+   (Ed, 21/11/2026, vídeo 04): a mulher segura a caderneta com as DUAS mãos e ainda levanta uma TERCEIRA mão aberta no ar = 3 mãos, reprovado.
 4. MÃOS: dedos tortos, grudados, a mais ou a menos, mão que vira massa.
 5. OBJETOS e VEÍCULOS deformados ou incompletos: carro/picape sem porta, roda torta, lataria derretida, carrinho de mercado torto, objeto flutuando.
 6. QUANTIDADE: a narração ou o pedido diz um número (seis itens riscados, duas coisas, uma sacola) e a imagem mostra outro. CONTE.
