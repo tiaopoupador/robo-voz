@@ -34,6 +34,8 @@ def falado(texto):
             # Ed, 19/11/2026: «deveria ser B R, bê, érre»; «góv ponto bê érre»; «plano Cólor»; sigla soletrada letra por letra
             (r"\bb c b\b", "bê cê bê"), (r"\bgov\b", "góv"), (r"\bb r\b", "bê érre"), (r"Collor", "Cóllo"), (r"\bFGO\b", "éfe gê ó"),
             # Ed, 19/11/2026, escolhidas de ouvido: teste 1 (1, 3, 11) e teste 2 (2 «nívio», 6 «Cóllo», 8 «Finmúvi»); o Collor ainda não agrada: evitar o nome na fala: «móro», «móstro», «ní-vel», «Kólor», «sufôco»
+            # Ed, 23/11/2026: «o correto pu blí ca» (o verbo; «pública», com acento, não muda)
+            (r"\bpublica\b", "publíca"), (r"\bPublica\b", "Publíca"),
             (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1ívio"), (r"\bsufoco\b", "sufôco")]
     for a, b in FALA: texto = re.sub(a, b, texto)
     return texto
