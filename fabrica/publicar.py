@@ -20,6 +20,14 @@ txt += [f"- Imagens suas que entraram: **{len(mont.get('do_ed', []))}**",
         f"- Pedidos seus que não chegaram (entrou a imagem do robô no lugar): **{len(mont.get('plano_b', []))}**"]
 if mont.get("avisos"): txt += ["", "Avisos da montagem (eu confiro):", *[f"- {a}" for a in mont["avisos"][:15]]]
 publicado = None
+PRONTA = f"{P}/capas/video-{NN}/capa.jpg"
+# 23/11/2026: a 1a tentativa do 04 preparou as capas e caiu na subida; a 2a nao achava mais os originais. Capa ja preparada vale.
+if not capas and os.path.exists(PRONTA) and SUBIR:
+    import re as _re
+    teste = [drive.guardar(NN, f"{P}/capas/video-{NN}/{t}") for t in sorted(os.listdir(f"{P}/capas/video-{NN}")) if _re.match(r"teste-[B-Z]\.jpg$", t)][:2]
+    por_letra = {t[6]: t for t in sorted(os.listdir(f"{P}/capas/video-{NN}")) if _re.match(r"teste-[B-Z]\.jpg$", t)}
+    capas = ["(ja preparada)"]; JA_PRONTA = True
+else: JA_PRONTA = False
 if not capas:
     txt += ["", "## ⚠️ Falta a capa", "Sem capa o vídeo **não sobe** (regra do canal). Salve a capa com o nome `CAPA.jpg` na pasta do vídeo no Drive e me avise: eu agendo na hora."]
 elif SUBIR:
@@ -27,17 +35,16 @@ elif SUBIR:
     import re as _re, shutil as _sh
     # so conta a versao com a letra MAIUSCULA e o "_" (CAPA-B_..., como no pedido). "CAPA-c_..." em minuscula e uma variacao
     # extra que o Ed guardou (07/11: tres variacoes da Sandra viraram C, D e E e misturaram com a C de verdade). O YouTube testa ate 3.
-    por_letra = {}
-    for c in sorted(capas):
+    if not JA_PRONTA: por_letra = {}
+    for c in sorted(capas if not JA_PRONTA else []):
         m_ = _re.match(r"CAPA-([B-Z])[_.]", c)
         if m_ and m_[1] not in por_letra and len(por_letra) < 2: por_letra[m_[1]] = c
-    extra = list(por_letra.values())
-    capas = [c for c in capas if not _re.match(r"(?i)capa-[a-z]", c)] + extra  # a principal e a sem letra
-    teste = []
+    extra = list(por_letra.values()) if not JA_PRONTA else []
+    if not JA_PRONTA: capas = [c for c in capas if not _re.match(r"(?i)capa-[a-z]", c)] + extra; teste = []  # a principal e a sem letra
     for c in extra:
         subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{c}"], check=True)
         d = f"{P}/capas/video-{NN}/teste-{c[5].upper()}.jpg"; _sh.copy(f"{P}/capas/video-{NN}/capa.jpg", d); teste.append(drive.guardar(NN, d))
-    subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{capas[0]}"], check=True)
+    if not JA_PRONTA: subprocess.run([sys.executable, f"{P}/capas/preparar-capa.py", f"video-{NN}", f"{ent}/{capas[0]}"], check=True)
     subprocess.run([sys.executable, f"{P}/youtube/subir.py", f"video-{NN}"], check=True)
     publicado = json.load(open(f"{P}/capas/video-{NN}/publicado.json", encoding="utf-8"))
     drive.guardar(NN, f"{P}/capas/video-{NN}/publicado.json"); drive.guardar(NN, f"{P}/capas/video-{NN}/capa.jpg")

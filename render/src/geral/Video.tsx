@@ -13,6 +13,7 @@ import { FotoNota } from "../motion/fotonota";
 import { Brilho, Check, Reacao, tremor, Voa, Xis } from "../motion/reacoes";
 import { Acao, Plantao, PLANTAO_ALTURA } from "../motion/Plantao";
 import { Conversa, OndaCtx, EstiloCtx } from "../motion/Conversa";
+import { CenaTurma } from "../motion/boneco/CenaTurma";  // 23/11: o longo so motion (05): a turma viva no cenario
 
 const { fontFamily } = loadFont("normal", { weights: ["800"] });
 type Cena = { ini: number; k: string; [x: string]: any };
@@ -77,6 +78,7 @@ const Peca: React.FC<{ c: Cena; dur: number; lado: number }> = ({ c, dur, lado }
     case "img": case "vid":
     case "hib": return <Camera c={c} dur={dur} lado={lado}>{(c.ov ?? []).map((o: any, i: number) => <PorCima key={i} o={o} />)}</Camera>;
     case "conversa": return <Conversa fundo={c.src} pose={c.pose} t0={c.ini} dur={dur} lado={c.lado ?? 1} />;
+    case "turma": return <CenaTurma c={c as any} dur={dur} />;
     case "frase": return <Frase texto={c.texto} sobre={c.sobre ?? undefined} escuro={c.escuro} emoji={c.emoji ?? undefined} />;
     case "num": return <Numero valor={c.valor} rotulo={c.rotulo ?? undefined} embaixo={c.embaixo ?? undefined} de={c.de} cor={c.cor} formato={formato(c)} emoji={c.emoji ?? undefined} />;
     case "conta": return <Conta titulo={c.titulo} linhas={c.linhas} ja={c.ja} total={c.total} neutro={c.neutro} passo={c.passo} />;

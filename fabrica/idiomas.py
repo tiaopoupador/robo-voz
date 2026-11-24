@@ -53,26 +53,34 @@ elif ACAO == "traduzir":
         cache = f"{SAI}/{NN}-idiomas-{lg}.json"
         if os.path.exists(cache): res[lg] = json.load(open(cache, encoding="utf-8")); print(f"{lg}: ja estava pronto"); continue
         so_texto = os.path.exists(f"{SAI}/{NN}-legenda-{lg}.srt") and "--refazer" not in sys.argv
-        for tentativa in (1, 2):
-            numeradas = "" if so_texto else "\n".join(f"{i + 1}. {c[2]}" for i, c in enumerate(cues))
-            pede = "o título e a descrição" if so_texto else f"o título, a descrição e as {len(cues)} linhas de legenda"
-            msg = (f"Traduza para {nome} {pede} de um vídeo do YouTube do canal brasileiro 'Tião Poupador' "
-                   "(desenho animado sobre dinheiro do dia a dia). Tom natural e falado, frases curtas como numa legenda. Mantenha: os nomes das pessoas "
-                   "(Tião, Sandra, Marcos), 'FinMoovi', os valores em R$ como estão, os links, as hashtags e as quebras de linha da descrição. "
-                   "O título até 100 caracteres, com o mesmo mistério do original. Nunca use travessão. "
-                   + ("Devolva 'linhas' vazio.\n\n" if so_texto else f"Devolva exatamente {len(cues)} linhas, na mesma ordem, sem os números. Uma linha de entrada = uma linha de saída, nunca junte duas.\n\n")
-                   + f"TÍTULO:\n{titulo}\n\nDESCRIÇÃO:\n{desc}" + ("" if so_texto else f"\n\nLINHAS:\n{numeradas}"))
+        BASE = (f"Traduza para {nome} {{pede}} de um vídeo do YouTube do canal brasileiro 'Tião Poupador' "
+                "(desenho animado sobre dinheiro do dia a dia). Tom natural e falado, frases curtas como numa legenda. Mantenha: os nomes das pessoas "
+                "(Tião, Sandra, Marcos, Valéria, Cida), 'FinMoovi', os valores em R$ como estão, os links, as hashtags e as quebras de linha da descrição. "
+                "O título até 100 caracteres, com o mesmo mistério do original. Nunca use travessão. ")
+        def pedir(msg):
+            global custo
             with cli.messages.stream(model=MODELO, max_tokens=64000, output_config={"effort": "low", "format": {"type": "json_schema", "schema": ESQ}},
                                      messages=[{"role": "user", "content": msg}]) as s:
                 r = s.get_final_message()
             custo += r.usage.input_tokens * 2e-6 + r.usage.output_tokens * 10e-6
-            d = json.loads(next(b.text for b in r.content if b.type == "text"))
-            if so_texto: d["linhas"] = []; break
-            if len(d["linhas"]) == len(cues): break
-            print(f"{lg}: voltaram {len(d['linhas'])} linhas, esperava {len(cues)} (tentativa {tentativa}, custo ate agora US$ {custo:.3f})")
-            if tentativa == 2:
-                import datetime; open(f"{P}/gastos-claude.csv", "a", encoding="utf-8").write(f"{datetime.date.today()},video {NN} traducao {lg} falhou 2x (Sonnet),{custo:.3f}\n")
-                raise SystemExit(f"{lg}: falhou 2 vezes, nada subiu")
+            return r, json.loads(next(b.text for b in r.content if b.type == "text"))
+        # 1) titulo e descricao (centavos)
+        r, d = pedir(BASE.replace("{pede}", "o título e a descrição") + "Devolva 'linhas' vazio.\n\n" + f"TÍTULO:\n{titulo}\n\nDESCRIÇÃO:\n{desc}")
+        d["linhas"] = []
+        # 2) as legendas em pedacos de 60 (23/11/2026: no 04 o en voltou 2x com 279 de 280, inteiro, e perderam-se os dois
+        #    pagamentos; com pedacos pequenos ele nao junta linhas, e so o pedaco que falhar e pedido de novo)
+        if not so_texto:
+            for ini in range(0, len(cues), 60):
+                bloco = cues[ini:ini + 60]
+                for tentativa in (1, 2, 3):
+                    numeradas = "\n".join(f"{i + 1}. {c[2]}" for i, c in enumerate(bloco))
+                    _, dd = pedir(BASE.replace("{pede}", f"as {len(bloco)} linhas de legenda") + "Devolva 'titulo' e 'descricao' vazios. "
+                                  f"Devolva exatamente {len(bloco)} linhas, na mesma ordem, sem os números. Uma linha de entrada = uma linha de saída, nunca junte duas.\n\nLINHAS:\n{numeradas}")
+                    if len(dd["linhas"]) == len(bloco): d["linhas"] += dd["linhas"]; break
+                    print(f"{lg}: pedaco {ini + 1}: voltaram {len(dd['linhas'])} de {len(bloco)} (tentativa {tentativa}, custo ate agora US$ {custo:.3f})")
+                    if tentativa == 3:
+                        import datetime; open(f"{P}/gastos-claude.csv", "a", encoding="utf-8").write(f"{datetime.date.today()},video {NN} traducao {lg} falhou (Sonnet),{custo:.3f}\n")
+                        raise SystemExit(f"{lg}: o pedaco {ini + 1} falhou 3 vezes, nada subiu")
         d["linhas"] = [re.sub(r"\s*[\u2013\u2014]\s*", ", ", l) for l in d["linhas"]]  # sem travessao, nunca
         res[lg] = d; json.dump(d, open(cache, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         if d["linhas"]: open(f"{SAI}/{NN}-legenda-{lg}.srt", "w", encoding="utf-8").write(srt(cues, d["linhas"]))

@@ -45,5 +45,6 @@ while True:
     yt.save(f"{OUT}/capa.jpg", quality=q)
     if os.path.getsize(f"{OUT}/capa.jpg") < 1_900_000 or q < 60: break
     q -= 5
-os.remove(src)
+# 23/11/2026: so apaga a da caixa banco/_entrada. A da pasta do video fica: se a subida falhar no meio, da para tentar de novo
+if os.path.dirname(os.path.abspath(src)) == os.path.abspath(ENT): os.remove(src)
 print(f"capa pronta: capas/{video}/capa.jpg ({os.path.getsize(f'{OUT}/capa.jpg') // 1024} KB) e capa-hd.jpg; original guardada")

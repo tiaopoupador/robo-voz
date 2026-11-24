@@ -30,6 +30,10 @@ for linha in md.split("## Ficha de fontes")[1].splitlines():
         f = re.sub(r"\s*\(\[.*$", "", c[1]); f = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", f)
         if f not in fontes: fontes.append(f)
 mont = json.load(open(f"{P}/fabrica/saida/{NN}-montagem.json", encoding="utf-8"))
+# Ed, 23/11/2026: «cada video teria que falar uma funcionalidade diferente»: a descricao fala do recurso DESTE video
+_rec = [r["recurso"] for r in json.load(open(f"{P}/fabrica/finmoovi_recursos.json", encoding="utf-8"))["recursos"] if NN in r["usado"]]
+FM_LINHA = ("O recurso do FinMoovi que aparece hoje: " + "; ".join(_rec) + "." if _rec
+            else "O FinMoovi mostra para onde foi cada real do mês.")
 mus = ", ".join(m.replace("---", " ").replace("-", " ") for m in mont["musicas"])
 quando = datetime.datetime.strptime(C.PUBLICA, "%Y-%m-%d %H:%M")
 DIA = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][quando.weekday()]
@@ -37,7 +41,7 @@ desc = f"""📱 FinMoovi, o app do Tião, 7 dias grátis: https://finmoovi.com/?
 
 {C.DESC}
 
-O FinMoovi tira foto da notinha do mercado, lê tudo sozinho e mostra para onde foi cada real do mês.
+{FM_LINHA}
 
 ⏱️ Capítulos
 """ + "\n".join(caps) + """

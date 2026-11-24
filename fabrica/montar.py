@@ -112,6 +112,38 @@ if VIN is not None:
 linhas = sorted(C.L); N_LIN = len(open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines())
 ini_lin = {k: next((o[0] for o in ALIN if o[3] == k), None) for k in range(N_LIN)}
 FIM = round(max(o[1] for o in ALIN) + 0.6, 2)
+import copy as _copy
+def turma(spec, k, s, chave):
+    """a cena da turma: o fundo e os objetos vao para a pasta do video, cada gatilho "g" (palavra da fala k, ou da "lin")
+    vira "ini" em segundos dentro da cena, o balao ganha a duracao da fala e mexe a boca de quem fala ("quem")"""
+    spec = _copy.deepcopy(spec)
+    tp_, src_ = publica(spec["fundo"])
+    if src_ is None: avisos.append(f"{chave}: turma sem fundo '{spec['fundo']}'"); return None
+    spec["fundo"] = src_
+    for o in spec.get("objetos", []): o["src"] = publica(o["src"])[1]
+    def quando(d, padrao=0.0):
+        if "g" not in d: return d.get("ini", padrao)
+        t = achar(ALIN, d.get("lin", k), d["g"])
+        if t is None: avisos.append(f"{chave}: nao achei '{d['g']}'"); return padrao
+        return round(max(0.0, t - s), 2)
+    for p in spec["gente"]:
+        p["poses"] = [{"cod": q["cod"], "ini": quando(q)} for q in p["poses"]]
+        for campo in ("anda", "sai", "braco"):
+            if campo in p: p[campo]["ini"] = quando(p[campo]); p[campo].pop("g", None); p[campo].pop("lin", None)
+        p["treme"] = [[quando(x), quando(x) + x.get("dur", 0.9)] for x in p.get("treme", [])]
+        if isinstance(p.get("some"), dict): p["some"] = quando(p["some"])
+        p.setdefault("fala", [])
+    for b in spec.get("baloes", []):
+        b["ini"] = quando(b, 0.3)
+        if "ate" in b:
+            t2 = achar(ALIN, b.get("lin", k), b["ate"])
+            b["dur"] = round(max(0.8, t2 + 0.45 - s - b["ini"]), 2) if t2 is not None else round(0.36 * len(b["texto"].split()) + 0.6, 2)
+        b.setdefault("dur", round(0.36 * len(b["texto"].split()) + 0.6, 2))
+        if "quem" in b: spec["gente"][b["quem"]]["fala"].append([b["ini"], round(b["ini"] + b["dur"], 2)])
+        for x in ("g", "ate", "lin", "quem"): b.pop(x, None)
+    for o in spec.get("objetos", []):
+        if "g" in o or "ini" in o: o["ini"] = quando(o); o.pop("g", None)
+    spec.update(ini=s, chave=chave); return spec
 cenas = []; movs = ["entra", "dir", "sai", "esq"]; nmov = 0
 for k in linhas:
     t0 = ini_lin.get(k)
@@ -122,6 +154,9 @@ for k in linhas:
         s = round(max(t0, t - 0.12), 2); chave = f"{k}-{j}"; mv = movs[nmov % 4]; nmov += 1
         if tipo == "M":
             spec = dict(cont); spec.update(ini=s, chave=chave)
+            if spec["k"] == "turma":  # 23/11/2026: a turma viva no cenario (render/src/motion/boneco/CenaTurma.tsx), o 05 so motion
+                spec = turma(spec, k, s, chave)
+                if spec is None: cenas.append({"ini": s, "k": "frase", "texto": "", "chave": chave}); continue
             if spec["k"] == "montagem":
                 def so_foto(n):  # a montagem rapida so mostra fotos: um clipe (Flow, GIF) vira a foto de reserva dele
                     tp_, src_ = publica(n)
@@ -169,7 +204,7 @@ if ACABAMENTO:
     from fabrica.climas import escolher
     FALAS = open(f"{P}/robo-voz/roteiro-{NN}.txt", encoding="utf-8").read().splitlines(); MANDA = getattr(C, "CLIMA", {})
     for c in cenas:
-        if c["k"] not in ("img", "vid", "hib", "conversa"): continue
+        if c["k"] not in ("img", "vid", "hib", "conversa", "turma"): continue
         lin = int(c["chave"].split("-")[0])
         fb = any("flashback" in (x.get("src") or "") or x.get("fb") for x in cenas if x["chave"].split("-")[0] == str(lin))
         c["clima"] = MANDA.get(lin) or escolher(FALAS[lin] if lin < len(FALAS) else "", c.get("src", ""), "flashback" if c.get("fb") else "", linha_tem_flashback=fb)
@@ -177,7 +212,7 @@ if ACABAMENTO:
     # transicao de entrada (Ed aprovou as 6 a 18/11: «gostei de todas»), escolhida pelo sentido, so entre duas imagens:
     # entra no passado = pagina; volta do passado = rasgo; susto = zoom; coisa boa = clarao; o resto fica no chicote de sempre.
     # cenas.py pode mandar: ENTRA = {linha: "cortina"} (troca de capitulo). Uma especial a cada 6 s no minimo (o passado sempre).
-    ENTRA = getattr(C, "ENTRA", {}); IMGS = ("img", "vid", "hib", "conversa"); ultima = -99
+    ENTRA = getattr(C, "ENTRA", {}); IMGS = ("img", "vid", "hib", "conversa", "turma"); ultima = -99
     for i in range(1, len(cenas)):
         c, a_ = cenas[i], cenas[i - 1]
         if c["k"] not in IMGS or a_["k"] not in IMGS: continue
@@ -204,7 +239,7 @@ if "--sem-rostos" not in sys.argv:
     except Exception as e: avisos.insert(0, f"ATENCAO: a guarda dos rostos nao rodou: {e!r}")
 # prova de mesa: cada motion com o que ele precisa (um campo vazio derruba a geracao do video inteiro)
 PRECISA = {"graf": ["series"], "barras": ["itens"], "icones": ["itens"], "linha": ["marcos"], "conta": ["linhas"], "torre": ["itens"],
-           "cal": ["marcados"], "montagem": ["imgs"], "cita": ["nome", "achado"], "frase": [], "num": ["valor"], "grade": ["total"], "fotonota": ["itens", "total"]}
+           "cal": ["marcados"], "montagem": ["imgs"], "turma": ["fundo"], "cita": ["nome", "achado"], "frase": [], "num": ["valor"], "grade": ["total"], "fotonota": ["itens", "total"]}
 erros = []
 for c in cenas:
     for campo in PRECISA.get(c["k"], []):
@@ -294,7 +329,7 @@ def em_motion(t):
     for s0, kk in motion:
         if s0 <= t: k = kk
         else: break
-    return k not in ("img", "vid", "hib", "conversa")
+    return k not in ("img", "vid", "hib", "conversa", "turma")
 # 20/11/2026 (Ed: «a legenda da imagem anterior continua sendo mostrada na imagem seguinte (...) ou a legenda tem que sumir
 # antes ou as imagens seguintes devem aparecer somente quando a frase da legenda termina!»): toda troca de cena corta a legenda.
 # A frase quebra na troca (a palavra da imagem nova abre a legenda nova) e nenhuma legenda passa da hora da troca.
@@ -312,6 +347,9 @@ for i, (s0, e0, w, lin) in enumerate(ALIN):
         texto = " ".join("*" + x[2] + "*" if forte(x[2]) else x[2] for x in grupo).replace("* *", " ").replace('"', "")
         leg.append([round(grupo[0][0], 2), round(min(grupo[-1][1] + 0.15, corte_depois(grupo[0][0]) - 0.04), 2), texto]); grupo = []
 leg = [l for l in leg if not em_motion(l[0] + 0.05)]
+# 23/11 (o 05, so motion): com o balao na tela, ele ja e a legenda daquela fala (nunca as duas a dizer o mesmo)
+BALOES = [(c["ini"] + b["ini"] - 0.1, c["ini"] + b["ini"] + b["dur"] + 0.2) for c in cenas if c["k"] == "turma" for b in c.get("baloes", [])]
+leg = [l for l in leg if not any(a <= l[0] + 0.05 <= b for a, b in BALOES)]
 
 # ---------------- barra "Plantão do Tião" (Ed, 11/11/2026): 5 recados por vídeo, estilo telejornal ----------------
 # «quanto mais se pede pra se inscrever, curtir, fazer alguma ação, mais a audiência faz. Se não pedir, eles não fazem nada»
@@ -338,7 +376,7 @@ barras = []
 for k, fr in enumerate(getattr(C, "BARRAS", RECADOS)):
     d = dur_barra(fr); alvo = FIM * (0.12 + 0.72 * k / max(1, len(getattr(C, "BARRAS", RECADOS)) - 1))
     alvo = min(alvo, FIM - d - 5)
-    cand = sorted({c["ini"] for c in cenas if c["k"] in ("img", "vid", "hib")} | {alvo}, key=lambda x: abs(x - alvo))
+    cand = sorted({c["ini"] for c in cenas if c["k"] in ("img", "vid", "hib", "turma")} | {alvo}, key=lambda x: abs(x - alvo))
     t = next((x for x in cand if abs(x - alvo) < 90 and so_imagem(x, x + d) and all(abs(x - b["ini"]) > 120 for b in barras)), None)
     if t is None: avisos.append(f"barra {k + 1}: sem lugar só com imagem perto de {alvo / 60:.1f} min"); continue
     barras.append({"ini": round(t + 0.4, 2), "dur": d, "frases": [x for x, _ in fr], "acoes": [a for _, a in fr]})

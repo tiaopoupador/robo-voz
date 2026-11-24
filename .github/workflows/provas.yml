@@ -1,0 +1,65 @@
+name: provas (fotos de quadros soltos)
+# 24/11/2026: o PC do Ed nao tem memoria para o remotion still. As fotos de prova saem aqui, de graca:
+# monta o video como o video.yml e tira so os quadros pedidos (PNG, metade do tamanho). Nao sobe nada no YouTube.
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "numero do video (ex.: 05)"
+        required: true
+      quadros:
+        description: "quadros separados por espaco (ex.: 176 294 580)"
+        required: true
+permissions:
+  contents: read
+env:
+  NN: ${{ inputs.video }}
+jobs:
+  provas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: ln -s . robo-voz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q pillow anthropic numpy
+      - name: abrir o cofre
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: cat cofre/banco.enc.* | openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:VOZ_SENHA | tar -xf -
+      - name: buscar no Drive
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: python fabrica/drive.py baixar-tudo $NN
+      - name: montar (sem a guarda paga dos rostos)
+        env:
+          FINMOOVI_BROLL: ${{ github.workspace }}/finmoovi/
+          APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
+        run: |
+          python fabrica/pedidos.py $NN >/dev/null
+          python fabrica/montar.py $NN --sem-rostos
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: render/package-lock.json
+      - name: tirar as fotos
+        working-directory: render
+        env:
+          QUADROS: ${{ inputs.quadros }}
+        run: |
+          npm ci --no-audit --no-fund && npx remotion browser ensure
+          mkdir -p out/provas
+          for q in $QUADROS; do
+            npx remotion still src/nuvem.ts Video out/provas/q$q.png --props=public/v$NN/props.json --frame=$q --scale=0.5 --log=error
+          done
+          ls out/provas
+      - uses: actions/upload-artifact@v4
+        with:
+          name: provas
+          path: render/out/provas
+          retention-days: 2

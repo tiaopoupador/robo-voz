@@ -50,7 +50,7 @@ Chega mais! O café tá passado e hoje tem conta pra fazer.
 
 Se você é novo aqui, eu sou o Tião. Sou porteiro de um prédio chique no centro, e de lá eu vejo todo dia quem parece rico e quem é rico. Nem sempre é a mesma pessoa.
 
-Moro no mesmo bairro desde menino, tomo café na mesma caneca branca, lascada na borda, há doze anos, e faço as minhas contas no papel de pão da padaria, com o número do governo do lado. Aqui eu faço a conta na sua frente.
+Moro no mesmo bairro desde menino, tomo café na mesma caneca branca, lascada na borda, há doze anos, e faço as minhas contas no papel de pão da padaria, com a taxa que o Banco Central publica todo mês anotada do lado. Aqui eu faço a conta na sua frente.
 
 [FUNDO PRETO 3 s]
 
@@ -104,7 +104,7 @@ O celular apitou. Ela olhou, e o rosto dela caiu. Eu vi a tela de relance: "Sua 
 
 [VALÉRIA P10 pedindo sem graça]
 
-"É só para a gasolina, Tião. O cartão estourou o limite, e ontem a maquininha do posto recusou na frente de todo mundo. Eu preciso ir trabalhar na segunda. Sexta eu te devolvo. E por favor, não conta para ninguém!"
+"É só para a gasolina, Tião. O cartão estourou o limite, e ontem a maquininha do posto recusou na frente de todo mundo. Eu preciso ir trabalhar na segunda. Sexta eu te devolvo. Eu vim na sua porta porque a sua luz é a única acesa, e porque você é o único da rua que nunca me perguntou do carro. Se eu peço para outro, amanhã o bairro inteiro sabe. Por favor, não conta para ninguém!"
 
 [TIÃO P10 segredo]
 
@@ -152,19 +152,19 @@ Conta número dois: a casa. Eu achava que aquela casa de vidro era dela. Não é
 
 [MOTION: o salário da Valéria numa barra, as contas comendo a barra] [TEXTO: SALÁRIO R$ 8.700]
 
-Aí eu fiz a conta que ela nunca tinha feito. O salário dela, já com os descontos do contracheque, é de oito mil e setecentos reais. A parcela do carro come quatro mil, quinhentos e cinquenta e cinco. O aluguel come três mil e novecentos.
+Aí eu fiz a conta que ela nunca tinha feito. Ela tirou o contracheque da bolsa e me mostrou, baixinho: já com os descontos, o salário dela é de oito mil e setecentos reais. A parcela do carro come quatro mil, quinhentos e cinquenta e cinco. O aluguel come três mil e novecentos.
 
 [MOTION: sobra R$ 244] [SOM: sino triste]
 
-Sobram duzentos e quarenta e quatro reais e quarenta e quatro centavos. Para o mês inteiro. Para comida, gasolina, luz, celular, a escova da semana e a vida.
+A partir do mês que vem, quando vence a primeira parcela, vão sobrar duzentos e quarenta e quatro reais e quarenta e quatro centavos. Para o mês inteiro. Para comida, gasolina, luz, celular, a escova da semana e a vida.
 
 [VALÉRIA P04 preocupação]
 
-"Mas eu nunca fiquei sem nada, Tião. Eu como fora quase todo dia. Eu estou sempre arrumada."
+"Mas eu nunca fiquei sem nada, Tião. Tá, no dia dez o salário já foi embora, mas o cartão segura até o outro mês. Eu como fora quase todo dia. Eu estou sempre arrumada."
 
 [TIÃO P07 mãos na cintura]
 
-E aí eu perguntei a única coisa que importava: "Valéria, e como você paga isso tudo com duzentos e quarenta reais?" Ela olhou para o celular. Para a tela que ainda estava acesa.
+E aí eu perguntei a única coisa que importava: "Valéria, e como você vai pagar isso tudo com duzentos e quarenta reais?" Ela olhou para o celular. Para a tela que ainda estava acesa.
 
 [FUNDO PRETO 3 s]
 
@@ -172,7 +172,7 @@ E aí eu perguntei a única coisa que importava: "Valéria, e como você paga is
 
 [VALÉRIA P08 celular fatura] [TEXTO: CONTA Nº 3 · O CARTÃO] [CLIMA: brasas]
 
-Conta número três: o cartão. Tudo o que não cabia nos duzentos e quarenta ia para o cartão de crédito. O almoço, a gasolina, o salão, a roupa nova para o sábado do carrão. Até o cartão bater no limite e o posto recusar. E a fatura chegou: três mil e duzentos reais. Ela não tinha os três mil e duzentos.
+Conta número três: o cartão. E esse já vinha de antes do carro. Há meses, tudo o que o salário não cobria depois do dia dez ia para o cartão de crédito. O almoço, a gasolina, o salão, a roupa nova para o sábado do carrão. Até o cartão bater no limite e o posto recusar. E a fatura chegou: três mil e duzentos reais. Ela não tinha os três mil e duzentos.
 
 [TIÃO P04 mão na cabeça]
 
@@ -188,7 +188,7 @@ Três mil e duzentos no rotativo, a quinze por cento ao mês: só no primeiro m�
 
 [SILENCIO] [CENA: a caneca lascada fumegando na mesinha da varanda] [TRILHA: calma]
 
-Agora, uma coisa que está na lei, e que eu mostrei para a Valéria ali mesmo, no celular dela. Existe uma lei chamada Desenrola, de dois mil e vinte e três. Ela diz que, no rotativo do cartão, os juros não podem passar do tamanho da dívida. Ou seja: a dívida pode, no máximo, dobrar. Três mil e duzentos viram, no máximo, seis mil e quatrocentos. Isso vale desde o começo de dois mil e vinte e quatro. Se o banco te cobrar mais que isso, você pode reclamar!
+Agora, uma coisa que está na lei, e que eu mostrei para a Valéria ali mesmo, no celular dela, no site oficial da Câmara dos Deputados. Existe uma lei chamada Desenrola, de dois mil e vinte e três. Ela diz que, no rotativo do cartão, os juros não podem passar do tamanho da dívida. Ou seja: a dívida pode, no máximo, dobrar. Três mil e duzentos viram, no máximo, seis mil e quatrocentos. Isso vale desde o começo de dois mil e vinte e quatro. Se o banco te cobrar mais que isso, você pode reclamar!
 
 [VALÉRIA P14 chorando escondido]
 
@@ -216,11 +216,11 @@ Ela levantou para ir embora, vermelha. E eu terminei a frase.
 
 [VALÉRIA P15 agradecida]
 
-Ela ficou parada uns segundos, olhando o papel de pão com as três contas, em cima da mesinha. E falou a frase que eu nunca imaginei ouvir daquela boca: "Tião... me ensina a fazer essa conta?"
+Ela ficou parada uns segundos, olhando o papel de pão com as três contas, em cima da mesinha. Aí, sem pedir, puxou o lápis amarelo de carpinteiro do bolso da minha camisa e fez um círculo em volta da palavra juros. "Tião... me ensina a fazer essa conta?"
 
 [TIÃO P01 rindo] [CENA: o papel de pão e o lápis amarelo na mesinha]
 
-"Ensino. Mas com uma condição: a conta, você copia com a sua letra." Eu passei para ela o lápis amarelo de carpinteiro, o mesmo que eu levo no bolso da camisa.
+"Ensino. Mas com uma condição: a conta, você copia com a sua letra. E esse lápis fica com você até domingo."
 
 [VALÉRIA P04 preocupação] [MOTION: a letra dela no papel de pão, linha por linha]
 
@@ -234,7 +234,7 @@ Ela dobrou o papel de pão em quatro, guardou na bolsa e foi para casa. E a gent
 
 [MOTION: o celular com o FinMoovi, a tela dos cartões e da fatura] [TEXTO: FINMOOVI · 7 DIAS DE TESTE]
 
-Se você, como a Valéria, só descobre o tamanho da fatura quando ela chega, usa o FinMoovi. Você cadastra o seu cartão, e cada gasto que você lança, escrevendo ou falando uma frase normal, como "almoço quarenta reais no cartão", já vai para a fatura daquele cartão. Você vê a fatura crescendo durante o mês, e não só no dia do susto. E ele te avisa no celular antes da conta vencer. São sete dias de teste, sem cartão de crédito. O link está aqui embaixo, na descrição.
+Se você, como a Valéria, só descobre o tamanho da fatura quando ela chega, usa o FinMoovi, o aplicativo de controle de dinheiro aqui do canal. Você cadastra o seu cartão, e cada gasto que você lança no cartão já vai para a fatura daquele cartão. Você vê a fatura crescendo durante o mês, e não só no dia do susto. E ele te avisa no celular antes da conta vencer. São sete dias de teste, sem cartão de crédito. O link está aqui embaixo, na descrição.
 
 [FUNDO PRETO 3 s]
 
@@ -242,25 +242,25 @@ Se você, como a Valéria, só descobre o tamanho da fatura quando ela chega, us
 
 [CENA: a varanda do Tião, domingo de manhã] [TRILHA: calma] [SOM: passarinhos]
 
-No domingo, às nove da manhã, ela apareceu na varanda com o papel de pão dobrado. Eu passei o café e a gente somou tudo de novo: o carro, a casa e o cartão.
+No domingo, às nove da manhã, ela apareceu na varanda com o papel de pão dobrado e o lápis amarelo, já mais curto de tanto apagar e refazer conta. Eu passei o café e a gente somou tudo de novo: o carro, a casa e o cartão. Aí eu perguntei: "Quanto esse carro vale hoje, e quanto falta pagar?" Ela escreveu os dois números, um embaixo do outro, e viu: vendendo, quitava tudo.
 
 [VALÉRIA P13 braços cruzados]
 
-Ela ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. Uns bons segundos. E falou uma palavra só: "Vende."
+Ela ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. Uns bons segundos. Depois empurrou a chave para o meu lado da mesinha e disse: "Me ajuda a vender, Tião."
 
 [TIÃO P06 joinha]
 
-Na segunda, depois do meu turno na portaria, a gente foi junto na loja de carros da avenida, de ônibus. Eu anotei o valor da venda no mesmo papel de pão. Dava para quitar o financiamento inteiro. Sobrava pouco, quase nada, mas a parcela de quatro mil e quinhentos sumia.
+Na segunda, seis e meia, eu passei o cartão do ônibus por ela na catraca, como tinha prometido. E de tarde, depois do meu turno na portaria, ela dirigiu o carrão pela última vez até a loja de carros da avenida, comigo no banco do carona. O carro ficou lá, vendido, e a gente voltou de ônibus. Eu anotei o valor da venda no mesmo papel de pão. Dava para quitar o financiamento inteiro. Sobrava pouco, quase nada, mas a parcela de quatro mil e quinhentos sumia.
 
 [FUNDO PRETO 3 s]
 
 [CENA: a rua com a casa de vitrine, sábado de manhã] [TRILHA: virada, leve]
 
-Quatro meses depois. Outro sábado, dez da manhã, sol de rachar. A rua inteira na calçada de novo. E o carrão branco saindo da frente da casa de vitrine, devagar, com o dono novo ao volante.
+Quatro meses depois. Outro sábado, dez da manhã, sol de rachar. A rua inteira na calçada de novo. E na frente da casa de vitrine, a garagem vazia, com uma placa de aluga-se no portão.
 
 [VALÉRIA andando para o ponto de ônibus] [CENA: o ponto de ônibus da esquina]
 
-A Valéria quitou o financiamento com o dinheiro da venda. Mudou para uma casa menor, duas ruas para baixo. Parcelou a fatura em três vezes e nunca mais pagou só o mínimo. E vai de ônibus para o shopping, e diz que lê no caminho.
+A Valéria quitou o financiamento com o dinheiro da venda. Mudou para uma casa menor, duas ruas para baixo. Parcelou a fatura em três vezes no aplicativo do banco, paga com o que sobra agora que não tem parcela de carro, e nunca mais pagou só o mínimo. E vai de ônibus para o shopping, e diz que lê no caminho.
 
 [VALÉRIA P12 rindo falso]
 
@@ -284,6 +284,8 @@ E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão,
 
 [TIÃO P02 contando dinheiro]
 
-Se o seu salário cai e no dia dez já sumiu, ou se ainda sobra, mas você não sabe direito para onde vai, você não pode perder o próximo vídeo. A Valéria achava que o problema dela era só o carrão. Mas, naquele domingo, a gente viu que o salário dela já chegava furado, por buracos pequenos que ela nem via. Seu salário acaba no dia dez? Então escuta: o problema não é o salário. No próximo vídeo eu vou te mostrar quais são esses furos que comem o salário antes do dia dez, quanto cada um leva por mês, e o único que quase todo mundo tem e nunca percebe. Esse último, nem a Valéria tinha visto. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+Mas volta comigo àquele domingo da conta. Depois que a gente somou tudo, a Valéria puxou do celular o extrato da conta do salário e pôs em cima da minha mesinha. Foi passando o dedo, linha por linha, devagar. E parou numa. Ficou branca. "Tião... isso aqui sai todo mês?" Eu olhei aquela linha e entendi na hora por que o salário dela acabava no dia dez.
+
+Se o seu salário também acaba no dia dez, ou se você quer que isso nunca aconteça com você: no próximo vídeo eu te mostro o que a Valéria achou naquela linha, quanto aquilo levava dela por ano, e o que ela fez em dez minutos, ali na minha mesinha. E olha: depois daquele domingo, eu fui conferir o meu extrato, e levei um susto. Seu salário acaba no dia dez? O problema não é o salário. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
