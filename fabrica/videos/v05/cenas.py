@@ -202,7 +202,7 @@ L = {
  # 7. O que o Tiao respondeu
  38: [("^", "M", noite_larga([TS_N(), VS_N()], zoom=[1.0, 1.15]))],
  39: [("^", "M", noite_perto([VE(("P04", None)), TI(("P03", None))], [B("Cinquenta para gasolina eu não te empresto.", 1, "Valéria", "empresto", **BT)])),
-      ("Porque", "M", noite_perto([VE(("P11", None)), TI(("P07", None))], [B("Segunda você vai precisar de mais cinquenta. E o carro continua comendo R$ 4.500 por mês.", 1, "Porque", "mês", x=90, larg=930, rabo=(1290, 560))]))],
+      ("Porque", "M", noite_perto([VE(("P14", None)), TI(("P07", None))], [B("Segunda você vai precisar de mais cinquenta. E o carro continua comendo R$ 4.500 por mês.", 1, "Porque", "mês", x=90, larg=930, rabo=(1290, 560))]))],
  40: [("^", "M", noite_larga([TS_N(), P("valeria", 1350, 930, 640, ("R1", None), sai={"ate": 2300, "g": "levantou", "dur": 4.0, "oculos": True})]))],
  41: [("^", "M", noite_perto([VE(("P03", None)), TI(("P05", None))], [B("Mas o cartão do ônibus da semana eu pago.", 1, "Mas", "pago", **BT)])),
       ("E segunda", "M", noite_perto([VE(("P03", None)), TI(("P06", None))], [B("E segunda, seis e meia, eu vou junto com você até o ponto.", 1, "E segunda", "ponto", **BT)])),
