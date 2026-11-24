@@ -161,6 +161,10 @@ def turma(spec, k, s, chave):
         for x in ("g", "ate", "lin", "quem"): b.pop(x, None)
     for o in spec.get("objetos", []):
         if "g" in o or "ini" in o: o["ini"] = quando(o); o.pop("g", None)
+        # 24/11 (Ed: o carro entrou de re): o que anda tem de andar para o lado da frente da imagem ("frente": "esq" ou "dir")
+        if "de" in o and o.get("frente") and (o["x"] < o["de"]) != (o.pop("frente") == "esq"):
+            avisos.append(f"{chave}: '{o['src'].split('/')[-1]}' anda de re (de {o['de']} para {o['x']})")
+        o.pop("frente", None)
     spec.update(ini=s, chave=chave); return spec
 cenas = []; movs = ["entra", "dir", "sai", "esq"]; nmov = 0
 for k in linhas:

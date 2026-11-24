@@ -1,66 +1,65 @@
-# Vídeo 05 · Longo só motion · A Valéria da SUV
+# Vídeo 05 · Longo só motion · A Valéria da SUV (versão novela, 24/11/2026)
 
-**Formato:** longo só em motion (as poses oficiais da turma, vivas por código: piscar, respirar, boca, braço, andar), nos cenários 2D.
+**Formato:** longo só em motion (as poses oficiais da turma, vivas por código), nos cenários 2D.
 **Publica:** quarta, 25/11/2026, 18:00 (Brasília).
 **Título (escolhido pelo robô):** Por Que a Vizinha da SUV Pediu R$ 50 Emprestado ao Porteiro (nota 9,4)
-(as outras: «Ela Tem SUV de R$ 190 Mil e Pediu R$ 50 Emprestado. Por Quê?» 9,0 · «A Vizinha da SUV Pediu R$ 50 Emprestado. A Conta Não Fecha» 8,6, esta entrega metade da resposta)
-**Texto da capa:** ELA? PEDINDO?! (as outras: R$ 50?! · A CHAVE É DO BANCO, esta conta o fim)
-**Cor da capa:** vermelho (armadilha). Valéria de óculos escuros girando a chave da SUV, cara de desdém; o Tião calmo com a caneca lascada, cara de quem sabe um segredo. A SUV branca atrás.
-**O que fica escondido (a resposta que só o vídeo dá):** as três contas por trás da SUV (a parcela, a casa, o cartão), quanto cada uma come, e o que o Tião respondeu ao pedido dos cinquenta reais.
-**Tamanho:** uns 2.400 palavras, uns 16 minutos na voz 6.
+**Texto da capa:** ELA? PEDINDO?!
+**Cor da capa:** vermelho (armadilha).
+**O que fica escondido:** as três contas por trás da SUV, o bilhete, e o que o Tião respondeu ao pedido dos cinquenta reais.
+**Tamanho:** uns 3.500 palavras, uns 24 minutos na voz 6.
 **Fontes:** `roteiros/05-fontes.md` (conferidas a 19/11/2026).
+**Por que mudou (Ed, 24/11/2026):** a 1.ª versão era «uma história muito superficial»: a Valéria chegava com o carro e pedia dinheiro no mesmo dia. Agora passam dois meses com sinais, há humilhação em público e desculpa escondida, a Sandra quer uma SUV igual e as 3 dicas do Tião entram em três tempos. Método: canal-dark `referencias/novela.md`. Esqueleto: `roteiros/escaleta-05-nova.md`.
 
-Regras deste texto: sem travessão; números por extenso na fala; as marcas entre colchetes não entram na voz; cada parágrafo é uma fala (menos de 40 s). [VALÉRIA P07] quer dizer: a Valéria na pose P07 (chave da SUV). Poses em `banco/poses/`.
+Regras deste texto: sem travessão; números por extenso na fala; as marcas entre colchetes não entram na voz; cada parágrafo é uma fala (menos de 40 s). Poses em `banco/poses/`.
+
+**Os fios (loops):** L1 o que o Tião respondeu (abre 0:30, fecha no cap. 10) · L2 o bilhete (abre 0:40, volta no cap. 7, fecha no fim) · L3 a Sandra quer uma SUV igual [BOMBA] (abre cap. 4, fecha cap. 11) · L4 o Rafa viu o cartão recusado: vai contar? (abre cap. 5, fecha cap. 8) · L5 as 3 dicas (plantadas cap. 2, pedidas cap. 9) · L6 a linha do extrato (abre no fim, é o 06).
+**As 3 dicas, jeito usado neste vídeo:** «a dica de que riram» (zombada em público, pedida em segredo).
 
 **Estado das pessoas (continuidade):**
-- Valéria: blazer branco e os óculos escuros como estão em cada pose dela. A chave da SUV na mão no capítulo 2; o celular na mão nos capítulos 3 a 7; a chave em cima da mesinha no domingo (capítulo 8).
-- Tião: camisa polo mostarda, a caneca branca lascada na borda em todas as cenas da varanda; o papel de pão e o lápis amarelo de carpinteiro do capítulo 3 ao 6.
+- Valéria: blazer branco; os óculos escuros como estão em cada pose. De noite, quando chora, os óculos escuros no rosto (para a rua não ver os olhos).
+- Tião: camisa polo mostarda, a caneca branca lascada na borda em todas as cenas da varanda; o papel de pão e o lápis amarelo de carpinteiro.
 
-**Objetos plantados:** a caneca branca lascada na borda (a Valéria chama de pobreza no capítulo 1; os cinquenta reais voltam dentro dela no fim); o papel de pão onde o Tião faz a conta; a cadeira de área de fio, vermelha e branca, da varanda do Tião; a SUV branca na frente da casa de vitrine.
-
-**Cenários:** a rua com a casa de vitrine e a SUV branca (pronto: `banco/imagens/cenarios/valeria-casa-suv.jpg`); a varanda do Tião à noite, com a cadeira de área e a luz amarela acesa (pedir); a cozinha do Tião (pronto); o ponto de ônibus da esquina de manhã (pedir).
+**Objetos plantados:** a caneca lascada (chamada de pobreza no sábado; os cinquenta voltam dentro dela); o bilhete dobrado em quatro (por baixo do portão; outro dentro da nota no fim); o papel de pão e o lápis amarelo; a SUV branca.
 
 ---
 
 ## 0. Abertura (é um Reels: entende-se sozinha)
 
-[CENA: a rua apagada à noite, só a luz amarela da varanda do Tião] [TRILHA: tensão baixa] [SOM: grilos]
+[CENA: a rua apagada à noite, só a luz amarela da varanda do Tião] [TRILHA: tensão baixa] [SOM: grilos] [ABRE L1]
 
-[VALÉRIA P09 olhando se alguém vê]
-
-Onze e quarenta da noite. A rua inteira apagada. Só a luz da minha varanda acesa. E a Valéria, a do carrão branco de cento e oitenta e nove mil reais, chega na ponta do pé, olha para um lado, olha para o outro, e fala baixinho: "Tião... você me empresta cinquenta reais até sexta?"
+Quase meia-noite. A rua inteira apagada. Só a luz da minha varanda acesa. Aí eu ouvi três batidinhas no portão, bem baixinho. Era a Valéria, a do carrão branco de cento e oitenta e nove mil reais. Ela olhou para um lado, olhou para o outro, e falou baixinho: "Tião... você me empresta cinquenta reais até sexta?"
 
 [TIÃO P14 susto] [TEXTO GRANDE NO MEIO: R$ 50?!]
 
-Cinquenta reais! A mesma mulher que, de manhã, tinha rido da minha caneca na frente da rua inteira.
+Cinquenta reais! E o mais estranho nem era o pedido. Dois meses antes, essa mesma mulher tinha rido de mim na frente da rua inteira. E na noite daquele mesmo dia da risada, passou um bilhete por baixo do meu portão.
 
-[TIÃO P03 braços cruzados] [TEXTO: 3 CONTAS]
+[ABRE L2] [TIÃO P03 braços cruzados] [TEXTO: 3 CONTAS]
 
-Hoje eu vou te mostrar três contas que ninguém da rua via por trás daquele carrão: quanto cada uma come por mês, qual delas engorda até no domingo, sem ela comprar nada, e o que eu respondi para a Valéria naquela noite. Essa última, nem ela esperava.
+Hoje eu vou te contar o que estava escrito naquele bilhete, as três contas que ninguém da rua via por trás daquele carrão, e o que eu respondi para a Valéria naquela noite. Essa última, nem ela esperava.
 
-Se você já olhou o carro do vizinho e pensou que a vida dele está melhor que a sua, fica comigo até o fim, que eu vou te mostrar a conta que mora por trás de um carro de vitrine, e o que eu fiz com o pedido da Valéria. Então já puxa a cadeira. Vamos começar?
+Se você já olhou o carro do vizinho e pensou que a vida dele está melhor que a sua, fica comigo até o fim, que eu vou te mostrar a conta que mora por trás de um carro de vitrine. Então já puxa a cadeira. Vamos começar?
 
 [VINHETA NOVA 4,5 s]
 
 ## 1. Quem fala
 
-[TIÃO P06 joinha] [CENA: a cozinha do Tião de manhã]
+[TIÃO P06 joinha] [CENA: a varanda do Tião de manhã]
 
 Chega mais! O café tá passado e hoje tem conta pra fazer.
 
-Se você é novo aqui, eu sou o Tião. Sou porteiro de um prédio chique no centro, e de lá eu vejo todo dia quem parece rico e quem é rico. Nem sempre é a mesma pessoa.
+Se você é novo aqui, eu sou o Tião. Sou porteiro de um prédio chique no centro, e de lá eu vejo todo dia quem parece rico e quem é rico. Nem sempre é a mesma pessoa. Tomo café na mesma caneca branca, lascada na borda, há doze anos, e faço as minhas contas no papel de pão da padaria.
 
-Moro no mesmo bairro desde menino, tomo café na mesma caneca branca, lascada na borda, há doze anos, e faço as minhas contas no papel de pão da padaria, com a taxa que o Banco Central publica todo mês anotada do lado. Aqui eu faço a conta na sua frente.
+E quem viu o último vídeo lembra: a Dona Cida, da janela, me avisou que a Valéria ainda ia bater na minha porta. Bateu. Mas para entender aquele pedido, eu tenho que voltar dois meses.
 
 [FUNDO PRETO 3 s]
 
-## 2. A chave
+## 2. Dois meses antes: a chave
 
-[CENA: a rua com a casa de vitrine e a SUV branca, sábado de manhã] [TRILHA: leve] [SOM: motor caro, porta batendo]
+[CENA: a rua com a casa de vitrine, sábado de manhã] [TRILHA: leve, de domingo] [SOM: rua cheia, criança de bicicleta]
 
-Era um sábado, dez da manhã, sol de rachar. A rua inteira na calçada: gente lavando carro, criança de bicicleta, eu na minha varanda com a caneca. E aí ela chegou.
+Era um sábado, dez da manhã, sol de rachar. A rua inteira na calçada: o Marcos lavando a picape, a Sandra do lado dele de celular na mão, o Rafa, meu primo, encostado no muro, e a Dona Cida na janela, como sempre. Eu na minha varanda, com a caneca. E aí ela chegou.
 
-[VALÉRIA andando, de óculos escuros] [CENA: a SUV branca parada na frente da casa de vitrine]
+[SOM: motor caro chegando devagar, freio] [CENA: a SUV branca entra de frente e para na frente da casa de vitrine]
 
 A Valéria tem trinta e seis anos e mora na casa mais bonita da rua: dois andares, vidro do chão ao teto, um coqueiro na frente. Ela gerencia uma loja de roupa no shopping. E naquele sábado ela desceu de um carrão branco, alto, zerinho, brilhando de cera.
 
@@ -68,43 +67,105 @@ A Valéria tem trinta e seis anos e mora na casa mais bonita da rua: dois andare
 
 Ela girou a chave no dedo, devagar, para todo mundo ver. "Cento e oitenta e nove mil e novecentos, gente. Peguei ontem."
 
-[VALÉRIA P05 esnobando]
+[SANDRA P02 choque] [MARCOS P04 braços cruzados]
 
-Aí ela olhou para a minha varanda. Para mim, de chinelo. Para a minha caneca.
+A Sandra largou o celular. O Marcos olhou para a picape dele, que de repente parecia velha. E eu, que não sei ficar calado quando o assunto é dinheiro, falei a coisa errada na hora errada: "Valéria, para quem compra carro assim, eu tenho três dicas."
 
-[VALÉRIA P06 ai que pobreza] [SOM: risadinha da rua]
+[L5 PLANTADA] [VALÉRIA P19 zombando, apontando] [SOM: gargalhada da rua] [TRILHA: corta seca]
 
-"Ai, Tião... que pobreza. Essa caneca tem a idade da rua. Compra uma nova, homem, que eu até te dou o dinheiro."
+Ela riu. Mas riu alto, virada para a rua, apontando para mim. "Dica de porteiro, gente! Quem vai de ônibus para o trabalho vai me ensinar a comprar carro!"
 
-[TIÃO P11 ombros]
+[VALÉRIA P06 ai que pobreza]
 
-A rua riu. Eu também ri, para ser sincero. A caneca é lascada mesmo. Mas eu fiquei olhando a chave girando no dedo dela, e uma pergunta não saiu mais da minha cabeça: com o salário de gerente de loja, como é que fecha a conta de um carro desses?
+E olhou para a minha caneca. "Ai, Tião... que pobreza. Essa caneca tem a idade da rua. Compra uma nova, homem, que eu até te dou o dinheiro."
 
-E se você também já fez essa pergunta olhando o carro de alguém, deixa o like agora e se inscreve, que eu vou fazer essa conta inteira aqui, no papel de pão, com o número do Banco Central. E conta aqui embaixo: qual é o carro da sua rua que você nunca entendeu como foi pago? Eu leio e respondo.
+[SANDRA P01 rindo] [TIÃO P19 humilhado] [CLIMA: tensão]
+
+A rua riu. E quem riu mais alto foi a Sandra. Eu ri junto, que é o que a gente faz para não passar mais vergonha. Mas olhei para dentro da caneca e fiquei ali, quieto, até todo mundo esquecer de mim.
 
 [FUNDO PRETO 3 s]
 
-## 3. Onze e quarenta da noite
+## 3. O bilhete
 
-[CENA: a varanda do Tião à noite, luz amarela] [TRILHA: tensão baixa] [SOM: grilos, um cachorro ao longe]
+[CENA: o portão do Tião por dentro, de noite, luz amarela] [TRILHA: ternura, piano] [SOM: grilos, papel deslizando no cimento]
 
-Naquele mesmo sábado, de noite, eu estava na minha cadeira de área, aquela de fio vermelho e branco, terminando o último café do dia. A rua já dormia.
+Naquela noite, eu fui fechar o portão e vi um papel no chão. Um bilhete, dobrado em quatro, que alguém tinha passado por baixo. Eu conheço aquela letra redonda. É a mesma das plaquinhas de promoção da loja dela no shopping.
 
-[VALÉRIA P09 olhando se alguém vê] [CLIMA: tensão]
+[TIÃO P18 lendo o bilhete] [TEXTO, em letra de mão: Desculpa por hoje. Não conta pra ninguém que eu pedi desculpa.]
 
-Onze e quarenta da noite. A rua inteira apagada. Só a luz da minha varanda acesa. E a Valéria, a do carrão branco de cento e oitenta e nove mil reais, chega na ponta do pé, olha para um lado, olha para o outro, e fala baixinho: "Tião... você me empresta cinquenta reais até sexta?"
+Estava escrito: "Desculpa por hoje. Não conta pra ninguém que eu pedi desculpa." Sem nome. Nem precisava.
 
-[TIÃO P05 coçando a cabeça]
+[TIÃO P10 segredo] [CENA: a casa de vitrine à noite, uma luz acesa no andar de cima]
 
-Eu não respondi na hora. Pela primeira vez desde que eu conheço a Valéria, ela estava sem a chave do carrão na mão. Na mão, só o celular, com a tela acesa.
+Eu guardei o bilhete dentro da gaveta da cozinha. E olhei pela janela: a luz do quarto dela ainda estava acesa. Guarda esse bilhete na cabeça, que ele volta nessa história.
+
+E se você também já levou uma dessas na frente de todo mundo e engoliu calado, deixa o like agora e se inscreve, que essa história vira. E conta aqui embaixo: qual é o carro da sua rua que você nunca entendeu como foi pago? Eu leio e respondo.
+
+[FUNDO PRETO 3 s]
+
+## 4. O primeiro mês: os sinais
+
+[CENA: a rua de manhã cedo, seis e meia] [TRILHA: mistério leve, relógio] [SOM: passarinho, portão]
+
+Aí começou uma coisa estranha. Eu saio para a portaria às seis e vinte. E umas três semanas depois do sábado do carro, numa terça, eu vi a Valéria saindo de casa a pé, de salto, para o ponto de ônibus. O carrão ficou na garagem.
+
+[VALÉRIA andando para o ponto, de óculos na cabeça]
+
+Na quarta, a mesma coisa. Na quinta, a mesma coisa. Quando a Sandra perguntou, a Valéria respondeu rápido demais: "Está na revisão." Carro zerinho, de um mês, na revisão.
+
+[SANDRA P06 pensando] [CENA: a rua de dia]
+
+Depois a Sandra reparou outra coisa, porque a Sandra repara em tudo: a Valéria, que fazia escova de quinze em quinze dias, apareceu com o cabelo preso três sábados seguidos. E a casa de vidro, que vivia acesa até meia-noite com o ar-condicionado ligado, passou a apagar às nove.
+
+[CIDA P04 preocupação] [CENA: a janela da Dona Cida]
+
+Uma noite, a Dona Cida me chamou da janela e apontou com o queixo para a garagem. "Tião, eu te falei. Carro parado na garagem e dona indo de ônibus. Isso não é revisão, meu filho. Isso é parcela."
+
+[ABRE L3] [BOMBA] [SANDRA P05 explica] [MARCOS P07 sem graça] [CENA: a calçada do Marcos]
+
+Mas a Sandra não viu nada disso. A Sandra só viu o carro. E começou a falar todo dia para o Marcos, alto, para a rua escutar: "Se a Valéria pode ter uma SUV, a gente também pode. A gente troca essa picape. Sábado eu quero ir na concessionária."
+
+[TIÃO P04 mão na cabeça]
+
+E eu ali, de longe, vendo a Sandra querer entrar exatamente no buraco em que a Valéria já estava. Sem saber de nada.
+
+[FUNDO PRETO 3 s]
+
+## 5. O segundo mês: o posto
+
+[CENA: o posto de gasolina do bairro, fim de tarde] [TRILHA: tensão] [SOM: bomba de gasolina, carros]
+
+No segundo mês, a Valéria tirou o carro da garagem numa sexta. E quem estava na fila do posto, logo atrás dela, era o Rafa, meu primo, que é motorista de aplicativo e passa o dia inteiro abastecendo.
+
+[VALÉRIA P23 cartão recusado] [SOM: bip da maquininha recusando, duas vezes]
+
+O frentista passou o cartão. Recusado. Passou de novo. Recusado. A Valéria tirou os óculos, deu um sorriso daqueles de propaganda e falou alto: "Essa maquininha de vocês está com defeito." E saiu do posto sem abastecer.
+
+[RAFA P02 rindo] [CENA: a varanda do Tião à noite]
+
+Naquela noite, o Rafa chegou na minha varanda rindo, falando alto como sempre. "Primo, a madame da SUV não tem nem para a gasolina! Amanhã a rua inteira vai saber disso, eu vou contar para a Sandra!"
+
+[ABRE L4] [TIÃO P07 mãos na cintura]
+
+Eu olhei para ele e pedi uma coisa só: "Rafa, não conta. Quem já levou um não na frente de todo mundo sabe o tamanho disso." Ele parou de rir. Disse que ia pensar. E foi embora sem prometer nada.
+
+[FUNDO PRETO 3 s]
+
+## 6. De volta àquela noite
+
+[CENA: a rua apagada à noite, só a luz amarela da varanda do Tião] [TRILHA: tensão baixa] [SOM: grilos] [VOLTA L1]
+
+Agora você já sabe de onde veio aquela noite. Uma semana depois do posto.
+
+Quase meia-noite. A rua inteira apagada. Só a luz da minha varanda acesa. Aí eu ouvi três batidinhas no portão, bem baixinho. Era a Valéria, a do carrão branco de cento e oitenta e nove mil reais. Ela olhou para um lado, olhou para o outro, e falou baixinho: "Tião... você me empresta cinquenta reais até sexta?"
 
 [VALÉRIA P08 celular fatura] [SOM: notificação]
 
-O celular apitou. Ela olhou, e o rosto dela caiu. Eu vi a tela de relance: "Sua fatura vence segunda-feira. Valor: três mil e duzentos reais."
+Antes que eu respondesse, o celular dela apitou. Ela olhou, e o rosto dela caiu. Eu vi a tela de relance: "Sua fatura vence segunda-feira. Valor: três mil e duzentos reais."
 
 [VALÉRIA P10 pedindo sem graça]
 
-"É só para a gasolina, Tião. O cartão estourou o limite, e ontem a maquininha do posto recusou na frente de todo mundo. Eu preciso ir trabalhar na segunda. Sexta eu te devolvo. Eu vim na sua porta porque a sua luz é a única acesa, e porque você é o único da rua que nunca me perguntou do carro. Se eu peço para outro, amanhã o bairro inteiro sabe. Por favor, não conta para ninguém!"
+"É só para a gasolina, Tião. Eu preciso ir trabalhar segunda. Eu sei que eu não tenho o direito de te pedir nada, depois daquele sábado. Mas a sua luz é a única acesa, e você é o único da rua que nunca me perguntou do carro."
 
 [TIÃO P10 segredo]
 
@@ -112,19 +173,19 @@ Eu puxei a outra cadeira e falei: "Senta aí, Valéria. Antes dos cinquenta, dei
 
 [FUNDO PRETO 3 s]
 
-## 4. Conta número um: a parcela
+## 7. Conta número um: a parcela
 
-[TIÃO P07 mãos na cintura] [CENA: o papel de pão e o lápis amarelo em cima da mesinha da varanda] [TEXTO: CONTA Nº 1 · A PARCELA]
+[TIÃO P17 fazendo a conta] [CENA: o papel de pão e o lápis amarelo na mesinha da varanda] [TEXTO: CONTA Nº 1 · A PARCELA]
 
-Conta número um: a parcela. Eu perguntei e ela contou, baixinho. Deu o carro antigo dela, que valia trinta mil, como entrada. O resto, cento e cinquenta e nove mil e novecentos reais, ela financiou em sessenta meses. Cinco anos.
+Conta número um: a parcela. Ela contou baixinho. Deu o carro antigo, que valia trinta mil, como entrada. O resto, cento e cinquenta e nove mil e novecentos reais, ela financiou em sessenta meses. Cinco anos.
 
-[MOTION: a conta no papel de pão, linha por linha] [TEXTO: 1,96% AO MÊS]
+[MOTION: a conta no papel de pão] [TEXTO: 1,96% AO MÊS]
 
-Quanto custa esse dinheiro? O Banco Central publica todo mês a taxa média que os bancos cobram de quem financia carro. Em setembro deste ano, foi um vírgula noventa e seis por cento ao mês. Parece pouco, né? No ano, dá vinte e seis por cento.
+O Banco Central publica todo mês a taxa média que os bancos cobram de quem financia carro. Em setembro deste ano, foi um vírgula noventa e seis por cento ao mês. Parece pouco, né? No ano, dá vinte e seis por cento.
 
 [MOTION: o número sobe] [TEXTO: R$ 4.555,56 × 60]
 
-Com essa taxa, a parcela da Valéria dá quatro mil, quinhentos e cinquenta e cinco reais e cinquenta e seis centavos. Todo mês. Por sessenta meses.
+Com essa taxa, a parcela da Valéria dá quatro mil, quinhentos e cinquenta e cinco reais e cinquenta e seis centavos. Todo mês. Por sessenta meses. E ela já tinha pagado duas.
 
 [MOTION: R$ 159.900 vira R$ 273.333] [SOM: caixa registradora]
 
@@ -144,59 +205,83 @@ E ela não está sozinha nisso, não. O próprio Banco Central mostra que o fina
 
 [FUNDO PRETO 3 s]
 
-## 5. Conta número dois: a casa de vitrine
+## 8. Conta número dois: a casa de vitrine
 
-[CENA: a casa de vitrine à noite, vidro escuro] [TEXTO: CONTA Nº 2 · A CASA]
+[CENA: a casa de vitrine à noite, vidro escuro] [TEXTO: CONTA Nº 2 · A CASA] [TRILHA: tensão baixa]
 
-Conta número dois: a casa. Eu achava que aquela casa de vidro era dela. Não é. É alugada. Três mil e novecentos por mês, fora a luz, que numa casa daquele tamanho, com ar-condicionado em todo quarto, não sai barato.
+Conta número dois: a casa. Eu achava que aquela casa de vidro era dela. Não é. É alugada. Três mil e novecentos por mês, fora a luz, que numa casa daquele tamanho, com ar-condicionado em todo quarto, não sai barato. Agora eu entendia a casa apagando às nove.
 
-[MOTION: o salário da Valéria numa barra, as contas comendo a barra] [TEXTO: SALÁRIO R$ 8.700]
+[MOTION: o salário numa barra, as contas comendo a barra] [TEXTO: SALÁRIO R$ 8.700]
 
-Aí eu fiz a conta que ela nunca tinha feito. Ela tirou o contracheque da bolsa e me mostrou, baixinho: já com os descontos, o salário dela é de oito mil e setecentos reais. A parcela do carro come quatro mil, quinhentos e cinquenta e cinco. O aluguel come três mil e novecentos.
+Ela tirou o contracheque da bolsa e me mostrou: já com os descontos, o salário dela é de oito mil e setecentos reais. A parcela do carro come quatro mil, quinhentos e cinquenta e cinco. O aluguel come três mil e novecentos.
 
 [MOTION: sobra R$ 244] [SOM: sino triste]
 
-A partir do mês que vem, quando vence a primeira parcela, vão sobrar duzentos e quarenta e quatro reais e quarenta e quatro centavos. Para o mês inteiro. Para comida, gasolina, luz, celular, a escova da semana e a vida.
+Sobram duzentos e quarenta e quatro reais e quarenta e quatro centavos. Para o mês inteiro. Para comida, gasolina, luz, celular e a vida. Foi por isso que a escova parou. Foi por isso que o carro ficou na garagem. Não era revisão. Era a gasolina que não cabia.
+
+[CELULAR DO TIÃO: mensagem do Rafa] [SOM: notificação curta] [FECHA L4]
+
+Nessa hora o meu celular vibrou. Era o Rafa: "Primo, não contei para ninguém. Nem para a Sandra." Eu não mostrei a mensagem para a Valéria. Ela nunca soube que alguém viu o posto.
 
 [VALÉRIA P04 preocupação]
 
-"Mas eu nunca fiquei sem nada, Tião. Tá, no dia dez o salário já foi embora, mas o cartão segura até o outro mês. Eu como fora quase todo dia. Eu estou sempre arrumada."
-
-[TIÃO P07 mãos na cintura]
-
-E aí eu perguntei a única coisa que importava: "Valéria, e como você vai pagar isso tudo com duzentos e quarenta reais?" Ela olhou para o celular. Para a tela que ainda estava acesa.
+"Mas eu nunca fiquei sem nada, Tião. O cartão segura até o outro mês." E aí ela mesma ouviu o que tinha falado, e olhou para o celular, para a tela que ainda estava acesa.
 
 [FUNDO PRETO 3 s]
 
-## 6. Conta número três: o cartão
+## 9. Conta número três: o cartão
 
 [VALÉRIA P08 celular fatura] [TEXTO: CONTA Nº 3 · O CARTÃO] [CLIMA: brasas]
 
-Conta número três: o cartão. E esse já vinha de antes do carro. Há meses, tudo o que o salário não cobria depois do dia dez ia para o cartão de crédito. O almoço, a gasolina, o salão, a roupa nova para o sábado do carrão. Até o cartão bater no limite e o posto recusar. E a fatura chegou: três mil e duzentos reais. Ela não tinha os três mil e duzentos.
+Conta número três: o cartão. Tudo o que os duzentos e quarenta e quatro não cobriam ia para o cartão de crédito. O almoço, a gasolina, o salão das primeiras semanas, a roupa nova para o sábado do carrão. Até o cartão bater no limite, lá no posto. E a fatura chegou: três mil e duzentos reais.
 
 [TIÃO P04 mão na cabeça]
 
-No mês anterior, ela tinha pago só o mínimo. Sabe o que acontece com o resto? Entra no rotativo do cartão. E o rotativo é um dos dinheiros mais caros que o banco empresta.
+E aqui veio a tentativa dela, a que piorou tudo. No mês anterior, para respirar, ela tinha pago só o mínimo da fatura. Parecia uma saída. Sabe para onde vai o resto? Para o rotativo do cartão, um dos dinheiros mais caros que o banco empresta.
 
-[MOTION: 15,29% AO MÊS, o número pulsando em vermelho] [TEXTO: 451% AO ANO]
+[MOTION: 15,29% AO MÊS, pulsando em vermelho] [TEXTO: 451% AO ANO]
 
 Em setembro, pelo Banco Central, o rotativo do cartão para pessoa física cobrou, em média, quinze vírgula vinte e nove por cento ao mês. No ano, passa de quatrocentos e cinquenta por cento.
 
-[MONTAGEM RAPIDA: notificações do banco pipocando, fatura, mínimo, juros, a chave da SUV, o vidro da casa, o salão] [TRILHA: tensão subindo] [SOM: coração]
+[MONTAGEM RÁPIDA: notificações, fatura, mínimo, juros, a chave da SUV, o vidro da casa] [TRILHA: tensão subindo] [SOM: coração]
 
 Três mil e duzentos no rotativo, a quinze por cento ao mês: só no primeiro mês, são quatrocentos e oitenta e nove reais de juros. Em três meses sem pagar, a dívida passa de quatro mil e novecentos. É essa a conta que engorda até no domingo, sem ela comprar nada.
 
-[SILENCIO] [CENA: a caneca lascada fumegando na mesinha da varanda] [TRILHA: calma]
+[VALÉRIA P14 chorando escondido, óculos escuros no rosto] [TRILHA: piano, silêncio em volta]
 
-Agora, uma coisa que está na lei, e que eu mostrei para a Valéria ali mesmo, no celular dela, no site oficial da Câmara dos Deputados. Existe uma lei chamada Desenrola, de dois mil e vinte e três. Ela diz que, no rotativo do cartão, os juros não podem passar do tamanho da dívida. Ou seja: a dívida pode, no máximo, dobrar. Três mil e duzentos viram, no máximo, seis mil e quatrocentos. Isso vale desde o começo de dois mil e vinte e quatro. Se o banco te cobrar mais que isso, você pode reclamar!
-
-[VALÉRIA P14 chorando escondido]
-
-Ela não disse nada. Só abaixou a cabeça e chorou baixinho, com a mão na frente do rosto, para a rua não ver. E se você também está com uma fatura que não cabe, me escreve aqui embaixo: "eu também". E deixa o like, que já já eu te conto o que eu respondi para ela. Ela não esperava, e você também não vai esperar.
+Ela não disse nada. Pôs os óculos escuros, de noite, para eu não ver os olhos. Mas a lágrima desceu por baixo da lente. E se você também está com uma fatura que não cabe, me escreve aqui embaixo: "eu também". Você não está sozinho nessa.
 
 [FUNDO PRETO 3 s]
 
-## 7. O que o Tião respondeu
+## 10. As três dicas
+
+[TIÃO P05 coçando a cabeça] [CENA: a varanda à noite] [TRILHA: calma] [VOLTA L5]
+
+Eu esperei ela respirar. E aí eu lembrei daquele sábado. "Valéria... lembra das três dicas de que você riu?"
+
+[VALÉRIA P11 vergonha]
+
+Ela riu também, mas dessa vez de vergonha, enxugando o rosto. "Tião, eu sei que é besteira de porteiro... mas fala. Eu não tenho mais nada a perder."
+
+[TEXTO: DICA 1] [TIÃO P09 caderno]
+
+Dica número um: antes de assinar qualquer financiamento, pergunte quanto você vai pagar no total, e não quanto é a parcela. É só multiplicar: a parcela vezes o número de parcelas. O vendedor mostra a parcela, porque a parcela é pequena. O total é que conta a verdade.
+
+[TEXTO: DICA 2] [MOTION: a fatura dividida em 3]
+
+Dica número dois: fatura que não cabe nunca fica no mínimo. O mínimo joga o resto no rotativo, a quinze por cento ao mês. Liga para o banco, ou abre o aplicativo, e parcela a fatura. E tem uma lei para te proteger.
+
+[SILÊNCIO] [CENA: a caneca lascada fumegando na mesinha] [TEXTO: LEI 14.690]
+
+Existe uma lei chamada Desenrola, de dois mil e vinte e três. Está no site oficial da Câmara dos Deputados, e eu mostrei para ela ali, no celular. Ela diz que, no rotativo do cartão, os juros não podem passar do tamanho da dívida. Ou seja: a dívida pode, no máximo, dobrar. Três mil e duzentos viram, no máximo, seis mil e quatrocentos. Isso vale desde o começo de dois mil e vinte e quatro. Se o banco te cobrar mais que isso, você pode reclamar!
+
+[TEXTO: DICA 3] [TIÃO P07 mãos na cintura]
+
+E a dica número três eu guardei para o fim, porque é a que dói. Mas antes, ela tinha que ouvir o que eu ia responder sobre os cinquenta.
+
+[FUNDO PRETO 3 s]
+
+## 11. O que o Tião respondeu
 
 [TIÃO P13 triste] [CENA: a varanda à noite] [TRILHA: calma]
 
@@ -212,25 +297,19 @@ Ela levantou para ir embora, vermelha. E eu terminei a frase.
 
 [TIÃO P06 joinha] [BRILHO DOURADO]
 
-"Mas o cartão do ônibus da semana eu pago. E segunda, seis e meia, eu vou junto com você até o ponto. Ninguém precisa saber de nada. E domingo de manhã a gente senta aqui de novo, com café, e faz a conta inteira: o carro, a casa e o cartão. Conta por conta."
+"Mas o cartão do ônibus da semana eu pago. E segunda, seis e meia, eu vou junto com você até o ponto. E domingo de manhã a gente senta aqui de novo, com café, e eu te dou a dica número três."
 
-[VALÉRIA P15 agradecida]
+[FECHA L1] [VALÉRIA P15 agradecida] [TRILHA: ternura] [ANIMAÇÃO: bochecha corando]
 
-Ela ficou parada uns segundos, olhando o papel de pão com as três contas, em cima da mesinha. Aí, sem pedir, puxou o lápis amarelo de carpinteiro do bolso da minha camisa e fez um círculo em volta da palavra juros. "Tião... me ensina a fazer essa conta?"
+Ela ficou parada, olhando para mim de um jeito que eu nunca tinha visto. "Por que você faz isso por mim, Tião? Depois de tudo?" Eu não respondi. Ela abriu a boca para falar mais alguma coisa. E fechou.
 
-[TIÃO P01 rindo] [CENA: o papel de pão e o lápis amarelo na mesinha]
+[CENA: a rua à noite] [VALÉRIA atravessa a rua e entra no portão da casa de vitrine] [SOM: portão] [CENA: acende uma luz na casa de vitrine]
 
-"Ensino. Mas com uma condição: a conta, você copia com a sua letra. E esse lápis fica com você até domingo."
+Aí ela atravessou a rua, abriu o portão da casa de vidro e entrou. Um minuto depois, a luz do quarto dela acendeu. E ficou acesa até tarde.
 
-[VALÉRIA P04 preocupação] [MOTION: a letra dela no papel de pão, linha por linha]
+[TIÃO P10 segredo]
 
-Ela copiou devagar. Parcela, quatro mil, quinhentos e cinquenta e cinco. Aluguel, três mil e novecentos. Sobra, duzentos e quarenta e quatro. E quando chegou em "juros do carro: cento e treze mil", a mão dela parou no meio do número.
-
-[VALÉRIA P11 vergonha]
-
-"Eu assinei isso sem ler, Tião! O vendedor só me mostrou a parcela."
-
-Ela dobrou o papel de pão em quatro, guardou na bolsa e foi para casa. E a gente marcou o domingo. Mas antes de eu te contar o que ela fez com o carro, um recado rápido.
+E a gente marcou o domingo. Mas antes de eu te contar a dica número três, e o que ela fez com o carro, um recado rápido.
 
 [MOTION: o celular com o FinMoovi, a tela dos cartões e da fatura] [TEXTO: FINMOOVI · 7 DIAS DE TESTE]
 
@@ -238,21 +317,51 @@ Se você, como a Valéria, só descobre o tamanho da fatura quando ela chega, us
 
 [FUNDO PRETO 3 s]
 
-## 8. O carrão sai da rua
+## 12. A dica número três
 
 [CENA: a varanda do Tião, domingo de manhã] [TRILHA: calma] [SOM: passarinhos]
 
-No domingo, às nove da manhã, ela apareceu na varanda com o papel de pão dobrado e o lápis amarelo, já mais curto de tanto apagar e refazer conta. Eu passei o café e a gente somou tudo de novo: o carro, a casa e o cartão. Aí eu perguntei: "Quanto esse carro vale hoje, e quanto falta pagar?" Ela escreveu os dois números, um embaixo do outro, e viu: vendendo, quitava tudo.
+No domingo, às nove da manhã, ela apareceu na varanda com o papel de pão dobrado dentro da bolsa. Eu passei o café. E dei a dica número três.
+
+[TEXTO: DICA 3] [TIÃO P05 coçando a cabeça]
+
+Dica número três: faz a pergunta que ninguém faz. "Quanto esse carro vale hoje, e quanto eu ainda devo dele?" Se vendendo dá para quitar a dívida, o carro ainda é seu. Se não dá, quem manda nele é o banco.
+
+[VALÉRIA P18 copiando a conta]
+
+Ela escreveu os dois números, um embaixo do outro, com a letra dela. E viu: vendendo agora, dava para quitar o financiamento inteiro. Sobrava pouco, quase nada. Mas a parcela de quatro mil e quinhentos sumia.
 
 [VALÉRIA P13 braços cruzados]
 
-Ela ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. Uns bons segundos. Depois empurrou a chave para o meu lado da mesinha e disse: "Me ajuda a vender, Tião."
-
-[TIÃO P06 joinha]
-
-Na segunda, seis e meia, eu passei o cartão do ônibus por ela na catraca, como tinha prometido. E de tarde, depois do meu turno na portaria, ela dirigiu o carrão pela última vez até a loja de carros da avenida, comigo no banco do carona. O carro ficou lá, vendido, e a gente voltou de ônibus. Eu anotei o valor da venda no mesmo papel de pão. Dava para quitar o financiamento inteiro. Sobrava pouco, quase nada, mas a parcela de quatro mil e quinhentos sumia.
+Ela ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. Uns bons segundos. Depois empurrou a chave para o meu lado e disse: "Me ajuda a vender, Tião."
 
 [FUNDO PRETO 3 s]
+
+## 13. O ponto de ônibus
+
+[CENA: o ponto de ônibus da esquina, segunda, seis e meia] [TRILHA: leve] [SOM: ônibus ao longe]
+
+Na segunda, seis e meia, eu estava no ponto com ela, como tinha prometido. E aí passou a picape do Marcos, devagar. A Sandra abriu o vidro.
+
+[SANDRA P01 rindo] [SOM: freio, vidro abrindo]
+
+"Valéria?! De ônibus? Com o porteiro?" E riu alto, do mesmo jeito que tinha rido de mim naquele sábado.
+
+[VALÉRIA P22 fingindo que não conhece] [TRILHA: corta seca] [CLIMA: tensão]
+
+E a Valéria fez a única coisa que eu não esperava. Deu um passo para longe de mim, levantou o queixo e falou: "Ele só está me mostrando o ponto." Como se eu fosse um desconhecido.
+
+[TIÃO P19 humilhado]
+
+O ônibus chegou. Eu passei o cartão dela na catraca, como tinha prometido. E fui para a portaria sem falar mais nada. Doeu mais que o sábado. Porque no sábado ela ainda não me devia nada.
+
+[CENA: a calçada do Marcos, de tarde] [MARCOS P06 pensando] [SANDRA P07 sem graça] [FECHA L3]
+
+Mas naquela tarde, a Valéria dirigiu o carrão pela última vez até a loja de carros da avenida, e voltou a pé. A rua inteira viu a garagem vazia. E a Dona Cida, da janela, chamou a Sandra e falou baixinho: "Era a parcela, minha filha. Quatro mil e quinhentos por mês." Na calçada, o Marcos perguntou: "E a concessionária, sábado?" A Sandra olhou para a garagem vazia, olhou para a picape, e disse: "Deixa a picape onde está."
+
+[FUNDO PRETO 3 s]
+
+## 14. Quatro meses depois
 
 [CENA: a rua com a casa de vitrine, sábado de manhã] [TRILHA: virada, leve]
 
@@ -280,7 +389,13 @@ Eu tirei a nota, guardei no bolso, e levantei a caneca velha para ela, num brind
 
 Ela foi embora rindo. Dessa vez, de verdade.
 
-E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão, escreve aqui embaixo só o número um. E fica mais um pouquinho, que a Valéria descobriu mais uma coisa naquele domingo.
+[TIÃO P18 lendo o bilhete] [VOLTA L2] [TRILHA: ternura] [TEXTO, em letra de mão: A desculpa daquele sábado, e a do ponto, eu ainda te devo em voz alta.]
+
+Só de noite eu desdobrei a nota. Dentro dela tinha outro papelzinho, com aquela letra redonda: "A desculpa daquele sábado, e a do ponto, eu ainda te devo em voz alta." Eu guardei junto do primeiro, na gaveta da cozinha. Ela ainda não pediu. Eu ainda estou esperando.
+
+[TIÃO P06 joinha]
+
+E se você vai fazer hoje a conta do seu carro, do seu aluguel e do seu cartão, escreve aqui embaixo: eu vou fazer a conta. E fica mais um pouquinho, que a Valéria descobriu mais uma coisa naquele domingo.
 
 [TIÃO P02 contando dinheiro]
 

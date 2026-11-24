@@ -1839,6 +1839,22 @@
     ]
    ],
    "olhos_mao": true
+  },
+  "P18": {
+   "nome": "lendo-bilhete",
+   "tam": [
+    492,
+    734
+   ],
+   "olhos": null
+  },
+  "P19": {
+   "nome": "humilhado",
+   "tam": [
+    461,
+    728
+   ],
+   "olhos": null
   }
  },
  "valeria": {
@@ -2469,6 +2485,56 @@
     589,
     1879
    ]
+  },
+  "P19": {
+   "nome": "zombando-apontando",
+   "tam": [
+    564,
+    706
+   ],
+   "olhos": null,
+   "boca2": null,
+   "sobr": null
+  },
+  "P20": {
+   "nome": "mao-no-rosto-chorando",
+   "tam": [
+    521,
+    730
+   ],
+   "olhos": null,
+   "boca2": null,
+   "sobr": null
+  },
+  "P21": {
+   "nome": "escrevendo-bilhete",
+   "tam": [
+    457,
+    730
+   ],
+   "olhos": null,
+   "boca2": null,
+   "sobr": null
+  },
+  "P22": {
+   "nome": "fingindo-que-nao-conhece",
+   "tam": [
+    530,
+    745
+   ],
+   "olhos": null,
+   "boca2": null,
+   "sobr": null
+  },
+  "P23": {
+   "nome": "cartao-recusado",
+   "tam": [
+    485,
+    715
+   ],
+   "olhos": null,
+   "boca2": null,
+   "sobr": null
   }
  }
 }
