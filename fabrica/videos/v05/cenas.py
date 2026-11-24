@@ -99,8 +99,8 @@ def foco(fundo, fx, fy, z=1.3, **kw): return T(fundo, [], **{"zoom": [1.0, z], "
 # enquadramentos que se repetem
 def VE(*poses, x=600, **kw): return P("valeria", x, 1290, 1060, *poses, **kw)    # Valeria de perto (da cintura para cima)
 def TI(*poses, x=1480, **kw): return P("tiao", x, 1290, 1040, *poses, **kw)      # Tiao de perto
-VD = dict(x=80, y=40, larg=950, rabo=(1180, 470))       # balao de quem esta sozinho, a direita
-BT = dict(x=90, larg=930, rabo=(1290, 560))            # balao do Tiao (ele a direita, a Valeria a esquerda)
+VD = dict(x=760, y=40, larg=1080, rabo=(1180, 470))       # balao de quem esta sozinho, a direita
+BT = dict(x=860, larg=1030, rabo=(1290, 560))            # balao do Tiao (ele a direita, a Valeria a esquerda)
 def TS_N(*ps): return P("tiao", 690, 690, 520, *(ps or (("P16", None),)))      # sentados na varanda de noite (ele a esquerda, ela a direita)
 def VS_N(*ps): return P("valeria", 1235, 690, 520, *(ps or (("P17", None),)))
 def TS_D(*ps): return P("tiao", 400, 700, 470, *(ps or (("P16", None),)))      # sentados na varanda de domingo
@@ -202,12 +202,12 @@ L = {
  # 7. O que o Tiao respondeu
  38: [("^", "M", noite_larga([TS_N(), VS_N()], zoom=[1.0, 1.15]))],
  39: [("^", "M", noite_perto([VE(("P04", None)), TI(("P03", None))], [B("Cinquenta para gasolina eu não te empresto.", 1, "Valéria", "empresto", **BT)])),
-      ("Porque", "M", noite_perto([VE(("P14", None)), TI(("P07", None))], [B("Segunda você vai precisar de mais cinquenta. E o carro continua comendo R$ 4.500 por mês.", 1, "Porque", "mês", x=90, larg=930, rabo=(1290, 560))]))],
+      ("Porque", "M", noite_perto([VE(("P14", None)), TI(("P07", None))], [B("Segunda você vai precisar de mais cinquenta. E o carro continua comendo R$ 4.500 por mês.", 1, "Porque", "mês", x=860, larg=1030, rabo=(1290, 560))]))],
  40: [("^", "M", noite_larga([TS_N(), P("valeria", 1350, 930, 640, ("R1", None), sai={"ate": 2300, "g": "levantou", "dur": 4.0, "oculos": True})]))],
  41: [("^", "M", noite_perto([VE(("P03", None)), TI(("P05", None))], [B("Mas o cartão do ônibus da semana eu pago.", 1, "Mas", "pago", **BT)])),
       ("E segunda", "M", noite_perto([VE(("P03", None)), TI(("P06", None))], [B("E segunda, seis e meia, eu vou junto com você até o ponto.", 1, "E segunda", "ponto", **BT)])),
       ("Ninguém precisa", "M", noite_perto([VE(("P04", None)), TI(("P10", None))], [B("Ninguém precisa saber de nada.", 1, "Ninguém", "nada", **BT)])),
-      ("E domingo", "M", noite_perto([VE(("P01", None)), TI(("P09", None))], [B("Domingo a gente senta aqui, com café, e faz a conta inteira. Conta por conta.", 1, "E domingo", "conta", x=90, larg=930, rabo=(1290, 560))]))],
+      ("E domingo", "M", noite_perto([VE(("P01", None)), TI(("P09", None))], [B("Domingo a gente senta aqui, com café, e faz a conta inteira. Conta por conta.", 1, "E domingo", "conta", x=860, larg=1030, rabo=(1290, 560))]))],
  42: [("^", "M", foco(*PAPEL_N, luz=LV)), ("Aí, sem pedir", "M", noite_perto([VE(("P04", None), x=960)])),
       ("me ensina", "M", noite_perto([VE(("P10", None)), TI(("P05", None))], [B("Tião... me ensina a fazer essa conta?", 0, "Tião", "conta")]))],
  43: [("^", "M", noite_perto([VE(("P01", None)), TI(("P06", None))], [B("Ensino. Mas a conta, você copia com a sua letra.", 1, "Ensino", "letra", **BT)])),

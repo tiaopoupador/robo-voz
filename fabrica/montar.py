@@ -156,6 +156,8 @@ def turma(spec, k, s, chave):
         if "quem" in b:
             q = spec["gente"][b["quem"]]
             b["rabo"] = [q["x"], max(20, min(90, q["y"] - q["alt"] - 12 - fundo_b))]
+            if not b["x"] + 60 < q["x"] < b["x"] + b["larg"] - 60:  # fora da caixa o rabinho vira um risco fino
+                avisos.append(f"{chave}: o balao '{b['texto'][:30]}' nao fica em cima de {q['pid']} (mexer x/larg)")
         for x in ("g", "ate", "lin", "quem"): b.pop(x, None)
     for o in spec.get("objetos", []):
         if "g" in o or "ini" in o: o["ini"] = quando(o); o.pop("g", None)
