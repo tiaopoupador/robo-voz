@@ -289,3 +289,15 @@ Mas volta comigo àquele domingo da conta. Depois que a gente somou tudo, a Val�
 Se o seu salário também acaba no dia dez, ou se você quer que isso nunca aconteça com você: no próximo vídeo eu te mostro o que a Valéria achou naquela linha, quanto aquilo levava dela por ano, e o que ela fez em dez minutos, ali na minha mesinha. E olha: depois daquele domingo, eu fui conferir o meu extrato, e levei um susto. Seu salário acaba no dia dez? O problema não é o salário. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
 
 [TELA FINAL NOVA]
+
+## Ficha de fontes
+
+(detalhe, trechos e data de cada uma em `roteiros/05-fontes.md`)
+
+| Dado no roteiro | Fonte |
+|---|---|
+| Juros médios do financiamento de veículo para pessoa física: 1,96% ao mês (26,18% ao ano), setembro de 2026 | Banco Central, séries SGS 25471 e 20749 (api.bcb.gov.br) |
+| Prazo médio do financiamento de veículo: 48,63 meses, setembro de 2026 | Banco Central, série SGS 20886 (api.bcb.gov.br) |
+| Juros médios do rotativo do cartão: 15,29% ao mês (451,71% ao ano), setembro de 2026 | Banco Central, séries SGS 25477 e 22022 (api.bcb.gov.br) |
+| Juros e encargos do rotativo não passam do valor original da dívida | Lei 14.690, de 3/10/2023, art. 28, § 1º, Câmara dos Deputados |
+| Parcela, total pago e sobra do mês | Conta própria com as taxas acima (tabela Price) |
