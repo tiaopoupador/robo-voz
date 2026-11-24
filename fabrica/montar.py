@@ -140,6 +140,22 @@ def turma(spec, k, s, chave):
             b["dur"] = round(max(0.8, t2 + 0.45 - s - b["ini"]), 2) if t2 is not None else round(0.36 * len(b["texto"].split()) + 0.6, 2)
         b.setdefault("dur", round(0.36 * len(b["texto"].split()) + 0.6, 2))
         if "quem" in b: spec["gente"][b["quem"]]["fala"].append([b["ini"], round(b["ini"] + b["dur"], 2)])
+        # 24/11 (Ed: «as caixas de pensamentos em geral estao muito grandes (...) isso o revisor tinha q te pego!»):
+        # a altura da caixa estima-se pelo texto (letra 46 do Turma.tsx) e a caixa nunca desce ate o rosto de ninguem.
+        # O rabinho aponta para a cabeca de quem fala e para antes dela.
+        cpl = max(8, int((b["larg"] - 66) / (46 * 0.56)))
+        linhas_b, n = 1, 0
+        for w in b["texto"].split():
+            if n and n + 1 + len(w) > cpl: linhas_b += 1; n = len(w)
+            else: n += (1 if n else 0) + len(w)
+        fundo_b = b["y"] + linhas_b * 50 + 42
+        for i, p in enumerate(spec["gente"]):
+            topo, meia = p["y"] - p["alt"], p["alt"] * 0.22
+            if p["x"] + meia > b["x"] and p["x"] - meia < b["x"] + b["larg"] and fundo_b > topo + p["alt"] * 0.12:
+                avisos.append(f"{chave}: o balao '{b['texto'][:30]}' desce ate o rosto de {p['pid']} (caixa ate {fundo_b}, cabeca em {topo})")
+        if "quem" in b:
+            q = spec["gente"][b["quem"]]
+            b["rabo"] = [q["x"], max(20, min(90, q["y"] - q["alt"] - 12 - fundo_b))]
         for x in ("g", "ate", "lin", "quem"): b.pop(x, None)
     for o in spec.get("objetos", []):
         if "g" in o or "ini" in o: o["ini"] = quando(o); o.pop("g", None)

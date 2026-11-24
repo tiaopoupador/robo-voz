@@ -184,19 +184,26 @@ export const Andando: React.FC<{ pid: Pid; de: number; ate: number; y: number; a
 };
 
 // o balão de fala (Ed, 19/11, opção A: a voz é do Tião contando, o balão mostra que a fala é DELA).
-// As palavras entram uma a uma no tempo da voz; o rabinho aponta para a boca de quem fala. Nunca por cima de rosto.
+// As palavras entram uma a uma no tempo da voz. Nunca por cima de rosto.
+// 24/11 (Ed: «a caixinha esta muito grande e chega a ficar por cima dos olhos»): letra 46 em vez de 66, caixa justa,
+// e o rabinho é CURTO: sai de baixo da caixa e aponta para a cabeça de quem fala, parando antes dela.
+// rabo = [x da cabeça de quem fala, comprimento em px abaixo da caixa] (o montar.py calcula, para não tocar o rosto).
+export const BALAO_LETRA = 46;
 export const Balao: React.FC<{ texto: string; x: number; y: number; larg?: number; t: number; ini: number; dur: number; rabo?: [number, number] }> = ({ texto, x, y, larg = 620, t, ini, dur, rabo }) => {
   if (t < ini - 0.15) return null;
   const e = mola(t - ini + 0.15, 12, 0.55); const pal = texto.split(" ");
   const vis = Math.min(pal.length, Math.floor(((t - ini) / Math.max(0.3, dur)) * pal.length) + 1);
+  const tx = rabo ? rabo[0] - x : larg / 2; const comp = rabo ? Math.max(20, rabo[1]) : 0;
+  const bx = Math.min(larg - 70, Math.max(70, tx + (tx > larg / 2 ? -60 : 60)));
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: larg, transform: `scale(${0.6 + 0.4 * e})`, transformOrigin: rabo ? `${rabo[0] - x}px ${rabo[1] - y}px` : "50% 100%", opacity: cl((t - ini + 0.15) / 0.12) }}>
-      {rabo && <svg style={{ position: "absolute", left: 0, top: 0, overflow: "visible" }} width={1} height={1}>
-        <path d={`M ${larg - 30} 52 Q ${(larg + rabo[0] - x) / 2} ${(rabo[1] - y) * 0.55 + 40} ${rabo[0] - x} ${rabo[1] - y} Q ${(larg + rabo[0] - x) / 2 - 10} ${(rabo[1] - y) * 0.6 + 70} ${larg - 30} 128 Z`} fill="#FFFDF7" stroke="#1B1310" strokeWidth={6} strokeLinejoin="round" />
-      </svg>}
-      <div style={{ position: "relative", background: "#FFFDF7", border: "6px solid #1B1310", borderRadius: 46, padding: "26px 40px", boxShadow: "0 10px 0 rgba(27,19,16,0.25)",
-        fontFamily: FONTE, fontWeight: 800, fontSize: 66, lineHeight: 1.05, color: "#1B1310", textAlign: "center" }}>
-        {pal.map((w, i) => <span key={i} style={{ opacity: i < vis ? 1 : 0, display: "inline-block", marginRight: 16, transform: `translateY(${i === vis - 1 ? -6 * (1 - cl(((t - ini) / dur * pal.length) % 1 * 3)) : 0}px)` }}>{w}</span>)}
+    <div style={{ position: "absolute", left: x, top: y, width: larg, transform: `scale(${0.6 + 0.4 * e})`, transformOrigin: `${tx}px 100%`, opacity: cl((t - ini + 0.15) / 0.12) }}>
+      <div style={{ position: "relative", background: "#FFFDF7", border: "5px solid #1B1310", borderRadius: 34, padding: "16px 28px", boxShadow: "0 8px 0 rgba(27,19,16,0.25)",
+        fontFamily: FONTE, fontWeight: 800, fontSize: BALAO_LETRA, lineHeight: 1.08, color: "#1B1310", textAlign: "center" }}>
+        {rabo && <svg style={{ position: "absolute", left: -5, top: "100%", overflow: "visible" }} width={1} height={1}>
+          <path d={`M ${bx - 30} -8 L ${tx} ${comp} L ${bx + 30} -8 Z`} fill="#FFFDF7" stroke="#1B1310" strokeWidth={5} strokeLinejoin="round" />
+          <rect x={bx - 26} y={-12} width={52} height={10} fill="#FFFDF7" />
+        </svg>}
+        {pal.map((w, i) => <span key={i} style={{ opacity: i < vis ? 1 : 0, display: "inline-block", marginRight: 11, transform: `translateY(${i === vis - 1 ? -5 * (1 - cl(((t - ini) / dur * pal.length) % 1 * 3)) : 0}px)` }}>{w}</span>)}
       </div>
     </div>
   );
