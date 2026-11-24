@@ -24,7 +24,7 @@ def falado(texto):
     # o roteiro escreve "Tião" normal; para a voz sair certa escreve-se "Tchião" (escolha do Ed, 03/11/2026)
     texto = texto.replace("Tiãão", "Tião").replace("TIÃO", "Tião").replace("Tião", "Tchião")
     # pronuncia escolhida pelo Ed de ouvido (04/11/2026): o roteiro escreve normal, a voz le assim
-    FALA = [(r"FinMoovi", "Finmúvi"), (r"\bempresto\b", "emprésto"), (r"\bSUV\b", "ésse u vê"), (r"\bCPF\b", "cê pê éfe"), (r"\b([EeDdNn]?)esse\b", r"\1êsse"), (r"\bEsse\b", "Êsse"), (r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
+    FALA = [(r"FinMoovi", "Finmúvi"), (r"\bempresto\b", "emprésto"), (r"\b([Zz])erinho\b", r"\1érinho"), (r"\bSUV\b", "ésse u vê"),(r"\bCPF\b", "cê pê éfe"), (r"\b([EeDdNn]?)esse\b", r"\1êsse"), (r"\bEsse\b", "Êsse"), (r"picapes", "pikápis"), (r"picape", "pikápi"), (r"Picape", "Pikápi"),
             (r"setecentos", "sete centos"), (r"Setecentos", "Sete centos"),
             (r"IPVA", "i pê vê á"),
             (r"quilômetros", "quilôometros"), (r"quilômetro", "quilôometro"),
