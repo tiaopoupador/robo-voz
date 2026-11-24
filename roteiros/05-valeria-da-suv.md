@@ -301,7 +301,7 @@ Ela levantou para ir embora, vermelha. E eu terminei a frase.
 
 [FECHA L1] [VALÉRIA P15 agradecida] [TRILHA: ternura] [ANIMAÇÃO: bochecha corando]
 
-Ela ficou parada, olhando para mim de um jeito que eu nunca tinha visto. "Por que você faz isso por mim, Tião? Depois de tudo?" Eu não respondi. Ela abriu a boca para falar mais alguma coisa. E fechou.
+Ela ficou parada, olhando para mim de um jeito que eu nunca tinha visto. "Por que você faz isso por mim, Tião? Depois de tudo?" Eu não respondi. Ela abriu a boca para falar mais alguma coisa, e fechou de novo, sem dizer nada.
 
 [CENA: a rua à noite] [VALÉRIA atravessa a rua e entra no portão da casa de vitrine] [SOM: portão] [CENA: acende uma luz na casa de vitrine]
 
@@ -341,7 +341,7 @@ Ela ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca
 
 [CENA: o ponto de ônibus da esquina, segunda, seis e meia] [TRILHA: leve] [SOM: ônibus ao longe]
 
-Na segunda, seis e meia, eu estava no ponto com ela, como tinha prometido. E aí passou a picape do Marcos, devagar. A Sandra abriu o vidro.
+Na segunda, seis e meia, eu estava no ponto com ela, como tinha prometido. E aí passou a picape do Marcos, devagar, e a Sandra abriu o vidro.
 
 [SANDRA P01 rindo] [SOM: freio, vidro abrindo]
 

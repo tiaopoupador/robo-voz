@@ -270,7 +270,7 @@ L = {
  50: [("^", "M", noite_larga([TS_N(), VS_N()])), ("lembrei daquele sábado", "M", rua_dia([VE((V_ZOMBA, None), x=700)])),
       ("lembra das três", "M", noite_perto([VE(("P11", None)), TI(("P05", None))], [B("Valéria... lembra das três dicas de que você riu?", 1, "lembra das", "riu", **BT)]))],
  51: [("^", "M", noite_perto([VE(("P11", None)), TI(("P05", None))])),
-      ("Tião, eu sei", "M", noite_perto([VE(("P10", None)), TI(("P06", None))], [B("Tião, eu sei que é besteira de porteiro... mas fala.", 0, "Tião, eu sei", "fala"),
+      ("Tião, eu sei", "M", noite_perto([VE(("P10", None)), TI(("P05", None))], [B("Tião, eu sei que é besteira de porteiro... mas fala.", 0, "Tião, eu sei", "fala"),
                                                                               B("Eu não tenho mais nada a perder.", 0, "Eu não tenho", "perder")]))],
  52: [("^", "M", fr("*Dica 1*", "pergunte o total, não a parcela")), ("É só multiplicar", "M", fr("Parcela *×* número de parcelas", "= o que você paga de verdade")),
       ("O vendedor mostra", "M", noite_perto([TI(("P09", None), x=960)]))],

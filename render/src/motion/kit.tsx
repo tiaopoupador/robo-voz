@@ -126,6 +126,7 @@ export const Numero: React.FC<{ valor: number; rotulo?: string; embaixo?: string
 export type LinhaConta = { rotulo: string; valor: number };
 export const Conta: React.FC<{ titulo: string; linhas: LinhaConta[]; passo?: number; total?: string; ja?: number; neutro?: boolean }> = ({ titulo, linhas, passo = 0.9, total = "Sobra", ja = 0, neutro }) => {
   const t = useT();
+  const cs = linhas.some((l) => !Number.isInteger(l.valor)) ? 2 : 0;  // 24/11: com centavos quando a fala diz os centavos
   const ini = 0.5; let soma = 0, somaFim = 0;
   const quando = (i: number) => (i < ja ? -9 : ini + (i - ja) * passo);
   const vis = linhas.map((l, i) => ({ ...l, e: i < ja ? 1 : m(t, quando(i), "estalo") }));
@@ -143,12 +144,12 @@ export const Conta: React.FC<{ titulo: string; linhas: LinhaConta[]; passo?: num
           {vis.map((l, i) => (
             <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", opacity: Math.min(1, l.e * 2), transform: `translateX(${(1 - l.e) * 80}px)` }}>
               <span style={txt(50, COR.tinta, 600)}>{l.rotulo}</span>
-              <span style={{ ...txt(54, neutro ? COR.tinta : l.valor < 0 ? COR.vermelho : COR.verde), fontVariantNumeric: "tabular-nums" }}>{(neutro ? "" : l.valor < 0 ? "- " : "+ ") + reais(Math.abs(l.valor))}</span>
+              <span style={{ ...txt(54, neutro ? COR.tinta : l.valor < 0 ? COR.vermelho : COR.verde), fontVariantNumeric: "tabular-nums" }}>{(neutro ? "" : l.valor < 0 ? "- " : "+ ") + reais(Math.abs(l.valor), cs)}</span>
             </div>
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", borderTop: `${LINHA}px solid ${COR.tinta}`, marginTop: 16, paddingTop: 16 }}>
             <span style={txt(62)}>{total}</span>
-            <span style={{ ...txt(76, neg ? COR.vermelho : COR.tinta), opacity: pisca, fontVariantNumeric: "tabular-nums" }}>{reais(neutro ? Math.abs(soma) : soma)}</span>
+            <span style={{ ...txt(76, neg ? COR.vermelho : COR.tinta), opacity: pisca, fontVariantNumeric: "tabular-nums" }}>{reais(neutro ? Math.abs(soma) : soma, cs)}</span>
           </div>
         </div>
       </AbsoluteFill>

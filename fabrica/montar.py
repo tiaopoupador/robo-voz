@@ -159,6 +159,10 @@ def turma(spec, k, s, chave):
             if not b["x"] + 60 < q["x"] < b["x"] + b["larg"] - 60:  # fora da caixa o rabinho vira um risco fino
                 avisos.append(f"{chave}: o balao '{b['texto'][:30]}' nao fica em cima de {q['pid']} (mexer x/larg)")
         for x in ("g", "ate", "lin", "quem"): b.pop(x, None)
+    # 24/11 (Ed: «tem um card por cima do outro»): os baloes ficam todos no alto da tela; o anterior sai antes do seguinte entrar
+    bs = sorted(spec.get("baloes", []), key=lambda b: b["ini"])
+    for a, b in zip(bs, bs[1:]):
+        if a["ini"] + a["dur"] > b["ini"] - 0.15: a["dur"] = round(max(0.5, b["ini"] - 0.15 - a["ini"]), 2)
     for o in spec.get("objetos", []):
         if "g" in o or "ini" in o: o["ini"] = quando(o); o.pop("g", None)
         # 24/11 (Ed: o carro entrou de re): o que anda tem de andar para o lado da frente da imagem ("frente": "esq" ou "dir")

@@ -73,7 +73,7 @@ export const CenaTurma: React.FC<{ c: SpecTurma; dur: number }> = ({ c, dur }) =
         })}
         {[...c.gente].sort((a, b) => a.y - b.y).map((p, i) => <Gente key={i} p={p} t={t} luz={c.luz} />)}
       </AbsoluteFill>
-      {(c.baloes ?? []).map((b, i) => <Balao key={i} texto={b.texto} x={b.x} y={b.y} larg={b.larg ?? 900} t={t} ini={b.ini} dur={b.dur} rabo={b.rabo} />)}
+      {(c.baloes ?? []).map((b, i, todos) => { const prox = todos.filter((o) => o.ini > b.ini).map((o) => o.ini); return <Balao key={i} texto={b.texto} x={b.x} y={b.y} larg={b.larg ?? 900} t={t} ini={b.ini} dur={b.dur} rabo={b.rabo} fim={prox.length ? Math.min(...prox) : undefined} />; })}
     </AbsoluteFill>
   );
 };

@@ -189,8 +189,9 @@ export const Andando: React.FC<{ pid: Pid; de: number; ate: number; y: number; a
 // e o rabinho é CURTO: sai de baixo da caixa e aponta para a cabeça de quem fala, parando antes dela.
 // rabo = [x da cabeça de quem fala, comprimento em px abaixo da caixa] (o montar.py calcula, para não tocar o rosto).
 export const BALAO_LETRA = 46;
-export const Balao: React.FC<{ texto: string; x: number; y: number; larg?: number; t: number; ini: number; dur: number; rabo?: [number, number] }> = ({ texto, x, y, larg = 620, t, ini, dur, rabo }) => {
-  if (t < ini - 0.15) return null;
+// fim: quando entra o balao seguinte da mesma cena (24/11, Ed: «tem um card por cima do outro»): este sai antes.
+export const Balao: React.FC<{ texto: string; x: number; y: number; larg?: number; t: number; ini: number; dur: number; rabo?: [number, number]; fim?: number }> = ({ texto, x, y, larg = 620, t, ini, dur, rabo, fim }) => {
+  if (t < ini - 0.15 || (fim !== undefined && t > fim - 0.1)) return null;
   const e = mola(t - ini + 0.15, 12, 0.55); const pal = texto.split(" ");
   const vis = Math.min(pal.length, Math.floor(((t - ini) / Math.max(0.3, dur)) * pal.length) + 1);
   const tx = rabo ? rabo[0] - x : larg / 2; const comp = rabo ? Math.max(20, rabo[1]) : 0;
