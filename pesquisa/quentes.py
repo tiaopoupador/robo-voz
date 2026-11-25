@@ -109,9 +109,19 @@ open(arq, "w", encoding="utf-8").write("\n".join(out) + "\n"); print("\n".join(o
 if "--team" in sys.argv:
     from fabrica import team
     hoje = agora.astimezone(dt.timezone(dt.timedelta(hours=-3)))
-    r = team.mandar({"chave_unica": f"tiao-plantao-quentes-{hoje:%Y-%m-%d}", "tipo": "pesquisa", "projeto": "Tião Poupador",
+    # 25/11: o Team recusou (500) a tarefa com a lista inteira na descrição; cada notícia vira um passo, com o link
+    passos = [{"codigo": f"S{k + 1:02d}", "texto": f"🔥 {int(a):,} views por hora · {html.unescape(tt)[:150]} ({ch})".replace(",", "."), "copiar": "",
+               "links": [{"rotulo": "Ver o Short", "url": f"https://youtube.com/shorts/{i_}"}], "ficheiro": ""}
+              for k, (a, b, c, tt, ch, i_) in enumerate(linhas[:8])]
+    for ed in ("economia", "politica"):
+        try:
+            it = re.findall(r"<item>.*?<title>([^<]*)</title>.*?<link>([^<]*)</link>", baixar(f"https://agenciabrasil.ebc.com.br/rss/{ed}/feed.xml"), re.S)
+            passos += [{"codigo": f"{ed[0].upper()}{k + 1:02d}", "texto": f"📰 Agência Brasil ({ed}): {html.unescape(a).strip()[:150]}", "copiar": "",
+                        "links": [{"rotulo": "Ler a notícia", "url": b.strip()}], "ficheiro": ""} for k, (a, b) in enumerate(it[:5])]
+        except Exception: pass
+    r = team.mandar({"chave_unica": f"tiao-plantao-quentes-{hoje:%Y-%m-%d}", "tipo": "lembrete", "projeto": "Tião Poupador",
                      "titulo": f"Plantão do Tião · notícias quentes de {hoje:%d/%m}",
                      "descricao": "Só para ler, não precisa fazer nada. Daqui saem os 3 Shorts do dia (o que muda no seu bolso), "
-                                  "sempre com a fonte oficial conferida antes.\n\n" + "\n".join(out),
-                     "prazo": f"{hoje:%Y-%m-%d}T23:00:00-03:00", "links": [], "passos": []})
+                                  "sempre com a fonte oficial conferida antes.",
+                     "prazo": f"{hoje:%Y-%m-%dT23:00:00-03:00}", "links": [], "passos": passos})
     print({k: r.get(k) for k in ("criada", "url")})
