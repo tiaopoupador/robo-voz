@@ -43,17 +43,12 @@ Aponte cada lugar onde a história falha:
    c) o FinMoovi entra no fim do penúltimo capítulo, depois de anunciar o que vem ("mas antes, um recado rápido"), e NUNCA no fim;
       cada vídeo mostra UM recurso do app que os outros vídeos ainda não mostraram e que combina com o tema (o dono do canal,
       23/11/2026: «cada video teria que falar uma funcionalidade diferente»); repetir a «foto da notinha» de novo é falha;
-      cada vídeo mostra UM recurso do app que os outros vídeos ainda não mostraram, e que combina com o tema (o dono do canal,
-      23/11/2026: «cada video teria que falar uma funcionalidade diferente»); repetir a «foto da notinha» de novo é falha;
    d) pelo menos 2 pedidos FALADOS de like/inscrição/comentário, cada um colado a um gancho do que vem a seguir;
    e) NUNCA dizer que o vídeo está acabando ("para terminar", "por último", "antes de ir embora", "chegamos ao fim", "resumindo");
    f) as últimas frases são o gancho para o PRÓXIMO vídeo, como um trailer: chama quem assiste pela situação dele (quem já passou
       e quem quer evitar), toca na dor com a causa, promete 2 ou 3 coisas concretas do próximo vídeo (a última sem contar o que é)
       e só então manda clicar ("Clica agora, que o vídeo já está aparecendo aqui na tela!"); o vídeo acaba logo ali.
       Gancho vago ("essa conversa é para você" sem dizer o que vem e para quem) é falha. Nunca "no próximo capítulo" entre partes.
-      NOVELA (o dono do canal, 23/11/2026: «nao entregar o ouro (...) como se fosse um escritor de novelas»; sempre GRAVE): o fim
-      MOSTRA um pedaço e CORTA antes do principal. Nunca conta o que acontece no próximo vídeo (o pedido, a resposta, a conta, o
-      número, a virada). Mostra a porta abrindo, não quem diz o quê; diz que algo aconteceu, não o quê;
       NOVELA (o dono do canal, 23/11/2026: «nao entregar o ouro (...) como se fosse um escritor de novelas»; sempre GRAVE): o fim
       MOSTRA um pedaço e CORTA antes do principal. Nunca conta o que acontece no próximo vídeo (o pedido, a resposta, a conta, o
       número, a virada). Mostra a porta abrindo, não quem diz o quê; diz que algo aconteceu, não o quê. Cartão na tela com o
@@ -65,13 +60,20 @@ Aponte cada lugar onde a história falha:
 9. FALA DE GENTE (o dono do canal, 19/11/2026: «tem que deixar humanizado como se fosse um humano real»; sempre grave):
    a) sigla sem dizer o que é (diga o nome inteiro: "Fundo de Garantia de Operações", não "FGO");
    b) "hein" (a voz lê "rein"): proibido; interjeição solta que a voz lê estranho ("Ih", "Eita", "Ué", "Uai", "Hum") também (o dono do canal, 23/11/2026);
-   b2) interjeição solta que a voz lê estranho ("Ih", "Eita", "Ué", "Uai", "Hum"): proibida (o dono do canal, 23/11/2026);
    c) frase solta sem contexto: "está escrito" sem dizer ONDE (site oficial de quem), "no site" sem dizer qual, fala de personagem
       curta demais para quem chegou agora entender;
    d) pergunta ou espanto escrito sem "?" ou "!" (a voz só sobe o tom com a pontuação);
    e) lista de dicas sem "Dica número um", "Dica número dois"...;
    f) frase complicada que um amigo não diria na mesa da cozinha;
    g) o gancho final vago: tem de dizer o que o próximo vídeo vai explicar, para quem ele é, e mandar clicar.
+   h) RETOMADA SEM O QUÊ (o dono do canal, 25/11/2026: «Ela ainda nao pediu... está sem contexto... ela nao pediu o que?»): frase que
+      volta a algo dito minutos antes ("ela ainda não pediu", "ele nunca contou", "aquilo") sem repetir O QUÊ. A volta diz a coisa
+      com todas as letras ("a desculpa, ela ainda não pediu") e acrescenta o sentimento ou o porquê, para quem esqueceu ou chegou agora;
+   i) QUEBRA-CABEÇA DO DINHEIRO E DOS OBJETOS (o dono do canal, 25/11/2026: «o Tião diz que nao emprestaria os 50 reais (...) mas
+      depois fica parecendo que ele emprestou, tanto é que a Valéria devolveu os 50 reais»): quem deu o quê a quem, quanto e por quê
+      tem de ficar claro em CADA passo. Se alguém devolve, o roteiro mostra antes o que foi dado e diz, na hora da devolução, o que
+      está sendo devolvido ("os 50 reais que ele não emprestou, mas pagou em passagens"). Aponte toda conta, empréstimo ou objeto
+      que o espectador pode entender ao contrário.
 Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê, funil e fala de gente. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.

@@ -58,6 +58,19 @@ VAZIOS = {"meta-rua-noite", "meta-varanda-noite", "meta-varanda-domingo", "meta-
 # o balao mostra a fala do personagem e no lugar dela nao aparece legenda). Os numeros vao em cartoes do kit.
 from fabrica.kit import *
 VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)
+REELS_TOPO = "Seu vizinho tem um *CARRÃO*|e você acha que a vida dele|está ótima e a sua não?|Você *PRECISA* ver isso!"  # 25/11: a frase isca do Short do gancho (fabrica/reels.py)
+REELS_EMOJI = "1f631"  # o emoji espantado em cima
+# 25/11: o Short de resumo (fabrica/resumo.py): a frase isca e, para cada linha de robo-voz/resumo-05.txt, onde começa cada cena no VIDEO-05
+RESUMO_TOPO = "Ela riu do *PORTEIRO*...|e à meia-noite bateu|no portão dele pedindo|*DINHEIRO*!"
+RESUMO_EMOJI = "1f92f"
+RESUMO_TROCAS = {"cento e oitenta e nove mil reais": "R$ 189 mil", "cinquenta reais": "R$ 50"}
+RESUMO = [[139.6, 194.2, 219.9, 222.5],   # o carrão e a risada: chega, zomba, a Sandra ri, o Tião humilhado
+          [36.0, 237.8, 244.5],           # o bilhete: ela escreve, o portão, ele lê
+          [400.2, 415.4, 421.4],          # o posto: o cartão recusado
+          [364.9, 374.6],                 # a Sandra quer uma SUV igual
+          [0.3, 7.6, 19.6],               # meia-noite, as batidinhas, o pedido
+          [664.4, 803.6, 817.8],          # as três contas, ela chora, o Tião pensa
+          [1292.4]]                       # o Tião chama para o canal
 DESC = ("Quase meia-noite, a vizinha do carrão de R$ 189.900 bate no portão do porteiro e pede R$ 50 emprestados até sexta. "
         "Dois meses antes, ela tinha rido dele na frente da rua inteira.\n\n"
         "Neste vídeo o Tião conta os dois meses de sinais que ninguém da rua quis ver e faz, no papel de pão, as três contas por trás "

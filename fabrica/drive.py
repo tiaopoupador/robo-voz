@@ -60,6 +60,13 @@ def baixar_tudo(NN):
         else: print("FALTA", a)
     e = achar(f"video-{NN}", achar("entrada", raiz))
     print("do Ed:", baixar_pasta(e, f"{P}/fabrica/videos/v{NN}/entrada") if e else 0)
+def guardar_em(sub, arq):
+    """25/11: guarda em Tiao Poupador/robo/<sub> (ex.: «plantao/2026-11-25», os Shorts do Plantão do Tião)"""
+    v = pasta("robo", pasta("Tiao Poupador"))
+    for s in sub.split("/"): v = pasta(s, v)
+    for f in [f for f in listar(v) if f["name"] == os.path.basename(arq)]: api(f"{D}/{f['id']}", metodo="DELETE", bruto=True)
+    r = subir_grande(arq, v); return f"https://drive.google.com/file/d/{r['id']}/view"
+
 def guardar(NN, arq):
     """sobe primeiro e so depois apaga o antigo com o mesmo nome (se o envio cair, o antigo fica)"""
     raiz = pasta("Tiao Poupador"); v = pasta(f"video-{NN}", pasta("robo", raiz))

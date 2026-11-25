@@ -1,0 +1,61 @@
+name: plantao (gera os Shorts do Plantao do Tiao)
+# 25/11/2026: os 3 Shorts do dia, so motion (render/src/shorts/PlantaoShort.tsx). O fabrica/plantao.py manda a voz cifrada e o
+# props.json de cada Short para plantao/<dia>/<id>/ e liga este robo. Cada Short sai em pe (1080x1920) e vai para o Drive:
+# Tiao Poupador > robo > plantao > <dia>. NAO sobe para o YouTube (Ed, 25/11: «até lá deixe o short parado!»).
+on:
+  workflow_dispatch:
+    inputs:
+      dia:
+        description: "o dia (AAAA-MM-DD)"
+        required: true
+permissions:
+  contents: read
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: render/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: instalar o motor de video
+        working-directory: render
+        run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - name: abrir a voz (cifrada)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: |
+          for d in plantao/${{ inputs.dia }}/*/; do
+            id=$(basename $d); dst=render/public/plantao/${{ inputs.dia }}/$id; mkdir -p $dst
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in $d/voz.enc -out $dst/voz.wav -pass env:VOZ_SENHA
+            cp $d/props.json $dst/props.json
+          done
+      - name: gerar os Shorts
+        working-directory: render
+        run: |
+          mkdir -p out
+          for p in public/plantao/${{ inputs.dia }}/*/props.json; do
+            id=$(basename $(dirname $p))
+            npx remotion render src/nuvem.ts PlantaoShort out/PLANTAO-${{ inputs.dia }}-$id.mp4 --props=$p --crf=20 --concurrency=4 --log=error
+          done
+          ls -la out
+      - name: guardar no Drive
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: |
+          for f in render/out/PLANTAO-*.mp4; do
+            python -c "import sys; sys.path.insert(0,'.'); from fabrica import drive; print('no Drive:', drive.guardar_em('plantao/${{ inputs.dia }}', sys.argv[1]))" $f
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plantao
+          path: render/out/PLANTAO-*.mp4
+          retention-days: 3
