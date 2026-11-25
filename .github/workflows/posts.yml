@@ -3,8 +3,9 @@ name: posts do YouTube da semana (Apexi Team)
 # faz as imagens do Tiao na Cloudflare (gratis) e manda para o Apexi Team (e o e-mail de reserva ate 20/11).
 # A API do YouTube nao cria posts: o Ed cola e agenda no Studio.
 on:
-  schedule:
-    - cron: '7 10 * * 1'
+  # PAUSADO a 25/11/2026 (Ed: «queria parar por enquanto o post na comunidade do youtube»). Para religar: tirar o # das 2 linhas abaixo.
+  # schedule:
+  #   - cron: '7 10 * * 1'
   workflow_dispatch:
     inputs:
       ensaio:
