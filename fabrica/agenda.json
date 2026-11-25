@@ -113,6 +113,16 @@
   },
   {
    "nn": "11",
+   "quando": "2026-12-05 17:00",
+   "formato": "longo-motion",
+   "titulo": "(tema a escolher: modelar um campeão dos canais vigiados)",
+   "elenco": [
+    "Tião"
+   ],
+   "estado": "novo horário (Ed, 25/11: opção B, 2.º longo motion por semana, em teste). O 10 chama este título no fim: escolher o tema ANTES de escrever o 10."
+  },
+  {
+   "nn": "12",
    "quando": "2026-12-06 17:00",
    "formato": "longo-imagens",
    "titulo": "Por Que a Loja Insiste Tanto Pra Você Fazer o Cartão Dela",
@@ -121,10 +131,10 @@
     "Tião",
     "Jéssica"
    ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim) · renumerado a 25/11 (entrou o sábado motion)"
   },
   {
-   "nn": "12",
+   "nn": "13",
    "quando": "2026-12-09 18:00",
    "formato": "longo-motion",
    "titulo": "O Tião Pediu Demissão e o Bairro Achou Que Ele Quebrou",
@@ -134,7 +144,7 @@
     "Valéria",
     "Sandra"
    ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim) · renumerado a 25/11 (entrou o sábado motion)"
   }
  ],
  "modelos_usados": [
@@ -174,7 +184,8 @@
   "terca 10:00": "conversa",
   "quarta 18:00": "longo",
   "sexta 10:00": "conversa",
-  "formatos": "Ed 18/11: quarta 18h = longo SÓ MOTION, domingo 17h = longo com imagens do Matheus; terça e sexta 10h = Tião Conversa (o 03 abre num sábado, fora da grade)"
+  "formatos": "Ed 18/11: quarta 18h = longo SÓ MOTION, domingo 17h = longo com imagens do Matheus; terça e sexta 10h = Tião Conversa (o 03 abre num sábado, fora da grade) · Ed 25/11 (opção B, em teste): + sábado 17h = 2.º longo SÓ MOTION («gostei muito!»; «se acharmos que vai ficar muito puxado paramos»). O 1.º sábado é 05/12.",
+  "sabado 17:00": "longo"
  },
  "vago": [
   "2026-12-08 10:00 (terça, Tião Conversa): sem tema ainda"
