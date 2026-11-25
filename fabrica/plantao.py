@@ -57,8 +57,9 @@ for sh in SPEC["shorts"]:
     filtro += "".join(f"[s{k}]" for k in range(len(wavs))) + f"concat=n={len(wavs)}:v=0:a=1,adelay=350|350,loudnorm=I=-15:TP=-1.5[a]"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", w] for w in wavs), []), "-filter_complex", filtro, "-map", "[a]", "-ar", "48000",
                     f"{pub}/voz.wav"], check=True)
-    props = {"voz": f"plantao/{DIA}/{sh['id']}/voz.wav", "musica": "musica/Interloper.mp3", "palavras": leg, "quadros": quadros, "fim": round(fim, 2),
-             "data": SPEC["data"], "rotulo": "SEGUE", "faixa": "SEGUE O PLANTÃO DO TIÃO   •   TODO DIA, O QUE MUDA NO SEU BOLSO   •   DEIXA O SEU LIKE!   •   "}
+    props = {"voz": f"plantao/{DIA}/{sh['id']}/voz.wav", "musica": "musica/Interloper.mp3", "volMusica": 0.6,  # medido: a Interloper tem -20,9 LUFS; a 0,6 fica perto de -25, como no Tião Conversa (-26). Ed, 25/11: «aquele que parece de noticiario urgente»
+             "palavras": leg, "quadros": quadros, "fim": round(fim, 2),
+             "rotulo": "SEGUE", "faixa": "SEGUE O PLANTÃO DO TIÃO   •   TODO DIA, O QUE MUDA NO SEU BOLSO   •   DEIXA O SEU LIKE!   •   "}
     json.dump(props, open(f"{pub}/props.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     os.makedirs(f"{saida_nuvem}/{sh['id']}", exist_ok=True)
     shutil.copy(f"{pub}/props.json", f"{saida_nuvem}/{sh['id']}/props.json")
