@@ -16,10 +16,10 @@ type Quadro =
   | { ini: number; tipo: "lista"; titulo?: string; itens: { t: string; ok: boolean; em?: number }[]; passo?: number }
   | { ini: number; tipo: "compara"; titulo?: string; de: string; para: string; rotuloDe?: string; rotuloPara?: string; ruim?: boolean }
   | { ini: number; tipo: "pergunta"; texto: string; opcoes?: string[]; emoji?: string };
-export type DadosPlantao = { voz: string; musica?: string; palavras: Palavra[]; quadros: Quadro[]; fim: number; data: string; faixa?: string };
+export type DadosPlantao = { voz: string; musica?: string; palavras: Palavra[]; quadros: Quadro[]; fim: number; data: string; faixa?: string; rotulo?: string };
 export const PLANTAO_VAZIO: DadosPlantao = { voz: "", palavras: [], quadros: [], fim: 10, data: "" };
 
-const Y_QUADRO = 230, H_QUADRO = 1000, Y_LEG = 1330, Y_FAIXA = 1520;
+const Y_QUADRO = 230, H_QUADRO = 1000, Y_LEG = 1270, Y_FAIXA = 1520;  // a legenda cabe em 2 linhas antes da faixa
 
 const Topo: React.FC<{ data: string }> = ({ data }) => {
   const t = useT(); const pisca = 0.35 + 0.65 * Math.abs(Math.sin(t * 3));
@@ -141,19 +141,19 @@ const Legenda: React.FC<{ palavras: Palavra[] }> = ({ palavras }) => {
       transform: `scale(${0.85 + 0.15 * e})` }}>
       {b.map((w, i) => {
         const fala = t >= w[0], num = /\d|R\$/.test(w[2]);
-        return <span key={i} style={{ ...txt(104, num ? AMARELO : fala ? "white" : "rgba(255,255,255,0.55)"), WebkitTextStroke: "3px #0b0b0b",
+        return <span key={i} style={{ ...txt(90, num ? AMARELO : fala ? "white" : "rgba(255,255,255,0.55)"), WebkitTextStroke: "3px #0b0b0b",
           textShadow: "0 6px 0 #0b0b0b", paintOrder: "stroke fill" }}>{w[2]}</span>;
       })}
     </div>
   );
 };
 
-const Faixa: React.FC<{ texto: string }> = ({ texto }) => {
+const Faixa: React.FC<{ texto: string; rotulo: string }> = ({ texto, rotulo }) => {
   const t = useT(); const larg = texto.length * 25; const x = -((t * 85) % larg);
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: Y_FAIXA, height: 84, background: AZUL, borderTop: `6px solid ${AMARELO}`, overflow: "hidden" }}>
       <div style={{ position: "absolute", left: 270 + x, top: 14, whiteSpace: "nowrap", ...txt(44, "white", 700) }}>{texto.repeat(4)}</div>
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 260, background: VERMELHO, display: "flex", alignItems: "center", justifyContent: "center", ...txt(42, "white") }}>ASSISTA</div>
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 260, background: VERMELHO, display: "flex", alignItems: "center", justifyContent: "center", ...txt(42, "white") }}>{rotulo}</div>
     </div>
   );
 };
@@ -180,7 +180,7 @@ export const PlantaoShort: React.FC<DadosPlantao> = (d) => {
       </div>
       <Topo data={d.data} />
       <Legenda palavras={d.palavras} />
-      <Faixa texto={d.faixa ?? "ASSISTA À HISTÓRIA INTEIRA NO CANAL TIÃO POUPADOR   •   SE INSCREVE E DEIXA O SEU LIKE!   •   "} />
+      <Faixa rotulo={d.rotulo ?? "ASSISTA"} texto={d.faixa ?? "ASSISTA À HISTÓRIA INTEIRA NO CANAL TIÃO POUPADOR   •   SE INSCREVE E DEIXA O SEU LIKE!   •   "} />
       <Audio src={staticFile(d.voz)} />
       {d.musica && <Audio src={staticFile(d.musica)} volume={0.1} />}
       <Som nome="warning" em={0} vol={0.25} />
