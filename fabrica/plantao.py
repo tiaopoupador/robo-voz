@@ -23,7 +23,7 @@ for enc in [e for e in glob.glob(PASTA + "/**/parte-*.enc", recursive=True) if n
 TROCAS = [("cinquenta e seis bilhões de reais", "R$ 56 bilhões"), ("vinte por cento", "20%"), ("dois mil e vinte e sete", "2027"),
           ("quatro para dois bilhões de reais", "R$ 4 para R$ 2 bilhões"), ("décimo terceiro", "13º"), ("dois por cento", "2%"),
           ("cinco reais e noventa e um centavos", "R$ 5,91"), ("noventa e um dólares", "US$ 91"), ("dez bilhões e meio de reais", "R$ 10,5 bilhões"),
-          ("vinte e quatro de novembro", "24/11"), ("sete de dezembro", "7/12"), ("primeiro a 7/12", "1º a 7/12"), ("um salário mínimo", "1 salário mínimo")]
+          ("vinte e quatro de novembro", "24/11"), ("sete de dezembro", "7/12"), ("primeiro a 7/12", "1º a 7/12"), ("um salário mínimo", "1 salário mínimo"), ("parte dois", "parte 2")]
 RESP = 0.22
 saida_nuvem = f"{P}/robo-voz/plantao/{DIA}"; os.makedirs(saida_nuvem, exist_ok=True)
 for sh in SPEC["shorts"]:
@@ -58,7 +58,7 @@ for sh in SPEC["shorts"]:
     subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", w] for w in wavs), []), "-filter_complex", filtro, "-map", "[a]", "-ar", "48000",
                     f"{pub}/voz.wav"], check=True)
     props = {"voz": f"plantao/{DIA}/{sh['id']}/voz.wav", "musica": "musica/Interloper.mp3", "volMusica": 0.6,  # medido: a Interloper tem -20,9 LUFS; a 0,6 fica perto de -25, como no Tião Conversa (-26). Ed, 25/11: «aquele que parece de noticiario urgente»
-             "palavras": leg, "quadros": quadros, "fim": round(fim, 2),
+             "palavras": leg, "quadros": quadros, "fim": round(fim - (RESP if sh.get("loop") else 0), 2), "cauda": 0.05 if sh.get("loop") else 0.6,  # loop: acaba colado na última palavra (Ed, 25/11, ideia 4)
              "rotulo": "SEGUE", "faixa": "SEGUE O PLANTÃO DO TIÃO   •   TODO DIA, O QUE MUDA NO SEU BOLSO   •   DEIXA O SEU LIKE!   •   "}
     json.dump(props, open(f"{pub}/props.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     os.makedirs(f"{saida_nuvem}/{sh['id']}", exist_ok=True)

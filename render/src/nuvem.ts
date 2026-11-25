@@ -15,7 +15,7 @@ const Raiz: React.FC = () => React.createElement(React.Fragment, null,
   React.createElement(Composition, { id: "Vinheta", component: Vinheta as React.FC<any>, fps: 30, width: 1920, height: 1080, durationInFrames: 60, defaultProps: { som: "marca/vinheta-a.wav" } }),
   React.createElement(Composition, {
     id: "PlantaoShort", component: PlantaoShort as React.FC<any>, fps: 30, width: 1080, height: 1920, durationInFrames: 300, defaultProps: PLANTAO_VAZIO,
-    calculateMetadata: ({ props }: { props: DadosPlantao }) => ({ durationInFrames: Math.max(30, Math.round((props.fim + 0.6) * 30)) }),
+    calculateMetadata: ({ props }: { props: DadosPlantao }) => ({ durationInFrames: Math.max(30, Math.round((props.fim + (props.cauda ?? 0.6)) * 30)) }),
   }),
   React.createElement(Composition, {
     id: "Video", component: Video as React.FC<any>, fps: 30, width: 1920, height: 1080, durationInFrames: 300, defaultProps: VAZIO,

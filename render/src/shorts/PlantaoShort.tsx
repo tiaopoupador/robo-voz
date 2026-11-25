@@ -24,7 +24,7 @@ type Quadro =
   | { ini: number; tipo: "compara"; titulo?: string; de: string; para: string; rotuloDe?: string; rotuloPara?: string; ruim?: boolean }
   | { ini: number; tipo: "pergunta"; texto: string; opcoes?: string[]; emoji?: string }
   | { ini: number; tipo: "inscrever"; texto?: string };
-export type DadosPlantao = { voz: string; musica?: string; volMusica?: number; palavras: Palavra[]; quadros: Quadro[]; fim: number; data?: string; faixa?: string; rotulo?: string };
+export type DadosPlantao = { voz: string; musica?: string; volMusica?: number; palavras: Palavra[]; quadros: Quadro[]; fim: number; cauda?: number; data?: string; faixa?: string; rotulo?: string };
 export const PLANTAO_VAZIO: DadosPlantao = { voz: "", palavras: [], quadros: [], fim: 10 };
 
 const Y_QUADRO = 250, H_QUADRO = 1000, Y_LEG = 1270, Y_FAIXA = 1520;
