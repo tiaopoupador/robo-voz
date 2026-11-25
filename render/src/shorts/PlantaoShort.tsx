@@ -217,7 +217,7 @@ const Pergunta: React.FC<{ q: Extract<Quadro, { tipo: "pergunta" }> }> = ({ q })
         {t > 1.2 && <Mao x={alvo * 300 + 90} y={60} toque={1.2 + Math.floor((t - 1.2) / 0.9) * 0.9} />}
       </div>}
       {/* 25/11 (Ed: «tem que pedir para se inscrever, deixar comentario»): o lembrete que a resposta vai nos comentários */}
-      <div style={{ ...txt(48, AMARELO, 700), opacity: m(t, 1.0), transform: `translateY(${(1 - m(t, 1.0)) * 30}px)` }}>👇 responde nos comentários</div>
+      <div style={{ ...txt(48, AMARELO, 700), marginTop: 90, opacity: m(t, 1.0), transform: `translateY(${(1 - m(t, 1.0)) * 30}px)` }}>👇 responde nos comentários</div>
     </AbsoluteFill>
   );
 };
