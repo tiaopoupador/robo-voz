@@ -448,11 +448,28 @@ const Legenda: React.FC<{ palavras: Palavra[] }> = ({ palavras }) => {
   );
 };
 
+// 26/11 (Ed viu no TikTok a faixa cortada na capa, «ANAL TIÃO POUPADOR»): o TikTok escolhe sozinho o quadro da capa, então a
+// faixa não corre mais. Mostra um pedaço inteiro de cada vez (até 30 letras), que entra deslizando e fica parado: qualquer
+// quadro que vire capa mostra uma frase completa.
+const pedacos = (texto: string) => {
+  const out: string[] = [];
+  for (const frase of texto.split("•").map((f) => f.trim()).filter(Boolean)) {
+    let atual = "";
+    for (const p of frase.split(/\s+/)) {
+      if (atual && (atual + " " + p).length > 30) { out.push(atual); atual = p; } else atual = atual ? atual + " " + p : p;
+    }
+    if (atual) out.push(atual);
+  }
+  return out.length ? out : [texto];
+};
 const Faixa: React.FC<{ texto: string; rotulo: string }> = ({ texto, rotulo }) => {
-  const t = useT(); const larg = texto.length * 25; const x = -((t * 85) % larg);
+  const t = useT(); const ps = pedacos(texto); const CADA = 2.6;
+  const i = Math.floor(t / CADA) % ps.length, dentro = (t % CADA) / 0.3;
+  const x = dentro >= 1 ? 0 : 60 * (1 - dentro) * (1 - dentro), op = Math.min(1, 0.4 + dentro);
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: Y_FAIXA, height: 84, background: AZUL, borderTop: `6px solid ${AMARELO}`, overflow: "hidden" }}>
-      <div style={{ position: "absolute", left: 270 + x, top: 14, whiteSpace: "nowrap", ...txt(44, "white", 700) }}>{texto.repeat(4)}</div>
+      <div style={{ position: "absolute", left: 260, right: 0, top: 0, bottom: 0, display: "flex", alignItems: "center", justifyContent: "center",
+        whiteSpace: "nowrap", transform: `translateX(${x}px)`, opacity: op, ...txt(Math.min(44, Math.floor(1500 / ps[i].length)), "white", 700) }}>{ps[i]}</div>
       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 260, background: VERMELHO, display: "flex", alignItems: "center", justifyContent: "center", ...txt(42, "white") }}>{rotulo}</div>
     </div>
   );
