@@ -39,7 +39,7 @@ const Topo: React.FC<{ fim: number; batidas: number[] }> = ({ fim, batidas }) =>
   const t = useT(); const pisca = 0.35 + 0.65 * Math.abs(Math.sin(t * 3));
   const ultima = Math.max(-9, ...batidas.filter((b) => b <= t)); const pulo = Math.sin(cl((t - ultima) / 0.35) * Math.PI) * 0.18;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 200, transform: `translateY(${(1 - m(t, 0, "estalo")) * -220}px)` }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 200, transform: "none" }}>
       <div style={{ position: "absolute", inset: 0, background: VERMELHO, boxShadow: "0 10px 30px rgba(0,0,0,0.45)", overflow: "hidden" }}>
         {/* brilho que corre na barra */}
         <div style={{ position: "absolute", top: 0, bottom: 0, width: 260, left: ((t * 520) % 1800) - 400, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent)", transform: "skewX(-20deg)" }} />
@@ -77,8 +77,8 @@ const Fundo: React.FC<{ batidas: number[] }> = ({ batidas }) => {
 };
 
 // o golpe de câmera da entrada de cada quadro (e o tremor do impacto)
-const Golpe: React.FC<{ children: React.ReactNode; treme?: number }> = ({ children, treme }) => {
-  const t = useT(); const e = m(t, 0, "estalo"); const z = 1.18 - 0.18 * e + 0.035 * t / 6;
+const Golpe: React.FC<{ children: React.ReactNode; treme?: number; firme?: boolean }> = ({ children, treme, firme }) => {
+  const t = useT(); const e = firme ? 1 : m(t, 0, "estalo"); const z = 1.18 - 0.18 * e + 0.035 * t / 6;
   const tr = treme !== undefined && t > treme ? Math.max(0, 1 - (t - treme) / 0.4) : 0;
   const sx = Math.sin(t * 90) * 14 * tr, sy = Math.cos(t * 77) * 10 * tr;
   return (
@@ -104,11 +104,12 @@ const Manchete: React.FC<{ q: Extract<Quadro, { tipo: "manchete" }>; primeiro: b
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 34, padding: "0 50px" }}>
       <Som nome="boom" em={0.02} vol={0.35} />
-      {q.emoji && <Emoji e={q.emoji} tam={260} estilo={{ transform: `scale(${m(t, 0.05, "estalo")}) translateY(${Math.abs(Math.sin(t * 4)) * -18}px) rotate(${flutua(t, 8, 3)}deg)` }} />}
-      {q.sobre && <div style={{ ...txt(46, AMARELO, 700), letterSpacing: 3, textTransform: "uppercase", opacity: m(t, 0) }}>{q.sobre}</div>}
+      {q.emoji && <Emoji e={q.emoji} tam={260} estilo={{ transform: `scale(${primeiro ? 1 : m(t, 0.05, "estalo")}) translateY(${Math.abs(Math.sin(t * 4)) * -18}px) rotate(${flutua(t, 8, 3)}deg)` }} />}
+      {q.sobre && <div style={{ ...txt(46, AMARELO, 700), letterSpacing: 3, textTransform: "uppercase", opacity: primeiro ? 1 : m(t, 0) }}>{q.sobre}</div>}
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 22px" }}>
         {partes.map((p, i) => {
-          const forte = p.startsWith("*"), w = forte ? p.slice(1, -1) : p, d = 0.12 + i * 0.09, e = m(t, d, "estalo"), r = (rnd(i) - 0.5) * 16;
+          // 26/11 (Ed: «nas thumbs tem algumas q nao estao saindo o texto (...) sair o texto tudo junto»): a manchete entra inteira de uma vez
+          const forte = p.startsWith("*"), w = forte ? p.slice(1, -1) : p, d = 0.08, e = primeiro ? 1 : m(t, d, "estalo"), r = (rnd(i) - 0.5) * 6;
           const tre = forte && t > d + 0.3 ? Math.sin(t * 40) * 3 * Math.max(0, 1 - (t - d - 0.3) / 0.6) : 0;
           return (
             <span key={i} style={{ display: "inline-block", opacity: cl(e * 2), transform: `scale(${2.2 - 1.2 * e}) rotate(${r * (1 - e) + tre}deg)`,
@@ -118,7 +119,7 @@ const Manchete: React.FC<{ q: Extract<Quadro, { tipo: "manchete" }>; primeiro: b
         })}
       </div>
       {primeiro && <div style={{ position: "absolute", right: 60, top: 40, ...txt(54, "white"), border: `8px solid ${AMARELO}`, color: AMARELO, padding: "6px 22px",
-        borderRadius: 12, transform: `rotate(${-12 + (1 - m(t, 0.6, "estalo")) * 30}deg) scale(${2 - m(t, 0.6, "estalo")})`, opacity: cl((t - 0.6) * 5) }}>
+        borderRadius: 12, transform: "rotate(-12deg)" }}>
         <Som nome="thud" em={0.6} />URGENTE</div>}
     </AbsoluteFill>
   );
@@ -464,7 +465,7 @@ const pedacos = (texto: string) => {
 };
 const Faixa: React.FC<{ texto: string; rotulo: string }> = ({ texto, rotulo }) => {
   const t = useT(); const ps = pedacos(texto); const CADA = 2.6;
-  const i = Math.floor(t / CADA) % ps.length, dentro = (t % CADA) / 0.3;
+  const i = Math.floor(t / CADA) % ps.length, dentro = t < CADA ? 1 : (t % CADA) / 0.3;
   const x = dentro >= 1 ? 0 : 60 * (1 - dentro) * (1 - dentro), op = Math.min(1, 0.4 + dentro);
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: Y_FAIXA, height: 84, background: AZUL, borderTop: `6px solid ${AMARELO}`, overflow: "hidden" }}>
@@ -483,11 +484,12 @@ export const PlantaoShort: React.FC<DadosPlantao> = (d) => {
       <Fundo batidas={batidas} />
       <div style={{ position: "absolute", left: 0, right: 0, top: Y_QUADRO, height: H_QUADRO }}>
         {qs.map((q, i) => {
-          const de = Math.round(q.ini * fps), ate = Math.round((qs[i + 1]?.ini ?? d.fim + 0.6) * fps);
+          // 26/11: o 1.º quadro começa no quadro 0 e já inteiro (é ele que vira a capa no TikTok e no YouTube)
+          const de = i === 0 ? 0 : Math.round(q.ini * fps), ate = Math.round((qs[i + 1]?.ini ?? d.fim + 0.6) * fps);
           return (
             <Sequence key={i} from={de} durationInFrames={Math.max(1, ate - de)} layout="none">
               <Som nome="slide" em={0} vol={0.22} />
-              <Golpe treme={q.tipo === "numero" ? 1.35 : q.tipo === "compara" ? 1.4 : undefined}>
+              <Golpe firme={i === 0} treme={q.tipo === "numero" ? 1.35 : q.tipo === "compara" ? 1.4 : undefined}>
                 {q.tipo === "manchete" && <Manchete q={q} primeiro={i === 0} />}{q.tipo === "numero" && <Numero q={q} />}{q.tipo === "lista" && <Lista q={q} />}
                 {q.tipo === "compara" && <Compara q={q} />}{q.tipo === "pergunta" && <Pergunta q={q} />}{q.tipo === "inscrever" && <Inscrever q={q} />}
                 {q.tipo === "grafico" && <Grafico q={q} />}{q.tipo === "cards" && <Cards q={q} />}
@@ -495,7 +497,7 @@ export const PlantaoShort: React.FC<DadosPlantao> = (d) => {
             </Sequence>);
         })}
       </div>
-      {qs.map((q, i) => <Sequence key={"c" + i} from={Math.round(q.ini * fps)} durationInFrames={6} layout="none"><Clarao /></Sequence>)}
+      {qs.map((q, i) => i === 0 ? null : <Sequence key={"c" + i} from={Math.round(q.ini * fps)} durationInFrames={6} layout="none"><Clarao /></Sequence>)}
       <Topo fim={d.fim} batidas={batidas} />
       <Legenda palavras={d.palavras} />
       <Faixa rotulo={d.rotulo ?? "ASSISTA"} texto={d.faixa ?? "ASSISTA À HISTÓRIA INTEIRA NO CANAL TIÃO POUPADOR   •   SE INSCREVE E DEIXA O SEU LIKE!   •   "} />

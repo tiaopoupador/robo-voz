@@ -55,10 +55,10 @@ def subir_youtube(s, quando):
     return r.json()["id"]
 
 def capa_de(video):
-    """a capa em pé: um quadro do próprio Short (o 1.º segundo já tem a manchete)"""
+    """a capa em pé: o 1.º quadro do Short (26/11: já sai inteiro, com a manchete toda, sem legenda pela metade)"""
     c = os.path.splitext(video)[0] + "-capa.jpg"
     if not os.path.exists(c):
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "1.2", "-i", video, "-frames:v", "1", "-q:v", "3", c], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "0", "-i", video, "-frames:v", "1", "-q:v", "3", c], check=True)
     return c
 
 def subir_midia(arq, tipo):

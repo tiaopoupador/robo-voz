@@ -34,7 +34,7 @@ Cento e oitenta e oito reais e vinte e cinco centavos. Todo mês. Para o banco. 
 
 [POSE P2 explica] [TEXTO: O PROBLEMA NÃO É O SALÁRIO]
 
-O salário dela é de oito mil e setecentos reais. E mesmo assim, todo mês, no dia dez, já tinha acabado. Não era o salário que era pouco. Era aquela linha, e o que estava escondido por trás dela.
+Ela ganha oito mil e setecentos reais por mês. E mesmo assim, todo mês, no dia dez, já tinha acabado. Não era o salário que era pouco. Era aquela linha, e o que estava escondido por trás dela.
 
 [ABRE L2: quanto levava por ano] [ABRE L4: os dez minutos]
 
@@ -152,7 +152,7 @@ Nessa hora o Rafa, o rapaz da moto aqui da rua, parou no meu portão, todo anima
 
 [POSE P3 aponta] [VOLTA L4] [VOLTA L5]
 
-E a Valéria, que tinha rido de mim no sábado, empurrou o celular para o meu lado da mesinha e disse: "Tião, me ajuda a desligar isso. Agora." Foram dez minutos. E eu te mostro cada um deles. Só me diz uma coisa antes: e a Sandra, que riu do extrato na frente da rua inteira? Será que ela já tinha olhado o dela?
+E a Valéria, que tinha rido de mim no sábado, empurrou o celular para o meu lado da mesinha e disse: "Tião, me ajuda a desligar isso. Agora." Foram dez minutos. E eu te mostro cada um deles. Só me diz uma coisa antes. A Sandra riu do extrato na frente da rua inteira. Será que ela já tinha olhado o dela?
 
 [POSE P2 explica]
 
@@ -200,7 +200,7 @@ Mas antes de eu te contar o que a Dona Cida me perguntou, um recado rápido.
 
 [FINMOOVI: balanço por categoria] [CENA: o clipe do balanço do FinMoovi no celular] [TEXTO: www.finmoovi.com]
 
-O Finmoovi é o aplicativo de finanças que eu uso no celular. O que acordou a Valéria foi ver, de uma vez só, no meu papel de pão, para onde ia cada real. No Finmoovi, isso é o balanço do mês: você lança os gastos, falando ou escrevendo, e ele separa tudo por categoria. Juros e tarifas viram uma categoria só deles, com o total do mês em cima. Se a Valéria tivesse isso na tela, tinha visto os quase três mil reais por ano muito antes daquele domingo. Tem sete dias de teste, sem cartão. O link está na descrição, ou procura no Google: www.finmoovi.com.
+O FinMoovi é o aplicativo de finanças que eu uso no celular. O que acordou a Valéria foi ver, de uma vez só, no meu papel de pão, para onde ia cada real. No FinMoovi, isso é o balanço do mês: você lança os gastos, falando ou escrevendo, e ele separa tudo por categoria. Juros e tarifas viram uma categoria só deles, com o total do mês em cima. Se a Valéria tivesse isso na tela, tinha visto os quase três mil reais por ano muito antes daquele domingo. Tem sete dias de teste, sem cartão. O link está na descrição. Ou procura no Google o nome FinMoovi, tudo junto, que o endereço está aqui na tela.
 
 [FUNDO PRETO 3 s]
 
@@ -236,7 +236,7 @@ E aí veio a dica número três. Lembra da pergunta do começo do vídeo: por qu
 
 [MOTION: o calendário do mês, o salário numa barra, as contas comendo a barra] [CENA: o papel de pão com as datas 5, 8 e 10] [TEXTO: DIA 5 · DIA 8 · DIA 10]
 
-Olha o que acontecia com a Valéria. Dia cinco: o salário de oito mil e setecentos entrava. Mas a conta estava em menos três mil e oitocentos. O salário cobria o buraco e sobravam quatro mil e novecentos. Dia oito: a parcela do carro, quatro mil, quinhentos e cinquenta e cinco. Sobravam trezentos e quarenta e quatro. Dia dez: o aluguel, três mil e novecentos. E a conta voltava para o vermelho, todo mês, igualzinho.
+Olha o que acontecia com a Valéria. No dia cinco, entrava o salário: oito mil e setecentos reais. Mas a conta estava em menos três mil e oitocentos. O salário cobria o buraco e sobravam quatro mil e novecentos. Dia oito: a parcela do carro, quatro mil, quinhentos e cinquenta e cinco. Sobravam trezentos e quarenta e quatro. Dia dez: o aluguel, três mil e novecentos. E a conta voltava para o vermelho, todo mês, igualzinho.
 
 [POSE P4 alerta] [TEXTO GRANDE: O SALÁRIO JÁ CHEGAVA GASTO] [FECHA L1]
 
@@ -244,7 +244,7 @@ O salário da Valéria não acabava no dia dez. Ele já chegava gasto, no dia ci
 
 [CENA: lembrança, a rua, a garagem da casa de vitrine vazia] [TRILHA: virada] [TEXTO: TRÊS MESES DEPOIS]
 
-E como foi que ela fechou o buraco? Naquele mesmo domingo, com o papel de pão na frente, ela viu com os próprios olhos: o que abria o buraco todo mês era a parcela do carro, de quatro mil e quinhentos. Ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. E disse: "Me ajuda a vender, Tião." Ela vendeu, quitou o financiamento e mudou para uma casa menor. Sem a parcela, o salário passou a sobrar, e na primeira virada de mês ela tapou o limite. Três meses depois, ela me mostrou o extrato, ali na mesinha. A linha dos juros tinha sumido. A do pacote também.
+Agora eu te conto como ela fechou o buraco. Naquele mesmo domingo, com o papel de pão na frente, ela viu com os próprios olhos: o que abria o buraco todo mês era a parcela do carro, de quatro mil e quinhentos. Ficou olhando a chave do carrão em cima da mesinha, do lado da minha caneca. E disse: "Me ajuda a vender, Tião." Ela vendeu, quitou o financiamento e mudou para uma casa menor. Sem a parcela, o salário passou a sobrar, e na primeira virada de mês ela tapou o limite. Três meses depois, ela me mostrou o extrato, ali na mesinha. A linha dos juros tinha sumido. A do pacote também.
 
 [POSE P2 explica] [CENA: lembrança, o Tião levantando a caneca lascada num brinde] [SOM: tim do brinde] [BRILHO DOURADO]
 
@@ -260,7 +260,7 @@ E agora é com você. Abre o seu extrato hoje, linha por linha, e escreve aqui e
 
 [CENA: lembrança, a farmácia do bairro de manhã, o balcão, a Valéria e o Tião na fila] [TRILHA: mistério] [ABRE L8]
 
-E sabe o que mudou na Valéria depois daquele domingo? Ela passou a ler tudo. Extrato, contrato, até nota de farmácia. No sábado seguinte, a gente se encontrou na fila da farmácia da avenida. A moça do caixa perguntou o que pergunta para todo mundo: "CPF para o desconto?" O CPF, o Cadastro de Pessoas Físicas, aquele número do seu documento.
+Depois daquele domingo, a Valéria mudou. Ela passou a ler tudo. Extrato, contrato, até nota de farmácia. No sábado seguinte, a gente se encontrou na fila da farmácia da avenida. A moça do caixa perguntou o que pergunta para todo mundo: "CPF para o desconto?" O CPF, o Cadastro de Pessoas Físicas, aquele número do seu documento.
 
 [CENA: lembrança, a Valéria lendo a nota da farmácia, séria] [VOLTA L7]
 
