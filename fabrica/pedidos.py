@@ -88,8 +88,27 @@ CAPAS = [C.CAPA] + list(getattr(C, "CAPAS_TESTE", []))  # o YouTube testa ate 3 
 o += [f"## 1. As capas (meta.ai) · {len(CAPAS)} versões, as mais importantes", "", "No meta.ai, escolha o formato **16:9** (horizontal). De cada versão, salve só a melhor das 2. O YouTube testa as versões e fica com a que mais prende.", ""]
 NOMES = getattr(C, "NOMES", {})
 def arq(cod, n, ext): return f"{cod}_{NOMES[n]}{ext}" if n in NOMES else f"{cod}{ext}"  # o robo acha pelo codigo do comeco
+# 26/11/2026 (Ed: «quero que as thumbs de videos longos a partir de agora saia ja com textos», «vc colocou no prompt o texto
+# que vc quer né»): a capa vem do meta.ai JA COM O TEXTO. O texto exato de cada capa esta em CAPA_LETRAS no cenas.py
+# (letra A = a principal); o pedido manda escrever so aquilo, num bloco so, todas as linhas do mesmo tamanho, e tira o
+# «sem texto» do pedido. Capa sem texto definido: o pedido avisa e nao sai.
+COR_EN = {"vermelho": "bright red", "amarelo": "bright yellow", "verde": "bright green", "branco": "white"}
+def texto_da_capa(letra, cena):
+    L_ = getattr(C, "CAPA_LETRAS", {}) or {}
+    if letra in L_: t_, dest, cor = (list(L_[letra]) + ["", "vermelho"])[:3]
+    elif letra == "A" and getattr(C, "CAPA_TEXTO", ""): t_, dest, cor = C.CAPA_TEXTO, "", "vermelho"
+    else: raise SystemExit(f"falta o texto da capa {letra} (CAPA_LETRAS no cenas.py do {NN}): a capa tem de vir com texto")
+    cena = re.sub(r"\s*No text, no letters, no numbers anywhere \(the title goes on later\)\.?", "", cena)
+    cena = cena.replace("for the title text", "for the title")
+    return (cena + f' TITLE TEXT (the only text in the image): write exactly "{t_}" in Brazilian Portuguese, spelled EXACTLY like this, '
+            f'with every accent and punctuation mark. Huge condensed bold UPPERCASE letters like the Anton font, white with a very thick black outline'
+            + (f', and the words "{dest}" in {COR_EN.get(cor, cor)} with the same black outline' if dest else "")
+            + '. All the title together in ONE compact block, every line the SAME size, placed in the empty area, never over a face. '
+            'Readable on a small phone screen. No other text, letters or numbers anywhere in the image.')
+import re
 for j, cp in enumerate(CAPAS):
     cc = "CAPA" if j == 0 else f"CAPA-{'ABCDE'[j]}"
+    cp = (cp[0], texto_da_capa("ABCDE"[j], cp[1]), *cp[2:])
     o += bloco(cc, "a capa principal" if j == 0 else f"capa para o teste, versão {'ABCDE'[j]}", cp[0],
                [f"{cc}_{cp[2]}.jpg" if len(cp) > 2 else arq(cc, "capa", ".jpg")],
                UMA + R169 + CONS + "Bold YouTube thumbnail, flat 2D cartoon illustration with thick clean black outlines, very saturated warm colors, cinematic lighting, high contrast, 16:9. " + quem(cp[0]) + cp[1] + " No logos, no brand names.\n" + FIM4)

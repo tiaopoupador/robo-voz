@@ -47,4 +47,10 @@ while True:
     q -= 5
 # 23/11/2026: so apaga a da caixa banco/_entrada. A da pasta do video fica: se a subida falhar no meio, da para tentar de novo
 if os.path.dirname(os.path.abspath(src)) == os.path.abspath(ENT): os.remove(src)
+# 26/11/2026 (Ed: as capas do 05 subiram SEM texto; «colocarmos pra sair o texto tudo junto»): com o texto no 3.o argumento,
+# as letras entram por codigo (capas/letreiro.py, Anton, um bloco so). Uso: ... video-NN arquivo "TEXTO" [cor] [x_centro] [largura] [topo|baixo]
+if len(sys.argv) > 3 and sys.argv[3].strip():
+    extra = sys.argv[4:8] if len(sys.argv) > 4 else ["vermelho", "0.5", "0.9", "baixo"]
+    for f in ("capa-hd.jpg", "capa.jpg"):
+        subprocess.run([sys.executable, f"{P}/capas/letreiro.py", f"{OUT}/{f}", f"{OUT}/{f}", sys.argv[3], *extra], check=True)
 print(f"capa pronta: capas/{video}/capa.jpg ({os.path.getsize(f'{OUT}/capa.jpg') // 1024} KB) e capa-hd.jpg; original guardada")
