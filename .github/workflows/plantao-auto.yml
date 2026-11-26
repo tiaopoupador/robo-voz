@@ -1,0 +1,165 @@
+name: plantao-auto (os 3 Plantoes do dia, sozinhos)
+# 26/11/2026 (Ed escolheu a opcao «b»: o robo escreve, grava, monta e posta os 3 Shorts do Plantao do Tiao, sem ninguem ligado).
+# Todo dia as 10:05 UTC (7h05 de Brasilia, 10h05 de Lisboa no inverno europeu):
+#   1. escrever: o buscador (pesquisa/quentes.py) + o escritor (fabrica/plantao_escritor.py, Claude, uns US$ 0,10 por dia nos
+#      creditos do canal) com a conferencia de cada numero na fonte da Agencia Brasil;
+#   2. voz: cada fala gravada com a voz do Tiao (gerar.py, gratis), cifrada entre as etapas (o repositorio e publico);
+#   3. montar: a tela de cada Short (fabrica/plantao.py --nuvem + PlantaoShort.tsx), copia no Drive (robo/plantao/<dia>) e,
+#      se a variavel PLANTAO_PUBLICAR for «sim», o carteiro agenda nas 6 redes: 12h, 18h30 e 21h de Brasilia.
+# Enquanto o Ed nao aprovar a 1.a rodada, PLANTAO_PUBLICAR fica «nao»: os videos so vao para o Drive.
+on:
+  schedule:
+    - cron: '5 10 * * *'
+  workflow_dispatch:
+    inputs:
+      dia:
+        description: "o dia (AAAA-MM-DD); vazio = hoje"
+        required: false
+      publicar:
+        description: "agendar nas redes? (sim/nao); vazio = a variavel PLANTAO_PUBLICAR"
+        required: false
+permissions:
+  contents: write
+concurrency:
+  group: plantao-auto
+jobs:
+  escrever:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      dia: ${{ steps.dia.outputs.dia }}
+      partes: ${{ steps.esc.outputs.partes }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q anthropic requests
+      - id: dia
+        run: echo "dia=${{ inputs.dia || '' }}" | sed "s/=$/=$(TZ=America/Sao_Paulo date +%F)/" >> $GITHUB_OUTPUT
+      - name: buscar as noticias quentes
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: python pesquisa/quentes.py 48
+      - name: escrever os 3 Shorts
+        id: esc
+        env:
+          CLAUDE_TIAO: ${{ secrets.CLAUDE_TIAO }}
+        run: python fabrica/plantao_escritor.py ${{ steps.dia.outputs.dia }}
+      - name: guardar o texto do dia
+        run: |
+          git config user.name "robo do Tiao"; git config user.email "robo@users.noreply.github.com"
+          git add -f plantao-${{ steps.dia.outputs.dia }}.txt plantao/${{ steps.dia.outputs.dia }} plantao/fila-${{ steps.dia.outputs.dia }}.json plantao/gasto-escritor.csv pesquisa/QUENTES-${{ steps.dia.outputs.dia }}.md
+          if git commit -qm "plantao ${{ steps.dia.outputs.dia }}: texto do dia"; then git pull -q --rebase && git push -q; fi
+
+  voz:
+    needs: escrever
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        parte: ${{ fromJSON(needs.escrever.outputs.partes) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/pip
+          key: chatterbox-0.1.7-whisper-v2
+      - name: instalar
+        run: |
+          pip install torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install chatterbox-tts==0.1.7 faster-whisper==1.1.1 num2words==0.5.14
+      - name: abrir a voz (cifrada)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in voz/ref.enc -out ref.wav -pass env:VOZ_SENHA
+      - name: gravar a fala
+        env:
+          EXAG: "0.8"
+        run: python gerar.py ref.wav ${{ matrix.parte }} parte.wav plantao-${{ needs.escrever.outputs.dia }}.txt
+      - name: fechar a saida (cifrada)
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: |
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in parte.wav -out parte-${{ matrix.parte }}.enc -pass env:VOZ_SENHA
+          rm -f ref.wav parte.wav parte.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parte-${{ matrix.parte }}
+          path: parte-${{ matrix.parte }}.enc
+          retention-days: 1
+
+  montar:
+    needs: [escrever, voz]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: render/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q requests
+      - name: instalar o motor de video
+        working-directory: render
+        run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: parte-*
+          path: vozes
+          merge-multiple: true
+      - name: juntar a voz e escrever a tela
+        env:
+          VOZ_SENHA: ${{ secrets.VOZ_SENHA }}
+        run: python fabrica/plantao.py ${{ needs.escrever.outputs.dia }} vozes --nuvem
+      - name: gerar os Shorts
+        working-directory: render
+        run: |
+          mkdir -p out
+          for p in public/plantao/${{ needs.escrever.outputs.dia }}/*/props.json; do
+            id=$(basename $(dirname $p))
+            npx remotion render src/nuvem.ts PlantaoShort out/PLANTAO-${{ needs.escrever.outputs.dia }}-$id.mp4 --props=$p --crf=20 --concurrency=4 --log=error
+          done
+          ls -la out
+      - name: guardar no Drive
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+        run: |
+          for f in render/out/PLANTAO-*.mp4; do
+            python -c "import sys; sys.path.insert(0,'.'); from fabrica import drive; print('no Drive:', drive.guardar_em('plantao/${{ needs.escrever.outputs.dia }}', sys.argv[1]))" $f
+          done
+      - name: agendar nas 6 redes
+        if: ${{ (inputs.publicar || vars.PLANTAO_PUBLICAR) == 'sim' }}
+        env:
+          YT_ID: ${{ secrets.YT_ID }}
+          YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          MULTIPOST_TIAO: ${{ secrets.MULTIPOST_TIAO }}
+        run: |
+          python fabrica/carteiro.py plantao/fila-${{ needs.escrever.outputs.dia }}.json
+          git config user.name "robo do Tiao"; git config user.email "robo@users.noreply.github.com"
+          git add plantao/fila-${{ needs.escrever.outputs.dia }}*.json
+          if git commit -qm "plantao ${{ needs.escrever.outputs.dia }}: agendado"; then git pull -q --rebase && git push -q; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plantao
+          path: render/out/PLANTAO-*.mp4
+          retention-days: 3

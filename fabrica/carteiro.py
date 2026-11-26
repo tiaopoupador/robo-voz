@@ -22,6 +22,18 @@ ENSAIO = "--ensaio" in sys.argv
 FILA = json.load(open(sys.argv[1], encoding="utf-8"))
 # minutos depois do YouTube em que cada rede sai (horas desiguais: tudo no mesmo minuto é a assinatura de um robô)
 ATRASO = {"instagram": 2, "facebook": 5, "zernio-tiktok": 9, "pinterest": 13, "bluesky": 17}
+STORY = {"instagram": 4, "facebook": 7}   # o Story, minutos depois do Reel da mesma rede
+SO_STORIES = "--so-stories" in sys.argv    # só os Stories (para Shorts já entregues: não sobe ao YouTube nem repete as redes)
+
+def dur_de(v):
+    return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", v]).decode())
+
+def corte_59(v):
+    c = os.path.splitext(v)[0] + "-story59.mp4"
+    if not os.path.exists(c):
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", v, "-t", "59", "-vf", "fade=t=out:st=58.3:d=0.7", "-af", "afade=t=out:st=58.3:d=0.7",
+                        "-c:v", "libx264", "-crf", "21", "-preset", "fast", "-c:a", "aac", "-movflags", "+faststart", c], check=True)
+    return c
 
 def mp(metodo, caminho, **kw):
     r = requests.request(metodo, API + caminho, headers={"Authorization": K, **kw.pop("headers", {})}, timeout=600, **kw)
@@ -57,21 +69,40 @@ canais = {c["identifier"] if "identifier" in c else c.get("providerIdentifier"):
 relatorio = []
 for s in FILA["shorts"]:
     quando = dt.datetime.fromisoformat(s["quando"]).replace(tzinfo=BR)
+    # 26/11 (robô na nuvem): se a hora marcada já passou ou está em cima, sai 20 minutos depois de agora (o YouTube recusa hora passada)
+    if not s.get("youtube_id") and quando < dt.datetime.now(BR) + dt.timedelta(minutes=20):
+        quando = (dt.datetime.now(BR) + dt.timedelta(minutes=20)).replace(second=0, microsecond=0)
     print(f"\n== {s['id']} · {quando:%d/%m %H:%M} (Brasília)")
     if ENSAIO: print("  ensaio: nada enviado"); continue
     linha = {"id": s["id"], "quando": quando.isoformat(), "redes": {}}
     # 1. YouTube
     try:
-        vid = s.get("youtube_id") or subir_youtube(s, quando); s["youtube_id"] = vid
+        vid = s.get("youtube_id") or (None if SO_STORIES else subir_youtube(s, quando)); s["youtube_id"] = vid
+        if not vid: raise RuntimeError("sem youtube_id")
         linha["redes"]["youtube"] = f"https://youtube.com/shorts/{vid}"; print("  YouTube:", linha["redes"]["youtube"])
     except Exception as e:
         linha["redes"]["youtube"] = f"FALHOU: {e}"; print("  YouTube FALHOU:", e)
     link_short = linha["redes"]["youtube"] if linha["redes"]["youtube"].startswith("http") else s.get("link", "https://www.youtube.com/@tiaopoupador")
     # 2. as outras redes, pelo Multipost
     try:
-        video = subir_midia(s["video"], "video/mp4"); capa = subir_midia(capa_de(s["video"]), "image/jpeg")
+        video = subir_midia(s["video"], "video/mp4"); capa = None if SO_STORIES else subir_midia(capa_de(s["video"]), "image/jpeg")
     except Exception as e:
         print("  Multipost: o envio do arquivo falhou:", e); linha["redes"]["multipost"] = f"FALHOU: {e}"; relatorio.append(linha); continue
+    # 25/11 (Ed: «nao postou no stories do facebook?», «nem no stories do instagram?»): o mesmo vídeo vai também ao Story do
+    # Instagram e do Facebook, minutos depois do Reel (como no FinMoovi). O Story tem teto de 60 s (regra da Meta): Short mais
+    # comprido vai cortado nos primeiros 59 s (o gancho inteiro), com um fade no fim. Só o Instagram e o Facebook aceitam «story».
+    story = video if dur_de(s["video"]) <= 60 else subir_midia(corte_59(s["video"]), "video/mp4")
+    for rede, atraso in STORY.items():
+        c = canais.get(rede)
+        if not c: continue
+        hora = max(quando + dt.timedelta(minutes=atraso), dt.datetime.now(BR) + dt.timedelta(minutes=3))
+        corpo = {"type": "schedule", "date": hora.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"), "shortLink": False, "tags": [],
+                 "posts": [{"integration": {"id": c["id"]}, "value": [{"content": "", "image": [{"id": story["id"], "path": story["path"]}]}],
+                            "settings": {"__type": rede, "post_type": "story"}}]}
+        try: mp("POST", "/posts", json=corpo); linha["redes"][rede + "-story"] = f"agendado {hora:%H:%M}"
+        except Exception as e: linha["redes"][rede + "-story"] = f"FALHOU: {e}"
+        print(f"  {rede} story: {linha['redes'][rede + '-story']}")
+    if SO_STORIES: relatorio.append(linha); continue
     for rede, atraso in ATRASO.items():
         c = canais.get(rede)
         if not c: linha["redes"][rede] = "sem canal"; continue
@@ -104,5 +135,5 @@ for s in FILA["shorts"]:
         time.sleep(1)
     relatorio.append(linha)
 json.dump(FILA, open(sys.argv[1], "w", encoding="utf-8"), ensure_ascii=False, indent=1)   # guarda o youtube_id (não sobe duas vezes)
-out = os.path.splitext(sys.argv[1])[0] + "-entregue.json"
+out = os.path.splitext(sys.argv[1])[0] + ("-stories" if SO_STORIES else "") + "-entregue.json"
 json.dump(relatorio, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=1); print("\nrelatório:", out)

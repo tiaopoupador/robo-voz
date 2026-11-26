@@ -1,0 +1,193 @@
+{
+ "id": "01-ajuste-fiscal",
+ "fonte": {
+  "urls": [
+   "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/entenda-o-pacote-fiscal-que-preve-ajuste-de-ate-r-56-bilhoes"
+  ],
+  "trechos": [
+   "economia estimada entre R$ 45,1 bilhões e R$ 56,1 bilhões em 2027",
+   "O repasse anual, atualmente em R$ 4 bilhões, terá limite de R$ 2 bilhões por ano entre 2027 e 2030"
+  ]
+ },
+ "titulo_yt": "Lula sancionou o pacote de R$ 56 bilhões: sai do SEU bolso? 🚨 #shorts",
+ "titulo_curto": "Pacote fiscal de R$ 56 bilhões: sai do seu bolso?",
+ "descricao_yt": "Lula sancionou o pacote fiscal de até R$ 56 bilhões. O que muda no seu bolso, sem opinião de partido: só a conta.\n\nIsso vai pesar no SEU bolso? Comenta SIM ou NÃO 👇\n\nFonte: Agência Brasil, 24/11/2026.\n\nSe inscreve no canal: todo dia tem Plantão do Tião, o que muda no SEU bolso.\n📱 O app do Tião: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=plantao\n\n#plantaodotiao #economia #ajustefiscal #shorts",
+ "legenda": "Lula sancionou o pacote fiscal de até R$ 56 bilhões. Isso vai pesar no SEU bolso?\n\nComenta SIM ou NÃO 👇\n\nFonte: Agência Brasil (24/11/2026).\n\n#plantaodotiao #economia #ajustefiscal #impostos #seubolso",
+ "legenda_curta": "Lula sancionou o pacote fiscal de até R$ 56 bilhões. Isso vai pesar no SEU bolso? Comenta SIM ou NÃO 👇",
+ "tags": [
+  "plantão do tião",
+  "ajuste fiscal",
+  "pacote fiscal",
+  "impostos",
+  "economia",
+  "tião poupador"
+ ],
+ "falas": [
+  {
+   "fala": "Lula sancionou ontem um pacote de até cinquenta e seis bilhões de reais. E a pergunta que todo mundo está fazendo é: isso vai sair do seu bolso?",
+   "tela": "Lula sancionou ontem um pacote de até R$ 56 bilhões. E a pergunta que todo mundo está fazendo é: isso vai sair do seu bolso?"
+  },
+  {
+   "fala": "Primeiro, a notícia boa: as regras da aposentadoria, do salário dos servidores e dos benefícios assistenciais não mudaram.",
+   "tela": "Primeiro, a notícia boa: as regras da aposentadoria, do salário dos servidores e dos benefícios assistenciais não mudaram."
+  },
+  {
+   "fala": "Quem perde são as empresas. O desconto de imposto que elas ganham do governo vai ser cortado em até vinte por cento, a partir de janeiro de dois mil e vinte e sete.",
+   "tela": "Quem perde são as empresas. O desconto de imposto que elas ganham do governo vai ser cortado em até 20%, a partir de janeiro de 2027."
+  },
+  {
+   "fala": "E os estados vão receber a metade de uma compensação antiga: de quatro para dois bilhões de reais por ano.",
+   "tela": "E os estados vão receber a metade de uma compensação antiga: de R$ 4 para R$ 2 bilhões por ano."
+  },
+  {
+   "fala": "Agora, presta atenção: quando uma empresa paga mais imposto, quem costuma pagar a conta no fim?",
+   "tela": "Agora, presta atenção: quando uma empresa paga mais imposto, quem costuma pagar a conta no fim?"
+  },
+  {
+   "fala": "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber quais empresas perdem mais, comenta QUERO, que eu faço a parte dois. Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+   "tela": "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber quais empresas perdem mais, comenta QUERO, que eu faço a parte 2. Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+  }
+ ],
+ "quadros": [
+  {
+   "linha": 0,
+   "palavra": 0,
+   "tipo": "manchete",
+   "texto": "Lula sancionou o *pacote fiscal*",
+   "emoji": "🚨"
+  },
+  {
+   "linha": 0,
+   "palavra": 6,
+   "tipo": "numero",
+   "ate": 56,
+   "antes": "até R$ ",
+   "depois": " bi",
+   "rotulo": "o que o governo quer economizar em 2027",
+   "cor": "vermelho"
+  },
+  {
+   "linha": 0,
+   "palavra": 13,
+   "tipo": "manchete",
+   "texto": "Isso vai sair do *SEU BOLSO*?",
+   "emoji": "😱"
+  },
+  {
+   "linha": 1,
+   "palavra": 0,
+   "tipo": "lista",
+   "titulo": "NÃO MUDOU NADA",
+   "itens": [
+    {
+     "t": "Regras da aposentadoria",
+     "ok": true,
+     "linha": 1,
+     "palavra": 5
+    },
+    {
+     "t": "Salário dos servidores",
+     "ok": true,
+     "linha": 1,
+     "palavra": 8
+    },
+    {
+     "t": "Benefícios assistenciais",
+     "ok": true,
+     "linha": 1,
+     "palavra": 12
+    }
+   ]
+  },
+  {
+   "linha": 2,
+   "palavra": 0,
+   "tipo": "compara",
+   "titulo": "Corte no desconto de imposto das empresas",
+   "de": "10%",
+   "para": "até 20%",
+   "rotuloDe": "lei de 2025",
+   "rotuloPara": "a partir de 2027",
+   "ruim": true
+  },
+  {
+   "linha": 3,
+   "palavra": 0,
+   "tipo": "grafico",
+   "titulo": "Lei Kandir: o que os estados recebem por ano",
+   "barras": [
+    {
+     "rotulo": "hoje",
+     "valor": 4,
+     "txt": "R$ 4 bi"
+    },
+    {
+     "rotulo": "2027 a 2030",
+     "valor": 2,
+     "txt": "R$ 2 bi"
+    }
+   ],
+   "destaque": 1,
+   "nota": "Metade a menos por ano!",
+   "cor": "vermelho"
+  },
+  {
+   "linha": 4,
+   "palavra": 0,
+   "tipo": "cards",
+   "titulo": "Quem sente primeiro?",
+   "cards": [
+    {
+     "emoji": "🏭",
+     "t": "Empresas",
+     "valor": "+ imposto",
+     "ok": false,
+     "linha": 4,
+     "palavra": 3
+    },
+    {
+     "emoji": "🏛️",
+     "t": "Estados",
+     "valor": "- R$ 2 bi",
+     "ok": false,
+     "linha": 4,
+     "palavra": 6
+    },
+    {
+     "emoji": "🛒",
+     "t": "Você, no preço?",
+     "valor": "pode vir",
+     "linha": 4,
+     "palavra": 10
+    }
+   ]
+  },
+  {
+   "linha": 5,
+   "palavra": 0,
+   "tipo": "pergunta",
+   "texto": "Isso vai pesar no SEU bolso?",
+   "opcoes": [
+    "SIM",
+    "NÃO"
+   ],
+   "emoji": "🤔"
+  },
+  {
+   "linha": 5,
+   "palavra": 10,
+   "tipo": "pergunta",
+   "texto": "Quais empresas perdem mais? Comenta QUERO!",
+   "opcoes": [
+    "QUERO"
+   ],
+   "emoji": "🙋"
+  },
+  {
+   "linha": 5,
+   "palavra": 26,
+   "tipo": "inscrever",
+   "texto": "Todo dia tem Plantão do Tião!"
+  }
+ ]
+}

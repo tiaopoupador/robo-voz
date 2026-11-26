@@ -10,9 +10,15 @@
 import glob, json, os, re, shutil, subprocess, sys
 P = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + "/.."); sys.path.insert(0, P)
 DIA, PASTA = sys.argv[1], sys.argv[2]
-env = dict(l.strip().split("=", 1) for l in open(P + "/acessos.env", encoding="utf-8") if "=" in l and not l.startswith("#"))
+# 26/11: roda também na nuvem (plantao-auto.yml, --nuvem): as chaves vêm do ambiente quando não há acessos.env
+env = dict(os.environ)
+if os.path.exists(P + "/acessos.env"):
+    env.update(dict(l.strip().split("=", 1) for l in open(P + "/acessos.env", encoding="utf-8") if "=" in l and not l.startswith("#")))
+NUVEM = "--nuvem" in sys.argv
 SPEC = json.load(open(f"{P}/plantao/{DIA}/shorts.json", encoding="utf-8"))
-textos = [l for l in open(f"{P}/{SPEC['texto']}", encoding="utf-8").read().splitlines() if l.strip()]
+_t = f"{P}/{SPEC['texto']}" if os.path.exists(f"{P}/{SPEC['texto']}") else f"{P}/robo-voz/{os.path.basename(SPEC['texto'])}"
+textos = [l for l in open(_t, encoding="utf-8").read().splitlines() if l.strip()]
+TELA = SPEC.get("tela")   # 26/11: o escritor já manda a frase da tela com os números em algarismo (senão, a lista TROCAS)
 dur = lambda f: float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).decode())
 cripta = lambda a, b, d="-d": subprocess.run(["openssl", "enc", d, "-aes-256-cbc", "-pbkdf2", "-iter", "200000", *(["-salt"] if d == "-e" else []),
                                              "-in", a, "-out", b, "-pass", "env:VOZ_SENHA"], check=True, env={**os.environ, "VOZ_SENHA": env["VOZ_SENHA"]})
@@ -25,7 +31,8 @@ TROCAS = [("cinquenta e seis bilhões de reais", "R$ 56 bilhões"), ("vinte por 
           ("cinco reais e noventa e um centavos", "R$ 5,91"), ("noventa e um dólares", "US$ 91"), ("dez bilhões e meio de reais", "R$ 10,5 bilhões"),
           ("vinte e quatro de novembro", "24/11"), ("sete de dezembro", "7/12"), ("primeiro a 7/12", "1º a 7/12"), ("um salário mínimo", "1 salário mínimo"), ("parte dois", "parte 2")]
 RESP = 0.22
-saida_nuvem = f"{P}/robo-voz/plantao/{DIA}"; os.makedirs(saida_nuvem, exist_ok=True)
+saida_nuvem = f"{P}/robo-voz/plantao/{DIA}"
+if not NUVEM: os.makedirs(saida_nuvem, exist_ok=True)
 for sh in SPEC["shorts"]:
     pub = f"{P}/render/public/plantao/{DIA}/{sh['id']}"; os.makedirs(pub, exist_ok=True)
     t, palavras, ini_linha, wavs = 0.35, [], [], []   # 0,35 s: o «alerta» do Plantão toca antes da voz
@@ -40,15 +47,17 @@ for sh in SPEC["shorts"]:
     quadros = []
     for q in sh["quadros"]:
         q2 = {k: v for k, v in q.items() if k not in ("linha", "palavra")}; q2["ini"] = max(0, quando(q) - 0.15)
-        if q.get("itens"):
-            q2["itens"] = [{"t": it["t"], "ok": it["ok"], **({"em": round(max(0.3, quando(it) - q2["ini"]), 2)} if "linha" in it else {})} for it in q["itens"]]
+        for chave in ("itens", "cards"):   # 26/11: os cards também entram na palavra dita
+            if q.get(chave):
+                q2[chave] = [{**{k: v for k, v in it.items() if k not in ("linha", "palavra")}, **({"em": round(max(0.3, quando(it) - q2["ini"]), 2)} if "linha" in it else {})} for it in q[chave]]
         quadros.append(q2)
     # a legenda com os números em algarismo: junta as palavras de novo, troca, e reparte o tempo de cada trecho
     leg = []
     for k, n in enumerate(sh["linhas"]):
         pal = [w for w in palavras if True][sum(len(textos[m].split()) for m in sh["linhas"][:k]):][:len(textos[n].split())]
-        frase = textos[n]
-        for de, para in TROCAS: frase = frase.replace(de, para)
+        frase = TELA[n] if TELA else textos[n]
+        if not TELA:
+            for de, para in TROCAS: frase = frase.replace(de, para)
         ws = frase.split(); a, b = pal[0][0], pal[-1][1]; peso = [len(w) + 2 for w in ws]; tot = sum(peso); x = a
         for w, p_ in zip(ws, peso):
             y = x + (b - a) * p_ / tot; leg.append([round(x, 2), round(y, 2), w]); x = y
@@ -61,11 +70,12 @@ for sh in SPEC["shorts"]:
              "palavras": leg, "quadros": quadros, "fim": round(fim - (RESP if sh.get("loop") else 0), 2), "cauda": 0.05 if sh.get("loop") else 0.6,  # loop: acaba colado na última palavra (Ed, 25/11, ideia 4)
              "rotulo": "SEGUE", "faixa": "SEGUE O PLANTÃO DO TIÃO   •   TODO DIA, O QUE MUDA NO SEU BOLSO   •   DEIXA O SEU LIKE!   •   "}
     json.dump(props, open(f"{pub}/props.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(f"{sh['id']}: {fim:.1f} s, {len(quadros)} quadros")
+    if NUVEM: continue   # na nuvem o vídeo é gerado ali mesmo: nada a cifrar nem a enviar
     os.makedirs(f"{saida_nuvem}/{sh['id']}", exist_ok=True)
     shutil.copy(f"{pub}/props.json", f"{saida_nuvem}/{sh['id']}/props.json")
     cripta(f"{pub}/voz.wav", f"{saida_nuvem}/{sh['id']}/voz.enc", "-e")
-    print(f"{sh['id']}: {fim:.1f} s, {len(quadros)} quadros")
-if "--local" not in sys.argv:
+if "--local" not in sys.argv and not NUVEM:
     R = f"{P}/robo-voz"
     subprocess.run(["bash", f"{P}/fabrica/para-nuvem.sh"], check=True, cwd=P)
     subprocess.run(["git", "add", f"plantao/{DIA}"], check=True, cwd=R)

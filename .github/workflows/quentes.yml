@@ -1,9 +1,7 @@
 name: quentes (as noticias do dia para o Plantao do Tiao)
-# Todo dia 10:00 UTC (7h de Brasilia). Ed, 25/11/2026: «Sim» ao buscador diario. Gratis: YouTube, Google Trends e Agencia Brasil.
+# 26/11: so a mao. O buscador agora roda dentro do plantao-auto.yml, todo dia as 7h05 de Brasilia. Ed, 25/11/2026: «Sim» ao buscador diario. Gratis: YouTube, Google Trends e Agencia Brasil.
 # 26/11 (Ed: «nao colocar nada no Team sem a minha permissao»): a lista NAO vai mais ao Team. Fica so no registro da corrida (gh run view --log).
 on:
-  schedule:
-    - cron: '0 10 * * *'
   workflow_dispatch:
 permissions:
   contents: read
