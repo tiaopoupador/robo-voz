@@ -1,18 +1,18 @@
-# 26/11/2026: o ESCRITOR dos Plantões do Tião (Ed escolheu a opção «b»: o robô escreve sozinho os 3 Shorts do dia, uns US$ 5 a 9
-# por mês nos créditos da Anthropic do canal, chave CLAUDE_TIAO). Roda na nuvem (plantao-auto.yml) logo depois do buscador das 7h.
+# 26/11/2026: o ESCRITOR dos Plantões do Tião (Ed escolheu a opção «b»: o robô escreve sozinho os Shorts do dia (4 desde 26/11), uns US$ 6 a 12
+# por mês nos créditos da Anthropic do canal, chave CLAUDE_TIAO). Roda na nuvem (plantao-auto.yml) às 5h de Brasília, logo depois do buscador.
 #  1. lê a lista do buscador (pesquisa/QUENTES-DIA.md): o que explode no YouTube, o que o Brasil busca e as notícias da Agência Brasil;
 #  2. baixa o TEXTO de cada notícia da Agência Brasil (a fonte pública que vale como oficial quando cita o órgão: regra do canal);
-#  3. o Claude escolhe 3 temas pelo bolso e escreve cada Short no molde aprovado pelo Ed (fabrica/plantao_exemplo.json);
+#  3. o Claude escolhe 4 temas pelo bolso e escreve cada Short no molde aprovado pelo Ed (fabrica/plantao_exemplo.json);
 #  4. o CÓDIGO confere, de graça, antes de aceitar: todo número da tela tem de estar no texto da fonte, sem palavra proibida, fim
 #     que emenda no começo, tamanho certo. O Short que falhar volta UMA vez ao Claude com o erro; se falhar de novo, sai do dia;
 #  5. escreve plantao-DIA.txt (a fala, 1 frase por linha), plantao/DIA/shorts.json (a tela), plantao/DIA/fontes.md e
-#     plantao/fila-DIA.json (12h, 18h30 e 21h de Brasília) para o carteiro.
+#     plantao/fila-DIA.json (8h, 12h, 18h30 e 21h de Brasília) para o carteiro.
 # Uso: python fabrica/plantao_escritor.py AAAA-MM-DD [--ensaio]   (--ensaio: não chama o Claude, só mostra o que mandaria e quanto custa)
 import datetime as dt, glob, html, json, os, re, sys, urllib.request
 P = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + "/.."); sys.path.insert(0, P)
 DIA = sys.argv[1]; ENSAIO = "--ensaio" in sys.argv
 MODELO = "claude-sonnet-5-5"   # US$ 2 / US$ 10 por milhão de tokens (o mesmo do posts.py e do idiomas.py)
-HORAS = ["12:00", "18:30", "21:00"]  # Brasília (Ed aprovou a 25/11)
+HORAS = ["08:00", "12:00", "18:30", "21:00"]  # Brasília (Ed aprovou 3 a 25/11; o das 8h a 26/11: «Temos que ter um video saindo de manha»)
 env = dict(os.environ)
 if os.path.exists(P + "/acessos.env"):
     env.update({k: v for k, v in (l.strip().split("=", 1) for l in open(P + "/acessos.env", encoding="utf-8") if "=" in l and not l.startswith("#")) if k not in env})
@@ -60,7 +60,7 @@ O Tião é porteiro de um prédio chique do centro e o poupador da rua: fala com
 
 REGRAS DO DONO DO CANAL (todas obrigatórias):
 1. Fonte: SÓ os textos da Agência Brasil que vêm na mensagem. Todo número, data, nome e fato tem de estar escrito no texto da fonte que você usar. Nada de memória, nada de suposição. Sem opinião de partido: explica o efeito no bolso, nunca diz quem é bom ou mau.
-2. Escolha 3 notícias DIFERENTES que mexem no bolso de gente comum (salário, INSS, imposto, conta de luz, gasolina, preços, juros, dólar, benefícios, emprego). Prefira o que está quente (aparece nos Shorts que explodem ou no Google Trends) e ainda é fresco. Não repita tema já usado nos últimos dias.
+2. Escolha 4 notícias DIFERENTES que mexem no bolso de gente comum (salário, INSS, imposto, conta de luz, gasolina, preços, juros, dólar, benefícios, emprego). Prefira o que está quente (aparece nos Shorts que explodem ou no Google Trends) e ainda é fresco. Não repita tema já usado nos últimos dias.
 3. Cada Short tem de 5 a 7 falas e de 110 a 160 palavras no total (de 45 a 65 segundos): CONTE as palavras antes de responder, o costume é passar do limite. Cada fala tem no máximo 200 letras. A 1.ª fala é o gancho: o fato mais chocante já com a pergunta do bolso.
 4. «fala» é o que a voz lê: números POR EXTENSO («cinquenta e seis bilhões de reais», «vinte por cento», «dois mil e vinte e sete»). «tela» é a mesma frase com os números em algarismos («R$ 56 bilhões», «20%», «2027»). Fora os números, fala e tela são iguais.
 5. Pergunta leva «?» e espanto leva «!». Proibido: «hein», «Ih», «Eita», «Ué», «Uai», «Hum», travessão (— ou –), «está escrito» sem dizer onde, e sigla rara (diga o nome inteiro; INSS, PIX e FGTS podem).
@@ -78,7 +78,7 @@ REGRAS DO DONO DO CANAL (todas obrigatórias):
 8. Títulos: «titulo_yt» até 95 letras, com o termo que o povo busca no começo, mistério honesto, 1 emoji e « #shorts» no fim. «titulo_curto» até 60 letras sem emoji. «descricao_yt», «legenda», «legenda_curta» (até 250 letras) e «tags» no MESMO molde do exemplo, com a fonte citada («Fonte: Agência Brasil, com dados do <órgão>, <data>.») e o link do app igual ao do exemplo.
 9. «fonte»: as URLs usadas e os trechos EXATOS (copiados letra por letra) que provam cada número.
 
-Responda SÓ com um JSON: {"shorts":[ {três Shorts no formato do exemplo} ]}, o mais urgente primeiro (ele sai ao meio-dia)."""
+Responda SÓ com um JSON: {"shorts":[ {quatro Shorts no formato do exemplo} ]}, o mais urgente primeiro: ele sai às 8h da manhã, na hora do café, e deve ser o que mexe no bolso HOJE (um prazo, um pagamento, um preço novo). Os outros saem às 12h, 18h30 e 21h."""
 
 def pedir(msg):
     import anthropic
@@ -160,7 +160,7 @@ if ruins:   # uma volta só, com os erros
         e = conferir(sh)
         if e: print("  saiu do dia:", sh.get("id"), e)
         else: bons.append((sh, []))
-bons = [s for s, _ in bons][:3]
+bons = [s for s, _ in bons][:len(HORAS)]
 print(f"Shorts aprovados pelo conferidor: {len(bons)} · gasto no Claude: US$ {gasto:.3f}")
 if not RECONFERIR: open(P + "/plantao/gasto-escritor.csv", "a", encoding="utf-8").write(f"{DIA},{gasto:.4f},{len(bons)}\n")
 if not bons: sys.exit("nenhum Short passou na conferência: hoje não sai Plantão")

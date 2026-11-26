@@ -1,15 +1,15 @@
-name: plantao-auto (os 3 Plantoes do dia, sozinhos)
+name: plantao-auto (os 4 Plantoes do dia, sozinhos)
 # 26/11/2026 (Ed escolheu a opcao «b»: o robo escreve, grava, monta e posta os 3 Shorts do Plantao do Tiao, sem ninguem ligado).
-# Todo dia as 10:05 UTC (7h05 de Brasilia, 10h05 de Lisboa no inverno europeu):
+# Todo dia as 8:00 UTC (5h de Brasilia, 8h de Lisboa no inverno europeu; antes 7h05, Ed 26/11: «7h05 e muito tarde»):
 #   1. escrever: o buscador (pesquisa/quentes.py) + o escritor (fabrica/plantao_escritor.py, Claude, uns US$ 0,10 por dia nos
 #      creditos do canal) com a conferencia de cada numero na fonte da Agencia Brasil;
 #   2. voz: cada fala gravada com a voz do Tiao (gerar.py, gratis), cifrada entre as etapas (o repositorio e publico);
 #   3. montar: a tela de cada Short (fabrica/plantao.py --nuvem + PlantaoShort.tsx), copia no Drive (robo/plantao/<dia>) e,
-#      se a variavel PLANTAO_PUBLICAR for «sim», o carteiro agenda nas 6 redes: 12h, 18h30 e 21h de Brasilia.
+#      se a variavel PLANTAO_PUBLICAR for «sim», o carteiro agenda nas 6 redes: 8h, 12h, 18h30 e 21h de Brasilia.
 # Enquanto o Ed nao aprovar a 1.a rodada, PLANTAO_PUBLICAR fica «nao»: os videos so vao para o Drive.
 on:
   schedule:
-    - cron: '5 10 * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
       dia:
