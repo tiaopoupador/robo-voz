@@ -1,0 +1,44 @@
+[
+ {
+  "id": "plantao-01-endividamento-cmn",
+  "quando": "2026-11-26T12:00:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/mtZWfARQRIs",
+   "instagram-story": "agendado 12:04",
+   "facebook-story": "agendado 12:07",
+   "instagram": "agendado 12:02",
+   "facebook": "agendado 12:05",
+   "zernio-tiktok": "agendado 12:09",
+   "pinterest": "agendado 12:13",
+   "bluesky": "agendado 12:17"
+  }
+ },
+ {
+  "id": "plantao-02-diesel-subsidio",
+  "quando": "2026-11-26T18:30:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/lA746t1EU8A",
+   "instagram-story": "agendado 18:34",
+   "facebook-story": "agendado 18:37",
+   "instagram": "agendado 18:32",
+   "facebook": "agendado 18:35",
+   "zernio-tiktok": "agendado 18:39",
+   "pinterest": "agendado 18:43",
+   "bluesky": "agendado 18:47"
+  }
+ },
+ {
+  "id": "plantao-03-dolar-fiscal-fazenda",
+  "quando": "2026-11-26T21:00:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/JGx0ACzj75Y",
+   "instagram-story": "agendado 21:04",
+   "facebook-story": "agendado 21:07",
+   "instagram": "agendado 21:02",
+   "facebook": "agendado 21:05",
+   "zernio-tiktok": "agendado 21:09",
+   "pinterest": "agendado 21:13",
+   "bluesky": "agendado 21:17"
+  }
+ }
+]
