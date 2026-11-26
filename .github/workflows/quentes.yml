@@ -1,6 +1,6 @@
 name: quentes (as noticias do dia para o Plantao do Tiao)
 # Todo dia 10:00 UTC (7h de Brasilia). Ed, 25/11/2026: «Sim» ao buscador diario. Gratis: YouTube, Google Trends e Agencia Brasil.
-# A lista vai para o Apexi Team; dela saem os 3 Shorts do dia.
+# 26/11 (Ed: «nao colocar nada no Team sem a minha permissao»): a lista NAO vai mais ao Team. Fica so no registro da corrida (gh run view --log).
 on:
   schedule:
     - cron: '0 10 * * *'
@@ -21,4 +21,4 @@ jobs:
           YT_SEGREDO: ${{ secrets.YT_SEGREDO }}
           YT_TOKEN: ${{ secrets.YT_TOKEN }}
           APEXI_TEAM_CHAVE: ${{ secrets.APEXI_TEAM_CHAVE }}
-        run: python pesquisa/quentes.py 48 --team
+        run: python pesquisa/quentes.py 48
