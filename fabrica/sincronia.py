@@ -90,6 +90,8 @@ def em_algarismos(palavras, digito=False):
             elif n == "e" and ok and j + 1 < len(N) and N[j + 1] in _U: j += 1
             elif n == "mil" and (ok or j == i): tot += (parte or 1) * 1000; parte = 0; ok = True; ult = j; j += 1
             else: break
+            # 26/11: «dois mil, novecentos e dezessete» e um numero so (a virgula depois de «mil» e pausa da fala)
+            if N[ult] == "mil" and palavras[ult].endswith(",") and ult == j - 1 and j < len(N) and N[j] in _U and _U[N[j]] >= 100: continue
             if re.search(r"[.,!?:;]$", palavras[ult]) and ult == j - 1: break  # a frase acabou no meio
         if not ok: return None
         return tot + parte, ult + 1
@@ -100,11 +102,11 @@ def em_algarismos(palavras, digito=False):
         v, j = r; achou = True; txt = _fmt(v); fim = palavras[j - 1]
         if j < len(N) and N[j] in ("real", "reais"):  # "cinquenta e oito reais (e trinta centavos)"
             fim = palavras[j]; j += 1; txt = "R$ " + txt
-            if j + 2 < len(N) + 1 and j < len(N) and N[j] == "e":
+            if j + 2 < len(N) + 1 and j < len(N) and N[j] == "e" and not palavras[j - 1].rstrip().endswith((".", "!", "?", ":", ";")):  # 26/11: «tres mil reais. É uma geladeira» virava R$ 3.000,01
                 c = numero(j + 1) if j + 1 < len(N) and N[j + 1] in _U else None
                 if c and c[0] < 100: k = c[1]; txt += f",{c[0]:02d}"; fim = palavras[k - 1]; j = k
                 if j < len(N) and N[j] in ("centavo", "centavos"): fim = palavras[j]; j += 1
-        elif j + 1 < len(N) + 1 and j < len(N) and N[j] == "e" and j + 1 < len(N) and N[j + 1] in _U:  # "dezoito e noventa": centavos
+        elif j + 1 < len(N) + 1 and j < len(N) and N[j] == "e" and j + 1 < len(N) and N[j + 1] in _U and not palavras[j - 1].rstrip().endswith((".", "!", "?", ":", ";")):  # "dezoito e noventa": centavos
             c = numero(j + 1)
             if c and c[0] < 100: txt += f",{c[0]:02d}"; fim = palavras[c[1] - 1]; j = c[1]
         if j + 1 < len(N) and N[j] == "por" and N[j + 1] == "cento": txt += "%"; fim = palavras[j + 1]; j += 2
