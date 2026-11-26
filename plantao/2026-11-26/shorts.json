@@ -1,0 +1,492 @@
+{
+ "data": "2026-11-26",
+ "texto": "plantao-2026-11-26.txt",
+ "tela": [
+  "O Banco Central aprovou ontem novas regras para conter o endividamento das famílias. Vai ficar mais difícil pegar empréstimo no seu nome?",
+  "O motivo é este: o número de superendividados no Brasil cresceu 75% em cinco anos.",
+  "Os bancos vão ter critérios mais rigorosos para conceder empréstimos. E o pacote quer reduzir o uso frequente do rotativo do cartão.",
+  "Também tem proteção para quem está com dificuldade financeira. Só que calma: a maior parte das medidas só vale a partir de 1º de julho de 2027.",
+  "Hoje, quinta-feira, o Banco Central dá uma entrevista para explicar tudo. Presta atenção: quando o banco fica mais rígido, quem sente primeiro?",
+  "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que muda no rotativo do cartão, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+  "O governo deve renovar por mais 30 dias o subsídio do diesel. O custo das medidas pode chegar a R$ 85 bilhões. Quem paga essa conta?",
+  "O governo paga R$ 2,12 por cada litro de diesel vendido no país. É isso que segura o preço do combustível.",
+  "Só mais um mês de subsídio pode custar de R$ 8 a R$ 10,5 bilhões.",
+  "E o que já foi gasto neste ano para segurar os combustíveis dá cerca de R$ 75 bilhões nas contas públicas.",
+  "Segurar o preço do combustível alivia agora, mas a conta vai para as contas públicas. Você acha que compensa?",
+  "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber como o governo chegou nessa conta, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+  "O dólar caiu cerca de 1,5% ontem e fechou perto de R$ 5,82. Mas o que fez o mercado respirar aliviado?",
+  "Foram duas coisas: a expectativa de novas medidas de ajuste fiscal e a discussão sobre quem vai ser o próximo ministro da Fazenda.",
+  "O dólar começou o dia em alta, chegou a R$ 5,95, e depois foi caindo ao longo da tarde.",
+  "O Banco Central ajudou: vendeu US$ 2 bilhões em leilão. E a bolsa subiu 1,6%.",
+  "Dólar mais baixo costuma aliviar o preço do que vem de fora. Mas um dia de queda não faz verão. Será que isso chega ao seu bolso?",
+  "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que mexeu com o dólar, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+ ],
+ "fontes": "plantao/2026-11-26/fontes.md",
+ "shorts": [
+  {
+   "id": "01-endividamento-cmn",
+   "titulo": "Banco Central muda as regras do crédito e do rotativo do cartão 💳 #shorts",
+   "linhas": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "BC muda as regras do *crédito*",
+     "emoji": "🚨"
+    },
+    {
+     "linha": 0,
+     "palavra": 16,
+     "tipo": "manchete",
+     "texto": "Vai ficar mais *difícil* pegar empréstimo?",
+     "emoji": "😱"
+    },
+    {
+     "linha": 1,
+     "palavra": 6,
+     "tipo": "numero",
+     "ate": 75,
+     "antes": "",
+     "depois": "%",
+     "rotulo": "foi quanto cresceu o número de superendividados em cinco anos",
+     "cor": "vermelho"
+    },
+    {
+     "linha": 2,
+     "palavra": 2,
+     "tipo": "lista",
+     "titulo": "O QUE MUDA",
+     "itens": [
+      {
+       "t": "Critérios mais rigorosos",
+       "ok": false,
+       "linha": 2,
+       "palavra": 3
+      },
+      {
+       "t": "Menos rotativo do cartão",
+       "ok": false,
+       "linha": 2,
+       "palavra": 15
+      },
+      {
+       "t": "Proteção a quem está apertado",
+       "ok": true,
+       "linha": 3,
+       "palavra": 4
+      }
+     ]
+    },
+    {
+     "linha": 2,
+     "palavra": 13,
+     "tipo": "cards",
+     "titulo": "O pacote quer",
+     "cards": [
+      {
+       "emoji": "🏦",
+       "t": "Empréstimo",
+       "valor": "mais rigor",
+       "ok": false,
+       "linha": 2,
+       "palavra": 3
+      },
+      {
+       "emoji": "💳",
+       "t": "Rotativo",
+       "valor": "menos uso",
+       "ok": true,
+       "linha": 2,
+       "palavra": 15
+      },
+      {
+       "emoji": "🛟",
+       "t": "Quem está apertado",
+       "valor": "mais proteção",
+       "ok": true,
+       "linha": 3,
+       "palavra": 4
+      }
+     ]
+    },
+    {
+     "linha": 3,
+     "palavra": 14,
+     "tipo": "compara",
+     "titulo": "Quando as regras valem",
+     "de": "hoje",
+     "para": "1º jul 2027",
+     "rotuloDe": "nada mudou ainda",
+     "rotuloPara": "a maior parte das medidas",
+     "ruim": false
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "BC explica tudo *hoje*",
+     "emoji": "🎤"
+    },
+    {
+     "linha": 4,
+     "palavra": 14,
+     "tipo": "cards",
+     "titulo": "Banco mais rígido: quem sente?",
+     "cards": [
+      {
+       "emoji": "💳",
+       "t": "Quem usa o rotativo",
+       "valor": "sente",
+       "ok": false,
+       "linha": 4,
+       "palavra": 16
+      },
+      {
+       "emoji": "🏦",
+       "t": "Banco",
+       "valor": "mais cuidado"
+      },
+      {
+       "emoji": "👨‍👩‍👧",
+       "t": "Você",
+       "valor": "atenção ao crédito"
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso vai pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 10,
+     "tipo": "pergunta",
+     "texto": "O que muda no rotativo? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 4,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  },
+  {
+   "id": "02-diesel-subsidio",
+   "titulo": "Subsídio do diesel: R$ 85 bilhões, quem paga essa conta? ⛽ #shorts",
+   "linhas": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "Subsídio do *diesel* vai ser renovado",
+     "emoji": "⛽"
+    },
+    {
+     "linha": 0,
+     "palavra": 18,
+     "tipo": "numero",
+     "ate": 85,
+     "antes": "até R$ ",
+     "depois": " bi",
+     "rotulo": "custo das medidas para segurar os combustíveis em 2026",
+     "cor": "vermelho"
+    },
+    {
+     "linha": 0,
+     "palavra": 24,
+     "tipo": "manchete",
+     "texto": "Quem paga essa *conta*?",
+     "emoji": "😱"
+    },
+    {
+     "linha": 1,
+     "palavra": 4,
+     "tipo": "numero",
+     "ate": 2.12,
+     "antes": "R$ ",
+     "depois": " por litro",
+     "rotulo": "é o que o governo paga em cada litro de diesel",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 2,
+     "palavra": 1,
+     "tipo": "compara",
+     "titulo": "Custo de mais um mês de subsídio",
+     "de": "R$ 8 bi",
+     "para": "R$ 10,5 bi",
+     "rotuloDe": "no mínimo",
+     "rotuloPara": "no máximo",
+     "ruim": true
+    },
+    {
+     "linha": 3,
+     "palavra": 9,
+     "tipo": "grafico",
+     "titulo": "Impacto nas contas públicas em 2026",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "já gasto",
+       "valor": 75,
+       "txt": "R$ 75 bi"
+      },
+      {
+       "rotulo": "com a renovação",
+       "valor": 85,
+       "txt": "R$ 85 bi"
+      }
+     ],
+     "destaque": 1,
+     "nota": "Pode chegar a R$ 85 bi!",
+     "cor": "vermelho"
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "cards",
+     "titulo": "Segurar o combustível",
+     "cards": [
+      {
+       "emoji": "⛽",
+       "t": "Preço na bomba",
+       "valor": "segurado",
+       "ok": true,
+       "linha": 4,
+       "palavra": 2
+      },
+      {
+       "emoji": "🏛️",
+       "t": "Contas públicas",
+       "valor": "mais gasto",
+       "ok": false,
+       "linha": 4,
+       "palavra": 10
+      },
+      {
+       "emoji": "🤔",
+       "t": "Você",
+       "valor": "compensa?",
+       "linha": 4,
+       "palavra": 15
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso vai pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 10,
+     "tipo": "pergunta",
+     "texto": "Como o governo chegou nessa conta? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 4,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  },
+  {
+   "id": "03-dolar-fiscal-fazenda",
+   "titulo": "Dólar cai para R$ 5,81: dia de alívio, mas e no seu bolso? 💵 #shorts",
+   "linhas": [
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "O *dólar* caiu e fechou perto de R$ 5,82",
+     "emoji": "💵"
+    },
+    {
+     "linha": 0,
+     "palavra": 4,
+     "tipo": "numero",
+     "ate": 1.5,
+     "antes": "- ",
+     "depois": "%",
+     "rotulo": "foi a queda do dólar ontem",
+     "cor": "verde",
+     "casas": 1
+    },
+    {
+     "linha": 1,
+     "palavra": 3,
+     "tipo": "cards",
+     "titulo": "O que acalmou o mercado",
+     "cards": [
+      {
+       "emoji": "📉",
+       "t": "Ajuste fiscal",
+       "valor": "expectativa",
+       "ok": true,
+       "linha": 1,
+       "palavra": 4
+      },
+      {
+       "emoji": "🏛️",
+       "t": "Novo ministro",
+       "valor": "discussão",
+       "linha": 1,
+       "palavra": 14
+      }
+     ]
+    },
+    {
+     "linha": 2,
+     "palavra": 6,
+     "tipo": "grafico",
+     "titulo": "Dólar ao longo do dia",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "máxima",
+       "valor": 5.95,
+       "txt": "R$ 5,95"
+      },
+      {
+       "rotulo": "fechamento",
+       "valor": 5.82,
+       "txt": "R$ 5,82"
+      }
+     ],
+     "destaque": 1,
+     "nota": "Caiu ao longo da tarde!",
+     "cor": "verde"
+    },
+    {
+     "linha": 3,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "O *Banco Central* vendeu US$ 2 bi",
+     "emoji": "🏦"
+    },
+    {
+     "linha": 3,
+     "palavra": 14,
+     "tipo": "numero",
+     "ate": 1.6,
+     "antes": "+ ",
+     "depois": "%",
+     "rotulo": "foi a alta da bolsa ontem",
+     "cor": "verde",
+     "casas": 1
+    },
+    {
+     "linha": 4,
+     "palavra": 13,
+     "tipo": "cards",
+     "titulo": "Dólar mais baixo",
+     "cards": [
+      {
+       "emoji": "📦",
+       "t": "Preço do que vem de fora",
+       "valor": "pode aliviar",
+       "ok": true,
+       "linha": 4,
+       "palavra": 3
+      },
+      {
+       "emoji": "📅",
+       "t": "Um dia só",
+       "valor": "não garante nada",
+       "linha": 4,
+       "palavra": 10
+      },
+      {
+       "emoji": "🛒",
+       "t": "Seu bolso",
+       "valor": "chega?",
+       "linha": 4,
+       "palavra": 20
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso vai pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 10,
+     "tipo": "pergunta",
+     "texto": "O que mexeu com o dólar? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 4,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  }
+ ]
+}
