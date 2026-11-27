@@ -131,7 +131,8 @@ def pede():
                        [B("Tião... você me empresta cinquenta reais até sexta?", 0, "Tião", "sexta")])
 def conta(titulo, linhas, total="Sobra", neutro=False, passo=0.9):
     return {"k": "conta", "titulo": titulo, "linhas": [{"rotulo": a, "valor": b} for a, b in linhas], "total": total, "neutro": neutro, "passo": passo}
-def cel(titulo, linhas, destaque=()): return {"k": "celular", "titulo": titulo, "linhas": [{"r": a, "v": b, **({"pos": True} if p else {})} for a, b, p in linhas], "destaque": list(destaque)}
+def _nq(v): return v.replace("- ", "- ").replace("+ ", "+ ") if isinstance(v, str) else v  # 27/11: o sinal nao quebra de linha
+def cel(titulo, linhas, destaque=()): return {"k": "celular", "titulo": titulo, "linhas": [{"r": a, "v": _nq(b), **({"pos": True} if p else {})} for a, b, p in linhas], "destaque": list(destaque)}
 CANECA_D, PAPEL_N = ("varanda-domingo-perto.jpg", 40, 45), ("varanda-noite-perto.jpg", 58, 45)
 
 # ======================= 24/11/2026: a versao NOVELA (roteiros/escaleta-05-nova.md, 84 falas) =======================

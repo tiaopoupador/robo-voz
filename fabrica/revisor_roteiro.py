@@ -80,6 +80,17 @@ Aponte cada lugar onde a história falha:
 11. REPETIÇÃO (o dono do canal, 27/11/2026: «sempre repete as mesmas falas, das dicas, 3 dicas, papel de pão»; grave): a mesma
    fórmula do anterior (o mesmo formato de dicas, o mesmo objeto, o mesmo lugar, a mesma cena de conta) usada de novo.
    E o FIM: tem de ser capítulo de novela, com drama e mistério; fim morno é grave.
+12. BÍBLIA (o dono do canal, 27/11/2026: «o tiao foi zuado pelo marcos e pela sandra do carro q ele tem... vc entende que do jeito
+   que estamos indo nao vamos conseguir manter consistencia?»; sempre GRAVE): a BÍBLIA DO TIÃO vem no fim deste pedido. Aponte todo
+   fato que a contradiz (salário, carro, casa, família, quem deve o quê a quem, o que cada um já fez).
+13. EPISÓDIO ANTERIOR (o dono do canal, 27/11/2026; grave): a fala [0] começa com "No episódio anterior" e resume o anterior em
+   poucas frases, com o que importa para entender ESTE vídeo. Toda menção ao anterior no meio do vídeo (uma linha, um bilhete, uma
+   dívida) diz O QUÊ, para quem chegou agora («a linha do extrato que deixou a Valéria» sem explicar = grave).
+14. PROFUNDIDADE (o dono do canal, 27/11/2026: «mais ensinamentos, mais leis, (...) relatos de livros, (...) um estudo de»): aponte o
+   capítulo que só dá opinião, sem nenhum dado com fonte, pesquisa, estudo, lei ou livro (autor e ano). Aponte também número dito
+   sem dizer de onde veio.
+15. O TIÃO SE APRESENTA (o dono do canal, 27/11/2026: «esse negocio de ele falar em todo video que é porteiro, isso tem que ser mais
+   dinamico»): a apresentação do Tião igual à do vídeo anterior (as mesmas palavras) é problema leve; aponte e sugira outro jeito.
 Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê, funil e fala de gente. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.
@@ -101,9 +112,13 @@ def revisar(NN, arq=None):
     txt = pedido.replace("O roteiro, uma linha por número:", lista) + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
     # 27/11: o roteiro anterior INTEIRO (itens 10 e 11), uns US$ 0,03 a mais
     if arq_ant and os.path.exists(arq_ant): txt += "\n\nO ROTEIRO ANTERIOR INTEIRO (só para os itens 10 e 11, não o revise):\n" + open(arq_ant, encoding="utf-8").read()
+    # 27/11: a biblia do Tiao (os fatos fixos), item 12
+    if os.path.exists(f"{P}/fabrica/biblia.md"): txt += "\n\nA BÍBLIA DO TIÃO (só para o item 12, não a revise):\n" + open(f"{P}/fabrica/biblia.md", encoding="utf-8").read()
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
     with cli.messages.stream(model="claude-sonnet-5-5", max_tokens=32000, thinking={"type": "adaptive"},
-                             output_config={"format": {"type": "json_schema", "schema": ESQ}},
+                             # 27/11: esforco medio (o padrao do Sonnet 5.5 e «high»): o 06 custou US$ 0,505 pensando a fundo.
+                             # O roteiro anterior INTEIRO continua a ir (Ed: «se fizer isso nao diminui a qualidade?»): e ele que pega repeticao.
+                             output_config={"format": {"type": "json_schema", "schema": ESQ}, "effort": "medium"},
                              messages=[{"role": "user", "content": txt}]) as s:
         r = s.get_final_message()
     t = next(b.text for b in r.content if b.type == "text")

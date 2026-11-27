@@ -17,6 +17,12 @@ Regras deste texto: sem travessão; números por extenso na fala; as marcas entr
 
 ---
 
+## 0. No episódio anterior
+
+[CENA: lembranças do 06, o açougue, o degrau do prédio, a farmácia] [TRILHA: drama baixo]
+
+No episódio anterior: eu te mostrei as dez regras que me deixam dormir tranquilo ganhando dois mil e oitocentos reais. O Marcos, meu vizinho, que ganha o triplo, me pediu cem reais na fila do açougue e jurou devolver no dia cinco. A Valéria, que um dia riu da minha caneca, me disse boa tarde na frente da rua. E na segunda, a minha folga, eu fui com a Dona Cida buscar o remédio de pressão dela. A moça do balcão pediu o cê pê éfe, o desconto veio enorme, e na calçada o celular dela apitou: uma mensagem que já sabia o nome do remédio.
+
 ## 0. Abertura (é um Reels: entende-se sozinha)
 
 [CENA: a Dona Cida na calçada em frente à farmácia, a sacolinha numa mão e o celular aceso na outra, pálida] [TRILHA: alerta baixo] [TEXTO GRANDE NO MEIO: MENOS DA METADE DO PREÇO] [ABRE L1] [ABRE L2]
@@ -41,7 +47,7 @@ Se você dá o seu cê pê éfe em toda farmácia sem nem pensar, fica comigo at
 
 Chega mais! O café tá passado e hoje tem conta pra fazer.
 
-Se você chegou agora, eu sou o Tião. Sou porteiro de um prédio chique no centro, e de lá eu vejo todo dia quem parece rico e quem é rico. E a Dona Cida é a aposentada da esquina da minha rua, a que guardou dinheiro com medo a vida inteira. No último vídeo, eu estava com ela na calçada da farmácia quando o celular apitou. Hoje eu te conto a resposta inteira, e para isso eu preciso voltar uns minutos.
+Se você chegou agora, eu sou o Tião, o da caneca lascada, que faz a conta antes de abrir a carteira. E a Dona Cida é a aposentada da esquina da minha rua, a que guardou dinheiro com medo a vida inteira. Hoje eu te conto a resposta inteira, e para isso eu preciso voltar uns minutos, para dentro da farmácia.
 
 [CENA: a farmácia do bairro por dentro, de manhã, a Dona Cida no balcão, a atendente sorrindo com a mão no teclado] [TEXTO: SEM CPF: R$ 89,90]
 

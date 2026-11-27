@@ -43,6 +43,11 @@ for i, f in enumerate(falas):
     for w in re.findall(r"\b(Ih|Eita|Ué|Uai|Hum)\b", f): avisos.append(f"fala {i}: interjeicao '{w}' (Ed 23/11: a voz fala estranho): tirar")
     for s in set(re.findall(r"\b[A-Z]{2,6}\b", f)) - SIGLA_OK: avisos.append(f"fala {i}: sigla {s}: dizer o nome inteiro")
     if re.search(r"\b(está escrito|no site)\b[.!]", f, re.I): avisos.append(f"fala {i}: 'está escrito'/'no site' sem dizer onde")
+    if re.search(r"\.\.\.|…", f): avisos.append(f"fala {i}: reticencias (27/11: a voz engasgava; o gerar.py troca por virgula, confira se a frase continua boa)")
+    if len(f) > 650: avisos.append(f"fala {i}: {len(f)} letras, passa de uns 40 s: partir em duas")
+# 27/11 (Ed: «Quero que daqui pra frente todo video inicie tipo: E no episódio anterior... ai fala de um resumo»)
+if int(NN) >= 6 and not re.match(r"(E )?no episódio anterior", falas[0], re.I):
+    raise SystemExit("ERRO: a fala 0 tem de comecar com «No episódio anterior» e resumir o video anterior (Ed, 27/11)")
 for a in avisos: print("AVISO", a)
 if not avisos: print("fala de gente: nenhum aviso")
 

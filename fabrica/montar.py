@@ -7,6 +7,10 @@ import importlib, json, os, re, shutil, subprocess, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 NN = sys.argv[1]
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
+# 27/11: o revisor de sincronia (gratis) para tudo antes de montar: balao fora da fala, gatilho que nao existe, card que pisca
+from fabrica.conferir_cenas import conferir as _conferir
+_e = _conferir(NN)
+if _e: raise SystemExit("ERRO de sincronia nas cenas (fabrica/conferir_cenas.py):\n" + "\n".join(_e))
 from fabrica.sincronia import alinhar, achar
 V = f"{P}/fabrica/videos/v{NN}"; IMG_CF, ENT = V + "/img", V + "/entrada"
 if "--sem-team" not in sys.argv:  # o que o Ed anexou no Apexi Team entra em entrada/ junto com o que veio do Drive
@@ -288,10 +292,17 @@ for i in range(len(cenas) - 1):
 
 # ---------------- trilha de filme: um clima por trecho (CLIMA em cenas.py) ----------------
 MUS = P + "/render/public/musica/"
-FAIXAS = {"calma": ["Wallpaper", "Dreamer", "Life-of-Riley"], "tensao": ["Investigations", "Hitman", "Dark-Times"],
-          "triste": ["Heartbreaking", "Sad-Trio"], "curiosa": ["Thinking-Music", "Local-Forecast---Elevator"], "humor": ["Sneaky-Snitch"],
-          "montagem": ["Impending-Boom"], "reflexiva": ["Lasting-Hope", "Touching-Moments-Two---Higher"], "virada": ["Inspired"],
-          "final": ["Inspired"], "drama": ["Long-Note-Two"],
+# 27/11 (Ed: «As musicas ja tinha lhe pedido mais variedades de musicas e sons, mas vc nao usa»; «Essa musica que aparece nesse
+# momento e muito chata, nao quero q use ele mais!»): BANIDA a Local-Forecast---Elevator (16:50 do 06). Entraram 15 faixas novas
+# do Kevin MacLeod, e o rodizio comeca num ponto diferente em cada video (o numero do video), para nao abrir sempre com a mesma.
+# A Hitman saiu da «tensao»: fica so no gancho final (a marca do «proximo capitulo»).
+BANIDAS = {"Local-Forecast---Elevator"}
+FAIXAS = {"calma": ["Wallpaper", "Bossa-Antigua", "Dreamer", "Airport-Lounge", "Life-of-Riley", "Carefree", "Easy-Lemon"],
+          "tensao": ["Investigations", "Hidden-Agenda", "Dark-Times", "Slow-Burn", "Spy-Glass"],
+          "triste": ["Heartbreaking", "At-Rest", "Sad-Trio"], "curiosa": ["Thinking-Music", "Comfortable-Mystery", "Deliberate-Thought", "Sovereign-Quarter"],
+          "humor": ["Sneaky-Snitch", "Daily-Beetle", "Carefree"],
+          "montagem": ["Impending-Boom"], "reflexiva": ["Lasting-Hope", "Healing", "Touching-Moments-Two---Higher", "Dreams-Become-Real"],
+          "virada": ["Inspired", "Wholesome", "Pamgaea"], "final": ["Inspired", "Wholesome"], "drama": ["Long-Note-Two", "At-Rest"],
           # Tiao Conversa (Ed 18/11: «musica de tensao, de alerta, de aviso! estilo aqueles jornais policiais (...) bem marcante»)
           # escolhida: Interloper (grave, pancadas fortes e silencios). Recusadas: Aggressor, Cut and Run, Chase Pulse, Prelude and Action, Oppressive Gloom, The Dread
           "alerta": ["Interloper"],
@@ -309,7 +320,7 @@ TOTAL = FIM + TELA
 for i, (a, cl) in enumerate(pontos):
     b = pontos[i + 1][0] if i + 1 < len(pontos) else TOTAL
     if cl == "silencio": partes.append((a, b, None, cl)); continue
-    lista = FAIXAS[cl]; f = lista[uso.get(cl, 0) % len(lista)]; uso[cl] = uso.get(cl, 0) + 1
+    lista = [x for x in FAIXAS[cl] if x not in BANIDAS]; f = lista[(uso.get(cl, 0) + int(NN)) % len(lista)]; uso[cl] = uso.get(cl, 0) + 1
     partes.append((a, b, f, cl))
 if partes and partes[0][0] > 0: partes[0] = (0, partes[0][1], partes[0][2], partes[0][3])
 X = 2.0
@@ -430,8 +441,13 @@ props = {"pasta": PASTA, "fim": FIM, "tela": TELA, "cenas": cenas, "legendas": l
          "ondaEstilo": getattr(C, "ONDA", "pilulas"), "selo": getattr(C, "SELO", "placa")}
 json.dump(props, open(PUB + "/props.json", "w", encoding="utf-8"), ensure_ascii=False)
 relato = {"cenas": len(cenas), "fim": FIM, "musicas": musicas, "do_ed": usados_ed, "plano_b": planoB, "avisos": avisos}
+relato["ritmo"] = getattr(C, "RITMO", 1.0)  # 27/11: o video final sai acelerado inteiro (imagem e som) na nuvem (video.yml, juntar)
 json.dump(relato, open(f"{P}/fabrica/saida/{NN}-montagem.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 from collections import Counter
 print(len(cenas), "cenas", dict(Counter(c["k"] for c in cenas)), len(leg), "legendas, fim", FIM)
 print("do Ed:", len(usados_ed), "· plano B:", len(planoB), "· musicas:", musicas)
 print("\n".join(avisos[:40]) or "sem avisos")
+# 27/11 (Ed: «cards q aparecem do nada», «legendas que aparecem (...) e ja desaparece imediatamente»): do 06 em diante, cena que
+# pisca (menos de 1 s) ou gatilho que a voz nao disse PARAM a montagem. Na nuvem isto barra o video antes de gastar tempo.
+_graves = [a for a in avisos if "nao achei" in a or (a.startswith("cena curta") and float(a.split()[-1][:-1]) < 1.0)]
+if int(NN) >= 6 and _graves: raise SystemExit("ERRO (revisor de sincronia): " + "; ".join(_graves))

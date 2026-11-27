@@ -9,6 +9,10 @@ from fabrica import vertical
 NN = sys.argv[1]
 C = importlib.import_module(f"fabrica.videos.v{NN}.cenas")
 W = json.load(open(f"{P}/fabrica/saida/{NN}-palavras.json", encoding="utf-8"))
+# 27/11: do 06 em diante a fala 0 e o «No episodio anterior» (REELS_DE) e o VIDEO-NN.mp4 sai acelerado (RITMO).
+# Este programa ainda corta do segundo 0 com os tempos da voz normal: parar antes de sair um Reels errado.
+if getattr(C, "REELS_DE", 0) or getattr(C, "RITMO", 1.0) != 1.0:
+    raise SystemExit("ERRO: falta ensinar o reels.py a comecar na fala REELS_DE e a usar o RITMO (27/11). Nao gerar ate la.")
 fim_i = next(i for i in range(len(W) - 1) if W[i][2].lower().startswith("vamos") and W[i + 1][2].lower().startswith("começar"))
 T = W[fim_i - 1][1] + 0.25          # um respiro depois do «...puxa a cadeira.»
 OUT = f"{P}/videos-prontos/REELS-{NN}.mp4"

@@ -15,7 +15,7 @@ caps = []
 NOMES = getattr(C, "CAP_NOMES", {})
 for t, l in zip(titulos, comeco):
     t = NOMES.get(t, t)
-    s = 0 if not caps else int(ini.get(l, 0) + (4.5 if getattr(C, "VINHETA", None) is not None and l > C.VINHETA else 0))  # a vinheta empurra o resto 4,5 s
+    s = 0 if not caps else int((ini.get(l, 0) + (4.5 if getattr(C, "VINHETA", None) is not None and l > C.VINHETA else 0)) / getattr(C, "RITMO", 1.0))  # a vinheta empurra o resto 4,5 s; 27/11: o video final sai acelerado (RITMO)
     caps.append(f"{s // 60:02d}:{s % 60:02d} {re.sub(r'^Armadilha (\d): ', r'Armadilha \1: ', t)}")
 # 23/11 (do youtube-agent-skill, yt-chapters): o YouTube ignora a lista inteira, calado, se o 1o nao for 00:00,
 # se houver menos de 3, ou se um capitulo tiver menos de 10 s. Para aqui em vez de subir capitulos que nao aparecem.
