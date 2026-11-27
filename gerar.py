@@ -36,6 +36,10 @@ def falado(texto):
             # Ed, 19/11/2026, escolhidas de ouvido: teste 1 (1, 3, 11) e teste 2 (2 «nívio», 6 «Cóllo», 8 «Finmúvi»); o Collor ainda não agrada: evitar o nome na fala: «móro», «móstro», «ní-vel», «Kólor», «sufôco»
             # Ed, 23/11/2026: «o correto pu blí ca» (o verbo; «pública», com acento, não muda)
             (r"\bpublica\b", "publíca"), (r"\bPublica\b", "Publíca"),
+            # Ed, 27/11/2026: «o correto seria: Se ninguem dér» e «ele diz mêxe e o correto é méxe»
+            (r"\b([Dd])er\b", r"\1ér"), (r"\b([Mm])exe\b", r"\1éxe"),
+            # 27/11: reticencias faziam a voz engasgar («Tião... isso aqui»): viram virgula (ou ponto no fim)
+            (r"\s*(\.\.\.|…)\s*(?=[a-zà-ú])", ", "), (r"\s*(\.\.\.|…)", "."),
             (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1ívio"), (r"\bsufoco\b", "sufôco")]
     for a, b in FALA: texto = re.sub(a, b, texto)
     return texto
@@ -99,6 +103,10 @@ def nota(wav, sr, texto, whisper):
         i0, i1 = int(t0 / 0.02), int(t1 / 0.02); return float((r[i0:i1] > 0.02).sum() * 0.02)
     for (s0, e0, _), (s1, e1, _) in zip(ws, ws[1:]):
         if s1 - e0 > 0.7 and forte(e0 + 0.15, s1 - 0.15) > 0.25: return False, f"som sem palavra no meio ({e0:.1f}-{s1:.1f} s)", d
+    # 27/11 (Ed: «ele fala qual... fica um tempo sem falar nada e depois se o seu salario... parece que da uma engasgada»):
+    # buraco MUDO entre palavras tambem reprova (o teste de cima so via buraco com barulho)
+    for (s0, e0, _), (s1, e1, _) in zip(ws, ws[1:]):
+        if s1 - e0 > 1.1: return False, f"buraco mudo no meio ({e0:.1f}-{s1:.1f} s)", d
     cauda = forte(ws[-1][1] + 0.15, len(a) / SR_W)
     if cauda > 0.25: return False, f"som depois da ultima palavra ({cauda:.2f} s)", d
     if forte(0, max(0, ws[0][0] - 0.15)) > 0.25: return False, "som antes da primeira palavra", d

@@ -154,6 +154,15 @@ jobs:
           # o som inteiro (job "som"): uma peca so, sem emenda
           ffmpeg -v error -i so-imagem.mp4 -i som/som.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k -shortest -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
           ffprobe -v error -show_entries format=duration -of csv=p=0 videos-prontos/VIDEO-$NN.mp4
+          # 27/11 (Ed: «assisti o video 6 na velocidade 1,25 e ficou otimo! (...) depois dele gerado, gerar o mesmo video com 1,15 ou
+          # 1,25 de velocidade»): RITMO no cenas.py. Acelera-se o video INTEIRO (imagem e som juntos, o som sem mudar o tom).
+          # Acelerar so a voz continua recusado (18/11: «fica muito robotizada»). Fica tambem a versao normal, para comparar.
+          R=$(python3 -c "import json;print(json.load(open('montado/_montagem.json')).get('ritmo',1.0))")
+          if [ "$R" != "1.0" ] && [ "$R" != "1" ]; then
+            mv videos-prontos/VIDEO-$NN.mp4 videos-prontos/NORMAL-$NN.mp4
+            ffmpeg -v error -i videos-prontos/NORMAL-$NN.mp4 -filter_complex "[0:v]setpts=PTS/$R,fps=30[v];[0:a]atempo=$R[a]" -map "[v]" -map "[a]"               -c:v libx264 -preset medium -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -y videos-prontos/VIDEO-$NN.mp4
+            echo "acelerado a ${R}x:"; ffprobe -v error -show_entries format=duration -of csv=p=0 videos-prontos/VIDEO-$NN.mp4
+          fi
       - name: guardar no Drive, capa e agendar no YouTube
         env:
           YT_ID: ${{ secrets.YT_ID }}
