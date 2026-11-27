@@ -1,0 +1,44 @@
+[
+ {
+  "id": "plantao-01-pix-golpes-2027",
+  "quando": "2026-11-27T08:00:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/PMqcu6tgYdk",
+   "instagram-story": "agendado 08:04",
+   "facebook-story": "agendado 08:07",
+   "instagram": "agendado 08:02",
+   "facebook": "agendado 08:05",
+   "zernio-tiktok": "agendado 08:09",
+   "pinterest": "agendado 08:13",
+   "bluesky": "agendado 08:17"
+  }
+ },
+ {
+  "id": "plantao-02-bolsa-sobe-6",
+  "quando": "2026-11-27T12:00:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/aHyUCgrRrOQ",
+   "instagram-story": "agendado 12:04",
+   "facebook-story": "agendado 12:07",
+   "instagram": "agendado 12:02",
+   "facebook": "agendado 12:05",
+   "zernio-tiktok": "agendado 12:09",
+   "pinterest": "agendado 12:13",
+   "bluesky": "agendado 12:17"
+  }
+ },
+ {
+  "id": "plantao-03-big-techs-economia-50-bi",
+  "quando": "2026-11-27T18:30:00-03:00",
+  "redes": {
+   "youtube": "https://youtube.com/shorts/JebJuuRtNB8",
+   "instagram-story": "agendado 18:34",
+   "facebook-story": "agendado 18:37",
+   "instagram": "agendado 18:32",
+   "facebook": "agendado 18:35",
+   "zernio-tiktok": "agendado 18:39",
+   "pinterest": "agendado 18:43",
+   "bluesky": "agendado 18:47"
+  }
+ }
+]
