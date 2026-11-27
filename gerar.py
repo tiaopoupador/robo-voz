@@ -38,6 +38,8 @@ def falado(texto):
             (r"\bpublica\b", "publíca"), (r"\bPublica\b", "Publíca"),
             # Ed, 27/11/2026: «o correto seria: Se ninguem dér» e «ele diz mêxe e o correto é méxe»
             (r"\b([Dd])er\b", r"\1ér"), (r"\b([Mm])exe\b", r"\1éxe"),
+            # Ed, 27/11/2026: «ele disse eu trôco e o correto é eu tróco» e «fala fôra e o correto é fóra»
+            (r"\b([Ee]u) troco\b", r"\1 tróco"), (r"\b([Ff])ora\b", r"\1óra"),
             # 27/11: reticencias faziam a voz engasgar («Tião... isso aqui»): viram virgula (ou ponto no fim)
             (r"\s*(\.\.\.|…)\s*(?=[a-zà-ú])", ", "), (r"\s*(\.\.\.|…)", "."),
             (r"\b([Mm])oro\b", r"\1óro"), (r"\b([Mm])ostro\b", r"\1óstro"), (r"\b([Nn])ível\b", r"\1ívio"), (r"\bsufoco\b", "sufôco")]
