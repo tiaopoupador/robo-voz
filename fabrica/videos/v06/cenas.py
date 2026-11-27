@@ -135,7 +135,7 @@ L = {
  18: [("^", "M", regra(3, "a casa manda em todas as outras contas", "🏠")), ("setecentos e cinquenta", "M", nu(750, "O meu aluguel", "uns 27% do salário", emoji="🏠")),
       ("bairros bonitos", "C", tiao("P2", 1)), ("ninguém paga", "C", tiao("P3", -1))],
  19: [("^", "C", tiao("P2", -1)),
-      ("Pesquisa de Orçamentos Familiares", "M", ci("IBGE", "2017-2018", "Pesquisa de Orçamentos Familiares", "A moradia é o maior gasto das famílias: 36,6% de tudo o que consomem.")),
+      ("Pesquisa de Orçamentos Familiares", "M", ci("IBGE", "2018", "Pesquisa de Orçamentos Familiares", "A moradia é o maior gasto das famílias: 36,6% de tudo o que consomem.")),
       ("chega perto de quarenta", "M", nu(39.2, "Nas famílias que ganham menos", "IBGE, POF 2017-2018", cor=VERM, casas=1, fmt="num", suf="%", emoji="🏠"))],
  20: [("^", "M", so("sandra", "P03")),
       ("O meu salário inteiro", "M", ba([("Aluguel do Tião", 750, VERDE), ("Aluguel que a Sandra quer", 2800, VERM)], "Só para morar, por mês")),

@@ -96,7 +96,7 @@ export const Celular: React.FC<{ titulo?: string; linhas: { r: string; v: string
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "16px 14px", borderRadius: 14, marginBottom: 6,
                   background: d ? `rgba(242,182,50,${acende * (1 - some)})` : "transparent", opacity: Math.min(1, e * 2) * (d ? 1 - 0.85 * some : 1), transform: `translateX(${(1 - e) * 60}px)` }}>
                   <span style={txt(34, COR.tinta, 600)}>{l.r}</span>
-                  <span style={txt(34, l.pos ? COR.verde : COR.vermelho)}>{l.v}</span>
+                  <span style={{ ...txt(34, l.pos ? COR.verde : COR.vermelho), whiteSpace: "nowrap", flexShrink: 0 }}>{l.v}</span>
                 </div>
               );
             })}
