@@ -15,7 +15,8 @@ _V = "valeria-ficha-a.jpg.jpg + tiao-ficha-oficial.jpg"
 _T = "tiao-ficha-oficial.jpg"
 TITULO = "10 Regras do Tião Para Viver Tranquilo Ganhando Pouco (Salário de R$ 2.800)"
 MODELO = {"id": "HIrzIYQCzMU", "canal": "@eduinvesteoficial", "vezes": 24.8}
-RITMO = 1.25  # Ed, 27/11: «assisti o video 6 na velocidade 1,25 e ficou otimo»
+RITMO = 1.0  # 27/11 noite: o video inteiro a 1,25x acelerou tambem a musica e os sons (Ed: «em algumas partes nao ficou legal»)
+VOZ_RITMO = 1.15  # so a voz, um pouco menos que antes (Ed: «tente diminuir um pouco a velocidade»), em fabrica/narracao.py
 CAPA_TEXTO = "GANHA POUCO VIVE TRANQUILO"
 CAPA_LETRAS = {"A": ("GANHA POUCO VIVE TRANQUILO", "TRANQUILO", "verde"), "B": ("R$ 2.800 E DORME BEM", "DORME BEM", "verde"),
                "C": ("GANHA O TRIPLO E PEDE EMPRESTADO", "PEDE EMPRESTADO", "vermelho"), "D": ("10 REGRAS ZERO APERTO", "ZERO APERTO", "amarelo")}

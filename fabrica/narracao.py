@@ -3,6 +3,7 @@
 # Sai em: teste-vozes/NARRACAO-video-NN.mp3 e a lista dos pedacos ruins (para regravar) em fabrica/saida/NN-voz-ruins.json
 import difflib, glob, json, os, re, subprocess, sys, unicodedata
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."
+sys.path.insert(0, os.path.abspath(P))
 NN, PASTA = sys.argv[1], sys.argv[2]
 CONFERIR = "--sem-conferir" not in sys.argv
 env = dict(l.strip().split("=", 1) for l in open(P + "/acessos.env", encoding="utf-8") if "=" in l and not l.startswith("#"))
@@ -117,6 +118,12 @@ for r in ruins: print(" ", r)
 saida = f"{P}/teste-vozes/NARRACAO-video-{NN}.mp3"
 # em DUAS etapas: juntar e normalizar numa so cortava o fim (06/11: deu 15 min em vez de 21)
 subprocess.run(["ffmpeg", "-v", "error", "-f", "concat", "-safe", "0", "-i", TMP + "/lista.txt", "-c", "copy", "-y", TMP + "/tudo.wav"], check=True)
-subprocess.run(["ffmpeg", "-v", "error", "-i", TMP + "/tudo.wav", "-af", "loudnorm=I=-16:TP=-1.5", "-c:a", "libmp3lame", "-q:a", "2", "-y", saida], check=True)
+# 27/11 (Ed: «o video ficou muito acelerado e eu nao tinha percebido que a trilha, o som, tudo tambem acelerou (...) tente diminuir
+# um pouco a velocidade»): acelera-se SO a voz (VOZ_RITMO no cenas.py, ex.: 1.15), com o mesmo filtro que o Ed ouviu e aprovou no
+# video inteiro a 1,25x (o tom nao muda). A musica, os sons e as animacoes ficam na velocidade normal.
+import importlib
+_vr = getattr(importlib.import_module(f"fabrica.videos.v{NN}.cenas"), "VOZ_RITMO", 1.0)
+_af = (f"atempo={_vr}," if _vr != 1.0 else "") + "loudnorm=I=-16:TP=-1.5"
+subprocess.run(["ffmpeg", "-v", "error", "-i", TMP + "/tudo.wav", "-af", _af, "-c:a", "libmp3lame", "-q:a", "2", "-y", saida], check=True)
 d = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", saida]).decode())
 print(f"duracao {int(d // 60)}m{int(d % 60):02d}s ->", saida)
