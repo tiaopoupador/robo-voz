@@ -1,0 +1,802 @@
+{
+ "shorts": [
+  {
+   "id": "01-pix-golpes-2027",
+   "fonte": {
+    "urls": [
+     "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pix-tera-novas-regras-de-seguranca-e-melhorias-em-2027",
+     "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/bb-e-google-bloqueiam-mais-de-77-mil-chamadas-fraudulentas"
+    ],
+    "trechos": [
+     "O Pix terá novas funcionalidades e mecanismos de segurança em 2027.",
+     "O Banco Central (BC) prepara mudanças que incluem o aprimoramento do Pix Automático, medidas para combater mensagens ofensivas enviadas junto às transferências e ferramentas para identificar fraudes e facilitar a devolução de dinheiro enviado por engano.",
+     "O Banco do Brasil (BB) e o Google bloquearam mais de 77 mil chamadas fraudulentas na primeira semana de uma iniciativa conjunta contra o Golpe da Falsa Central.",
+     "O número é utilizado pelo banco para receber ligações de clientes, mas não para realizar chamadas."
+    ]
+   },
+   "titulo_yt": "Pix vai mudar em 2027: Banco Central quer barrar golpe e erro 🚨 #shorts",
+   "titulo_curto": "Pix muda em 2027: o que vai proteger seu dinheiro",
+   "descricao_yt": "O Banco Central prepara novas regras de segurança para o Pix em 2027, e o Banco do Brasil já bloqueou mais de 77 mil ligações de golpe. O que isso muda no seu bolso, sem opinião de partido: só a conta.\n\nO Pix vai ficar mais seguro? Comenta SIM ou NÃO 👇\n\nFonte: Agência Brasil, com dados do Banco Central e do Banco do Brasil, 26/11/2026.\n\nSe inscreve no canal: todo dia tem Plantão do Tião, o que muda no SEU bolso.\n📱 O app do Tião: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=plantao\n\n#plantaodotiao #pix #golpe #shorts",
+   "legenda": "O Banco Central prepara novas regras de segurança para o Pix em 2027, e o Banco do Brasil já bloqueou mais de 77 mil ligações de golpe. O Pix vai ficar mais seguro?\n\nComenta SIM ou NÃO 👇\n\nFonte: Agência Brasil (26/11/2026).\n\n#plantaodotiao #pix #golpe #seguranca #seubolso",
+   "legenda_curta": "O Banco Central prepara novas regras para o Pix em 2027, e o BB já bloqueou mais de 77 mil ligações de golpe. O Pix vai ficar mais seguro? Comenta SIM ou NÃO 👇",
+   "tags": [
+    "plantão do tião",
+    "pix",
+    "golpe do pix",
+    "falsa central",
+    "banco central",
+    "tião poupador"
+   ],
+   "falas": [
+    {
+     "fala": "O Pix vai mudar em dois mil e vinte e sete, e o Banco Central quer barrar golpe e erro de transferência!",
+     "tela": "O Pix vai mudar em 2027, e o Banco Central quer barrar golpe e erro de transferência!"
+    },
+    {
+     "fala": "Vem aí um Pix Automático melhor, ferramentas para identificar fraudes e um jeito mais fácil de pedir de volta o dinheiro enviado por engano.",
+     "tela": "Vem aí um Pix Automático melhor, ferramentas para identificar fraudes e um jeito mais fácil de pedir de volta o dinheiro enviado por engano."
+    },
+    {
+     "fala": "Também vai ter regra contra mensagens ofensivas que vão junto com a transferência. Hoje tem gente usando esse campo para ameaçar.",
+     "tela": "Também vai ter regra contra mensagens ofensivas que vão junto com a transferência. Hoje tem gente usando esse campo para ameaçar."
+    },
+    {
+     "fala": "E o golpe da falsa central já está sendo combatido: o Banco do Brasil e o Google bloquearam mais de setenta e sete mil ligações falsas em uma semana.",
+     "tela": "E o golpe da falsa central já está sendo combatido: o Banco do Brasil e o Google bloquearam mais de 77 mil ligações falsas em uma semana."
+    },
+    {
+     "fala": "Os bandidos falsificam o número do banco. Só que o banco usa esse número para receber ligação de cliente, e nunca para ligar.",
+     "tela": "Os bandidos falsificam o número do banco. Só que o banco usa esse número para receber ligação de cliente, e nunca para ligar."
+    },
+    {
+     "fala": "O Pix vai ficar mais seguro? Comenta SIM ou NÃO! E se quiser saber o que muda no Pix Automático, comenta QUERO, que eu faço a parte dois.",
+     "tela": "O Pix vai ficar mais seguro? Comenta SIM ou NÃO! E se quiser saber o que muda no Pix Automático, comenta QUERO, que eu faço a parte 2."
+    },
+    {
+     "fala": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+     "tela": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+    }
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "O *Pix* vai mudar",
+     "emoji": "🚨"
+    },
+    {
+     "linha": 0,
+     "palavra": 8,
+     "tipo": "manchete",
+     "texto": "Banco Central quer barrar *golpe e erro*",
+     "emoji": "🛡️"
+    },
+    {
+     "linha": 1,
+     "palavra": 4,
+     "tipo": "lista",
+     "titulo": "O QUE VEM AÍ NO PIX",
+     "itens": [
+      {
+       "t": "Pix Automático melhor",
+       "ok": true,
+       "linha": 1,
+       "palavra": 4
+      },
+      {
+       "t": "Ferramenta contra fraude",
+       "ok": true,
+       "linha": 1,
+       "palavra": 9
+      },
+      {
+       "t": "Devolução mais fácil",
+       "ok": true,
+       "linha": 1,
+       "palavra": 18
+      }
+     ]
+    },
+    {
+     "linha": 2,
+     "palavra": 0,
+     "tipo": "compara",
+     "titulo": "Recado junto com o Pix",
+     "de": "Hoje",
+     "para": "Com regra",
+     "rotuloDe": "dá para ameaçar",
+     "rotuloPara": "BC vai combater",
+     "ruim": false
+    },
+    {
+     "linha": 3,
+     "palavra": 14,
+     "tipo": "numero",
+     "ate": 77,
+     "antes": "+ de ",
+     "depois": " mil",
+     "rotulo": "ligações falsas bloqueadas em 1 semana",
+     "cor": "verde"
+    },
+    {
+     "linha": 3,
+     "palavra": 20,
+     "tipo": "grafico",
+     "titulo": "Ligações do golpe da falsa central",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "sem bloqueio",
+       "valor": 77,
+       "txt": "77 mil"
+      },
+      {
+       "rotulo": "com bloqueio",
+       "valor": 0,
+       "txt": "0"
+      }
+     ],
+     "destaque": 1,
+     "nota": "77 mil barradas em 1 semana!",
+     "cor": "verde"
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "cards",
+     "titulo": "Número do banco: como funciona",
+     "cards": [
+      {
+       "emoji": "📲",
+       "t": "Para receber ligação",
+       "valor": "usa",
+       "ok": true,
+       "linha": 4,
+       "palavra": 14
+      },
+      {
+       "emoji": "📞",
+       "t": "Para ligar",
+       "valor": "nunca",
+       "ok": false,
+       "linha": 4,
+       "palavra": 22
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "O Pix vai ficar mais seguro?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 13,
+     "tipo": "pergunta",
+     "texto": "O que muda no Pix Automático? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ]
+  },
+  {
+   "id": "02-bolsa-sobe-6",
+   "fonte": {
+    "urls": [
+     "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/bolsa-sobe-6-e-tem-maior-alta-desde-o-1o-turno-dolar-cai-r-574",
+     "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/trabuco-aceita-convite-de-lula-para-comandar-fazenda-diz-planalto"
+    ],
+    "trechos": [
+     "O Ibovespa disparou cerca de 6%, registrando a maior alta diária desde o primeiro turno das eleições de 2026.",
+     "O dólar recuou para abaixo de R$ 5,80 pela primeira vez em quase duas semanas.",
+     "O movimento foi impulsionado pela expectativa de Luiz Carlos Trabuco no Ministério da Fazenda, por sinais sobre o ajuste fiscal e pela prévia da inflação abaixo do esperado.",
+     "Ibovespa: 176.799,84 pontos (+6,07%); Dólar comercial: R$ 5,744 (-1,25%)",
+     "Moeda cai por 4ª vez seguida e fecha no menor valor em duas semanas",
+     "Foi o maior avanço percentual em um único dia desde 5 de outubro, quando o índice subiu 7,70%, após o primeiro turno das eleições presidenciais."
+    ]
+   },
+   "titulo_yt": "Bolsa sobe 6% e dólar cai: o que isso muda no seu bolso? 📈 #shorts",
+   "titulo_curto": "Bolsa sobe 6% e dólar cai: e o seu bolso?",
+   "descricao_yt": "A Bolsa disparou 6% e o dólar caiu para R$ 5,74, depois da escolha do novo ministro da Fazenda. O que isso muda no seu bolso, sem opinião de partido: só a conta.\n\nVocê sentiu isso no seu bolso? Comenta SIM ou NÃO 👇\n\nFonte: Agência Brasil, 26/11/2026.\n\nSe inscreve no canal: todo dia tem Plantão do Tião, o que muda no SEU bolso.\n📱 O app do Tião: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=plantao\n\n#plantaodotiao #dolar #bolsa #shorts",
+   "legenda": "A Bolsa disparou 6% e o dólar caiu para R$ 5,74 depois da escolha do novo ministro da Fazenda. Você sentiu isso no seu bolso?\n\nComenta SIM ou NÃO 👇\n\nFonte: Agência Brasil (26/11/2026).\n\n#plantaodotiao #dolar #bolsa #ibovespa #seubolso",
+   "legenda_curta": "A Bolsa disparou 6% e o dólar caiu para R$ 5,74 depois da escolha do novo ministro da Fazenda. Você sentiu isso no seu bolso? Comenta SIM ou NÃO 👇",
+   "tags": [
+    "plantão do tião",
+    "dólar",
+    "ibovespa",
+    "bolsa de valores",
+    "ministro da fazenda",
+    "tião poupador"
+   ],
+   "falas": [
+    {
+     "fala": "A Bolsa disparou seis por cento em um dia e o dólar caiu para cinco reais e setenta e quatro! Mas e o seu bolso, sentiu alguma coisa?",
+     "tela": "A Bolsa disparou 6% em um dia e o dólar caiu para R$ 5,74! Mas e o seu bolso, sentiu alguma coisa?"
+    },
+    {
+     "fala": "Foi a maior alta em um só dia desde o primeiro turno das eleições, quando o índice subiu sete vírgula setenta por cento.",
+     "tela": "Foi a maior alta em um só dia desde o primeiro turno das eleições, quando o índice subiu 7,70%."
+    },
+    {
+     "fala": "O motivo? A expectativa com a escolha de Trabuco para a Fazenda, sinais sobre o ajuste fiscal e uma prévia da inflação abaixo do esperado.",
+     "tela": "O motivo? A expectativa com a escolha de Trabuco para a Fazenda, sinais sobre o ajuste fiscal e uma prévia da inflação abaixo do esperado."
+    },
+    {
+     "fala": "Já o dólar caiu um vírgula vinte e cinco por cento. Foi a quarta queda seguida e o menor valor em duas semanas.",
+     "tela": "Já o dólar caiu 1,25%. Foi a quarta queda seguida e o menor valor em duas semanas."
+    },
+    {
+     "fala": "Dólar mais baixo costuma ajudar quem compra coisa de fora. Mas o valor muda toda hora, e um dia de alívio não garante preço menor.",
+     "tela": "Dólar mais baixo costuma ajudar quem compra coisa de fora. Mas o valor muda toda hora, e um dia de alívio não garante preço menor."
+    },
+    {
+     "fala": "Você sentiu isso no seu bolso? Comenta SIM ou NÃO! E se quiser saber quem é o Trabuco, comenta QUERO, que eu faço a parte dois.",
+     "tela": "Você sentiu isso no seu bolso? Comenta SIM ou NÃO! E se quiser saber quem é o Trabuco, comenta QUERO, que eu faço a parte 2."
+    },
+    {
+     "fala": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+     "tela": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+    }
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "A *Bolsa* disparou e o dólar caiu",
+     "emoji": "📈"
+    },
+    {
+     "linha": 0,
+     "palavra": 3,
+     "tipo": "numero",
+     "ate": 6,
+     "antes": "+",
+     "depois": "%",
+     "rotulo": "alta da Bolsa em um só dia",
+     "cor": "verde"
+    },
+    {
+     "linha": 0,
+     "palavra": 11,
+     "tipo": "numero",
+     "ate": 5.74,
+     "antes": "R$ ",
+     "depois": "",
+     "rotulo": "dólar comercial no fechamento",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 1,
+     "palavra": 0,
+     "tipo": "compara",
+     "titulo": "Maiores altas diárias da Bolsa",
+     "de": "+7,70%",
+     "para": "+6%",
+     "rotuloDe": "1º turno, 5 de outubro",
+     "rotuloPara": "ontem",
+     "ruim": false
+    },
+    {
+     "linha": 2,
+     "palavra": 4,
+     "tipo": "cards",
+     "titulo": "O que empurrou a Bolsa",
+     "cards": [
+      {
+       "emoji": "🏦",
+       "t": "Trabuco na Fazenda",
+       "valor": "expectativa",
+       "linha": 2,
+       "palavra": 8
+      },
+      {
+       "emoji": "⚖️",
+       "t": "Ajuste fiscal",
+       "valor": "sinais",
+       "linha": 2,
+       "palavra": 13
+      },
+      {
+       "emoji": "🛒",
+       "t": "Prévia da inflação",
+       "valor": "menor",
+       "ok": true,
+       "linha": 2,
+       "palavra": 18
+      }
+     ]
+    },
+    {
+     "linha": 3,
+     "palavra": 2,
+     "tipo": "numero",
+     "ate": 1.25,
+     "antes": "-",
+     "depois": "%",
+     "rotulo": "queda do dólar no dia",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "lista",
+     "titulo": "DÓLAR MAIS BAIXO",
+     "itens": [
+      {
+       "t": "Ajuda quem compra de fora",
+       "ok": true,
+       "linha": 4,
+       "palavra": 3
+      },
+      {
+       "t": "Muda toda hora",
+       "ok": false,
+       "linha": 4,
+       "palavra": 12
+      },
+      {
+       "t": "Preço menor não é garantido",
+       "ok": false,
+       "linha": 4,
+       "palavra": 19
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Você sentiu isso no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 13,
+     "tipo": "pergunta",
+     "texto": "Quem é o Trabuco? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ]
+  },
+  {
+   "id": "03-orcamento-2027-corte",
+   "fonte": {
+    "urls": [
+     "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmo-aprova-relatorio-do-orcamento-de-2027-com-corte-de-r-209-bilhoes"
+    ],
+    "trechos": [
+     "prevê o cancelamento de R$ 2,09 bilhões em despesas discricionárias (não obrigatórias) do Executivo federal para atender emendas parlamentares",
+     "O corte representa 0,78% das despesas discricionárias do Executivo e poderá atingir ministérios como Saúde e Infraestrutura",
+     "O Fundo Nacional de Saúde concentra R$ 658,3 milhões dos cancelamentos previstos, quase um terço do total.",
+     "pretende recompor recursos de áreas prioritárias, como saúde, educação e assistência social, durante a tramitação da proposta"
+    ]
+   },
+   "titulo_yt": "Orçamento de 2027: corte de R$ 2 bilhões atinge a Saúde? 🏥 #shorts",
+   "titulo_curto": "Orçamento 2027: corte de R$ 2 bi atinge a Saúde?",
+   "descricao_yt": "A comissão do Orçamento aprovou um corte de R$ 2,09 bilhões em despesas do governo para pagar emendas, e quase um terço sai da Saúde. O que isso muda no seu bolso, sem opinião de partido: só a conta.\n\nVocê usa o SUS? Comenta SIM ou NÃO 👇\n\nFonte: Agência Brasil, 26/11/2026.\n\nSe inscreve no canal: todo dia tem Plantão do Tião, o que muda no SEU bolso.\n📱 O app do Tião: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=plantao\n\n#plantaodotiao #orcamento #saude #shorts",
+   "legenda": "A comissão do Orçamento aprovou um corte de R$ 2,09 bilhões em despesas do governo para pagar emendas, e quase um terço sai da Saúde. Você usa o SUS?\n\nComenta SIM ou NÃO 👇\n\nFonte: Agência Brasil (26/11/2026).\n\n#plantaodotiao #orcamento #saude #emendas #seubolso",
+   "legenda_curta": "O Orçamento de 2027 prevê cortar R$ 2,09 bilhões para pagar emendas, e quase um terço sai da Saúde. Você usa o SUS? Comenta SIM ou NÃO 👇",
+   "tags": [
+    "plantão do tião",
+    "orçamento 2027",
+    "emendas parlamentares",
+    "saúde",
+    "sus",
+    "tião poupador"
+   ],
+   "falas": [
+    {
+     "fala": "Um corte de dois bilhões e noventa milhões de reais no Orçamento de dois mil e vinte e sete. E quase um terço sai da Saúde!",
+     "tela": "Um corte de R$ 2,09 bilhões no Orçamento de 2027. E quase um terço sai da Saúde!"
+    },
+    {
+     "fala": "A comissão do Orçamento aprovou ontem o relatório preliminar. O dinheiro sai de despesas do governo para pagar emendas de deputados e senadores.",
+     "tela": "A comissão do Orçamento aprovou ontem o relatório preliminar. O dinheiro sai de despesas do governo para pagar emendas de deputados e senadores."
+    },
+    {
+     "fala": "O Fundo Nacional de Saúde concentra seiscentos e cinquenta e oito milhões e trezentos mil reais desses cortes. Mas pode atingir também a Infraestrutura e obras do PAC.",
+     "tela": "O Fundo Nacional de Saúde concentra R$ 658,3 milhões desses cortes. Mas pode atingir também a Infraestrutura e obras do PAC."
+    },
+    {
+     "fala": "Calma: o corte é de zero vírgula setenta e oito por cento das despesas que o governo pode ajustar. E o relatório ainda vai mudar.",
+     "tela": "Calma: o corte é de 0,78% das despesas que o governo pode ajustar. E o relatório ainda vai mudar."
+    },
+    {
+     "fala": "O relator, senador Eduardo Braga, prometeu devolver dinheiro para saúde, educação e assistência social durante a tramitação.",
+     "tela": "O relator, senador Eduardo Braga, prometeu devolver dinheiro para saúde, educação e assistência social durante a tramitação."
+    },
+    {
+     "fala": "Isso pode pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que é emenda parlamentar, comenta QUERO, que eu faço a parte dois.",
+     "tela": "Isso pode pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que é emenda parlamentar, comenta QUERO, que eu faço a parte 2."
+    },
+    {
+     "fala": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+     "tela": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+    }
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "Corte no *Orçamento* de 2027",
+     "emoji": "✂️"
+    },
+    {
+     "linha": 0,
+     "palavra": 4,
+     "tipo": "numero",
+     "ate": 2.09,
+     "antes": "R$ ",
+     "depois": " bi",
+     "rotulo": "cortados de despesas do governo",
+     "cor": "vermelho",
+     "casas": 2
+    },
+    {
+     "linha": 0,
+     "palavra": 16,
+     "tipo": "manchete",
+     "texto": "Quase 1/3 sai da *Saúde*",
+     "emoji": "🏥"
+    },
+    {
+     "linha": 1,
+     "palavra": 12,
+     "tipo": "compara",
+     "titulo": "De onde sai e para onde vai",
+     "de": "Despesas do governo",
+     "para": "Emendas",
+     "rotuloDe": "dinheiro cortado",
+     "rotuloPara": "dinheiro remanejado",
+     "ruim": false
+    },
+    {
+     "linha": 2,
+     "palavra": 4,
+     "tipo": "grafico",
+     "titulo": "Cortes previstos: quanto é da Saúde",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "Total",
+       "valor": 2.09,
+       "txt": "R$ 2,09 bi"
+      },
+      {
+       "rotulo": "Saúde",
+       "valor": 0.6583,
+       "txt": "R$ 658,3 mi"
+      }
+     ],
+     "destaque": 1,
+     "nota": "Quase um terço do total!",
+     "cor": "vermelho"
+    },
+    {
+     "linha": 2,
+     "palavra": 17,
+     "tipo": "cards",
+     "titulo": "Quem pode ser atingido",
+     "cards": [
+      {
+       "emoji": "🏥",
+       "t": "Saúde",
+       "valor": "R$ 658,3 mi",
+       "ok": false,
+       "linha": 2,
+       "palavra": 4
+      },
+      {
+       "emoji": "🚧",
+       "t": "Infraestrutura",
+       "valor": "pode cair",
+       "ok": false,
+       "linha": 2,
+       "palavra": 19
+      },
+      {
+       "emoji": "🏗️",
+       "t": "Obras do PAC",
+       "valor": "pode cair",
+       "ok": false,
+       "linha": 2,
+       "palavra": 22
+      }
+     ]
+    },
+    {
+     "linha": 3,
+     "palavra": 6,
+     "tipo": "numero",
+     "ate": 0.78,
+     "antes": "",
+     "depois": "%",
+     "rotulo": "das despesas que o governo pode ajustar",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 4,
+     "palavra": 9,
+     "tipo": "lista",
+     "titulo": "BRAGA PROMETEU RECOMPOR",
+     "itens": [
+      {
+       "t": "Saúde",
+       "ok": true,
+       "linha": 4,
+       "palavra": 9
+      },
+      {
+       "t": "Educação",
+       "ok": true,
+       "linha": 4,
+       "palavra": 11
+      },
+      {
+       "t": "Assistência social",
+       "ok": true,
+       "linha": 4,
+       "palavra": 13
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso pode pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 14,
+     "tipo": "pergunta",
+     "texto": "O que é emenda parlamentar? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ]
+  },
+  {
+   "id": "04-big-techs-economia-50-bi",
+   "fonte": {
+    "urls": [
+     "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
+    ],
+    "trechos": [
+     "O Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, vai entrar na pauta de votação do plenário da Câmara dos Deputados na próxima semana",
+     "Esse é um projeto que não trata de regulamentação de conteúdo. É um projeto que pode trazer uma economia de até R$ 50 bilhões para os brasileiros, para os pequenos empresários, para os consumidores.",
+     "a proposta pretende atualizar a legislação brasileira de defesa da concorrência para enfrentar a concentração de poder econômico de grandes plataformas digitais"
+    ]
+   },
+   "titulo_yt": "Big techs: projeto promete economia de R$ 50 bi. Quem ganha? 📱 #shorts",
+   "titulo_curto": "Big techs: projeto que promete R$ 50 bi de economia",
+   "descricao_yt": "A Câmara vai votar na próxima semana o projeto que regula as big techs, e o relator diz que ele pode gerar economia de até R$ 50 bilhões. O que isso muda no seu bolso, sem opinião de partido: só a conta.\n\nVocê compra ou vende pela internet? Comenta SIM ou NÃO 👇\n\nFonte: Agência Brasil, 24/11/2026.\n\nSe inscreve no canal: todo dia tem Plantão do Tião, o que muda no SEU bolso.\n📱 O app do Tião: https://finmoovi.com/?utm_source=youtube&utm_medium=tiao-poupador&utm_campaign=plantao\n\n#plantaodotiao #bigtechs #economia #shorts",
+   "legenda": "A Câmara vai votar na próxima semana o projeto que regula as big techs, e o relator diz que ele pode gerar economia de até R$ 50 bilhões. Você compra ou vende pela internet?\n\nComenta SIM ou NÃO 👇\n\nFonte: Agência Brasil (24/11/2026).\n\n#plantaodotiao #bigtechs #economia #concorrencia #seubolso",
+   "legenda_curta": "A Câmara vota na próxima semana o projeto das big techs, que o relator diz poder gerar economia de até R$ 50 bilhões. Você compra pela internet? Comenta SIM ou NÃO 👇",
+   "tags": [
+    "plantão do tião",
+    "big techs",
+    "mercados digitais",
+    "concorrência",
+    "economia",
+    "tião poupador"
+   ],
+   "falas": [
+    {
+     "fala": "A Câmara vai votar na semana que vem um projeto que promete economia de até cinquenta bilhões de reais. E ele mexe com as gigantes da internet!",
+     "tela": "A Câmara vai votar na semana que vem um projeto que promete economia de até R$ 50 bilhões. E ele mexe com as gigantes da internet!"
+    },
+    {
+     "fala": "É o projeto de lei dos mercados digitais. A ideia é atualizar a lei da concorrência para enfrentar o poder econômico das grandes plataformas.",
+     "tela": "É o projeto de lei dos mercados digitais. A ideia é atualizar a lei da concorrência para enfrentar o poder econômico das grandes plataformas."
+    },
+    {
+     "fala": "O relator, deputado Aliel Machado, diz que o texto não trata de conteúdo, só de concorrência. E que a economia pode chegar a cinquenta bilhões.",
+     "tela": "O relator, deputado Aliel Machado, diz que o texto não trata de conteúdo, só de concorrência. E que a economia pode chegar a R$ 50 bilhões."
+    },
+    {
+     "fala": "Segundo ele, quem ganharia são os brasileiros, os pequenos empresários e os consumidores. É o que diz o relator, e o projeto ainda precisa ser votado.",
+     "tela": "Segundo ele, quem ganharia são os brasileiros, os pequenos empresários e os consumidores. É o que diz o relator, e o projeto ainda precisa ser votado."
+    },
+    {
+     "fala": "Ou seja: por enquanto é promessa, não é desconto. Você compra ou vende pela internet?",
+     "tela": "Ou seja: por enquanto é promessa, não é desconto. Você compra ou vende pela internet?"
+    },
+    {
+     "fala": "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que é big tech, comenta QUERO, que eu faço a parte dois.",
+     "tela": "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que é big tech, comenta QUERO, que eu faço a parte 2."
+    },
+    {
+     "fala": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+     "tela": "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+    }
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "Projeto das *big techs* vai a voto",
+     "emoji": "📱"
+    },
+    {
+     "linha": 0,
+     "palavra": 10,
+     "tipo": "numero",
+     "ate": 50,
+     "antes": "até R$ ",
+     "depois": " bi",
+     "rotulo": "economia prometida pelo relator",
+     "cor": "verde"
+    },
+    {
+     "linha": 1,
+     "palavra": 8,
+     "tipo": "compara",
+     "titulo": "Lei da concorrência",
+     "de": "Hoje",
+     "para": "Atualizada",
+     "rotuloDe": "regra atual",
+     "rotuloPara": "contra o poder das plataformas",
+     "ruim": false
+    },
+    {
+     "linha": 2,
+     "palavra": 14,
+     "tipo": "grafico",
+     "titulo": "Economia que o relator promete",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "hoje",
+       "valor": 0,
+       "txt": "R$ 0"
+      },
+      {
+       "rotulo": "se aprovar",
+       "valor": 50,
+       "txt": "até R$ 50 bi"
+      }
+     ],
+     "destaque": 1,
+     "nota": "Promessa do relator!",
+     "cor": "verde"
+    },
+    {
+     "linha": 3,
+     "palavra": 6,
+     "tipo": "cards",
+     "titulo": "Quem ganharia, segundo o relator",
+     "cards": [
+      {
+       "emoji": "🇧🇷",
+       "t": "Brasileiros",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 6
+      },
+      {
+       "emoji": "🏪",
+       "t": "Pequenos empresários",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 9
+      },
+      {
+       "emoji": "🛒",
+       "t": "Consumidores",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 13
+      }
+     ]
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "lista",
+     "titulo": "O QUE O PROJETO FAZ",
+     "itens": [
+      {
+       "t": "Atualiza lei da concorrência",
+       "ok": true,
+       "linha": 1,
+       "palavra": 8
+      },
+      {
+       "t": "Enfrenta poder das plataformas",
+       "ok": true,
+       "linha": 1,
+       "palavra": 13
+      },
+      {
+       "t": "Não regula conteúdo",
+       "ok": true,
+       "linha": 2,
+       "palavra": 11
+      }
+     ]
+    },
+    {
+     "linha": 4,
+     "palavra": 3,
+     "tipo": "manchete",
+     "texto": "Por enquanto é *promessa*, não desconto",
+     "emoji": "⚠️"
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso vai pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 14,
+     "tipo": "pergunta",
+     "texto": "O que é big tech? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ]
+  }
+ ]
+}

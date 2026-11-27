@@ -1,0 +1,484 @@
+{
+ "data": "2026-11-27",
+ "texto": "plantao-2026-11-27.txt",
+ "tela": [
+  "O Pix vai mudar em 2027, e o Banco Central quer barrar golpe e erro de transferência!",
+  "Vem aí um Pix Automático melhor, ferramentas para identificar fraudes e um jeito mais fácil de pedir de volta o dinheiro enviado por engano.",
+  "Também vai ter regra contra mensagens ofensivas que vão junto com a transferência. Hoje tem gente usando esse campo para ameaçar.",
+  "E o golpe da falsa central já está sendo combatido: o Banco do Brasil e o Google bloquearam mais de 77 mil ligações falsas em uma semana.",
+  "Os bandidos falsificam o número do banco. Só que o banco usa esse número para receber ligação de cliente, e nunca para ligar.",
+  "O Pix vai ficar mais seguro? Comenta SIM ou NÃO! E se quiser saber o que muda no Pix Automático, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+  "A Bolsa disparou 6% em um dia e o dólar caiu para R$ 5,74! Mas e o seu bolso, sentiu alguma coisa?",
+  "Foi a maior alta em um só dia desde o primeiro turno das eleições, quando o índice subiu 7,70%.",
+  "O motivo? A expectativa com a escolha de Trabuco para a Fazenda, sinais sobre o ajuste fiscal e uma prévia da inflação abaixo do esperado.",
+  "Já o dólar caiu 1,25%. Foi a quarta queda seguida e o menor valor em duas semanas.",
+  "Dólar mais baixo costuma ajudar quem compra coisa de fora. Mas o valor muda toda hora, e um dia de alívio não garante preço menor.",
+  "Você sentiu isso no seu bolso? Comenta SIM ou NÃO! E se quiser saber quem é o Trabuco, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que",
+  "A Câmara vai votar na semana que vem um projeto que promete economia de até R$ 50 bilhões. E ele mexe com as gigantes da internet!",
+  "É o projeto de lei dos mercados digitais. A ideia é atualizar a lei da concorrência para enfrentar o poder econômico das grandes plataformas.",
+  "O relator, deputado Aliel Machado, diz que o texto não trata de conteúdo, só de concorrência. E que a economia pode chegar a R$ 50 bilhões.",
+  "Segundo ele, quem ganharia são os brasileiros, os pequenos empresários e os consumidores. É o que diz o relator, e o projeto ainda precisa ser votado.",
+  "Ou seja: por enquanto é promessa, não é desconto. Você compra ou vende pela internet?",
+  "Isso vai pesar no seu bolso? Comenta SIM ou NÃO! E se quiser saber o que é big tech, comenta QUERO, que eu faço a parte 2.",
+  "Se inscreve, que todo dia tem Plantão do Tião, e hoje a notícia é que"
+ ],
+ "fontes": "plantao/2026-11-27/fontes.md",
+ "shorts": [
+  {
+   "id": "01-pix-golpes-2027",
+   "titulo": "Pix vai mudar em 2027: Banco Central quer barrar golpe e erro 🚨 #shorts",
+   "linhas": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "O *Pix* vai mudar",
+     "emoji": "🚨"
+    },
+    {
+     "linha": 0,
+     "palavra": 8,
+     "tipo": "manchete",
+     "texto": "Banco Central quer barrar *golpe e erro*",
+     "emoji": "🛡️"
+    },
+    {
+     "linha": 1,
+     "palavra": 4,
+     "tipo": "lista",
+     "titulo": "O QUE VEM AÍ NO PIX",
+     "itens": [
+      {
+       "t": "Pix Automático melhor",
+       "ok": true,
+       "linha": 1,
+       "palavra": 4
+      },
+      {
+       "t": "Ferramenta contra fraude",
+       "ok": true,
+       "linha": 1,
+       "palavra": 9
+      },
+      {
+       "t": "Devolução mais fácil",
+       "ok": true,
+       "linha": 1,
+       "palavra": 18
+      }
+     ]
+    },
+    {
+     "linha": 2,
+     "palavra": 0,
+     "tipo": "compara",
+     "titulo": "Recado junto com o Pix",
+     "de": "Hoje",
+     "para": "Com regra",
+     "rotuloDe": "dá para ameaçar",
+     "rotuloPara": "BC vai combater",
+     "ruim": false
+    },
+    {
+     "linha": 3,
+     "palavra": 14,
+     "tipo": "numero",
+     "ate": 77,
+     "antes": "+ de ",
+     "depois": " mil",
+     "rotulo": "ligações falsas bloqueadas em 1 semana",
+     "cor": "verde"
+    },
+    {
+     "linha": 3,
+     "palavra": 20,
+     "tipo": "grafico",
+     "titulo": "Ligações do golpe da falsa central",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "sem bloqueio",
+       "valor": 77,
+       "txt": "77 mil"
+      },
+      {
+       "rotulo": "com bloqueio",
+       "valor": 0,
+       "txt": "0"
+      }
+     ],
+     "destaque": 1,
+     "nota": "77 mil barradas em 1 semana!",
+     "cor": "verde"
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "cards",
+     "titulo": "Número do banco: como funciona",
+     "cards": [
+      {
+       "emoji": "📲",
+       "t": "Para receber ligação",
+       "valor": "usa",
+       "ok": true,
+       "linha": 4,
+       "palavra": 14
+      },
+      {
+       "emoji": "📞",
+       "t": "Para ligar",
+       "valor": "nunca",
+       "ok": false,
+       "linha": 4,
+       "palavra": 22
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "O Pix vai ficar mais seguro?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 13,
+     "tipo": "pergunta",
+     "texto": "O que muda no Pix Automático? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  },
+  {
+   "id": "02-bolsa-sobe-6",
+   "titulo": "Bolsa sobe 6% e dólar cai: o que isso muda no seu bolso? 📈 #shorts",
+   "linhas": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "A *Bolsa* disparou e o dólar caiu",
+     "emoji": "📈"
+    },
+    {
+     "linha": 0,
+     "palavra": 3,
+     "tipo": "numero",
+     "ate": 6,
+     "antes": "+",
+     "depois": "%",
+     "rotulo": "alta da Bolsa em um só dia",
+     "cor": "verde"
+    },
+    {
+     "linha": 0,
+     "palavra": 11,
+     "tipo": "numero",
+     "ate": 5.74,
+     "antes": "R$ ",
+     "depois": "",
+     "rotulo": "dólar comercial no fechamento",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 1,
+     "palavra": 0,
+     "tipo": "compara",
+     "titulo": "Maiores altas diárias da Bolsa",
+     "de": "+7,70%",
+     "para": "+6%",
+     "rotuloDe": "1º turno, 5 de outubro",
+     "rotuloPara": "ontem",
+     "ruim": false
+    },
+    {
+     "linha": 2,
+     "palavra": 4,
+     "tipo": "cards",
+     "titulo": "O que empurrou a Bolsa",
+     "cards": [
+      {
+       "emoji": "🏦",
+       "t": "Trabuco na Fazenda",
+       "valor": "expectativa",
+       "linha": 2,
+       "palavra": 8
+      },
+      {
+       "emoji": "⚖️",
+       "t": "Ajuste fiscal",
+       "valor": "sinais",
+       "linha": 2,
+       "palavra": 13
+      },
+      {
+       "emoji": "🛒",
+       "t": "Prévia da inflação",
+       "valor": "menor",
+       "ok": true,
+       "linha": 2,
+       "palavra": 18
+      }
+     ]
+    },
+    {
+     "linha": 3,
+     "palavra": 2,
+     "tipo": "numero",
+     "ate": 1.25,
+     "antes": "-",
+     "depois": "%",
+     "rotulo": "queda do dólar no dia",
+     "cor": "verde",
+     "casas": 2
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "lista",
+     "titulo": "DÓLAR MAIS BAIXO",
+     "itens": [
+      {
+       "t": "Ajuda quem compra de fora",
+       "ok": true,
+       "linha": 4,
+       "palavra": 3
+      },
+      {
+       "t": "Muda toda hora",
+       "ok": false,
+       "linha": 4,
+       "palavra": 12
+      },
+      {
+       "t": "Preço menor não é garantido",
+       "ok": false,
+       "linha": 4,
+       "palavra": 19
+      }
+     ]
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Você sentiu isso no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 13,
+     "tipo": "pergunta",
+     "texto": "Quem é o Trabuco? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  },
+  {
+   "id": "03-big-techs-economia-50-bi",
+   "titulo": "Big techs: projeto promete economia de R$ 50 bi. Quem ganha? 📱 #shorts",
+   "linhas": [
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "quadros": [
+    {
+     "linha": 0,
+     "palavra": 0,
+     "tipo": "manchete",
+     "texto": "Projeto das *big techs* vai a voto",
+     "emoji": "📱"
+    },
+    {
+     "linha": 0,
+     "palavra": 10,
+     "tipo": "numero",
+     "ate": 50,
+     "antes": "até R$ ",
+     "depois": " bi",
+     "rotulo": "economia prometida pelo relator",
+     "cor": "verde"
+    },
+    {
+     "linha": 1,
+     "palavra": 8,
+     "tipo": "compara",
+     "titulo": "Lei da concorrência",
+     "de": "Hoje",
+     "para": "Atualizada",
+     "rotuloDe": "regra atual",
+     "rotuloPara": "contra o poder das plataformas",
+     "ruim": false
+    },
+    {
+     "linha": 2,
+     "palavra": 14,
+     "tipo": "grafico",
+     "titulo": "Economia que o relator promete",
+     "modo": "barras",
+     "barras": [
+      {
+       "rotulo": "hoje",
+       "valor": 0,
+       "txt": "R$ 0"
+      },
+      {
+       "rotulo": "se aprovar",
+       "valor": 50,
+       "txt": "até R$ 50 bi"
+      }
+     ],
+     "destaque": 1,
+     "nota": "Promessa do relator!",
+     "cor": "verde"
+    },
+    {
+     "linha": 3,
+     "palavra": 6,
+     "tipo": "cards",
+     "titulo": "Quem ganharia, segundo o relator",
+     "cards": [
+      {
+       "emoji": "🇧🇷",
+       "t": "Brasileiros",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 6
+      },
+      {
+       "emoji": "🏪",
+       "t": "Pequenos empresários",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 9
+      },
+      {
+       "emoji": "🛒",
+       "t": "Consumidores",
+       "valor": "economia",
+       "ok": true,
+       "linha": 3,
+       "palavra": 13
+      }
+     ]
+    },
+    {
+     "linha": 4,
+     "palavra": 0,
+     "tipo": "lista",
+     "titulo": "O QUE O PROJETO FAZ",
+     "itens": [
+      {
+       "t": "Atualiza lei da concorrência",
+       "ok": true,
+       "linha": 1,
+       "palavra": 8
+      },
+      {
+       "t": "Enfrenta poder das plataformas",
+       "ok": true,
+       "linha": 1,
+       "palavra": 13
+      },
+      {
+       "t": "Não regula conteúdo",
+       "ok": true,
+       "linha": 2,
+       "palavra": 11
+      }
+     ]
+    },
+    {
+     "linha": 4,
+     "palavra": 3,
+     "tipo": "manchete",
+     "texto": "Por enquanto é *promessa*, não desconto",
+     "emoji": "⚠️"
+    },
+    {
+     "linha": 5,
+     "palavra": 0,
+     "tipo": "pergunta",
+     "texto": "Isso vai pesar no SEU bolso?",
+     "opcoes": [
+      "SIM",
+      "NÃO"
+     ],
+     "emoji": "🤔"
+    },
+    {
+     "linha": 5,
+     "palavra": 14,
+     "tipo": "pergunta",
+     "texto": "O que é big tech? Comenta QUERO!",
+     "opcoes": [
+      "QUERO"
+     ],
+     "emoji": "🙋"
+    },
+    {
+     "linha": 6,
+     "palavra": 2,
+     "tipo": "inscrever"
+    }
+   ],
+   "loop": true
+  }
+ ]
+}
