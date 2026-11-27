@@ -142,7 +142,7 @@ L = {
  30: [("^", "M", dupla()), ("Repete", "M", perto_v(("P11", None), baloes=[B("Aquela frase que você falou sábado... Repete.", 0, "Aquela", "Repete", **VE_B)])),
       ("Quem lê o extrato", "M", perto_t(("P10", None)))],
  31: [("^", "M", ic([("🔍", "lê o extrato linha por linha no dia que o salário cai", False)], "Dica 1")), ("Tarifa e juros", "C", tiao("P3", 1))],
- 32: [("^", "M", ic([("➖", "o seu saldo é o da conta, sem o limite", False)], "Dica 2")), ("sinal de menos", "M", DETALHE)],
+ 32: [("^", "M", ic([("🏦", "o seu saldo é o da conta, sem o limite", False)], "Dica 2")), ("sinal de menos", "M", DETALHE)],
  33: [("^", "M", ic([("✂️", "cancelou o pacote de serviços", False)], "1")), ("direito do cliente", "M", fr("É *prerrogativa do cliente* pagar só os serviços avulsos",
                                                                                                            "Resolução CMN 3.919/2010, art. 9º")),
       ("quase zero", "M", nu(54.90, "A menos, todo mês", cor=VERDE, casas=2, emoji="✅"))],
