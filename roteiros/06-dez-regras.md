@@ -320,3 +320,17 @@ Na saída, na calçada, o celular dela apitou. Era uma mensagem. E a mensagem j�
 [POSE P2 explica] [TEXTO GRANDE NO MEIO: COMO A FARMÁCIA GANHA DINHEIRO?]
 
 Como as farmácias ganham dinheiro? Não é o remédio. Se você também dá o seu cê pê éfe em toda farmácia, no próximo vídeo eu te mostro o que a Dona Cida descobriu sobre aquele desconto, e quem estava do outro lado daquela mensagem. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+
+## Ficha de fontes
+
+(detalhe, trechos e data de cada uma em `roteiros/06-fontes.md`)
+
+| Dado no roteiro | Fonte |
+|---|---|
+| Teto de 8% ao mês nos juros do cheque especial | Resolução CMN 4.765/2019, art. 3º |
+| Juros médios do cheque especial para pessoa física: 7,53% ao mês, setembro de 2026 | Banco Central, série SGS 25463 (api.bcb.gov.br) |
+| Serviços essenciais que o banco não pode cobrar (débito, 4 saques, 2 transferências no mesmo banco, 2 extratos, consultas pela internet) | Resolução CMN 3.919/2010, art. 2º, I |
+| Direito de pagar só os serviços avulsos | Resolução CMN 3.919/2010, art. 9º |
+| Vale-transporte: o patrão paga o que passar de 6% do salário | Lei 7.418/1985, art. 4º, parágrafo único (planalto.gov.br) |
+| 13º: metade entre fevereiro e novembro, o resto até 20 de dezembro | Lei 4.749/1965, arts. 1º e 2º (planalto.gov.br) |
+| Os valores do Tião, do Marcos, da Sandra e da Valéria | História (personagens inventados); as contas estão em `06-fontes.md` |

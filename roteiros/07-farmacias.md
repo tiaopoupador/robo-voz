@@ -232,3 +232,21 @@ Agora, lembra do Marcos, o vizinho da picape, que jurou me devolver os cem reais
 [TEXTO GRANDE NO MEIO: A REGRA DOS R$ 1.000]
 
 A regra dos mil reais do Tião: o número que te tira da corrida dos ratos. Se você trabalha o mês inteiro e não sai do lugar, é porque ninguém te deu um número para mirar. No próximo vídeo eu te mostro quanto tempo leva para juntar os primeiros mil, o que acontece com eles depois, e o que o Marcos fez quando ouviu a resposta, que nem eu esperava. Clica agora, que o vídeo já está aparecendo aqui na tela! Fui! E cuida do seu suado!
+
+## Ficha de fontes
+
+(detalhe, trechos e data de cada uma em `roteiros/07-fontes.md`)
+
+| Dado no roteiro | Fonte |
+|---|---|
+| Descontos «expressivos, mas potencialmente fictícios»; o laboratório decide os dados; o consentimento não é livre | Autoridade Nacional de Proteção de Dados, Nota Técnica 6/2025 (gov.br/anpd) |
+| Processo aberto contra a maior rede de farmácias do país, 05/02/2025 | Autoridade Nacional de Proteção de Dados (gov.br/anpd) e Agência Brasil, 08/02/2025 |
+| Multa de R$ 8.497.500 por exigir CPF, 12/12/2024 | Procon-MG (mpmg.mp.br) |
+| O preço máximo é um teto; qualquer valor abaixo é permitido | Anvisa e Senacon, «Consumo e Saúde» nº 35 |
+| Dado de saúde é dado pessoal sensível; proibido compartilhar para vantagem econômica | Lei 13.709/2018 (LGPD), art. 5º, II, e art. 11, § 4º (planalto.gov.br) |
+| A farmácia não pode exigir o CPF sem explicar o cadastro | Lei estadual de São Paulo 17.301/2020, art. 1º (al.sp.gov.br) |
+| Investigação sobre CPF para desconto, 2025 | Ministério Público Federal no Rio de Janeiro (mpf.mp.br) |
+| 31.170 farmácias credenciadas; R$ 3,6 bilhões em 2024 | Agência Gov (Ministério da Saúde), 14/01/2025 |
+| Farmácia Popular 100% de graça desde fevereiro de 2025, com remédio para hipertensão | Ministério da Saúde (gov.br/saude) |
+| Efeito de ancoragem (1974); Nobel de Kahneman (2002) | Tversky e Kahneman, revista Science; nobelprize.org |
+| Os preços do remédio da Dona Cida | História (personagens inventados); as contas estão em `07-fontes.md` |
