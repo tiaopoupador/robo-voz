@@ -16,7 +16,7 @@ import json, os, re, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 from fabrica.google import chaves
 ESQ = {"type": "object", "properties": {"problemas": {"type": "array", "items": {"type": "object", "properties": {
-    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta", "cliche", "funil"]},
+    "linha": {"type": "integer"}, "tipo": {"type": "string", "enum": ["virada sem causa", "do nada", "salto sem aviso", "nao bate", "promessa sem pagamento", "frase solta", "cliche", "funil", "continuidade", "repeticao"]},
     "grave": {"type": "boolean"}, "problema": {"type": "string"}, "como_resolver": {"type": "string"}},
     "required": ["linha", "tipo", "grave", "problema", "como_resolver"], "additionalProperties": False}}},
     "required": ["problemas"], "additionalProperties": False}
@@ -74,6 +74,12 @@ Aponte cada lugar onde a história falha:
       tem de ficar claro em CADA passo. Se alguém devolve, o roteiro mostra antes o que foi dado e diz, na hora da devolução, o que
       está sendo devolvido ("os 50 reais que ele não emprestou, mas pagou em passagens"). Aponte toda conta, empréstimo ou objeto
       que o espectador pode entender ao contrário.
+10. CONTINUIDADE (o dono do canal, 27/11/2026, recusou um vídeo por isto; sempre GRAVE): o ROTEIRO ANTERIOR INTEIRO vem no fim
+   deste pedido. Aponte tudo o que contradiz o anterior, e tudo o que o anterior já contou e este conta DE NOVO como se fosse
+   novidade (ex.: no anterior a personagem já decidiu vender o carro, e este volta a explicar a parcela do carro).
+11. REPETIÇÃO (o dono do canal, 27/11/2026: «sempre repete as mesmas falas, das dicas, 3 dicas, papel de pão»; grave): a mesma
+   fórmula do anterior (o mesmo formato de dicas, o mesmo objeto, o mesmo lugar, a mesma cena de conta) usada de novo.
+   E o FIM: tem de ser capítulo de novela, com drama e mistério; fim morno é grave.
 Não aponte estilo, ritmo ou gosto. Só lógica da história, clichê, funil e fala de gente. "grave" = o espectador notaria e ficaria confuso.
 Em como_resolver, proponha a cena que falta, concreta (quem, onde, o que acontece), em uma ou duas frases.
 No máximo 12 problemas, os mais importantes primeiro; cada texto com até 60 palavras.
@@ -93,6 +99,8 @@ def revisar(NN, arq=None):
     anterior = " ".join(open(arq_ant, encoding="utf-8").read().splitlines()[-2:]) if arq_ant and os.path.exists(arq_ant) else "(o roteiro anterior ainda não existe: ignore o item 8h)"
     pedido = PEDIDO.replace("{PROXIMO}", prox).replace("{ANTERIOR}", anterior)
     txt = pedido.replace("O roteiro, uma linha por número:", lista) + "\n".join(f"[{i}] {l}" for i, l in enumerate(L))
+    # 27/11: o roteiro anterior INTEIRO (itens 10 e 11), uns US$ 0,03 a mais
+    if arq_ant and os.path.exists(arq_ant): txt += "\n\nO ROTEIRO ANTERIOR INTEIRO (só para os itens 10 e 11, não o revise):\n" + open(arq_ant, encoding="utf-8").read()
     cli = anthropic.Anthropic(api_key=chaves()["CLAUDE_TIAO"])
     with cli.messages.stream(model="claude-sonnet-5-5", max_tokens=32000, thinking={"type": "adaptive"},
                              output_config={"format": {"type": "json_schema", "schema": ESQ}},

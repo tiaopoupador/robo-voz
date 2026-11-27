@@ -6,7 +6,17 @@
 import json, os, re, sys
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."
 NN = sys.argv[1]
-md = open(next(f"{P}/roteiros/{f}" for f in sorted(os.listdir(P + "/roteiros")) if f.startswith(f"{NN}-") and f.endswith(".md") and "pedidos" not in f and "fontes" not in f), encoding="utf-8").read()
+# 27/11/2026 (Ed recusou o 06: «o roteiro foi mal feito (...) feito as pressas sem pensar», «antes de escrever o proximo roteiro
+# tem que ler o que foi o video anterior», «olhar como os concorrentes criam historias (...) quais sao as regras (...) e partir
+# dai», «do que adianta ter regras se voce nao segue?»): sem a ficha de preparo, a voz NAO sai. Regra em canal-dark novela.md, secao 0.
+_prep = f"{P}/roteiros/{NN}-preparo.md"
+_partes = ["## Continuidade", "## Concorrentes", "## Regras relidas", "## Não repetir", "## O fim"]
+if int(NN) >= 6:
+    if not os.path.exists(_prep): raise SystemExit(f"ERRO: falta roteiros/{NN}-preparo.md (ler o anterior linha por linha, 3 concorrentes, as regras, o que nao repetir, o fim). canal-dark novela.md secao 0")
+    _t = open(_prep, encoding="utf-8").read()
+    _f = [x for x in _partes if x not in _t or len(_t.split(x, 1)[1].split(chr(10) + "## ")[0].strip()) < 200]
+    if _f: raise SystemExit(f"ERRO: a ficha de preparo do {NN} esta incompleta (cada parte com pelo menos 200 letras): {', '.join(_f)}")
+md = open(next(f"{P}/roteiros/{f}" for f in sorted(os.listdir(P + "/roteiros")) if f.startswith(f"{NN}-") and f.endswith(".md") and "pedidos" not in f and "fontes" not in f and "preparo" not in f), encoding="utf-8").read()
 md = md.split("## Ficha de fontes")[0]
 md = md[md.index("## 0."):]
 falas, fim = [], []
@@ -63,3 +73,13 @@ for r in achados:
     if outros: print(f"AVISO FinMoovi repetido: '{r['recurso']}' ja apareceu no video {', '.join(outros)}: escolher outro recurso")
     elif NN in r["usado"]: print(f"FinMoovi: {r['recurso']} (so neste video)")
     else: print(f"FinMoovi: {r['recurso']} (novo: marcar {NN} em 'usado')")
+
+# Guarda da repeticao (Ed, 27/11/2026: «os videos longos estao comecando a ficar sem graca... sempre repete as mesmas falas,
+# das dicas, 3 dicas, papel de pao, etc»): o que apareceu nos 3 longos anteriores e volta aqui da AVISO.
+FORMULAS = ["papel de pão", "Dica número um", "mesinha", "lápis", "linha por linha", "fiz a conta", "caneca", "extrato", "três dicas", "na ponta do lápis"]
+ant = [v["nn"] for v in cal if v["nn"] < NN][-3:]
+txt_ant = {a: open(f"{P}/robo-voz/roteiro-{a}.txt", encoding="utf-8").read().lower() for a in ant if os.path.exists(f"{P}/robo-voz/roteiro-{a}.txt")}
+eu = " ".join(falas).lower()
+for fo in FORMULAS:
+    em = [a for a, t in txt_ant.items() if fo.lower() in t]
+    if fo.lower() in eu and len(em) >= 2: print(f"AVISO repetido: '{fo}' ({eu.count(fo.lower())}x aqui) ja esteve nos videos {', '.join(em)}: trocar")

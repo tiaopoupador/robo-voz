@@ -294,9 +294,14 @@ FAIXAS = {"calma": ["Wallpaper", "Dreamer", "Life-of-Riley"], "tensao": ["Invest
           "final": ["Inspired"], "drama": ["Long-Note-Two"],
           # Tiao Conversa (Ed 18/11: «musica de tensao, de alerta, de aviso! estilo aqueles jornais policiais (...) bem marcante»)
           # escolhida: Interloper (grave, pancadas fortes e silencios). Recusadas: Aggressor, Cut and Run, Chase Pulse, Prelude and Action, Oppressive Gloom, The Dread
-          "alerta": ["Interloper"]}
+          "alerta": ["Interloper"],
+          # 27/11 (Ed: «a musica no final, aquela que parece noticiario urgente, foi boa porque parece que esta transmitindo uma coisa
+          # urgente, imperdivel»): era a Hitman do fim do 05. No 06 o rodizio da «tensao» deu outra. O gancho final tem faixa FIXA.
+          "gancho": ["Hitman"]}
 if os.environ.get("TRILHA_ALERTA"): FAIXAS["alerta"] = [os.environ["TRILHA_ALERTA"]]  # para comparar uma musica de cada vez
 uso = {}; partes = []
+# o gancho do proximo video (as 2 ultimas falas) sempre com a musica de noticiario urgente, mesmo que o cenas.py nao diga
+if "gancho" not in C.CLIMA.values(): C.CLIMA = {**{k: v for k, v in C.CLIMA.items() if k < N_LIN - 2}, N_LIN - 2: "gancho"}
 pontos = sorted((ini_lin[k], cl) for k, cl in C.CLIMA.items() if ini_lin.get(k) is not None)
 if VIN_T is not None:  # a musica para na vinheta (ela tem o som dela) e volta com o mesmo clima logo depois
     antes = [cl for t, cl in pontos if t <= VIN_T]; pontos = sorted(pontos + [(VIN_T, "silencio"), (VIN_T + VIN_DUR, antes[-1] if antes else "calma")])

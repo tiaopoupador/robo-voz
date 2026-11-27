@@ -54,36 +54,45 @@
   },
   {
    "nn": "06",
-   "quando": "2026-11-27 10:00",
+   "quando": "2026-11-27 18:00",
    "formato": "conversa",
-   "titulo": "Seu Salário Acaba no Dia 10? O Problema Não É o Salário",
-   "capa": "O FURO É OUTRO",
+   "titulo": "10 Regras do Tião Para Viver Tranquilo Ganhando Pouco (Salário de R$ 2.000)",
+   "modelo": {
+    "id": "HIrzIYQCzMU",
+    "canal": "@eduinvesteoficial"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
     "Tião"
-   ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   ]
   },
   {
    "nn": "07",
    "quando": "2026-11-29 17:00",
    "formato": "longo-imagens",
-   "titulo": "Por Que a Farmácia Sempre Pede o Seu CPF (Não É o Desconto)",
-   "capa": "SEU CPF TEM PREÇO",
+   "titulo": "Como as Farmácias Ganham Dinheiro? (Não É o Remédio)",
+   "modelo": {
+    "id": "JMDZ-934bpo",
+    "canal": "@dinheirodescomplicadooficial"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
     "Tião"
-   ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   ]
   },
   {
    "nn": "08",
    "quando": "2026-12-01 10:00",
    "formato": "conversa",
-   "titulo": "7 Coisas Que o Tião Se Recusa a Comprar (Mesmo Podendo)",
-   "capa": "NEM DE GRAÇA",
+   "titulo": "A Regra dos R$ 1.000 do Tião: o Número Que Te Tira da Corrida dos Ratos",
+   "modelo": {
+    "id": "RCb11-U7byA",
+    "canal": "@CanalInvestidorSincero"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
     "Tião"
-   ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   ]
   },
   {
    "nn": "09",
@@ -98,7 +107,11 @@
     "Marcos",
     "Dona Cida"
    ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "modelo": {
+    "id": "-119WfociZs",
+    "canal": "@darkledger13"
+   }
   },
   {
    "nn": "10",
@@ -109,42 +122,221 @@
    "elenco": [
     "Tião"
    ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim)"
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "modelo": {
+    "id": "2LXED3ENhck",
+    "canal": "@darkledger13"
+   }
   },
   {
    "nn": "11",
    "quando": "2026-12-05 17:00",
    "formato": "longo-motion",
-   "titulo": "(tema a escolher: modelar um campeão dos canais vigiados)",
+   "titulo": "O Marcos Ganhou uma SUV na Festa da Firma. O Porteiro Tinha R$ 400 Mil Guardados",
+   "modelo": {
+    "id": "66R2KIhOme4",
+    "canal": "@povinvestimento"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
     "Tião"
-   ],
-   "estado": "novo horário (Ed, 25/11: opção B, 2.º longo motion por semana, em teste). O 10 chama este título no fim: escolher o tema ANTES de escrever o 10."
+   ]
   },
   {
    "nn": "12",
    "quando": "2026-12-06 17:00",
    "formato": "longo-imagens",
-   "titulo": "Por Que a Loja Insiste Tanto Pra Você Fazer o Cartão Dela",
-   "capa": "O DESCONTO É A ISCA",
+   "titulo": "Como as Lojas de Departamento Ganham Dinheiro (Não É a Roupa)",
+   "modelo": {
+    "id": "CyPWw8odf7Q",
+    "canal": "@dinheirodescomplicadooficial"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
-    "Tião",
-    "Jéssica"
-   ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim) · renumerado a 25/11 (entrou o sábado motion)"
+    "Tião"
+   ]
   },
   {
    "nn": "13",
+   "quando": "2026-12-08 10:00",
+   "formato": "conversa",
+   "titulo": "A Crise de 2027 Vai Quebrar Muita Gente (Mas Pode Salvar o Seu Bolso)",
+   "modelo": {
+    "id": "jteQALu5ao0",
+    "canal": "@ProsaqueRende"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "14",
    "quando": "2026-12-09 18:00",
    "formato": "longo-motion",
-   "titulo": "O Tião Pediu Demissão e o Bairro Achou Que Ele Quebrou",
-   "capa": "ELE QUEBROU?!",
+   "titulo": "O Tião Ganhou na Loteria e Apareceu na Portaria no Dia Seguinte",
+   "modelo": {
+    "id": "uy7ykb0XPhM",
+    "canal": "@tucoinveste"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
    "elenco": [
-    "Tião",
-    "Valéria",
-    "Sandra"
-   ],
-   "estado": "previsto (Ed, 19/11: ordem nova aprovada, cada vídeo chama o seguinte no fim) · renumerado a 25/11 (entrou o sábado motion)"
+    "Tião"
+   ]
+  },
+  {
+   "nn": "15",
+   "quando": "2026-12-11 10:00",
+   "formato": "conversa",
+   "titulo": "5 Sinais de Que Você Está Ficando Rico (Mesmo Sem Perceber)",
+   "modelo": {
+    "id": "Twfdb7D1jq4",
+    "canal": "@falabarsi"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "16",
+   "quando": "2026-12-12 17:00",
+   "formato": "longo-motion",
+   "titulo": "O Tião Pediu Demissão e o Bairro Achou Que Ele Quebrou",
+   "modelo": {
+    "id": "KVOECfw57_g",
+    "canal": "@darkledger13"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "17",
+   "quando": "2026-12-13 17:00",
+   "formato": "longo-imagens",
+   "titulo": "O Que Acontece Se Você Nunca Pagar o Cartão de Crédito? (Passo a Passo)",
+   "modelo": {
+    "id": "GdIt_tdFiXY",
+    "canal": "@tucoinveste"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "18",
+   "quando": "2026-12-15 10:00",
+   "formato": "conversa",
+   "titulo": "Quase Ninguém no Brasil Chega aos R$ 100 Mil Guardados (Quem Faz Isso, Chega)",
+   "modelo": {
+    "id": "g2jjQhlPaqY",
+    "canal": "@conversacombarsi"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "19",
+   "quando": "2026-12-16 18:00",
+   "formato": "longo-motion",
+   "titulo": "Ela Ficou com a Casa no Divórcio. 10 Anos Depois Descobriu o Que o Tião Construiu",
+   "modelo": {
+    "id": "r7V7L601y_g",
+    "canal": "@tucoinveste"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "20",
+   "quando": "2026-12-18 10:00",
+   "formato": "conversa",
+   "titulo": "Aviso Para Quem Tem Poupança: o Que Os Bancos Fazem Com Ela",
+   "modelo": {
+    "id": "hSPc6Hl1Al8",
+    "canal": "@meuinssbrasil"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "21",
+   "quando": "2026-12-19 17:00",
+   "formato": "longo-motion",
+   "titulo": "O Tião Achou o Caderno do Avô. Ele Guardou Dinheiro Até no Confisco",
+   "modelo": {
+    "id": "3bM2XIQ7lAc",
+    "canal": "@povinvestimento"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "22",
+   "quando": "2026-12-20 17:00",
+   "formato": "longo-imagens",
+   "titulo": "Por Que Quem Ganha Menos Chega ao Natal Com Mais Dinheiro Que Você",
+   "modelo": {
+    "id": "lB8tO-vo3bU",
+    "canal": "@dinheirodescomplicadooficial"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "23",
+   "quando": "2026-12-22 10:00",
+   "formato": "conversa",
+   "titulo": "Quanto R$ 1 Milhão Te Paga Por Mês? (A Conta de Verdade)",
+   "modelo": {
+    "id": "13y6cxNz96A",
+    "canal": "@falabarsi"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "24",
+   "quando": "2026-12-23 18:00",
+   "formato": "longo-motion",
+   "titulo": "Como a Família Trata o Tião no Natal Quando Descobre Que Ele Tem Dinheiro",
+   "modelo": {
+    "id": "yg_Bl2lfCSA",
+    "canal": "@darkledger13"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
+  },
+  {
+   "nn": "25",
+   "quando": "2026-12-25 10:00",
+   "formato": "conversa",
+   "titulo": "Depois Que Você Aprende Economia, Ninguém Te Faz de Bobo",
+   "modelo": {
+    "id": "dBlRSjMnqdU",
+    "canal": "@fundamentosdegraham"
+   },
+   "estado": "Ed 27/11: fila modelada aprovada (pesquisa/FILA-20-MODELADOS.md)",
+   "elenco": [
+    "Tião"
+   ]
   }
  ],
  "modelos_usados": [
@@ -187,7 +379,5 @@
   "formatos": "Ed 18/11: quarta 18h = longo SÓ MOTION, domingo 17h = longo com imagens do Matheus; terça e sexta 10h = Tião Conversa (o 03 abre num sábado, fora da grade) · Ed 25/11 (opção B, em teste): + sábado 17h = 2.º longo SÓ MOTION («gostei muito!»; «se acharmos que vai ficar muito puxado paramos»). O 1.º sábado é 05/12.",
   "sabado 17:00": "longo"
  },
- "vago": [
-  "2026-12-08 10:00 (terça, Tião Conversa): sem tema ainda"
- ]
+ "vago": []
 }

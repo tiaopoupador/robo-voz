@@ -1,188 +1,217 @@
-# Cenas do video 06 (Tiao Conversa, o salario que acaba no dia 10). Roteiro: roteiros/06-salario-dia-10.md.
-# 26/11/2026: sai sem nenhuma imagem nova. O Tiao fala com quem assiste nas poses P1 a P4 (o fundo do 03 e do 04), e as
-# lembrancas daquele domingo sao cenas da turma viva nos cenarios do 05 (varanda de domingo, rua, noite), com as poses
-# oficiais. Os numeros vao nos cartoes do kit (celular com o extrato, a conta no papel de pao). So a capa vai ao Ed (Team).
+# Cenas do video 06 MODELADO (Tiao Conversa: 10 Regras do Tiao Para Viver Tranquilo Ganhando Pouco). Roteiro: roteiros/06-dez-regras.md.
+# 27/11/2026 (Ed: «quero exatamente o mesmo video que deu muitas views com o nosso jeito de falar»): modelo Edu Investe, 24,8x.
+# Sai sem imagem nova: o Tiao fala com quem assiste nas poses P1 a P4 (fundo do 03 e do 04); as lembrancas sao a turma viva
+# nos cenarios do 05 (rua de dia e de noite, varanda de domingo). Os numeros vao nos cartoes do kit. So as capas vao ao Ed (Team).
 from fabrica.kit import *
 from fabrica.videos.v05.cenas import (P, B, T, VE, TI, GE, DE, TS_D, VS_D, dom_larga, dom_perto, rua_dia, rua_noite, foco, cel, conta,
-                                      CANECA_D, BT, VD)
+                                      CANECA_D)
 from fabrica.videos.v03.cenas import IMG as _I3
 
 RUA = "fundo-banquinho"
 IMG = {k: _I3[k] for k in ("fundo-banquinho", "selo-tiao-cafe")}
-_V = "valeria-ficha-a.jpg.jpg + tiao-ficha-oficial.jpg"  # no Drive o arquivo chama-se assim (como no 05)
-TITULO = "Seu Salário Acaba no Dia 10? O Problema Não É o Salário"
-CAPA_TEXTO = "SAI TODO MÊS?!"
-# 26/11 (Ed: «quero que as thumbs de videos longos a partir de agora saia ja com textos»): o texto vai DENTRO do prompt da
-# capa (pedidos.py), o meta.ai desenha. Por capa: (texto exato, a parte em destaque, cor do destaque). Nunca repete o titulo.
-CAPA_LETRAS = {"A": ("SAI TODO MÊS?!", "TODO MÊS", "vermelho"), "B": ("O BANCO AGRADECE", "AGRADECE", "amarelo"),
-               "C": ("R$ 188 POR MÊS", "R$ 188", "vermelho"), "D": ("ATÉ O TIÃO?!", "TIÃO", "amarelo")}
+_V = "valeria-ficha-a.jpg.jpg + tiao-ficha-oficial.jpg"
+_T = "tiao-ficha-oficial.jpg"
+TITULO = "10 Regras do Tião Para Viver Tranquilo Ganhando Pouco (Salário de R$ 2.000)"
+MODELO = {"id": "HIrzIYQCzMU", "canal": "@eduinvesteoficial", "vezes": 24.8}
+CAPA_TEXTO = "GANHA POUCO VIVE TRANQUILO"
+# 26/11: o texto vai DENTRO do prompt da capa (pedidos.py). Modelagem (27/11): a capa A tem a MESMA composicao do modelo
+# (o mesmo homem cansado a esquerda, seta, tranquilo a direita; 2 linhas grandes no alto a esquerda, a 2.a palavra em verde).
+CAPA_LETRAS = {"A": ("GANHA POUCO VIVE TRANQUILO", "TRANQUILO", "verde"), "B": ("R$ 2.000 E DORME BEM", "DORME BEM", "verde"),
+               "C": ("GANHA O TRIPLO E PEDE EMPRESTADO", "PEDE EMPRESTADO", "vermelho"), "D": ("10 REGRAS ZERO APERTO", "ZERO APERTO", "amarelo")}
 VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)
-PUBLICA = "2026-11-27 10:00"
-PUBLICA_TXT = "sexta, 27/11, às 10h (Brasília, 13h em Lisboa)"
-PRAZO = "quinta, 26/11, até as 20h (o vídeo vai ao ar sexta às 10h)"
-PRAZO_ISO = "2026-11-26T20:00:00-03:00"
-CAPA = (_V, "ALERT mood, strong red background with a dark vignette. Close-up: Valeria, elegant woman in a white blazer, sunglasses pushed up on her head, "
-            "big on the RIGHT, pale with shock, mouth open, holding a smartphone with a pink case toward the viewer: on the bright screen, ONE line of a "
-            "bank statement is highlighted with a thick red marker (scribbles only, nothing readable). Behind her, out of focus, Tiao holding a plain white "
-            "enamel mug with a chipped rim, one eyebrow up. Leave the left half empty for the title text. No text, no letters, no numbers anywhere (the title goes on later).",
-        "valeria-linha")
+PUBLICA = "2026-11-27 18:00"
+PUBLICA_TXT = "sexta, 27/11, às 18h (Brasília, 21h em Lisboa)"
+PRAZO = "sexta, 27/11, até as 15h (o vídeo vai ao ar às 18h)"
+PRAZO_ISO = "2026-11-27T15:00:00-03:00"
+CAPA = (_T, "Same composition as a calm before-and-after split, warm cream background, flat 2D cartoon. LEFT (smaller): Tiao tired and worried at a cheap "
+            "wooden desk at night, bills and crumpled papers on the floor, head in his hand. A big thick GREEN curved arrow from left to right. RIGHT (bigger): "
+            "the same Tiao relaxed on his simple porch armchair, hands behind his head, smiling, a plain white enamel mug with a chipped rim and a small stack "
+            "of coins on a little table, a sleeping cat. Leave the TOP-LEFT empty for two big lines of title text.", "antes-depois")
 CAPAS_TESTE = [
-    (_V, "MONEY LEAK mood, deep blue and red. A big pink-case smartphone in the center seen close: banknotes are leaking out of its screen and dripping down "
-         "into a bank vault below. Valeria (LEFT) covers her mouth in shock; Tiao (RIGHT), big and close, points at the phone with a short yellow carpenter "
-         "pencil. Leave the top third empty for the title text. No text, no letters, no numbers anywhere (the title goes on later).", "celular-vaza"),
-    (_V, "TIME PRESSURE mood, warm yellow and red. A big wall calendar behind them with the day 10 circled in thick red (only the shape of the circle, no numbers). "
-         "Valeria (RIGHT) holds an empty wallet open upside down, desperate; Tiao (LEFT), calm, sips from his plain white chipped mug, knowing look. "
-         "Leave the top third empty for the title text. No text, no letters, no numbers anywhere (the title goes on later).", "calendario-10"),
-    ("tiao-ficha-oficial.jpg", "SHOCK mood, cold blue and red. Tiao alone, big and close on the RIGHT, at his kitchen at night, holding his phone with both hands, "
-         "eyes wide open, a drop of sweat, his white chipped mug next to him; the phone light on his face. Leave the left half empty for the title text. "
-         "No text, no letters, no numbers anywhere (the title goes on later).", "tiao-susto"),
+    (_T, "CALM CONTRAST mood, soft green and cream. Tiao big and close on the RIGHT, sleeping peacefully on his porch armchair at night, a smile, his "
+         "white chipped mug beside him; behind him, through the window of the house across the street, a tall man (Marcos) awake at 3am under a lamp, "
+         "pulling his hair over a pile of bills. Leave the left half empty for the title text.", "dorme-bem"),
+    ("marcos-neutro.jpg + tiao-ficha-oficial.jpg", "PUBLIC EMBARRASSMENT mood, red and white. Inside a busy neighborhood butcher shop: Marcos (tall man, gelled hair, "
+         "white shirt, big silver watch) laughing awkwardly, holding a declined card toward the camera, a red X over the card machine; behind him in line, "
+         "Tiao calmly takes cash from a simple wallet. Leave the top third empty for the title text.", "acougue"),
+    (_T, "ORGANIZED mood, yellow and dark blue. Tiao standing at the doorman desk of a fancy building lobby, smiling, holding up his phone with a clean "
+         "green budget chart; ten small round icons float around him in a circle (house, cart, bus, piggy bank, scissors, heart, phone, calendar, coins, mirror). "
+         "Leave the top third empty for the title text.", "dez-regras"),
 ]
-DESC = ("O salário da Valéria é de R$ 8.700, e mesmo assim, todo mês, no dia 10, já tinha acabado. Num domingo, na varanda do Tião, ela passou o dedo "
-        "no extrato, linha por linha, e parou numa: juros do cheque especial, R$ 188,25. Todo mês.\n\n"
-        "Neste vídeo o Tião mostra, com as regras do Banco Central na mão, o que era aquela linha, por que o saldo do aplicativo mistura o seu dinheiro "
-        "com o limite do banco, quanto aquilo levava dela por ano, os serviços que o banco não pode cobrar, e o que ela fez em dez minutos na mesinha. "
-        "E o susto que o próprio Tião levou no extrato dele.")
-TAGS = ["cheque especial", "juros do cheque especial", "salário acaba", "salário no dia 10", "tarifa bancária", "pacote de serviços", "cesta de serviços",
-        "serviços essenciais gratuitos", "limite da conta", "educação financeira", "finanças pessoais", "Tião Poupador", "Tião Conversa"]
-PERGUNTA = "Quanto você paga de pacote de serviços por mês? Só o número."
-CAP_NOMES = {"Abertura (é um Reels: entende-se sozinha)": "R$ 188,25 todo mês", "A linha": "A linha do extrato",
-             "O sábado em que riram do extrato": "Riram do extrato", "O saldo que mentia": "O saldo que mentia",
-             "Quanto levava por ano": "Quanto levava por ano", "Os dez minutos na mesinha": "Os dez minutos na mesinha",
-             "O meu susto": "O susto do Tião", "O próximo": "A nota da farmácia"}
-FORTES = {"extrato", "limite", "juros", "cheque", "salário", "pacote", "tarifa", "valéria", "saldo", "dica", "banco"}
+DESC = ("O Tião ganha R$ 2.000 por mês como porteiro e dorme tranquilo. O Marcos, o vizinho da picape zero, ganha o triplo, e no dia 20 pede "
+        "dinheiro emprestado na fila do açougue.\n\n"
+        "Neste vídeo o Tião mostra as 10 regras dele, uma por uma, com a conta feita em cima dos dois mil: para onde vai cada real, pagar a si mesmo "
+        "primeiro, a casa que manda nas outras contas, o mercado com lista, não parcelar, cortar o que paga e não usa (e a linha do extrato que deixou a "
+        "Valéria branca), o carro, o prazer sem culpa, o décimo terceiro e a comparação. Com a lei na mão: o cheque especial (Resolução CMN 4.765), "
+        "os serviços bancários grátis (Resolução CMN 3.919), o vale-transporte (Lei 7.418) e o 13º (Lei 4.749).")
+TAGS = ["viver tranquilo ganhando pouco", "como viver com salário de 2000 reais", "regras de dinheiro", "como organizar o salário", "pague-se primeiro",
+        "orçamento pessoal", "cheque especial", "cesta de serviços", "vale-transporte", "décimo terceiro", "como guardar dinheiro ganhando pouco",
+        "educação financeira", "Tião Poupador", "Tião Conversa"]
+PERGUNTA = "Qual das 10 regras você começa hoje? Só o número."
+CAP_NOMES = {"Abertura (é um Reels: entende-se sozinha)": "Ele ganha o triplo", "Para onde vai cada real": "Regras 1 e 2",
+             "A casa e a panela": "Regras 3 e 4", "O dia vinte": "Regra 5 e o dia 20", "A linha do extrato": "Regra 6: a linha do extrato",
+             "A picape e o prazer": "Regras 7 e 8", "O que a rua não viu": "Regras 9 e 10", "O próximo": "A mensagem da farmácia"}
+FORTES = {"regra", "salário", "marcos", "valéria", "sandra", "extrato", "reserva", "parcela", "limite", "picape", "aluguel", "mercado", "prazer"}
 GIF = "foto"
+REELS_TOPO = "Ele ganha o *TRIPLO*|e no dia 20 pede|dinheiro *EMPRESTADO*|na fila do açougue!"  # a frase isca do Short do gancho (fabrica/reels.py)
+REELS_EMOJI = "1f631"
 PLAYLIST = "tiao-conversa"
-# novela.md 11 e 28: o clima troca a cada 2 ou 3 min, sem repetir faixa
-CLIMA = {0: "alerta", 4: "calma", 7: "curiosa", 10: "humor", 13: "tensao", 15: "tensao", 18: "drama", 22: "alerta", 24: "drama", 27: "humor",
-         30: "virada", 36: "reflexiva", 37: "curiosa", 40: "tensao", 42: "drama", 45: "humor", 46: "reflexiva", 49: "virada", 50: "final",
-         52: "curiosa", 53: "tensao"}
-AMB = [("passaros", 4, "^", 20, 0.2), ("passaros", 15, "^", 20, 0.2), ("passaros", 23, "^", 20, 0.2), ("passaros", 30, "^", 20, 0.2),
-       ("grilos", 37, "^", 14, 0.2), ("grilos", 40, "^", 25, 0.2)]
+# novela.md: o clima troca a cada 2 ou 3 min, sem repetir faixa seguida
+CLIMA = {0: "alerta", 4: "calma", 9: "humor", 12: "curiosa", 17: "reflexiva", 21: "humor", 26: "tensao", 32: "drama", 35: "tensao", 40: "virada",
+         42: "drama", 45: "curiosa", 49: "calma", 53: "humor", 55: "reflexiva", 59: "drama", 62: "virada", 63: "drama", 66: "final"}
+AMB = [("passaros", 4, "^", 20, 0.2), ("passaros", 17, "^", 20, 0.2), ("passaros", 35, "^", 20, 0.2), ("grilos", 42, "^", 14, 0.2)]
 
 # ---------- as pecas que se repetem ----------
 def tiao(pose, lado=1): return (RUA, pose, lado)
-def extrato(destaque=(), linhas=None):
-    linhas = linhas or [("Salário", "+ 8.700,00", True), ("Parcela do carro", "- 4.555,56", False), ("Aluguel", "- 3.900,00", False),
-                        ("Pacote de serviços", "- 54,90", False), ("Juros cheque especial", "- 188,25", False)]
-    return cel("Extrato · conta do salário", linhas, destaque)
-SALDO = cel("Saldo disponível", [("Saldo disponível", "2.444,00", True)], [0])
-DETALHE = cel("Toque no número", [("Saldo da conta", "- 3.556,00", False), ("Limite cheque especial", "6.000,00", True),
-                                   ("Saldo disponível", "2.444,00", True)], [0])
-AUMENTO = cel("Parabéns!", [("Seu limite aumentou para", "6.000,00", True), ("Botão verde", "ACEITAR", True)], [1])
-DOM = lambda *g, **kw: dom_larga([TS_D(*g)], **kw)
-def dupla(t_pose=("P16", None), v_pose=("P17", None), baloes=()): return dom_larga([TS_D(t_pose), VS_D(v_pose)], baloes)
-VE_B = dict(x=110, y=40, larg=1080, rabo=(640, 470))  # balao de quem esta a esquerda (Valeria de perto, vizinho em x=700)
+VE_B = dict(x=110, y=40, larg=1080, rabo=(640, 470))  # balao de quem esta a esquerda
+def so(pid, pose, texto=None, g1=None, g2=None, noite=False):
+    """um da turma de perto, na rua, com balao opcional"""
+    f = rua_noite if noite else rua_dia
+    return f([GE(pid, (pose, None), x=700)], [B(texto, 0, g1, g2, **VE_B)] if texto else [], **({} if noite else {"carro": False}))
 def perto_v(*poses, baloes=(), x=600): return dom_perto([VE(*poses, x=x)], baloes)
-def perto_t(*poses, baloes=(), x=1250): return dom_perto([TI(*poses, x=x)], baloes)
-def calcada(baloes=(), gente=None):
-    return rua_dia(gente or [DE("sandra", 360), DE("rafa", 600), DE("tiao", 1500), P("valeria", 1000, 960, 600, ("R1", None))], baloes)
-CIDA_NOITE = lambda b=(): rua_noite([GE("cida", ("P01", None), x=700)], b)
+def extrato(destaque=()):
+    return cel("Extrato · conta do salário", [("Salário", "+ 8.700,00", True), ("Pacote de serviços", "- 54,90", False),
+                                              ("Juros cheque especial", "- 188,25", False)], destaque)
+CONTA_TIAO = conta("O mês do Tião", [("Salário", 2000), ("Aluguel", -650), ("Luz, água, gás e internet", -285), ("Mercado", -600),
+                                     ("Transporte (vale)", -120), ("Celular", -40), ("Farmácia", -45)], total="Sobram")
+def regra(n, texto, emoji): return ic([(emoji, texto, False)], f"Regra {n}")
 
 L = {
  # 0. Abertura (Reels)
- 0: [("^", "M", nu(188.25, "Juros do cheque especial", "todo mês, no extrato da Valéria", cor=VERM, casas=2, emoji="😱")),
-     ("Para o banco", "M", extrato([4])), ("ficou branca", "M", perto_v(("P03", None), baloes=[B("Tião, eu nunca pedi isso.", 0, "Tião", "isso", **VE_B)]))],
- 1: [("^", "M", nu(8700, "O salário dela", "e no dia 10 já tinha acabado", emoji="💸")), ("Não era o salário", "C", tiao("P4", 1))],
- 2: [("^", "M", ic([("🔍", "o que ela achou na linha", False), ("📅", "quanto levava por ano", False), ("⏱️", "o que ela fez em 10 minutos", False)], "Hoje, três coisas")),
-     ("susto", "C", tiao("P4", -1))],
+ 0: [("^", "M", so("marcos", "P01", "Tião, paga aí, que dia cinco eu te devolvo!", "Eu ganho", "é ele")),
+     ("triplo", "M", nu(6000, "O salário do Marcos", "o triplo do meu", emoji="💼")), ("açougue", "C", tiao("P4", 1))],
+ 1: [("^", "M", cel("Banco · agora", [("Salário recebido", "+ 2.000,00", True)], [0])), ("começo de um plano", "C", tiao("P2", -1)),
+     ("picape zero", "M", so("marcos", "P04")), ("vermelho", "M", fr("Dia 20: o Marcos já está no *vermelho*."))],
+ 2: [("^", "C", tiao("P1", 1)), ("pão-duro", "M", so("sandra", "P01", "Esse Tião é um pão-duro!", "pão-duro", "pão-duro")),
+     ("dez regras", "M", fr("*10 regras*. Nenhuma pede para ganhar mais.")),
+     ("branca", "M", perto_v(("P03", None), baloes=[B("Tião... isso aqui sai todo mês?", 0, "Tião", "mês", **VE_B)]))],
  3: [("^", "C", tiao("P2", 1)), ("puxa a cadeira", "M", dom_larga())],
- # 1. A linha
- 4: [("^", "M", perto_t(("P08", None), x=960))],
- 5: [("^", "C", tiao("P1", 1)), ("porteiro", "C", tiao("P2", -1)), ("caneca branca", "M", foco(*CANECA_D)), ("papel de pão", "M", DOM(("P17", None)))],
- 6: [("^", "M", dupla()), ("puxou do celular", "M", perto_v(("P08", None))), ("parou numa", "M", extrato([4])),
-     ("ficou branca", "M", perto_v(("P03", None), baloes=[B("Tião... isso aqui sai todo mês?", 0, "Tião", "mês", **VE_B)]))],
- 7: [("^", "M", extrato([4])), ("mês anterior", "M", li(["março", "abril", "maio", "...", "outubro"], 4, "Juros cheque especial: R$ 188,25 todo mês")),
-     ("desde março", "C", tiao("P4", 1))],
- 8: [("^", "M", perto_v(("P11", None), baloes=[B("Mas eu nunca usei cheque especial, Tião!", 0, "Mas", "Tião", **VE_B)])),
-     ("armadilha", "C", tiao("P3", -1)), ("Hoje, cheque especial", "M", fr("Cheque especial = o *limite* que o banco cola na sua conta", "Resolução CMN 4.765/2019, art. 1º"))],
- 9: [("^", "C", tiao("P2", 1)), ("sete vírgula", "M", nu(7.53, "Juros médios do cheque especial", "setembro de 2026, Banco Central (SGS 25463)", cor=VERM, casas=2, fmt="num", suf="% ao mês", emoji="🔥")),
-     ("cento e trinta e nove", "M", nu(139.02, "No ano", "Banco Central (SGS 20741)", cor=VERM, casas=2, fmt="num", suf="% ao ano", emoji="📈"))],
- # 2. O sabado em que riram do extrato
- 10: [("^", "C", tiao("P1", -1)), ("No sábado", "M", calcada()), ("soltei uma frase", "M", calcada([B("Quem lê o extrato no dia que o salário cai nunca é pego de surpresa.", 2, "Gente", "surpresa", x=900, larg=1000)]))],
- 11: [("^", "M", rua_dia([GE("sandra", ("P01", None), x=700)], [B("Tião, extrato de porteiro tem duas linhas: entrou e saiu!", 0, "extrato de porteiro", "saiu", **VE_B)])),
-      ("rua inteira riu", "M", calcada()), ("Rafa", "M", rua_dia([GE("rafa", ("P02", None), x=700)], [B("Eu nem abro extrato, Tião. Eu olho o saldo e pronto.", 0, "Eu nem abro", "pronto", **VE_B)]))],
- 12: [("^", "M", rua_dia([GE("valeria", ("P12", None), x=700)])), ("fiquei quieto", "M", rua_dia([TI(("P19", None), x=1250)], carro=False)),
-      ("Dica de porteiro", "C", tiao("P1", 1))],
- 13: [("^", "C", tiao("P4", -1)), ("só o saldo", "M", cel("O meu aplicativo", [("Saldo", "olhado de passagem", True)], [0])), ("seis anos", "C", tiao("P4", 1))],
- 14: [("^", "C", tiao("P2", -1))],
- # 3. O saldo que mentia
- 15: [("^", "M", dupla()), ("aplicativo do banco", "M", perto_v(("P08", None))), ("saldo disponível", "M", SALDO)],
- 16: [("^", "M", perto_v(("P02", None), baloes=[B("Olha aqui, Tião. Eu tenho dinheiro!", 0, "Olha", "dinheiro", **VE_B)])),
-      ("toquei no número", "M", DETALHE), ("nunca tinha sido", "C", tiao("P4", 1))],
- 17: [("^", "C", tiao("P2", -1)), ("engloba", "M", fr("O saldo disponível *engloba* o limite de crédito", "Resolução CMN 3.919/2010, art. 17, site do Banco Central")),
-      ("Quer dizer", "C", tiao("P3", 1))],
- 18: [("^", "M", perto_v(("P04", None), baloes=[B("Mas o meu limite era de mil reais.", 0, "Mas", "reais", **VE_B)])), ("aviso com confete", "M", AUMENTO),
-      ("Achou que era presente", "M", perto_v(("P11", None)))],
- 19: [("^", "C", tiao("P3", -1)), ("autorização do cliente", "M", fr("Aumento de limite só com a *autorização do cliente*, a cada oferta", "Resolução CMN 4.765/2019, art. 4º, § 2º, II")),
-      ("cinco mil reais", "C", tiao("P4", 1))],
- 20: [("^", "C", tiao("P1", -1)), ("Na primeira", "M", ic([("💳", "aluguel no cartão", False), ("🔥", "caiu no rotativo", True)], "Tentativa 1")),
-      ("Na segunda", "M", ic([("🔁", "tudo no crédito", False), ("🕳️", "o buraco só mudou de lugar", True)], "Tentativa 2"))],
- 21: [("^", "C", tiao("P2", 1)), ("Pois é", "C", tiao("P4", -1))],
- # 4. Quanto levava por ano
- 22: [("^", "C", tiao("P4", 1)), ("Cento e oitenta", "M", nu(188.25, "Juros do cheque especial", "todo mês", cor=VERM, casas=2, emoji="😱")),
-      ("ficou branca", "M", perto_v(("P03", None), baloes=[B("Tião, eu nunca pedi isso.", 0, "Tião", "isso", **VE_B)]))],
- 23: [("^", "M", DOM(("P17", None))), ("vezes doze", "M", nu(2259, "Por ano, só de juros do limite", "R$ 188,25 × 12 meses", cor=VERM, emoji="📅"))],
- 24: [("^", "M", perto_v(("P08", None))), ("Duas linhas abaixo", "M", extrato([3])), ("criou perna", "C", tiao("P4", -1))],
- 25: [("^", "C", tiao("P2", 1)), ("serviços essenciais", "M", ic([("💳", "cartão de débito", False), ("🏧", "até 4 saques por mês", False), ("🔁", "até 2 transferências no mesmo banco", False),
-                                                                  ("🧾", "até 2 extratos por mês", False), ("📱", "consultas pela internet", False)], "De graça por regra (Res. CMN 3.919, art. 2º)")),
-      ("pagava por um pacote", "C", tiao("P3", -1))],
- 26: [("^", "M", conta("As duas linhas no ano", [("Juros do limite", -2259.00), ("Pacote de serviços", -658.80)], total="Por ano")),
-      ("geladeira", "M", nu(2917.80, "Quase três mil reais por ano", "para o banco", cor=VERM, casas=2, emoji="🧊"))],
- 27: [("^", "M", dom_larga([TS_D(), VS_D(), P("rafa", 1500, 960, 600, ("R1", None))])),
-      ("Tião, consegui", "M", dom_perto([GE("rafa", ("P02", None), x=700)], [B("Tião, consegui! Tenho dois mil no banco!", 0, "consegui", "banco", **VE_B)])),
-      ("toca no número", "M", perto_v(("P01", None), baloes=[B("Rafa, toca no número do saldo.", 0, "Rafa", "saldo", **VE_B)])),
-      ("Trinta e dois", "M", cel("O saldo do Rafa", [("Saldo da conta", "32,00", True), ("O resto", "é limite", False)], [0])),
-      ("Dona Cida riu", "M", rua_dia([GE("cida", ("P02", None), x=700)], carro=False)),
-      ("regador", "M", rua_dia([GE("sandra", ("P06", None), x=1300)], carro=False))],
- 28: [("^", "M", perto_v(("P15", None), baloes=[B("Tião, me ajuda a desligar isso. Agora.", 0, "me ajuda", "Agora", **VE_B)])),
-      ("dez minutos", "M", nu(10, "Minutos na mesinha", cor=VERDE, fmt="int", suf=" min", emoji="⏱️")),
-      ("A Sandra riu", "M", rua_dia([GE("sandra", ("P03", None), x=1300)], carro=False))],
- 29: [("^", "C", tiao("P2", -1))],
- # 5. Os dez minutos na mesinha
- 30: [("^", "M", dupla()), ("Repete", "M", perto_v(("P11", None), baloes=[B("Aquela frase que você falou sábado... Repete.", 0, "Aquela", "Repete", **VE_B)])),
-      ("Quem lê o extrato", "M", perto_t(("P10", None)))],
- 31: [("^", "M", ic([("🔍", "lê o extrato linha por linha no dia que o salário cai", False)], "Dica 1")), ("Tarifa e juros", "C", tiao("P3", 1))],
- 32: [("^", "M", ic([("🏦", "o seu saldo é o da conta, sem o limite", False)], "Dica 2")), ("sinal de menos", "M", DETALHE)],
- 33: [("^", "M", ic([("✂️", "cancelou o pacote de serviços", False)], "1")), ("direito do cliente", "M", fr("É *prerrogativa do cliente* pagar só os serviços avulsos",
-                                                                                                           "Resolução CMN 3.919/2010, art. 9º")),
-      ("quase zero", "M", nu(54.90, "A menos, todo mês", cor=VERDE, casas=2, emoji="✅"))],
- 34: [("^", "M", ic([("📉", "limite de R$ 6.000 para R$ 4.000", False)], "2")), ("nem um real a mais", "M", perto_v(("P13", None), baloes=[B("Só o que eu já devo, e nem um real a mais.", 0, "Só", "mais", **VE_B)]))],
- 35: [("^", "M", ic([("📺", "duas assinaturas canceladas", False)], "3")), ("sessenta e nove", "M", nu(69.80, "Voltaram para ela", "todo mês", cor=VERDE, casas=2, emoji="✅"))],
- 36: [("^", "M", dupla(("P16", None), ("P16", None))), ("segundinho", "M", foco("varanda-domingo-perto.jpg", 50, 55, z=1.25)),
-      ("buzinou", "M", dom_larga([TS_D(), VS_D(("P03", None))])), ("Obrigada, porteiro", "M", perto_v(("P05", None), baloes=[B("Obrigada, porteiro.", 0, "Obrigada", "porteiro", **VE_B)]))],
- 37: [("^", "M", rua_noite()), ("Dona Cida", "M", CIDA_NOITE()), ("virou a minha semana", "C", tiao("P1", -1))],
- 38: [("^", "C", tiao("P2", 1))],
- 39: [("^", "C", tiao("P2", -1)), ("balanço do mês", "V", "banco:FM:4-balanco/balanco__estilo-donut-despesas__horizontal.mp4"),
-      ("Juros e tarifas", "M", ic([("💸", "Juros do cheque especial: R$ 188,25", False), ("🧾", "Pacote de serviços: R$ 54,90", False)], "Juros e tarifas: R$ 243,15 por mês")),
-      ("Se a Valéria tivesse", "C", tiao("P3", 1)),
+ # 1. Para onde vai cada real
+ 4: [("^", "M", dom_perto([TI(("P08", None), x=960)]))],
+ 5: [("^", "C", tiao("P1", 1)), ("porteiro", "C", tiao("P2", -1)), ("moro sozinho", "C", tiao("P3", 1)),
+     ("filho", "M", fr("Com filho, os *números* mudam.", "A ordem das regras, não."))],
+ 6: [("^", "M", dom_larga([TS_D(), VS_D(("P18", None))])), ("linha no extrato", "M", extrato([2])), ("susto", "C", tiao("P4", -1))],
+ 7: [("^", "M", regra(1, "saiba para onde vai cada real", "🧭")), ("Aluguel da casinha", "M", CONTA_TIAO)],
+ 8: [("^", "M", nu(260, "A minha folga do mês", "R$ 2.000 menos R$ 1.740", cor=VERDE, emoji="🟢")), ("Na portaria", "C", tiao("P3", 1)),
+     ("Quanto precisam", "M", fr("Sabem quanto *ganham*.", "Quanto precisam, não."))],
+ 9: [("^", "M", so("marcos", "P06", "Depende, Tião.", "Depende", "Tião")), ("depende", "C", tiao("P3", -1))],
+ 10: [("^", "M", ic([("🏠", "essencial", False), ("👟", "desejo", False), ("🧊", "imprevisto", False)], "Cada gasto num grupo")),
+      ("onde aquilo entra", "C", tiao("P2", 1))],
+ 11: [("^", "C", tiao("P1", -1)), ("somem rapidinho", "M", nu(260, "Somem rápido", "se não tiverem destino", cor=VERM, emoji="💨"))],
+ 12: [("^", "M", regra(2, "pague a você mesmo primeiro", "🐷")), ("cento e cinquenta", "M", cel("Dia 5 · transferência", [("Para: conta da reserva", "- 150,00", False)], [0]))],
+ 13: [("^", "M", so("marcos", "P05", "Eu guardo o que sobra, Tião.", "Eu guardo", "Tião")), ("Nada", "M", fr("O que sobra no fim do mês dele: *nada*.")),
+      ("depois de me pagar", "C", tiao("P2", 1))],
+ 14: [("^", "C", tiao("P3", -1)), ("agendei", "M", cel("Agendado", [("Todo dia 5", "R$ 150,00", True), ("Repetir", "sempre", True)], [0]))],
+ 15: [("^", "M", nu(1800, "Em um ano", "R$ 150 por mês", cor=VERDE, emoji="📅")), ("sétimo mês", "M", li(["mês 1", "mês 3", "mês 5", "mês 7"], 3, "Passei dos R$ 1.000")),
+      ("outra vida", "C", tiao("P1", 1))],
+ 16: [("^", "M", ic([("🎉", "R$ 70 para o prazer", False), ("🧰", "R$ 40 para o que der e vier", False)], "Dinheiro com nome")),
+      ("like", "C", tiao("P2", -1)), ("mais pesada", "C", tiao("P4", 1))],
+ # 2. A casa e a panela
+ 17: [("^", "M", regra(3, "a casa manda em todas as outras contas", "🏠")), ("seiscentos e cinquenta", "M", nu(650, "O meu aluguel", "abaixo de um terço do salário", emoji="🏠")),
+      ("bairros bonitos", "C", tiao("P2", 1)), ("ninguém paga", "C", tiao("P3", -1))],
+ 18: [("^", "M", so("sandra", "P03", "Olha a varanda, gente! Tem piscina!", "Olha", "piscina")),
+      ("outra conta", "M", nu(2150, "A mais que o meu aluguel", "todo mês", cor=VERM, emoji="🏊")),
+      ("vinte e cinco mil", "M", nu(25800, "Em um ano", cor=VERM, emoji="📅")), ("caneta", "M", so("marcos", "P06"))],
+ 19: [("^", "C", tiao("P2", -1)), ("teto", "M", fr("Um *terço* da renda é o teto da casa."))],
+ 20: [("^", "C", tiao("P1", 1)), ("ganha no sono", "C", tiao("P3", -1))],
+ 21: [("^", "M", regra(4, "comida feita em casa e mercado com lista", "🛒")), ("seiscentos", "M", nu(600, "Mercado por mês", "uns R$ 20 por dia", emoji="🛒")),
+      ("lista no celular", "M", cel("Lista do sábado", [("Arroz", "✓", True), ("Feijão", "✓", True), ("Ovos", "✓", True), ("Frango", "✓", True)], [])),
+      ("barriga cheia", "C", tiao("P2", 1))],
+ 22: [("^", "C", tiao("P4", -1)), ("biscoito", "M", ic([("🍪", "biscoito", True), ("🥤", "refrigerante", True), ("🍕", "comida pronta", True)], "Nada disso estava na lista")),
+      ("trava", "C", tiao("P3", 1))],
+ 23: [("^", "C", tiao("P2", -1)), ("marmita", "M", fr("Uma panela grande = a *marmita* da semana."))],
+ 24: [("^", "M", so("marcos", "P03", noite=True)), ("dia inteiro", "M", fr("Um pedido do Marcos = o meu *dia inteiro* de comida.")),
+      ("Exceção", "C", tiao("P1", 1))],
+ 25: [("^", "C", tiao("P4", -1))],
+ # 3. O dia vinte
+ 26: [("^", "M", regra(5, "não parcele o que não pode pagar à vista", "💳")), ("doze de cento e vinte", "M", fr("*12 × R$ 120*", "cabe no bolso?")),
+      ("preço de não esperar", "M", nu(1440, "O mesmo celular, parcelado", "R$ 240 a mais", cor=VERM, emoji="📱"))],
+ 27: [("^", "C", tiao("P2", 1)), ("cento e oitenta", "M", nu(180, "Só a tela nova", "à vista", cor=VERDE, emoji="✅"))],
+ 28: [("^", "M", ic([("⏳", "não cabe à vista? espera 30 dias", False), ("🐷", "ainda quer? junta antes", False), ("💳", "fatura do cartão: paga inteira", False)], "A regra 5 em três partes"))],
+ 29: [("^", "C", tiao("P4", 1)), ("cheque especial", "M", fr("Cheque especial = o *limite* que o banco cola na sua conta", "Resolução CMN 4.765/2019")),
+      ("oito por cento", "M", nu(8, "O teto do cheque especial", "Resolução CMN 4.765/2019, art. 3º", cor=VERM, fmt="int", suf="% ao mês", emoji="🔥")),
+      ("sete e meio", "M", nu(7.53, "A média em setembro de 2026", "Banco Central (SGS 25463)", cor=VERM, casas=2, fmt="num", suf="% ao mês", emoji="📈"))],
+ 30: [("^", "M", ic([("📱", "o celular", False), ("🛋️", "o sofá", False), ("🔥", "a churrasqueira", False), ("🎁", "até o presente da Sandra", False)], "O Marcos parcela tudo")),
+      ("se empilham", "M", so("marcos", "P07")), ("amanhã", "C", tiao("P3", 1))],
+ 31: [("^", "C", tiao("P1", -1)), ("primeiro degrau", "M", fr("Não é bronca. É o *primeiro degrau*."))],
+ 32: [("^", "C", tiao("P4", 1)), ("triplo", "M", nu(6000, "O salário do Marcos", "o triplo do meu", emoji="💼")),
+      ("açougue", "M", so("marcos", "P01", "Tião, paga aí, que dia cinco eu te devolvo!", "açougue", "é ele"))],
+ 33: [("^", "M", rua_dia([DE("marcos", 700), DE("tiao", 1100), DE("sandra", 1450)], carro=False)),
+      ("não passou", "M", cel("Maquininha", [("Cartão", "RECUSADO", False)], [0])),
+      ("rindo alto", "M", so("marcos", "P01", "Tião, paga aí a carne do churrasco, que dia cinco eu te devolvo!", "Tião", "devolvo")),
+      ("Cem reais", "M", nu(100, "A carne do churrasco", "paga pelo porteiro", emoji="🥩")), ("triplo inteirinho", "C", tiao("P4", -1))],
+ 34: [("^", "C", tiao("P2", 1)), ("risada", "C", tiao("P3", -1)), ("quase invisível", "C", tiao("P4", 1))],
+ # 4. A linha do extrato
+ 35: [("^", "M", regra(6, "corte o que você paga e não usa", "✂️")), ("Volta comigo", "M", dom_larga([TS_D(), VS_D(("P18", None))])),
+      ("passando o dedo", "M", perto_v(("P08", None))), ("parou numa linha", "M", extrato([2])),
+      ("Ficou branca", "M", perto_v(("P03", None), baloes=[B("Tião... isso aqui sai todo mês?", 0, "Tião", "mês", **VE_B)]))],
+ 36: [("^", "M", extrato([2])), ("mês anterior", "M", li(["março", "abril", "maio", "...", "outubro"], 4, "Juros cheque especial: R$ 188,25 todo mês")),
+      ("desde março", "C", tiao("P4", 1))],
+ 37: [("^", "M", perto_v(("P11", None), baloes=[B("Mas eu nunca usei cheque especial, Tião!", 0, "Mas", "Tião", **VE_B)])),
+      ("antigamente", "C", tiao("P2", -1)), ("todo dia dez", "M", fr("A conta descia do *zero* todo dia 10."))],
+ 38: [("^", "M", extrato([1])), ("duas assinaturas", "M", ic([("🎬", "filme", False), ("🎵", "música", False)], "Assinaturas esquecidas")),
+      ("criou perna", "C", tiao("P4", -1))],
+ 39: [("^", "M", conta("As duas linhas no ano", [("Juros do limite", -2259.00), ("Pacote de serviços", -658.80)], total="Por ano")),
+      ("Quase três mil", "M", nu(2917.80, "Por ano, para o banco", cor=VERM, casas=2, emoji="😱"))],
+ 40: [("^", "M", nu(10, "Os dez minutos", cor=VERDE, fmt="int", suf=" min", emoji="⏱️")), ("Cancelou", "M", ic([("📺", "cancelou as 2 assinaturas", False)], "Minuto 1")),
+      ("baixar o limite", "M", ic([("📉", "baixou o limite do cheque especial", False)], "Minuto 4")),
+      ("serviços essenciais", "M", ic([("✂️", "trocou a cesta pelos serviços grátis", False)], "Minuto 9"))],
+ 41: [("^", "C", tiao("P2", 1)), ("cartão de débito", "M", ic([("💳", "cartão de débito", False), ("🏧", "até 4 saques por mês", False), ("🔁", "até 2 transferências no mesmo banco", False),
+                                                              ("🧾", "até 2 extratos por mês", False), ("📱", "consultas pela internet", False)], "De graça por regra (Res. CMN 3.919, art. 2º)")),
+      ("quem escolhe", "M", fr("Pagar *pacote* ou só o que usa: quem escolhe é o cliente.", "Resolução CMN 3.919/2010, art. 9º"))],
+ 42: [("^", "C", tiao("P4", -1)), ("olhar o meu extrato", "M", rua_noite([TI(("P14", None), x=1250)])),
+      ("cesta de serviços", "M", cel("O extrato do Tião", [("Salário", "+ 2.000,00", True), ("Cesta de serviços", "- 12,90", False)], [1])),
+      ("seis anos", "M", li(["2020", "2021", "2022", "2023", "2024", "2025", "2026"], 6, "Cesta de serviços: R$ 12,90 todo mês")),
+      ("Novecentos e vinte e oito", "M", nu(928.80, "Seis anos de cesta", "R$ 12,90 × 72 meses", cor=VERM, casas=2, emoji="😳"))],
+ 43: [("^", "C", tiao("P3", 1)), ("três meses", "M", fr("A cada *3 meses*: um dia só para ler o extrato.")), ("dorme", "C", tiao("P1", -1))],
+ 44: [("^", "C", tiao("P2", 1)), ("só o número", "M", fr("Comenta *só o número*: quanto era a linha estranha do seu extrato")),
+      ("sonho de metade da rua", "C", tiao("P4", -1))],
+ # 5. A picape e o prazer
+ 45: [("^", "M", regra(7, "pense duas vezes antes de ter carro", "🚌")), ("vale-transporte", "M", fr("O patrão paga o que passar de *6% do salário*", "Lei 7.418/1985, art. 4º")),
+      ("cento e vinte", "M", nu(120, "O que eu pago de transporte", "6% de R$ 2.000", cor=VERDE, emoji="🚌"))],
+ 46: [("^", "M", so("marcos", "P08")), ("Parcela", "M", conta("A picape do Marcos, por mês", [("Parcela", -2890), ("Seguro", -380), ("Combustível", -600),
+                                                                                              ("Imposto e manutenção", -250)], total="Por mês")),
+      ("Mais que o dobro", "C", tiao("P4", 1))],
+ 47: [("^", "C", tiao("P2", -1)), ("trabalhando para o carro", "C", tiao("P3", 1))],
+ 48: [("^", "C", tiao("P1", -1)), ("usado, à vista", "M", fr("Um dia: *usado*, à vista e com calma."))],
+ 49: [("^", "M", regra(8, "separe dinheiro para o prazer e gaste sem culpa", "🍦")), ("setenta reais", "M", nu(70, "Por mês, só para o prazer", cor=VERDE, emoji="🍦"))],
+ 50: [("^", "M", ic([("🍦", "sorvete na praça", False), ("⚽", "futebol de sábado", False), ("🎬", "cinema no dia da promoção", False)], "Prazer planejado")),
+      ("de graça", "M", ic([("🌳", "o parque", False), ("🎪", "a festa de rua", False), ("🎟️", "o evento da prefeitura", False)], "De graça")),
+      ("acabou", "C", tiao("P3", 1))],
+ 51: [("^", "C", tiao("P1", -1)), ("essa regra é sua", "C", tiao("P2", 1)), ("meio termo", "M", fr("O *meio termo* é onde a vida acontece."))],
+ 52: [("^", "M", so("sandra", "P03")), ("seiscentos", "M", nu(600, "Por mês, para tirar foto", cor=VERM, emoji="📸")), ("estar ali", "C", tiao("P2", -1))],
+ 53: [("^", "C", tiao("P4", 1)), ("recado rápido", "C", tiao("P2", -1))],
+ 54: [("^", "C", tiao("P2", 1)), ("balanço", "V", "banco:FM:4-balanco/balanco__estilo-donut-despesas__horizontal.mp4"),
+      ("Os juros e as tarifas", "M", ic([("💸", "Juros do cheque especial", False), ("🧾", "Cesta de serviços", False)], "Uma fatia só para eles")),
       ("sete dias", "M", nu(7, "Dá para testar o FinMoovi", "link na descrição · www.finmoovi.com", cor=VERDE, fmt="int", suf=" dias", emoji="📱"))],
- # 6. O meu susto
- 40: [("^", "M", CIDA_NOITE([B("E o seu? Você leu o seu linha por linha também, ou só ensina?", 0, "E o seu", "ensina", **VE_B)]))],
- 41: [("^", "M", rua_noite([TI(("P01", None), x=1250)])), ("Então lê", "M", CIDA_NOITE([B("Então lê.", 0, "Então", "lê", **VE_B)])),
-      ("martelando", "C", tiao("P1", 1))],
- 42: [("^", "M", cel("O extrato do Tião", [("Salário", "+ ...", True), ("Pacote de serviços", "- 12,90", False)], [1])),
-      ("seis anos", "M", li(["2020", "2021", "2022", "2023", "2024", "2025", "2026"], 6, "Pacote de serviços: R$ 12,90 todo mês"))],
- 43: [("^", "C", tiao("P4", -1)), ("setenta e dois", "M", nu(928.80, "Seis anos de pacote", "R$ 12,90 × 72 meses", cor=VERM, casas=2, emoji="😳")),
-      ("caneca velha", "M", rua_noite([TI(("P04", None), x=1250)]))],
- 44: [("^", "C", tiao("P3", 1)), ("contrato específico", "M", fr("Pacote de serviços exige *contrato específico*", "Resolução CMN 3.919/2010, art. 8º")),
-      ("cancelei", "C", tiao("P2", -1))],
- 45: [("^", "M", rua_dia([GE("sandra", ("P07", None), x=700)], carro=False)),
-      ("bem baixinho", "M", rua_dia([GE("sandra", ("P07", None), x=600), TI(("P10", None), x=1350)], [B("Tião, como é que eu vejo se eu pago esse tal pacote?", 0, "como é que", "pacote", x=150, larg=1000)], carro=False)),
-      ("trinta e nove", "M", nu(39.90, "O pacote da Sandra", "todo mês", cor=VERM, casas=2, emoji="🤫"))],
- 46: [("^", "C", tiao("P3", 1)), ("Dica número três", "M", ic([("🕳️", "o salário não pode chegar devendo: tapa o buraco do limite primeiro", False)], "Dica 3")),
-      ("todo santo dia", "C", tiao("P4", -1))],
- 47: [("^", "M", conta("O mês da Valéria", [("Dia 5: entra o salário", 8700), ("Tapa o buraco do limite", -3800), ("Dia 8: parcela do carro", -4555.56),
-                                             ("Dia 10: aluguel", -3900)], total="No dia 10", passo=1.6))],
- 48: [("^", "C", tiao("P4", 1)), ("chegava gasto", "M", fr("O salário *já chegava gasto*, pagando o mês que passou")), ("O problema nunca", "C", tiao("P2", -1))],
- 49: [("^", "M", DOM(("P17", None))), ("chave do carrão", "M", foco(*CANECA_D)),
-      ("Me ajuda a vender", "M", perto_v(("P15", None), baloes=[B("Me ajuda a vender, Tião.", 0, "Me ajuda", "Tião", **VE_B)])),
-      ("Três meses depois", "M", fr("*Três meses* depois")), ("tinha sumido", "M", cel("Extrato · três meses depois", [("Salário", "+ 8.700,00", True), ("Aluguel", "- 2.300,00", False)], [0]))],
- 50: [("^", "M", perto_t(("P08", None), x=960))],
- 51: [("^", "C", tiao("P2", 1)), ("só o número", "M", fr("Comenta *só o número*: quanto você paga de pacote por mês"))],
+ # 6. O que a rua nao viu
+ 55: [("^", "M", regra(9, "o dinheiro sobe, o padrão fica", "📈")), ("décimo terceiro", "M", fr("1ª metade do *13º*: até 30 de novembro", "Lei 4.749/1965, art. 2º")),
+      ("vinte de dezembro", "M", fr("O resto: até *20 de dezembro*", "Lei 4.749/1965, art. 1º")), ("Para mim", "M", nu(1000, "O meu agora", emoji="💰"))],
+ 56: [("^", "M", ic([("📱", "celular novo", True), ("👕", "roupa nova", True), ("🍽️", "jantar fora", True)], "Em janeiro, nada")), ("sem deixar rastro", "C", tiao("P4", -1))],
+ 57: [("^", "M", conta("O 13º do Tião", [("Primeira metade", 1000), ("Para a reserva", -500), ("Para viver melhor", -500)], total="Decidido antes", neutro=True)),
+      ("cabeça fria", "C", tiao("P3", 1))],
+ 58: [("^", "M", so("marcos", "P04")), ("cinco mil para seis mil", "M", ba([("Antes", 5000, VERDE), ("Depois do aumento", 6000, VERDE)], "O salário do Marcos")),
+      ("vantagem escondida", "C", tiao("P2", -1)), ("mais difícil", "C", tiao("P4", 1))],
+ 59: [("^", "M", regra(10, "compare-se só com você mesmo, de um ano atrás", "🪞")), ("Sandra posta", "M", so("sandra", "P03")),
+      ("peito aperta", "C", tiao("P1", -1)), ("ninguém posta o depois", "M", ic([("🧾", "a fatura", False), ("💢", "a briga", False), ("🌙", "a noite sem dormir", False)], "O que ninguém posta"))],
+ 60: [("^", "C", tiao("P3", 1))],
+ 61: [("^", "M", ic([("❓", "não sabia para onde ia o dinheiro", True), ("0️⃣", "zero guardado", True), ("😟", "medo", True)], "Um ano atrás")),
+      ("Hoje eu sei", "M", ic([("🧭", "sei para onde vai cada real", False), ("🐷", "tenho reserva", False), ("😴", "durmo", False)], "Hoje")),
+      ("única comparação", "C", tiao("P2", -1))],
+ 62: [("^", "M", nu(650, "A geladeira pifou", "paga à vista, com a reserva", cor=VERDE, emoji="🧊")), ("guardei", "C", tiao("P1", 1)),
+      ("Caneca velha", "M", foco(*CANECA_D))],
+ 63: [("^", "M", rua_dia([DE("marcos", 900)], carro=False)), ("carta do banco", "M", fr("*Parcela da picape*: em atraso")),
+      ("de cabeça baixa", "M", so("marcos", "P07", "Tião, me ensina aquela tua conta?", "Tião", "conta"))],
+ 64: [("^", "M", cel("A conta do Marcos", [("Quanto eu preciso para viver", "?", False)], [0])), ("contrato", "M", so("marcos", "P02", "A Sandra vai me matar.", "A Sandra", "matar")),
+      ("Vamos ver", "C", tiao("P3", 1))],
+ 65: [("^", "M", rua_dia([P("valeria", 1100, 960, 600, ("R4", None)), DE("marcos", 500)], carro=False)),
+      ("Boa tarde", "M", so("valeria", "P15", "Boa tarde, Tião.", "Boa", "Tião")), ("primeiro passo", "C", tiao("P1", -1))],
+ 66: [("^", "C", tiao("P2", 1)), ("distância", "M", fr("Tranquilidade = o que você *ganha* menos o que você *precisa*")),
+      ("dorme em paz", "C", tiao("P3", -1))],
  # 7. O proximo
- 52: [("^", "C", tiao("P1", -1)), ("farmácia da avenida", "M", fr("No sábado seguinte, na *farmácia* da avenida")),
-      ("CPF para o desconto", "C", tiao("P4", 1))],
- 53: [("^", "M", perto_v(("P08", None))), ("letra miudinha", "M", cel("A nota da farmácia", [("...", "...", False), ("letra miudinha", "???", False)], [1])),
-      ("me puxou", "M", perto_v(("P09", None), baloes=[B("Tião, você sabe o que eles fazem com o nosso CPF?", 0, "você sabe", "CPF", **VE_B)]))],
- 54: [("^", "M", fr("Por que a farmácia sempre pede o seu *CPF*?", "Não é o desconto")), ("Clica agora", "C", tiao("P2", 1))],
+ 67: [("^", "M", so("cida", "P01")), ("cê pê éfe", "M", fr("“Me passa o seu *CPF*, que tem desconto.”")),
+      ("desconfiou", "M", so("cida", "P04"))],
+ 68: [("^", "M", cel("Mensagem nova", [("Olá, Dona Cida!", "", True), ("Sobre o seu remédio de pressão...", "", False)], [1])),
+      ("sacolinha", "M", so("cida", "P03", "Tião... como é que eles sabem disso?", "Tião", "disso"))],
+ 69: [("^", "M", fr("Como as farmácias ganham *dinheiro*?", "Não é o remédio")), ("Clica agora", "C", tiao("P2", 1))],
 }
