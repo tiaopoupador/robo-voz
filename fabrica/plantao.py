@@ -25,6 +25,11 @@ cripta = lambda a, b, d="-d": subprocess.run(["openssl", "enc", d, "-aes-256-cbc
 # 1. abre a voz (a senha fica só dentro do programa)
 for enc in [e for e in glob.glob(PASTA + "/**/parte-*.enc", recursive=True) if not e.endswith(".json.enc")]:
     cripta(enc, f"{PASTA}/p{re.search(r'parte-(\d+)\.enc', enc)[1]}.wav")
+# 28/11 (Ed: «a ideia de acelerar só a voz ficou perfeita deixe como regra a partir de agora. Leve essa alteração (...) para os
+# shorts»): cada fala acelera 1,15x ANTES de medir, assim as legendas e os quadros já saem no tempo da voz nova; a música, não.
+VOZ_RITMO = 1.15
+for w in glob.glob(PASTA + "/p*.wav"):
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", w, "-af", f"atempo={VOZ_RITMO}", w + ".r.wav"], check=True); os.replace(w + ".r.wav", w)
 # legenda: o número aparece em algarismo (a voz diz por extenso)
 TROCAS = [("cinquenta e seis bilhões de reais", "R$ 56 bilhões"), ("vinte por cento", "20%"), ("dois mil e vinte e sete", "2027"),
           ("quatro para dois bilhões de reais", "R$ 4 para R$ 2 bilhões"), ("décimo terceiro", "13º"), ("dois por cento", "2%"),

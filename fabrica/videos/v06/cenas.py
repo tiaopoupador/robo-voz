@@ -24,8 +24,8 @@ VINHETA = 3  # a vinheta entra depois da fala 3 («Vamos começar?»)
 REELS_DE = 1  # 27/11: a fala 0 e o «No episódio anterior»; o Reels do gancho comeca na fala 1
 PUBLICA = "2026-11-27 18:00"
 PUBLICA_TXT = "sexta, 27/11, às 18h (Brasília, 21h em Lisboa)"
-PRAZO = "sexta, 27/11, até as 15h (o vídeo vai ao ar às 18h)"
-PRAZO_ISO = "2026-11-27T15:00:00-03:00"
+PRAZO = "sábado, 28/11, até as 9h (Brasília)"
+PRAZO_ISO = "2026-11-28T09:00:00-03:00"
 CAPA = (_T, "Same composition as a calm before-and-after split, warm cream background, flat 2D cartoon. LEFT (smaller): Tiao tired and worried at a cheap "
             "wooden desk at night, bills and crumpled papers on the floor, head in his hand. A big thick GREEN curved arrow from left to right. RIGHT (bigger): "
             "the same Tiao relaxed on his simple porch armchair, hands behind his head, smiling, a plain white enamel mug with a chipped rim and a small stack "

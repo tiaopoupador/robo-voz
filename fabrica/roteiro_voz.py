@@ -44,6 +44,9 @@ for i, f in enumerate(falas):
     for s in set(re.findall(r"\b[A-Z]{2,6}\b", f)) - SIGLA_OK: avisos.append(f"fala {i}: sigla {s}: dizer o nome inteiro")
     if re.search(r"\b(está escrito|no site)\b[.!]", f, re.I): avisos.append(f"fala {i}: 'está escrito'/'no site' sem dizer onde")
     if re.search(r"\.\.\.|…", f): avisos.append(f"fala {i}: reticencias (27/11: a voz engasgava; o gerar.py troca por virgula, confira se a frase continua boa)")
+    # 28/11 (Ed, no 06: «ele diz um pedaço de uma frase nada a ver (...) do nada não tem nada a ver com a sequência»): a fala 37
+    # comecava com a frase da Valeria entre aspas, sem dizer quem falava; na voz do Tiao parece que ele mudou de assunto
+    if re.match(r'^["“«]', f): avisos.append(f"fala {i}: comeca com a frase de um personagem sem dizer quem fala (ex.: «A Valéria levantou os olhos: ...»)")
     if len(f) > 650: avisos.append(f"fala {i}: {len(f)} letras, passa de uns 40 s: partir em duas")
 # 27/11 (Ed: «Quero que daqui pra frente todo video inicie tipo: E no episódio anterior... ai fala de um resumo»)
 if int(NN) >= 6 and not re.match(r"(E )?no episódio anterior", falas[0], re.I):

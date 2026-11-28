@@ -6,7 +6,10 @@ import json, os, sys, urllib.error, urllib.request
 P = os.path.dirname(os.path.abspath(__file__)) + "/.."; sys.path.insert(0, P)
 from fabrica.google import chaves
 BASE = "https://api.goapexi.com/v1/team/robo"
-def chave_unica(NN): return f"tiao-v{NN}-imagens"
+# 28/11 (Ed: «exclua aquele do team e coloque um novo atual com as devidas correcoes»): a API nao apaga tarefa; a velha fecha-se
+# com um recado e a nova nasce com outra chave (o sufixo daqui). Todo o resto (baixar, recados) ja usa a chave nova.
+SUFIXO = {"06": "-r2"}
+def chave_unica(NN): return f"tiao-v{NN}-imagens" + SUFIXO.get(f"{int(NN):02d}", "")
 
 def _pedir(caminho, dados=None, bruto=False):
     k = chaves().get("APEXI_TEAM_CHAVE")

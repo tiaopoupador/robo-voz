@@ -74,6 +74,9 @@ Aponte cada lugar onde a história falha:
       tem de ficar claro em CADA passo. Se alguém devolve, o roteiro mostra antes o que foi dado e diz, na hora da devolução, o que
       está sendo devolvido ("os 50 reais que ele não emprestou, mas pagou em passagens"). Aponte toda conta, empréstimo ou objeto
       que o espectador pode entender ao contrário.
+   j) FALA SEM DONO (o dono do canal, 28/11/2026: «ele diz um pedaço de uma frase nada a ver (...) do nada»; sempre grave): toda
+      frase entre aspas diz ANTES quem fala e como («A Valéria levantou os olhos, quase chorando: ...»). Uma fala que começa já
+      com as aspas, na voz do Tião, parece que ele mudou de assunto.
 10. CONTINUIDADE (o dono do canal, 27/11/2026, recusou um vídeo por isto; sempre GRAVE): o ROTEIRO ANTERIOR INTEIRO vem no fim
    deste pedido. Aponte tudo o que contradiz o anterior, e tudo o que o anterior já contou e este conta DE NOVO como se fosse
    novidade (ex.: no anterior a personagem já decidiu vender o carro, e este volta a explicar a parcela do carro).
